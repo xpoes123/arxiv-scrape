@@ -1,0 +1,5 @@
+# Raw data is large (~370MB) and re-pullable — never commit it.
+data/raw/
+*.parquet
+__pycache__/
+.env

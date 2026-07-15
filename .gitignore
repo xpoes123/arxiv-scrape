@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+# large regenerable caches
+papers*.json
+nfl-rating-completion/data/
+*.parquet
