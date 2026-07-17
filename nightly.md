@@ -10,6 +10,9 @@ Work in `/home/david/code/arxiv-scrape`. Steps:
 1. **Fetch ~30 fresh papers.** Use an offset that varies by date so you see different papers than prior
    nights: `python3 fetch_papers.py 8 $(( $(date +%j) * 3 )) papers_nightly.json` (per_cat=8, start=day-of-year×3).
    Categories are defined in `fetch_papers.py` (CS, math, quant, bio, chem, physics).
+   **Run this in the FOREGROUND and wait for it to finish — do NOT use run_in_background.** This is a
+   headless `-p` run: backgrounded jobs die when the turn ends, so a backgrounded fetch silently no-ops
+   the whole night. Same rule for every later step — never background a command you then wait on.
 
 2. **Ideate.** Run a bounded Workflow (batches of 5 papers) that, per batch, surfaces 2–4 ideas tagged by
    type — **project / startup / youtube / demo** — and scores each on (a) how cool/shareable it is and

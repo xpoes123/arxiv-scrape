@@ -8,5 +8,13 @@ LOG="$LOGDIR/$(date +%F).log"
 {
   echo "=== arxiv nightly start $(date -u +%FT%TZ) ==="
   claude -p "$(cat nightly.md)" --model sonnet --dangerously-skip-permissions
-  echo "=== done $(date -u +%FT%TZ) exit=$? ==="
+  rc=$?
+  # Guardrail: a real run rewrites papers_nightly.json today. If not, the run no-op'd (e.g. backgrounded
+  # the fetch and exited) — fail loudly so systemd marks it failed instead of green.
+  if [ "$(date -u +%F)" != "$(date -u -r papers_nightly.json +%F 2>/dev/null)" ]; then
+    echo "!!! GUARDRAIL: papers_nightly.json not refreshed today — run produced no output. Marking failed."
+    rc=1
+  fi
+  echo "=== done $(date -u +%FT%TZ) exit=$rc ==="
+  exit $rc
 } >> "$LOG" 2>&1
