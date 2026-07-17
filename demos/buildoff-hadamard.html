@@ -1,0 +1,470 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Random Rotation vs the Killer Outlier</title>
+<style>
+  :root{
+    --bg:#1a1b26; --bg2:#16161e; --panel:#1f2335; --panel2:#24283b;
+    --fg:#c0caf5; --muted:#565f89; --dim:#414868;
+    --blue:#7aa2f7; --purple:#bb9af7; --green:#9ece6a; --red:#f7768e;
+    --orange:#ff9e64; --cyan:#7dcfff; --yellow:#e0af68;
+    --line:#2a2e42;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:radial-gradient(1200px 700px at 15% -10%, #20243a 0%, var(--bg) 55%) fixed, var(--bg);
+    color:var(--fg);
+    font:15px/1.55 "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:28px 20px 60px;
+  }
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{
+    font-size:26px;line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.4px;
+    background:linear-gradient(90deg,var(--blue),var(--purple) 55%,var(--cyan));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .sub{color:var(--muted);margin:0 0 4px;font-size:14.5px;max-width:820px}
+  .sub b{color:var(--cyan);font-weight:600}
+  .cite{color:var(--dim);font-size:12px;margin:2px 0 22px;font-variant-numeric:tabular-nums}
+  .card{
+    background:linear-gradient(180deg,var(--panel),var(--bg2));
+    border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 12px 34px -18px rgba(0,0,0,.8);
+  }
+  .controls{
+    display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;
+    padding:16px 20px;margin-bottom:16px;
+  }
+  .ctl{display:flex;flex-direction:column;gap:7px}
+  .ctl .lab{font-size:11px;letter-spacing:.9px;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .presets{display:flex;gap:8px;flex-wrap:wrap}
+  button{
+    font:inherit;color:var(--fg);cursor:pointer;
+    background:var(--panel2);border:1px solid var(--dim);border-radius:9px;
+    padding:8px 13px;font-size:13px;font-weight:500;transition:.14s;
+  }
+  button:hover{border-color:var(--blue);color:#fff;transform:translateY(-1px)}
+  button.on{background:linear-gradient(180deg,#2d3350,#232840);border-color:var(--blue);color:#fff;box-shadow:0 0 0 1px var(--blue) inset}
+  .chip{padding:7px 11px;font-size:12.5px}
+  .big{
+    padding:11px 20px;font-size:14.5px;font-weight:600;
+    background:linear-gradient(180deg,#2b3560,#1e2545);border-color:var(--blue);color:#dbe4ff;
+  }
+  .big:hover{box-shadow:0 0 22px -6px var(--blue)}
+  .big.armed{background:linear-gradient(180deg,#3a2b5e,#251b45);border-color:var(--purple);box-shadow:0 0 22px -8px var(--purple)}
+  .reroll{border-color:var(--purple);color:#e6d9ff}
+  .reroll:hover{border-color:var(--purple);box-shadow:0 0 18px -6px var(--purple)}
+  input[type=range]{width:150px;accent-color:var(--blue);cursor:pointer}
+  .val{font-variant-numeric:tabular-nums;color:var(--cyan);font-weight:600}
+  select{font:inherit;background:var(--panel2);color:var(--fg);border:1px solid var(--dim);border-radius:9px;padding:8px 10px}
+
+  .stage{padding:8px 8px 4px;margin-bottom:16px;position:relative}
+  .stagehead{display:flex;justify-content:space-between;align-items:baseline;padding:8px 14px 2px;flex-wrap:wrap;gap:6px}
+  .stagehead .title{font-weight:600;font-size:14.5px}
+  .stagehead .title .tag{
+    font-size:11px;font-weight:600;letter-spacing:.5px;padding:2px 9px;border-radius:20px;margin-left:8px;vertical-align:middle;
+  }
+  .tag.raw{background:rgba(247,118,142,.14);color:var(--red);border:1px solid rgba(247,118,142,.35)}
+  .tag.rot{background:rgba(158,206,106,.14);color:var(--green);border:1px solid rgba(158,206,106,.35)}
+  .hint{color:var(--muted);font-size:12.5px}
+  canvas{display:block;width:100%;border-radius:10px;touch-action:none}
+  #vec{height:340px}
+  #dist{height:150px}
+
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+  .stat{padding:15px 16px;position:relative;overflow:hidden}
+  .stat .k{font-size:11px;letter-spacing:.9px;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .stat .v{font-size:27px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:5px;letter-spacing:-.5px}
+  .stat .u{font-size:12px;color:var(--muted);margin-top:2px}
+  .stat.naive .v{color:var(--red)}
+  .stat.rot .v{color:var(--green)}
+  .stat.win .v{color:var(--purple)}
+  .stat.bits .v{color:var(--cyan)}
+  .stat .bar{position:absolute;left:0;bottom:0;height:3px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+  .stat.naive .bar{background:var(--red)} .stat.rot .bar{background:var(--green)}
+
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:12.5px;padding:2px 4px}
+  #assert{font-variant-numeric:tabular-nums}
+  #assert.ok::before{content:"✓ ";color:var(--green);font-weight:700}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+  @media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr)} #vec{height:280px}}
+</style>
+
+<div class="wrap">
+  <h1>Random Rotation vs the Killer Outlier</h1>
+  <p class="sub">
+    Low-bit quantization dies on a few giant <b>outlier</b> entries — the step size must span the whole
+    range, so every small value gets crushed to noise. A <b>randomized Hadamard rotation</b>
+    (random ±1 sign flip → fast Walsh–Hadamard transform) smears each outlier's energy across all
+    <i>d</i> coordinates, flattening the distribution so quantization barely hurts. It costs only
+    <b>O(d&nbsp;log&nbsp;d)</b> and is exactly why modern KV-cache / weight quantizers rotate first.
+  </p>
+  <p class="cite">arXiv:2605.13810 &nbsp;·&nbsp; d = 128 &nbsp;·&nbsp; orthogonal transform, so rotate → quantize → rotate-back preserves error exactly</p>
+
+  <div class="card controls">
+    <div class="ctl">
+      <span class="lab">Vector preset</span>
+      <div class="presets" id="presets"></div>
+    </div>
+    <div class="ctl">
+      <span class="lab">Bit depth &nbsp;·&nbsp; <span class="val" id="bitsLab">4</span>-bit</span>
+      <input type="range" id="bits" min="2" max="8" step="1" value="4">
+    </div>
+    <div class="ctl">
+      <span class="lab">Rotation</span>
+      <div style="display:flex;gap:8px">
+        <button id="apply" class="big">Apply rotation ↻</button>
+        <button id="reroll" class="chip reroll">Re-roll signs 🎲</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card stage">
+    <div class="stagehead">
+      <div class="title" id="domTitle">Raw vector <span class="tag raw" id="domTag">RAW SPACE</span></div>
+      <div class="hint" id="dragHint">drag on the bars to sculpt / add outliers</div>
+    </div>
+    <canvas id="vec"></canvas>
+    <div class="legend" style="padding:2px 14px 10px">
+      <span><i class="sw" style="background:var(--blue)"></i> value</span>
+      <span><i class="sw" style="background:var(--yellow)"></i> quantized (reconstruction)</span>
+      <span><i class="sw" style="background:var(--red)"></i> per-coordinate error</span>
+      <span style="color:var(--dim)">grid lines = quantization levels</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card stat naive"><div class="k">Naive MSE</div><div class="v" id="mseNaive">—</div><div class="u">quantize raw · max err <span id="maxNaive">—</span></div><div class="bar" style="width:100%"></div></div>
+    <div class="card stat rot"><div class="k">Rotated MSE</div><div class="v" id="mseRot">—</div><div class="u">rotate → quant → back · max err <span id="maxRot">—</span></div><div class="bar" id="rotBar" style="width:10%"></div></div>
+    <div class="card stat win"><div class="k">Error reduction</div><div class="v" id="win">—</div><div class="u">lower is the whole point</div></div>
+    <div class="card stat bits"><div class="k">Effective range</div><div class="v" id="range">—</div><div class="u">raw vs rotated abs-max</div></div>
+  </div>
+
+  <div class="card stage" style="margin-bottom:16px">
+    <div class="stagehead">
+      <div class="title">Coefficient magnitude distribution</div>
+      <div class="hint">how spread-out the energy is — flat = easy to quantize</div>
+    </div>
+    <canvas id="dist"></canvas>
+    <div class="legend" style="padding:2px 14px 10px">
+      <span><i class="sw" style="background:var(--red)"></i> raw |x| (spiky — one bin dominates)</span>
+      <span><i class="sw" style="background:var(--green)"></i> rotated |Rx| (flattened bell)</span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span id="assert">checking WHT orthogonality…</span>
+    <span class="legend">
+      <span>R = H·S, &nbsp;H = FWHT/√d, &nbsp;S = diag(±1) &nbsp;·&nbsp; RᵀR = I ⇒ error preserved under rotation</span>
+    </span>
+  </div>
+</div>
+
+<script>
+"use strict";
+const D = 128;                       // power of two
+const LOG2D = Math.round(Math.log2(D));
+
+/* ---------- deterministic RNG ---------- */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function gauss(rng){let u=0,v=0;while(u===0)u=rng();while(v===0)v=rng();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+
+/* ---------- fast Walsh–Hadamard transform (in place, unnormalized) ---------- */
+function fwht(a){
+  const n=a.length;
+  for(let len=1;len<n;len<<=1){
+    for(let i=0;i<n;i+=len<<1){
+      for(let j=i;j<i+len;j++){
+        const x=a[j], y=a[j+len];
+        a[j]=x+y; a[j+len]=x-y;
+      }
+    }
+  }
+}
+const INV_SQRT_D = 1/Math.sqrt(D);
+// R x = (1/√d) FWHT( S ⊙ x )
+function rotate(x, signs){
+  const t=new Float64Array(D);
+  for(let i=0;i<D;i++) t[i]=x[i]*signs[i];
+  fwht(t);
+  for(let i=0;i<D;i++) t[i]*=INV_SQRT_D;
+  return t;
+}
+// Rᵀ y = S ⊙ ( (1/√d) FWHT(y) )   (H is symmetric & orthogonal, S self-inverse)
+function inverseRotate(y, signs){
+  const t=new Float64Array(D);
+  for(let i=0;i<D;i++) t[i]=y[i];
+  fwht(t);
+  for(let i=0;i<D;i++) t[i]=t[i]*INV_SQRT_D*signs[i];
+  return t;
+}
+
+/* ---------- uniform affine (min-max) quantizer ---------- */
+function quantize(x, bits){
+  let lo=Infinity, hi=-Infinity;
+  for(let i=0;i<x.length;i++){ if(x[i]<lo)lo=x[i]; if(x[i]>hi)hi=x[i]; }
+  const L=(1<<bits)-1;
+  const step=(hi-lo)/L || 1e-12;
+  const q=new Float64Array(x.length);
+  for(let i=0;i<x.length;i++) q[i]=lo+Math.round((x[i]-lo)/step)*step;
+  return {q, step, lo, hi};
+}
+function mse(a,b){let s=0;for(let i=0;i<a.length;i++){const d=a[i]-b[i];s+=d*d;}return s/a.length;}
+function maxErr(a,b){let m=0;for(let i=0;i<a.length;i++){const d=Math.abs(a[i]-b[i]);if(d>m)m=d;}return m;}
+function absMax(a){let m=0;for(let i=0;i<a.length;i++){const v=Math.abs(a[i]);if(v>m)m=v;}return m;}
+
+/* ---------- presets ---------- */
+const PRESETS={
+  "Killer outlier":(rng)=>{const v=new Float64Array(D);for(let i=0;i<D;i++)v[i]=gauss(rng)*0.05;v[42]=1.0;return v;},
+  "Two spikes":(rng)=>{const v=new Float64Array(D);for(let i=0;i<D;i++)v[i]=gauss(rng)*0.05;v[20]=0.95;v[97]=-0.8;return v;},
+  "Four spikes":(rng)=>{const v=new Float64Array(D);for(let i=0;i<D;i++)v[i]=gauss(rng)*0.045;[15,44,73,110].forEach((k,j)=>v[k]=[0.9,-0.75,0.85,-0.6][j]);return v;},
+  "Heavy tail":(rng)=>{const v=new Float64Array(D);for(let i=0;i<D;i++){let g=gauss(rng)*0.06;if(rng()<0.06)g+=Math.sign(gauss(rng))*(0.4+rng()*0.6);v[i]=g;}return v;},
+  "Gaussian (no outlier)":(rng)=>{const v=new Float64Array(D);for(let i=0;i<D;i++)v[i]=gauss(rng)*0.28;return v;},
+};
+
+/* ---------- state ---------- */
+let x = new Float64Array(D);         // raw vector (user-editable)
+let signs = new Int8Array(D);        // ±1 random diagonal
+let bits = 4;
+let rotated = false;                 // showing rotated domain?
+let morph = 0;                       // 0 = raw, 1 = rotated  (animated)
+let target = 0;
+let presetName = "Two spikes";
+
+function newSigns(){ const r=mulberry32((Math.random()*1e9)|0); for(let i=0;i<D;i++) signs[i]=r()<0.5?-1:1; }
+function loadPreset(name, seed){ presetName=name; x=PRESETS[name](mulberry32(seed??1234567)); }
+
+/* ---------- canvases ---------- */
+const vec=document.getElementById("vec"), vctx=vec.getContext("2d");
+const dist=document.getElementById("dist"), dctx=dist.getContext("2d");
+function fit(c){const r=c.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);c.width=r.width*dpr;c.height=r.height*dpr;const g=c.getContext("2d");g.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
+let VW,VH,DW,DH;
+function resize(){({w:VW,h:VH}=fit(vec));({w:DW,h:DH}=fit(dist));draw();}
+addEventListener("resize",resize);
+
+/* ---------- current computed views ---------- */
+function compute(){
+  const y = rotate(x, signs);
+  const qN = quantize(x, bits);                          // naive
+  const qR = quantize(y, bits);                          // in rotated space
+  const recR = inverseRotate(qR.q, signs);               // back to raw space
+  return {
+    y,
+    naive:{mse:mse(x,qN.q), max:maxErr(x,qN.q), q:qN},
+    rot:{mse:mse(x,recR), max:maxErr(x,recR), qy:qR, yrec:qR.q},
+    rawAbs:absMax(x), rotAbs:absMax(y),
+  };
+}
+
+/* ---------- drawing ---------- */
+const C={fg:"#c0caf5",muted:"#565f89",dim:"#414868",blue:"#7aa2f7",yellow:"#e0af68",red:"#f7768e",green:"#9ece6a",line:"#2a2e42"};
+function fmt(v){ if(v===0)return"0"; const a=Math.abs(v); if(a>=1)return v.toFixed(a<10?2:1); if(a>=1e-3)return v.toPrecision(3); return v.toExponential(1);}
+function fmtE(v){ if(v>=1e-2)return v.toFixed(4); return v.toExponential(2);}
+
+function draw(){
+  if(!VW) return;
+  const st=compute();
+  drawVec(st);
+  drawDist(st);
+  updateStats(st);
+}
+
+function drawVec(st){
+  const g=vctx, W=VW, H=VH, pad=14, mid=H*0.5;
+  g.clearRect(0,0,W,H);
+
+  // shared vertical scale from RAW absmax so morph reads as "energy spreading"
+  const scale = (st.rawAbs||1)*1.06;
+  const bw = (W-2*pad)/D;
+  const yOf = v => mid - (v/scale)*(H*0.5-16);
+
+  // which domain values / quantization we display, interpolated by morph
+  const rawVals = x;
+  const rotVals = st.y;
+  const rawQ = st.naive.q.q;
+  const rotQ = st.rot.yrec;
+
+  // quantization level grid for the *displayed* domain (blend endpoints)
+  const qA = st.naive.q, qB = st.rot.qy;
+  const lo = qA.lo*(1-morph)+qB.lo*morph;
+  const step = qA.step*(1-morph)+qB.step*morph;
+  const L=(1<<bits);
+  g.strokeStyle=C.line; g.lineWidth=1;
+  for(let k=0;k<=L;k++){
+    const lv=lo+step*k;
+    const yy=yOf(lv);
+    if(yy<2||yy>H-2)continue;
+    g.beginPath();g.moveTo(pad,yy);g.lineTo(W-pad,yy);g.stroke();
+  }
+  // zero axis
+  g.strokeStyle=C.dim;g.lineWidth=1.2;g.beginPath();g.moveTo(pad,mid);g.lineTo(W-pad,mid);g.stroke();
+
+  // bars
+  for(let i=0;i<D;i++){
+    const val = rawVals[i]*(1-morph)+rotVals[i]*morph;
+    const qv  = rawQ[i]*(1-morph)+rotQ[i]*morph;
+    const xx = pad + i*bw;
+    const cx = xx + bw*0.5;
+    const yv = yOf(val), yq = yOf(qv);
+    const barw = Math.max(1.4, bw*0.62);
+
+    // value bar
+    g.fillStyle = "rgba(122,162,247,0.32)";
+    g.fillRect(cx-barw/2, Math.min(yv,mid), barw, Math.abs(yv-mid));
+    // value cap
+    g.fillStyle = C.blue;
+    g.fillRect(cx-barw/2, yv- (val>=0?0:1.8), barw, 1.8);
+
+    // quantized reconstruction cap
+    g.fillStyle = C.yellow;
+    g.fillRect(cx-barw/2-0.5, yq-1, barw+1, 2);
+
+    // error segment
+    if(Math.abs(yv-yq)>0.6){
+      g.strokeStyle="rgba(247,118,142,0.9)"; g.lineWidth=Math.min(barw,2.4);
+      g.beginPath();g.moveTo(cx,yv);g.lineTo(cx,yq);g.stroke();
+    }
+  }
+
+  // scale labels
+  g.fillStyle=C.muted;g.font="11px ui-monospace,monospace";g.textBaseline="middle";
+  g.fillText("+"+fmt(scale), pad+2, 12);
+  g.fillText(fmt(-scale), pad+2, H-12);
+  g.fillText("0", pad+2, mid-8);
+}
+
+function drawDist(st){
+  const g=dctx,W=DW,H=DH,pad=12;
+  g.clearRect(0,0,W,H);
+  const NB=26;
+  const top = Math.max(st.rawAbs, st.rotAbs)*1.001 || 1;
+  const rawH=new Array(NB).fill(0), rotH=new Array(NB).fill(0);
+  for(let i=0;i<D;i++){
+    let a=Math.min(NB-1,Math.floor(Math.abs(x[i])/top*NB)); rawH[a]++;
+    let b=Math.min(NB-1,Math.floor(Math.abs(st.y[i])/top*NB)); rotH[b]++;
+  }
+  const maxc=Math.max(...rawH,...rotH,1);
+  const bw=(W-2*pad)/NB;
+  const base=H-20;
+  for(let k=0;k<NB;k++){
+    const xx=pad+k*bw;
+    const rh=(rawH[k]/maxc)*(base-8);
+    const oh=(rotH[k]/maxc)*(base-8);
+    g.fillStyle="rgba(247,118,142,0.55)";
+    g.fillRect(xx+1, base-rh, bw*0.5-1, rh);
+    g.fillStyle="rgba(158,206,106,0.7)";
+    g.fillRect(xx+bw*0.5, base-oh, bw*0.5-1, oh);
+  }
+  g.strokeStyle=C.dim;g.beginPath();g.moveTo(pad,base);g.lineTo(W-pad,base);g.stroke();
+  g.fillStyle=C.muted;g.font="11px ui-monospace,monospace";g.textBaseline="top";
+  g.fillText("|coeff| = 0", pad, base+5);
+  g.textAlign="right";g.fillText(fmt(top), W-pad, base+5);g.textAlign="left";
+}
+
+function updateStats(st){
+  document.getElementById("mseNaive").textContent=fmtE(st.naive.mse);
+  document.getElementById("mseRot").textContent=fmtE(st.rot.mse);
+  document.getElementById("maxNaive").textContent=fmt(st.naive.max);
+  document.getElementById("maxRot").textContent=fmt(st.rot.max);
+  const ratio = st.naive.mse/(st.rot.mse||1e-12);
+  document.getElementById("win").textContent = ratio>=1 ? (ratio>=100?Math.round(ratio):ratio.toFixed(1))+"×" : ratio.toFixed(2)+"×";
+  document.getElementById("range").textContent = fmt(st.rawAbs)+" → "+fmt(st.rotAbs);
+  // rotated MSE bar width relative to naive (log-ish)
+  const w = Math.max(3, Math.min(100, 100*st.rot.mse/(st.naive.mse||1e-12)));
+  document.getElementById("rotBar").style.width=w+"%";
+}
+
+/* ---------- morph animation ---------- */
+let raf=null;
+function animate(){
+  const d=target-morph;
+  if(Math.abs(d)<0.002){morph=target;draw();raf=null;return;}
+  morph += d*0.16;
+  draw();
+  raf=requestAnimationFrame(animate);
+}
+function setRotated(on){
+  rotated=on; target=on?1:0;
+  const btn=document.getElementById("apply");
+  btn.classList.toggle("armed",on);
+  btn.textContent = on ? "Rotated space ✓  (click to undo)" : "Apply rotation ↻";
+  document.getElementById("domTitle").innerHTML = on
+    ? 'Rotated coefficients <span class="tag rot" id="domTag">Rx · FLATTENED</span>'
+    : 'Raw vector <span class="tag raw" id="domTag">RAW SPACE</span>';
+  document.getElementById("dragHint").textContent = on
+    ? "energy is spread across all 128 coords → quantization error collapses"
+    : "drag on the bars to sculpt / add outliers";
+  if(!raf) raf=requestAnimationFrame(animate);
+}
+
+/* ---------- interaction: drag to sculpt outliers (raw space only) ---------- */
+let dragging=false;
+function pointerVal(ev){
+  const r=vec.getBoundingClientRect();
+  const px=(ev.clientX-r.left), py=(ev.clientY-r.top);
+  const pad=14, mid=r.height*0.5;
+  const scale=(absMax(x)||1)*1.06;
+  const bw=(r.width-2*pad)/D;
+  let idx=Math.floor((px-pad)/bw);
+  idx=Math.max(0,Math.min(D-1,idx));
+  const val=((mid-py)/(r.height*0.5-16))*scale;
+  return {idx,val};
+}
+function onDown(ev){ if(rotated)return; dragging=true; vec.setPointerCapture?.(ev.pointerId); applyDrag(ev); }
+function applyDrag(ev){ if(!dragging)return; const {idx,val}=pointerVal(ev); x[idx]=Math.max(-2,Math.min(2,val)); draw(); }
+function onUp(){ dragging=false; }
+vec.addEventListener("pointerdown",onDown);
+vec.addEventListener("pointermove",applyDrag);
+addEventListener("pointerup",onUp);
+
+/* ---------- wire controls ---------- */
+const presetBox=document.getElementById("presets");
+Object.keys(PRESETS).forEach((name,i)=>{
+  const b=document.createElement("button");
+  b.className="chip"+(name===presetName?" on":"");
+  b.textContent=name;
+  b.onclick=()=>{
+    loadPreset(name, 1234567+i*13);
+    [...presetBox.children].forEach(c=>c.classList.remove("on"));
+    b.classList.add("on");
+    draw();
+  };
+  presetBox.appendChild(b);
+});
+document.getElementById("bits").addEventListener("input",e=>{
+  bits=+e.target.value; document.getElementById("bitsLab").textContent=bits; draw();
+});
+document.getElementById("apply").addEventListener("click",()=>setRotated(!rotated));
+document.getElementById("reroll").addEventListener("click",()=>{
+  newSigns();
+  // brief pulse to show the error changed
+  if(rotated){ morph=0.82; if(!raf) raf=requestAnimationFrame(animate); }
+  draw();
+});
+
+/* ---------- self-verifying orthogonality assert ---------- */
+function selfCheck(){
+  const r=mulberry32(99), s=new Int8Array(D), t=new Float64Array(D);
+  for(let i=0;i<D;i++){ s[i]=r()<0.5?-1:1; t[i]=gauss(r); }
+  const round=inverseRotate(rotate(t,s),s);
+  let err=0; for(let i=0;i<D;i++){const e=round[i]-t[i]; err+=e*e;}
+  err=Math.sqrt(err/D);
+  // energy preservation: ||Rx|| == ||x||
+  const y=rotate(t,s); let n1=0,n2=0; for(let i=0;i<D;i++){n1+=t[i]*t[i];n2+=y[i]*y[i];}
+  const el=document.getElementById("assert");
+  const ok = err<1e-9 && Math.abs(n1-n2)<1e-9;
+  el.classList.toggle("ok",ok);
+  el.textContent = ` WHT∘WHT⁻¹ = I  (round-trip RMSE ${err.toExponential(1)}) · ‖Rx‖=‖x‖ (Δ ${Math.abs(n1-n2).toExponential(1)})`;
+  console.assert(ok, "Hadamard orthogonality check FAILED", {err, n1, n2});
+  console.log(`%c[Hadamard demo] orthogonality OK — round-trip RMSE=${err.toExponential(2)}, energy Δ=${Math.abs(n1-n2).toExponential(2)}`,"color:#9ece6a");
+}
+
+/* ---------- boot ---------- */
+loadPreset("Two spikes",1234567+13);
+newSigns();
+selfCheck();
+resize();
+</script>
