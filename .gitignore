@@ -4,3 +4,4 @@ __pycache__/
 papers*.json
 nfl-rating-completion/data/
 *.parquet
+demos/
