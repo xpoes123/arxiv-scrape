@@ -27,14 +27,20 @@ Work in `/home/david/code/arxiv-scrape`. Steps:
    cool — good visuals, interactive, a clear "wow". Ground it in the paper's real result. Open it / sanity
    check the HTML is valid.
 
-5. **Publish to share.djiang.xyz — via git push only (NO root SSH).** Commit the files into the local
-   `~/code/david-share` repo and push; the VPS serves from that repo (a separate VPS-side pull picks it
-   up — the nightly does not SSH to prod). Files:
-   - the demo → `david-share/arxiv-scrape/demos/<date>-<slug>.html` (inline the whole thing into one file).
-   - a nightly brief → `david-share/arxiv-scrape/<date>-nightly.html` (the top ideas across all four
-     categories + a prominent link to the demo). Reuse `publish.py`'s HTML style or match the existing pages.
-   - update `david-share/arxiv-scrape/index.html` to link both (new "Nightly" section, newest first).
-   - `git -C ~/code/david-share add … && commit && push`. That's it — no SSH, no chmod on the VPS.
+5. **Publish to share.djiang.xyz — via git push only (NO root SSH).** The share site is a FastAPI app that
+   **only serves pages registered in `manifest.json` — writing the HTML is not enough; an unregistered page
+   404s.** Do NOT hand-edit `index.html` (the app renders all indexes from the manifest). Steps:
+   - Write the demo → `david-share/arxiv-scrape/demos/<date>-<slug>.html` (inline the whole thing, one file).
+   - Write a nightly brief → `david-share/arxiv-scrape/<date>-nightly.html` (top ideas across all four
+     categories + a prominent link to the demo). Match the style of existing `arxiv-scrape/*.html` pages.
+   - **Register BOTH in the manifest** (this is the load-bearing step) by running, from `~/code/david-share`:
+     ```
+     python3 -c "from app import manifest; d=manifest.load(); [manifest.upsert_page(d,e) for e in [\
+       {'file':'arxiv-scrape/demos/<date>-<slug>.html','project':'arxiv-scrape','date':'<date>','title':'<demo title>','tag':'demo','redirect_from':[]},\
+       {'file':'arxiv-scrape/<date>-nightly.html','project':'arxiv-scrape','date':'<date>','title':'arXiv Nightly — <slug> (<Mon DD>)','tag':'brief','redirect_from':[]}]]; manifest.save(d)"
+     ```
+   - `git -C ~/code/david-share add arxiv-scrape/ manifest.json && commit && push`. No SSH, no chmod.
+     (A separate VPS-side `git -C /opt/share pull` makes it live — the nightly does not SSH to prod.)
 
 6. **Log** to `LOG_nightly.md` (prepend, newest first): date, # papers, the top idea per category, and the
    demo built + its live URL.
