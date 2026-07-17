@@ -2,8 +2,9 @@
 
 You are the arxiv-scrape nightly scout, running fully autonomously (no human is watching). Your job:
 mine fresh arXiv papers for cool ideas across **projects, startups, YouTube videos, and fun demos** —
-and then actually **BUILD one small demo** of something cool. Keep it bounded (~30 papers, one demo,
-aim under ~1.5M tokens). A cool small thing that works beats an ambitious broken thing.
+and then actually **BUILD one small demo** of something cool — via a 3-way subagent build-off, judged,
+publishing the winner. Keep it bounded (~30 papers, 3 competing builds, aim under ~4M tokens). A cool
+thing that actually works beats an ambitious broken thing — a demo that doesn't run cannot win.
 
 Work in `/home/david/code/arxiv-scrape`. Steps:
 
@@ -19,13 +20,24 @@ Work in `/home/david/code/arxiv-scrape`. Steps:
    (b) how **buildable-tonight** it is (prefer things buildable as a single self-contained HTML file, no
    backend). Reuse the pattern from the earlier ideation runs (see `ideation_run2.md`). ~6 batches is plenty.
 
-3. **Pick ONE idea to build.** The most **buildable + cool** — strongly prefer a self-contained web toy,
-   an interactive visualization, or a playable explainer of a mind-bending result from a paper. It must
-   be a single `index.html` with vanilla JS + canvas/SVG (CDN deps OK, no build step, no backend).
+3. **Pick the top 3 demo-worthy ideas.** From the ideation, take the 3 with the best **cool × buildable**
+   score that make good *interactive* web toys — a playable explainer, an interactive visualization, or a
+   toy that lets you *feel* a mind-bending result from a paper. Each must be buildable as a single
+   self-contained HTML file (no build step, no backend). One idea per builder below.
 
-4. **BUILD it.** Write a genuinely polished, shareable `demos/<date>-<slug>/index.html`. Make it actually
-   cool — good visuals, interactive, a clear "wow". Ground it in the paper's real result. Open it / sanity
-   check the HTML is valid.
+4. **BUILD — 3-way subagent build-off, then judge.** This is the centerpiece.
+   - Spawn **3 builder subagents in parallel** (use the Agent tool, all in one message so they run
+     concurrently — or a Workflow `parallel()`). Give each ONE of the 3 ideas. Each builder writes a
+     genuinely polished, interactive `demos/<date>-<slug-N>.html` (N = a, b, c): good visuals, real
+     interactivity, a clear "wow", grounded in the paper's actual result. **CDN libraries are encouraged**
+     (three.js, d3, p5.js, etc. via `<script src="https://cdn...">`) for richer visuals — still one HTML
+     file, no build step, no backend. Each builder must open its own file / sanity-check the HTML is valid
+     and self-contained before returning; a build that doesn't run is disqualified.
+   - Then spawn **1 judge subagent** that opens all 3, scores them on wow-factor, interactivity, polish,
+     and fidelity to the paper, discards any that don't actually run, and **picks the single coolest one**.
+   - The winner becomes the published demo. Rename/copy it to `demos/<date>-<slug>.html` (drop the -N).
+   - Keep it bounded: 3 builders + 1 judge, not a 10-way fan-out. If a builder fails, judge among the rest;
+     if all fail, publish the brief with no demo and log it.
 
 5. **Publish to share.djiang.xyz — via git push only (NO root SSH).** The share site is a FastAPI app that
    **only serves pages registered in `manifest.json` — writing the HTML is not enough; an unregistered page
@@ -42,11 +54,13 @@ Work in `/home/david/code/arxiv-scrape`. Steps:
    - `git -C ~/code/david-share add arxiv-scrape/ manifest.json && commit && push`. No SSH, no chmod.
      (A separate VPS-side `git -C /opt/share pull` makes it live — the nightly does not SSH to prod.)
 
-6. **Log** to `LOG_nightly.md` (prepend, newest first): date, # papers, the top idea per category, and the
-   demo built + its live URL.
+6. **Log** to `LOG_nightly.md` (prepend, newest first): date, # papers, the top idea per category, the
+   3 demos that competed, which one **won** the build-off and why, and its live URL.
 
 7. **Digest (optional):** if Sage's Discord notify is reachable, post a one-line digest with the demo link.
 
-Rules: stay bounded (don't run a 200-paper fan-out — this is nightly). It's fine if the demo is simple.
-Never touch the vigil repo or anything outside arxiv-scrape + david-share. If a step fails, log it and
-continue to whatever you can still finish (a brief with no demo is still worth publishing).
+Rules: stay bounded — the only fan-out is the 3-way build-off + 1 judge; don't run a 200-paper ideation
+sweep. Aim for a genuinely cool interactive winner, but the bar is *it must actually run* — a broken
+fancy demo loses to a simple working one. Never touch the vigil repo or anything outside arxiv-scrape +
+david-share. If a step fails, log it and continue to whatever you can still finish (a brief with no demo
+is still worth publishing).
