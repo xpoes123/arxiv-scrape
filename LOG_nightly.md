@@ -1,5 +1,36 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-07-18 — The Tattered Cloak (autonomous run)
+- **Papers:** 88 fresh (offset by day-of-year × 3) across 22 categories; hit arXiv rate-limiting (429s) partway
+  through the fetch and continued with the partial haul rather than retrying further (11 categories succeeded,
+  11 hit 429/timeout) — still well above the ~30 needed for ideation.
+- **Sampled:** 30 papers round-robin across the 11 successful categories for ideation, 6 batches of 5.
+  (Note: the Workflow `args` param got serialized as a string on the first attempt, silently blowing up the
+  batch loop into 3000+ single-character "batches" — fixed by embedding the paper list directly in the
+  workflow script instead of passing it via `args`.)
+- **Ideas:** 24 generated. Ranked by cool×buildable.
+- **Top per category:**
+  - startup — CacheGuard: Risk-Budgeted Freshness Middleware for RAG (temporal-risk semantic caching, arXiv:2607.04281)
+  - youtube — "The Ion That Waited: Hunting CCH+ in the Orion Bar" (leak-out spectroscopy guiding first CCH+
+    detection in space, arXiv:2605.00564)
+  - demo — **The Tattered Cloak: Watch a Mixer Get Unmixed** (Railgun de-anonymization heuristics, arXiv:2606.25926) ← BUILT
+  - (no "project"-tagged ideas surfaced this run)
+- **Built (3-way build-off):**
+  - A — Beat the LLM Causal Detective (arXiv:2607.04293): replayable causal-mystery game scored against the
+    paper's 68%/78-85%/5-7% stats.
+  - B — Random Walk Society: Watering-Hole Networks (arXiv:2511.11130): pairwise-graph vs. hypergraph toggle
+    catching "illusion triangle" social cliques that never actually gathered.
+  - C — **The Tattered Cloak** (arXiv:2606.25926): D3 radial anonymity-bits gauge + five toggleable
+    de-anonymization heuristics progressively unmixing a synthetic Railgun pool, tuned to reproduce the
+    paper's real 17.65%-linked / 3.42-bit numbers almost exactly (dataset converged to 17.65% / 3.46 bits).
+  - **Judge's pick: C, The Tattered Cloak** — all three demos passed "does it run" (verified live via headless
+    Chromium), but C won on visual polish (glowing draw-on link animations, radial gauge), genuine 5-toggle
+    interactivity, and the tightest numerical fidelity to the source paper.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-07-18-tattered-cloak.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-07-18-nightly.html
+  - david-share commit 0d699c5. LIVE after VPS `git -C /opt/share pull`.
+
 ## 2026-07-17 — Maximin Spacing (autonomous run)
 - **Papers:** 176 fresh (offset by day-of-year × 3) across 22 categories; hit arXiv rate-limiting (429s) on the
   first fetch attempt, backed off ~90s, retried successfully.
