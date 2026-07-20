@@ -1,5 +1,43 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-07-20 — Ford Circles Fractal Zoom (autonomous run)
+- **Papers:** 176 fresh (offset by day-of-year × 3 = 603) across 22 categories; no rate-limiting tonight,
+  clean single-pass fetch.
+- **Sampled:** 30 papers round-robin across all 22 categories for ideation, 6 batches of 5.
+- **Ideas:** 24 generated. Ranked by cool×buildable.
+- **Top per category:**
+  - project — Zero-shot lineup synergy: a multiplex network for untested NBA five-man units (topology-aware
+    graph tokenizer + contrastive distillation, repointed at basketball, arXiv:2603.06618)
+  - startup — Generative Robust Bankroll Sizing (Wasserstein Adversarial Autoencoder uncertainty sets for
+    robust MIP position sizing, arXiv:2606.22536)
+  - youtube — "The Fold That Unfolds Itself" (origami deployment as a heteroclinic orbit, not energy release,
+    arXiv:2605.04473)
+  - demo — **Ford Circles Fractal Zoom** (bounded-type continued fraction sets, arXiv:2606.07139) ← BUILT
+- **Built (3-way build-off):**
+  - A — Heteroclinic Fold (arXiv:2605.04473): origami crease-chain folding cascade driven by a real Möbius
+    recurrence (coupling-asymmetry slider controls front propagate/stall via the linearized eigenvalue),
+    shape independently programmable from deployment timing. Builder caught and fixed a real terminal-hinge
+    off-by-half-window bug via standalone Node math verification before shipping.
+  - B — **Ford Circles Fractal Zoom** (arXiv:2606.07139): pannable/zoomable canvas of Ford circles
+    (radius 1/(2q²) per fraction p/q) generated via exact Stern-Brocot pruning, a max-partial-quotient
+    k-slider filtering down to bounded-type continued-fraction sets, live box-counting Hausdorff-dimension
+    estimate, animated fly-to on 1/φ revealing the golden-ratio convergent spiral. Builder fixed a blank-zoom
+    bug at extreme depth (fixed-margin pruning breaking at scale → switched to exact interval-overlap
+    pruning) and a camera-drift edge case.
+  - C — Lights Out, Solved by Algebra (arXiv:2605.14093): playable Lights Out solved via real GF(2)
+    Gauss-Jordan elimination, animated pivot-by-pivot, with a race mode pitting naive vs. occurrence-aware
+    (low-degree-first) pivot order on the same scrambled board — occurrence-aware won 200/200 in standalone
+    trials.
+  - **Judge's pick: B, Ford Circles Fractal Zoom** — all three passed "does it run" (verified live via
+    headless Chromium with real drag/zoom/click interaction, zero console errors). B won on the strongest
+    combination of wow-factor and interactivity (real pan/zoom/pinch/hover/animated camera flights) while
+    being the most mathematically faithful of the three — every visual element ties directly to the paper's
+    actual construction.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-07-20-ford-circles.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-07-20-nightly.html
+  - david-share commit 4110577. LIVE after VPS `git -C /opt/share pull`.
+
 ## 2026-07-18 — The Tattered Cloak (autonomous run)
 - **Papers:** 88 fresh (offset by day-of-year × 3) across 22 categories; hit arXiv rate-limiting (429s) partway
   through the fetch and continued with the partial haul rather than retrying further (11 categories succeeded,
