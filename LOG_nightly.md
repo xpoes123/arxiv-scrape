@@ -1,5 +1,50 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-07-21 — Sync or Swing (Kuramoto phase-lag) (autonomous run)
+- **Papers:** 144 fresh (offset by day-of-year × 3 = 603) across 18/22 categories — first 4 (cs.LG, cs.AI,
+  cs.CL, cs.CR) hit transient arXiv 429/timeouts even after padding inter-category sleep from 3.1s to 5.0s
+  following a full-batch 429 on the first attempt; still well above the ~30 needed for ideation.
+- **Sampled:** 30 papers round-robin across the 18 successful categories for ideation, 6 batches of 5
+  (batches embedded directly in the workflow script, not passed via `args`, per the Jul-18 lesson).
+- **Ideas:** 24 generated. Ranked by cool×buildable.
+- **Top per category:**
+  - project — Prop Fan Charts: generative predictive distributions for NBA player props — swaps the
+    point-forecast + hand-fit-variance props pipeline for a diffusion/flow head producing calibrated
+    per-stat "fan chart" distributions, edge computed as P(over) vs. book-implied (arXiv:2606.16773)
+  - startup — Attribution Copilot — GPT-4 agent performs real Brinson-Fachler performance attribution +
+    narrates client-ready commentary, undercutting a human analyst or Bloomberg/FactSet module for solo RIAs
+    (arXiv:2403.10482)
+  - youtube — "The Metric That Catches Fake Long-Term Wins" — explainer on the Proximal Surrogate Index,
+    recovering true long-term causal effects from confounded short-term proxies via two negative controls
+    (arXiv:2601.17712)
+  - demo — **Sync or Swing: The Phase-Lag Kuramoto Playground** (arXiv:2606.07002) ← BUILT
+- **Built (3-way build-off):**
+  - A — Arithmetic Random Waves (arXiv:2606.08650): pick eigenvalue λ, render the toral eigenfunction
+    standing wave from every lattice point with n₁²+n₂²=λ as a live heatmap with nodal lines; r₂(λ)
+    sum-of-two-squares count shown live, verified bit-exact against the closed-form Jacobi formula for
+    λ=1..300 (zero mismatches). Builder caught and fixed an out-of-range preset chip during verification.
+  - B — The Dream Machine (arXiv:2602.04095): real Hebbian-outer-product Hopfield network you teach by
+    drawing patterns; a "dreaming" twin gets noise-seeded sleep-replay cycles between lessons, resisting
+    catastrophic forgetting on corrupt-and-recall tests that the no-dream twin fails. Verified live in
+    headless Chromium with screenshots of the actual forgetting/retention effect (74% vs 100% recall).
+  - C — **Sync or Swing** (arXiv:2606.07002): live RK4 simulation of the second-order (inertial)
+    Kuramoto-Sakaguchi model — 64 phase-colored oscillators on a ring, live order-parameter r(t) chart,
+    sliders for coupling K / inertia m / phase-lag α, plus a K-sweep hysteresis mode. Builder validated the
+    physics standalone in Node before building the UI (found random unimodal frequencies gave no effect;
+    a bimodal ω split was needed), then verified live in headless Chromium: α=0 → r thrashes ~0.5-0.7
+    (incoherent), raising α to the marked "sweet spot" ≈0.25 rad → r rises to 0.96 (locked/synchronized) —
+    the paper's counterintuitive headline result, reproduced quantitatively in the browser.
+  - **Judge's pick: C, Sync or Swing** — all three ran clean (zero console/page errors in headless
+    Playwright testing, every control exercised). C won because its interaction loop *is* the paper's actual
+    result reproduced live and quantitatively, not just gestured at, combined with the richest genuine
+    interactivity (5 working controls) and the most "alive" continuous-physics visualization. Judge flagged
+    one cosmetic dead-code line in the winner (unused `vx` variable from an earlier draft) — removed before
+    publish.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-07-21-kuramoto-inertia.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-07-21-nightly.html
+  - david-share commit fefc2d9. LIVE after VPS `git -C /opt/share pull`.
+
 ## 2026-07-20 — Ford Circles Fractal Zoom (autonomous run)
 - **Papers:** 176 fresh (offset by day-of-year × 3 = 603) across 22 categories; no rate-limiting tonight,
   clean single-pass fetch.

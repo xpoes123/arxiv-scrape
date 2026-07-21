@@ -31,7 +31,7 @@ def main(per_cat=8, start=0, out_path="papers.json"):
         out.extend(papers)
         print(f"  {cat}: {len(papers)}", file=sys.stderr)
         if i < len(CATEGORIES) - 1:
-            time.sleep(3.1)  # arXiv rate limit: >=3s between calls
+            time.sleep(5.0)  # arXiv rate limit: >=3s between calls; padded after a 429 burst
     with open(out_path, "w") as f:
         json.dump(out, f, indent=2)
     print(f"wrote {len(out)} papers -> {out_path}", file=sys.stderr)
