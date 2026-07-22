@@ -1,5 +1,50 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-07-22 — Lee-Yang Zero Tracker (autonomous run)
+- **Papers:** 160 fresh (offset by day-of-year × 3 = 609) across 18/20 categories — econ.EM and stat.ML hit
+  transient arXiv read-timeouts even after a retry with an extended (10min) command timeout; still well
+  above the ~30 needed for ideation.
+- **Sampled:** 30 papers round-robin across the 20 fetched categories for ideation, 6 batches of 5 (batches
+  embedded directly in the workflow script, not passed via `args`, per the Jul-18 lesson).
+- **Ideas:** 24 generated. Ranked by cool×buildable.
+- **Top per category:**
+  - project — Stavid Fair-Split: wires the EF1 paper's parallel envy-graph algorithm into a Stavid
+    `/split` command for provably envy-free-up-to-one-item chore/expense allocation (arXiv:2605.16791)
+  - startup — Regime-Shift Calibration Auditor — regime-conditioned isotonic calibration + changepoint
+    detection to catch a model's confidence buckets silently drifting stale; first customer is SharpLab's
+    own NBA props edges (arXiv:2602.23382)
+  - youtube — "The Sandwich Theorem That Cuts Ham, Cheese, and Bread With One Slice" — explainer building
+    from the 2D ham-sandwich cut up to centerpoints and curved semialgebraic cuts (arXiv:2607.02400)
+  - demo — **Lee-Yang Zero Tracker** (arXiv:2606.08004) ← BUILT
+- **Built (3-way build-off):**
+  - A — Ham-Sandwich Slicer (arXiv:2607.02400): drag 3 colored point clouds, an O(N log N) breakpoint-sweep
+    line search recomputes the simultaneous 3-way bisecting cut live every frame; toggles for a Tukey-depth
+    centerpoint heatmap and a bisecting-circle "curved knife" mode. Builder independently brute-forced an
+    edge case at 5000 angle steps to confirm the 220-step live search finds the true global optimum, not a
+    search artifact.
+  - B — **Lee-Yang Zero Tracker** (arXiv:2606.08004): exact finite Ising-chain partition function computed
+    as a degree-N polynomial via an O(N²) transfer-matrix DP, roots found live by a hand-rolled Durand-Kerner
+    solver and plotted in the complex plane; a "defect bond" slider peels zeros off the unit circle (Lee-Yang
+    circle theorem, exact at drive=1) while a highlighted island migrates toward the real axis, tracked in a
+    second live chart. Builder cross-checked DP coefficients against 2^N brute-force enumeration and a
+    hand-derived N=2 closed form (both matched to ~1e-16) before wiring up the UI.
+  - C — The Hysteresis Loop You Can Drive (arXiv:2511.14090): a population does noisy hill-climbing on an
+    oscillating two-peak fitness landscape, lagging into a hysteresis loop on a synced Chart.js plot; a
+    sweep button reproduces the paper's counterintuitive finding that average fitness peaks at moderate
+    drift, not zero or chaos. Verified live in headless Chromium across low/high-drift extremes.
+  - **Judge's pick: B, Lee-Yang Zero Tracker** — all three ran clean (zero console/page errors in headless
+    Playwright testing, every control exercised). B won on the tie-break: Lee-Yang zeros are a genuinely
+    opaque concept almost nobody has intuition for, and watching the circle theorem visibly shatter as the
+    defect slider moves makes it click instantly — more "aha" than the already-intuitive ham-sandwich cut,
+    and cleaner than the hysteresis demo's occasionally-noisy loop trace.
+- **Published:** demo at
+  [share.djiang.xyz/arxiv-scrape/demos/2026-07-22-lee-yang.html](https://share.djiang.xyz/arxiv-scrape/demos/2026-07-22-lee-yang.html),
+  brief at
+  [share.djiang.xyz/arxiv-scrape/2026-07-22-nightly.html](https://share.djiang.xyz/arxiv-scrape/2026-07-22-nightly.html)
+  — committed + pushed to `xpoes123/david-share` (commit `dbb5fae`); VPS pull is separate/manual, not done
+  by this run. Left pre-existing uncommitted `app/*` changes (dated 2026-07-17, unrelated to tonight)
+  untouched in the working tree.
+
 ## 2026-07-21 — Sync or Swing (Kuramoto phase-lag) (autonomous run)
 - **Papers:** 144 fresh (offset by day-of-year × 3 = 603) across 18/22 categories — first 4 (cs.LG, cs.AI,
   cs.CL, cs.CR) hit transient arXiv 429/timeouts even after padding inter-category sleep from 3.1s to 5.0s
