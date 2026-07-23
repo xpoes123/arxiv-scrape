@@ -1,5 +1,56 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-07-23 — The q-Exponential Machine (autonomous run)
+- **Fetcher bug fixed:** `fetch_papers.py`/`arxiv_scrape.py` hit a wall of 429s and read-timeouts on every
+  category, even after retries with longer timeouts. Root cause: arXiv appears to throttle/hang the default
+  `Python-urllib` User-Agent specifically — `curl` and a Python request with a browser-like `User-Agent`
+  header both succeeded instantly. Fixed by adding a `User-Agent` header to the `urllib.request.Request` in
+  `arxiv_scrape.py`. Worth watching if 429s recur on a future run — this may be a permanent policy change on
+  arXiv's side, not a transient blip.
+- **Papers:** 176 fresh (offset by day-of-year × 3 = 612) across all 22 categories, once the fetcher was
+  fixed — well above the ~30 needed for ideation.
+- **Sampled:** 30 papers (1 per category + top-up) for ideation, 6 batches of 5 (batches embedded directly
+  in the workflow script, per the Jul-18 lesson).
+- **Ideas:** 24 generated. Ranked by cool×buildable.
+- **Top per category:**
+  - project — Root-Causal Lineup Detector: ports the fMRI paper's bilevel structural causal model to
+    nba-modeling, finding the sparse root-causal rotation slot behind a losing stretch instead of every
+    correlated symptom stat (arXiv:2602.07233)
+  - startup — CollusionGraph: uncertain-balance-rate signed-graph syndicate detection for sportsbook
+    integrity teams, flagging near-balanced account clusters as coordinated betting rings (arXiv:2605.17492)
+  - youtube — "The Invisible Slip Layer That Lets Ketchup Flow Like Water" — kitchen-science explainer on
+    lubrication-induced Newtonianization of shear-thinning slurries (arXiv:2605.09172)
+  - demo — **The q-Exponential Machine** (arXiv:2606.08342) ← BUILT
+- **Built (3-way build-off):**
+  - A — Inverse-Fold-It (arXiv:2506.00925, ProtInvTree): draw a target backbone on the HP-lattice protein
+    model, then watch a real two-stage FOCUS/GROUND MCTS search live — UCT selection, backprop-brightened
+    nodes, actual branch pruning — ending with a diverse pool of high-H-H-contact sequences. Builder verified
+    via headless-Firefox screenshot passes that tree node count exactly tracks iteration count, and caught/
+    fixed a real Fit-View zoom-collapse bug.
+  - B — The Sandwich Zone (arXiv:2401.08302): play the arbitrageur in a batch-auction DEX, toggling Honest
+    vs. Sandwich mode against a live price-manipulation gauge and side-by-side P&L. Builder confirmed via a
+    20,000-iteration Monte Carlo that the arbitrageur's extra sandwich profit exactly equals the trader's
+    dollar loss — an algebraic identity in the sim, not just a canned message.
+  - C — **The q-Exponential Machine** (arXiv:2606.08342): a k-slider drives a live Gamma spectral-density
+    histogram and a numerically-integrated (2200-point grid) log-log decay curve bending from exponential
+    toward power-law, locking onto the paper's exact q=5/3 Tsallis q-exponential at the right setting — a
+    load-time self-check verifies this against the closed form to 1e-12. Includes a "Guess the k!" minigame
+    scored by log-log RMSE, framed with basketball-slump flavor text. Builder caught/fixed a real spectrum
+    renormalization bug at small k and a canvas-overflow layout bug, then re-verified headless across three
+    viewport widths.
+  - **Judge's pick: C, The q-Exponential Machine** — all three ran clean (zero console errors in headless
+    Playwright testing across all three). C won as the tightest fusion of real math, instant dual-panel
+    interactivity, and a genuinely replayable minigame; A's tree visualization read as sparse/abstract next to
+    the other two's cleaner data-viz, and B's linear six-click scripted flow felt more like an animated
+    explainer than something freely explorable.
+- **Published:** demo at
+  [share.djiang.xyz/arxiv-scrape/demos/2026-07-23-q-exponential-machine.html](https://share.djiang.xyz/arxiv-scrape/demos/2026-07-23-q-exponential-machine.html),
+  brief at
+  [share.djiang.xyz/arxiv-scrape/2026-07-23-nightly.html](https://share.djiang.xyz/arxiv-scrape/2026-07-23-nightly.html)
+  — committed + pushed to `xpoes123/david-share` (commit `fc171ed`); VPS pull is separate/manual, not done
+  by this run. Left pre-existing uncommitted `app/*` changes (unrelated to tonight) untouched in the working
+  tree.
+
 ## 2026-07-22 — Lee-Yang Zero Tracker (autonomous run)
 - **Papers:** 160 fresh (offset by day-of-year × 3 = 609) across 18/20 categories — econ.EM and stat.ML hit
   transient arXiv read-timeouts even after a retry with an extended (10min) command timeout; still well

@@ -14,7 +14,9 @@ def search(query, max_results=10, start=0):
         "sortOrder": "descending",
     })
     # ponytail: arXiv asks for >=3s between calls; one call here, sleep if you loop.
-    with urllib.request.urlopen(url, timeout=30) as r:
+    # ponytail: arXiv 429s/hangs the default Python-urllib UA; send a browser-like one.
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; arxiv-scrape/1.0)"})
+    with urllib.request.urlopen(req, timeout=30) as r:
         feed = ET.parse(r).getroot()
     for e in feed.findall("a:entry", NS):
         yield {
