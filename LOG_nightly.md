@@ -1,5 +1,58 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-07-26 — The Optimist's Gradient (autonomous run)
+- **Housekeeping:** found a stray uncommitted `ideation_2026-07-25.js` in the working tree — the 07-24 and
+  07-25 nightly runs left no `LOG_nightly.md` entries, so both apparently failed before publishing. Left the
+  stray file alone (not part of tonight's run, harmless debris) rather than deleting unfamiliar state.
+- **Papers:** 176 fresh (offset by day-of-year × 3 = 621) across all 22 categories.
+- **Sampled:** 30 papers (1 per category + top-up from the first 8 categories) for ideation, 6 batches of 5
+  (batches embedded directly in the workflow script, per the Jul-18 lesson).
+- **Ideas:** 24 generated. Ranked by cool×buildable.
+- **Top per category:**
+  - project — **PlayPrint**: canonicalizes a basketball possession-action (pick-and-roll, hand-off into a
+    flare screen) as a hypergraph, using a simplified hypergraph-canonicalization VM to fingerprint it
+    independent of which players fill which role — then mine a season of play data for structurally identical
+    actions across different teams/lineups with zero manual play-tagging (arXiv:2607.10194)
+  - startup — **Patent Cliff Radar**: watches patents heading for expiry via the free PatentsView API and
+    auto-generates an AI commercialization packet per patent (pathway type, market-size gut-check, first
+    customers to cold-email) — a go-to-market layer no existing patent-search tool offers (arXiv:2607.10179)
+  - youtube — "I Fed 5 Years of Travel Data Into a Physics Model and Found a Secret Symmetry" — screen-records
+    a live slider dragging chaotic short-term flows into a mirror-symmetric network as the observation window
+    widens, closing on the few flows that structurally never balance (arXiv:2603.21552)
+  - demo — **The Optimist's Gradient** (arXiv:2606.09040) ← BUILT
+- **Built (3-way build-off):**
+  - A — Adversary Slider (arXiv:2605.18042, subquadratic-sample robust regression): live OLS vs.
+    robust-trimmed-least-squares fits over a scatter cloud, with sliders for corruption fraction ε, sample
+    count n, and condition number κ. Builder caught a real bug during verification — trimming anchored on the
+    initial (already-torqued) OLS fit locked onto the outlier cluster instead of the truth — fixed by seeding
+    trimmed-LS with RANSAC-style random-pair candidates, then re-verified numerically across a 625-config grid
+    (robust beats OLS in ~97.5% of cases).
+  - B — **The Optimist's Gradient** (arXiv:2606.09040): a METEOR button detonates a procedural fitness
+    landscape under a population of dots, then races greedy gradient-ascent (freezes on the first local peak)
+    against a trust-region "optimistic" population (samples broadly before committing) live, with a log-log
+    chart of fitness deficit vs. t against a derived 1/t reference line. Builder redesigned the optimistic
+    mechanism after headless-Playwright testing showed the first version (momentum + annealed noise) actually
+    losing to greedy, then verified 10/10 wins across ruggedness 1–10 with the trust-region redesign; also
+    fixed a heatmap-redraw bug and a greedy-oscillation bug via backtracking line search.
+  - C — The Reversibility Slider (arXiv:2603.21552, emergent detailed balance in human mobility): reskinned
+    as a d3-driven basketball half-court zone network where directional flow arrows relax toward symmetry as a
+    coarse-graining-window slider widens, except for hand-picked "persistent drift" edges (the rim) that never
+    balance and one edge that visibly flips partway through. Builder caught/fixed a bug where the window label
+    silently froze due to calling a d3-only method on a raw DOM node.
+  - **Judge's pick: B, The Optimist's Gradient** — all three ran clean under headless Chromium (zero console/
+    page errors) with real interactions driven (sliders, METEOR, edge-click). B won as the only one of the
+    three with a live event and a competitive narrative rather than a slider-morphed or static plot — a real
+    run showed greedy freezing at mean fitness 0.871 while the optimistic population climbed to 2.070, with the
+    log-log chart showing genuine discrete step-downs as it found successively better peaks. A was praised as
+    mathematically honest but visually just a scatter+line chart; C was the most visually distinctive but read
+    as "watch arrows redistribute" with no real event.
+- **Published:** demo at
+  [share.djiang.xyz/arxiv-scrape/demos/2026-07-26-optimists-gradient.html](https://share.djiang.xyz/arxiv-scrape/demos/2026-07-26-optimists-gradient.html),
+  brief at
+  [share.djiang.xyz/arxiv-scrape/2026-07-26-nightly.html](https://share.djiang.xyz/arxiv-scrape/2026-07-26-nightly.html)
+  — committed + pushed to `xpoes123/david-share` (commit `382115a`); VPS pull is separate/manual, not done by
+  this run. Left pre-existing uncommitted `app/*` changes (unrelated to tonight) untouched in the working tree.
+
 ## 2026-07-23 — The q-Exponential Machine (autonomous run)
 - **Fetcher bug fixed:** `fetch_papers.py`/`arxiv_scrape.py` hit a wall of 429s and read-timeouts on every
   category, even after retries with longer timeouts. Root cause: arXiv appears to throttle/hang the default
