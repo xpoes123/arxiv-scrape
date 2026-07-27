@@ -1,5 +1,60 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-07-27 — Free Motion (autonomous run)
+- **Housekeeping:** arXiv's export API was heavily throttled tonight (429s / hangs on nearly every request,
+  even a single bare `curl`). Root-caused: `arxiv_scrape.py` was hitting `http://export.arxiv.org` and eating a
+  redirect to https on every call, which seemed to make throttling worse; switched the base URL to `https://`
+  directly and added a 3-attempt retry with 15/30/60s backoff in `search()`. Fixed the fetch reliably after
+  that — no data loss, just extra wall-clock time tonight.
+- **Papers:** 176 fresh (offset by day-of-year × 3 = 636) across all 22 categories.
+- **Sampled:** 30 papers (random sample seeded by day-of-year) for ideation, 6 batches of 5 (batches embedded
+  directly in the workflow script, per the Jul-18 lesson).
+- **Ideas:** 19 generated. Ranked by cool×buildable. This batch skewed math/physics/econ-heavy — no
+  project-shaped idea surfaced (noted as such in the published brief rather than forcing one).
+- **Top per category:**
+  - project — none this batch (see above)
+  - startup — **EnsembleGuard**: middleware that scores live LLM-ensemble agreement data with the paper's
+    diversity metric and only pays for extra model calls when predicted lift is actually positive
+    (arXiv:2607.17384)
+  - youtube — "The Genus-2 Donut That Refuses to Bend" — builds rigidity intuition through plane/sphere/torus
+    before landing on the paper's open case: genus-≥2 surfaces, where unrolling into the hyperbolic universal
+    cover turns one framework into an Escher-like Circle Limit tiling (arXiv:2607.05023)
+  - demo — **Free Motion** (arXiv:2605.09289) ← BUILT
+- **Built (3-way build-off):**
+  - A — Rescue vs. Damage (arXiv:2607.17384v2, LLM ensemble diversity-of-thought law): drag per-model accuracy
+    sliders and a correctness-correlation knob; a live 20,000-trial Gaussian-copula Monte Carlo simulation
+    decomposes ensemble lift into green "rescue mass" / red "damage mass" on an animated waterfall chart, with
+    a correctness-pattern grid that visibly de-stripes as correlation drops. Builder cross-checked the
+    rescue−damage identity numerically in a standalone Node script across three configurations (confirmed
+    exact) and caught/fixed a real bug where `requestAnimationFrame`-gating could skip the very first paint in
+    some headless contexts.
+  - B — Newtonianization Chamber (arXiv:2605.09172v1, lubrication-induced Newtonianization): a real (simplified)
+    Herschel-Bulkley-core-plus-thin-Newtonian-sublayer lubrication model, solved on a 120-point grid every
+    frame; sliders for yield stress/shear-thinning/thixotropic memory/film thickness bend a live flow-rate-vs-
+    pressure curve into a hysteresis loop or straighten it into a Newtonian line. Judge flagged a real fidelity
+    bug at extreme settings — the flow chart visibly develops hysteresis while the "Newtonianization %" badge
+    still claims 100% — left unfixed since it isn't the published demo, but worth a look next time this paper
+    comes up.
+  - C — **Free Motion** (arXiv:2605.09289, geometric zero modes in non-Euclidean plates): a three.js
+    hyperbolic-paraboloid shell — drag sideways along the soft isometric zero-mode direction and it glides
+    freely with near-zero restoring force; drag it any other way (the stiff coordinate) and it resists hard,
+    snapping back with damped oscillation. A live energy-vs-displacement gauge plots both wells side by side,
+    and two "tap to excite" buttons fire an identical impulse into each — the soft mode resonates into a
+    sustained glide, the stiff mode barely trembles. Builder verified headlessly via Playwright: scripted drags
+    and impulses reproduced the paper's soft/stiff contrast numerically (θ held at ~2.9 after release; δ
+    snapped back from ~0.51 to ~-0.02 within 1.5s), pinned the three.js CDN script with a real SHA-384 SRI
+    hash.
+  - **Judge's call:** Free Motion won — the only one of the three where the paper's specific quantitative claim
+    (near-zero energy one way, steep restoring force the other) was directly, measurably reproduced through
+    interaction rather than illustrated on a chart. Scores: A wow7/interactivity9/polish9/fidelity8; B
+    wow7/interactivity8/polish8/fidelity6 (docked for the badge contradiction); C wow9/interactivity9/polish9/
+    fidelity9.
+- **Published:** demo at `/arxiv-scrape/demos/2026-07-27-free-motion.html`, brief at
+  `/arxiv-scrape/2026-07-27-nightly.html` — live at
+  https://share.djiang.xyz/arxiv-scrape/2026-07-27-nightly.html (pending a VPS-side `git pull`, not done by
+  this nightly run).
+- **Digest:** posted via the `/notify` skill to Sage/Discord.
+
 ## 2026-07-26 — The Optimist's Gradient (autonomous run)
 - **Housekeeping:** found a stray uncommitted `ideation_2026-07-25.js` in the working tree — the 07-24 and
   07-25 nightly runs left no `LOG_nightly.md` entries, so both apparently failed before publishing. Left the

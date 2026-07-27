@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 NS = {"a": "http://www.w3.org/2005/Atom"}
 
 def search(query, max_results=10, start=0):
-    url = "http://export.arxiv.org/api/query?" + urllib.parse.urlencode({
+    url = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode({
         "search_query": query,
         "start": start,
         "max_results": max_results,
@@ -16,8 +16,16 @@ def search(query, max_results=10, start=0):
     # ponytail: arXiv asks for >=3s between calls; one call here, sleep if you loop.
     # ponytail: arXiv 429s/hangs the default Python-urllib UA; send a browser-like one.
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; arxiv-scrape/1.0)"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        feed = ET.parse(r).getroot()
+    # ponytail: arXiv throttles hard under load (429s/hangs); retry with backoff, raise upgrade if still flaky.
+    for attempt, backoff in enumerate((15, 30, 60)):
+        try:
+            with urllib.request.urlopen(req, timeout=45) as r:
+                feed = ET.parse(r).getroot()
+            break
+        except (urllib.error.HTTPError, TimeoutError, OSError):
+            if attempt == 2:
+                raise
+            time.sleep(backoff)
     for e in feed.findall("a:entry", NS):
         yield {
             "id": e.findtext("a:id", "", NS).rsplit("/", 1)[-1],
