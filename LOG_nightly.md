@@ -1,5 +1,55 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-07-31 — The Space Between (autonomous run)
+- **Housekeeping:** found stray uncommitted `fetch.log` and `ideation_2026-07-25.js` still sitting in the
+  working tree from the still-unexplained 07-24/07-25 failed runs (noted by the 07-26 run, left alone again —
+  harmless debris, not part of tonight's work). `demos/` is gitignored in this repo (scratch only); the winning
+  demo is published via `david-share` instead.
+- **Papers:** 176 fresh (offset by day-of-year × 3 = 636) across all 22 categories.
+- **Sampled:** 30 papers (1 per category + top-up, seeded by day-of-year) for ideation, 6 batches of 5 (batches
+  embedded directly in the workflow script, per the Jul-18 lesson).
+- **Ideas:** 24 generated. Ranked by cool×buildable. No youtube-shaped idea surfaced tonight — this batch skewed
+  heavily toward demo-shaped ideas (14 of 24).
+- **Top per category:**
+  - project — **Offense Skeleton: Critical-Residue Playmakers**: ports a protein critical-residue technique onto
+    NBA passing networks to find which playmaker's absence collapses ball movement the most (arXiv:2506.10015)
+  - startup — **DrawdownGuard**: MILP-based bet-sizing engine replacing Kelly for correlated prop slates, ~200x
+    faster re-optimization than quadratic mean-variance (arXiv:2401.02601)
+  - youtube — none this batch (see above)
+  - demo — 3-way tie at cool×buildable=72: **The Popularity Trap** (arXiv:2602.09997), **Fiberglass City**
+    (arXiv:2606.17018), **Optimizer Latent Space Explorer** (arXiv:2607.01552) ← all three built
+- **Built (3-way build-off):**
+  - A — The Popularity Trap (arXiv:2602.09997, popularity feedback suppresses cultural-market innovation): live
+    Pólya-urn simulator, feedback-exponent slider (meritocracy ↔ rich-get-richer), animated bar-race leaderboard,
+    Gini/entropy readouts, rolling innovation-rate sparkline, and a "shock" button that injects a provably
+    superior newcomer and watches it get buried once feedback is high enough. Builder verified with a
+    Playwright-driven end-to-end pass (slider → mechanism change, shock → buried narrative, pause/restart) plus
+    an A/B statistical check (α=0 vs α=1: Gini 0.31→0.49, entropy 0.96→0.90, innovation rate 6.7→0.0/1000 ticks).
+  - B — Fiberglass City: The 51.6% Moment (arXiv:2606.17018, DAS fiber-sensing coverage percolation): real
+    union-find bond percolation over a 27×17 Manhattan street grid, coverage slider snapping scattered patches
+    into one glowing giant component past threshold, live largest-component readout, and a BFS pulse animation
+    through the mesh. Builder verified the union-find/spanning logic standalone in Node (30-trial sweep, snap
+    jumps up to 33 points in giant-fraction within one 0.5% step, average first-percolation ~46%, close to the
+    marked 51.6% line) and fixed a slider-drag-during-pulse race.
+  - C — Optimizer Latent Space Explorer (arXiv:2607.01552, continuous latent space for iterative-algorithm
+    discovery): draggable 2D square bilinearly blending real SGD/Momentum/Adam/Lion update math (momentum decay,
+    sign-vs-raw gradient, Adam-style adaptive normalization) into a live hybrid optimizer that steers a ball
+    downhill on an animated Rosenbrock contour plot, with a race mode running all four corners as ghost trails.
+    Builder verified with Playwright (drag → recompute, presets snap to corners, race mode renders 4 distinct
+    trajectories) plus a 20,000+-step pure-math sweep confirming no NaN/off-screen excursions and textbook-
+    distinct optimizer personalities (Momentum overshoots ~9x harder than SGD; Lion has a constant per-step
+    magnitude with a residual noise floor near the minimum).
+  - **Judge:** scored wow/interactivity/polish/fidelity per demo (A 7/8/8/8, B 8/8/9/7, C 9/9/9/9) — all three
+    verified as genuinely working, none disqualified. C won: dragging in the latent square produces a
+    continuous, physically meaningful blend of four real algorithms live every frame, which the judge called the
+    tightest match between interaction and the paper's actual claim (optimizers are points in a searchable
+    space, not discrete choices) versus B's single threshold-snap moment.
+- **Published:** demo at `/arxiv-scrape/demos/2026-07-31-optimizer-latent-space.html`, brief at
+  `/arxiv-scrape/2026-07-31-nightly.html` — live at
+  https://share.djiang.xyz/arxiv-scrape/2026-07-31-nightly.html (pending a VPS-side `git pull`, not done by this
+  nightly run).
+- **Digest:** posted via the `/notify` skill to Sage/Discord.
+
 ## 2026-07-27 — Free Motion (autonomous run)
 - **Housekeeping:** arXiv's export API was heavily throttled tonight (429s / hangs on nearly every request,
   even a single bare `curl`). Root-caused: `arxiv_scrape.py` was hitting `http://export.arxiv.org` and eating a
