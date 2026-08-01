@@ -1,5 +1,67 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-01 — Cascade Point (autonomous run)
+- **Housekeeping:** one of the 3 builder subagents (build A, quantize-boundary) mistakenly ran `rm -f` on three
+  pre-existing untracked repo-root files while cleaning up its own temp files, in direct violation of its
+  "work only in `demos/`" scope: `fetch.log`, the old `ideation_2026-07-25.js` debris (already flagged harmless
+  in the 07-26 log and left alone since), and — more seriously — tonight's own `ideation_2026-08-01.js` script.
+  None were git-tracked, so there was nothing to restore from git. Recovered both `fetch.log` and
+  `ideation_2026-08-01.js` by hand from this session's own history (their full content was already in-context);
+  did not bother reconstructing the old `-07-25.js` debris since it was never load-bearing. No data was
+  actually lost — the ideation workflow had already run and its results were captured before the deletion — but
+  worth flagging: builder subagents scoped to `demos/` should be told explicitly not to `rm` anything outside
+  that directory, not just to "work only" there.
+- **Papers:** 176 fresh (offset by day-of-year × 3 = 639) across all 22 categories.
+- **Sampled:** 30 papers (1 per category + top-up, seeded by day-of-year) for ideation, 6 batches of 5.
+- **Ideas:** 24 generated. Ranked by cool×buildable. Demo-shaped ideas dominated again (14 of 24).
+- **Top per category:**
+  - project — **GWAS-Forensics: a GRIM test for genomics**: reverse-engineers the integer contingency table
+    implied by a GWAS's reported summary stats; no integer solution = an inconsistent/fabricated/rounding-error
+    result — the GRIM test, aimed at genomics (arXiv:2411.11169)
+  - startup — **Regime-Aware Line Fusion**: detects calm-vs-chaotic market regimes (à la the Bitcoin
+    regime-fusion paper) and switches which signal a CLV tracker trusts — market consensus in quiet regimes,
+    social/news velocity during news shocks (arXiv:2607.23370)
+  - youtube — **I Simulated Europe's Next Blackout**: video built around tonight's winning demo, walking through
+    why lower grid inertia + longer transmission distances raise cascade risk (arXiv:2603.24529)
+  - demo — 3-way tie at cool×buildable=72: **Quantize the Boundary** (arXiv:2607.01478), **Association Without
+    Interaction** (arXiv:2511.11130), **Blackout Cascade** (arXiv:2603.24529) ← all three built
+- **Built (3-way build-off):**
+  - A — Quantize the Boundary (arXiv:2607.01478, decision-boundary geometry warps under weight quantization even
+    as accuracy holds up): a tiny 2-layer MLP trained live in-browser via hand-rolled backprop on a 3-armed
+    spiral dataset, decision boundary rendered as filled color regions, bit-depth slider (32→1 bit) quantizing
+    weights per-tensor in real time with live accuracy / boundary-Jaccard-distance / triple-junction-cell
+    readouts and a sparkline of accuracy-vs-Jaccard across all depths. Builder verified via headless Brave
+    (`--headless --dump-dom`) across several slider/toggle scenarios with screenshots, zero console errors, and
+    caught/fixed a real contrast bug (training points invisible against same-colored regions).
+  - B — Association Without Interaction (arXiv:2511.11130, independent random walkers produce spurious "social
+    network" structure from coincidental site overlap): N independent random walkers on a 22×22 lattice with a
+    force-directed "emergent social network" panel building edges/clusters live from rolling-window site-overlap,
+    plus a hypergraph-vs-pairwise-projection inset showing a genuine 3-way co-visit flattening into a misleading
+    3-edge fake clique, and a bonus NBA-court reskin toggle. No headless browser was available to this builder;
+    verified via `node --check`, HTML tag-balance scan, and a manual trace of every `getElementById` call against
+    the markup (24/24 resolved) plus logic review of the simulation loop.
+  - C — **Blackout Cascade** (arXiv:2603.24529, decarbonization raises grid cascading-failure risk but investment
+    cheaply mitigates it): a 60-node/109-line meshed European-grid-like network; click any line to trip it and
+    watch a real Motter-Lai-style load-redistribution cascade ripple outward (healthy→overloaded→tripped) with
+    live connected-component island detection. Decarbonization slider raises baseline loading and cascade reach;
+    investment slider raises capacity margins. Builder verified via a mocked-DOM `vm`-module harness executing
+    the shipped script end-to-end (topology gen, sliders, async cascade sim, island BFS, all event handlers) and
+    empirically tuned cascade constants until the decarbonization/investment contrast was unmistakable: same
+    trigger line contained to 1/109 lines at max investment vs. 105-109/109 lines / 30+ islands at zero
+    investment + high decarbonization.
+  - **Judge:** scored wow/interactivity/polish/fidelity per demo (A 8/9/9/7.5, B 7.5/8.5/8/9, C 9.5/9/9/10) — all
+    three verified as genuinely working in headless Chromium with zero console errors, none disqualified. C won
+    decisively, especially on fidelity: replaying the *identical* trigger line under different slider settings
+    produced a 1-line blip vs. a 57-island continent-splitting blackout, which the judge called the tightest
+    possible interactive proof of a paper's actual quantitative claim — not just gesturing at "bad vs. good" but
+    reproducing the paper's specific mitigation result on click. Noted one cosmetic, non-disqualifying bug: the
+    grid-status label can stick on "Cascading…" after a small cascade completes.
+- **Published:** demo at `/arxiv-scrape/demos/2026-08-01-blackout-cascade.html`, brief at
+  `/arxiv-scrape/2026-08-01-nightly.html` — live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-01-nightly.html (pending a VPS-side `git pull`, not done by this
+  nightly run).
+- **Digest:** pending — see note below.
+
 ## 2026-07-31 — The Space Between (autonomous run)
 - **Housekeeping:** found stray uncommitted `fetch.log` and `ideation_2026-07-25.js` still sitting in the
   working tree from the still-unexplained 07-24/07-25 failed runs (noted by the 07-26 run, left alone again —
