@@ -1,5 +1,63 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-02 — Free Fall (autonomous run)
+- **Fetch hiccup:** the initial `fetch_papers.py 8 642` run hit HTTP 429s / a read timeout on 4 CS categories
+  (cs.LG, cs.AI, cs.CL, cs.CR — 0 papers each), likely from arXiv rate-limiting after a burst. Retried just those
+  4 categories with 12s spacing between calls and appended the results; ended with the full 176 across all 22
+  categories as usual. Also noted the fetch command got auto-backgrounded by the harness despite not requesting
+  it — waited on the background task rather than polling, per the no-sleep-loop rule.
+- **Papers:** 176 fresh (offset by day-of-year × 3 = 642) across all 22 categories.
+- **Sampled:** 30 papers (1 per category + top-up, seeded by day-of-year=214) for ideation, 6 batches of 5.
+- **Ideas:** 24 generated. Ranked by cool×buildable. Demo-shaped ideas dominated again (17 of 24).
+- **Top per category:**
+  - project — **Momentum Landscapes**: NBA win-probability trajectory as a particle in a reshaping potential well,
+    fit live from play-by-play data via the same inverse-problem math as the paper's gene-expression landscape
+    reshaping (arXiv:2605.14562)
+  - startup — **SteamCatcher**: ports PULSE (sub-millisecond online Bayesian toxicity scoring, built for FX
+    brokers) onto sportsbook bet flow to flag sharp/toxic bets before the line moves (arXiv:2312.05827)
+  - youtube — **I Ran a Dark-Matter Detector for Proteins on My Laptop**: races a 70M-param open LM against
+    simulated BLASTP live on uncharacterized UniProt sequences (arXiv:2411.06798)
+  - demo — top 3 by cool×buildable: **Refuge & Front** (81, arXiv:2511.10807), **The Fat-Tailed Frontier** (72,
+    arXiv:2606.28631), **Sync or Chase: Nonreciprocal Kuramoto** (72, arXiv:2606.16427) ← all three built
+- **Built (3-way build-off):**
+  - A — **Refuge & Front** (arXiv:2511.10807, a small stochastic population always goes extinct in isolation but
+    is rescued by immigration flux from a connected refuge's traveling activity front, no fitness bonus needed):
+    two side-by-side 44×44 stochastic rock-paper-scissors (May-Leonard) lattice CAs, each split into a small
+    vulnerable corner patch and a large refuge, one permanently walled off and one toggleable. Live extinction-
+    probability trackers for both under identical noise/size settings. Builder extracted the CA update rule into
+    standalone Node scripts and ran hundreds of headless trials to calibrate reaction rates/dwell threshold/trial
+    length until the isolated-vs-connected contrast was stark, then verified the shipped file end-to-end via
+    Playwright headless Chromium (zero console errors, every control exercised, screenshots at two viewports).
+    Found and fixed a real contrast bug (illegible patch-boundary overlay against the busy CA colors).
+  - B — **The Fat-Tailed Frontier** (arXiv:2606.28631, subcritical branching random walks with stretched-
+    exponential step tails: the all-time record maximum is asymptotically driven by one freakishly large single
+    jump, not gradual accumulation — the "big-jump principle"): live 1D branching random walk sim (Poisson
+    offspring, Weibull step tails matching the paper's exact tail form), thousands of trees/sec in the background,
+    one tree always animated growing on canvas; every new record traces back through the tree and highlights the
+    single largest step that caused it, plus a live empirical-vs-theoretical survival function overlay. Builder
+    caught and fixed a real bug where the "big jump" pick used step magnitude instead of signed value, occasionally
+    blaming a large negative detour for a positive record. Verified via Playwright: zero errors across a 9-second,
+    4.7M-walk stress run.
+  - C — **Sync or Chase: Nonreciprocal Kuramoto** (arXiv:2606.16427, nonreciprocal Kuramoto-Sakaguchi oscillators
+    with long-range coupling desynchronize into a "chasing" state above a critical phase-lag that itself falls as
+    interaction range widens): N=150 oscillators on a ring, phase-color-coded, live order-parameter meter and
+    r(t) chart, plus a qualitative α_c(σ) sync-boundary overlay (explicitly labeled illustrative, not the paper's
+    literal RG curve). Builder derived and numerically verified the actual linear-stability relaxation rate behind
+    the sim (not a hardcoded threshold) via WebFetch of the real abstract, then verified via Playwright: confirmed
+    r drops from 0.972 (locked) to 0.503 (desyncing) purely by raising σ at fixed α — the paper's core claim,
+    reproduced live.
+  - **Judge:** scored wow/interactivity/polish/fidelity per demo (A 9/8/9/10=36, B 8/9/9/10=36, C 8/7/8/8=31) —
+    all three verified running with zero console errors in headless Chromium, none disqualified. A and B tied on
+    raw score; judge broke the tie toward A for being legible "within seconds, understood by anyone" (ecological
+    life-and-death framing needs zero domain knowledge) versus B's payoff requiring the viewer to already grasp
+    branching-random-walk/record concepts. C trailed mainly on its admittedly-illustrative (not literally computed)
+    critical-boundary overlay and a default slider state that starts boring (locked) rather than mid-transition.
+- **Published:** demo at `/arxiv-scrape/demos/2026-08-02-refuge-rescue.html`, brief at
+  `/arxiv-scrape/2026-08-02-nightly.html` — pushed to `xpoes123/david-share` (commit `68c6871`), live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-02-nightly.html pending a VPS-side `git pull` (not done by this
+  nightly run, per the no-SSH publishing rule).
+- **Digest:** attempted via the `notify` skill — see note below if it didn't land.
+
 ## 2026-08-01 — Cascade Point (autonomous run)
 - **Housekeeping:** one of the 3 builder subagents (build A, quantize-boundary) mistakenly ran `rm -f` on three
   pre-existing untracked repo-root files while cleaning up its own temp files, in direct violation of its
