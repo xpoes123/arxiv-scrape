@@ -1,0 +1,194 @@
+[
+ {
+  "type": "demo",
+  "title": "Where Math Breaks: The Six-Vertex Betti Flip",
+  "paper_id": "2607.10639v2",
+  "pitch": "The paper proves Betti numbers of monomial ideals stay independent of the field's characteristic through five variables, but breaks at six \u2014 using the classic six-vertex triangulation of RP^2 (10 triangles, 15 edges, 6 vertices) as the sharp counterexample, because H_1(RP^2) has 2-torsion. Build a single self-contained HTML/JS page that hardcodes that triangulation's Stanley-Reisner ideal, computes the simplicial chain complex boundary matrices, and lets the user drag a slider between characteristic 0 (rational rank via Gaussian elimination) and characteristic 2 (rank over GF(2) via XOR row-reduction). The Betti number display visibly flips as you cross into char 2 \u2014 you literally watch a theorem's boundary case happen live. Bonus panel shows the same computation staying identical for any 5-vertex complex you draw, so users feel *why* five is safe and six isn't. Great shareable 'watch a real theorem's edge case' toy for math-Twitter/HN.",
+  "cool_score": 8,
+  "buildable_score": 8
+ },
+ {
+  "type": "demo",
+  "title": "Bankroll Almost-Supermartingale Simulator",
+  "paper_id": "2607.02489v2",
+  "pitch": "Olivier's classical result says a decreasing summable series a_n satisfies n*a_n -> 0; the paper extends this to 'almost supermartingales' (Robbins-Siegmund-style stochastic recursions with noise and decreasing correction terms) \u2014 exactly the shape of a bankroll or bandit-regret process with vanishing step sizes. Build a single-page canvas demo that simulates hundreds of Monte Carlo bankroll/stochastic-approximation paths X_n satisfying E[X_{n+1}|F_n] <= (1+beta_n)X_n - alpha_n + noise_n, with sliders for the decreasing sequences alpha_n, beta_n and noise variance. Plot both X_n and the rescaled n*X_n live \u2014 the punchline is watching n*X_n visibly collapse to 0 even though X_n alone looks noisy and inconclusive, and watching it fail to collapse the moment you break summability (sum beta_n = infinity). A satisfying 'see convergence rates, not just convergence' toy that speaks directly to David's poker/bankroll-math interests.",
+  "cool_score": 7,
+  "buildable_score": 9
+ },
+ {
+  "type": "startup",
+  "title": "LLM VIX \u2014 a volatility index for production LLM APIs",
+  "paper_id": "2311.15180v1",
+  "pitch": "The paper benchmarks how much LLM outputs vary run-to-run (same prompt, repeated queries) as a first step toward treating model volatility like a measurable financial quantity. Turn that into a running public index: continuously fire a fixed battery of prompts at GPT/Claude/Gemini/Llama endpoints, measure semantic drift (embedding cosine variance), format volatility (JSON-schema break rate), and refusal-rate variance, and publish a daily 'VIX-style' number per model plus a paid dashboard for teams that alerts them when a provider silently updates a model and output distributions shift underneath their product. Sells naturally to anyone running LLMs in a regulated or high-reliability pipeline (fits David's trading-terminal instincts \u2014 this is literally implied-vol infrastructure for the token economy).",
+  "cool_score": 7,
+  "buildable_score": 5
+ },
+ {
+  "type": "project",
+  "title": "Dark Proteome Explainer: small protein-LM classifier + amino-acid attribution",
+  "paper_id": "2411.06798v2",
+  "pitch": "LA4SR shows repurposed small language models (even ~70M-1B params) can classify 'dark proteome' sequences (the ~65% of microbial/algal proteins with no known function) far faster than BLASTP, and ships an explainability layer attributing amino-acid patterns to the model's decisions. Build a scaled-down local version: fine-tune/probe a tiny protein LM (ESM2-8M or 35M, runs on a laptop) on UniProt characterized-vs-uncharacterized labels, then build an attention/gradient attribution viewer that highlights which amino-acid motifs pushed a given sequence toward 'characterized' vs 'dark', rendered as a colored sequence track. A real longer-term bio+ML project with a satisfying visual payoff (you can literally point it at a random dark protein and see which residues the model thinks matter).",
+  "cool_score": 8,
+  "buildable_score": 4
+ },
+ {
+  "type": "demo",
+  "title": "Cutoff: The Shuffle That Suddenly Mixes",
+  "paper_id": "2606.29530v1",
+  "pitch": "Single-file HTML deck of 52 cards (or n=1..200 slider) that runs the colored top-m-to-random shuffle live and plots total variation distance to uniform vs. shuffle count. The paper's whole point is the cutoff phenomenon: for a long stretch nothing happens (TV distance ~1), then in a razor-thin window the deck snaps to random \u2014 and with growing block size m(n) the transition even has a computable *profile* shape (not just a window), which you render as an animated erf-like curve overlaid on the live TV-distance trace. Let users drag m and n and watch the cutoff window shrink/sharpen in real time, with a poker hook: 'how many shuffles before your dealer's shuffle is actually random?' Canvas-drawn cards, no backend, pure JS math for the TV distance approximation.",
+  "cool_score": 8,
+  "buildable_score": 9
+ },
+ {
+  "type": "demo",
+  "title": "Dispatch Oracle: Online Matching with a Cheat Sheet",
+  "paper_id": "2605.26886v1",
+  "pitch": "A canvas game where requests (riders, or DFS lineup slots) pop up one at a time on a 2D metric and you must irrevocably match each to a server before seeing the next \u2014 classic online metric matching. Toggle a 'prediction' dial (0 = pure online / worst-case competitive ratio, 1 = omniscient offline optimum) that mirrors the paper's learning-augmented, *parsimonious* algorithm: it only consults a handful of predictions (not one per request) yet still interpolates smoothly between the two extremes. Live scoreboard shows your cost vs. the algorithm's cost vs. offline-optimal, so you feel the competitive ratio collapse as prediction quality rises. Frame it as 'draft your fantasy lineup as requests arrive' for the games angle. Single HTML file, canvas + vanilla JS, no backend.",
+  "cool_score": 7,
+  "buildable_score": 8
+ },
+ {
+  "type": "project",
+  "title": "Telephone Lab: Measuring Memetic Drift Across LLM Agent Chains",
+  "paper_id": "2603.24676v1",
+  "pitch": "Build a small harness (reusing Sage's Anthropic API plumbing) that runs the children's 'telephone game' at scale: seed a message, pass it through a chain of N Claude/Haiku agents (each restating/summarizing the prior output), and measure semantic drift (embedding distance from seed) as a function of chain length and agent population size \u2014 directly testing the paper's claim that collective intelligence is a 'lottery,' i.e. multi-agent scaling laws for memetic drift can be non-monotonic and sometimes make things *worse* with more agents, not better. Sweep topology (chain vs. star vs. small-world relay), plot drift curves, and surface the regime boundary where adding agents flips from wisdom-of-crowds to garbling. Good long-running project: dashboard + nightly runs logged like your existing ideation script, publishable via the /share skill.",
+  "cool_score": 8,
+  "buildable_score": 6
+ },
+ {
+  "type": "demo",
+  "title": "Hot Commute: Watch Mobility Create Heat Inequality",
+  "paper_id": "2603.24782v3",
+  "pitch": "Single-file HTML city-grid simulation: draw a heat field (hotter downtown/less tree cover) and a population of dots that commute along realistic mobility patterns (home->work->home, gravity-model trip lengths). Instead of just measuring exposure by *where people live* (naive), the sim integrates exposure over each dot's actual daily path, replicating the paper's core finding that mobility patterns reshape and often worsen heat-exposure inequality versus a residence-only estimate. Slider for 'income-segregated commute distance' shows the inequality (Gini-style bar) widen as low-income dots take longer, hotter routes. Pure canvas + a small synthetic city grid, no real data needed to feel the effect, but swappable with real NYC heat/subway data later for a share.djiang.xyz post.",
+  "cool_score": 6,
+  "buildable_score": 7
+ },
+ {
+  "type": "project",
+  "title": "Lineup Connectome: Noise-Robust NBA Chemistry via Structural Coarse-Graining",
+  "paper_id": "2602.08910v1",
+  "pitch": "The paper shows that computing functional connectivity on raw high-dimensional signals is noise-dominated, but first coarse-graining nodes into structurally-defined groups (before computing correlations) produces connectivity estimates that are both noise-robust AND reveal inter-subject variability that gets averaged away otherwise. Port this exact move to basketball: instead of raw player-pair on/off plus-minus correlation networks (garbage with NBA sample sizes), first coarse-grain the ~500 rotation players into structural archetype clusters (rim protector, movement shooter, initiator, etc.) via k-means on box-score profiles, THEN compute the lineup-synergy connectivity graph between archetypes across games using the paper's graph-Laplacian coarse-graining operator. This should stabilize small-sample lineup data into a real 'chemistry' signal, and per the paper's headline result, should also expose hidden team-style variability (teams whose archetype-connectivity structure diverges from their aggregate net rating) \u2014 a genuinely novel feature for the NBA props/lineup-modeling stack already in the codebase. Pulls play-by-play via nba_api, builds per-game lineup co-occurrence matrices, applies the coarse-graining transform, and validates against known lineup+/- data.",
+  "cool_score": 7,
+  "buildable_score": 5
+ },
+ {
+  "type": "startup",
+  "title": "AgeCurve: Mixed-Effects Aging Curves as a Service",
+  "paper_id": "2606.24427v1",
+  "pitch": "NoLimits.jl exists because pharmacometrics needs nonlinear mixed-effects models where each subject gets its own random-effect deviation from a shared nonlinear population curve \u2014 exactly the statistical shrinkage problem sports front offices and betting shops solve badly today with ad hoc, hand-fit aging/development curves per player. Build a small API (Julia backend using the same NLME machinery: population fixed effects + per-athlete random effects on a parametric curve like a logistic or Gompertz growth/decay function) that fits performance trajectories for NBA/NFL players, giving properly shrunk projections for young/small-sample players by borrowing strength from the population curve while still capturing individual deviation \u2014 directly usable for CLV-relevant player-prop pricing in the existing SharpLab/nba-modeling stack. Pitch to quant sports books and DFS shops as 'pharmacometrics-grade rigor for athlete aging curves.'",
+  "cool_score": 6,
+  "buildable_score": 4
+ },
+ {
+  "type": "demo",
+  "title": "Random Matrix Peephole: Watch a Logical Qubit Go Chaotic",
+  "paper_id": "2606.17140v1",
+  "pitch": "The paper's core physics move is that repeated stabilizer/syndrome projections in a surface code push the ensemble of logical states toward random-matrix-theory statistics (\u00e0 la chaotic quantum-dot conductance) \u2014 eigenvalues start to REPEL each other (Wigner-Dyson spacing) instead of clustering randomly (Poisson spacing). Build a single-file HTML/JS toy: a slider labeled 'projection rounds' that morphs a live histogram of eigenvalue spacings from a small random symmetric matrix ensemble from Poisson-like (spikes near zero, eigenvalues clump) to Wigner-Dyson (the famous level-repulsion hump), with a canvas showing the actual eigenvalues as dots on a line visibly pushing apart from each other as you drag. This is the single most 'feel-it' fact in random matrix theory and almost nobody has ever seen it animate \u2014 no backend needed, just JS eigenvalue decomposition (Jacobi rotation) on small matrices, recomputed per frame.",
+  "cool_score": 8,
+  "buildable_score": 8
+ },
+ {
+  "type": "demo",
+  "title": "TDA Shape Sculptor: Draw a Blob, See Its Persistence Diagram Live",
+  "paper_id": "2602.18889v2",
+  "pitch": "The thymus paper's 'topological shape transform' turns organ morphology (lobulation, holes, disconnected pieces) into a persistence diagram that a classifier can use \u2014 but persistent homology is one of the most powerful and least-felt ideas in applied math. Build a single-file HTML canvas toy: freehand-draw a blob (or drag pre-set shapes with pinches/holes/multiple lobes), the page runs a live sublevel-set filtration (distance-transform threshold sweep) over a coarse pixel grid, tracks connected components and loops via union-find + a simple loop-detection pass, and renders a live-updating persistence diagram (birth/death scatter) plus barcode next to the drawing. As the user pinches a blob into two lobes or pokes a hole in it, they watch a new point appear in the persistence diagram in real time \u2014 turning an abstract algebraic-topology construction into a toy you can physically feel by drawing. No backend, pure canvas + JS, buildable in an evening.",
+  "cool_score": 8,
+  "buildable_score": 7
+ },
+ {
+  "type": "project",
+  "title": "Ground Truth Gate \u2014 externally-grounded verification for agent loops",
+  "paper_id": "2607.25152v1",
+  "pitch": "A drop-in wrapper for long-running Claude Code / cron agents (starting with this very repo's nightly ideation run, plus any weekly-audit or Sentinel-style loops) that replaces self-verdict gating with an isolated 'world-state oracle' check \u2014 did tests actually pass, did the diff actually apply, did the metric actually move \u2014 instead of trusting the agent's own progress narration. The paper found self-verdict loops claim improvement every single cycle while 56% of cycles have zero-or-negative real delta, eroding best-deployed-state by 19%, and even a strong in-band judge reading the full diff still accepts 44% of regressions; a sign-only external gate recovers near-baseline real output (110 vs 113). Build it as a small Python decorator/hook that snapshots measurable world-state before/after each agent cycle and only commits when the external delta is positive, logging claimed-vs-real progress divergence so you can literally see your own agents' mirage rate over time.",
+  "cool_score": 8,
+  "buildable_score": 8
+ },
+ {
+  "type": "demo",
+  "title": "Progress Mirage Simulator",
+  "paper_id": "2607.25152v1",
+  "pitch": "Single-file HTML/JS toy: a fake autonomous agent grinds through 54 cycles nudging a hidden 'real-world health' score with noise. Toggle the evaluator between Self-Verdict (an LLM-flavored narrator that finds plausible-sounding progress every cycle, no matter what) and External Oracle (a grounded meter that only reports the true delta). Two racing line charts \u2014 Claimed Progress vs Real-World Delta \u2014 dramatize the paper's core numbers live: the self-verdict line climbs smoothly while the real line zeroes out or dips 56% of the time, eroding the best state by ~19%; flip to oracle mode and watch the gate reject regressions and hold the line flat-to-positive instead. Makes an abstract agent-safety failure mode viscerally felt in under a minute of play.",
+  "cool_score": 8,
+  "buildable_score": 9
+ },
+ {
+  "type": "demo",
+  "title": "Zealots, Gridlock & Spillover",
+  "paper_id": "2603.24723v1",
+  "pitch": "Canvas-based cellular automaton of the paper's two-party public-goods game: a grid of regions each populated by a mix of Consensus-makers, Gridlockers, and two flavors of Zealots, evolving via imitation (strategy copying from successful neighbors) plus migration toward regions with higher social+economic utility. Sliders control spillover strength and migration rate. Watch the paper's bistability emerge live \u2014 regions snap into either a permanently gridlocked stalemate or a consensus/zealot funding equilibrium \u2014 and watch poorer regions form spatial free-rider belts that calcify next to well-funded neighbors, mooching off the spillover without contributing. A striking, playable illustration of how local political dynamics harden into geography.",
+  "cool_score": 8,
+  "buildable_score": 7
+ },
+ {
+  "type": "demo",
+  "title": "Powersort Buffer Watch",
+  "paper_id": "2605.27147v2",
+  "pitch": "A three-way animated sorting race: classic Timsort, standard Powersort, and Virtual-Memory Powersort all sort the same shuffled array of bars, each paired with a live memory gauge showing current merge-buffer size. Timsort's gauge balloons toward n/2 elements; Virtual-Memory Powersort's barely twitches, staying near O(sqrt(n log n)) \u2014 using the exact same number of comparisons and moves (matching the paper's claim of only an additive O(n) overhead) while using almost no extra memory. A single glance explains why this near-in-place variant of the merge policy CPython adopted (Powersort) matters for sorting huge arrays.",
+  "cool_score": 6.5,
+  "buildable_score": 8.5
+ },
+ {
+  "type": "demo",
+  "title": "Survive the Dust: an Invariance-Entropy Escape Game",
+  "paper_id": "2607.02279v1",
+  "pitch": "Single-file HTML/canvas toy built on the paper's core object: a controlled doubling map x_{n+1} = 2x_n + u_n mod 1 that has to stay forever inside a Cantor 'dust' invariant set K (draw it as the middle-thirds set, or let the user carve their own gaps). The player controls the system through a rate-limited channel \u2014 a slider sets bits-per-step R that the 'controller' is allowed to know about the current state before picking u_n. Below the invariance entropy h_inv(K) (computable from K's gap structure/topological entropy), no strategy can keep the trajectory out of the gaps forever \u2014 you watch it eventually fall in, no matter how cleverly you play. Above it, a simple quantized feedback law survives indefinitely. It's a phase transition you can literally feel by dragging a slider, and it reframes David's poker/blind-structure interests directly: h_inv is 'the minimum bits per hand you must extract from your position to survive an escalating structure,' with the same dust/gaps as busted stacks.",
+  "cool_score": 8,
+  "buildable_score": 8
+ },
+ {
+  "type": "youtube",
+  "title": "I Simulated 10,000 Quantum Trajectories Until They Forgot Each Other",
+  "paper_id": "2606.29557v2",
+  "pitch": "A visual explainer of propagation of chaos for Belavkin equations (continuous quantum measurement / filtering) using the classical McKean-Vlasov intuition as a bridge: N interacting noisy particles (quantum trajectories under measurement backaction) start correlated through a mean-field coupling, and as N grows the paper shows they become asymptotically independent, each obeying its own decoupled Belavkin SDE. Render this as a live particle-swarm animation (colored dots whose 'belief state' about a hidden variable decorrelates as swarm size grows) alongside a running correlation-coefficient plot crashing to zero \u2014 the payoff moment is genuinely visual. Whimsy hook for the outro: same math as why a poker table's players' updated beliefs about a shared hidden card become statistically independent draws as the table gets big \u2014 propagation of chaos as 'why crowds stop reading each other's minds.'",
+  "cool_score": 8,
+  "buildable_score": 6
+ },
+ {
+  "type": "project",
+  "title": "MarketDust: adaptive-agent stress lab for SharpLab's odds feeds",
+  "paper_id": "2311.15974v1",
+  "pitch": "Build an agent-based market simulator directly feeding SharpLab: zero-intelligence + reinforcement-learning-adaptive trader agents post/take NBA prop lines, and you inject controlled 'data quality' degradation (stale ticks, dropped updates, quantization) exactly as the paper studies, then measure how CLV-capturing opportunities and mispricings emerge as a function of feed latency/quality rather than just agent sophistication. This turns a research question ('does bad data quality look like alpha, or is it actually alpha?') into a backtestable harness that validates whether SharpLab's edge-detection logic is finding real signal or exploiting book data-quality artifacts \u2014 genuinely useful before deploying more capital.",
+  "cool_score": 7,
+  "buildable_score": 6
+ },
+ {
+  "type": "startup",
+  "title": "PatchLens: a trust score for every line an AI agent writes",
+  "paper_id": "2607.25130v1",
+  "pitch": "The paper mined 53.6K real developer edits to AI-generated code to characterize what humans actually fix. Productize that as PatchLens: a GitHub Action / pre-commit hook that ingests your own repo history of AI-authored commits (Claude Code, Copilot, etc.) versus the diffs humans applied before merge, trains a lightweight per-line 'likely to be edited' classifier, and surfaces a confidence/trust heatmap on every new AI-generated PR before it lands \u2014 flagging the exact spans (off-by-one boundaries, error handling, naming) that this population of real edits shows get touched most. Dogfoodable immediately across David's own ~/code repos (sage, sentinel, stavid, scibowl-org) which already generate a rich AI-edit corpus, then sellable to any eng org scaling up agentic coding.",
+  "cool_score": 7,
+  "buildable_score": 5
+ },
+ {
+  "type": "demo",
+  "title": "Patient Zero: Find the Root of a Random Recursive Tree",
+  "paper_id": "2606.24465v1",
+  "pitch": "Single HTML-canvas toy that grows a random recursive tree node-by-node (each new node attaches uniformly to an existing one, mimicking a rumor spreading or a citation cascade), then hides the arrival order and hands you only the bare tree shape. You click to guess which node was 'born' first; then it reveals the answer via the paper's actual method \u2014 iterated Jordan centrality (repeatedly find the node minimizing max-eccentricity, peel it off, repeat) \u2014 heat-mapping every node red-to-blue by estimated arrival rank, and scores the algorithm vs. your gut guess vs. ground truth with a Spearman/Kendall-tau readout. Directly demonstrates the paper's pointwise history-estimation result: that tree topology alone leaks a surprising amount about growth order, which is exactly the epidemic-patient-zero / rumor-origin / 'who started the group chat' problem. All of it \u2014 tree generation, BFS eccentricity, iterative centrality peeling, radial layout \u2014 is trivial JS with no backend; a CDN d3 script (or hand-rolled canvas layout) is enough for one self-contained file.",
+  "cool_score": 8,
+  "buildable_score": 9
+ },
+ {
+  "type": "demo",
+  "title": "Signature Sketchpad: Draw a Path, Watch Its Levy Area Compute Itself",
+  "paper_id": "2606.29622v2",
+  "pitch": "A canvas where you draw (or generate a Brownian) 2D path with your mouse, and the page live-computes and visualizes its first few path-signature levels: level 1 = net displacement, level 2 = the iterated integral matrix whose antisymmetric part is the Levy area (literally the swept area between your squiggle and its chord). A side panel shows the paper's affine-structure punchline concretely: for many independent Brownian samples, the running average of the level-2 signature converges to a fixed affine/exponential relation in time (the classic 'expected signature solves the heat equation' fact) \u2014 so you watch noisy per-path signatures scatter while their average snaps onto the theoretical affine curve as you crank up the sample count. Makes an abstract rough-path-theory result (used for time-series ML and signature-based trading strategies) viscerally 'feel' like a law of large numbers you can draw with your hand. Pure canvas + trapezoidal numerical integration, no dependencies, one file.",
+  "cool_score": 8,
+  "buildable_score": 8
+ },
+ {
+  "type": "project",
+  "title": "Milestoning Momentum: Testing NBA 'Hot Hand' as Kinetic Hysteresis",
+  "paper_id": "2606.17033v1",
+  "pitch": "The milestoning paper builds a rigorous framework for coarse-grained Markov-jump dynamics between 'milestones' (interfaces in state space) and shows how to detect kinetic hysteresis and fluctuation-symmetry violations when a system is driven \u2014 i.e., whether the jump rates depend on the *direction* you're moving through state space, not just the current state. Recast an NBA game's score-differential as the state space, discretize into milestone bins (e.g. every 3 points), and build the milestoning Markov-jump model from real play-by-play data (score margin trajectory per possession). Then apply the paper's thermodynamic-consistency and hysteresis-loop machinery to test a real, falsifiable question in the nba-props-terminal spirit: does the probability of the next scoring event depend on whether the margin is currently widening vs. narrowing (genuine momentum/path-dependence), beyond what a memoryless Markov null model predicts? A positive hysteresis loop would be actual statistical-physics evidence for 'momentum' as a physical effect rather than a cognitive bias narrative \u2014 a legitimately novel edge signal for the props terminal.",
+  "cool_score": 8,
+  "buildable_score": 5
+ },
+ {
+  "type": "youtube",
+  "title": "The Tree Detective: Reconstructing History From a Single Snapshot",
+  "paper_id": "2606.24465v1",
+  "pitch": "A video essay built around the 'Patient Zero' demo: start with real hooks (finding COVID-19's patient zero, tracing a viral tweet back to its first poster, rooting a phylogenetic tree without a fossil record) and show that all of these are secretly the same math problem \u2014 given a tree's shape alone, estimate its growth order. Walk through why the Jordan center (the node minimizing worst-case distance to everyone else) tends to sit near the root of a random recursive tree, why iterating that peeling process gives a full pointwise ranking rather than just one guess, and let viewers play the on-screen demo live to beat (or lose to) the algorithm. Ends on the punchline that topology is a fossil record: shape alone remembers who came first.",
+  "cool_score": 8,
+  "buildable_score": 6
+ }
+]

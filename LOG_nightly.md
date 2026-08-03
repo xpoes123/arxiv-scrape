@@ -1,5 +1,61 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-03 — Cutoff (autonomous run)
+- **Fetch:** clean run, no hiccups. `fetch_papers.py 8 645` (offset = day-of-year 215 × 3), 176 fresh papers across
+  all 22 categories.
+- **Sampled:** 30 papers (random seed = day-of-year 215) for ideation, 6 batches of 5.
+- **Ideas:** 24 generated. Demo-shaped ideas again dominated (13 of 24), with a rare three-way tie at the top
+  cool×buildable score (72).
+- **Top per category:**
+  - project — **Ground Truth Gate**: a drop-in wrapper for long-running Claude Code / cron agents (this repo
+    included) that replaces self-verdict gating with an isolated world-state oracle check, grounded in the same
+    agent-self-evaluation-bias paper that seeded tonight's runner-up demo (arXiv:2607.25152)
+  - startup — **LLM VIX**: a continuously-updated volatility index for production LLM APIs — semantic drift, format
+    volatility, and refusal-rate variance measured daily per model, sold as implied-vol infra for teams running LLMs
+    in regulated pipelines (arXiv:2311.15180)
+  - youtube — **I Simulated 10,000 Quantum Trajectories Until They Forgot Each Other**: propagation-of-chaos for
+    Belavkin equations rendered as a decorrelating particle swarm, with a poker-table whimsy hook for the outro
+    (arXiv:2606.29557)
+  - demo — three-way tie at 72: **Cutoff: The Shuffle That Suddenly Mixes** (arXiv:2606.29530), **Progress Mirage
+    Simulator** (arXiv:2607.25152), **Patient Zero** (arXiv:2606.24465) ← all three built
+- **Built (3-way build-off):**
+  - A — **Cutoff: The Shuffle That Suddenly Mixes** (arXiv:2606.29530, top-*m*-to-random card shuffles exhibit a
+    cutoff phenomenon: total variation distance to uniform stays near 1 for a long stretch, then collapses sharply
+    in a narrow window whose profile shape is computable as block size grows with deck size): a population of 300
+    simulated decks runs the real shuffle Markov chain; one hero deck animates on canvas while a live distance
+    chart tracks the real collapse against a dashed theoretical overlay using the exact closed-form separation
+    formula (`1-e^-λ(1+λ)` for m=1, `1-e^-λ` for m≥2). Deck size and block size sliders visibly sharpen the
+    collapse window as they change. Zero external dependencies — fully self-contained. Builder's Playwright pass
+    caught and fixed a real bug (`skip-to-end` called an undefined `render(0)` left over from a refactor, producing
+    a page error) by unifying render logic into a shared `renderAll()`.
+  - B — **Progress Mirage Simulator** (arXiv:2607.25152, self-evaluating agent loops claim improvement almost every
+    cycle while a majority of cycles have zero-or-negative real delta; an externally-grounded oracle that gates on
+    true state recovers near-baseline output): a shared noisy-action generator feeds two evaluation modes —
+    Self-Verdict (always applies actions, always claims progress) vs. External Oracle (rejects/reverts regressions)
+    — racing two Chart.js lines (Claimed vs. Real) with a monospace narrator printing plausible self-verdict spin.
+    Builder fetched the real abstract and grounded the in-page stats (54 cycles, 56% zero/negative delta, 38%/44%
+    judge error rates) in the paper's actual numbers, verified via Playwright end-to-end run (self-mode ended
+    claimed +37.2 vs. real -5.2; oracle-mode ended claimed=real=13.6 exactly).
+  - C — **Patient Zero: Find the Root of a Random Recursive Tree** (arXiv:2606.24465, pure tree topology leaks a
+    surprising amount about growth order in random recursive trees — the true root can be estimated via iterated
+    Jordan-centrality peeling, repeatedly removing the node minimizing max-eccentricity): grows a random recursive
+    tree with a real generative animation, hides arrival order, takes a click-guess for patient zero, then reveals
+    a real BFS-based iterated-peeling algorithm with a blue→red arrival-rank heatmap and hand-rolled Spearman/
+    Kendall-tau scoring. Builder caught and fixed two real bugs found via Playwright: a stale cached DOM reference
+    that froze the status subtext, and force-layout nodes clipping off-canvas at n=60 (added boundary clamping).
+  - **Judge:** scored wow/interactivity/polish/fidelity per demo (A 9/9/9/9=36, B 8.5/9/8/9=34.5, C 8/8.5/8.5/8.5=
+    33.5) — all three verified running with zero console errors in headless Chromium via independent Playwright
+    passes, none disqualified. Judge cross-checked each demo's math/stats against the actual fetched arXiv
+    abstracts rather than trusting builder self-reports. A won for pairing the most legible physical intuition (a
+    deck that stubbornly refuses to look shuffled, then suddenly does) with the highest verified fidelity — its
+    theory overlay is the literal closed-form paper formula, not an approximation — and for being the most robust
+    build (zero external CDN dependencies).
+- **Published:** demo at `/arxiv-scrape/demos/2026-08-03-cutoff-shuffle.html`, brief at
+  `/arxiv-scrape/2026-08-03-nightly.html` — pushed to `xpoes123/david-share` (commit `46a4a06`), live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-03-nightly.html pending a VPS-side `git pull` (not done by this
+  nightly run, per the no-SSH publishing rule).
+- **Digest:** sent via the `notify` skill.
+
 ## 2026-08-02 — Free Fall (autonomous run)
 - **Fetch hiccup:** the initial `fetch_papers.py 8 642` run hit HTTP 429s / a read timeout on 4 CS categories
   (cs.LG, cs.AI, cs.CL, cs.CR — 0 papers each), likely from arXiv rate-limiting after a burst. Retried just those

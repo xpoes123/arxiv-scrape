@@ -1,0 +1,194 @@
+[
+  {
+    "type": "demo",
+    "title": "SVD Squeeze: Compress a Quantum Density Matrix Like a JPEG",
+    "paper_id": "2605.11253v2",
+    "pitch": "The 2RDM paper's core trick is that the two-electron reduced density matrix \u2014 nominally O(N^4) \u2014 has a rapidly decaying singular-value spectrum, so a handful of 'natural orbital pair' modes capture almost all the electron correlation. Build a single-file HTML toy: render a synthetic symmetric matrix (labeled as orbital-pair correlations for a toy H2/LiH-like system) as a heatmap, plot its eigenvalue/singular-value spectrum next to it, and give the user a rank-k slider. As they drag k down from full rank to 1, the reconstructed heatmap updates live alongside a Frobenius reconstruction-error readout and a 'compression ratio' counter \u2014 the same visceral 'oh, 6 numbers rebuild the whole thing' moment you get from SVD-compressing a photo, except the photo is a quantum wavefunction's correlation structure. All client-side JS (basic power-iteration SVD on a small fixed matrix), no backend, ships in one HTML file tonight.",
+    "cool_score": 7,
+    "buildable_score": 9
+  },
+  {
+    "type": "project",
+    "title": "Memory Trace Debugger for Sage",
+    "paper_id": "2607.24097v1",
+    "pitch": "MemChain proposes learning discrete, interpretable memory traces \u2014 compact symbolic records of why a memory-augmented agent retrieved or wrote what it did \u2014 instead of an opaque embedding blob. Sage already writes MEMORY.md files per project and pulls context into every session, but there's no way to audit why a given fact got surfaced (or why it didn't). Retrofit Sage's memory layer with a lightweight trace log: every write logs {trigger, salience score, source turn}, every retrieval logs {query, matched trace, why-ranked-here}. Ship a small CLI/Discord command (/why-remembered <topic>) that replays the trace chain in plain English. This directly targets the recurring pain of Sage occasionally surfacing stale or irrelevant memory in the morning check-in \u2014 makes memory debuggable instead of a black box.",
+    "cool_score": 7,
+    "buildable_score": 6
+  },
+  {
+    "type": "startup",
+    "title": "TickSignal: Subsampling-Valid Confidence Intervals for Line Moves",
+    "paper_id": "2601.16668v1",
+    "pitch": "The paper's subsampling approach solves a real problem with high-frequency financial estimators: their limiting distributions are often intractable, so naive CLT-based confidence intervals are wrong, but block subsampling gives asymptotically valid inference without knowing the limit law. NY-legal sportsbook odds are exactly this kind of high-frequency, market-microstructure-noisy series (SharpLab already ingests odds + tracks CLV). Build a monitor that treats 'line velocity' (rate of odds change per market) as the HF statistic and uses overlapping-block subsampling to construct a real confidence band around it \u2014 flagging a move as a statistically significant 'steam move' only when it clears the subsampled CI, instead of the ad hoc z-score/percent-move thresholds most public tools use. Sell/ship as a SharpLab feature or a small paid Discord alert bot for sharp bettors who currently eyeball line movement charts.",
+    "cool_score": 6,
+    "buildable_score": 5
+  },
+  {
+    "type": "demo",
+    "title": "Quantile IV Playground: One Instrument, Many Treatment Effects",
+    "paper_id": "2601.16865v2",
+    "pitch": "Classic 2SLS collapses a messy, heterogeneous treatment effect into one number (a LATE). The quantile least squares approach in this paper instead identifies how an instrument shifts every quantile of the outcome distribution \u2014 revealing effect heterogeneity that a mean-based IV estimate completely hides (e.g., an instrument that helps low-outcome people a lot but does nothing at the top). Build a single-file HTML playground: generate a toy population with a built-in instrument and a treatment effect that varies by baseline quantile (user-adjustable via sliders for 'effect at bottom' vs 'effect at top'), run a simple JS gradient-descent quantile least squares fit at several quantiles live, and plot the resulting quantile treatment effect curve next to the flat line a standard 2SLS regression would give on the same data. The 'wait, the flat line lies' moment is the whole pitch \u2014 good bait for the econometrics-Twitter crowd.",
+    "cool_score": 6,
+    "buildable_score": 8
+  },
+  {
+    "type": "demo",
+    "title": "The Fat-Tailed Frontier",
+    "paper_id": "2606.28631",
+    "pitch": "Single-file HTML/canvas toy simulating a 1D subcritical branching random walk where each particle's step tail is P(X>x) = \u2113(x) x^a e^{-\u03bbx^b}, with a slider for b\u2208[0,1) controlling how 'stretched' the exponential is. The paper's headline result is a big-jump principle: the tail of the all-time maximum displacement M = sup_n M_n satisfies P(M>x) ~ [(1-p0)/(1-m)]\u00b7\u2113(x)x^a e^{-\u03bbx^b} \u2014 meaning the record-breaking outlier isn't built from many moderate steps accumulating, it's essentially caused by one freakishly large single jump. Run thousands of walks live, plot the empirical max-displacement histogram against the predicted tail, and highlight (literally draw a colored line back through the tree) whichever single step caused each record run \u2014 watching the 'one big jump' phenomenon become visually obvious as you drag b from light-tailed (Gaussian-ish, gradual) to heavy stretched-exponential (records won on a single lottery-ticket step). Great shareable 'randomness is lumpy' visualization \u2014 same mechanism shows up in viral spread, chess rating streaks, or a single hot-hand quarter deciding a blowout.",
+    "cool_score": 8,
+    "buildable_score": 9
+  },
+  {
+    "type": "demo",
+    "title": "Hard-Court Spheres",
+    "paper_id": "2606.16483",
+    "pitch": "The paper decomposes the d-dimensional hard-sphere partition function as Q(N,V,T) = Q*\u00b7exp(-N\u00b7J), where Q* is a close-packing-derived upper bound on the configurational integral and J depends purely on the boundary-to-volume ratio of the empty 'voids' relative to the close-packing density \u2014 i.e. entropy/free energy of a hard-sphere gas is really a story about void geometry. Build a single HTML page where an NBA half-court is the box and the 5 offensive players are draggable hard disks (radius = personal space); as you move them, live-compute an approximate 2D analog of J from the Voronoi void geometry between players and render it as a 'floor-spacing score' plus a heatmap of open driving lanes. Whimsical bridge from stat-mech to basketball analytics \u2014 literally visualizing why NBA coaches obsess over 'floor spacing' as an entropy/free-volume problem, with a slider to crank up close-packing density and watch driving lanes vanish exactly like a hard-sphere gas approaching jamming.",
+    "cool_score": 8,
+    "buildable_score": 7
+  },
+  {
+    "type": "project",
+    "title": "Bandit-DS Prop Screener",
+    "paper_id": "2605.25678",
+    "pitch": "This paper nails the sharp sample complexity of PAC learning when you only get bandit feedback \u2014 you predict a label, and you're told correct/incorrect, nothing more \u2014 characterized by a new 'bandit DS dimension' built from pseudo-boxes, with the ListCascade algorithm achieving the matching upper bound. That's exactly the feedback structure of live prop betting: you place a bet on a threshold (over/under X rebounds), and the world only tells you win/lose, never the true underlying distribution. Build a module for the existing nba-props-terminal that implements ListCascade-style exploration to allocate a betting/paper-trading budget across candidate props with PAC guarantees on when you've gathered enough bandit feedback to trust an edge, instead of the ad hoc sample sizes currently used before trusting GR-RTRMC-completed rebound/three-point edges. Directly upgrades a project already in your stack with a real, provably-sharp exploration budget instead of gut-feel sample sizes.",
+    "cool_score": 7,
+    "buildable_score": 6
+  },
+  {
+    "type": "youtube",
+    "title": "I Ran a Dark-Matter Detector for Proteins on My Laptop",
+    "paper_id": "2411.06798",
+    "pitch": "LA4SR re-purposes small open LMs (GPT-2, DistilRoBERTa, ELECTRA, Mamba \u2014 as small as 70M params) to classify microbial/algal 'dark proteome' sequences (the ~65% of proteins nobody has characterized), hitting F1 up to 95 while running 16,580x faster than BLASTP, and it comes with an explainability tool that attributes specific amino acid patterns to the model's decision. Video concept: download a small open checkpoint, feed it real 'uncharacterized protein' sequences pulled live from UniProt, race it head-to-head against a simulated BLASTP search on camera (one finishes in a blink, the other is still spinning), then zoom into the explainability heatmap to show which amino acid motifs the model 'noticed.' Strong hook: legit science (a real Chlamydomonas genome dataset), a satisfying speed-race visual, and an accessible closer \u2014 'most of life's proteins are still unread, and a laptop-sized AI just started reading them.'",
+    "cool_score": 7,
+    "buildable_score": 5
+  },
+  {
+    "type": "demo",
+    "title": "Sync or Chase: Nonreciprocal Kuramoto Playground",
+    "paper_id": "2606.16427v2",
+    "pitch": "Single-file canvas demo of noisy Kuramoto-Sakaguchi oscillators on a long-range lattice. Two sliders: phase lag \u03b1 (nonreciprocity \u2014 at \u03b1=0 you get textbook symmetric Kuramoto sync, crank \u03b1 up and pairs start chasing each other's phase instead of matching it) and \u03c3 (interaction range exponent). Live order-parameter meter shows the system snap from synchronized 'pulse' to desynchronized shimmer right at the paper's analytically-derived critical \u03b1_c(\u03c3), which the RG theory says falls monotonically as \u03c3 grows \u2014 so you can literally drag \u03c3 and watch the sync boundary retreat in real time. Render oscillators as dots on a ring colored by phase (HSL hue = phase angle) so 'nonreciprocal chasing' is visually obvious \u2014 it looks like a school of fish that never quite catches up to itself. Pure canvas/JS, no deps, no backend.",
+    "cool_score": 8,
+    "buildable_score": 9
+  },
+  {
+    "type": "demo",
+    "title": "Vertex Sabotage: A Stackelberg Independent-Set Duel",
+    "paper_id": "2605.25927v1",
+    "pitch": "Turn the paper's leader/follower vertex-partition game into a playable puzzle. You're the leader: click vertices in a random graph to 'claim' them (removed from the follower's pool) under a budget. The follower then instantly (client-side brute force / greedy for small n) computes their best independent set from what's left, sum-type or bottleneck-type scored per a toggle. Score bar shows you're fighting a problem the paper proves is \u03a3\u2082\u1d56-complete in general \u2014 i.e. you're up against something provably harder than NP, which is a fun flex line to put on the game-over screen. Include a 'special case' mode matching their polynomial Bilevel Interval Selection (intervals on a line, O(n\u2074log n) DP) where an 'optimal AI opponent' toggle actually solves optimally instead of greedily, so you can feel the P vs \u03a3\u2082\u1d56 gap directly by trying to beat a provably-optimal bot in the easy mode vs a heuristic bot in the hard mode. Single HTML file, small graphs (n\u226414) so exhaustive search stays instant in-browser.",
+    "cool_score": 7,
+    "buildable_score": 8
+  },
+  {
+    "type": "project",
+    "title": "Momentum Landscapes: Waddington-Style Attractor Modeling for NBA Win Probability",
+    "paper_id": "2605.14562v1",
+    "pitch": "The methylation paper models gene expression as a ball rolling in a reshaping potential-energy landscape, where epigenetic marks autonomously carve new attractor basins over time. Steal the framework, not the biology: treat an NBA game's win-probability trajectory as a particle in a 1D potential well U(x,t) whose shape is fit (via a simple gradient/diffusion inverse-problem, same math family as the paper's landscape-reshaping fits) from real play-by-play data \u2014 'momentum runs' become the well deepening around one team, and a scoring drought becomes the well shallowing/splitting into a bimodal landscape (classic 'anyone's game' state). Fits your existing NBA props modeling stack (SharpLab / nba-modeling repos) as a genuinely new feature: a real-time 'landscape stability' signal for live betting that's distinct from a plain win-prob line, since it also encodes how easily the game state could flip (well depth = how much a run would take to reverse). Buildable as a research notebook this week, extendable into a live dashboard.",
+    "cool_score": 8,
+    "buildable_score": 6
+  },
+  {
+    "type": "youtube",
+    "title": "Could Chemistry Alone Become Conscious? \u2014 Bootstrapping Life-Inspired AI",
+    "paper_id": "2602.08079v2",
+    "pitch": "A video essay walking through the paper's proposed 'biological route from chemistry to cognition' as a literal roadmap/bootstrap sequence \u2014 autocatalysis to metabolism to homeostasis to primitive cognition \u2014 laid side-by-side against how we actually train modern AI (random init to pretraining to RLHF to agentic scaffolding), asking where the analogy holds and where it breaks. Strong visual hook: two parallel timelines animating on screen, one biological (billions of years, chemistry) and one artificial (months, gradient descent), converging toward 'general intelligence' from opposite directions. Natural pull-quote thumbnail: 'Life had 4 billion years and no plan. We have GPUs and a deadline.' Good length for a 12-15 min explainer with cheap Manim-style animations of the paper's own bootstrap diagram.",
+    "cool_score": 7,
+    "buildable_score": 5
+  },
+  {
+    "type": "demo",
+    "title": "Diamond-Free: The 2.15x Game",
+    "paper_id": "2607.09497",
+    "pitch": "Single-file HTML toy built on the Boolean lattice of subsets of {1..n} (n=6 to 10, rendered as a Hasse diagram by rank layer). Player clicks subsets to add to a 'family', and the tool live-highlights any diamond (a poset Q2: A\u2282B, A\u2282C, B\u2282D, C\u2282D with B,C incomparable) the moment one forms, forcing you to backtrack. A running score bar compares your family size to two milestones pulled straight from the paper: the old conjectured optimum (union of the two middle layers, i.e. exactly 2x the middle binomial coefficient C(n, n/2)) and the paper's new proven lower bound of c*C(n, n/2) with c ~= 2.147908 - so you're visibly racing to beat a conjecture a real 2024/25 paper disproved. Include a 'reveal construction' button showing the actual diamond-free family from the paper that broke the old bound, animated layer by layer.",
+    "cool_score": 7,
+    "buildable_score": 9
+  },
+  {
+    "type": "demo",
+    "title": "The Hot-Hand Uncertainty Machine",
+    "paper_id": "2606.16339",
+    "pitch": "Interactive single-file HTML simulating a two-to-multi-phase alternating renewal process framed as a shooter alternating between 'hot' and 'cold' phases with adjustable mean dwell times and dwell-time variances (sliders per phase). It simulates thousands of made/miss cycles live (canvas + running histogram), computes the empirical current (net makes per unit time) and its fluctuation (Fano factor / variance), and plots that point against two curves in real time: the classical Proesmans-Van den Broeck thermodynamic uncertainty bound and the paper's new tighter entropic bound, which additionally penalizes cycle-length fluctuations and scales correctly with renewal rate. The 'aha' moment: cranking up the variance of your hot/cold dwell times (making streaks less predictable) visibly pushes your simulated point closer to the old PV bound but still respects the new tighter one - letting you FEEL that you can't buy streaky predictability without paying entropy, and that the paper's bound is the real fence, not the old one.",
+    "cool_score": 8,
+    "buildable_score": 8
+  },
+  {
+    "type": "project",
+    "title": "Roster Control: Bilinear Optimal Control for NBA Age Curves",
+    "paper_id": "2607.01347",
+    "pitch": "The paper models populations structured by both age and space, evolving under a transport-diffusion PDE where the control enters bilinearly (multiplying the state, like a coefficient governing how fast individuals 'move') plus a nonlocal renewal boundary condition (births depend on the whole population's state, i.e. feedback). Recast for the nba-modeling repo: 'space' becomes team/role (bench-guard, starter-wing, etc.), 'age' is literal player age, transport is player development/decline curves, diffusion is positional flexibility, and the bilinear control is your draft/trade/free-agency rate - a lever that multiplies how fast mass shifts across the age-space grid rather than an additive input. Build a discretized cohort simulator (ages 19-38 x 5 role buckets) with a target age-space distribution for a desired contention window, then implement the paper's adjoint-based first-order optimality conditions to solve for the actual optimal control trajectory (not just a heuristic), and compare it against a manual 'general manager' control policy. Feeds real aging-curve data already in nba-modeling; output is a genuinely novel roster-construction optimizer grounded in a July 2026 control theory paper.",
+    "cool_score": 8,
+    "buildable_score": 6
+  },
+  {
+    "type": "project",
+    "title": "Injury-Status NER for the Props Terminal: BERT vs. Claude, Low-Resource Edition",
+    "paper_id": "2607.23344",
+    "pitch": "The paper benchmarks fine-tuned BERT-style models against LLMs for low-resource named entity recognition and finds the tradeoffs (few-shot LLM prompting vs. small labeled-set fine-tuning) aren't uniform across domains. Build the domain-specific version that actually matters for the nba-props terminal: scrape beat-writer tweets and injury-report text, hand-label a few hundred examples for entities like PLAYER, STATUS (questionable/out/probable), BODY_PART, and RETURN_ESTIMATE, then replicate the paper's comparison - fine-tune a small BERT/DistilBERT NER head on the tiny labeled set vs. few-shot prompt Claude Haiku for the same extraction - and measure precision/recall/cost/latency exactly like PDFBench-style benchmarking. Wire the winner directly into the props terminal as an automatic injury-flag feed, closing the loop from a genuinely low-resource-NLP research question straight into a system already tracking rebounds/threes edges.",
+    "cool_score": 6,
+    "buildable_score": 6
+  },
+  {
+    "type": "demo",
+    "title": "Order Effects Roulette",
+    "paper_id": "2607.17219",
+    "pitch": "Single HTML toy that lets you feel the paper's punchline: LLM 'opinions' aren't real survey responses. Pick a pair of yes/no questions (e.g. 'Is X trustworthy?' then 'Is Y trustworthy?'), toggle the order A-then-B vs B-then-A, and watch two panels animate: (1) the classical prediction of QQ equality (q_QQ \u2248 0, order shouldn't matter for the marginal) vs (2) a set of pre-baked real query results (run ~20 counterbalanced prompts against Claude/GPT ahead of time, embed as a JSON blob in the file) showing the model's answers are near-deterministic/saturated for most pairs -- exactly the paper's finding that 17/18 item pairs showed no real dispersion, so QQ 'passing' is meaningless without a saturation check first. A slider for 'health gate' threshold shows how the verdict flips from 'quantum-like' to 'measurement artifact' as you require more dispersion. No backend at runtime -- all model calls happen once during authoring, baked into the page.",
+    "cool_score": 8,
+    "buildable_score": 7
+  },
+  {
+    "type": "demo",
+    "title": "Peer Pressure vs Fear",
+    "paper_id": "2603.24403",
+    "pitch": "Canvas force-directed Barabasi-Albert network (200-400 nodes) where each node is an agent with an opinion (pro/anti-vax) and an infection state (S/I/R), updating live per the paper's coupled Markov-chain rules. Two sliders control the two competing forces the paper isolates: 'local risk perception' (opinion shifts toward vaccination when your neighbors get sick) vs 'peer influence' (opinion just conforms to your neighbors' opinions regardless of actual risk). Crank peer-influence up and watch echo chambers of anti-vax nodes form in the hub-and-spoke scale-free topology and infection blow past the critical threshold; crank risk-perception up and watch the same network self-suppress the epidemic. A live readout shows the critical infection threshold estimate updating in real time so you can see it cross from 'epidemic dies out' to 'epidemic takes off' as you drag the slider -- the exact bistability the paper derives analytically.",
+    "cool_score": 8,
+    "buildable_score": 8
+  },
+  {
+    "type": "startup",
+    "title": "SteamCatcher: Toxic Flow Detection for Sportsbook Bet Ingestion",
+    "paper_id": "2312.05827",
+    "pitch": "The paper's PULSE method (online Bayesian last-layer neural net, sub-millisecond updates) was built for FX brokers deciding whether to internalize or externalize (lay off) each incoming client trade based on predicted toxicity -- i.e. is this trade informed/sharp, about to move against the house? That's *exactly* the decision a sportsbook (or a bettor watching for steam) makes on every incoming wager. Port PULSE to bet-flow features you already have plumbing for in SharpLab (bet size, timing relative to open, book-specific line velocity, bettor-level historical CLV) to score each incoming bet's 'toxicity' online, in real time, and either (a) sell it as a risk-management feed to smaller regional books that can't build this in-house, or (b) flip it inward as a bettor-side tool: detect when the market is absorbing toxic (sharp) flow on a line *before* it moves, and front-run the CLV. Given SharpLab already ingests odds and tracks CLV, the hard infra is done -- this is mostly the PULSE online-learning layer plus a labeled toxicity target (line moved >X cents against the bet within N minutes).",
+    "cool_score": 7,
+    "buildable_score": 6
+  },
+  {
+    "type": "demo",
+    "title": "The Shrinking Certainty Cone",
+    "paper_id": "2607.01203",
+    "pitch": "Single-file HTML/canvas visualizer for why linearization error bounds (LEBs) matter in real-time robust control. Simulate a simple nonlinear system (pendulum-on-cart) with an uncertain initial state; the user drags the initial uncertainty ellipse and planning horizon, then toggles between 'naive interval bound' and 'tight path-based Hessian bound' (the paper's actual contribution) to watch two reachable tubes propagate forward in time as translucent cones. The naive-interval cone balloons absurdly wide within a few steps (forcing the controller to be overly conservative or infeasible), while the tight Hessian-based cone stays snug around the true nonlinear trajectory -- making visible, in real time, the exact conservativeness gap the paper measures at up to 67 Hz on real hardware. A 'why this matters' toggle overlays a constraint wall the controller must avoid, showing the naive bound falsely reporting a collision.",
+    "cool_score": 7,
+    "buildable_score": 6
+  },
+  {
+    "type": "project",
+    "title": "Randomized-Signature Alpha Engine (SharpLab plug-in)",
+    "paper_id": "2312.16448v1",
+    "pitch": "The paper feeds asset price paths through a random linear ODE (a reservoir/echo-state-style random projection) to build a 'randomized signature' \u2014 a cheap, high-dimensional random feature embedding that approximates the full iterated-integral path signature without the combinatorial blowup, then does linear regression from that embedding to future returns/portfolio weights (validated on real market data with transaction costs, not just theory). This is a near-drop-in fit for SharpLab: instead of hand-crafted CLV/line-movement features, run each odds/price time series (opening line -> close, or a stock of shot-quality over a game) through a randomized-signature reservoir and use the resulting feature vector as input to your existing edge model. It's cheap (a fixed random matrix + an ODE solve, no training of the embedding itself), captures path-order effects your current features probably miss (e.g. 'line moved late vs moved early' has the same delta but different signature), and you can A/B it directly against your current CLV-under-edges pipeline (GR-RTRMC completion) since it's just a feature-extraction swap-in.",
+    "cool_score": 7,
+    "buildable_score": 6
+  },
+  {
+    "type": "demo",
+    "title": "Refuge & Front: watch an invading wave rescue a species from stochastic extinction",
+    "paper_id": "2511.10807v1",
+    "pitch": "The paper's core mechanism, shown across predator-prey, epidemic, and cyclic-competition (rock-paper-scissors-style May-Leonard) lattice models: a small finite population always drifts to extinction under demographic noise eventually, UNLESS it's spatially coupled to a larger 'stable patch' that keeps sustaining a traveling activity front \u2014 that front acts as a constant immigration flux into the doomed region, and this alone (no extra fitness, no rescue effect beyond the flux) suppresses the finite-size extinction instability. Build a single-canvas HTML/JS demo: a 2D grid running a stochastic cyclic-competition CA (rock/paper/scissors species chasing each other), split into a small 'vulnerable' patch and a large 'refuge' patch joined at a border. Sliders for noise strength and patch size; a live extinction-probability counter for the vulnerable patch run with vs without the refuge connection, so you can literally watch the same noisy patch die out when isolated and survive indefinitely once a front is allowed to invade from the refuge. Extremely visual, no backend, runs at 60fps in a <canvas>.",
+    "cool_score": 9,
+    "buildable_score": 9
+  },
+  {
+    "type": "demo",
+    "title": "Loud & Wrong: an opinion-leadership sandbox where conviction buys influence (until it doesn't)",
+    "paper_id": "2603.24381v1",
+    "pitch": "This extends the classic Friedkin-Johnsen opinion model by making each agent's 'stubbornness'/susceptibility to peers into a dynamic leadership variable: leadership rises when an agent holds a strong opinion that stays socially aligned with its neighbors, and collapses the moment that agent drifts out of alignment \u2014 with the paper proving convergence conditions under fast-opinion/slow-leadership vs. slow-opinion/fast-leadership time-scale separations. Build a force-directed network demo (canvas, no libraries needed beyond a tiny physics loop): node color = opinion (a -1..1 slider-controlled scalar), node radius = leadership, edges = social ties. Run the coupled ODEs live; expose one slider for time-scale separation (fast leadership <-> fast opinion) and one for network homophily/rewiring. Users watch a handful of nodes visibly swell into 'leaders' as their opinion locks in step with a cluster, then shrink back down when a rival cluster's opinion shifts under them \u2014 a very tangible, shareable feel for 'influence is earned by being right together, not by shouting.'",
+    "cool_score": 8,
+    "buildable_score": 8
+  },
+  {
+    "type": "demo",
+    "title": "SteganoScope: see where an image can hide a secret",
+    "paper_id": "2607.05868v1",
+    "pitch": "The paper uses RAG + an LLM to auto-generate the 'cost function' code that adaptive steganography algorithms (like WOW/S-UNIWARD) use to decide which pixels are cheap (safe, high-texture) vs expensive (risky, smooth/flat) to perturb when embedding hidden bits \u2014 beating hand-tuned and prior auto-designed cost functions on security while cutting search cost 26%. You can't replicate the RAG/LLM code-search pipeline in an evening, but you can absolutely build the *artifact it produces a feel for*: a single-file HTML page where the user drops in a photo, a client-side JS pass computes a local-variance/gradient-magnitude cost map (a legible stand-in for WOW-style cost), renders it as a heatmap overlay (dark = expensive/don't touch, bright = cheap/safe), then actually LSB-embeds a short user-typed message weighted toward the cheap pixels only, and offers a 'reveal' button plus a naive detector (chi-square/pixel-pair histogram test) that shows the hidden message is statistically much harder to detect than if you'd embedded into a flat sky. Makes the whole 'cost function = where lies hide best' idea viscerally clickable.",
+    "cool_score": 7,
+    "buildable_score": 8
+  }
+]
