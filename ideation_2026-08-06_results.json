@@ -1,0 +1,194 @@
+[
+ {
+  "type": "demo",
+  "title": "Schur Sum-Free Colorer",
+  "paper": "2607.15034v1 - Shifted S-templates and improved lower bounds for Schur numbers",
+  "pitch": "Single-page canvas/grid toy: drag integers 1..N into k colored bins trying to keep every bin 'sum-free' (no x+y=z in the same color) \u2014 literally the Schur number problem. A verify button flashes any x+y=z violation in red. Preload known optimal colorings (e.g. the exact S(4)=44 witness) plus a 'build it recursively' mode that animates the paper's actual shifted S-template construction: take a valid k-coloring, apply the shift-and-double trick, and watch a valid (k+2)-coloring on ~10x+2 more integers pop out live, visualizing the new recurrence S(k+2) >= 10*S(k)+2 that beat the 46-year-old Abbott-Hanson bound (9S(k)+4) and pushed S(8) from 5,286 to >=5,362 and S(13) from 2,011,290 to >=2,038,282. Bonus framing hook: the paper credits the construction idea to a conversation with ChatGPT 5.5 Pro, then human-verified \u2014 a concrete, checkable instance of AI-assisted math discovery.",
+  "cool": 8,
+  "buildable": 9
+ },
+ {
+  "type": "youtube",
+  "title": "The Recurrence That Beat a 46-Year-Old Combinatorics Record (With Help From ChatGPT)",
+  "paper": "2607.15034v1 - Shifted S-templates and improved lower bounds for Schur numbers",
+  "pitch": "Short explainer: what a Schur number is (max n such that {1..n} can be k-colored with no monochromatic x+y=z), why it matters for Ramsey/van der Waerden-style theory, and how the classical Abbott-Hanson template gives S(k+2) >= 9*S(k)+4. Then reveal the 'shifted' trick that loosens the coloring flexibility just enough to get S(k+2) >= 10*S(k)+2, animate it building S(8) >= 5,362 and S(13) >= 2,038,282 from smaller known bounds, and land on the genuinely newsworthy hook: the improvement traces back to a back-and-forth with ChatGPT 5.5 Pro that a mathematician then rigorously verified \u2014 a real, small, checkable case study in AI-assisted research math rather than hype.",
+  "cool": 8,
+  "buildable": 4
+ },
+ {
+  "type": "demo",
+  "title": "Order-Disorder Sandbox",
+  "paper": "2605.20709v1 - What Lies Between Crystal and Randomly Packed Structures? A General Characterization",
+  "pitch": "Interactive 2D disk-packing canvas: click to place disks (or step through a preset ground-state template) and watch a live 'structural selectivity' overlay classify each local neighborhood as crystalline (periodic, low diversity), genuinely random, or the paper's newly-named middle class \u2014 non-periodic yet still picky about what local arrangement it will accept next. Score each configuration's diversity, mirroring the paper's finding that ~35% of non-periodic ground states in their 2D binary packing model are selective, with diversity extending up to ~9 (well past the max diversity possible for periodic crystals). Lets someone literally build and feel a structure that is 'ordered but not periodic' \u2014 the paper's core conceptual claim made tactile and clickable.",
+  "cool": 9,
+  "buildable": 6
+ },
+ {
+  "type": "startup",
+  "title": "Private Edge-Cloud LLM Gateway",
+  "paper": "2607.13093v4 - Efficient and Privacy Aware Edge Cloud Collaborative Inference for Large Models",
+  "pitch": "Package the paper's split-inference architecture (edge device runs embeddings + speculative draft tokens and keeps lightweight modules/cache policies local; cloud only sees quantized, AES-GCM-encrypted KV cache and truncated logits for heavy decode) as a drop-in SDK/reverse-proxy for regulated industries (healthcare, legal, finance) that want frontier-model quality without shipping raw user data off-prem. The paper's own numbers are the pitch deck: up to 46.1% lower per-token latency and 67.4% less bandwidth than naive split inference, with accuracy comparable to full cloud inference, across CPU-only, GPU, and embedded edge hardware.",
+  "cool": 7,
+  "buildable": 4
+ },
+ {
+  "type": "demo",
+  "title": "Square-Root Impact Sandbox",
+  "paper": "2311.18283v1 - The two square root laws of market impact and the role of sophisticated market participants",
+  "pitch": "Single-page interactive toy implementing the paper's two closed-form regimes: (1) during a metaorder's execution, price impact grows as sqrt(cumulative traded volume) for a fixed participation rate; (2) for a fixed total volume Q, impact scales as sqrt(participation rate \u03b3) once \u03b3 is 'large enough' but bends toward linear-in-\u03b3 for small \u03b3 (this crossover is the paper's actual novel finding about 'sophisticated' vs naive counterparties). Build two linked canvas panels: left shows impact(t) as a metaorder executes with a slider for \u03b3 and a fit line overlaying sqrt(volume); right shows log-log impact-vs-\u03b3 with a visible kink between the linear and sqrt regimes, plus a toggle for 'sophisticated participant present' that shifts the crossover point per the paper's model. Pure closed-form math, no data feed needed, canvas/D3 via CDN.",
+  "cool": 6,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "The q-Knob: a Tsallis Statistics Playground",
+  "paper": "2608.01223v1 - Perspectives on Tsallis Statistics for Artificial Intelligence",
+  "pitch": "A single slider (q from 0 to ~2) drives three linked live panels that make the paper's central claim ('q is a tunable interpolation between dense/uniform and sparse/peaked behavior') tangible: a bar chart of a fixed logit vector run through the generalized q-exponential normalization (recovering softmax at q=1 and showing entries collapse to exact zero as q rises, i.e. sparsemax/entmax behavior), a q-Gaussian curve whose tails visibly fatten or thin as q moves away from 1 (the heavy-tailed regime the paper ties to deep-net gradient-noise statistics), and a live q-entropy readout. Entirely closed-form math (q-exp, q-log, q-Gaussian formulas are in the paper), renders instantly in canvas/Chart.js, no backend.",
+  "cool": 8,
+  "buildable": 9
+ },
+ {
+  "type": "startup",
+  "title": "ImpactIQ - crossover-aware execution cost estimator",
+  "paper": "2311.18283v1 - The two square root laws of market impact and the role of sophisticated market participants",
+  "pitch": "Existing TCA (transaction-cost-analysis) vendors already sell empirical square-root impact models to execution desks. This paper's specific, checkable addition is the participation-rate crossover: impact is roughly linear in \u03b3 at low participation and only becomes sqrt(\u03b3) once \u03b3 is 'large enough,' and that threshold shifts when informed/sophisticated flow is present. A niche fintech product would calibrate this two-regime model per venue/asset from a desk's own fill data, flag in real time when a metaorder's \u03b3 has crossed into the sqrt(\u03b3) regime (meaning slippage costs are about to accelerate nonlinearly), and recommend a participation-rate schedule that keeps a large order in the cheaper linear-ish zone as long as possible. Pitch it as a lightweight plugin/API for smaller prop shops and asset managers who can't afford full Barra/ITG-style TCA suites.",
+  "cool": 6,
+  "buildable": 3
+ },
+ {
+  "type": "youtube",
+  "title": "What Is an AI Actually Learning About Biology?",
+  "paper": "2602.22289v2 - What Topological and Geometric Structure Do Biological Foundation Models Learn?",
+  "pitch": "Explainer video built around the paper's three concrete findings: persistent homology (real, non-trivial topological structure) is statistically significant in 11-12 of 12 transformer layers across three model domains; manifold-aware distances beat plain Euclidean distance at recovering known regulatory gene pairs; and two independently trained models (scGPT, Geneformer) agree strongly on the global shape of 'gene space' (CCA canonical correlation 0.80, 72% retrieval accuracy) yet none of 19 tested alignment methods can pin down which specific gene corresponds to which - they draw the same coastline but disagree on where the cities are. Frame it around the meta-story too: this wasn't hand-designed, it came from an autonomous executor-brainstormer AI loop that proposed and tested 141 topological hypotheses over 52 iterations with null controls - a video about 'AI doing science on AI' as much as about biology. Needs simple manim/d3 visuals of point clouds and persistent-homology 'bubbles' forming and merging, no heavy coding.",
+  "cool": 9,
+  "buildable": 5
+ },
+ {
+  "type": "demo",
+  "title": "The Diversity Illusion Simulator",
+  "paper": "2603.26896v1 - Interplay between social contact and media exposure in the overestimation of risk",
+  "pitch": "An interactive toy that reproduces the paper's actual mechanism: people overestimate minority group share more at the national scale than the local scale, and the DRIVER differs by scale \u2014 local overestimation tracks direct interethnic contact, national overestimation tracks perceived news coverage, and social-media use inflates the bias while regular news consumption shrinks it. Build a single HTML page with two sliders ('your neighborhood contact rate' and 'your social media diet') plus a scale toggle (neighborhood/city/national). Underneath, run a tiny agent-based population (canvas grid of colored dots = true demographic composition) and a separate 'perceived composition' bar that updates live based on a simple weighted formula lifted from the paper's regression logic (contact-weighted at local scale, media-weighted at national scale, social media adds a multiplicative overestimation bump). The punchline moment: user cranks social media exposure and watches their 'perceived %' diverge from the fixed 'actual %' bar \u2014 visceral, shareable, and it's literally the paper's finding, not a vibe. Caption it 'this is why people think progress on representation happened already.'",
+  "cool": 8,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "Fuzzy RDD Playground: Why CWLATE Wins",
+  "paper": "2602.01417v1 - Identification and Estimation in Fuzzy Regression Discontinuity Design",
+  "pitch": "A single-page d3/canvas tool that makes the paper's actual statistical contribution tangible: when treatment compliance (the 'first stage' jump in treatment probability at the cutoff) varies across covariate cells, naive fuzzy-RDD Wald estimators get unstable, while the paper's new Compliance-Weighted LATE (which weights each cell by its squared first-stage discontinuity) is more stable and has lower MSE. Let the user drag two sliders \u2014 'compliance heterogeneity across groups' and 'sample noise' \u2014 and watch three running estimates plotted live as scatter+regression lines on either side of a cutoff: (1) naive pooled Wald ratio, (2) simple average of per-cell LATEs, (3) CWLATE. A live MSE-vs-true-effect tracker (computed against a known simulated ground truth) shows CWLATE's error staying lowest as heterogeneity increases \u2014 turning an econometrics identification result into something you can literally watch converge or fall apart.",
+  "cool": 6,
+  "buildable": 9
+ },
+ {
+  "type": "startup",
+  "title": "ChargeOps: DRL Charging-as-a-Service for Warehouse Robot Fleets",
+  "paper": "2607.05683v1 - Deep Reinforcement Learning for Dynamic Battery Management of Autonomous Systems",
+  "pitch": "The paper shows a PPO-based policy that jointly decides which charging station a warehouse AMR should use and how long to charge, anticipating queuing delays, and beats heuristic baselines by up to 6% in order-completion rate while cutting total recharge time. That's a very sellable ROI number to 3PL/warehouse ops (Amazon-scale robot fleets, GreyOrange/6 River Systems customers, mid-size 3PLs running Kiva-style AMRs). Pitch: a drop-in fleet-management add-on that ingests a warehouse's existing robot telemetry (battery %, position, order queue) and outputs charge/no-charge + station-assignment decisions via the same RL formulation, sold as a SaaS layer on top of existing fleet management software (not replacing it) \u2014 priced on measured completion-rate uplift. Tonight's buildable proof-of-concept: a single HTML canvas warehouse-grid simulation with N robots, M charging stations, and stochastic order arrivals, toggle between 'fixed-threshold heuristic' and a simple learned/tuned policy, with a live order-completion-rate counter for each \u2014 enough to demo the core value prop to a design partner.",
+  "cool": 6,
+  "buildable": 6
+ },
+ {
+  "type": "project",
+  "title": "VUS Consensus: Ensemble Variant Pathogenicity Lookup Tool",
+  "paper": "2411.05055v1 - Integrating Large Language Models for Genetic Variant Classification",
+  "pitch": "The paper's actual result is that combining three different sequence/structure LLMs (GPN-MSA, ESM1b, AlphaMissense) beats any single model at classifying Variants of Uncertain Significance on ProteinGym/ClinVar. Since AlphaMissense's full genome-wide precomputed scores and ClinVar's API are both public, build a lightweight web tool for genetic counselors: paste a variant (e.g. HGVS notation or gene+position+AA change), and the tool pulls the precomputed AlphaMissense pathogenicity score plus ClinVar's existing classification, and (where ESM1b scores are available via public model APIs) blends them into a single consensus confidence with a simple weighted-ensemble rule mirroring the paper's approach, flagging cases where models disagree ('needs manual review') vs. agree strongly. This directly targets the real clinical pain point the paper names \u2014 VUS reclassification bottlenecks \u2014 and is a genuinely useful triage aid, not just a demo.",
+  "cool": 7,
+  "buildable": 5
+ },
+ {
+  "type": "project",
+  "title": "Probability Theory You Can Feel: Kesten Tree + RGG Threshold Gallery",
+  "paper": "2607.01877 (coupling conditioned L\u00e9vy trees with the Kesten tree) + 2607.02013 (Detection Threshold Conjecture for Random Geometric Graphs)",
+  "pitch": "A two-panel interactive site turning two dense probability results into things you can drag and watch happen. Panel A: sample critical Galton-Watson trees conditioned to have large total size n (via rejection for small n, then via the paper's actual coupling mechanism \u2014 a size-biased 'spine' where each spine vertex spawns one size-biased continuation plus i.i.d. unconditioned GW subtrees hanging off) and render them with a radial tree layout; slide n up and watch the ragged conditioned tree visibly collapse into the Kesten tree's signature shape (one infinite spine with bushy fringe trees), which is exactly the local-convergence-in-distribution result the paper proves in the critical case. Panel B: generate points on the unit sphere in R^d, connect edges by inner-product threshold to hit a target density p, and generate a matching Erd\u0151s\u2013R\u00e9nyi graph at the same p; expose sliders for n, p, and d, plus a live 'spot the geometric graph' readout of a distinguishing statistic (e.g. triangle density or a signed-triangle test statistic). As d is dragged past the paper's conjectured (and now largely proven) threshold d \u2248 (n\u00b7h(p))^3, the statistic and the two graphs' visual layouts become indistinguishable \u2014 literally showing the phase transition the paper resolves. A quiz mode ('which one is geometric?') makes the threshold viscerally obvious.",
+  "cool": 8,
+  "buildable": 7
+ },
+ {
+  "type": "demo",
+  "title": "Anomalous Hydrograph Slider: q-Exponential Reservoir Cascades",
+  "paper": "2606.21095 (Asymptotic hydrographs and anomalous dispersion in mass-conserving stochastic transport)",
+  "pitch": "Single-file canvas demo simulating the paper's mass-conserving cascade of reservoirs, but swapping the waiting-time kernel from ordinary exponential to Tsallis q-exponential and live-plotting the resulting outflow curve (the 'hydrograph'). A slider sweeps q from 1 (recovers the classical Erlang/gamma-shaped hydrograph from ordinary exponential sums) through the paper's critical value q=5/3 (where the large-cascade flow rate provably converges to a Galilean-shifted stable L\u00e9vy density) up toward q\u21922 (full \u03b1-stable heavy-tailed regime). Users watch the tidy bell-shaped classical hydrograph grow a long, physically meaningful tail in real time \u2014 a direct, feelable demonstration of the paper's core claim that anomalous non-Gaussian dispersion emerges from pure mass-conserving convolution chains with no fractional derivatives needed. Frame it with a flood/contaminant-plume narrative: 'the standard model says the river is clear by hour 40; the q=5/3 model says a contamination tail is still there at hour 200.'",
+  "cool": 7,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "Topological Knob: Voltage-Tunable SSH Chain (Liquid Crystal Microcavity)",
+  "paper": "2605.19664 (Engineering Tunable Synthetic Su-Schrieffer-Heeger Chains in Liquid Crystals)",
+  "pitch": "A tight-binding SSH-chain simulator styled after the paper's actual device: two coupled chains of sites representing orthogonal light polarizations (the photonic pseudospin), with intracell hopping v fixed and intercell hopping w controlled by a single 'applied voltage' slider \u2014 mirroring how the paper's liquid-crystal microcavity uses voltage to tune interchain coupling on a dimerized uniform-lying-helix texture. Diagonalize the small tridiagonal-ish Hamiltonian live in JS, plot the energy spectrum, and render site amplitudes along the chain. As the slider crosses v=w, the gap closes and reopens and a localized mid-gap edge state lights up glowing at the chain ends \u2014 the topological phase transition made physically tangible with the same tuning knob (voltage) the real experiment uses. A second toggle splits the two polarization chains to show polarisation-dependent interactions, the paper's headline 'pseudospin' feature.",
+  "cool": 9,
+  "buildable": 9
+ },
+ {
+  "type": "startup",
+  "title": "Low-Data Protein Fitness Copilot",
+  "paper": "2505.15093 (Steering Generative Models with Experimental Data for Protein Fitness)",
+  "pitch": "The paper's core practical finding is that plug-and-play guidance of discrete diffusion protein-sequence models (classifier guidance, posterior sampling) \u2014 steered by only hundreds of real wet-lab fitness measurements and wrapped in a Thompson-sampling-style adaptive selection loop \u2014 outperforms alternatives like RL-finetuned protein LMs in realistic low-throughput settings. Productize this exact loop as a SaaS for directed-evolution labs (enzyme engineering, antibody optimization, biosensors) that don't have in-house ML teams: customers upload their existing hundreds of assay results, the service steers an open protein diffusion model toward higher fitness, proposes the next round of sequences to synthesize via the paper's Bayesian-optimization-style acquisition, and the loop repeats each wet-lab cycle. Pitch as 'the missing ML layer between your plate reader and your next round of clones' \u2014 differentiated from generic protein-LM APIs by being built specifically for the small-n, iterative-campaign regime the paper studied rather than requiring large labeled datasets.",
+  "cool": 7,
+  "buildable": 3
+ },
+ {
+  "type": "demo",
+  "title": "Black Swan Duality Gap Explorer",
+  "paper": "2607.05697 - Stability and Dual Valuation of Contingent Claims under Rockafellian Perturbation",
+  "pitch": "The paper's real claim: as you perturb the probability distribution underlying a contingent claim, primal and dual (shadow-price) valuations epi-converge nicely EXCEPT in critical scenarios where a tail event's probability vanishes but its payoff impact blows up faster than the probability shrinks -- there duality collapses and the 'value of perfect information' gap explodes. Build a single-file HTML toy: a 3-state payoff (bet/option) with a slider for tail probability epsilon and a slider for tail payoff magnitude M. Live-compute the primal price, the dual/shadow price, and plot the duality gap as a function of epsilon*M in real time (all closed-form 2x2 LP duality, no solver needed) -- the user physically drags epsilon toward 0 while cranking M and watches the gap go from stable to diverging, i.e. feels exactly the failure mode the paper proves. Directly relevant to David's SharpLab betting hedging work (stress-testing hedge stability against low-probability catastrophic outcomes).",
+  "cool": 8,
+  "buildable": 9
+ },
+ {
+  "type": "project",
+  "title": "SafeDAG: Dominator-Tree Safe-Sequence Toolkit",
+  "paper": "2411.03871 - Safe Sequences via Dominators in DAGs for Path-Covering Problems",
+  "pitch": "Real result: node/arc sequences that appear in EVERY path cover of a DAG ('safe sequences') can be found in O(n) via source/sink dominator trees, and plugging them into RNA-assembly ILPs (LeastSquares, MinPathError) as a preprocessing step gives measured 50-350x solver speedups. Build a small JS/TS library implementing dominator-tree construction (Lengauer-Tarjan or simple iterative for DAGs) + safe-sequence extraction, generalized past genomics to any path-cover/flow-decomposition problem (network routing, tournament-bracket path analysis, task scheduling). Ship it with a single-file interactive playground: draw a DAG by clicking nodes/edges, and watch it highlight in real time which nodes/edges are 'safe' (guaranteed in every path cover) as you add edges -- a visceral way to see the search-space pruning that gives the reported speedups.",
+  "cool": 7,
+  "buildable": 7
+ },
+ {
+  "type": "demo",
+  "title": "Fair-Share Upgrade Draft",
+  "paper": "2606.01309 - Multiagent Matroid Upgrading: Greedy is Fair and Efficient",
+  "pitch": "Real result: given several agents each holding a matroid (e.g. a graph whose spanning-tree/basis cost you can shrink by 'upgrading' elements), and a budget of k upgrades, a single greedy rule simultaneously near-optimally minimizes ANY non-decreasing convex function of the agents' basis costs -- meaning the same algorithm is provably good whether you care about total efficiency (sum) or worst-off fairness (max). Build an HTML demo styled as a fantasy-team 'upgrade budget' game: show 3-4 small team graphs (agents), each edge has an upgrade cost/benefit, give the user k upgrade tokens and a convexity slider from 'maximize total roster value' to 'protect the weakest team.' Run the paper's greedy allocator live and show the resulting basis costs per team snap to match whichever objective the slider selects, with a graph plotting the theoretical approximation bound alongside the live greedy score -- a playful math-meets-fantasy-draft way to feel a fairness/efficiency Pareto frontier collapse into one algorithm.",
+  "cool": 8,
+  "buildable": 8
+ },
+ {
+  "type": "youtube",
+  "title": "Can Qubits Keep a Beat? A Tour of Quantum Synchronization",
+  "paper": "2606.21226 - Synchronization in the quantum regime",
+  "pitch": "This is a survey, not a single theorem, so it's better as an explainer than a code demo: the actual content is that (1) naive intuition says quantum linearity + noise should kill classical-style synchronization, (2) yet coherence and entanglement can produce synchrony with NO classical analogue, and (3) many-body quantum networks show collective sync phenomena researchers are still mapping out. Script a video that starts from classical metronome/Kuramoto synchronization (visually intuitive, can literally show metronomes converging), then walks through the three fronts the survey covers -- quantum oscillator sync measures, genuinely nonclassical synchrony, and many-body quantum-network sync -- using simple simulated visuals (Bloch spheres, phase-space Husimi/Wigner blobs locking into phase) to make an abstract stat-mech survey paper feel like watching quantum systems literally fall into step.",
+  "cool": 7,
+  "buildable": 5
+ },
+ {
+  "type": "demo",
+  "title": "Gerrymander Trap: watch ReCom get stuck",
+  "paper": "2606.01333v1 \u2014 Adversarial Configurations for the ReCom Transition Function",
+  "pitch": "The paper proves ReCom (the standard MCMC redistricting-sampler transition: merge two adjacent districts, then re-split via a random spanning tree) is NOT rapidly mixing \u2014 it constructs an explicit family of 3-partitions on grid graphs from which the expected number of steps to ever re-split is exponential. Build a single-page canvas app with an n\u00d7n grid partitioned into 3 districts. Two buttons: 'random start' vs 'adversarial start' (recreate the paper's specific construction \u2014 a long thin conjoined region). Run the actual ReCom step (BFS/DFS random spanning tree cut on the merged region, checking population balance) live, with a step counter and a log-scale histogram of re-split attempts. Random starts re-split in seconds; the adversarial one visibly grinds for thousands of steps. This turns an abstract mixing-time theorem into a 30-second 'huh, that's broken' moment for anyone who's heard 'ensemble methods' used to certify districting maps.",
+  "cool": 8,
+  "buildable": 8
+ },
+ {
+  "type": "demo",
+  "title": "Crack Whisperer: holes make it stronger",
+  "paper": "2605.19684v1 \u2014 The fracture resistance of elastic networks increases with the density of defects",
+  "pitch": "The paper's headline result: apparent fracture toughness G^c in a disordered spring network scales as \u221a\u03bd with the fraction of missing bonds \u03bd, because each removed bond perturbs the local fracture-energy landscape and these perturbations superpose like a random walk, arresting cracks. Build a 2D triangular spring-lattice canvas sim with a 'defect density' slider (0-40% bonds removed). Pull the lattice under quasi-static load, animate the crack path visibly zigzagging and stalling at defect-induced energy bumps, and plot live measured G^c against the paper's predicted \u221a\u03bd curve as the slider moves. The payoff moment: crank defects up and the material visibly gets HARDER to break, not easier \u2014 a genuinely counterintuitive, screenshot-shareable materials-science result you can feel with a slider.",
+  "cool": 9,
+  "buildable": 8
+ },
+ {
+  "type": "demo",
+  "title": "Beat the Oracle: paging with corrupted predictions",
+  "paper": "2606.01342v3 \u2014 Towards Optimal Robustness in Learning-Augmented Paging",
+  "pitch": "The paper closes a long-standing gap: prior learning-augmented paging algorithms guaranteed worst-case robustness of 2H_k + O(1) when the ML prediction is wrong; this paper's framework (built on a 'relative prediction budget' concept) achieves the optimal H_k + O(1) instead. Build a single-page cache-eviction visualizer: a page-request stream scrolls by, a slider controls how badly you 'poison' the oracle's predictions, and two algorithms run side-by-side on the same stream \u2014 the old 2H_k-robust baseline vs the new H_k-optimal one \u2014 with live running competitive-ratio counters (misses vs OPT). As you crank corruption up, the new algorithm's miss penalty visibly stays roughly half as bad as the old one, making an abstract competitive-ratio bound into a watchable race.",
+  "cool": 7,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "Tail Subtraction: where should your steering vector come from?",
+  "paper": "2607.25270v1 \u2014 Where Steering Signals Come From: Activation Source Selection in Activation Steering",
+  "pitch": "The paper's finding: good activation-steering vectors come from 'execution-boundary' states \u2014 where the model is about to produce the target behavior \u2014 not from text that merely contains the outcome, and their 'tail subtraction' method (stripping shared semantic content before differencing) makes these vectors more stable. Build a fully client-side sandbox using transformers.js to run a small open model (e.g. distilGPT-2) in-browser. Let the user pick a source text and toggle between 'outcome extraction' (naive mean-difference from text containing the behavior) vs 'execution-boundary + tail subtraction,' compute both steering vectors on the fly, inject each into generation, and show the two completions side by side. Users literally watch the paper's claim play out: one steering vector produces clean, targeted behavior shifts, the other is noisier or off-target.",
+  "cool": 9,
+  "buildable": 5
+ }
+]

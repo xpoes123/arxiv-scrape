@@ -1,5 +1,59 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-06 — Topological Knob (autonomous run)
+- **Fetch:** clean run (first attempt hit the 2-minute foreground timeout mid-way through category fetches, no data
+  written; rerun completed cleanly). `fetch_papers.py 8 654` (offset = day-of-year 218 × 3), 176 fresh papers across
+  all 22 categories.
+- **Sampled:** 30 papers (seed = day-of-year 218) for ideation, 6 batches of 5.
+- **Ideas:** 24 generated. Demo-shaped ideas dominated the top of the cool×buildable board again; a physics demo
+  (voltage-tunable SSH chain, arXiv:2605.19664) took the clear top score (c9×b9=81) over a 5-way tie at 72.
+- **Top per category:**
+  - project — **Probability Theory You Can Feel**: Kesten-tree conditioning + random-geometric-graph detection
+    threshold, made into a drag-and-watch gallery (arXiv:2607.01877 + arXiv:2607.02013)
+  - startup — **ChargeOps**: DRL charge/station-assignment-as-a-service for warehouse AMR fleets, sold on a
+    measured 6% order-completion-rate uplift (arXiv:2607.05683)
+  - youtube — **What Is an AI Actually Learning About Biology?**: persistent homology in biological foundation
+    models + the "same coastline, different cities" gene-alignment mismatch, framed as AI-doing-science-on-AI
+    (arXiv:2602.22289)
+  - demo — top score: **Topological Knob** (arXiv:2605.19664, c9×b9=81) ← built, alongside two 72-scorers picked
+    for build variety: **Schur Sum-Free Colorer** (arXiv:2607.15034) and **The Diversity Illusion Simulator**
+    (arXiv:2603.26896)
+- **Built (3-way build-off):**
+  - A — **Topological Knob: Voltage-Tunable SSH Chain** (arXiv:2605.19664, a liquid-crystal microcavity realizes
+    two coupled Su-Schrieffer-Heeger chains — orthogonal light polarizations as a photonic pseudospin — with
+    applied voltage tuning interchain coupling at room temperature): a real SSH tight-binding Hamiltonian,
+    diagonalized live in-browser via a hand-written Jacobi eigensolver on every slider tick — no lookup tables. A
+    single voltage slider crosses intercell = intracell hopping, closing and reopening the energy gap while a
+    localized mid-gap edge state visibly glows at the chain ends; a pseudospin-split toggle renders both
+    polarization chains. Zero external dependencies, fully offline. Builder verified live via Playwright (gap
+    1.628→0.023 crossing the transition, phase badge flips) and explicitly disclosed that the paper gives no
+    voltage→coupling calibration, so that mapping is labeled illustrative while the SSH math itself is genuinely
+    computed.
+  - B — **The Diversity Illusion Simulator** (arXiv:2603.26896, people overestimate a minority group's population
+    share more at the national scale than local, with the driver shifting from direct contact (local) to perceived
+    media coverage (national), amplified by social-media use): two sliders and a scale toggle drive a live
+    perceived-vs-actual demographic gap over a canvas dot grid of true composition, with a Chart.js line comparing
+    the gap across all three scales at once. Judge independently recomputed the in-page formula by hand and
+    confirmed it matched the displayed output exactly.
+  - C — **Schur Sum-Free Colorer** (arXiv:2607.15034, a "shifted S-template" recurrence S(k+2) ≥ 10·S(k)+2 beats
+    the older Abbott-Hanson bound, credited in the paper to a ChatGPT 5.5 Pro conversation, human-verified): a
+    drag-and-drop sum-free-coloring puzzle with live violation detection (flags real x+y=z triples) plus a
+    recursive-build animation of the shift-and-double construction. Judge checked 10·536+2=5362 and
+    10·203828+2=2038282 against the fetched abstract — bit-exact.
+  - **Judge:** scored wow/interactivity/polish/fidelity per demo (A 8/7/8/9=32, B 6/7/7/6=26, C 8/9/8/8=33) — all
+    three verified running with zero console errors in headless Chromium via independent Playwright passes, none
+    disqualified, no fabricated numbers found against live-fetched abstracts. C edged A on raw points, but the
+    judge broke the tie for **A**: it's the only build actually computing the real physics live (genuine numerical
+    diagonalization) rather than an illustrative parametric model layered over reported findings, and it ships with
+    no CDN dependency at all.
+- **Published:** demo at `demos/2026-08-06-topological-knob.html`, brief at `2026-08-06-nightly.html`, both mirrored
+  into `david-share` and registered in its manifest. Live at
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-08-06-topological-knob.html (demo) and
+  https://share.djiang.xyz/arxiv-scrape/2026-08-06-nightly.html (brief).
+- **Housekeeping note:** found the 2026-08-04 and 2026-08-05 runs left mid-pipeline — build-offs completed (demos
+  exist in `demos/`) but neither was judged, published to david-share, nor logged here. Left untouched tonight to
+  stay in scope; worth a follow-up pass to judge/publish or discard them.
+
 ## 2026-08-03 — Cutoff (autonomous run)
 - **Fetch:** clean run, no hiccups. `fetch_papers.py 8 645` (offset = day-of-year 215 × 3), 176 fresh papers across
   all 22 categories.
