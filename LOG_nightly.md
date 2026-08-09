@@ -1,5 +1,84 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-08 — Phase Sync Playground (autonomous run, judged/published late on 2026-08-09)
+- **Note:** the 2026-08-08 session got through ideation and the 3-way build-off but stopped before judging,
+  publishing, or logging (stray `ideation_2026-08-08.js`/`_results.json`/`buildoff_2026-08-08.js` left uncommitted).
+  Picked up and finished on 2026-08-09: judged the existing builds, published, logged.
+- **Fetch:** 176 fresh papers across 22 categories. 30 sampled for ideation, 6 batches, 24 ideas generated.
+- **Top per category:**
+  - project — **sw-cdf: sort-free Sliced-Wasserstein micro-library + live demo** (48): CDF-based Sliced-Wasserstein
+    estimator replacing sort-based pipelines with embarrassingly-parallel CDF-grid evaluation, built for federated
+    learning (arXiv:2606.30310)
+  - startup — **HalfFull/HalfEmpty Bankroll Optimizer for Sports Bettors** (42): behavioral portfolio model provably
+    equivalent to a tractable MILP, beats Prospect Theory/risk-min/equal-weight on real data (arXiv:2312.10749)
+  - youtube — **The Evolutionary Traffic Jam: How Simple Genes Build Impossible Bottlenecks** (42): fitness-landscape
+    bottlenecks emerging from global epistasis with zero gene-gene interaction (arXiv:2505.14166)
+  - demo — 3 selected for build-off: **Phase Sync Playground** (arXiv:2607.06762), **The Insurability Cliff**
+    (arXiv:2607.13230), **The Sweet Spot** (arXiv:2605.19795)
+- **Built (3-way build-off):**
+  - A — **Phase Sync Playground: Watch Spectral Recovery Hit Its Threshold** (arXiv:2607.06762, power-grid
+    voltage-angle estimation reduced to phase synchronization; a spectral method — top eigenvector of a noisy
+    phase-connection graph — recovers true angles below a noise threshold normalized against the observability
+    margin, with a zero-duality-gap certificate in the noiseless case): a genuine from-scratch Jacobi eigensolver
+    on a 128×128 real Hermitian connection-matrix embedding, live on every slider drag, with a "certified / not
+    certified" badge flipping at the theoretical threshold and the actual dual certificate δ(x) computed on screen.
+  - B — **The Insurability Cliff: Price Your AI Agent** (arXiv:2607.13230, risk-state → premium/deductible mapping
+    for agentic-AI deployments with proven monotone feasibility deterioration): five sliders drive a real
+    risk-state-to-premium calculation; crank permission exposure or autonomy past the governance line and the panel
+    flips into an "infeasible / uninsurable" red zone.
+  - C — **The Sweet Spot: Optimal Complexity in Smart Materials** (arXiv:2605.19795, an I1/I2/I3 complexity
+    framework for responsive materials): draggable log-scale points reproducing the paper's exact reported
+    order-of-magnitude bands; least ambitious of the three, no live numerical method, candidly labels its
+    illustrative curve where the paper has no closed form.
+  - **Judge:** static review only (no headless browser available) — validated all three via Node syntax checks,
+    DOM-id resolution, tag balance, and CDN hash verification; none disqualified. Cross-checked all three abstracts
+    against demo claims, no fabrications found. Scores (wow/interactivity/polish/fidelity): A 9/8/8/9=34, B
+    7/8/8/9=32, C 6/6/7/8=27. **A (Phase Sync) won** — the only build doing real, non-canned linear algebra live in
+    the browser while staying most faithful to its paper's theorems.
+- **Published:** demo at `demos/2026-08-08-phase-sync.html`, brief at `2026-08-08-nightly.html`, both mirrored into
+  `david-share` and registered in its manifest. Live at share.djiang.xyz/arxiv-scrape/demos/2026-08-08-phase-sync.html
+  and .../arxiv-scrape/2026-08-08-nightly.html once the VPS pulls.
+
+## 2026-08-07 — Last One Damaged (autonomous run, judged/published late on 2026-08-09)
+- **Note:** same stall pattern as 08-08 — build-off completed, judging/publishing/logging never ran. Picked up and
+  finished on 2026-08-09.
+- **Fetch:** 176 fresh papers across 22 categories. 30 sampled for ideation, 6 batches, 25 ideas generated.
+- **Top per category:**
+  - project — **Ledger: an evidence-adjudication layer for AI-drafted claims** (35): agentic claim/evidence
+    adjudication beating non-agent baselines by a wide margin (relation accuracy 0.676 vs 0.383), pitched as a
+    citation-honesty grammar-checker browser extension (arXiv:2607.26512)
+  - startup — **DriftGuard: bandwidth-calibrated drift monitoring for LLM/embedding pipelines** (42): auto-calibrated
+    kernel bandwidth for distribution-shift detection, ~1.12x off optimal on real embedding streams
+    (arXiv:2608.01268)
+  - youtube — **We Tried to Catch an AI Lying — One Model Beat the Lie Detector** (48): alignment-faking probes
+    that work on one model's hidden states (AUROC 0.87) and nearly fail on another's (0.43) (arXiv:2607.13346)
+  - demo — 3 selected for build-off: **Risk Appetite Maze** was the top score (72) but variety picks went to
+    **Last One Damaged** (arXiv:2607.16382), **The Replacer's Edge** (arXiv:2511.04417), and **Sticky Disks**
+    (arXiv:2605.20882)
+- **Built (3-way build-off):**
+  - A — **Sticky Disks: Selective Adsorption Sandbox** (arXiv:2605.20882, two same-size particle species sort
+    selectively onto a patterned sticky surface, with selectivity peaking when adhesive-domain size is near
+    particle diameter): a real hard-disk Metropolis Monte Carlo simulation — genuine Boltzmann acceptance,
+    hard-disk exclusion — with sliders for domain size, coverage, and adhesion strength.
+  - B — **The Replacer's Edge — Moran Process Invasion Simulator** (arXiv:2511.04417, a "replacer" phenotype that
+    always displaces a different-type neighbor on reproduction fixes with probability ~1/√N instead of the standard
+    1/N): live per-step invasion animation plus a Monte-Carlo sweep visibly bending the empirical fixation curve off
+    the classic 1/N line on a log-log chart; "hard counter" MOBA/CCG whimsy hook.
+  - C — **Last One Damaged: The Zombie Pursuit Game** (arXiv:2607.16382, a "damage variant of Cops and Robber"
+    where one cop is geodesic-constrained): an actually playable click/drag/arrow-key pursuit game across four real
+    graph families from the paper's theorems (cycles, complete multipartite, random trees via Prüfer sequences,
+    girth-5/min-degree-2 graphs), correct BFS shortest-path logic, force-directed layout, auto-play bot, and a live
+    damage-vs-proven-ζ_dmg chart.
+  - **Judge:** static review (no headless browser available) — Node syntax checks, DOM-id resolution, CDN
+    reachability, all three self-contained and valid, none disqualified. Cross-checked all three abstracts, no
+    fabrications. Scores: A 6/7/7/9=29, B 8/9/8/9=34, C 9/9/8/9=35. **C (zombie game) won** — most technically
+    ambitious and most fun to actually play (real BFS pursuit, four graph families, auto-play bot) while staying
+    just as faithful to its theorems as the close-second Moran-process sim.
+- **Published:** demo at `demos/2026-08-07-zombie-damage.html`, brief at `2026-08-07-nightly.html`, both mirrored
+  into `david-share` and registered in its manifest. Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-07-zombie-damage.html and .../arxiv-scrape/2026-08-07-nightly.html
+  once the VPS pulls.
+
 ## 2026-08-06 — Topological Knob (autonomous run)
 - **Fetch:** clean run (first attempt hit the 2-minute foreground timeout mid-way through category fetches, no data
   written; rerun completed cleanly). `fetch_papers.py 8 654` (offset = day-of-year 218 × 3), 176 fresh papers across

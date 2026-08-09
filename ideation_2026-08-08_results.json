@@ -1,0 +1,332 @@
+{
+  "summary": "Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5",
+  "agentCount": 6,
+  "logs": [
+    "24 ideas generated across 6 batches"
+  ],
+  "result": {
+    "ideas": [
+      {
+        "type": "demo",
+        "title": "Sphere vs. Flatland: Feel Why nGPT Halves Training Tokens",
+        "paper": "2608.01284v1 - Training nGPT (normalized Transformer reaches equal validation loss with ~half the training tokens of standard AdamW at 14B params, via hyperspherical parameter/activation constraints + logit gradient preconditioning + log LR decay)",
+        "pitch": "Single-file canvas toy: two side-by-side optimization landscapes, one unconstrained (vectors free to grow/shrink in R^2/R^3) and one where every step re-normalizes the vector back onto the unit circle/sphere (the nGPT trick). Drop a 'loss target' point, run the same gradient-descent schedule on both, and watch the hypersphere-constrained walker converge in visibly fewer steps because its effective step size stays stable instead of getting swamped by exploding/shrinking vector norms. A step counter and live loss curve for each side make the 'half the tokens' claim viscerally obvious — you SEE the flat-space walker wobble/overshoot while the sphere walker beelines. Bonus toggle to add a fake 'logarithmic LR decay' schedule vs linear to show that piece too.",
+        "cool": 7,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "The Insurability Cliff: Price Your AI Agent",
+        "paper": "2607.13230v1 - AI-Native Insurance for Agentic AI (risk-state = autonomy, operational authority, permission exposure, governance maturity, dependency concentration; maps to event probabilities/premiums/deductibles; proves 'monotone deterioration of feasibility with increasing exposure' and governance-certification insurability thresholds)",
+        "pitch": "Five sliders — autonomy level, operational authority, permission exposure, governance maturity, dependency concentration — feed a simple implementation of the paper's risk-state-to-premium mapping (loss severity x event probability, minus a governance discount, checked against a participation/profitability constraint). A live gauge shows computed premium + deductible, and as you crank permission exposure or autonomy past the governance-maturity line, the whole panel flips red into the 'infeasible / uninsurable' zone — literally showing the paper's proven monotone feasibility collapse as a cliff you can walk off. Great shareable toy for anyone deploying agentic AI right now (extremely on-topic for Aug 2026).",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "startup",
+        "title": "Agentic AI Underwriting Engine — a credit score for autonomous agents",
+        "paper": "2607.13230v1 - AI-Native Insurance for Agentic AI",
+        "pitch": "Build the risk-state scoring engine from the paper into a real product: an API/SDK that ingests an agent deployment's telemetry (tool permissions granted, autonomy/authority level, human-in-the-loop frequency, vendor/model dependency concentration, governance/audit-trail maturity) and emits a standardized risk score plus a suggested premium/deductible curve using the paper's participation-profitability-incentive-compatibility optimization. Sell it two ways: (1) an actuarial pricing feed to insurers who don't yet know how to underwrite 'my AI agent submitted 40k unsupervised API calls last month,' and (2) a self-serve compliance/insurance-readiness check for enterprises before they let an agent touch production — 'you're in the insurability region' or 'you need to cap this permission scope first.' Rides the exact wave of agentic-AI liability anxiety that's spiking right now.",
+        "cool": 8,
+        "buildable": 4
+      },
+      {
+        "type": "demo",
+        "title": "Leaf-Only: Terminal Steiner Tree Playground",
+        "paper": "2606.02325v1 - Terminal Steiner Tree Problem (variant of Steiner tree requiring every terminal vertex be a leaf; paper gives an FPT algorithm parameterized by number of terminals plus complexity/existence results)",
+        "pitch": "Click nodes on a random planar graph to mark them 'terminals.' A brute-force/FPT solver (trivial at the small terminal counts a browser can handle — exactly the paper's parameterization) computes the minimum terminal Steiner tree and animates it next to a plain minimum Steiner tree on the same instance. The visual payoff is the paper's whole point: in the plain Steiner tree, terminals often sit mid-path with two neighbors; in the terminal-constrained version you can watch the algorithm reach for an extra 'shield' Steiner point specifically so no terminal ever has degree > 1. Add a terminal-count slider to feel the FPT algorithm's runtime bend as terminals scale — a direct, tactile demonstration of the paper's complexity result.",
+        "cool": 6,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "The 2n/21 Parity-Subgraph Finder",
+        "paper": "2607.16424v1 — Weighted Counting Formula and 2n/21 Lower Bound for Induced Subgraphs with Prescribed Degrees",
+        "pitch": "The paper proves that no matter how you label every vertex of a graph 'wants even degree' or 'wants odd degree', you can always find an induced subgraph on more than 2n/21 of the vertices where every vertex's actual degree matches its label — a 3-orders-of-magnitude improvement over the previous Ferber-Krivelevich bound of ~10^-4·n. Build a single-page canvas/d3 toy: user draws or generates a graph, paints each vertex red (wants odd) or blue (wants even) by clicking, and hits 'solve'. A client-side search (randomized local search / simulated annealing over the weighted-counting-polynomial's structure, or brute force for small n) finds a valid induced subgraph, highlights it, and shows a live counter: 'found subgraph size X, guaranteed floor is 2n/21 = Y'. Let users try to build adversarial graphs/labelings to see the bound nearly bite — makes an otherwise opaque extremal-combinatorics proof into a game.",
+        "cool": 7,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Near-Square-Root Cancellation Explorer (Gauss Sums)",
+        "paper": "2606.26440v1 — Optimal homological vanishing: cancellation of character sums and Patterson's conjecture",
+        "pitch": "The paper's payoff is concrete and computable even though the proof machinery (homology of braided vector spaces) isn't: higher-order Gauss sums over function fields, and character sums over Galois extensions, exhibit 'near square-root cancellation' for almost all characters — i.e. |S(χ)|/sqrt(p) stays bounded instead of blowing up to the trivial p-size bound, extending Patterson's conjecture beyond the previously-known cubic/quartic cases. Build an HTML/JS toy: pick a prime p and an order n | p-1, compute a primitive root and all order-n multiplicative characters mod p in-browser, plot |Gauss sum|/sqrt(p) as a histogram across characters and as p grows. Watch the values cluster near 1 (predicted bound) instead of spiking to sqrt(p)-worst-case — you're literally watching Patterson's conjecture-style cancellation happen in real time as you drag the prime slider.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "startup",
+        "title": "Local-Global Mean-Field Defense: an MFG signal for SharpLab/NBA Modeling",
+        "paper": "2607.06742v1 — Linear-Quadratic Mean Field Games with Hybrid Local-Global Interactions on Manifolds",
+        "pitch": "The paper's model is a near-literal description of NBA defense: N players on a manifold (the court/strategy space) each optimizing a linear-quadratic cost while reacting to (a) a fixed local network — the nearby defenders/matchups — and (b) a sparsely- or densely-sampled global kernel — league-wide shot-selection/spacing tendencies. It proves the finite-player Nash equilibrium converges to a tractable mean-field limit with quantified error: O((log N)^-1/2) under sparse (log N-degree) interaction networks, polynomial-in-geometry rates under dense ones. Pitch: build a prototype MFG-based defensive-positioning/shot-quality signal for the nba-modeling/SharpLab stack — model each defender as an MFG agent balancing local matchup response against a global 'league tendency' kernel sampled each possession, and use the paper's convergence-rate result to justify how few players/possessions you need before the mean-field approximation (i.e. a cheap closed-form equilibrium) is trustworthy for live edge detection. Prototype tonight as a canvas swarm-sim (agents on a curved court-manifold reacting to local + randomly-sampled-global forces, visualizing equilibrium formation and the sparse-vs-dense convergence gap) before wiring it into real tracking data.",
+        "cool": 8,
+        "buildable": 5
+      },
+      {
+        "type": "project",
+        "title": "Olivier Watchdog: an almost-supermartingale convergence monitor for SGD",
+        "paper": "2607.02489v2 — Almost Supermartingale Extensions of Olivier's Theorem",
+        "pitch": "Olivier's 1827 theorem says: if a decreasing sequence of positive reals is summable, its terms must go to zero faster than 1/n·log(n) (specifically o(1/n)) — a free, deterministic speed limit. Combettes and Madariaga extend this to 'almost supermartingales', i.e. noisy, randomly-updating sequences like SGD/optimization loss trajectories, giving a probabilistic version of the same speed limit and applying it directly to stochastic iterative algorithms. Build a small tool (start as a single HTML page, graduate to a Python/PyTorch training-loop hook): feed it a loss sequence, have it check the summability precondition empirically and overlay the Olivier/almost-supermartingale o(1/n) envelope against the observed trajectory, flagging runs that are converging slower than the theorem guarantees they should (a real early-warning diagnostic, not just a vibes-based loss curve). Tonight's version: simulate a few canonical stochastic-approximation processes (SGD on a noisy quadratic, Robbins-Monro) in-browser, plot sample paths vs. the theoretical bound live as sliders change step-size/noise.",
+        "cool": 6,
+        "buildable": 7
+      },
+      {
+        "type": "demo",
+        "title": "The Averageness Machine",
+        "paper": "2602.13368v3 — The Influence of Width Ratios on Structural Beauty in Male Faces",
+        "pitch": "A single-page toy that procedurally draws a simple vector male face (SVG, no photos needed to avoid rights/ethics issues) and gives the user a slider for interocular-width-to-face-width ratio, exactly the variable the paper manipulates across 21 morphs. As you drag, the face redraws live; a 'rate this face' mode logs your clicks into a running histogram overlaid on the slider track, so after ~15 drags you visually converge on YOUR personal peak — and the paper's actual finding (attractiveness peaks near the population-average ratio, not an extreme 'ideal') gets replicated live in the visitor's own browser. End screen compares your peak to the paper's reported average-ratio optimum. Pure canvas/SVG math (face is just parametrized ellipses/paths driven by one ratio variable), completely self-contained, and it's the kind of thing that gets shared because everyone wants to see their own 'ideal ratio' number.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Nugget Soup: Watch Richardson Extrapolation Cure an Ill-Conditioned System",
+        "paper": "2606.30328v1 — Extrapolating from Regularised Solutions for Solving Ill-Conditioned Linear Systems in Machine Learning (proposes the 'autonugget' Richardson-extrapolation method)",
+        "pitch": "An interactive linear-algebra playground: generate a synthetic ill-conditioned matrix (slider for condition number, e.g. 10^2 to 10^10), show the true solution, then show what happens when you solve with a single ridge/'nugget' regularizer at various strengths (color-coded error curve, classic U-shaped bias-variance tradeoff) versus the paper's trick — solve at several nugget values and Richardson-extrapolate the sequence of solutions to cancel out the regularization bias. Live chart of error-vs-nugget for 'best single solve' vs 'extrapolated from garbage solves' converging faster to the true answer, literally showing the paper's core claim that 'wasted' regularized solves contain recoverable signal. All matrix math is small (<50x50) so plain JS/math.js can do SVD live in-browser with no backend.",
+        "cool": 7,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Order Flow Arena: Beat the Imbalance Bot",
+        "paper": "2311.02088v1 — Combining Deep Learning on Order Books with Reinforcement Learning for Profitable Trading",
+        "pitch": "A gamified limit-order-book ticker: simulate a synthetic order book (random-walk price + Poisson order arrivals with a built-in order-flow-imbalance signal, the exact feature the paper's deep learning model forecasts returns from). Show the live book depth as bars; the player clicks buy/sell/hold each tick trying to front-run price moves, then after 60 seconds reveal the 'imbalance bot's' P&L (a simple heuristic mimicking the paper's OFI-based multi-horizon forecast) next to yours. This makes tangible the paper's actual finding — OFI has real short-horizon predictive power in backtest, but the authors themselves admit it's 'not yet consistently profitable' after costs — by letting the player feel both the edge and the friction (add a spread/slippage toggle that visibly erodes both bot and human P&L). Good crossover with the poker/game angle you like: it's literally an information-asymmetry guessing game with a quantifiable edge.",
+        "cool": 8,
+        "buildable": 7
+      },
+      {
+        "type": "youtube",
+        "title": "The Evolutionary Traffic Jam: How Simple Genes Build Impossible Bottlenecks",
+        "paper": "2505.14166v2 — Functional bottlenecks can emerge from non-epistatic underlying traits",
+        "pitch": "A ~8 minute explainer built around one animated visual: a 2D fitness landscape (heatmap/terrain, generated from the paper's own global-epistasis model — fitness = nonlinear function of a simple additive trait) that starts smooth, then as you dial up the nonlinearity and tune the neutral/non-neutral mutation balance, two high-fitness basins pull apart and a narrow 'bottleneck' corridor of viable mutational paths appears between them — reproducing the paper's headline counterintuitive result that rugged, hard-to-cross fitness landscapes can emerge WITHOUT any epistasis (gene-gene interaction) at all, just from a nonlinear fitness function on additive traits. Strong hook: 'biologists assumed you need genes interacting to get evolutionary dead-ends — this paper shows you don't.' The terrain animation itself is a reusable HTML/canvas piece (heightmap driven by the paper's formula) that could also ship as a standalone interactive alongside the video.",
+        "cool": 7,
+        "buildable": 6
+      },
+      {
+        "type": "demo",
+        "title": "The Trade-off Trap: Why Mosquitoes Can't Evolve Their Way Out of Dengue",
+        "paper": "2511.04276 - Vector Traits Shape Disease Persistence: A Predator Prey Approach to Dengue",
+        "pitch": "The paper's key result is a predator-prey model showing mosquito vector competence (transmission potential) and immune capacity are locked in a trade-off -- vectors can evolve to transmit dengue better, but cannot simultaneously boost their own immunity, which is exactly what keeps dengue endemic. Build a single-page canvas demo: a 2D phase plane with axes 'vector competence' and 'immune capacity', a draggable point representing the mosquito population, and a hard constraint curve (the trade-off frontier) it can never cross into the 'immune escape' region. Below it, a live Lotka-Volterra-style simulation shows vector/pathogen populations oscillating into a stable endemic equilibrium whenever the point sits on the high-competence side of the curve, and collapsing toward eradication if you (unrealistically) drag it past the frontier. Sliders for temperature/season shift the frontier itself, showing why tropical climates are structurally worse. This makes an abstract evolutionary constraint viscerally 'feel' inescapable.",
+        "cool": 7,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Quantum Necklace: Feel Why 4th-Order Path Integrals Beat 2nd-Order",
+        "paper": "2605.14687 - Generalized Suzuki-Chin Factorization in Bosonic Path Integral Molecular Dynamics",
+        "pitch": "The paper's headline result is that their 4th-order Generalized Suzuki-Chin factorization converges 2-4x faster (fewer imaginary-time slices needed) than standard 2nd-order Trotter splitting for simulating bosons, via a cheap re-weighting trick that needs no new sampler. Build an interactive path-integral toy: visualize a quantum harmonic oscillator as a closed 'necklace' of P beads connected by springs (classic PIMD picture), let the user drag a slider for P (Trotter number) and toggle between 'primitive/2nd-order' vs 'Suzuki-Chin/4th-order' propagators. A live log-log plot shows energy-estimator error vs P for both methods, visibly demonstrating the steeper convergence slope and the 2-4x fewer-beads-needed result from the paper -- turning an obscure numerical-methods claim into something you can literally drag and watch converge.",
+        "cool": 8,
+        "buildable": 7
+      },
+      {
+        "type": "demo",
+        "title": "The Sweet Spot: Optimal Complexity in Smart Materials",
+        "paper": "2605.19795 - Function, Complexity and Thermodynamics in Adaptive and Intelligent Soft Matter Systems",
+        "pitch": "The paper's core finding is a non-monotonic relationship between a material's internal complexity (N) and how much stimulus-response information it can actually transmit (I3), with an optimal N* set by stimulus energy and thermal noise -- plus a striking efficiency gap where synthetic soft matter operates 10^18-10^20x above the Landauer-Berut thermodynamic floor versus only 10^5-10^8x for evolved biology. Build a two-panel interactive: panel 1 plots I3(N) live as you drag sliders for stimulus energy and thermal noise, with a marker that hunts for the shifting peak N* in real time (i.e. you can literally watch the 'too simple to respond / too complex to stay coherent' curve bend); panel 2 is a log-scale benchmarking plane (efficiency vs Landauer floor) with draggable points for 'synthetic gel', 'protein network', 'neuron', 'DNA circuit' that the user can place, instantly showing the 10-orders-of-magnitude biology-vs-synthetic gap the paper reports.",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "youtube",
+        "title": "Your Fancy AI Model Is Losing to a Linear Regression",
+        "paper": "2411.02796 (Specialized Foundation Models Struggle to Beat Supervised Baselines) + 2602.21648 (Multimodal Survival Modeling for Breast Cancer Risk)",
+        "pitch": "Two papers, one punchline. Paper 1 systematically shows that across genomics, satellite imaging, and time series, simple supervised models (a lightly modified wide ResNet/UNet) consistently match or beat the latest specialized foundation models. Paper 2 is an accidental real-world confirmation: on 5-year breast cancer risk from the METABRIC multimodal (clinical + transcriptomic + CNA) dataset, a plain elastic-net Cox regression (CoxNet) hits 96.6% AUC, beating the fancier gradient-boosted XGBoost model's 92.5% AUC. A tight 6-8 minute video essay: 'the AI hype cycle in specialized science' told through these two concrete, sourced numbers -- with a single bar-chart visual (AUC: CoxNet 96.6 vs XGBoost 92.5; and the FM-vs-baseline benchmark table) as the recurring visual anchor, ending on the paper's own advice: always benchmark against a boring, well-tuned baseline first.",
+        "cool": 7,
+        "buildable": 6
+      },
+      {
+        "type": "demo",
+        "title": "Sandpile Rewiring Explorer",
+        "paper": "2606.22092v1 — Effect of rewiring for a sandpile model on a directed network",
+        "pitch": "An interactive BTW (Bak-Tang-Wiesenfeld) sandpile running on a 1D or 2D lattice where a slider progressively 'rewires' the directed edges that toppled grains flow along. As you drag the slider you watch two live readouts: the avalanche-size histogram (which stays a stable power law all the way to 100% rewiring — criticality survives) and the Gini coefficient of per-node grain load, which is the paper's actual headline result: in 1D it snaps through a sharp discontinuous transition at ~85% rewired, while in 2D the same statistic just glides down smoothly. Nothing else in the system (avalanche stats, mean node distance) shows this transition — so the demo's whole point is 'the power law lies to you; watch THIS number instead.' A toggle switches between 1D and 2D mode so the user directly feels the sharp-vs-smooth contrast the paper reports.",
+        "cool": 7,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Heavy-Tailed Seed Dispersal Simulator",
+        "paper": "2606.21681v1 — Heavy-Tailed Dispersal Kernels from Stopped Subdiffusive Fractional Brownian Motion",
+        "pitch": "A tree at the center of the canvas releases thousands of 'seeds' that move via subdiffusive fractional Brownian motion (sticky, clumpy paths, Hurst<0.5) and freeze when an internal exponential clock fires. With a fixed stopping rate you get exactly what the paper flags as the failure mode: tight clumping near the tree but a thin exponential cutoff — no real long-distance dispersal. Flip a toggle to make each seed draw its own stopping rate from a Gamma distribution (the paper's actual fix) and watch the same tight central clump form, but now a visible minority of seeds go flying far past it — a live-updating landing-distance histogram morphs from thin-tailed to heavy-tailed in front of you, which is the paper's core mathematical result rendered as something you can watch happen.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "project",
+        "title": "sw-cdf: sort-free Sliced-Wasserstein micro-library + live demo",
+        "paper": "2606.30310v1 — Highly Data Parallelizable Estimation of the Sliced-Wasserstein Distance Using Cumulative Distribution Functions",
+        "pitch": "A tiny self-contained JS/typed-array library implementing the paper's CDF-based Sliced-Wasserstein estimator, which replaces the usual 'project, sort, compare quantiles' pipeline (an inherently sequential bottleneck) with evaluating and integrating empirical CDFs on a fixed grid — an operation that's embarrassingly parallel and, per the paper, aggregable across machines without ever sharing raw samples (built for federated learning). Ship it with a demo page: two draggable 2D point clouds, a rotating random projection line, and a real-time SW-distance readout computed two ways side-by-side — classic sort-based vs. the paper's CDF-grid method — with a Web Worker fan-out toggle that visibly shows the CDF method scaling across cores while the sort-based one doesn't.",
+        "cool": 6,
+        "buildable": 8
+      },
+      {
+        "type": "youtube",
+        "title": "The Age That Never Got Its Stamp",
+        "paper": "2604.06224v2 (Transientocene) crossed with 2606.22092v1 (sandpile rewiring)",
+        "pitch": "A video essay on why the IUGS formally voted down the 'Anthropocene' as a geological epoch in March 2024, and Bertolami's argument that the rejection is beside the point — human impact is everywhere, but it isn't one clean layer, it's continuous, self-reorganizing change (his proposed term: 'Transientocene'). The hook: borrow the sandpile-rewiring paper's actual finding as a physics-grounded visual metaphor — some systems (1D network) really do have one sharp moment where everything flips, while others (2D network, large-system limit) just gradually drift with no clean before/after line, even though both look 'critical' by every other measure. Use the sandpile demo's Gini-coefficient chart as literal on-screen b-roll for 'here's what a sharp epoch boundary looks like vs. what we've actually got.'",
+        "cool": 6.5,
+        "buildable": 4
+      },
+      {
+        "type": "demo",
+        "title": "Phase Sync Playground: Watch Spectral Recovery Hit Its Threshold",
+        "paper": "2607.06762 Spectral Initialization and Certification for Power System Angle Estimation",
+        "pitch": "The paper's actual claim is precise and visual: reduce power-grid voltage-angle estimation to phase synchronization, and prove a spectral method (top eigenvector of a noisy phase-connection graph) recovers the true angles to first order below a threshold set by measurement noise normalized against the classical 'observability margin' -- with exact recovery and a zero-duality-gap certificate in the noiseless case. Build a canvas/D3 demo: draw a grid graph (nodes = buses, edges = angle-difference measurements), let the user drag a noise slider and an edge-density (observability margin) slider. Live-recompute the top eigenvector of the Hermitian connection matrix each frame (small dense eigensolve, trivial in JS for <100 nodes), overlay recovered angles as arrows next to ground truth, and show a 'certified / not certified' badge flipping exactly at the theoretical threshold curve, plus the duality-gap number ticking toward zero as noise drops. This makes an otherwise dry convex-optimization proof into a literal watch-it-snap-into-focus toy.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Branching Trees vs. the Dyson Series: A Convergence Explorer",
+        "paper": "2607.03235 A Galton-Watson estimate for Dyson series",
+        "pitch": "The paper's real result: convergence of the tree-indexed integral series behind the quantum Dyson expansion is governed by the same generating-function machinery Galton and Watson used to compute branching-process extinction probability. Build a two-panel HTML demo. Left panel: a live Galton-Watson tree simulator where the user sets an offspring-distribution parameter that stands in for the interaction/coupling strength; below criticality trees die out (series converges), above it they explode (series diverges) -- classic critical-branching phase transition rendered as growing/shrinking tree animations. Right panel: the corresponding partial sums of the associated integral series plotted against the same coupling-strength slider, converging or blowing up in lockstep with the tree's survival probability. Watching the two panels snap between 'settles' and 'explodes' at the exact same slider value is a direct, felt demonstration of the paper's headline analogy -- that a 150-year-old probability tool certifies convergence of a cornerstone perturbative expansion in quantum dynamics.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Clebsch-Gordan Coupling on the Sphere: See the O(L^3) Speedup",
+        "paper": "2605.15073 Fast contracted Clebsch-Gordan tensor products for equivariant graph neural networks",
+        "pitch": "The paper's concrete claims: mapping the angular integral to a structured Gauss-Legendre/Fourier grid decouples radial and angular contractions, cutting contracted CG tensor products from O(L^4) to O(L^3), recovering the parity-odd channels via a surface-curl (spherical Poisson bracket) pairing that a plain pointwise product on the sphere can't reach, with measured wall-clock scaling near L^2 in the practical range. Build a WebGL/three.js demo showing two rotating spherical functions (real spherical harmonics up to l_max, adjustable) live-coupled via their Clebsch-Gordan product, rendered as a deforming heatmapped sphere; toggle 'symmetric grid product' vs 'surface-curl pairing' to visually show the odd-parity lobes appearing only in the second mode. Pair it with a small bar chart timing naive O(L^4) vs the O(L^3) contracted method as l_max increases, reproducing the paper's own benchmark curve in-browser. Gives ML-potential researchers a literal feel for what 'equivariant tensor product' means and why the fast algorithm matters.",
+        "cool": 7,
+        "buildable": 7
+      },
+      {
+        "type": "startup",
+        "title": "HalfFull/HalfEmpty Bankroll Optimizer for Sports Bettors",
+        "paper": "2312.10749 A new behavioral model for portfolio selection using the Half-Full/Half-Empty approach",
+        "pitch": "The paper generalizes the Half-Full/Half-Empty behavioral model to positive/negative lotteries, formulates portfolio selection as a nonconvex problem that's provably equivalent to a tractable Mixed-Integer Linear Program, and shows on real data that it beats Prospect Theory, pure risk-minimization, and equal-weighting on risk/return. That MILP-equivalence is the unlock: it means the model is actually solvable at scale with off-the-shelf solvers, unlike most behavioral-finance formulations. Pitch: port the HF/HE objective (two free parameters capturing how a bettor overweights favorable vs unfavorable outcomes) into a bankroll-allocation tool for a slate of simultaneous bets/props -- exactly the kind of multi-leg allocation problem SharpLab already tracks CLV on. MVP is a single-page tool: paste in a list of bets (implied prob, offered odds, correlation notes), drag the two HF/HE sliders, and watch optimal stake allocation shift against Kelly and equal-weight baselines in real time, solved client-side via a small MILP/LP relaxation (glpk.js or a hand-rolled branch-and-bound for the modest problem sizes involved). Sells as a personalization layer on top of standard Kelly staking for bettors who know they're loss-averse in a specific, parameterizable way.",
+        "cool": 7,
+        "buildable": 6
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Ideate"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "batch-1",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a578597a5c227e5a5",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786172577584,
+      "queuedAt": 1786172577550,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2608.01284v1 [cs.LG] Training nGPT\n- 2608.02056v1 [cs.AI] TBSG-Net: Temporal Bipartite Scene Graph Network for Fine-Grained Video Moment Retrieval\n- 2607.26397v1 [cs.CL] Knowledge before Rea…",
+      "lastProgressAt": 1786172653804,
+      "tokens": 23005,
+      "toolCalls": 7,
+      "durationMs": 76220,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Sphere vs. Flatland: Feel Why nGPT Halves Training Tokens\",\"paper\":\"2608.01284v1 - Training nGPT (normalized Transformer reaches equal validation loss with ~half the training tokens of standard AdamW at 14B params, via hyperspherical parameter/activation constraints + logit gradient preconditioning + log LR decay)\",\"pitch\":\"Single-file canvas toy: two side-by-side…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "batch-2",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "add21807d8375482a",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786172577585,
+      "queuedAt": 1786172577550,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.16424v1 [math.CO] Weighted Counting Formula and 2n/21 Lower Bound for Induced Subgraphs with Prescribed Degrees\n- 2607.06742v1 [math.OC] Linear-Quadratic Mean Field Games with Hybrid Lo…",
+      "lastProgressAt": 1786172663360,
+      "tokens": 23693,
+      "toolCalls": 8,
+      "durationMs": 85775,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"The 2n/21 Parity-Subgraph Finder\",\"paper\":\"2607.16424v1 — Weighted Counting Formula and 2n/21 Lower Bound for Induced Subgraphs with Prescribed Degrees\",\"pitch\":\"The paper proves that no matter how you label every vertex of a graph 'wants even degree' or 'wants odd degree', you can always find an induced subgraph on more than 2n/21 of the vertices where every vert…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "batch-3",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a0e8ae17e8e115349",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786172577586,
+      "queuedAt": 1786172577550,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2311.02088v1 [q-fin.TR] Combining Deep Learning on Order Books with Reinforcement Learning for Profitable Trading\n- 2602.00355v2 [econ.EM] Coping with Inductive Risk When Theories are Underd…",
+      "lastProgressAt": 1786172644857,
+      "tokens": 23445,
+      "toolCalls": 7,
+      "durationMs": 67271,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"The Averageness Machine\",\"paper\":\"2602.13368v3 — The Influence of Width Ratios on Structural Beauty in Male Faces\",\"pitch\":\"A single-page toy that procedurally draws a simple vector male face (SVG, no photos needed to avoid rights/ethics issues) and gives the user a slider for interocular-width-to-face-width ratio, exactly the variable the paper manipulates across…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "batch-4",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a5c3d6b7bb68a6f98",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786172577586,
+      "queuedAt": 1786172577550,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2411.02796v2 [q-bio.GN] Specialized Foundation Models Struggle to Beat Supervised Baselines\n- 2602.21648v1 [q-bio.QM] Multimodal Survival Modeling and Fairness-Aware Clinical Machine Learnin…",
+      "lastProgressAt": 1786172648613,
+      "tokens": 23430,
+      "toolCalls": 7,
+      "durationMs": 71027,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"The Trade-off Trap: Why Mosquitoes Can't Evolve Their Way Out of Dengue\",\"paper\":\"2511.04276 - Vector Traits Shape Disease Persistence: A Predator Prey Approach to Dengue\",\"pitch\":\"The paper's key result is a predator-prey model showing mosquito vector competence (transmission potential) and immune capacity are locked in a trade-off -- vectors can evolve to transm…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "batch-5",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a811bbc0bd17a3d8b",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786172577588,
+      "queuedAt": 1786172577550,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2606.22092v1 [cond-mat.stat-mech] Effect of rewiring for a sandpile model on a directed network\n- 2604.06224v2 [physics.soc-ph] The new Geological Age that never was or the multiple layers o…",
+      "lastProgressAt": 1786172650091,
+      "tokens": 23270,
+      "toolCalls": 7,
+      "durationMs": 72503,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Sandpile Rewiring Explorer\",\"paper\":\"2606.22092v1 — Effect of rewiring for a sandpile model on a directed network\",\"pitch\":\"An interactive BTW (Bak-Tang-Wiesenfeld) sandpile running on a 1D or 2D lattice where a slider progressively 'rewires' the directed edges that toppled grains flow along. As you drag the slider you watch two live readouts: the avalanche-size h…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "batch-6",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "aa455f631f113ac10",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786172577589,
+      "queuedAt": 1786172577551,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.03235v1 [math.PR] A Galton-Watson estimate for Dyson series\n- 2606.24919v2 [cond-mat.stat-mech] A Gauge-Theoretic Formulation of Nambu Non-equilibrium Thermodynamics\n- 2605.15073v2 [phy…",
+      "lastProgressAt": 1786172652712,
+      "tokens": 22755,
+      "toolCalls": 4,
+      "durationMs": 75123,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Phase Sync Playground: Watch Spectral Recovery Hit Its Threshold\",\"paper\":\"2607.06762 Spectral Initialization and Certification for Power System Angle Estimation\",\"pitch\":\"The paper's actual claim is precise and visual: reduce power-grid voltage-angle estimation to phase synchronization, and prove a spectral method (top eigenvector of a noisy phase-connection grap…"
+    }
+  ],
+  "totalTokens": 139598,
+  "totalToolCalls": 40
+}
