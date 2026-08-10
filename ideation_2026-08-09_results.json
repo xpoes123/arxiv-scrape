@@ -1,0 +1,196 @@
+{
+  "ideas": [
+    {
+      "type": "demo",
+      "title": "C8-Free Planar Graph Puzzle",
+      "paper": "2607.16103 - An improved upper bound for the planar Tur\u00e1n number of C8",
+      "pitch": "Single-file canvas toy: place vertices, draw edges, engine blocks any move that (a) breaks planarity (edge crossing) or (b) creates an 8-cycle anywhere in the graph. A live readout tracks your edges/(n-2) ratio against the paper's newly-proved ceiling of 69/25 \u2248 2.76 and the old best-known bound of 323/108 \u2248 2.99 (which only held for n\u226527, vs the new proof's n\u22658). The 'game' is literally trying to approach the extremal construction by hand, turning an 8-page extremal graph theory proof into a felt constraint puzzle. Cycle-detection (looking specifically for length-8 cycles through any newly added edge) and a planarity check via edge-segment intersection are both a few hundred lines of vanilla JS/canvas.",
+      "cool": 6,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "How Rough Is Volatility? (Hurst slider)",
+      "paper": "2311.04727 - Forecasting Volatility with Machine Learning and Rough Volatility: Example from the Crypto-Winter",
+      "pitch": "The paper's headline surprise is that a parsimonious rough-volatility model with only 5 non-asset-specific parameters matched a universal LSTM's forecasts through the 2022 crypto winter -- because real vol paths are 'rough' (Hurst exponent H far below the classical H=0.5 Brownian-motion assumption). Build an HTML page that simulates fractional Brownian motion paths client-side (midpoint-displacement or a small Davies-Harte-style approximation) with a draggable H slider from 0.05 (crypto-rough, jagged) to 0.5 (textbook-smooth). Side-by-side, overlay a smoothed 'black-box LSTM-style' curve so the visual punchline is: the jagged 5-parameter path and the smooth heavy model end up tracking the same realized vol -- dramatizing the paper's 'universality of the volatility-formation mechanism' claim in one glance.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "project",
+      "title": "Diversification-Return Frontier Explorer",
+      "paper": "2312.09707 - A return-diversification approach to portfolio selection",
+      "pitch": "The paper proves the max-diversification approach collapses to volatility Risk Parity when assets are equicorrelated, and shows empirically that a bi-objective diversification+return portfolio beats either diversification-only or classic mean-variance portfolios on 5 real datasets. Build a small web tool: user enters (or drags) a correlation matrix and expected returns for a handful of tickers/crypto assets; it plots the classic mean-variance frontier next to the diversification-return frontier (using MAD/CVaR/Expectile risk measures as in the paper) via a lightweight convex/QP solver in JS. Dragging correlations toward a uniform value visibly converges the diversification-frontier weights onto the Risk-Parity weights, letting you *see* the paper's equivalence theorem happen live. Natural extension into a SharpLab-style quant sandbox.",
+      "cool": 6,
+      "buildable": 6
+    },
+    {
+      "type": "startup",
+      "title": "Parsimony Terminal: 5-parameter vol + diversified allocation",
+      "paper": "2311.04727 + 2312.09707 combined",
+      "pitch": "Retail/crypto vol-forecasting SaaS today is mostly black-box ML sold at hedge-fund prices. Pitch a slim terminal that ships the rough-vol paper's 5-parameter, non-asset-specific forecaster (near-LSTM accuracy per the paper's crypto-winter test, but auditable and near-zero compute) feeding straight into the return-diversification allocator from the portfolio paper, which provably reduces to simple Risk Parity in calm correlation regimes so users can sanity-check every allocation by hand. Sell as 'explainable in 5 numbers, no GPU' -- directly extends David's existing SharpLab/NBA-props edge-modeling throughline into a general quant-terminal product line. Real build, not a tonight demo: needs live price/vol data feeds, a backtest harness, and a hosted allocator, so buildable score reflects an MVP roadmap rather than a single file.",
+      "cool": 7,
+      "buildable": 4
+    },
+    {
+      "type": "demo",
+      "title": "Order Matters: A Growing Neural Text Automaton",
+      "paper": "2608.02050v1 - TextNCA: Neural Cellular Automata for Language Modeling via Hierarchical Local Attention",
+      "pitch": "The paper's real finding isn't that NCAs beat Transformers (they don't: 60.3 PPL vs 44.7 for a 12-layer Transformer at similar params) \u2014 it's that the *narrow-to-wide window schedule* (w=8\u219232\u2192128) is what makes the local-attention cascade work at all, since scrambling that order costs 16.7-70.8 PPL. Build a single-page toy: a small char-level NCA (tiny weights, pretrained offline on a short corpus like Shakespeare or Wikipedia snippets, baked into the HTML as JSON) rendered as a grid of glowing cells that iteratively refine toward coherent text. A slider lets the user pick the window order (8\u219232\u2192128 vs scrambled) and watch generation quality visibly degrade in real time on the same seed text \u2014 literally showing the paper's ablation happen in front of you, in the style of Mordvintsev's 'Growing Neural Cellular Automata' visuals but for text.",
+      "cool": 8,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "Localization Playground: Feel the Mobility Edge",
+      "paper": "2607.02446v2 - On a Rosenzweig-Porter-type model",
+      "pitch": "The paper proves uniform local laws for H = H0 + lambda*W (Wigner deformation of an arbitrary Hermitian H0), tracking how eigenvector localization interpolates from ordered to fully random and documenting a mobility edge plus a striking 're-entrant localization' phenomenon (states that localize, delocalize, then relocalize as lambda or energy shifts). Build a single HTML file that generates small (N~150) random matrices H0 + lambda*W client-side, diagonalizes them with an in-browser Jacobi eigensolver, and renders a live heatmap of inverse participation ratio (IPR) vs. eigenvalue index as you drag a lambda slider. Users watch the mobility edge sweep across the spectrum and can find the re-entrant band with their own hands \u2014 a genuine 'feel the theorem' toy for a fairly abstract random matrix result.",
+      "cool": 8,
+      "buildable": 7
+    },
+    {
+      "type": "youtube",
+      "title": "Why Your AI Thinks Harps Are for Girls and Drums Are for Boys",
+      "paper": "2607.26355v1 - Symphony of Bias: Exploring Gender Associations with Musical Instruments in Multimodal LLMs",
+      "pitch": "The paper audited 10 multimodal models across 22 instruments and three input modalities (text, vision, audio), finding 92% of instrument-level associations align with known social stereotypes -- and that the bias is weakest in audio, stronger in vision, strongest in text, meaning the same model can sound less biased than it looks or reads. A tight 6-8 minute explainer: play the same instrument prompt into a model as text, an image, and an audio clip side by side, show the gendered outputs diverge, then reveal the paper's modality ranking as the punchline. Strong hook (harp vs. drums), a clean visual (a 'bias by modality' bar chart), and an easy narrative arc.",
+      "cool": 7,
+      "buildable": 8
+    },
+    {
+      "type": "project",
+      "title": "Bias Symphony Auditor",
+      "paper": "2607.26355v1 - Symphony of Bias: Exploring Gender Associations with Musical Instruments in Multimodal LLMs",
+      "pitch": "Turn the paper's methodology into a reusable audit CLI/library: given API keys for any set of multimodal LLMs, run the same parallel text/image/audio probe over the 22-instrument, 3-gender-category battery, compute per-modality stereotype-alignment scores against the paper's published baseline (92% overall, with the text > vision > audio ordering), and spit out a comparison report/chart. Useful as a lightweight, paper-grounded bias-regression test that a model provider or app builder could run against new model versions before shipping, rather than a one-off academic result.",
+      "cool": 6,
+      "buildable": 5
+    },
+    {
+      "type": "demo",
+      "title": "Curvature Mass Playground",
+      "paper": "2605.19183 \u2014 Mass Generation from Embedding Geometry in Surface Nematics",
+      "pitch": "Single-file three.js toy: morph a parametric mesh between a flat plane, sphere, saddle, and torus-neck via sliders. At every vertex, numerically estimate the extrinsic curvature tensor K_ab from the surface's second fundamental form and color the mesh by the paper's actual result m\u00b2 = K_ab K^ab \u2014 the 'geometric mass' a nematic excitation acquires purely from being confined to that curved surface. Drop a draggable 'defect' marker on the surface and a live side chart plots its effective mass spiking as you drag it toward high-curvature necks/saddle points vs. going flat (mass -> 0) on the plane. This turns an abstract differential-geometry claim (curvature literally engineers a mass term) into something you can feel by dragging a dot around a torus neck.",
+      "cool": 9,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Factorization Convergence Race",
+      "paper": "2605.14687 \u2014 Generalized Suzuki-Chin Factorization in Bosonic Path Integral Molecular Dynamics",
+      "pitch": "Canvas demo running two path-integral 'bead necklace' simulations side by side for a particle in a harmonic/double-well potential: one using the standard 2nd-order primitive Trotter split, one re-weighted with the paper's 4th-order Generalized Suzuki-Chin factorization (applied as a post-hoc reweighting factor on the same sampled paths, exactly as the paper does it). Animate both energy-estimator curves converging as Trotter number P increases, with the GSF curve visibly hitting the exact analytic energy at 2-4x fewer beads than the primitive one \u2014 reproducing the paper's actual headline speedup number live in the browser. (Simplification note: uses a single distinguishable quantum particle rather than full bosonic exchange sampling, but the convergence-rate comparison is the real physics the paper measures.)",
+      "cool": 7,
+      "buildable": 6
+    },
+    {
+      "type": "project",
+      "title": "DP-Sieve: a fast exact privacy accountant",
+      "paper": "2606.29835 \u2014 A Sieve-Accelerated Quadrature Method for Exact Privacy Accounting in the 2020 U.S. Decennial Census",
+      "pitch": "Open-source Python library reimplementing the paper's core trick \u2014 turning privacy-loss-distribution accounting into a DFT-based quadrature that exploits exponential convergence for periodic functions, plus a 'sieve' step that discards negligible quadrature nodes before the FFT \u2014 as a drop-in accelerator for existing tools like Google's dp_accounting or Opacus. Ship a benchmark script that composes many discrete-Gaussian mechanism calls (mimicking a census-style tabulation or an ML training run's per-step privacy accounting) and reproduces the paper's claimed ~1,824x speedup over naive composition, pitched at ML privacy engineers and stats agencies who currently eat multi-hour accounting runs.",
+      "cool": 6,
+      "buildable": 5
+    },
+    {
+      "type": "youtube",
+      "title": "Geologists Just Killed the Anthropocene \u2014 Here's What Comes Next",
+      "paper": "2604.06224 \u2014 The new Geological Age that never was or the multiple layers of the Transientocene",
+      "pitch": "Video essay walking through the actual timeline: the Anthropocene Working Group's proposal, the IUGS's March 2024 vote rejecting it as a formal epoch, and then the paper's real counter-argument \u2014 that human impact on Earth systems is inherently non-stationary and keeps redefining its own boundary conditions, so trying to pin it to a single golden-spike layer is a category error. Use overlaid data (CO2, urbanization, biodiversity loss curves) to visually argue the paper's 'Transientocene' framing: not a fixed epoch, but the geological age of continuous, unfinished change. Good hook for a science-communication channel already covering climate/geology.",
+      "cool": 6,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Life-Space: an interactive map of what counts as \"alive\"",
+      "paper": "2505.15849v2 \u2014 What Lives? A meta-analysis of diverse opinions on the definition of life",
+      "pitch": "The paper's actual result isn't a definition of life \u2014 it's that when you turn dozens of expert definitions into feature vectors and cluster/t-SNE them, life turns out to be a *continuous landscape* of themes (metabolism, reproduction, boundary, evolution, information-processing, etc.) rather than a binary category. Build a single-page toy that recreates that landscape: precompute a small 2D embedding (using a handful of thematic axes pulled straight from the paper's clusters) and place ~25 borderline entities on it \u2014 virus, fire, prion, coral, AI chatbot, self-replicating 3D-printer, ecosystem, a frozen embryo, a beehive, a Von Neumann probe. Let the user drag a slider-defined 'entity' (toggle which criteria it satisfies) and watch a dot glide across the same latent space, landing nearest to its closest real cluster (e.g. 'fire' sits near 'virus' \u2014 high metabolism/reproduction, low boundary/evolution). Ends with 'you just recreated a real 2026 bioscience meta-analysis result.'",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Feel the Edge: order-flow imbalance vs. the real world",
+      "paper": "2311.02088v1 \u2014 Combining Deep Learning on Order Books with Reinforcement Learning for Profitable Trading",
+      "pitch": "The paper's real finding is a gap: order-flow-imbalance (OFI) signals reliably forecast very short-horizon returns in backtest, across 15 agent/instrument combos, but the edge shrinks or disappears once slippage and variable spread are applied live. Build a client-side synthetic limit-order-book simulator (canvas) that streams a fake but realistic order flow, computes OFI in real time, and shows a 'predicted next-tick move' overlay next to the actual tick. Add a slider for 'spread + slippage cost' \u2014 as the user drags it up, watch the theoretically-profitable OFI-following strategy's equity curve flip from consistently positive to flat/negative, live, in front of them. This is literally the paper's headline caveat ('proves potential but needs work for consistently profitable trading') made tangible in 30 seconds.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "startup",
+      "title": "ESG Consensus \u2014 a robo-optimizer that resolves rating-agency disagreement",
+      "paper": "2312.10739v1 \u2014 Managing ESG Ratings Disagreement in Sustainable Portfolio Selection",
+      "pitch": "MSCI, Sustainalytics, and Refinitiv routinely disagree on a company's ESG score by huge margins, which is exactly the problem this paper solves: instead of picking one ratings vendor, it folds risk + return + a multi-agency ESG dimension into one convex quadratic program (via a 'k-sum' reformulation) that stays computationally tractable and demonstrably improves portfolio robustness on real data. Pitch: a SaaS for RIAs and ETF issuers who need a defensible, auditable 'sustainable' portfolio construction process (increasingly required post-SEC greenwashing enforcement) \u2014 ingest scores from 3-5 agencies, run the k-sum QP, output an efficient frontier that's provably robust to any single agency's bias, with a compliance-ready disagreement report. A minimal HTML demo version (small QP solved via projected gradient descent in-browser on 10 toy stocks with 3 fake rating sources) could sell the concept in one sitting.",
+      "cool": 6,
+      "buildable": 5
+    },
+    {
+      "type": "project",
+      "title": "Cloak-Video: temporally-consistent adversarial protection against AI face/video cloning",
+      "paper": "2607.13336v1 \u2014 Delving into the Temporal Challenges of Unified Video Protection Against Image-to-Video and Fine-Tuning-based Customization",
+      "pitch": "The paper's actual contribution is showing that existing anti-deepfake cloaking (Glaze/Fawkes-style) fails on video specifically because per-frame perturbations get washed out by the video VAE's temporal compression and don't survive editing attacks \u2014 and their fix (TC-UAP: a single perturbation optimized across sliding windows of multiple videos, with a surrogate attack loss) beats prior methods on both reference-based and fine-tuning-based customization. Build an open-source CLI/library that's the 'Glaze for video': given a short clip, apply a lightweight temporally-consistent perturbation before upload to TikTok/Instagram so it resists being used as identity-cloning training data for image-to-video and LoRA-style customization pipelines. Real, timely utility for creators worried about AI face-swap abuse \u2014 pitch as a plugin for OBS/CapCut export, or a hosted 'cloak my video' web service.",
+      "cool": 7,
+      "buildable": 4
+    },
+    {
+      "type": "demo",
+      "title": "Shift Scope: the moment-detection scale law you can feel",
+      "paper": "2608.01268 \u2014 How fine a change can moments see? A scale law for detecting distribution shift, with a kernel calibration rule",
+      "pitch": "The paper proves a hard limit: certifying a distribution-shift feature of spatial scale \u03b5 carrying mass fraction f requires a polynomial test of degree N* \u2265 log(1/f)/(2\u03b5) \u2014 and that the optimal witness is an RBF/MMD kernel with bandwidth \u03c3* = \u03b5 (empirically \u03c3*/\u03b5 median 1.12 across 26 real settings, AUC \u2265 0.95). Build a single-page demo: two overlapping 1D/2D point clouds (baseline vs. 'shifted'), with sliders for the bump's width \u03b5 and mass f. Live-compute low-order moment tests (mean/variance/skew) and an RBF-MMD statistic as you sweep the kernel bandwidth slider \u2014 watch moment tests go blind exactly where the formula predicts, and watch the MMD detection curve peak right at \u03c3=\u03b5. A second panel plots N*(\u03b5,f) from the formula against a 'shift detected: yes/no' indicator so the user *feels* the log(1/f)/(2\u03b5) wall instead of reading it. This is a genuinely rare thing: a paper with an exact, checkable, interactive prediction.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Feasibility Cliff: watch an ecosystem (or portfolio) go infeasible before it goes unstable",
+      "paper": "2511.04327 \u2014 Feasibility and Single Parameter Scaling of Extinctions in Large Ecological Communities",
+      "pitch": "The paper's punchline is counterintuitive and precise: in random Lotka-Volterra communities, feasibility (all species having positive equilibrium abundance) breaks down *before* dynamical stability does, as species count N grows \u2014 and the resulting extinction-count distribution collapses onto a single-parameter scaling curve via random matrix theory. Build a demo with a slider for N (5-150) and interaction strength/variance; on each change, generate a random interaction matrix client-side, solve the linear equilibrium system (Gaussian elimination in vanilla JS is fine at this N), and animate species abundances as bars, coloring any that go negative as 'extinct.' A second live plot shows P(n extinctions) rescaled by the paper's single parameter, and you watch curves for different N/variance combos collapse onto one universal shape as you scrub. Reframe the caption as 'this is also why over-leveraged portfolios and packed supply chains hit infeasibility before they visibly destabilize' \u2014 same math, more relatable stakes, good hook for a SharpLab-adjacent audience.",
+      "cool": 8,
+      "buildable": 7
+    },
+    {
+      "type": "project",
+      "title": "Privileged-Data Distillation: train rich, deploy cheap \u2014 ported from oncology to NBA props",
+      "paper": "2411.00749 \u2014 PathoGen-X: A Cross-Modal Genomic Feature Trans-Align Network for Enhanced Survival Prediction from Histopathology Images (crossed with the user's nba-props terminal work)",
+      "pitch": "PathoGen-X's real trick isn't cancer-specific: it trains a transformer to translate cheap-modality features (histopathology images) into the space of an expensive/rare modality (genomics) *without* needing a shared latent space or lots of paired samples, so at inference time you only need the cheap modality but still get a boost from the expensive one baked in during training \u2014 validated across TCGA-BRCA, TCGA-LUAD, TCGA-GBM. Port the exact recipe to the user's NBA props edge modeling: train a trans-align network mapping box-score-only games into the feature space of tracking-derived features (spacing, closeout speed, shot quality \u2014 available for recent seasons only), then deploy on any historical or non-tracked game using box scores alone. Ship as a small reusable library ('trans-align' PyTorch module + training recipe) so the pattern is swappable to any 'expensive-features-at-train, cheap-features-at-inference' problem \u2014 a genuinely general and underused idea worth having in the toolbox before the next feasibility push on props modeling.",
+      "cool": 8,
+      "buildable": 5
+    },
+    {
+      "type": "youtube",
+      "title": "Why some seeds fly a mile and 99% land a foot away \u2014 the Gamma-stopped random walk",
+      "paper": "2606.21681 \u2014 Heavy-Tailed Dispersal Kernels from Stopped Subdiffusive Fractional Brownian Motion",
+      "pitch": "The mechanism here is a clean, animatable surprise: subdiffusive fractional Brownian motion (particles that move in tight, correlated clumps) normally stops after an exponentially-distributed time, which gives dispersal kernels with thin, exponential tails \u2014 too thin to explain real long-distance seed/spore dispersal. The paper's fix: make the *stopping rate itself* Gamma-distributed across particles (i.e., a mixture of exponentials), which keeps the tight local clumping (subdiffusion still looks the same up close) but produces genuinely heavy power-law tails at long range. Build the video around a live particle-simulation engine (canvas, a few hundred subdiffusive walkers) side-by-side: left panel fixed stopping rate (tails vanish), right panel Gamma-distributed stopping rate (rare walkers just keep going, tails persist) \u2014 same local motion, wildly different long-range histogram. That side-by-side *is* the whole paper in one visual, and it directly explains a real biological mystery (long-tail seed dispersal) that ecologists still argue about.",
+      "cool": 9,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "AdaGrad's Composite Blind Spot",
+      "paper": "2606.29893v1 \u2014 AdaGrad does not adapt to H\u00f6lder-smoothness for composite objectives",
+      "pitch": "The paper's actual counterexample: for composite objectives f(x)+g(x) (smooth H\u00f6lder-\u03bd term + nonsmooth term like an L1 kink), AdaGrad's accumulated squared-gradient sum keeps growing because \u2207f doesn't vanish at the optimum (the kink sits off the smooth term's own minimum), so AdaGrad's step size decays too fast and it loses the O(n^-(1+\u03bd)/2) rate classical theory predicts for plain H\u00f6lder-smooth problems. A fixed stepsize scheme based on gradient mapping / successive gradient differences avoids this. Build a one-file demo: user drags sliders for the H\u00f6lder exponent \u03bd and regularizer strength \u03bb on a live f(x)=|x-a|^{1+\u03bd}+\u03bb|x| landscape, runs vanilla AdaGrad step-by-step next to the gradient-mapping-fixed variant, and watches two log-log convergence traces diverge in real time \u2014 literally reconstructing the paper's counterexample and showing 'this famous optimizer silently stalls on regularized problems.'",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Active Insertion Chamber",
+      "paper": "2605.19026v1 \u2014 Work to insert a particle into an active fluid",
+      "pitch": "The paper shows the work to insert a particle into an active (self-propelled) fluid is protocol-dependent (unlike equilibrium chemical potential), decreases as activity increases, and stays non-Gaussian/skewed even for slow quasi-static insertion. Build a canvas simulation of active Brownian particles (self-propelled disks with persistent random reorientation, WCA-style soft repulsion) swarming in a box. A probe cavity grows at a user-controlled rate (the 'protocol' slider) pushing particles aside; each trial logs the work done against particle pressure into a live-updating histogram, visibly skewed rather than bell-shaped. A second slider for self-propulsion speed/persistence shows the average work bar dropping as activity rises \u2014 literally reproducing the paper's headline qualitative result inside a mesmerizing swarm visual.",
+      "cool": 8.5,
+      "buildable": 7
+    },
+    {
+      "type": "youtube",
+      "title": "Why Prime Numbers and Closed Geodesics Are Secretly the Same Object",
+      "paper": "2606.25903v1 \u2014 Chebotarev geodesic theorem: split case",
+      "pitch": "The paper proves a geodesic analogue of the Chebotarev density theorem: primitive closed geodesics on \u0393\\H (congruence subgroups of SL2(Z)) equidistribute across Frobenius/congruence classes with quantitative error exponent 25/36+\u03b5, which sharpens the classical prime geodesic theorem's error term for any congruence subgroup. Script a video building the analogy step by step \u2014 primes splitting in number field extensions falling into Frobenius conjugacy classes (classical Chebotarev), then swapping in closed geodesics winding around a hyperbolic surface as the 'primes.' Anchor it with a companion browser visualization (Poincar\u00e9-disk fundamental domain for PSL2(Z) with geodesic arcs drawn as circular arcs orthogonal to the boundary, colored by class, with a live bar-chart race showing the classes equidistributing as more geodesics are added) \u2014 buildable tonight as the demo asset even if full video production takes longer.",
+      "cool": 9,
+      "buildable": 4
+    },
+    {
+      "type": "demo",
+      "title": "Two Clocks: Fast Instinct, Slow Correction",
+      "paper": "2602.11478v3 \u2014 Defining causal mechanism in dual process theory and two types of feedback control",
+      "pitch": "The paper's actual mechanism: dual-process cognition (System 1 / System 2) emerges from two independent feedback-error-reduction loops operating at different causal levels \u2014 a Type 1 loop that discretely selects among candidate 'equations' (heuristics) at the aggregate/supervenient level, and a Type 2 loop that continuously nudges neuron/synapse-level parameters to reduce error within whichever equation is currently selected. Build a browser task (framed as a basketball free-throw power/angle toy) with two toggleable control loops running simultaneously: a Type-1 layer that jumps between a handful of discrete 'shot templates' on a slow schedule, and a Type-2 layer doing continuous small gradient-style corrections every frame. Live error graphs for each loop let the user feel Type-1's sudden 'aha' performance jumps versus Type-2's smooth gradual drift, and toggling either loop off breaks the characteristic dual-process signature \u2014 literalizing the paper's inter-level causation claim as something you can play with.",
+      "cool": 6.5,
+      "buildable": 8
+    }
+  ]
+}

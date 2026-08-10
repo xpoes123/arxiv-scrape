@@ -1,5 +1,45 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-09 — Curvature Mass Playground (autonomous run, judged/published on 2026-08-10)
+- **Note:** same stall pattern as 08-07/08-08 — ideation and the 3-way build-off completed but judging, publishing,
+  and logging never ran (stray `ideation_2026-08-09.js`/`_results.json`/`buildoff_2026-08-09.js` left uncommitted).
+  Picked up and finished at the start of the 2026-08-10 session: judged the existing builds, published, logged.
+- **Fetch:** 176 fresh papers across 22 categories. 30 sampled for ideation, 6 batches, 24 ideas generated.
+- **Top per category:**
+  - project — **Privileged-Data Distillation: train rich, deploy cheap** (13): ports a cancer-imaging trick — train
+    on a cheap+expensive modality pair, deploy on the cheap modality alone — onto the user's NBA props edge modeling,
+    box scores standing in for tracking data (arXiv:2411.00749)
+  - startup — **Parsimony Terminal** (11): 5-parameter, near-LSTM-accuracy vol forecaster feeding a
+    return-diversification allocator that collapses to Risk Parity in calm regimes — "explainable in 5 numbers, no
+    GPU" (arXiv:2311.04727 + arXiv:2312.09707)
+  - youtube — **Why some seeds fly a mile and 99% land a foot away** (15): Gamma-stopped subdiffusive fractional
+    Brownian motion turns thin exponential dispersal tails into real power-law tails, animatable as one side-by-side
+    particle sim (arXiv:2606.21681)
+  - demo — 3 selected for build-off: **Curvature Mass Playground** (arXiv:2605.19183, top score c9×b8),
+    **Shift Scope** (arXiv:2608.01268), **Life-Space** (arXiv:2505.15849)
+- **Built (3-way build-off):**
+  - A — **Curvature Mass Playground** (arXiv:2605.19183, a surface nematic picks up an effective mass term
+    m²=K_ab K^ab purely from the extrinsic curvature of the surface it's embedded in): a real finite-difference
+    second-fundamental-form computation on a three.js mesh morphing between plane/sphere/saddle/torus-neck, with a
+    draggable defect marker whose live-computed mass spikes near curvature and vanishes on the flat plane.
+  - B — **Shift Scope** (arXiv:2608.01268, certifying a distribution-shift feature of scale ε needs test degree
+    N*≥log(1/f)/(2ε), optimal MMD kernel bandwidth σ*=ε, median σ*/ε=1.12 across 26 real settings): live moment
+    tests and an MMD statistic on real sampled point clouds, sliders for ε/f/bandwidth.
+  - C — **Life-Space** (arXiv:2505.15849, ~68 expert life-definitions clustered into a continuous thematic
+    landscape rather than a binary category): a live 2D MDS-style embedding of ~25 borderline entities
+    (virus/fire/AI chatbot/Von Neumann probe) with draggable custom-entity sliders.
+  - **Judge:** opened and validated all three (balanced script tags, resolvable CDN URLs + matching SRI hashes, all
+    referenced DOM ids present), none disqualified; cross-checked claims against each paper's abstract, no
+    fabrications (B slightly conflated which method achieves two of its cited figures; C's specific numbers weren't
+    independently confirmable from the abstract alone but are consistent with the described methodology). Scores
+    (wow/interactivity/polish/fidelity): A 9/9/9/10=37, B 7/8/8/8=31, C 8/9/9/7=33. **A (Curvature Mass) won** — the
+    only build doing real, live differential geometry on a draggable 3D mesh, and the tightest match to its paper's
+    stated formula.
+- **Published:** demo at `demos/2026-08-09-curvature-mass.html`, brief at `2026-08-09-nightly.html`, both mirrored
+  into `david-share` and registered in its manifest. Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-09-curvature-mass.html and .../arxiv-scrape/2026-08-09-nightly.html
+  once the VPS pulls.
+
 ## 2026-08-08 — Phase Sync Playground (autonomous run, judged/published late on 2026-08-09)
 - **Note:** the 2026-08-08 session got through ideation and the 3-way build-off but stopped before judging,
   publishing, or logging (stray `ideation_2026-08-08.js`/`_results.json`/`buildoff_2026-08-08.js` left uncommitted).
