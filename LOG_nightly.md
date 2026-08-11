@@ -1,5 +1,46 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-10 — Chase on a Random Graph (autonomous run, judged/published on 2026-08-11)
+- **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed but judging,
+  publishing, and logging never ran (stray `ideation_2026-08-10.js`/`_results.json`/`buildoff_2026-08-10.js`
+  left uncommitted). Picked up and finished at the start of the 2026-08-11 session: judged the existing
+  builds, published, logged.
+- **Fetch:** fresh papers across categories, 30 sampled for ideation, 6 batches, 24 ideas generated.
+- **Top per category:**
+  - project — **Skill Supply-Chain Auditor** (cool 7, buildable 8): static scanner for LLM agent "skills"
+    covering the paper's attack taxonomy (prompt-injection-via-description, over-broad permissions,
+    malicious updates) before a skill is trusted in an agent loop (arXiv:2607.13987)
+  - startup — **npm firewall powered by judge-agent triage** (cool 6, buildable 5): registry-proxy firewall
+    running every install through the paper's multi-agent malicious-package triage pipeline
+    (arXiv:2607.13965)
+  - youtube — **AI Already Runs Drug Discovery Autonomously — So Why Won't We Let It Touch Our Paycheck?**
+    (cool 7, buildable 4): maps the inconsistent line between where humans still insist on manual control
+    in AI finance vs. where autonomy is already ceded elsewhere (arXiv:2608.02100)
+  - demo — 3 selected for build-off: **Sparse Brain** (arXiv:2607.27591, cool 8×buildable 10), **Chase on a
+    Random Graph** (arXiv:2607.04002, cool 8×buildable 9), **Flocking Edge Modes** (arXiv:2606.24926, cool
+    9×buildable 8)
+- **Built (3-way build-off):**
+  - A — **Sparse Brain** (arXiv:2607.27591, FFN activation sparsity from approximate-intermediate magnitude
+    ranking, 1.99x speedup at 70% sparsity): live linear algebra on a simulated 1024-channel SwiGLU FFN,
+    sparsity slider driving a real cosine-sim/L2-error readout and speedup gauge.
+  - B — **Flocking Edge Modes** (arXiv:2606.24926, frustrated Vicsek-Kuramoto active particles reproducing
+    non-Hermitian topological edge transport): live swarm sim with a frustration slider, edge-circulation
+    sparkline, drag-to-kick interaction.
+  - C — **Chase on a Random Graph** (arXiv:2607.04002, recurrent-vs-transient dichotomy for two random
+    walkers on unimodular random graphs): real Bowyer-Watson Delaunay triangulation + Gabriel filter +
+    growing preferential-attachment graph with force layout, animated pursuer/evader walkers, voter-model
+    mode.
+  - **Judge:** all three verified valid, self-contained, dependency-free HTML/JS (balanced tags, `node
+    --check` clean, referenced DOM ids present); none disqualified. Scores (wow/interactivity/polish/
+    fidelity): A 7/7/9/9=32, B 9/9/8/8=34, C 9/9/9/9=36. **C (Chase on a Random Graph) won** — the most
+    technically ambitious build (real computational geometry + a live growing scale-free graph) while being
+    the most rigorously honest about where its finite-graph demo diverges from the paper's infinite-graph
+    theorem.
+- **Published:** demo at `demos/2026-08-10-chase-random-graph.html`, brief at `2026-08-10-nightly.html`,
+  both mirrored into `david-share` and registered in its manifest. Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-10-chase-random-graph.html and
+  .../arxiv-scrape/2026-08-10-nightly.html once the VPS pulls.
+
 ## 2026-08-09 — Curvature Mass Playground (autonomous run, judged/published on 2026-08-10)
 - **Note:** same stall pattern as 08-07/08-08 — ideation and the 3-way build-off completed but judging, publishing,
   and logging never ran (stray `ideation_2026-08-09.js`/`_results.json`/`buildoff_2026-08-09.js` left uncommitted).

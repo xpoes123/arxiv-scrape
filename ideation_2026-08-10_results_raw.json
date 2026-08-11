@@ -1,0 +1,332 @@
+{
+  "summary": "Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5",
+  "agentCount": 6,
+  "logs": [
+    "24 ideas generated across 6 batches"
+  ],
+  "result": {
+    "ideas": [
+      {
+        "type": "demo",
+        "title": "Chase on a Random Graph",
+        "paper": "2607.04002 - Collisions of random walks in unimodular random graphs: applications",
+        "pitch": "Single-page canvas toy: generate a random graph (pick from a Gilbert graph, a Delaunay/Gabriel triangulation over random points, or a preferential-attachment graph with heavy-tailed degrees) and drop two independent random walkers (a 'pursuer' and an 'evader') on it. A live counter tracks collisions. Switch graph type and you visually FEEL the paper's actual dichotomy: on bounded/moderate-degree graphs (Gilbert, Delaunay, Gabriel) the walkers collide infinitely often almost surely (recurrent regime); on heavy-tailed-degree graphs the Green-function integrability condition kicks in and collisions stop forever after some point (transient regime) - the pursuer just... loses them permanently. A bonus 'voter model' mode recolors nodes on every collision, showing the paper's stated application (characterizing stationary measures of the voter model via these collision properties) as a spreading-consensus animation. Random-walk graph theory turned into an actual game of tag you can watch play out and manipulate.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Glass Half Full: a portfolio you can bias with a slider",
+        "paper": "2312.10749 - A new behavioral model for portfolio selection using the Half-Full/Half-Empty framework",
+        "pitch": "Preload 6-8 assets with historical/synthetic returns, then implement the paper's core idea as two sliders: how much weight you give to the upside of a lottery ('half-full', gains) vs the downside ('half-empty', losses). As you drag, a pie chart of portfolio weights re-solves live in-browser (a JS grid search standing in for the paper's exact nonconvex/MILP formulation) and a small readout shows realized Sharpe and tail-loss versus an equal-weight and a mean-variance baseline. It literalizes the paper's actual empirical claim - that this psychologically-parameterized, computationally tractable model produces materially different, competitively-performing portfolios versus Prospect Theory, pure risk-minimization, and equal-weighting - by letting you personally dial your framing bias and watch your portfolio visibly reshape itself.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "project",
+        "title": "Bandit strategy blender for props edges",
+        "paper": "2312.03294 - A General Framework for Portfolio Construction Based on Generative Models",
+        "pitch": "The paper's strongest finding isn't the generative-model portfolios themselves, it's that a multi-armed-bandit 'blending' layer (value model using cosine similarity + logit optimality picking among strategies) beats every individual strategy, including the best single generative-model portfolio. Port that blending layer as a standalone Python module that sits on top of your existing nba-props edge models (the ones already validated on rebounds/threes via GR-RTRMC completion in the nba-props terminal). Instead of a static ensemble, it online-blends multiple props models week-to-week using the paper's value/policy-model machinery, and you track the blended output against CLV in SharpLab exactly like the paper tracks blended portfolios against individual strategies via LASSO attribution. Directly reuses infrastructure you already have running.",
+        "cool": 7,
+        "buildable": 6
+      },
+      {
+        "type": "startup",
+        "title": "npm firewall powered by judge-agent triage",
+        "paper": "2607.13965 - ProfMalPlus: Agent-Coordinated Detection of Malicious NPM Packages",
+        "pitch": "ProfMalPlus's actual reported results are a 98.1% F1-score (beating prior detectors by 3.5-52.6%) and 597 real zero-day malicious npm packages found and removed from the registry - not a toy benchmark, a live supply-chain win. Build a pre-install/CI gate (npm wrapper + GitHub Action) that mirrors its architecture: build an object-sensitive behavior graph of sensitive-API calls for any newly added dependency, run a few parallel Claude 'judge agents' over extracted code slices, have a global judge synthesize a verdict, and escalate ambiguous cases to a sandbox run before allowing `npm install` to proceed. Pitch as a lightweight, agent-native alternative to Socket.dev/Snyk for teams already comfortable running Claude-based agents (you already operate this pattern with Sentinel/Sage).",
+        "cool": 6,
+        "buildable": 5
+      },
+      {
+        "type": "demo",
+        "title": "Fork Finder: Build a Poset, Break Its Domain",
+        "paper": "2607.04076v1 [math.PR] A note on probabilistic powerdomains, RB-domains, and bc-domains",
+        "pitch": "The paper's central result is a forbidden-substructure theorem: the normalized probabilistic powerdomain V1(P) is an RB-domain iff P has a least element and contains no 'lower fork' (a triple x,y ≤ t with x,y incomparable). Build a single-page canvas tool where you place points and drag to draw order relations, constructing a poset live; the app continuously scans for lower forks, highlights any it finds in red, and reports in real time whether the current poset satisfies the paper's iff condition (least element + no lower fork ⇔ pointed bc-domain, RB-domain). Turns an abstract domain-theory theorem into a hands-on 'try to break it' toy — add one edge and watch the RB-domain badge flip from green to red.",
+        "cool": 5,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "What Lives? — Type Your Own Definition, See Where It Lands",
+        "paper": "2505.15849v2 [q-bio.BM] What Lives? A meta-analysis of diverse opinions on the definition of life",
+        "pitch": "The paper's finding is that cross-disciplinary definitions of life don't sort into discrete taxonomic camps but form a continuous conceptual landscape when embedded, pairwise-correlated, agglomeratively clustered, and t-SNE-projected. Precompute that same pipeline offline on a curated set of published 'life is...' definitions to get fixed archetype clusters and a baked-in 2D layout. On the page, a visitor types their own definition of life; an in-browser embedding model (transformers.js MiniLM via CDN, fully client-side, no backend) embeds it and projects it into the same 2D space, showing which archetype (metabolism-first, replication/information-first, thermodynamic-disequilibrium, autopoiesis, etc.) it lands nearest — and how often it falls in the smear between clusters rather than inside one, which is the paper's actual point.",
+        "cool": 8,
+        "buildable": 7
+      },
+      {
+        "type": "demo",
+        "title": "One Gene, One Call: The OAS1 Challenge",
+        "paper": "2410.23433v1 [q-bio.GN] Assessing Concordance between RNA-Seq and NanoString Technologies",
+        "pitch": "The paper finds strong but imperfect platform concordance (Spearman 0.78–0.88 across 56/62 samples, mean 0.83) between RNA-Seq and NanoString on Ebola-infection samples, and that among the 12 shared differentially-expressed genes (ISG15, OAS1, IFI44, MX1/MX2, etc.), OAS1 alone hits 100% accuracy separating infected from uninfected via logistic regression on either platform. Build a small guessing game: show shuffled anonymized multi-gene expression bar charts per sample, let the visitor call infected/uninfected using whichever genes they trust, then reveal that a model looking at OAS1 alone would have gone perfect while other 'obvious' genes wouldn't — capped with a draggable Bland-Altman scatter showing how a sample's RNA-Seq and NanoString values move together (or don't). Makes a dense concordance-analysis paper into a bite-sized 'be the diagnostic classifier' toy.",
+        "cool": 6,
+        "buildable": 8
+      },
+      {
+        "type": "youtube",
+        "title": "AI Already Runs Drug Discovery Autonomously — So Why Won't We Let It Touch Our Paycheck?",
+        "paper": "2608.02100v1 [cs.LG] From Information to Delegation: Mapping Human-AI Financial Decision Making + 2505.13940v2 [q-bio.BM] DrugPilot",
+        "pitch": "Crossover explainer built on two real results: DrugPilot's structured-memory-pool agent hits 98.0% task completion on simple drug-discovery tool calls, 93.5% on multi-tool chains, and still 64.0% on multi-turn scenarios under the Berkeley function-calling benchmark — genuinely autonomous scientific reasoning, beating ReAct and LoT. Meanwhile the financial-delegation paper mines 1.5 million real ChatGPT/Gemini conversations from 6,300+ US/India users and finds people happily use AI for financial information and judgment-forming but almost never hand it execution authority (moving money, placing trades). The video juxtaposes DrugPilot's benchmark charts against the delegation-rate finding to argue trust in AI autonomy is domain-specific and currently gated by psychology, not capability — then speculates what a 'financial DrugPilot' moment would need to look like for that gap to close.",
+        "cool": 7,
+        "buildable": 4
+      },
+      {
+        "type": "project",
+        "title": "Skill Supply-Chain Auditor",
+        "paper": "2607.13987 Agent Skill Security: Threat Models, Attacks, Defenses, and Evaluation",
+        "pitch": "The paper's core finding is that reusable LLM-agent skills (like the ~35 Claude Code skills sitting in this very user's config) leak risk at five lifecycle stages beyond just execution: repository admission, semantic retrieval, planner selection, execution, and skill evolution — validated across a 327-skill corpus with their SkillSec-Eval framework. Build a local CLI that walks a Claude Code / plugin skills directory and, for each skill, runs lifecycle-aware checks mirroring the paper's taxonomy: admission (unsigned/unpinned remote fetches in SKILL.md or install scripts), retrieval (description text engineered to game semantic-search ranking — keyword stuffing, invisible unicode), planner-selection (prompt-injection phrases aimed at getting an LLM planner to pick this skill over safer ones), execution (curl|bash, exec/eval, credential/env-var reads, outbound network calls in bundled scripts), and evolution (skills that self-modify or fetch remote updates at runtime). Output a per-skill risk report with lifecycle-stage tags — basically a `pip-audit` for agent skills, which is a real, currently-missing tool.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Sparse Brain",
+        "paper": "2607.27591 Prox: Training-Free FFN Activation Sparsity via Approximate Intermediate Outputs",
+        "pitch": "Prox's central bet is that you don't need the exact FFN intermediate values to know which channels matter — the magnitude *ranking* of a cheap approximate intermediate state is enough to build the sparsity mask, giving up to 1.99x decoding speedup at 70% sparsity with near-zero quality loss across ten LLMs. Build a single-HTML canvas demo: simulate a toy FFN layer (e.g. 1024-dim intermediate, random-but-structured Gaussian activations per token), render the activation magnitudes as a live bar spectrum, and give the user a sparsity slider. As they drag it, show three things simultaneously in real time: (1) the magnitude-ranked top-k mask lighting up which channels survive, (2) the cosine similarity / reconstruction error between the sparse output and the true dense output (staying tiny even at 70% cut, mirroring the paper's claim), and (3) a simulated FLOPs/latency gauge dropping toward the paper's 1.99x number. Lets someone literally *feel* why 'approximate ranking is enough' works — the error curve staying flat while the speedup climbs is the whole paper in one interaction.",
+        "cool": 8,
+        "buildable": 10
+      },
+      {
+        "type": "demo",
+        "title": "Windkessel Twin",
+        "paper": "2608.02135 Cardiovascular Digital Twins from Physics Based to Data Driven Approaches",
+        "pitch": "The paper's throughline is a tradeoff: physics-based cardiovascular models are interpretable but computationally heavy, data-driven ones are scalable but fragile/non-robust, and hybrid physics-constrained learning is the emerging middle path. Build a one-file HTML demo with two side-by-side real-time panels sharing sliders for heart rate, arterial resistance, and vessel compliance. Left panel: an actual physics-based lumped-parameter Windkessel model, RK4-integrated live in JS, producing a realistic pulsing aortic pressure waveform. Right panel: a tiny polynomial/mini-net fit *only* on a narrow training range of those parameters, plotted alongside the true physics curve — as the user drags a slider outside the training range, the data-driven curve visibly diverges/breaks while the physics panel stays correct, literally dramatizing the paper's 'scalable yet risk limited robustness' critique of pure data-driven twins. A toggle adds a physics-regularization term to the data-driven fit to show the 'hybrid' fix converging back toward the physics curve.",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "youtube",
+        "title": "I Let a Decision Tree Design a Cancer Drug",
+        "paper": "2505.12055 Prediction of Novel CXCR7 Inhibitors Using QSAR Modeling and Validation via Molecular Docking",
+        "pitch": "The paper trains an Extra Trees classifier on physicochemical descriptors + molecular fingerprints to screen for CXCR7 inhibitors (a cancer-relevant GPCR target), hits 0.85 predictive accuracy, then validates its top picks with molecular docking — best binding score -12.24 ± 0.49 kcal/mol. Make an explainer video that reconstructs a mini version of this pipeline on screen with free tools (RDKit for fingerprints/descriptors, scikit-learn Extra Trees, AutoDock Vina or a docking web server for the pose), narrated as 'watch an AI shortlist a drug candidate in real time, then watch it physically dock into the receptor pocket in 3D.' The hook is the two-stage validation structure itself — ML screening is cheap and fast but a black box; docking is slow but physically grounded — which is exactly why the paper pairs them, and it's a satisfying story arc (prediction -> physical confirmation) for a general audience.",
+        "cool": 6,
+        "buildable": 4
+      },
+      {
+        "type": "demo",
+        "title": "SLIC Discovery Lab — watch an info criterion actually find the right equation",
+        "paper": "2602.21393v1 — An information-based model selection criterion for data-driven model discovery",
+        "pitch": "Single-page HTML/JS demo: simulate a small nonlinear ODE (e.g. Lotka-Volterra or a driven pendulum) with RK4, add a noise slider, build a library of candidate terms (x, y, x^2, xy, sin x, ...), run sequential-thresholded least squares (SINDy-style) at a sweep of sparsity levels, then score each candidate model live with AIC, BIC, cross-validation, and the paper's actual SLIC (sample-length-scaling logarithmic info criterion) as animated bars. As you crank up noise, AIC/BIC visibly start selecting bloated overfit models while SLIC keeps locking onto the true 2-3-term equation — directly re-enacting the paper's headline claim that 'SLIC greatly outperforms other popular information criteria in extracting the correct model.' All math is small dense linear algebra, entirely client-side, no backend needed.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Mutation Spotlight — SHAP vs. GWAS on the SARS-CoV-2 genome",
+        "paper": "2410.22452v2 — Explainable convolutional neural network model provides an alternative",
+        "pitch": "A horizontal genome-track visualization (~30kb SARS-CoV-2 genome, spike gene region highlighted) with two toggleable overlays: a classic GWAS-style p-value track and a CNN+SHAP importance track. Hovering a position surfaces the nucleotide/amino-acid change and which Variant of Concern it defines (D614G, N501Y, E484K, etc. — real, well-documented VOC substitutions). The layout is built to make the paper's actual finding visible at a glance: SHAP importance spikes cleanly on known spike-gene VOC sites where the GWAS track is noisy/diffuse, i.e. explainability 'more effectively reveals known nucleotide substitutions' than the traditional association test. Note: exact numeric SHAP values would need the paper's model/data to be exact, so ship this as an illustrative recreation of the qualitative result, clearly labeled as such.",
+        "cool": 7,
+        "buildable": 7
+      },
+      {
+        "type": "project",
+        "title": "EchoTrace — grounded agentic reuse-detection, pointed at any English corpus",
+        "paper": "2607.27595v1 — Beyond Similarity: Grounded Agentic Extraction and Expert-Adjudicated Evaluation",
+        "pitch": "The paper's real contribution isn't 'find similar text' (embeddings already do that) — it's forcing an LLM agent to ground every claimed reuse in exact character spans on both sides and label it under a 5-axis typology (form, aspect, source-marking, function, stance), which is what let them show citation *literalness* declining over 18 centuries even as citation *practice* stayed stable. Rebuild that exact pipeline (tool-use LLM, span-grounded outputs, 5-dim typology) but point it at a fun English domain instead of the Twenty-Four Histories — e.g. NBA draft scouting reports from 2003-2024, or poker strategy content across eras — to quantify how later writers echo, requote, or subtly plagiarize earlier analysts' framing, with the same span-grounded evidence the paper used to make its result expert-auditable rather than just a similarity score.",
+        "cool": 7,
+        "buildable": 6
+      },
+      {
+        "type": "project",
+        "title": "Spec-Test Your Model — exogeneity diagnostics for SharpLab/NBA-modeling regressions",
+        "paper": "2601.21272v2 — Finite-Sample Properties of Model Specification Tests for Multivariate Dynamic Regression Models",
+        "pitch": "The paper's generalized Durbin estimator + bootstrap Wald test stays valid under the weakest exogeneity condition (unlike standard specification tests that silently assume strict exogeneity), and on real Fama-French multifactor data it correctly fails to reject where competing FGLS-based tests wrongly flag misspecification. Port that bootstrap Durbin-Wald test into a small Python diagnostic library and run it against the RAPM+Elo dynamic regression models feeding SharpLab/nba-modeling's props edges — a pre-flight check that catches spurious 'significant edge' artifacts caused by dynamic dependence between regressors and errors, before real money follows a mis-specified model.",
+        "cool": 6,
+        "buildable": 6
+      },
+      {
+        "type": "demo",
+        "title": "Flocking Edge Modes",
+        "paper": "2606.24926 — A Minimal Active-Particle Realization of Non-Hermitian Chern Bulk-Boundary Correspondence",
+        "pitch": "The paper shows a minimal frustrated Vicsek-Kuramoto active-particle model (self-propelled particles + a Sakaguchi phase lag) spontaneously produces chiral edge transport matching a non-Hermitian Chern bulk-boundary correspondence — topological physics emerging from local flocking rules, no quantum mechanics required. Build a single-file canvas/WebGL sim: a few thousand self-propelled particles with alignment + phase coupling, a slider for the frustration/phase-lag parameter, and a hard boundary (disk or box). As you tune frustration past the topological transition, particles at the edge switch from disordered wandering to a one-directional chiral current sweeping the boundary — literally watching bulk topology paint an edge current in real time. This is exactly the kind of client-side physics sim that only needs an update loop and canvas draw calls.",
+        "cool": 9,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Long-Range Criticality Explorer",
+        "paper": "2606.22407 — Perturbative Renormalization and Universality Diagram for Long-Range Quantum systems",
+        "pitch": "The paper maps out a (d, sigma) universality diagram for ferromagnetic long-range quantum O(n) systems, running a two-loop epsilon-delta expansion (epsilon, delta = distance from the boundary sigma*=2 and the line d=2sigma/3) that smoothly interpolates between Gaussian, genuinely long-range, and short-range Wilson-Fisher critical behavior. Build an interactive d-sigma plane (sliders or drag-a-point) with the phase boundaries drawn in, and live-readout numbers for the correlation-length exponent nu and anomalous dimension eta computed from the epsilon-expansion formulas, snapping to the known exact values (Gaussian nu=1/2, Ising Wilson-Fisher values, etc.) right at the boundaries. It turns an abstract two-loop RG calculation into something you can drag around and watch the exponents drift continuously then lock in — a genuine 'feel the phase diagram' toy, pure math/canvas, no backend.",
+        "cool": 6,
+        "buildable": 7
+      },
+      {
+        "type": "startup",
+        "title": "Regime-Transfer Signals",
+        "paper": "2310.10500v2 — Few-Shot Learning Patterns in Financial Time-Series for Trend-Following (X-Trend)",
+        "pitch": "X-Trend's actual claimed numbers are strong and specific: an 18.9% Sharpe improvement over a neural forecaster baseline, a 10x improvement over classic time-series momentum, 2x faster recovery from the COVID crash, and a 5x Sharpe boost on completely unseen assets via zero-shot transfer — because the model attends over a context set of historical market regimes instead of retraining. Package this as a signal API/dashboard for small quant shops and prop desks (natural extension of the SharpLab world): feed in a recent price window, get back not just a position signal but the specific historical regimes the model 'recognized' it from, with an interpretability view as the wedge against black-box neural forecasters. MVP is a lightweight cross-attention reimplementation over public futures/ETF data with a backtest and a free regime-similarity visualizer as the top-of-funnel hook into a paid signal feed.",
+        "cool": 6,
+        "buildable": 3
+      },
+      {
+        "type": "youtube",
+        "title": "Quantum Measurement Trees: How POVMs Branch Like a Poker Tree",
+        "paper": "2607.03924v1 — Tree Coordinates and Range Martingales for Positive Operator-Valued Measures",
+        "pitch": "The paper's real result: a positive operator-valued measure (a 'fuzzy' quantum measurement) defined on a tree has intrinsic local coordinates coming from how each node's operator splits into its children's operators, that splitting reconstructs the whole measure and generates a canonical dilation (the minimal Naimark dilation), and — the fun part — treating the range spaces as a martingale gives a quadratic-variation formula that tells you exactly when a fuzzy quantum measurement is secretly a 'sharp' classical one (projection-valued). Open the video with something David-brained and familiar — a poker decision tree or bracket where probability mass splits at each node — then pivot to show quantum measurement obeying the same branching structure but tracked with operators instead of numbers, animating the martingale wobbling along the tree and the quadratic variation ticking to zero exactly when the measurement becomes 'sharp.' A genuine bridge from game trees to quantum foundations, grounded in the paper's actual theorem rather than just the title's vibe.",
+        "cool": 7,
+        "buildable": 3
+      },
+      {
+        "type": "demo",
+        "title": "Monotone Operator & Stepsize Lab",
+        "paper": "2607.07358 (Maximal monotonicity of piecewise polyhedral mappings) + 2606.29893 (AdaGrad does not adapt to Hölder-smoothness for composite objectives)",
+        "pitch": "Single-page canvas app with two linked panels built around the actual claims of both papers. Left panel: a library of 2D piecewise-linear vector fields (subdifferentials of piecewise linear-quadratic convex/saddle functions). The user toggles between operators that are maximally monotone only by the paper's new polyhedral criterion (which 'bypasses relative interiors' vs. the classical constraint qualification that requires nonempty intersection of relative interiors) and ones that fail it; a proximal-point/forward-backward splitting iteration runs live on each, visibly converging or diverging/cycling, making the abstract monotonicity criterion tangible as 'does the algorithm actually work.' Right panel: pick a composite objective f(x)+g(x) where f is Hölder-smooth and its gradient does NOT vanish at the optimum (matching the paper's exact failure condition) plus an L1 term g; race vanilla AdaGrad against the paper's fixed accumulation schemes (gradient-mapping-based, successive-gradient-difference-based) with live step-size-vs-iteration plots. AdaGrad's step size visibly collapses toward zero long before convergence -- the paper's core negative result -- while the fixed variants stay well-behaved and hit the claimed O(n^-(1+v)/2) rate. Pure client-side JS/canvas, no backend, no build step.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Ruzsa's Difference-Set Playground",
+        "paper": "2606.27087 (Inequalities among higher-order difference sets)",
+        "pitch": "An interactive toy for additive combinatorics. User inputs or randomly generates a small finite integer set A (e.g. up to 12 elements via sliders/click-to-add-points on a number line), and the page computes |sA - tA| for small nonnegative integers s,t (up to say 4) by brute-force enumeration -- totally feasible client-side since these sets stay small. A grid/heatmap of quadruples (s,t,u,v) lets the user query 'does |sA-tA| <= |uA-vA| hold for ALL finite sets?' and instantly see whether their current A obeys it, with a button to auto-generate a Ruzsa-style extremal/counterexample set (per the paper's extension of 'a little-known construction of Ruzsa') that breaks any inequality not covered by the paper's full characterization. This turns a dense combinatorics abstract into a hands-on 'try to break the inequality' game -- genuinely lets you feel why only certain (s,t,u,v) quadruples are universal.",
+        "cool": 6,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Rough Volterra Path Simulator",
+        "paper": "2607.04012 (Hölder regularity for backward stochastic Volterra integral equations)",
+        "pitch": "A canvas demo that simulates the martingale integrand Z(t,s) of a toy BSVIE (built via the paper's approximation-by-BSDE-systems idea) and renders it as a 2D heatmap over (t,s), letting the user visually confirm the paper's specific claim: an averaged Hölder estimate of order 1/2 in the second time variable s, obtained by averaging over the first variable t. A slider perturbs smoothness of the terminal data/driver and a live-updating log-log plot shows empirical Hölder exponent estimates converging to 1/2 as sample paths accumulate. A second panel plugs this into the paper's stated payoff -- 'the regularity estimate directly yields a convergence rate for the discrete approximation' -- by running the same BSVIE at increasing time-discretization N and plotting discretization error vs N on log-log axes next to the theoretical slope, so you watch numerics match theory in real time. Nice hook for the rough-volatility/finance crowd since BSVIEs generalize the memory-kernel machinery behind rough Heston/rough Bergomi.",
+        "cool": 7,
+        "buildable": 6
+      },
+      {
+        "type": "startup",
+        "title": "Fluent Anchor: dual-fidelity live captioning",
+        "paper": "2607.27614 (DualAnchor: Preserving Language Priors and Improving Lexical Fidelity)",
+        "pitch": "DualAnchor fixes a very specific, very real failure mode of LLM-based sign-language translation: models that are fluent but wrong (language-prior degradation) or word-accurate but disfluent, using Token-level Prior Anchoring (regularize the decoder toward a frozen LLM's next-token distribution at each step) plus Optimal Transport Alignment (entropy-regularized partial OT between visual and text tokens) to get both. That exact tradeoff -- fluent AND lexically faithful -- is the open complaint in every real-time captioning/ASL-interpretation product on the market today (VRI services, classroom/DMV/hospital interpreting apps), where current auto-captioning either garbles specific terms (medical/legal/technical vocabulary) or produces stiff word-salad. Productize the dual-objective decoding trick as an accessibility SaaS: a drop-in captioning layer for video conferencing and in-person kiosk hardware that licenses/replicates the TPA+OTA approach, sold to hospitals, courts, and schools under ADA-compliance budgets, undercutting human-interpreter staffing costs for long-tail/off-hours coverage while beating today's shipped auto-caption quality on the paper's own benchmarks (PHOENIX-2014T, CSL-Daily).",
+        "cool": 7,
+        "buildable": 3
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Ideate"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "batch-1",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a258c6a25352805de",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786345622493,
+      "queuedAt": 1786345622475,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.13965v1 [cs.CR] ProfMalPlus: Agent-Coordinated Detection of Malicious NPM Packages\n- 2607.04002v1 [math.PR] Collisions of random walks in unimodular random graphs: applications\n- 2312.1…",
+      "lastProgressAt": 1786345699921,
+      "tokens": 22499,
+      "toolCalls": 7,
+      "durationMs": 77427,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Chase on a Random Graph\",\"paper\":\"2607.04002 - Collisions of random walks in unimodular random graphs: applications\",\"pitch\":\"Single-page canvas toy: generate a random graph (pick from a Gilbert graph, a Delaunay/Gabriel triangulation over random points, or a preferential-attachment graph with heavy-tailed degrees) and drop two independent random walkers (a 'pursu…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "batch-2",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "af6e4a8e833018dae",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786345622494,
+      "queuedAt": 1786345622476,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2608.02100v1 [cs.LG] From Information to Delegation: Mapping Human-AI Financial Decision Making\n- 2410.23433v1 [q-bio.GN] Assessing Concordance between RNA-Seq and NanoString Technologies\n- …",
+      "lastProgressAt": 1786345704052,
+      "tokens": 22926,
+      "toolCalls": 7,
+      "durationMs": 81558,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Fork Finder: Build a Poset, Break Its Domain\",\"paper\":\"2607.04076v1 [math.PR] A note on probabilistic powerdomains, RB-domains, and bc-domains\",\"pitch\":\"The paper's central result is a forbidden-substructure theorem: the normalized probabilistic powerdomain V1(P) is an RB-domain iff P has a least element and contains no 'lower fork' (a triple x,y ≤ t with x,y inco…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "batch-3",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "ab298a67522fd0818",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786345622494,
+      "queuedAt": 1786345622476,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2505.12055v1 [q-bio.BM] Prediction of Novel CXCR7 Inhibitors Using QSAR Modeling and Validation via Molecular Docking\n- 2607.27591v1 [cs.CL] Prox: Training-Free FFN Activation Sparsity via A…",
+      "lastProgressAt": 1786345719321,
+      "tokens": 22759,
+      "toolCalls": 7,
+      "durationMs": 96827,
+      "resultPreview": "{\"ideas\":[{\"type\":\"project\",\"title\":\"Skill Supply-Chain Auditor\",\"paper\":\"2607.13987 Agent Skill Security: Threat Models, Attacks, Defenses, and Evaluation\",\"pitch\":\"The paper's core finding is that reusable LLM-agent skills (like the ~35 Claude Code skills sitting in this very user's config) leak risk at five lifecycle stages beyond just execution: repository admission, semantic retrieval, planne…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "batch-4",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "abcacb461171d9b5e",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786345622494,
+      "queuedAt": 1786345622476,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.27595v1 [cs.CL] Beyond Similarity: Grounded Agentic Extraction and Expert-Adjudicated Evaluation\n- 2410.22452v2 [q-bio.GN] Explainable convolutional neural network model provides an alt…",
+      "lastProgressAt": 1786345716755,
+      "tokens": 22088,
+      "toolCalls": 7,
+      "durationMs": 94261,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"SLIC Discovery Lab — watch an info criterion actually find the right equation\",\"paper\":\"2602.21393v1 — An information-based model selection criterion for data-driven model discovery\",\"pitch\":\"Single-page HTML/JS demo: simulate a small nonlinear ODE (e.g. Lotka-Volterra or a driven pendulum) with RK4, add a noise slider, build a library of candidate terms (x, y, x^…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "batch-5",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a3aa25fe00a37297b",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786345622495,
+      "queuedAt": 1786345622476,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.03924v1 [math.PR] Tree Coordinates and Range Martingales for Positive Operator-Valued Measures\n- 2602.22263v2 [q-bio.QM] CryoNet.Refine: A One-step Diffusion Model for Rapid Refinement …",
+      "lastProgressAt": 1786345719125,
+      "tokens": 22968,
+      "toolCalls": 7,
+      "durationMs": 96630,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Flocking Edge Modes\",\"paper\":\"2606.24926 — A Minimal Active-Particle Realization of Non-Hermitian Chern Bulk-Boundary Correspondence\",\"pitch\":\"The paper shows a minimal frustrated Vicsek-Kuramoto active-particle model (self-propelled particles + a Sakaguchi phase lag) spontaneously produces chiral edge transport matching a non-Hermitian Chern bulk-boundary corresp…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "batch-6",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a834f7987d3c360e3",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786345622495,
+      "queuedAt": 1786345622476,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.07358v1 [math.OC] Maximal monotonicity of piecewise polyhedral mappings\n- 2607.04012v1 [math.PR] Hölder regularity for backward stochastic Volterra integral equations\n- 2607.27614v1 [cs…",
+      "lastProgressAt": 1786345727829,
+      "tokens": 23217,
+      "toolCalls": 7,
+      "durationMs": 105334,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Monotone Operator & Stepsize Lab\",\"paper\":\"2607.07358 (Maximal monotonicity of piecewise polyhedral mappings) + 2606.29893 (AdaGrad does not adapt to Hölder-smoothness for composite objectives)\",\"pitch\":\"Single-page canvas app with two linked panels built around the actual claims of both papers. Left panel: a library of 2D piecewise-linear vector fields (subdiffer…"
+    }
+  ],
+  "totalTokens": 136457,
+  "totalToolCalls": 42
+}
