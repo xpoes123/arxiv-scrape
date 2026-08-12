@@ -1,0 +1,332 @@
+{
+  "summary": "Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5",
+  "agentCount": 6,
+  "logs": [
+    "24 ideas generated across 6 batches"
+  ],
+  "result": {
+    "ideas": [
+      {
+        "type": "demo",
+        "title": "KV-Cache Compression Playground (S4R)",
+        "paper": "2608.00528 - S4R: Selective Sampling, Subspaces, and Sparse Reconstruction for Compressed Long-Context KV Caching",
+        "pitch": "S4R's headline result is up to 5x KV-cache compression with near-full-cache accuracy, achieved by building low-rank key/value subspaces from a handful of selectively sampled tokens and then sparsely reconstructing only 'informative positions' during decoding rather than the whole cache. Build a single self-contained HTML page: generate a toy sequence of K/V vectors (or let the user paste text and hash tokens into pseudo-embeddings), render the full attention matrix, then live-recompute a low-rank-subspace + sparse-reconstruction approximation as the user drags a 'compression ratio' slider from 1x to 10x. Show the reconstruction error heatmap and the resulting attention-output drift updating in real time (SVD/power-iteration done client-side with a small linear-algebra snippet, no backend). It literally lets someone feel the accuracy-vs-compression tradeoff curve the paper reports instead of just reading a benchmark table.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Watermark That Survives the Shredder",
+        "paper": "2607.16648 - Synchronization-Free Algebraic Fingerprints for Large Language Models",
+        "pitch": "The paper's core claim is that a watermark built from per-token-pair Reed-Solomon polynomial evaluations (hash picks the evaluation point, parity picks the bit) needs no block synchronization, so it survives insertions, deletions, and reordering that break conventional block-based LLM watermarks. Build one HTML file: user types/pastes text, JS embeds a toy version of the scheme using SubtleCrypto hashing of adjacent character/word pairs plus small finite-field polynomial arithmetic, encoding a fake 'secret ID' into subtle character-level tweaks. Then give the user edit tools (delete sentences, shuffle paragraph order, paste in noise) and show two live 'recovery confidence' meters side by side: the algebraic scheme staying robust, and a simulated naive block watermark collapsing to zero after the same edit. A visceral, one-screen proof of the paper's synchronization-free advantage.",
+        "cool": 9,
+        "buildable": 8
+      },
+      {
+        "type": "project",
+        "title": "Skill Memory Block World",
+        "paper": "2608.05970 - SkillMemo: Expert-guided Skill Memory Framework for Compositional Embodied Manipulation",
+        "pitch": "SkillMemo's result: auto-segmenting long-horizon robot demos into latent atomic skills via a MoE gating module, storing them as retrievable key-value skill primitives, and fusing retrieved primitives back into the policy at inference gives state-of-the-art compositional generalization to unseen task configurations, beating pi_0.5. Build a small open-source JS toy + browser grid-world game: a 2D block-stacking/sorting agent whose trajectories get auto-chunked into named primitives (approach, grasp, transport, place) using a lightweight gating heuristic, each stored in a visible 'memory bank' panel. Give it a never-before-seen color+shape combo task and watch it retrieve and stitch primitives it never saw combined during training, highlighting which memory entries fired. Works as an educational library/demo for teaching compositional skill-chaining without needing real robots or heavy ML infra.",
+        "cool": 7,
+        "buildable": 6
+      },
+      {
+        "type": "startup",
+        "title": "Resistant Patient: a CBT-trainee sparring partner",
+        "paper": "2608.04524 - ODRA: Synthesizing CBT Sessions with Structured Chain-of-Thought and Dynamic Patient Resistance",
+        "pitch": "ODRA's evaluation shows licensed psychologists preferred its synthetic sessions over baselines on 12 of 13 clinical metrics, and models fine-tuned on ODRA's resistance-aware data performed measurably better against both cooperative and resistant real-style patients — i.e., explicit resistance modeling in training data transfers to clinical robustness. Startup angle: a practice platform for psychology grad students and early-career clinicians where they run CBT sessions against an LLM patient whose ODRA-style 'resistance orchestrator' dial goes from sycophantic/compliant to genuinely resistant and unpredictable, with automated post-session scoring against the paper's CBT-fidelity rubric. Sell as supervised-practice hours to grad programs and CE-credit providers who currently rely on scarce, expensive standardized-patient actors.",
+        "cool": 8,
+        "buildable": 3
+      },
+      {
+        "type": "demo",
+        "title": "TreeJam — feel the NP-hardness of Pebble Motion",
+        "paper": "2606.06686v1 On the Hardness of Optimal Motion on Trees",
+        "pitch": "The paper resolves a decades-old open question by proving Pebble Motion (move one pebble at a time to an adjacent empty vertex, minimize total moves) is NP-hard even on trees, and that the 2-colored variant gets the first-ever hardness result on any graph class — with the hard instances living on simple 'subdivided star' trees. Build an interactive puzzle: colored pebbles sit on nodes of a randomly generated subdivided-star tree, player drags pebbles to adjacent empty nodes trying to reach a target coloring in the fewest moves, while a background solver (brute force / small ILP in JS) races the same instance and visibly chokes as pebble count grows past ~10-12 — letting the user literally feel the combinatorial wall the paper proves is fundamental. A slider toggles between 'easy' trees (few branches) and the paper's adversarial subdivided-star construction so users can see hardness appear right where the theorem says it must.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Shock & Odd — the ENO-TV parity flip",
+        "paper": "2607.19283v1 Resolution of the ENO-TV conjecture: a parity dichotomy",
+        "pitch": "The paper proves a striking parity dichotomy: for order-k ENO (essentially non-oscillatory) shock reconstruction, a key coercivity estimate (nonnegative source controlling the jump-moment) holds for every odd k≥3 but provably fails for even k≥4, via explicit Euler-polynomial counterexamples. Build a single-page demo simulating a 1D shock (traffic-jam / Burgers' wave) reconstructed with ENO of order k, live-plotting the total-variation/jump-moment quantity from the conjecture as the user drags k from 2 to 6. Odd k keeps the curve flat and bounded; flipping to even k and loading the paper's adversarial Euler-polynomial initial data makes the estimate visibly blow up — a one-slider 'this theorem is true/false depending on whether you're odd' toggle that turns a dense combinatorial-PDE result into something you watch happen.",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "project",
+        "title": "CardCap — cardinality-capped bet/portfolio evolver for SharpLab",
+        "paper": "2607.09566v1 Large-Scale Portfolio Optimization Under Cardinality Constraint With Enhanced Multi-Objective Evolutionary Algorithm",
+        "pitch": "The paper's enhanced multi-objective evolutionary algorithm uses a custom solution encoding plus new repair operators to solve 'pick at most K assets to maximize the Pareto frontier of return vs. risk' at scale, with the notable claim of 'no loss of performance as the number of assets grows' versus classic approaches. That's exactly SharpLab's nightly problem: given 50-100 candidate NBA player-prop edges, pick the best K to actually stake without brute-forcing C(100,K) combos. Port the paper's encoding/repair-operator trick into a small evolutionary optimizer that ingests a slate of (edge, variance, correlation) tuples and evolves a live Pareto frontier of capped-size portfolios, with a synthetic-asset HTML demo tonight (drag K, watch the frontier evolve and stay stable as universe size grows) as the seed for a real SharpLab integration.",
+        "cool": 7,
+        "buildable": 6
+      },
+      {
+        "type": "demo",
+        "title": "EM Whisperer — find the hidden branch by its power hum",
+        "paper": "2607.16487v1 Fuzz'EMup: Leveraging EM Side-Channel Emanation to Guide Black-Box Embedded Firmware Fuzzing",
+        "pitch": "Fuzz'EMup shows that raw EM emissions from a chip — with no code access, instrumentation, or emulation — can guide fuzzing by (1) picking frequency bands with high activity-vs-idle contrast and (2) using dynamic time warping to detect where two inputs' traces sustainably diverge, and it demonstrably beats unguided fuzzing on real firmware. Build a synthetic 'black-box firmware' that only outputs a wiggly power trace per input, with a hidden internal branch baked in; the demo runs the paper's actual pipeline client-side (band selection + DTW alignment) on pairs of traces so the user watches two nearly-identical input traces snap apart at the exact moment a secret if-branch fires, and can 'discover' the hidden logic purely from the waveform, exactly the black-box constraint the paper is built for.",
+        "cool": 9,
+        "buildable": 7
+      },
+      {
+        "type": "demo",
+        "title": "The Least Number That Doesn't Divide C(2n,n) — Erdős 731 Live",
+        "paper": "2606.29062v2 [math.NT] A Resolution of Erdős Problem 731 under Dyadic Regularity",
+        "pitch": "The paper resolves Erdős Problem 731 (Lean-verified): A(n), the least positive integer that does NOT divide the central binomial coefficient C(2n,n), obeys log A(n) = sqrt(log2 · log n) + (1/4)log log n + O(1) on dyadic blocks [X,2X). Build a single-file HTML/JS toy: for user-chosen n (or an animated sweep n=1..10^6), compute A(n) instantly without ever forming the giant binomial — for each candidate k=1,2,3,..., factor k and use Legendre's formula (sum floor(2n/p^i) − 2floor(n/p^i)) to check per-prime whether C(2n,n) has enough of that prime to be divisible by k; stop at the first k that fails. Plot log A(n) against the paper's sqrt(log2·log n) prediction curve live on a canvas chart and watch actual data hug the asymptotic law in real time — a pure-arithmetic proof of a hard theorem you can feel by scrubbing a slider. No backend, no big-integer binomial ever computed, all number theory, pure whimsy.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Flat vs. Sharp Minima: Watch SGD, SAM, and Extragradient-SAM Race Down the Same Loss Landscape",
+        "paper": "2607.06151v1 [math.PR] Leveraging Extragradient for Effective Sharpness-Aware Minimization in Deep Learning",
+        "pitch": "EISAM's claimed result is concrete and visual: it steers parameters toward flatter, lower-curvature minima than plain SGD/Adam/SAM, and it's less sensitive to the perturbation-radius hyperparameter than vanilla SAM. Build a single HTML canvas/three.js toy with a synthetic 2D loss surface hand-crafted to have one deep-but-sharp minimum and one shallow-but-flat minimum (a bumpy Rosenbrock-style bowl). Drop three balls that follow the actual SGD update, the SAM two-step ascent-then-descent update, and the EISAM extragradient update from the same start point, animate their trajectories, and show a live 'sharpness meter' (local Hessian curvature) at each ball's position. Let users drag a perturbation-radius slider and watch SAM wobble/fail to converge while EISAM stays robust — literally reproducing the paper's robustness claim as a felt experience, plus a real generalization-bound intuition (flatness = lower test error) for anyone who's tuned an optimizer.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Ratchet Bankroll: The Drawdown-Floor Staking Simulator",
+        "paper": "2312.01668v2 [q-fin.PM] Optimal dividend payout with path-dependent drawdown constraint",
+        "pitch": "The paper's real result: when a firm is forced to keep its dividend payout rate above a fixed fraction of its historical peak surplus, the optimal strategy is characterized by two free boundaries that move with the running-maximum process — i.e. your payout floor 'ratchets' up permanently once you hit a new high, never resets down. That's exactly a poker/sports-betting bankroll problem: 'never let your withdrawal rate fall below X% of your career high.' Build an HTML/canvas demo simulating a bankroll as Brownian motion with drift, tracking the running max, and rendering the two boundaries live: a reflecting 'take dividends' ceiling and a drawdown-locked floor that only ratchets upward. Sliders for drift, volatility, and the drawdown fraction let a bettor feel the real tradeoff the paper quantifies — higher safety floors force more conservative bankroll growth — turning a two-dimensional variational-inequality PDE result into an intuitive staking-strategy toy for David's SharpLab/poker crowd.",
+        "cool": 7,
+        "buildable": 7
+      },
+      {
+        "type": "startup",
+        "title": "OI Truth Serum: Cross-Exchange Open Interest Integrity Monitor for Perps Traders",
+        "paper": "2310.14973v2 [q-fin.TR] Reconciling Open Interest with Traded Volume in Perpetual Swaps",
+        "pitch": "The paper's finding isn't a formula — it's an audit: pulling tick-by-tick data from seven major BTC perpetual-swap exchanges in 2023, the authors found open interest is 'systematically misquoted' by some of the largest venues, ranging from implausible spikes to delayed liquidation reporting, which matters directly for solvency/leverage risk. Productize that audit as a live monitoring service: poll each exchange's public OI, funding-rate, and trade-tick endpoints, derive an internally-consistent 'implied OI drift' from cumulative net taker volume, and flag venues whose reported OI diverges from that implied series beyond a threshold — a real-time 'this exchange's numbers don't add up' alert for traders sizing leverage or picking where to hold positions. Sell it as a data-integrity add-on to trading terminals (like David's own NBA props terminal stack) or as a standalone Discord/webhook alert feed for crypto perp desks who got burned trusting a bad OI print during a liquidation cascade.",
+        "cool": 6,
+        "buildable": 5
+      },
+      {
+        "type": "demo",
+        "title": "Crash Whisperer: Lean-With-the-Wind vs. Liquidity Angel",
+        "paper": "2602.01817v1 - Do designated market makers provide liquidity during downward extreme price movements?",
+        "pitch": "Single-file canvas demo of a simulated limit order book with a toggleable 'designated market maker' agent. User picks a scenario slider: an idiosyncratic single-stock crash vs. a correlated multi-stock crash. Watch the DMM's quoted depth/spread on the bid side in real time — in the single-stock scenario the DMM (per the paper's actual audit-trail finding) tightens spreads and adds depth as price falls (liquidity provision), while in the multi-stock/systemic scenario it pulls quotes and lets slower traders absorb the flow (liquidity consumption). A second panel shows 'you' as a retail trader trying to exit, with fill quality visibly worse in the systemic scenario. This literalizes the paper's core empirical contrast (isolated vs. concentrated stress) as something you can feel by dragging one slider.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Dynamical Microscope: See Regimes the Raw Signal Hides",
+        "paper": "2602.11054v1 - A Dynamical Microscope for Multivariate Oscillatory Signals",
+        "pitch": "Simulate the paper's own validation setup live: a small network of coupled Stuart-Landau oscillators whose coupling topology the user can switch mid-run with a button (star vs. ring vs. random graph). Left panel shows raw multichannel time series and a state-space (phase-amplitude) scatter where the two topology regimes visibly overlap — you genuinely cannot tell them apart by eye. Right panel computes the paper's simple flow-field/trajectory-geometry features (local speed and variance) in a sliding window and plots them as a 2-color trace, which cleanly separates the moment the topology switched, even though the raw trajectories overlapped. This directly reproduces the paper's headline claim (speed/variance metrics separate regimes with high effect size, η²>0.5) as a satisfying 'aha, the microscope sees what my eyes can't' moment.",
+        "cool": 9,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Chaos Playground: Why More Particles Never Un-Converge",
+        "paper": "2607.00149v1 - Uniform-in-time Propagation-of-Chaos for Stein Variational Gradient Descent",
+        "pitch": "Run live SVGD (a handful of particles pushed by a kernelized gradient flow toward a target 2D density, e.g. a Gaussian or a bimodal blob) with N as a draggable slider (5 to 500 particles) and a 'run forever' clock. At small N the empirical particle cloud visibly drifts and wobbles away from the true density the longer you let it run — illustrating why classical propagation-of-chaos bounds blow up over time. But a second overlay tracks a single scalar 'Stein-feature' summary statistic (e.g. mean/covariance alignment with target) which the paper proves stays uniformly accurate over time even for small N — and the demo shows that line staying flat and correct no matter how long the clock runs, while the raw particle cloud for small N keeps misbehaving. This is the paper's actual distinction (generic metrics degrade, closed finite-dim observables don't) made visually visceral.",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "project",
+        "title": "BioModelAtlas: An Interactive Taxonomy Map of Bio Foundation Models",
+        "paper": "2505.11610v1 - Foundation Models for AI-Enabled Biological Design",
+        "pitch": "The paper's real contribution is a taxonomy (protein / small molecule / genomic design x architecture choices x controllability x multimodal integration) plus a list of open problems. Turn that taxonomy into a filterable, zoomable node-link map (d3 force layout) where each node is a model family/task, colored by modality and shaped by whether it solves 'controllable generation' or 'multimodal integration' — the two challenges the paper flags as unsolved. Clicking a node shows a short card: what it does, which of the paper's open problems it still fails to address. This is genuinely useful as a living reference for anyone entering the space, and is buildable tonight since it's mostly curated JSON + a force-directed graph, no simulation math required.",
+        "cool": 6,
+        "buildable": 7
+      },
+      {
+        "type": "demo",
+        "title": "Sentropy Playground: LCR vs. Vendi Score, felt in real time",
+        "paper": "2511.03849v4 - Which Similarity-Sensitive Entropy (Sentropy)?",
+        "pitch": "The paper's actual finding is that two 'similarity-sensitive' diversity measures — Leinster-Cobbold-Reeve (LCR) and the Vendi Score (VS) — can diverge by orders of magnitude on the same dataset, and VS is provably an upper bound on LCR, tunable via a 'half-distance' parameter that sets how quickly similarity decays. Build a single HTML/canvas toy: 20-40 draggable colored dots (framed as an NBA five-man lineup's skill-vector positions, or a poker hand range's card cluster — per the house preference for math->basketball/poker crossovers). As the user drags dots together/apart or slides the half-distance parameter, three live numbers update: raw Shannon entropy (which only sees discrete labels and stays flat), LCR diversity, and Vendi Score (computed as exp of the Renyi-2 entropy of the eigenvalues of the pairwise Gaussian-kernel similarity matrix — doable client-side with math.js eigenvalue routines for N<=40). The 'aha' moment is watching Shannon entropy stay constant while LCR and VS crater as you cluster 'five shooters' into one corner, then watching VS and LCR themselves peel apart from each other as you retune half-distance — literally reproducing the paper's headline result (orders-of-magnitude divergence, VS>=LCR) as a felt interaction instead of a table in a PDF.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "RNA-in-a-browser: chat with a pasted sequence, zero backend",
+        "paper": "2411.08900v1 - RNA-GPT: Multimodal Generative System for RNA Sequence Understanding",
+        "pitch": "RNA-GPT's real contribution is pairing an RNA sequence encoder with an LLM via linear-projection alignment, trained on RNA-QA (407,616 annotated RNA samples auto-generated from RNACentral via GPT-4o + LDA topic modeling) so a user can paste a sequence and ask it questions in natural language. Ship a client-only single-file HTML mimicking the interaction surface without any model weights: paste an RNA sequence, and canned-but-real biology (GC content, predicted secondary-structure hairpins via a simple base-pairing/Nussinov-style DP in JS, ORF scan, likely RNA family heuristics from k-mer motifs) gets delivered through a chat UI, so it 'feels' like RNA-GPT's Q&A loop even though it's classical sequence analysis under the hood instead of a trained multimodal LLM. Good hook for a 'what would this actually compute' explainer, and a template others could later swap in a real API call to make it genuinely LLM-backed.",
+        "cool": 6,
+        "buildable": 8
+      },
+      {
+        "type": "project",
+        "title": "Cheap-to-expensive feature translator for teams that can't afford tracking data",
+        "paper": "2411.00749v1 - PathoGen-X: A Cross-Modal Genomic Feature Trans-Align Network",
+        "pitch": "PathoGen-X's actual trick isn't 'multimodal fusion' — it explicitly avoids a shared latent space and instead trains a transformer to translate the cheap modality (histopathology images) directly into the expensive modality's feature space (genomic features), using both during training but only the cheap one at test time, needing fewer paired samples than standard fusion, validated on TCGA-BRCA/LUAD/GBM. That pattern (translate cheap-and-abundant into expensive-and-scarce feature space, with few paired examples) maps cleanly onto sports analytics: small-market/college/international teams have play-by-play and box scores but no optical player-tracking data. Build a real project — a trans-align network trained on the subset of NBA teams/seasons where both play-by-play and tracking data (movement, spacing, closeout speed) exist, that at inference time takes only box-score/play-by-play and outputs synthetic tracking-style features, letting under-resourced programs approximate lineup spacing/defensive-rotation metrics they otherwise can't measure.",
+        "cool": 7,
+        "buildable": 4
+      },
+      {
+        "type": "startup",
+        "title": "LabLoop: literature-grounded active learning as a service for wet labs",
+        "paper": "2602.23269v2 (HATTER enzyme active learning) + 2605.20242v1 (LEAP perovskite additive discovery)",
+        "pitch": "Both papers converge on the same real, validated pattern: (1) HATTER shows active learning selection of which sequences to experimentally validate matches full-supervised enzyme-function-prediction performance while needing far fewer model updates and far less labeled data, human-in-the-loop; (2) LEAP shows an LLM extracting mechanism-relevant descriptors from literature, feeding a Bayesian-optimization active-learning loop with expert review, actually improved perovskite solar cells in the wet lab (20.13-20.87% PCE vs 19.25% control, champion 21.32%). Package the shared architecture — literature-LLM descriptor extraction + uncertainty-aware BO/active-learning querying + a human-reviewer queue UI — as a domain-agnostic 'what should I test next' service sold to biotech and materials-science R&D teams, priced per experiment-cycle saved rather than per API call, since the entire pitch of both papers is 'fewer wet-lab runs to reach the same or better result.'",
+        "cool": 7,
+        "buildable": 3
+      },
+      {
+        "type": "demo",
+        "title": "Active Interface Wobbler",
+        "paper": "2605.21826 - A diffuse-interface theory of active nematic interfaces: transport mechanisms and modal stability",
+        "pitch": "The paper's real result is a dispersion relation: activity injects a destabilizing term proportional to q^2 (wavenumber squared) into the interface height dynamics, competing against ordinary capillary relaxation which decays like q^4 - so short/medium wavelength ripples on an active-nematic/isotropic interface can grow even when the bulk fluid itself is perfectly stable. Build a single-page canvas demo: draw a flat horizontal interface, let the user drag an 'activity' slider and a 'wavenumber' slider, and live-plot the growth rate curve omega(q) = -kappa*q^4 + alpha*q^2 (kappa=capillary stiffness, alpha=activity coefficient) next to an animated interface that visibly stays flat, ripples and decays, or ripples and blows up depending on which regime you're in. A toggle switches between 'diffuse-interface local instability' and 'bulk hydrodynamic (Hele-Shaw-like) instability' to show the paper's claim that these are mechanistically distinct routes to the same wobbly interface. This is literally just plotting a quartic-minus-quadratic polynomial and animating a sum of growing/decaying sine waves - trivial JS math, very visual, and it's the actual physics claim, not a vibe.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Nodes vs Noise: A Toy Neural-VMC Wavefunction Explorer",
+        "paper": "2605.17083 - Basis-free neural-network geminal and Jastrow factors for variational Monte Carlo",
+        "pitch": "The paper's key structural insight is a clean separation: an antisymmetrized-geminal-power (AGP) term fixes the wavefunction's *nodal surface* (where it flips sign - this alone sets the fermionic sign structure), while a separate neural-network Jastrow factor multiplies in *dynamical correlation* without touching the nodes. Build a 1D two-electron-in-a-box toy (small enough to do exactly in-browser, no real ML needed): render the two-particle wavefunction psi(x1,x2) as a heatmap over the unit square. One slider moves an 'AGP-like' pairing parameter and visibly rotates/bends the antisymmetric nodal line x1=x2; a second slider dials in a Gaussian-bump 'Jastrow' correlation factor (electrons repelling near x1=x2) that reshapes the probability density *without moving the nodal line at all*. This literally lets someone feel the paper's central claim - static correlation (nodes) and dynamic correlation (Jastrow) are separable, orthogonal knobs - which is exactly the mechanism the neural-network method exploits for sub-millihartree accuracy on H2/H4.",
+        "cool": 8,
+        "buildable": 6
+      },
+      {
+        "type": "demo",
+        "title": "Meniscus Zoom: Nanoconfined Droplet Explorer",
+        "paper": "2606.24809 - Optical mapping of phases and phase boundaries in nanoconfined fluids",
+        "pitch": "Using surface force balance interferometry on an evaporating heptane droplet, the authors find the meniscus is a clean catenoid (the classic minimal-surface shape) down to about 80 nm confinement height, and only below that does it visibly deviate as the system crosses from a surface-tension-dominated regime into a confinement-dominated one. Build an interactive: drag a 'confinement height' slider from 1 micron down to a few nm, render the meniscus cross-section as a live-updated curve (catenoid formula down to 80nm, then blend in a disjoining-pressure correction term below it so the curve visibly kinks/flattens), with a readout of which regime you're in. Pair it with a small inset log-log plot of curvature vs. height so the crossover point is unmistakable. Turns an SFB experiment most people will never see into a two-slider toy that shows exactly where 'surface tension physics' stops being the right description.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Consensus Breaker (Rivalry Edition)",
+        "paper": "2603.27845 - Affective Polarization on Small-World and Scale-Free Networks",
+        "pitch": "The paper's mean-field opinion model shows consensus is structurally fragile on power-law (scale-free) networks, and that short average path length - the small-world property itself - makes consensus *harder*, not easier, to reach. Build a d3-force network demo where nodes are 'fans' with continuous opinion values (color gradient, e.g. Celtics-green to Lakers-purple) updating via simple affective-polarization dynamics (agents repel from disliked neighbors' opinions, attract toward liked ones). A toggle switches the underlying graph between a Watts-Strogatz small-world lattice and a Barabasi-Albert scale-free graph with matched edge count; run both simultaneously side by side and watch one settle into two calcified rival camps while a more homogeneous random-graph control actually converges. Skinning it as basketball-fandom rivalry (which team's colors 'win' the network) gives it the whimsy angle and makes an inherently abstract social-physics result immediately legible and shareable - and it's a straightforward client-side ODE-on-a-graph simulation, no backend needed.",
+        "cool": 8,
+        "buildable": 8
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Ideate"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "batch-1",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "acddf7512e16cc09a",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786431997754,
+      "queuedAt": 1786431997735,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2608.04524v1 [cs.LG] ODRA: Synthesizing Cognitive Behavioral Therapy Sessions with Structured Chain-Of-Thought and Dynamic Patient Resistance\n- 2608.04455v1 [cs.LG] Multi-Objective Ranking f…",
+      "lastProgressAt": 1786432076211,
+      "tokens": 26909,
+      "toolCalls": 2,
+      "durationMs": 78457,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"KV-Cache Compression Playground (S4R)\",\"paper\":\"2608.00528 - S4R: Selective Sampling, Subspaces, and Sparse Reconstruction for Compressed Long-Context KV Caching\",\"pitch\":\"S4R's headline result is up to 5x KV-cache compression with near-full-cache accuracy, achieved by building low-rank key/value subspaces from a handful of selectively sampled tokens and then spar…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "batch-2",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a7574845298af969e",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786431997754,
+      "queuedAt": 1786431997735,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.16487v1 [cs.CR] Fuzz'EMup: Leveraging EM Side-Channel Emanation to Guide Black-Box Embedded Firmware Fuzzing\n- 2606.06686v1 [cs.DS] On the Hardness of Optimal Motion on Trees\n- 2607.192…",
+      "lastProgressAt": 1786432068327,
+      "tokens": 23090,
+      "toolCalls": 7,
+      "durationMs": 70573,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"TreeJam — feel the NP-hardness of Pebble Motion\",\"paper\":\"2606.06686v1 On the Hardness of Optimal Motion on Trees\",\"pitch\":\"The paper resolves a decades-old open question by proving Pebble Motion (move one pebble at a time to an adjacent empty vertex, minimize total moves) is NP-hard even on trees, and that the 2-colored variant gets the first-ever hardness result…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "batch-3",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "aa3e512fc9627a738",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786431997754,
+      "queuedAt": 1786431997735,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.06151v1 [math.PR] Leveraging Extragradient for Effective Sharpness-Aware Minimization in Deep Learning\n- 2606.29062v2 [math.NT] A Resolution of Erdős Problem 731 under Dyadic Regularity…",
+      "lastProgressAt": 1786432070891,
+      "tokens": 23642,
+      "toolCalls": 7,
+      "durationMs": 73137,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"The Least Number That Doesn't Divide C(2n,n) — Erdős 731 Live\",\"paper\":\"2606.29062v2 [math.NT] A Resolution of Erdős Problem 731 under Dyadic Regularity\",\"pitch\":\"The paper resolves Erdős Problem 731 (Lean-verified): A(n), the least positive integer that does NOT divide the central binomial coefficient C(2n,n), obeys log A(n) = sqrt(log2 · log n) + (1/4)log log n …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "batch-4",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a8a44824def69b960",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786431997755,
+      "queuedAt": 1786431997735,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2602.01817v1 [econ.EM] Do designated market makers provide liquidity during downward extreme price movements?\n- 2607.00149v1 [stat.ML] Uniform-in-time Propagation-of-Chaos for Stein Variatio…",
+      "lastProgressAt": 1786432056270,
+      "tokens": 23337,
+      "toolCalls": 7,
+      "durationMs": 58515,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Crash Whisperer: Lean-With-the-Wind vs. Liquidity Angel\",\"paper\":\"2602.01817v1 - Do designated market makers provide liquidity during downward extreme price movements?\",\"pitch\":\"Single-file canvas demo of a simulated limit order book with a toggleable 'designated market maker' agent. User picks a scenario slider: an idiosyncratic single-stock crash vs. a correlate…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "batch-5",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a84b3da460d6766cc",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786431997755,
+      "queuedAt": 1786431997735,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2411.00749v1 [q-bio.GN] PathoGen-X: A Cross-Modal Genomic Feature Trans-Align Network for Enhanced Survival Prediction\n- 2411.08900v1 [q-bio.GN] RNA-GPT: Multimodal Generative System for RNA…",
+      "lastProgressAt": 1786432075907,
+      "tokens": 23568,
+      "toolCalls": 7,
+      "durationMs": 78152,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Sentropy Playground: LCR vs. Vendi Score, felt in real time\",\"paper\":\"2511.03849v4 - Which Similarity-Sensitive Entropy (Sentropy)?\",\"pitch\":\"The paper's actual finding is that two 'similarity-sensitive' diversity measures — Leinster-Cobbold-Reeve (LCR) and the Vendi Score (VS) — can diverge by orders of magnitude on the same dataset, and VS is provably an upper b…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "batch-6",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a4365077b13dd98d0",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786431997756,
+      "queuedAt": 1786431997735,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2605.17083v1 [physics.chem-ph] Basis-free neural-network geminal and Jastrow factors for variational Monte Carlo\n- 2605.21826v1 [cond-mat.soft] A diffuse-interface theory of active nematic i…",
+      "lastProgressAt": 1786432087209,
+      "tokens": 22918,
+      "toolCalls": 7,
+      "durationMs": 89453,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Active Interface Wobbler\",\"paper\":\"2605.21826 - A diffuse-interface theory of active nematic interfaces: transport mechanisms and modal stability\",\"pitch\":\"The paper's real result is a dispersion relation: activity injects a destabilizing term proportional to q^2 (wavenumber squared) into the interface height dynamics, competing against ordinary capillary relaxati…"
+    }
+  ],
+  "totalTokens": 143464,
+  "totalToolCalls": 37
+}

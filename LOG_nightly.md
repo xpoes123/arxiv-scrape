@@ -1,5 +1,43 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-11 — TreeJam (autonomous run, judged/published on 2026-08-12)
+- **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed but judging,
+  publishing, and logging never ran (stray `ideation_2026-08-11.js`/`_results.json`/`_results_raw.json`/
+  `buildoff_2026-08-11.js` left uncommitted). Picked up and finished at the start of the 2026-08-12 session:
+  judged the existing builds, published, logged.
+- **Fetch:** fresh papers across categories, 30 sampled for ideation, 6 batches, 24 ideas generated (no
+  youtube-tagged idea surfaced this batch — project/startup/demo only).
+- **Top per category:**
+  - project — **Skill Memory Block World** (cool 7, buildable 6): browser grid-world toy porting SkillMemo's
+    MoE-gated auto-segmentation of robot demos into retrievable atomic-skill primitives, stitched into unseen
+    task compositions live (arXiv:2608.05970)
+  - startup — **Resistant Patient: a CBT-trainee sparring partner** (cool 8, buildable 3): practice platform
+    where psych grad students run CBT sessions against an ODRA-style LLM patient with a tunable resistance
+    dial and automated fidelity-rubric scoring (arXiv:2608.04524)
+  - demo — 3 selected for build-off: **Watermark That Survives the Shredder** (arXiv:2607.16648, cool 9×
+    buildable 8), **Sentropy Playground** (arXiv:2511.03849, cool 8×buildable 9), **TreeJam** (arXiv:2606.06686,
+    cool 8×buildable 9)
+- **Built (3-way build-off):**
+  - A — **Watermark That Survives the Shredder** (arXiv:2607.16648, synchronization-free Reed-Solomon
+    algebraic LLM watermark): real SubtleCrypto SHA-256 + GF(257) polynomial evaluation embedding bits as
+    zero-width chars, live recovery-confidence meters vs. a simulated naive block watermark under
+    shred/reorder/noise edits.
+  - B — **Sentropy Playground** (arXiv:2511.03849, LCR vs. Vendi Score similarity-sensitive diversity
+    measures, VS provably ≥ LCR): draggable NBA-lineup skill-vector dots with a live Shannon/LCR/VS readout
+    and half-distance slider reproducing the paper's divergence result.
+  - C — **TreeJam** (arXiv:2606.06686, NP-hardness of Pebble Motion on trees, first hardness result for the
+    2-colored variant): drag-pebble puzzle on a subdivided-star tree racing a real in-browser BFS solver that
+    visibly chokes past ~10-12 pebbles.
+  - **Judge:** all three verified valid, self-contained, dependency-free HTML/JS (balanced tags, `node
+    --check` clean, referenced DOM ids present, CDN SRI hash checked for A); none disqualified. Scores
+    (wow/interactivity/polish/fidelity): A 7/8/8/8=31, B 6/7/8/9=30, C 9/9/8/9=35. **C (TreeJam) won** — the
+    only demo where you don't just read about the paper's result but feel it: solving the puzzle by hand while
+    a real BFS solver races you into the same combinatorial wall the NP-hardness proof predicts.
+- **Published:** demo at `demos/2026-08-11-treejam.html`, brief at `2026-08-11-nightly.html`, both mirrored
+  into `david-share` and registered in its manifest. Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-11-treejam.html and
+  .../arxiv-scrape/2026-08-11-nightly.html once the VPS pulls.
+
 ## 2026-08-10 — Chase on a Random Graph (autonomous run, judged/published on 2026-08-11)
 - **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed but judging,
   publishing, and logging never ran (stray `ideation_2026-08-10.js`/`_results.json`/`buildoff_2026-08-10.js`
