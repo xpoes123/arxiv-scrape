@@ -1,0 +1,332 @@
+{
+  "summary": "Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5",
+  "agentCount": 6,
+  "logs": [
+    "24 ideas generated across 6 batches"
+  ],
+  "result": {
+    "ideas": [
+      {
+        "type": "demo",
+        "title": "The Unbeatable 2x: an Incremental k-Center Tightrope",
+        "paper": "2606.08713v1 — The price of incrementality in k-center clustering",
+        "pitch": "Single HTML canvas toy: user clicks to drop points, watches Gonzalez's 1985 greedy algorithm pick centers one at a time (each new center = farthest point from all current centers), with a live-updating 'radius' circle and a numeric approximation ratio readout vs. the true offline optimum (computed by brute force for small n). A toggle lets you try to beat it by hand — pick your own centers incrementally and watch your ratio always end up >= 2x optimal too, viscerally demonstrating the paper's actual proved result: no incremental algorithm, however smart, can ever beat the 2-approximation, because incrementality forces a tradeoff across all n levels simultaneously. Add a slider for k and a 'reveal optimal k-center partition' overlay for contrast. This is exactly the kind of 'feel the theorem' demo — you SEE why more compute can't save you.",
+        "cool": 7,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Baseline or Breach: Adaptive Traffic Baselining Sandbox",
+        "paper": "2608.05605v1 — Enhancing Anomaly Resilience in Research Networks",
+        "pitch": "The paper's real finding is that legitimate scientific-traffic bursts (LHC data dumps, genome transfers) are statistically indistinguishable from volumetric DDoS under a static threshold, and that forecasting-based dynamic baselines (their best model, TiDE, cut baseline error 30-42%) fix this. Build a single-file demo: synthetic traffic generator (diurnal pattern + Gaussian noise + occasional 'legit burst' events + occasional 'attack' events, both visually similar spikes), rendered as a live time-series chart. Two overlaid detectors: a naive static-threshold alarm (flags every spike, including legit bursts — lots of red false-alarm markers) vs. a simple adaptive forecasting band (EWMA/Holt-Winters computed in-browser, updates its expected envelope and correctly lets legit bursts through while catching true anomalies). Slider for 'burst frequency' shows the false-positive gap widening exactly the way the paper's benchmark does. Great single-screen 'aha' for a security/ops audience.",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "startup",
+        "title": "PolicyLens: LLM-native privacy-policy compliance auditor",
+        "paper": "2607.17075v2 — A Systematic Evaluation of Traditional Privacy Policy Analysis Tools Against LLMs",
+        "pitch": "The paper's core finding: off-the-shelf LLMs 'consistently match or exceed' purpose-built privacy-policy tools (Polisis, PrivacyGuide, etc.) with no fine-tuning, hitting ~82% precision on first-party data-collector labeling and ~91% on third-party data-sharing labeling. That's a straight replacement pitch: a SaaS that ingests any app/website's privacy policy, runs it through a Claude prompt-chain to extract structured entity tables (who collects what, who it's shared with, retention, legal basis), diffs it against the last crawled version to catch silent policy changes, and outputs an App-Store-style 'privacy nutrition label' plus a compliance-risk score for GDPR/CCPA teams — replacing the legacy static-analysis tools the paper benchmarks against. Wedge: sell to compliance/legal teams and app-review platforms who currently pay for outdated NLP tooling. MVP is a weekend build: policy text in, Claude extraction prompt (mirroring the paper's entity-labeling task) out, rendered as a table + diff view.",
+        "cool": 6,
+        "buildable": 5
+      },
+      {
+        "type": "youtube",
+        "title": "Econometrics Snuck Into Your Coding Agent: DiDPO Explained",
+        "paper": "2608.07147v1 — DiDPO: Diff-in-Diff Policy Optimization for Coding Agent Training",
+        "pitch": "A short explainer that takes the 'diff-in-diff' name literally: start with the classic econometrics diff-in-diff (comparing treatment vs. control group changes over time to isolate causal effect — minimum-wage-hike style example), then show how DiDPO applies the exact same logic to RL credit assignment for coding agents. The problem: a single coding-agent action edits many files/lines at once, so you can't tell which edit caused the reward change. DiDPO's fix — group similar code diffs across different rollout trajectories via a 'groupability score,' then treat matched-but-different diffs like matched treatment/control pairs to isolate which specific token-level edits actually drove success — mirrored with a literal side-by-side econ chart vs. code-diff chart. Punchline: it beat baselines on Qwen2.5-7B-Coder by >10% and closed the gap with much bigger models, and the authors open-sourced verl-code. Great 'cross-domain math trick' video hook for an ML audience who already knows diff-in-diff from econ.",
+        "cool": 7,
+        "buildable": 4
+      },
+      {
+        "type": "demo",
+        "title": "Cone of No Escape",
+        "paper": "2607.07589v1 - Surviving from the tip of a cone in competing first-passage percolation",
+        "pitch": "An interactive competitive-growth simulator that literally shows the paper's theorem: place a 'you' seed at the origin of a grid and an 'opponent' occupying an infinite wedge of angle theta pointed at you; both spread to neighboring cells with random passage times (standard first-passage percolation rule). Drag a slider to change theta and watch your territory escape to infinity when theta < pi/2 and get swallowed/trapped when theta >= pi/2 -- the exact phase transition Auffinger et al. prove using Busemann functions. Single HTML canvas, no backend: a grid, an exponential-clock priority queue (or a discretized Eden-growth approximation), and a theta slider. Overlay a live counter of 'your' cell count vs time and a big flashing SURVIVES / SWALLOWED verdict once growth stalls or explodes.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Fee-Proof: the Onflow Portfolio Stress Test",
+        "paper": "2312.05169v2 - Onflow: a model free, online portfolio allocation algorithm robust to transaction fees",
+        "pitch": "A client-side backtest toy that generates a handful of synthetic log-normal asset price paths in-browser and races three online allocators against each other in real time: buy-and-hold, Cover's Universal Portfolio (multiplicative weights), and Onflow (softmax-parameterized gradient flow, per the paper's actual update rule). A transaction-fee slider from 0% to 5% per rebalance lets you watch the exact effect the paper claims: at zero fees all three roughly tie (Onflow matches Markowitz-optimal in the log-normal case), but as fees climb, Universal Portfolio and multiplicative-weights collapse from over-trading while Onflow keeps compounding. No backend needed -- it's just simulated GBM price paths plus a few lines of softmax gradient-ascent JS, rendered as three racing equity curves on a canvas/d3 chart.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Beat the Exponent",
+        "paper": "2607.20422v2 - The sharp exponent for the minimal distance problem",
+        "pitch": "A geometry puzzle-demo built around the paper's actual asymptotic: given n point-line incidence pairs (each point lying on its own line), how far apart can you keep every mismatched point-line pair? The paper proves you can push the minimum mismatched distance up to roughly n^(-2/3), beating the naive n^(-1) you get from random or greedy placement. The toy lets you drag n points (with their matched lines) around a canvas, live-computes your worst-case (minimum) mismatched distance, and plots it against both the n^(-1) 'greedy' curve and the paper's n^(-2/3) sharp curve as n grows -- so you can feel how much better the optimal packing is than intuition suggests, and try to out-place a simple greedy/random baseline. Pure canvas + distance-computation JS, no backend.",
+        "cool": 6,
+        "buildable": 7
+      },
+      {
+        "type": "youtube",
+        "title": "Two Number-Theoretic Universes That Are Secretly the Same Shape",
+        "paper": "2606.29478v1 - The Categorical Local Langlands Correspondence and Anabelomorphy",
+        "pitch": "An explainer video on Joshi's anabelomorphy result: two p-adic fields K and L can be totally different as fields (different arithmetic, different elements) yet have isomorphic absolute Galois groups -- and this paper shows that under the new categorical (Fargues-Scholze) formulation of local Langlands, that Galois-group coincidence forces their entire 'stack of Langlands parameters' to be isomorphic too, at least for split tori. Pitch it with a 'two alien planets, same skeleton' visual metaphor: build up local class field theory -> Galois groups as the 'skeleton' of a field -> Langlands parameters as the 'nervous system' hanging off that skeleton -> the punchline that identical skeletons force identical nervous systems even when the 'flesh' (the field itself) is unrecognizable. Strong hook for the 3blue1brown/Mathologer-adjacent audience that likes 'shockingly deep coincidences' stories, but real production (script, animation) takes more than one night.",
+        "cool": 7,
+        "buildable": 2
+      },
+      {
+        "type": "demo",
+        "title": "Regime Radar",
+        "paper": "2310.10500v2 — Few-Shot Learning Patterns in Financial Time-Series for Trend-Following Strategies (X-Trend)",
+        "pitch": "A single-page toy that makes X-Trend's actual mechanism tangible: cross-attention over a 'context set' of historical market regimes. Generate a synthetic query price series (random walk + regime shocks), show a gallery of ~20 historical regime snippets (crash, melt-up, chop, COVID-style V-recovery), compute simple hand-crafted features per snippet (realized vol, trend slope, drawdown depth) and run real softmax dot-product attention between the query's features and each snippet's features. Highlight which historical regimes light up, blend their trend signals into a forecast line drawn live on the query chart, and flip a 'zero-shot: unseen asset' toggle to show the model still finding analogs. Callout stat cards cite the paper's real numbers (Sharpe +18.9% vs neural forecaster, 10x vs classic TSMOM, 5x on unseen assets, 2x faster COVID drawdown recovery) so the viewer sees the mechanism AND the payoff the paper actually claims. No real ML needed — attention is just weighted cosine similarity in feature space, entirely computable client-side.",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "startup",
+        "title": "Causal AI ROI Audit",
+        "paper": "2602.02607v1 — The Innovation Tax: Generative AI Adoption, Productivity Paradox, and Systemic Risk in the U.S. Banking Sector",
+        "pitch": "The paper's punchline is a trap every bank board is currently falling into: naive correlation makes GenAI-adopting banks look like outperformers, but the paper's Synthetic Diff-in-Diff analysis (using ChatGPT's Nov 2022 launch as the exogenous shock) shows adopters actually eat a 428bps ROE hit from integration costs — 517bps for small banks vs 129bps for large ones — plus spillover coupling (θ=3.13) that makes correlated failure more likely across 'algorithmically coupled' banks. Build a diligence product: pull public SEC filings + FFIEC call-report data, replicate the SDID + Dynamic Spatial Durbin pipeline, and sell bank risk committees, PE due-diligence teams, and even OCC/Fed-adjacent regulators a 'true cost and systemic-risk score' before they greenlight a GenAI rollout or acquire/invest in a bank claiming AI-driven outperformance. Pitch deck + a working SDID notebook on a handful of public banks is buildable as a weekend MVP; the moat is doing the causal inference rigorously instead of the vendor-slide correlation everyone else is selling.",
+        "cool": 7,
+        "buildable": 5
+      },
+      {
+        "type": "demo",
+        "title": "Living Kernel",
+        "paper": "2607.19378v3 — Native Multi-Dimensional Subquadratic Operators via Input Dependent Long Convolutions (HyenaND)",
+        "pitch": "HyenaND's whole pitch is: global receptive field + input-dependent kernel + subquadratic cost, without attention's O(L^2) or a plain CNN's fixed local kernel. Make that feel-able: load an image on canvas, run a real 2D FFT convolution (via a compact JS FFT) with a kernel that's derived from the image's own content (e.g. its coarse frequency spectrum or a content-gated blend of a few basis kernels) — versus a classic fixed 3x3 conv shown side-by-side. Paint a stroke or swap the image and watch the 'living kernel' output change globally and instantly (whole image reacts), while the fixed-kernel CNN output only changes locally near the stroke. A timing readout (ms vs image size) visually demonstrates the subquadratic FFT-convolution scaling that the paper's nSubQ CUDA kernel is built to exploit. This is the most direct way to let someone FEEL 'global + input-dependent + fast' in one glance.",
+        "cool": 8,
+        "buildable": 7
+      },
+      {
+        "type": "youtube",
+        "title": "The Memory That Can't Tell a Story",
+        "paper": "2602.12547v1 — A consequence of failed sequential learning: A computational account of developmental amnesia",
+        "pitch": "An explainer built around a genuinely striking result: kids with early hippocampal damage (the classic Vargha-Khadem cases) can pass school and hold general knowledge fine, but can't remember what happened yesterday. This paper's computational model nails down why — episodic recall requires learning items in their actual temporal sequence, but semantic/general knowledge can still form from randomly-sampled replay of fragments, so a broken 'sequential learner' selectively wrecks episodic memory while sparing recognition and semantic learning (and reproduces known retrograde amnesia patterns as a consistency check). Script it as: real clinical case → the computational model → a simple animated visual of a 'chain' (sequential) breaking while a 'cloud' (random sampling) stays intact → pivot to the AI hook: this is uncannily close to experience-replay in RL/continual learning, raising the question of whether replay-based AI systems have their own 'developmental amnesia' failure mode. A companion single-HTML memory-toy (encode a story sequentially vs. shuffle the encoding order, then quiz episodic-order recall vs. fact recall) is a natural buildable-tonight visual aid to cut into the video.",
+        "cool": 8,
+        "buildable": 6
+      },
+      {
+        "type": "demo",
+        "title": "Tumble or Steer: The Discrete-Navigation Phase Explorer",
+        "paper": "2602.23324v2 — Discrete turn strategies emerge in information-limited navigation",
+        "pitch": "The paper frames chemotactic navigation as an optimization (maximize up-gradient speed subject to a bits-per-second sensing budget) and finds the optimal strategy bifurcates discretely: at very low info, all-or-nothing reversals (run-and-tumble) win; at medium info, a fixed small number of discrete turn angles beats everything; only at high info does smooth continuous steering become optimal. Build a single-page canvas demo: an agent (or small population of agents racing head-to-head) climbs a 2D chemical gradient field, and a slider sets the info budget in bits/step. Underneath, precompute/grid-search the expected up-gradient speed for each candidate strategy (reversal-only, N-angle tumble for N=2..6, continuous) at that info level using the paper's info-vs-speed tradeoff, highlight the winning strategy, and actually animate agents using it. Dragging the slider visibly flips the population from smooth arcs to jerky tumbles to binary reversals — you feel the bifurcation the paper proves analytically.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "The Electron-Transfer Cusp: Watch a Transition State Appear",
+        "paper": "2605.17385v1 — Phase Space Bottlenecks in an Adiabatic Marcus Hamiltonian",
+        "pitch": "The paper's headline result is an explicit cusp condition in (asymmetry ε, coupling Δ) space that is necessary and sufficient for the lower adiabatic electron-transfer surface to have a genuine index-one saddle (a real transition state / phase-space bottleneck) rather than just an energetic hump. Build a two-slider HTML toy: construct the adiabatic surface analytically from two coupled diabatic harmonic wells, E₋(x,y) = (V₁+V₂)/2 − sqrt(((V₁−V₂)/2)² + Δ²), render it live as a 3D surface (three.js/plotly via CDN) plus a top-down 2D 'cusp map' of ε vs Δ with a live dot for the current slider position. Numerically find critical points each frame (finite-difference Hessian) and classify saddle vs no-saddle, coloring the cusp region green and shading the surface's saddle point red when present. Dragging the sliders across the cusp boundary makes the saddle visibly pinch off and vanish in real time — a direct, hands-on look at a catastrophe-theory bifurcation drawn from real Marcus-Hush chemistry.",
+        "cool": 8,
+        "buildable": 7
+      },
+      {
+        "type": "demo",
+        "title": "Amorphous Radial Frustration Sandbox",
+        "paper": "2605.22951v1 — Amorphous Radial Frustration and Water-Like Anomalies in a Ramp-Shoulder Fluid",
+        "pitch": "The paper shows a coarse-grained ramp-shoulder pair potential (soft repulsive ramp + shallow attractive shoulder, modeling polymer-grafted nanoparticles) produces decoupled density/structural/diffusion anomalies as you compress it — critically, diffusion becomes anomalous via 'amorphous radial frustration' (radial correlations sharpen without any crystalline orientational order forming), not via simple shell-competition like typical core-softened water models. Build a lightweight 2D toy MD in canvas: ~300 particles, velocity-Verlet integration under the paper's ramp-shoulder potential, with live sliders for density (box size) and temperature. Continuously compute and plot self-diffusion coefficient (from MSD slope) vs density, and render a live radial distribution function panel. As you compress past the anomaly regime, the diffusion curve visibly turns non-monotonic while the particle field goes 'radially frustrated' (locally sharp shells, no crystal lattice) instead of ordering — letting a viewer watch a genuine 'water anomaly' emerge from a real, if simplified, interaction potential.",
+        "cool": 7,
+        "buildable": 6
+      },
+      {
+        "type": "demo",
+        "title": "Range Entropy Meter: Poker Ranges as an Evolutionary Information System",
+        "paper": "2511.03346v3 — Life as a Categorical Information-Handling System: An Evolutionary Information-Theoretic Model of the Holobiont",
+        "pitch": "The paper's core mathematical move is showing that evolutionary change in a population's frequency distribution — across scales from allele frequencies to host-microbiome (holobiont) selection to non-random mating — can be captured with a single unifying quantity: a Jeffreys divergence (symmetrized KL) between the distribution 'before' and 'after' a selective/informational update. Repurpose that exact mechanic for poker: start with a full 169-starting-hand opponent range (weighted by standard preflop frequencies), let the user click cards onto a flop/turn/river, Bayesian-reweight the range by hand strength given the board each street, and live-display the Jeffreys divergence between successive range distributions as 'bits of information the board just revealed' — a single-file HTML tool that makes the paper's abstract 'information generated by selection' metric viscerally felt in a game most people already have intuition for, directly playing to the poker-math crossover the arXiv-scrape brief wants.",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Free-Energy Flow Sandbox",
+        "paper": "2606.25229v1 - Accelerating Chemical Potential Calculations with Minimal Normalizing Flows",
+        "pitch": "Single-page canvas toy that puts you inside a minimal normalizing flow (MNF) run. Left panel: raw Monte Carlo samples from a toy Lennard-Jones-like insertion potential, with the classic poor-overlap problem visible as two barely-overlapping energy histograms (the reason chemical-potential/free-energy estimates are noisy). A slider dials in a simple radial bijective map (exactly the 'low-dimensional, physically-informed transformation' the paper uses) and you watch, live, the transformed sample histogram slide into overlap with the target while an effective-sample-size (ESS) counter climbs — reproducing the paper's actual headline numbers (>=10x speedup on LJ systems, 3x ESS gain for charging free energies, 8x for force-field perturbation free energies) as concrete before/after readouts rather than abstract claims. Bonus toggle to add 'training noise' showing convergence in the paper's ~1 minute of GPU time.",
+        "cool": 6,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "The Diversity Illusion Simulator",
+        "paper": "2603.26896v1 - Interplay between social contact and media exposure in the overestimation of racial diversity in the U.S.",
+        "pitch": "A shareable 'guess the real number' toy that dramatizes the paper's actual mechanism. Three sliders — local interethnic contact, perceived national news coverage of minorities, social media usage — feed a live gauge comparing 'your perceived diversity' vs 'actual Census diversity' at neighborhood, city, and national scale. Wired directly to the paper's findings: overestimation probability rises monotonically from local to national scale; at the local level contact is the dominant driver (more contact = higher local overestimation for white respondents); at the national level perceived media exposure takes over as the dominant driver; traditional news consumption pulls the estimate down while social-media use pushes it up. Ends on the paper's actual punchline as a shareable card: the 'illusion of diversity' effect, and how it can quietly erode support for equity policy by making people think diversity goals are already met.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Watch a Transformer Skip 99% of Its Own Memory",
+        "paper": "2608.01662v2 - LongCat Sparse Attention: Taming the Lightning via Streaming-aware Hierarchical Cross-Layer Indexing",
+        "pitch": "A grid-of-tokens canvas that visualizes LongCat Sparse Attention's three actual tricks in sequence on a toy 1-2k token sequence: (1) streaming-aware indexing — watch scattered KV entries get reshuffled into contiguous colored chunks for cache-friendly access; (2) cross-layer indexing — layers 2..k+1 visibly 'go dim/reuse' the index computed at layer 1 instead of recomputing, dramatizing the amortization that makes cross-layer distillation cheap; (3) hierarchical coarse-to-fine scoring — a candidate heatmap that narrows in 2-3 visible passes from the full context down to the small attended set. A running counter contrasts full-attention FLOPs/memory-bandwidth vs LSA's, scaling the demo's numbers toward the paper's real claims (matches full-attention quality on general and long-context benchmarks, trains at up to 1M context, scales to 69B-560B and the 1.6T-parameter LongCat-2.0).",
+        "cool": 7,
+        "buildable": 7
+      },
+      {
+        "type": "startup",
+        "title": "Provable Guardrails — compliance-as-a-service for agentic AI",
+        "paper": "2608.07167v1 - NiyamAI: An Intent-Bound AI Agent with Cryptographically Verifiable Guardrails using Zero-Knowledge Proofs",
+        "pitch": "Middleware that sits in front of any agent framework's tool-call layer, runs an isolated 'judge' model on every proposed action, and emits an EZKL zero-knowledge proof that the judge correctly approved/blocked it — so a bank, hospital, or regulator can cryptographically verify every autonomous action was safety-checked without ever seeing the judge model's weights (protecting IP while satisfying audit requirements). Sell it as a drop-in SOC2-style compliance layer for regulated-industry AI agents. The pitch deck leans on the paper's real numbers: judge F1 88.5% at 1.1% false-positive rate, beats NeMo Guardrails head-to-head in 390 discordant scenarios (p<0.0001), and practical latency of ~2.26s to generate a proof and ~53ms to verify one — cheap enough to run per-action in production. Tonight-buildable slice: a single HTML dashboard mocking the pipeline (tool call -> judge verdict -> 'generating ZK proof...' timer -> verified checkmark, with the judge model rendered as a literal black box) as an investor/customer demo, ahead of wiring real EZKL.",
+        "cool": 7,
+        "buildable": 5
+      },
+      {
+        "type": "demo",
+        "title": "Tulip Bloom: Lunar South-Pole Constellation Visualizer",
+        "paper": "2607.10482v1 - Tulip-Shaped Orbits for Lunar South-Pole PNT and Direct-to-Earth Relay Missions",
+        "pitch": "A three.js scene of the Moon with a 7-petal, 6:5-resonant 'tulip' constellation of satellites tracing their orbits in real time. Toggle between the paper's two validated configs -- 6 satellites (75% worst-point GDOP availability, 18h/day EVA support) and 5 satellites (44% availability, 10h/day support) -- and watch a live south-pole 'coverage quality' gauge plus continuous Earth-line-of-sight rays from every satellite. A drag-to-fail-a-satellite interaction shows the paper's claimed cheap recovery: neighboring orbits drift along-track to patch the gap. Grounds the visual directly in the paper's specific numeric claims rather than just 'pretty orbits'.",
+        "cool": 9,
+        "buildable": 7
+      },
+      {
+        "type": "demo",
+        "title": "Universality Playground: One Gaussian to Rule Every Graph",
+        "paper": "2607.07598v1 - Universal Central Limit Theorem for non-exchangeable interacting diffusions",
+        "pitch": "Canvas simulation of N particles diffusing while coupled through an adjustable, asymmetric interaction graph (density slider from sparse to the paper's sharp n^-1/2 threshold and beyond). A live histogram of the rescaled fluctuation field is overlaid against the theoretical Gaussian/SPDE limit with a running goodness-of-fit stat, so you can literally watch the fluctuations snap into the SAME universal Gaussian shape regardless of how lopsided or non-exchangeable the interaction matrix is -- then watch that universality collapse once density dips below n^-1/2, exactly as the paper proves is sharp. Pure Euler-Maruyama integration in-browser, no dependencies.",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Translocation: The NP-Hard Number-Merging Puzzle",
+        "paper": "2606.08412v1 - Complexity and Algorithms for Unary Translocation Distance",
+        "pitch": "A puzzle game built straight from the paper's operation: you're given a starting set of integers and a target set; each move lets you sum two elements of your current set to grow it, and you're racing to contain the full target set in as few moves as possible -- the exact 'unary translocation distance' the paper proves is strongly NP-hard. After you solve a level, the game reveals how your move count compares to the paper's 2-approximation and (|B|-1)-additive-approximation bounds, letting players feel the gap between human intuition and provable near-optimal algorithms on a problem that's genuinely hard to solve exactly.",
+        "cool": 7,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Blind the Firewall, Then Heal It",
+        "paper": "2607.17105v1 - A Multi-Model Hybrid Defense Approach Against White-box Adversarial Attacks in Computer Network Traffic",
+        "pitch": "An in-browser toy network-intrusion classifier (tiny NN trained live on synthetic 'normal vs malicious traffic' features) rendered as a 2D scatter with its decision boundary drawn. Select a malicious point, drag an epsilon slider to launch an FGSM-style gradient perturbation, and watch it cross the boundary and get classified as benign -- reproducing the paper's headline collapse from real accuracy down near random. Flip a 'Defense: Adversarial Training + Gaussian Data Augmentation' toggle and watch the boundary redraw and the point get caught again, with the paper's actual recovery numbers (FGSM 26.49%->96.57%, C&W 49.61%->89.20%) annotated live as you drag.",
+        "cool": 7,
+        "buildable": 7
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Ideate"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "batch-1",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a57384063a351b642",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786518447781,
+      "queuedAt": 1786518447761,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2608.05605v1 [cs.LG] Enhancing Anomaly Resilience in Research Networks: A Large-Scale Forecasting Benchmark for Dynamic Security Baselining\n- 2608.07147v1 [cs.AI] DiDPO: Diff-in-Diff Policy …",
+      "lastProgressAt": 1786518512932,
+      "tokens": 22551,
+      "toolCalls": 7,
+      "durationMs": 65151,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"The Unbeatable 2x: an Incremental k-Center Tightrope\",\"paper\":\"2606.08713v1 — The price of incrementality in k-center clustering\",\"pitch\":\"Single HTML canvas toy: user clicks to drop points, watches Gonzalez's 1985 greedy algorithm pick centers one at a time (each new center = farthest point from all current centers), with a live-updating 'radius' circle and a num…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "batch-2",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "ad9b4c58c6d35936e",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786518447781,
+      "queuedAt": 1786518447761,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.20422v2 [math.CO] The sharp exponent for the minimal distance problem\n- 2607.10459v1 [math.OC] A column generation-based fixed-point heuristic for the service-aware multi-commodity flow…",
+      "lastProgressAt": 1786518514347,
+      "tokens": 22753,
+      "toolCalls": 7,
+      "durationMs": 66566,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Cone of No Escape\",\"paper\":\"2607.07589v1 - Surviving from the tip of a cone in competing first-passage percolation\",\"pitch\":\"An interactive competitive-growth simulator that literally shows the paper's theorem: place a 'you' seed at the origin of a grid and an 'opponent' occupying an infinite wedge of angle theta pointed at you; both spread to neighboring cells wi…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "batch-3",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "ab16a4784ff1f020f",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786518447782,
+      "queuedAt": 1786518447761,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2310.10500v2 [q-fin.TR] Few-Shot Learning Patterns in Financial Time-Series for Trend-Following Strategies\n- 2602.02607v1 [econ.EM] The Innovation Tax: Generative AI Adoption, Productivity P…",
+      "lastProgressAt": 1786518538556,
+      "tokens": 22663,
+      "toolCalls": 7,
+      "durationMs": 90774,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Regime Radar\",\"paper\":\"2310.10500v2 — Few-Shot Learning Patterns in Financial Time-Series for Trend-Following Strategies (X-Trend)\",\"pitch\":\"A single-page toy that makes X-Trend's actual mechanism tangible: cross-attention over a 'context set' of historical market regimes. Generate a synthetic query price series (random walk + regime shocks), show a gallery of ~20…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "batch-4",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a1815228fa17355f4",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786518447782,
+      "queuedAt": 1786518447761,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2410.21345v1 [q-bio.GN] Absorb & Escape: Overcoming Single Model Limitations in Generating Genomic Sequences\n- 2602.23324v2 [q-bio.QM] Discrete turn strategies emerge in information-limited …",
+      "lastProgressAt": 1786518563945,
+      "tokens": 23276,
+      "toolCalls": 7,
+      "durationMs": 116163,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Tumble or Steer: The Discrete-Navigation Phase Explorer\",\"paper\":\"2602.23324v2 — Discrete turn strategies emerge in information-limited navigation\",\"pitch\":\"The paper frames chemotactic navigation as an optimization (maximize up-gradient speed subject to a bits-per-second sensing budget) and finds the optimal strategy bifurcates discretely: at very low info, all-o…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "batch-5",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "aa12cffc290a0b487",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786518447782,
+      "queuedAt": 1786518447761,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2606.25229v1 [cond-mat.stat-mech] Accelerating Chemical Potential Calculations with Minimal Normalizing Flows\n- 2603.26896v1 [physics.soc-ph] Interplay between social contact and media expos…",
+      "lastProgressAt": 1786518529722,
+      "tokens": 23034,
+      "toolCalls": 7,
+      "durationMs": 81940,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Free-Energy Flow Sandbox\",\"paper\":\"2606.25229v1 - Accelerating Chemical Potential Calculations with Minimal Normalizing Flows\",\"pitch\":\"Single-page canvas toy that puts you inside a minimal normalizing flow (MNF) run. Left panel: raw Monte Carlo samples from a toy Lennard-Jones-like insertion potential, with the classic poor-overlap problem visible as two barely-o…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "batch-6",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "ac89390b32e424cfc",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1786518447782,
+      "queuedAt": 1786518447761,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.17105v1 [cs.CR] A Multi-Model Hybrid Defense Approach Against White-box Adversarial Attacks in Computer Network Traffic\n- 2606.08412v1 [cs.DS] Complexity and Algorithms for Unary Transl…",
+      "lastProgressAt": 1786518531351,
+      "tokens": 22964,
+      "toolCalls": 7,
+      "durationMs": 83569,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Tulip Bloom: Lunar South-Pole Constellation Visualizer\",\"paper\":\"2607.10482v1 - Tulip-Shaped Orbits for Lunar South-Pole PNT and Direct-to-Earth Relay Missions\",\"pitch\":\"A three.js scene of the Moon with a 7-petal, 6:5-resonant 'tulip' constellation of satellites tracing their orbits in real time. Toggle between the paper's two validated configs -- 6 satellites (7…"
+    }
+  ],
+  "totalTokens": 137241,
+  "totalToolCalls": 42
+}

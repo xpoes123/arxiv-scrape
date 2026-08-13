@@ -1,5 +1,43 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-12 — Cone of No Escape (autonomous run, judged/published on 2026-08-13)
+- **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed but judging,
+  publishing, and logging never ran (stray `ideation_2026-08-12.js`/`_results.json`/`_results_raw.json`/
+  `buildoff_2026-08-12.js` left uncommitted). Picked up and finished at the start of the 2026-08-13 session:
+  judged the existing builds, published, logged.
+- **Fetch:** fresh papers across categories, 30 sampled for ideation, 6 batches, 24 ideas generated (demo/
+  startup/youtube this batch — no project-tagged idea surfaced).
+- **Top per category:**
+  - startup — **Causal AI ROI Audit** (cool 7, buildable 5): audits a bank's AI-adoption numbers through a
+    causal framework to separate genuine productivity lift from risk-shifting that just looks like ROI
+    (arXiv:2602.02607)
+  - youtube — **The Memory That Can't Tell a Story** (cool 8, buildable 6): visual explainer of a
+    computational account of developmental amnesia — the failure is in sequential learning (chaining facts
+    into narrative), not general memory loss (arXiv:2602.12547)
+  - demo — 3 selected for build-off: **Cone of No Escape** (arXiv:2607.07589, cool 8×buildable 9), **Tumble
+    or Steer** (arXiv:2602.23324, cool 8×buildable 9), **The Diversity Illusion Simulator**
+    (arXiv:2603.26896, cool 8×buildable 9)
+- **Built (3-way build-off):**
+  - A — **Cone of No Escape** (arXiv:2607.07589, sharp phase transition for competing first-passage
+    percolation from a cone — Ahlberg–Deijfen–Sfragara, resolving the Benjamini conjecture at theta=pi/2):
+    a real multi-source Dijkstra race with Exp(1) random edge weights over a grid; dragging theta across
+    pi/2 visibly flips the outcome between SURVIVES and SWALLOWED live.
+  - B — **Tumble or Steer** (arXiv:2602.23324, optimal chemotactic navigation strategy bifurcates discretely
+    with the sensing information budget): agents climbing a gradient field with an info-budget slider and a
+    log-log speed-vs-information frontier chart showing the discrete-turn-count bifurcation.
+  - C — **The Diversity Illusion Simulator** (arXiv:2603.26896, local contact drives local overestimation of
+    racial diversity while perceived media exposure drives national-scale overestimation): 3-slider gauge
+    vs. real Census anchor, driver-weight bar chart, downloadable share card.
+  - **Judge:** all three verified valid, self-contained, dependency-free HTML/JS (JS parses clean, tags
+    balanced, all DOM ids referenced exist, Chart.js CDN SRI hash checked for B); none disqualified. Scores
+    (wow/interactivity/polish/fidelity): A 9/8/9/9=35, C 8/9/9/8=34, B 7/8/7/8=30. **A (Cone of No Escape)
+    won** — its "simulation" is the real thing, an actual multi-source Dijkstra race that visibly enacts the
+    exact theta=pi/2 phase transition the paper proves, rather than a dramatization of survey coefficients.
+- **Published:** demo at `demos/2026-08-12-cone-of-no-escape.html`, brief at `2026-08-12-nightly.html`, both
+  mirrored into `david-share` and registered in its manifest. Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-12-cone-of-no-escape.html and
+  .../arxiv-scrape/2026-08-12-nightly.html once the VPS pulls.
+
 ## 2026-08-11 — TreeJam (autonomous run, judged/published on 2026-08-12)
 - **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed but judging,
   publishing, and logging never ran (stray `ideation_2026-08-11.js`/`_results.json`/`_results_raw.json`/
