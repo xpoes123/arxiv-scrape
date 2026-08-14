@@ -1,5 +1,46 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-13 — Vortex Playground (autonomous run, judged/published on 2026-08-14)
+- **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed but judging,
+  publishing, and logging never ran (stray `ideation_2026-08-13.js`/`_results.json`/`_results_raw.json`/
+  `buildoff_2026-08-13.js` left uncommitted). Picked up and finished at the start of the 2026-08-14 session:
+  ran a judge-only workflow against the existing builds, published, logged.
+- **Fetch:** fresh papers across categories, 24 ideas generated across all four categories.
+- **Top per category:**
+  - startup — **Manski Bounds: Ambiguity-Aware Bet Sizing** (cool 7, buildable 6): partial-identification /
+    minimax-regret bet sizing wired into SharpLab/nba-modeling instead of trusting a single point-estimate
+    model (arXiv:2602.00355)
+  - youtube — **I Tried to Break the AI Story Narrator** (cool 8, buildable 5): live on-camera attempt to
+    trap 2-3 LLMs into contradicting themselves in an interactive story, punchline reveals NCP-Bench's real
+    42%-survival-at-20-turns number (arXiv:2608.08160)
+  - project — **JailMeter-Lite** (cool 6, buildable 6): portable evidence-extract + intent-judge pipeline for
+    scoring your own red-team (prompt, response) pairs, ported from JailMeter's 97.27%-human-agreement method
+    (arXiv:2607.19424)
+  - demo — 3 selected for build-off: **Nursery Entropy Simulator** (arXiv:2603.29312, cool 9×buildable 9),
+    **Vortex Playground** (arXiv:2607.08435, cool 9×buildable 8), **Outbreak Roulette**
+    (arXiv:2511.02882, cool 8×buildable 9)
+- **Built (3-way build-off):**
+  - A — **Nursery Entropy Simulator** (arXiv:2603.29312, a deadpan "theory of infantile dynamics" April
+    Fools paper played straight): toys diffuse from shelf to play-area while a live entropy meter climbs, a
+    "Parent Demon" button drags toys back for a transient ordering episode before entropy resumes its climb.
+  - B — **Vortex Playground** (arXiv:2607.08435, global exact controllability + exponential mixing for
+    singular-kernel particle systems — Coulomb/Riesz/Yukawa): drag control particles to steer an N-body
+    swarm into target formations despite chaotic singular interactions; mixing mode shows a live
+    KL-divergence-to-equilibrium chart as noise erases the swarm's memory of its start.
+  - C — **Outbreak Roulette** (arXiv:2511.02882, stochastic SVEIS epidemic model with Black-Karasinski noise
+    — noise can push a disease that would go deterministically extinct into persisting): side-by-side
+    deterministic-ODE vs noisy-SDE panels with a live stationary-distribution histogram.
+  - **Judge:** all three verified valid, self-contained, dependency-free HTML/JS via headless Playwright
+    render (zero console/JS errors, tags balanced, all referenced DOM ids exist, Chart.js CDN SRI hash
+    checked for A); none disqualified. Scores (wow/interactivity/polish/fidelity): B 9/9/9/8=35, A
+    7/8/8/9=32, C 7/8/8/9=32. **B (Vortex Playground) won** — richest interaction surface (kernel switch,
+    six target formations, drag-to-steer, live mixing chart) with careful, explicitly-flagged fidelity to
+    the abstract's actual claims.
+- **Published:** demo at `demos/2026-08-13-vortex-playground.html`, brief at `2026-08-13-nightly.html`, both
+  mirrored into `david-share` and registered in its manifest. Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-13-vortex-playground.html and
+  .../arxiv-scrape/2026-08-13-nightly.html once the VPS pulls.
+
 ## 2026-08-12 — Cone of No Escape (autonomous run, judged/published on 2026-08-13)
 - **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed but judging,
   publishing, and logging never ran (stray `ideation_2026-08-12.js`/`_results.json`/`_results_raw.json`/

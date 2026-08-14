@@ -1,0 +1,196 @@
+{
+  "ideas": [
+    {
+      "type": "demo",
+      "title": "Arrow of Turbulence \u2014 Forward vs. Backward Active-Flow Explorer",
+      "paper": "2605.25056 Time-Symmetry of Lagrangian Coherent Structures in Active Turbulence",
+      "pitch": "The paper's punchline is genuinely counterintuitive: active turbulence is famously irreversible (self-propelled particles, dissipative, no time-reversal symmetry in the governing equations), yet the attracting/repelling Lagrangian Coherent Structures (LCS) that organize mixing turn out to be 'strikingly' time-symmetric \u2014 nearly mirror images when you run the clock forward vs. backward \u2014 and it's the straining (saddle) regions, not vortex cores, doing the mixing work in both directions. Build a single-file canvas demo: synthesize a 2D 'active turbulence'-like flow as a time-varying superposition of vortex/strain kernels (cheap stand-in for the real hydrodynamic simulation), seed a grid of thousands of tracer particles, and advect them forward N steps and backward N steps from the same instant. Color each particle by a local finite-time stretching estimate (compare it to its neighbors' separation \u2014 a poor-man's FTLE) to reveal ridges = repelling LCS, troughs = attracting LCS. A single 'time direction' toggle/scrubber lets the user watch the ridge network flip in time and see it barely change shape \u2014 literally feeling the paper's central surprise. Add an 'activity' slider (kernel strength) to also show the paper's secondary finding that LCS networks get morphologically simpler (lower fractal dimension) as activity increases.",
+      "cool": 8,
+      "buildable": 7
+    },
+    {
+      "type": "demo",
+      "title": "Earth's AI Heat Budget",
+      "paper": "2603.28949 The Planetary Cost of AI Acceleration: A Thermodynamic Outlook",
+      "pitch": "The paper's core claim isn't about CO2 or chips or data \u2014 it's that if compute keeps growing exponentially, the eventual hard ceiling is waste heat vs. Earth's finite capacity to radiate it away: 'the ultimate bottleneck... will be neither data nor capital, but the laws of thermodynamics and the finite heat capacity of the Earth.' Build a single-file interactive calculator/toy: sliders for current global AI power draw (~tens of GW), an annual compute/power growth rate, and an energy-efficiency improvement rate (Koomey's-law-style), plus a fixed constant for Earth's outgoing radiative budget (~1.2\u00d710^17 W at ~240 W/m\u00b2 average). The toy plots waste heat as a share of Earth's radiative budget over time on a log-y chart, and shows the 'year AI heat becomes climate-relevant' snapping around as you drag the sliders \u2014 making the abstract thermodynamic argument viscerally concrete: this isn't sci-fi, it's exponentials hitting a physical ceiling on a human timescale under plausible assumptions.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Compliance-Weighted RDD: Watch the Wald Ratio Lie to You",
+      "paper": "2602.01417 Identification and Estimation in Fuzzy Regression Discontinuity Design",
+      "pitch": "The paper shows that in fuzzy RDD with covariates, the identified effect is always some Wald ratio of reduced-form/first-stage discontinuities, and that naive pooling across covariate groups with heterogeneous compliance (e.g., some subpopulations barely respond to the treatment-assignment threshold) biases the standard estimator away from the true policy-relevant effect \u2014 their fix, CWLATE, reweights by squared first-stage strength and provably lowers MSE. Build a single-file demo: simulate a running variable with a threshold, two latent covariate groups with different compliance rates (first-stage jump sizes) and different true treatment effects, scatter the (jittered) data around the cutoff, and show local-linear fits on each side. A slider for 'compliance heterogeneity' lets the user watch the standard fuzzy-RD Wald estimate drift away from the true weighted effect while a second CWLATE estimate line stays locked on target \u2014 turning an econometric identification subtlety into something you can see happen in real time, using the Uruguay cash-transfer/birthweight framing from the paper as the narrative hook.",
+      "cool": 6,
+      "buildable": 8
+    },
+    {
+      "type": "project",
+      "title": "TimeTravelDB \u2014 an embeddable cMVBT-style time-travel index",
+      "paper": "2606.09133 Multiversion Concurrency Control for Multiversion B-Trees",
+      "pitch": "The paper's real contribution is making the theoretically-optimal Multiversion B-Tree (MVBT) actually usable under concurrency: optimistic latches for writers, zero latches for range scans, and continuous (no-spike) garbage collection, beating prior version-chain-based approaches on mixed read/write workloads. Build a small embeddable TypeScript/Rust(wasm) library implementing the cMVBT structure for an in-memory or IndexedDB-backed key-value store that supports 'as-of' point-in-time and range queries with concurrent writers never blocking scanners \u2014 pitch it as the engine behind lightweight 'git for structured data' use cases (audit logs, undo/redo for collaborative apps, time-travel debugging of app state). A companion visualizer panel that renders the version DAG and GC sweeps live as you fire concurrent writes/scans at it would make the internals demo-able, but the core library is the buildable artifact \u2014 a multi-night project, not a one-file toy, given real concurrency correctness matters.",
+      "cool": 6,
+      "buildable": 3
+    },
+    {
+      "type": "demo",
+      "title": "Exceptional Point Playground",
+      "paper": "2606.26394v1 \u2014 Non-ergodic dynamical phase transition via a zero-mode exceptional point",
+      "pitch": "A single-page canvas sim of a driven-dissipative Bose-Josephson junction with tunable non-Markovian memory/friction. The paper shows that when friction crosses a critical value, the system's response function develops a 'zero-mode exceptional point' (an eigenvalue coalescence with nontrivial winding), and the dynamics flips from ergodic decay-to-equilibrium into a persistent 'running' non-thermalizing state that survives strong quantum fluctuations. Build it as: a phase-space trajectory plot (population imbalance vs. phase) plus a small complex-plane inset showing the two eigenvalues spiraling together and colliding at the EP as you drag a friction/memory-time slider \u2014 the trajectory visibly flips from spiraling-into-a-fixed-point to an unbounded 'running' orbit exactly at the point the eigenvalues merge. This is the single cleanest 'feel the exceptional point' toy you could make from a non-Hermitian physics paper: you literally watch the winding number cause the qualitative behavior change in real time. Pure JS Euler integration of the (published-form) Langevin equations, no backend, no data needed.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Weighted-Threshold Coupon Collector",
+      "paper": "2607.08551v1 \u2014 Weighted-threshold Coupon Collection",
+      "pitch": "An interactive Monte-Carlo + closed-form visualizer of the paper's exact setup: coupon i arrives at rate p_i and contributes weight w_i, and you're waiting for cumulative weight to cross a threshold \u03b8. Let the user drag a Zipf exponent slider s (with p_i = w_i \u221d i^-s, aligned family from the paper) and watch three qualitatively different regimes render live, exactly as proven: for s<1 the quorum time concentrates tightly around a deterministic linear-in-N line; at s=1 it scales like H_N\u00b7N^\u03b8 with the paper's explicit leading constant; for s>1 it converges to a genuinely random, non-degenerate limiting distribution (histogram visibly fattens/skews). Also plot expected quorum time vs. s to show the paper's surprising non-monotonicity live. This is pure client-side math (simulate N coupon arrivals via exponential clocks, or draw straight from the asymptotic formulas) \u2014 no backend, and it turns an abstract concentration-of-measure theorem into something you can literally drag and watch snap between regimes.",
+      "cool": 7,
+      "buildable": 10
+    },
+    {
+      "type": "startup",
+      "title": "Quorum-Time Analytics for Loot Boxes & Battle Passes",
+      "paper": "2607.08551v1 \u2014 Weighted-threshold Coupon Collection",
+      "pitch": "Game studios currently answer 'how long until 80% of players unlock the season-pass bonus tier?' with brute-force Monte Carlo over their drop tables. This paper's setup \u2014 weighted coupons arriving at per-type rates, waiting for cumulative weight to cross a threshold \u03b8 \u2014 is literally the loot-box/battle-pass/gacha completion problem, and it gives closed-form asymptotics (plus concentration bounds) for the three regimes a drop-table's rarity curve can fall into (near-uniform, critical Zipf, heavy-tailed). Pitch: a small B2B calculator/API where a designer plugs in their drop-rate table and threshold and instantly gets the expected time-to-completion, its distribution shape, and which regime they're in \u2014 replacing overnight simulation runs with a formula, and flagging designs that accidentally hit the 'non-monotone' trap the paper found (adding rarer items can sometimes *decrease* expected completion time). Thin, defensible, and speaks the exact language (retention curves, whale spend timing) live-ops teams already use.",
+      "cool": 6,
+      "buildable": 6
+    },
+    {
+      "type": "youtube",
+      "title": "I Tried to Break the AI Story Narrator",
+      "paper": "2608.08160v1 \u2014 Can LLM Agents Stick to the Script? A Benchmark for Long-Horizon Consistency",
+      "pitch": "NCP-Bench has 100 movie-derived interactive narratives where an LLM must narrate while a 'player' pushes against pre-set commitments and facts, auto-validated for logical consistency. The paper's headline numbers are brutal and camera-ready: even the best model (GPT-5.2) only has a 42% chance of surviving 20 turns without contradicting itself, fact-conflict rates run 40-68% across models, and almost no run holds all commitments for 100 turns. Video concept: play an interactive story live against 2-3 different models on-screen, deliberately trying to trap them into contradicting an established fact (a character's death, a hidden identity, a promise made turn 5), with a live 'commitment survival meter' styled off the paper's own metric, then reveal the actual benchmark numbers as the punchline \u2014 'turns out this isn't just me being clever, it's the state of the art.' Strong shareable hook (watching a chatbot's memory visibly break) backed by a real, citable number instead of vibes.",
+      "cool": 8,
+      "buildable": 5
+    },
+    {
+      "type": "demo",
+      "title": "Fibonacci\u2013Goldbach Playground",
+      "paper": "2606.30188 - On integers of the form p+F_{2^k}+F_q",
+      "pitch": "The paper proves the set of integers expressible as prime + Fibonacci(power-of-2 index) + Fibonacci(prime index) has positive lower density -- AND so does the complement (numbers that can't be written this way). Build a single-page number-line sieve: precompute primes up to N with a JS sieve, precompute Fibonacci numbers whose index is a power of 2 or prime, then for every integer up to N brute-force check all p+F_{2^k}+F_q combinations and color the line green (representable) or red (not). Add a live running-density counter and a zoomable canvas so you can watch both colors persist as N grows into the tens of thousands -- literally watching the paper's 'both sets have positive density' claim happen in front of you. A slider lets you swap in plain powers-of-2 (the classical Romanoff/Erdos setup) to see how adding the Fibonacci-of-prime-index term changes the coloring.",
+      "cool": 6,
+      "buildable": 10
+    },
+    {
+      "type": "demo",
+      "title": "Concept Mirage: Flip the Trend",
+      "paper": "2608.08159 - When Is a Steerable Concept Representation Real? Measurement Confounds",
+      "pitch": "The paper's core, unsettling result: whether an LLM 'concept direction' (e.g. numerosity, geography) looks like it emerges with scale is an artifact of which readout metric and operating point you choose -- change one methodological knob and a clean emergent-scaling curve vanishes or reverses, even though the underlying steering effect stays significant at every scale from 0.6B to 72B params. Build an interactive toy with one synthetic but realistic dataset of 'steering effect sizes' across model scales, and three sliders/toggles: raw-activation-norm vs normalized readout, mean vs percentile aggregation, and threshold operating point. As you toggle, the same underlying data redraws as either a dramatic 'emergent capability' hockey-stick or a flat, unremarkable line -- making viscerally felt the paper's actual finding that the phenomenon is real but the 'emergence' narrative is a measurement choice. Perfect companion demo for a YouTube explainer on why so many 'LLMs suddenly develop X at scale' claims don't replicate.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "startup",
+      "title": "EndemiScope: Cheap Endemism-Hotspot Triage for Conservation Funders",
+      "paper": "2511.03242 - Topography, climate, land cover, and biodiversity: endemic species distributions",
+      "pitch": "The paper's finding on Crete: an ANN model shows elevation range and climatic variability (plus total species richness) are the strongest predictors of endemic plant richness -- and crucially, endemic hotspots only partially overlap with high-total-richness areas, meaning the metric conservation orgs usually default to (total species counts, which require expensive field surveys) is a poor proxy for what they actually care about (irreplaceable endemics). Startup angle: a service that ingests free global layers (SRTM elevation, WorldClim climate variability, ESA land cover) for any Mediterranean-climate region and outputs a ranked endemism-hotspot-probability map using the paper's proxy variables, without needing new species surveys. Sell to conservation NGOs, land trusts, and government biodiversity offices who need to prioritize where to spend limited survey/protection budgets -- Crete becomes the validated proof-of-concept region, then expand to California, Chile, South Africa's Cape, SW Australia (the other Mediterranean-climate biodiversity hotspots).",
+      "cool": 6,
+      "buildable": 5
+    },
+    {
+      "type": "project",
+      "title": "Sphere or Point: A Higher Bruhat Interval Explorer",
+      "paper": "2607.21420 - Homotopy types of intervals in corank-three higher Bruhat orders",
+      "pitch": "The paper resolves a case of Reiner's conjecture: in the higher Bruhat order B(n,n-3), every interval is topologically either a sphere (if and only if it's a 'facial' interval) or contractible (collapses to a point) -- nothing in between. Build a small interactive explorer (precompute the poset for n=4,5,6 offline in Python/sage, export as JSON) that renders B(n,n-3) as a Hasse diagram where every interval between two selected nodes gets live-classified and color-coded sphere (gold) vs contractible (gray), with a side panel showing the corresponding wiring-diagram/pseudoline-arrangement picture for intuition. This turns an abstract homotopy-theory theorem into something you can click around and verify by eye on small cases -- good scaffolding for a 'the shape of combinatorics' YouTube segment too.",
+      "cool": 7,
+      "buildable": 4
+    },
+    {
+      "type": "demo",
+      "title": "Outbreak Roulette: Noise-Induced Epidemics",
+      "paper": "2511.02882v1 \u2014 Asymptotic analysis of a stochastic SVEIS epidemic model using Black-Karasinski dynamics",
+      "pitch": "The paper's core result is genuinely counterintuitive: perturb an SVEIS (Susceptible-Vaccinated-Exposed-Infected-Susceptible) epidemic model with Black-Karasinski noise (the mean-reverting log-normal process banks use for interest rates) and prove that above a stochastic threshold Rs0>1 the disease has a stationary distribution (persists forever), below Re0<1 it dies out exponentially fast \u2014 and crucially, 'random fluctuations will facilitate disease outbreak,' i.e. noise can push a disease that would go extinct deterministically into persisting. Build a single HTML/canvas page that runs the SVEIS SDE via Euler-Maruyama in real time: sliders for R0, vaccination rate, and Black-Karasinski volatility/mean-reversion speed. Two panels run side by side \u2014 deterministic ODE vs. noisy SDE with identical R0<1 \u2014 so the user watches the 'safe' deterministic line decay to zero while the noisy twin randomly outbreaks and stabilizes into a stationary cloud. A live histogram builds the stationary distribution in real time. This is a genuinely rare 'noise causes the bad outcome' result that most epidemic visualizations get backwards (noise usually just adds jitter around the same deterministic answer).",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Rebalance the Right Way: The Trade-Order Puzzle",
+      "paper": "2311.16204v1 \u2014 Planning for the Efficient Updating of Mutual Fund Portfolios",
+      "pitch": "The paper reframes portfolio rebalancing (moving from current holdings to a target allocation) as a sequencing/planning problem \u2014 not just 'what to buy and sell' but 'in what order,' since transaction costs, cash constraints, and instrument-type rules make some sequences cheaper than others; they solve it with LP formulations plus heuristic search and show real cost improvements over naive baselines. Build an interactive puzzle: given a small portfolio (5-8 holdings) with a current vs. target allocation and a few realistic constraints (can't go cash-negative mid-sequence, wash-sale-style penalty for sell-then-rebuy, per-trade fee), let the user drag-reorder a sequence of buy/sell moves and see a running total cost update live, then reveal the LP-optimal order and its cost for comparison with a 'you left $X on the table' readout. This makes an invisible operations-research result (sequencing matters, not just the destination) viscerally obvious, and slots naturally into a 'solve it like a puzzle game' framing (Wordle-for-quants) that's shareable.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Break the Reasoner: Adaptive Attack Sandbox",
+      "paper": "2607.17786v1 \u2014 Reasoning as a Double-Edged Sword: Architecture and Cross-Stage Robustness",
+      "pitch": "The paper's striking finding: adding a latent-iterative reasoning stage to a vision-language-action robot model makes it by far the LEAST robust architecture tested \u2014 task success collapses under both random noise and adversarial attack, varying reasoning depth doesn't help (the fragility is structural, not cumulative), and a plan-vs-action 'consistency probe' that looked like a great safety monitor under naive testing 'falls to chance under adaptive attack' \u2014 combining multiple monitors with calibration still can't beat an undefended baseline under white-box attacks. Build a stylized (not real-model) interactive toy: a small grid-world robot with a visible 'reasoning trace' bubble deciding its next move, plus a 'consistency monitor' meter that's supposed to flag when the plan doesn't match the action. Let the user act as the adaptive attacker \u2014 nudge a perturbation slider on the robot's visual input and watch (a) success rate for a 'no-reasoning' reactive twin stay stable while the 'reasoning' twin's success collapses, and (b) once the user learns the pattern, the consistency monitor's alarm rate drops back to baseline (i.e., 'you just beat the safety net'). Great hook for an AI-safety explainer since it embodies the paper's exact headline claim in something you can play with in 30 seconds.",
+      "cool": 9,
+      "buildable": 7
+    },
+    {
+      "type": "startup",
+      "title": "TaskFit: AI-Compatibility Audit for R&D Teams",
+      "paper": "2603.27956 \u2014 Artificial Intelligence in Science: Returns, Reallocation, and Reorganization",
+      "pitch": "The paper's actual finding, from funding-agency proposal data, is that AI adoption in science doesn't show up mainly as an efficiency bump \u2014 it shows up as reorganization: AI-enabled projects shift budget toward human capital, run larger teams, and expand into a wider variety of tasks, with the expansion concentrated in tasks that are naturally LLM-compatible (ideation, experimentation) rather than uniform across the whole research pipeline; outcome gains are real but concentrated in the upper tail. That's a sellable diagnostic: a lightweight audit tool for R&D orgs and grant-making agencies that ingests a project/task breakdown (or a grant proposal) and, using the paper's task-classification approach (keyword + LLM classification of task type), scores which parts of a team's workflow are structurally AI-compatible vs. not \u2014 then recommends reallocating headcount/budget accordingly (more hires into task categories AI can't touch, more tooling into ideation/experimentation where it can). Pitch to university research offices and funding agencies as a 'where will your AI investment actually pay off' report, positioned against the naive 'AI = instant productivity' pitch that the paper's data contradicts.",
+      "cool": 6,
+      "buildable": 5
+    },
+    {
+      "type": "demo",
+      "title": "Smoothed Decoder: Feel Why Adversarial Errors Aren't So Scary",
+      "paper": "2606.10399v1 - Average-Case and Smoothed Near-Optimality for Color-Code Decoding",
+      "pitch": "The paper's punchline is genuinely surprising: minimum-weight decoding of quantum color codes is NP-hard in the worst case, but a block-based decoder gets a (1+eps)-approximation with probability 1-exp(-Omega(n)) once you add even a little i.i.d. noise on top of an adversarial pattern (smoothed analysis), and in the sparse regime (p = o(1/log^2 n)) the syndrome breaks into small isolated islands that can be solved exactly and independently. Build a single-page canvas toy: render a hexagonal color-code lattice, let the user hand-paint a nasty adversarial error string (the kind that breaks naive decoders), then drag a 'perturbation noise' slider. Live-recompute a toy union-find/greedy block decoder and show its logical-error rate collapsing as noise is added -- literally watching NP-hardness get 'smoothed away.' A second toggle drops error probability into the sparse regime and highlights the syndrome fracturing into disconnected component islands that light up and solve independently. This is the single best 'feel the theorem' moment in the batch: worst-case is scary, a pinch of randomness (real or adversarial-plus-noise) makes it tractable, visually and immediately.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Rheotaxis Playground: Pushers vs Pullers in a Crowded Channel",
+      "paper": "2605.25003v1 - Rheotaxis of microswimmers in colloid-laden channel flow",
+      "pitch": "The paper finds a genuinely counterintuitive, swimmer-type-dependent effect: adding colloids to channel flow makes pusher-type microswimmers (e.g. E. coli-like) swim toward the channel center and upstream at low flow speeds, while puller-type swimmers (e.g. Chlamydomonas-like) get pushed away from the center at the same low speeds -- and both flip to upstream-centered orientation once flow dominates at high speed. Colloids also universally damp the along-flow velocity, more so for pullers than pushers. Build a single HTML canvas: a 2D channel with a Poiseuille flow field, a colloid packing-fraction slider, a flow-speed slider, and a pusher/puller toggle. Run a lightweight Langevin/active-Brownian particle sim tuned to reproduce the paper's qualitative crossover (center-seeking vs wall-seeking, low-speed vs high-speed regime flip) so users can literally watch the same swimmer type migrate to opposite sides of the channel depending on flow speed, and watch pusher vs puller diverge at identical settings. This is a satisfying, shareable 'huh, physics is weird' toy that directly encodes the paper's actual result rather than generic swimmer visuals.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "startup",
+      "title": "ObstacleMesh: Robust Coverage-as-a-Service for Camera/Sensor Networks",
+      "paper": "2607.11449v2 - Robust sensor coverage in the presence of spatial obstacles and exclusion zones",
+      "pitch": "The paper's three-stage pipeline -- robust orientation optimization using a 'radius of robust feasibility' to hold coverage under position uncertainty and occluding obstacles, followed by target-aware sleep scheduling that 'minimizes the number of active sensors without compromising target monitoring' -- is exactly the kind of algorithm a physical-security or industrial-monitoring company would license rather than build in-house. Pitch: a SaaS/appliance for facilities with messy geometry (ports, warehouses, construction sites, stadiums) that ingests a floorplan + obstacle/exclusion-zone map + camera or sensor specs, computes robust orientations that stay valid even as sensors droop/drift, and continuously recomputes which sensors can sleep without losing target coverage -- selling directly against the stated result that this beats naive placement 'across varying scenarios: target distributions, obstacle configurations, uncertainty levels, and sensor failures.' The pitchable wedge is battery/bandwidth savings (fewer active sensors, same coverage guarantee) plus resilience to sensor failure, which a 2D simulator prototype (drop obstacles, watch coverage polygons and active/sleeping sensor counts update) could demo to a first customer within a day.",
+      "cool": 6,
+      "buildable": 5
+    },
+    {
+      "type": "project",
+      "title": "JailMeter-Lite: A Portable Jailbreak-Evidence Scorer for Your Own Red-Team Logs",
+      "paper": "2607.19424v1 - JailMeter: An Evidence-Based Evaluation Framework for Jailbreak Attacks",
+      "pitch": "JailMeter's actual contribution isn't just 'another jailbreak benchmark' -- it's a specific scoring method: dual-feedback optimization that strips 'jailbreak noise' from a model's response while preserving only the evidence relevant to the original malicious ask (an Information-Bottleneck-style compression), then requires both demonstrated malicious intent AND a complete answer before counting an attack as successful -- hitting 97.27% agreement with human labels on a 330-example benchmark, with a distilled small-model version (JailMeter-SLM) for cheap large-scale runs. Build a small open-source project: a CLI/single-page tool where you paste in (prompt, model-response) pairs from your own red-teaming of an LLM app, and it runs the same two-stage 'extract evidence -> judge intent+completeness' pipeline via the Anthropic API (client-side key entry, no backend needed) to give a calibrated jailbreak-success verdict instead of a fuzzy refusal-keyword heuristic. Directly useful for anyone (including Sage/Sentinel-adjacent work) doing safety evals on their own agents, and a much more defensible methodology than grep-for-refusal-strings.",
+      "cool": 6,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "Panic vs. Peril: Social Amplification Simulator",
+      "paper": "2603.29282v1 \u2014 Social Amplification Dominates Collective Hazard Response",
+      "pitch": "Single-page canvas sim with two coupled traces: a 'hazard' curve (drag control points to sketch an epidemic/disaster curve) and a 'collective stress' curve generated by a simple negativity-biased contagion model spreading over a network of agents. Sliders for negativity bias and network connectivity let you cross the paper's tipping point where the stress signal decouples from and overshoots the real hazard \u2014 reproducing their headline finding that social influence outweighed direct hazard forcing in over 80% of US states during COVID. Optional overlay of real COVID case-rate vs. social-stress-index snapshots for a gut-check against the actual paper.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Nursery Entropy Simulator (the Maxwell's-Demon Playroom)",
+      "paper": "2603.29312v1 \u2014 A Preliminary Theory of Infantile Dynamics",
+      "pitch": "A deliberately deadpan interactive toy: particles ('toys') random-walk-diffuse from a shelf region into a play-area region while a live entropy meter (Shannon/Boltzmann over the two-region occupancy) climbs monotonically, visualizing the paper's claim that 'entropy production is nonnegative and long-time behavior is typically play-area dominated.' A 'Parent Demon' button lets you manually drag toys back to the shelf for a few seconds \u2014 a transient local-ordering episode \u2014 before diffusion resumes and entropy keeps climbing, exactly the 'volatile Maxwell's demon' the paper describes. A second toggle compares 'novelty' mode (toys periodically wiggle/light up) vs. 'reinforcement' mode, showing novelty remixes the room faster, matching the paper's short-term finding. Doubles as B-roll for a deadpan YouTube explainer treating the April Fools paper as serious physics.",
+      "cool": 9,
+      "buildable": 9
+    },
+    {
+      "type": "startup",
+      "title": "Manski Bounds: Ambiguity-Aware Bet Sizing",
+      "paper": "2602.00355v2 \u2014 Coping with Inductive Risk When Theories are Underdetermined: Decision Theory",
+      "pitch": "Manski's core move: when data underdetermine which of several models is right, don't pick a winner \u2014 compute the partial-identification set (the envelope of predictions consistent with all reasonable specs) and make decisions via minimax-regret/Gamma-minimax over that set, not a single point estimate. Wire this into SharpLab/nba-modeling: run every prop through the existing model variants (RAPM+Elo, box-score, etc.), take the identified set of win-prob predictions, and only fire a bet (and size it via a conservative Kelly fraction) when the edge survives across the *entire* identified set, not just the ensemble mean. Pitch as a real differentiator \u2014 sizing risk with peer-reviewed inductive-risk decision theory instead of false single-model confidence, which is exactly the overconfidence trap that burns most bettors.",
+      "cool": 7,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "Vortex Playground: Steer the Swarm, Watch it Forget",
+      "paper": "2607.08435v1 \u2014 Controllability and Exponential Mixing in Singular Interacting Particle Systems",
+      "pitch": "Canvas/WebGL N-body toy with a dropdown for the interaction kernel (Coulomb 1/r, Riesz, Yukawa \u2014 the exact singular kernels the paper treats). Controllability mode: you drag a small highlighted subset of 'control' particles and watch the whole swarm \u2014 despite chaotic, singular pairwise interactions \u2014 get steered into an arbitrary target formation (spell your name, draw a heart) in finite time, dramatizing the paper's 'global exact / solid controllability' result. Mixing mode: inject noise on the controls and watch a live KL-divergence-to-equilibrium meter tick toward zero as the swarm forgets its initial configuration and converges to the same statistically stationary cloud regardless of where it started, illustrating the proven 'ergodicity and exponential mixing.' Kernel singularities handled with standard N-body softening at short range \u2014 fully client-side, no backend.",
+      "cool": 9,
+      "buildable": 8
+    }
+  ]
+}
