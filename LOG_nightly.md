@@ -1,5 +1,41 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-14 — Permutation Snap (autonomous run, judged/published on 2026-08-15)
+- **Note:** same stall pattern as prior nights — ideation and the build-off ran but the 3rd builder (Rank-Width
+  Playground, arXiv:2607.23101) never produced a file, and judging/publishing/logging never ran (stray
+  `ideation_2026-08-14.js`/`_results.json`/`_results_raw.json`/`buildoff_2026-08-14.js` left uncommitted). Picked
+  up and finished at the start of the 2026-08-15 session: judged the 2 completed builds, published, logged.
+- **Fetch:** fresh papers across categories, 24 ideas generated across all four categories.
+- **Top per category:**
+  - startup — **ESG Weight Reveal** (cool 6, buildable 7): interactive leaderboard where dragging Refinitiv's
+    per-category ESG weights reshuffles company rankings live, exposing how much of "your ESG score" is a policy
+    choice (arXiv:2312.00202)
+  - youtube — **The Orchids That Are Winning Right Now — And Losing By 2070** (cool 7, buildable 6): SDM
+    projections show orchids gaining ground today are still headed for range collapse by 2070 (arXiv:2511.01122)
+  - project — **Ground-Truth-Free HTR Scorer** (cool 6, buildable 8): CLI that estimates handwriting/OCR accuracy
+    from agreement between two independent transcriptions, no gold-standard transcript required (arXiv:2608.03617)
+  - demo — 3 selected for build-off: **Permutation Snap** (arXiv:2607.12431, cool 8×buildable 9), **Numerical
+    Semigroup Tree Explorer** (arXiv:2607.23111, cool 8×buildable 9), **Rank-Width Playground**
+    (arXiv:2607.23101, cool 8×buildable 9)
+- **Built (2 of 3 completed; 3rd builder never wrote a file):**
+  - A — **Permutation Snap** (arXiv:2607.12431, entrywise l4-norm maximization over the orthogonal group has
+    signed permutation matrices as its *only* local/global maximizers): SO(2) objective plotted live against a
+    rotation slider, gradient ascent animated snapping toward a permutation matrix, plus a bonus panel that
+    un-mixes two blindly-combined sine tones live via the same ascent (audible ICA-via-kurtosis).
+  - B — **Numerical Semigroup Tree Explorer** (arXiv:2607.23111, exact multiparameter counting formula for
+    numerical semigroups by genus/Frobenius number/multiplicity): Chicken-McNugget-style branching tree game with
+    a live counter verifying the theorem node-by-node.
+  - C — **Rank-Width Playground** — never built; the 3rd builder subagent did not produce a file.
+  - **Judge:** both existing builds verified valid, self-contained, dependency-free HTML/JS (tags balanced, JS
+    passes `node --check`, all DOM ids exist, Chart.js CDN SRI hash checked for B); neither disqualified. Scores
+    (wow/interactivity/polish/fidelity): A 9/9/9/9=36, B 8/9/9/6=32. **A (Permutation Snap) won** — verbatim-
+    accurate math with no discrepancies, versus B's formula error (stated m ≥ (F+2)/3 vs the paper's actual
+    m ≥ (F+1)/3) and unverifiable hardcoded digits.
+- **Published:** demo at `demos/2026-08-14-permutation-snap.html`, brief at `2026-08-14-nightly.html`, both
+  mirrored into `david-share` and registered in its manifest. Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-14-permutation-snap.html and
+  .../arxiv-scrape/2026-08-14-nightly.html once the VPS pulls.
+
 ## 2026-08-13 — Vortex Playground (autonomous run, judged/published on 2026-08-14)
 - **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed but judging,
   publishing, and logging never ran (stray `ideation_2026-08-13.js`/`_results.json`/`_results_raw.json`/
