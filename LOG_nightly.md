@@ -1,5 +1,45 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-15 — Lahaina Lane-Reversal Simulator (autonomous run, judged/published on 2026-08-16)
+- **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed (all 3 builders
+  wrote files this time) but judging, publishing, and logging never ran (stray `ideation_2026-08-15.js`/
+  `_results.json`/`buildoff_2026-08-15.js` left uncommitted). Picked up and finished at the start of the
+  2026-08-16 session: ran a judge-only workflow against the 3 existing builds, published, logged.
+- **Fetch:** fresh papers across categories, 24 ideas generated across all four categories.
+- **Top per category:**
+  - startup — **TrajectoryEdge** (cool 6, buildable 5): dynamic treatment-effect (DATE) estimator repurposed
+    from time-series causal inference to price sports "shock events" (coaching fires, trades, injury returns)
+    as trajectory shifts rather than static before/after win-rate deltas (arXiv:2602.00836)
+  - youtube — **How to Solve a Linear Program EXACTLY** (cool 6, buildable 6): oracle-model algorithm recovers
+    exact primal/dual LP solutions in O(n² log(n/δ)) calls to any approximate solver, no rounding/Diophantine
+    machinery needed (arXiv:2606.11820)
+  - project — **Safety Bridge Finder** (cool 7, buildable 5): activation-patching toolkit that finds the sparse
+    shared cross-lingual pathways carrying safety/refusal signal in multilingual LLMs (arXiv:2608.09095)
+  - demo — 3 selected for build-off: **Break the Agent** (arXiv:2607.18847, cool 8×buildable 9), **Lahaina
+    Lane-Reversal Simulator** (arXiv:2603.29055, cool 8×buildable 8), **Trick the Color Brain**
+    (arXiv:2602.13887, cool 8×buildable 8)
+- **Built (3 of 3 completed):**
+  - A — **Break the Agent: Live Leak-Rate Sandbox** (arXiv:2607.18847, pre-deployment hardening pipeline cuts
+    prompt-injection leakage 100% on basic jailbreaks / 91% under stress-induced manipulation): toy agent with
+    a fake `send_email` tool and an embedded secret, UNHARDENED/HARDENED toggle live-replicates the paper's
+    leak-rate reduction as you paste injection attempts.
+  - B — **Lahaina Lane-Reversal Simulator** (arXiv:2603.29055, hyperbolic-conservation-law model of the 2023
+    Lahaina evacuation finds reversing one lane captures nearly all achievable clearance-time improvement):
+    real Godunov-scheme LWR PDE solver over a simplified peninsula grid, lane-reversal slider + emergency-lane
+    toggle drive a live clearance-time readout.
+  - C — **Trick the Color Brain** (arXiv:2602.13887, human/DNN color-constancy psychophysics task): browser
+    version of the paper's achromatic-color-picking task with the same cue-removal toggles, compares the
+    user's own degradation curve to the paper's human/DNN curves.
+  - **Judge:** all three verified valid, self-contained, dependency-free HTML/JS (tags balanced, JS
+    syntax-checked, DOM ids exist, Chart.js CDN resolves). None disqualified. Scores (wow/interactivity/
+    polish/fidelity): A 7/8/9/8=32, B 9/8/9/9=35, C 8/9/8/7=32. **B (Lahaina Lane-Reversal) won** — the only
+    build that reconstructed the paper's actual method (a numerical PDE solver with a junction-splitting rule)
+    rather than approximating it with heuristics, while also the most polished and best animated.
+- **Published:** demo at `demos/2026-08-15-lahaina-lane-reversal.html`, brief at `2026-08-15-nightly.html`,
+  both mirrored into `david-share` and registered in its manifest. Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-15-lahaina-lane-reversal.html and
+  .../arxiv-scrape/2026-08-15-nightly.html once the VPS pulls.
+
 ## 2026-08-14 — Permutation Snap (autonomous run, judged/published on 2026-08-15)
 - **Note:** same stall pattern as prior nights — ideation and the build-off ran but the 3rd builder (Rank-Width
   Playground, arXiv:2607.23101) never produced a file, and judging/publishing/logging never ran (stray
