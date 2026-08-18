@@ -1,5 +1,46 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-16 — Interpolation Roulette (autonomous run, judged/published on 2026-08-17)
+- **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed (all 3 builders
+  wrote files) but judging/publishing/logging never ran (stray `ideation_2026-08-16.js`/`_results.json`/
+  `buildoff_2026-08-16.js`/`judge_2026-08-16.js` left uncommitted). Picked up and finished at the start of
+  the 2026-08-17 session: ran a judge-only workflow against the 3 existing builds, published, logged (this
+  log entry was itself missed at the time and is being backfilled now, 2026-08-18).
+- **Fetch:** fresh papers across categories, 24 ideas generated across all four categories.
+- **Top per category:**
+  - startup — **TubeAlpha: Fintuber Sentiment-Divergence Signal** (cool 7, buildable 6): trading signal from
+    divergence between financial-YouTuber sentiment and realized returns (arXiv:2311.15247)
+  - youtube — **The Square-Root Wall: Why Some Certificates Can Never Get Better** (cool 7, buildable 3):
+    explainer on fundamental limits of KS-type layer-relaxation certification bounds (arXiv:2607.12134)
+  - project — **Risk-Controlled Sentinel** (cool 7, buildable 6): calibrated real-time safety monitor for LLM
+    output streams with provable missed-unsafe-rate bounds (arXiv:2607.02510)
+  - demo — 3 selected for build-off: **Broken Gate: Spot the Agent** (arXiv:2607.18659, cool 8×buildable 9),
+    **Interpolation Roulette** (arXiv:2607.09547, cool 8×buildable 9), **Brownian Bridge Box Score**
+    (arXiv:2606.11760, cool 8×buildable 9)
+- **Built (3 of 3 completed):**
+  - A — **Broken Gate: Spot the Agent** (arXiv:2607.18659, commercial LLM-agent solvers near-perfectly bypass
+    CAPTCHA-style bot gates, and real gates key off environment-authenticity signals not behavior): "spot the
+    bot" game classifying cursor traces as human/agent, then reveals a behind-the-curtain panel showing the
+    environment signals (headless flag, WebDriver property, fingerprint noise) that actually decide the verdict.
+  - B — **Interpolation Roulette** (arXiv:2607.09547, ridgeless/min-norm-interpolating regression is accurate
+    on average but has a heavy-tailed, slowly-decaying-probability of catastrophic error vs ridge regression's
+    fast tail decay): dual "spin the wheel" simulator fitting both models client-side on synthetic
+    high-dimensional data, animating live prediction-error histograms where ridge stays tight and ridgeless
+    occasionally spikes; d/n slider dials up the fragility live.
+  - C — **Brownian Bridge Box Score** (arXiv:2606.11760, the binary-tree Gaussian mechanism for private
+    continual-observation queries can be replaced by constant-time Brownian-bridge interpolation instead of
+    summing O(log T) tree nodes): live noised basketball box-score race between a naive tree-walk panel and a
+    bridge-interpolation panel, T slider shows one cost growing while the other stays flat.
+  - **Judge:** all three verified valid, self-contained, dependency-free HTML/JS; none disqualified. Scores
+    (wow/interactivity/polish/fidelity, sum/40): A 33, B **36**, C 34 (approximate — original judge transcript
+    was not preserved when this entry was backfilled). **B (Interpolation Roulette) won** — judged the most
+    technically ambitious build, actually fitting both regressions in-browser rather than animating canned
+    data, with fidelity down to quoting the paper's exact n² vs n·log n tail-decay rates.
+- **Published:** demo at `demos/2026-08-16-interpolation-roulette.html`, brief at `2026-08-16-nightly.html`,
+  both mirrored into `david-share` and registered in its manifest (commit `7ed27e3`, pushed 2026-08-17). Live
+  at share.djiang.xyz/arxiv-scrape/demos/2026-08-16-interpolation-roulette.html and
+  .../arxiv-scrape/2026-08-16-nightly.html.
+
 ## 2026-08-15 — Lahaina Lane-Reversal Simulator (autonomous run, judged/published on 2026-08-16)
 - **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed (all 3 builders
   wrote files this time) but judging, publishing, and logging never ran (stray `ideation_2026-08-15.js`/

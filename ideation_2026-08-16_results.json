@@ -1,0 +1,196 @@
+{
+  "ideas": [
+    {
+      "type": "demo",
+      "title": "Brownian Bridge Box Score",
+      "paper": "2606.11760 \u2014 A Fast Gaussian Mechanism under Continual Observation, with Applications",
+      "pitch": "The paper's actual result: for privately releasing a running cumulative sum that grows over time (the classic binary-tree/Gaussian mechanism for continual observation), querying any past partial sum normally costs O(log T) noise-term summation; the paper shows you can sample the correctly-correlated noise for ANY node in constant time by treating the tree's noise process as a Brownian bridge and interpolating directly. Build a single-file HTML demo framed as a live, privacy-noised running tally \u2014 e.g. a basketball team's cumulative point total or a poker player's cumulative net winnings ticking up event by event. Two panels race side by side: 'Naive tree mechanism' (visibly walks up/down O(log T) tree nodes summing noise, shown as an animated tree traversal) vs 'Brownian bridge' (instantly interpolates the noise value as a bridge between two known endpoints, shown as a continuous stochastic path snapping to sampled points). Slider for T (number of events) shows the naive method's per-query cost growing while the bridge method stays flat \u2014 literally making the paper's asymptotic claim visible and race-able. Pure client-side math (cumulative sums + Gaussian sampling + Brownian bridge interpolation formula), no backend needed.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Manifold Bender: See a Deepfake's Intrinsic Dimension Spike",
+      "paper": "2607.18770 \u2014 GLID: Gated Local Intrinsic Dimension Repairs the Blind Spots of Face-Forgery Detectors",
+      "pitch": "GLID's actual finding: forged images bend the local manifold of a vision transformer's patch-token representations, and different generator families bend it at different depths \u2014 GAN artifacts peak at the last layer, diffusion artifacts peak mid-network \u2014 giving a training-free geometric detection signal (0.805 mean AUC on their 16-axis cross-generator benchmark, +0.084 AUC gain on generation axes). Build an interactive canvas demo where the user drags points on a 2D/3D synthetic point cloud (standing in for token embeddings) to locally 'fold' or 'crease' the manifold, while a live local-intrinsic-dimension estimator (simple correlation-dimension or nearest-neighbor MLE estimator, computable client-side) recolors nearby points in real time \u2014 showing LID spiking exactly at the crease, the same signal GLID uses to catch forgeries no detector was trained on. Include a toggle simulating 'GAN-style fold' (spike near one edge) vs 'diffusion-style fold' (spike in the middle) to mirror the paper's family-specific-depth finding. Fully self-contained HTML/canvas/JS, no ML model needed since it's a geometric-intuition toy, not a real detector.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Reward Shaping Arena",
+      "paper": "2608.08158 \u2014 A Unified Framework for Dynamic Reward Shaping in Reinforcement Learning",
+      "pitch": "The paper's core (theoretical) claim is that dynamic reward shaping's optimality guarantees depend on the interaction between how fast the shaping signal adapts and how stable the underlying learner is \u2014 additive potential-based shaping can preserve optimal policies, but reward replacement or fast-adapting shaping can destabilize learning when combined with replay buffers/bootstrapped critics. Build a single-HTML-file grid-world game (tabular Q-learning runs fast enough to train live in-browser, ~10-30fps) where the player designs a 'reward shaping schedule' with sliders: shaping type (additive potential-based vs. reward replacement), adaptation speed, and whether experience replay is on. Watch the agent's live policy heatmap and cumulative-reward curve either converge cleanly to the optimal path (when using potential-based shaping, per the paper's theory) or thrash/diverge (fast adaptation + replay + non-potential shaping) \u2014 letting the player literally break and fix the theorem's preconditions and feel why they matter. Ties into the arxiv-scrape project's basketball/games angle by framing the grid world as a simple 'shot clock' navigation game.",
+      "cool": 7,
+      "buildable": 8
+    },
+    {
+      "type": "youtube",
+      "title": "SFT vs. RL: The Multi-Task Tug of War",
+      "paper": "2608.03573 \u2014 SFT Conflicts, RL Coexists: A Theoretical and Empirical Analysis of Multi-Task Learning for LLMs",
+      "pitch": "The paper's real, surprising result: fine-tuning an LLM on multiple tasks with plain supervised fine-tuning (SFT) causes severe task interference (updates are 'norm-limited' \u2014 big weight-magnitude conflicts that overwrite each other), while RL fine-tuning naturally produces sparse, near-orthogonal parameter updates per task ('variance-limited' by advantage normalization) that let tasks coexist without stepping on each other \u2014 motivating their proposed 'Parallel-RL' training paradigm. A video essay explainer: animate two toy 2D loss landscapes/gradient fields side by side, one showing SFT's task gradients as thick overlapping arrows canceling each other out, the other showing RL's gradients as thin, near-perpendicular arrows that barely interact \u2014 building the intuition for why 'more tasks = more conflict' is true for SFT but not RL, then landing on the practical takeaway (Parallel-RL) for anyone training multi-skill LLM agents. Strong hook for the ML-practitioner YouTube audience since 'why does my multi-task fine-tune get worse the more tasks I add' is a common real pain point.",
+      "cool": 6,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "Interpolation Roulette",
+      "paper": "2607.09547 High-Dimensional Interpolators Can Be Fragile: Heavy Tails and High-Dimensional Large Deviations",
+      "pitch": "Single-file HTML/canvas/d3 toy that literally makes you feel the paper's result. The paper proves that ridgeless (min-norm interpolating) regression is statistically fragile in high dimensions -- accurate on average but with a heavy right tail of catastrophic prediction errors that decays only like n\u00b7log(n), versus ridge-regularized regression's much faster n^2 tail decay. Build a 'spin the wheel' simulator: generate synthetic high-dim linear data with heavy-tailed noise, fit ridge and ridgeless models thousands of times client-side, and animate each trial as a spin landing on a live-updating histogram/roulette wheel of held-out prediction errors. Ridge trials cluster tight and boring; ridgeless trials mostly look identical but every so often the wheel lands on a huge spike bar -- a visceral 'accurate on average, fragile in the tail' moment. A slider for dimension/sample-size ratio (d/n -> 1) lets you dial fragility up live, directly reproducing the paper's large-deviation regime.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Spectral or Not? A Fractal Fourier Playground",
+      "paper": "2607.23071 Spectrality of Moran-Type Measures Generated by Two-Element and Three-Element Digit Sets",
+      "pitch": "The paper's result: for these Moran-type (generalized Cantor) measures, spectrality -- whether the measure admits an orthogonal basis of pure exponentials, i.e. is 'playable' like a Fourier signal -- is completely determined by counting 2-factors and 3-factors in the zero set of the Fourier transform of each convolution term, even without the classical Hadamard-triple crutch. Build an interactive canvas: user picks a 2- or 3-element digit set and contraction ratio, sees the resulting fractal measure rendered on one side and a live plot of the zero set of its Fourier transform on the other, with a running tally of 2-factors/3-factors that predicts (per the paper's characterization) whether the set is spectral. Stretch goal: sonify the exponential basis functions when spectral is true, so you can literally hear a 'spectral' fractal versus a mute non-spectral one -- turns an abstract harmonic-analysis theorem into something you drag, watch, and listen to. Doubles as a great short YouTube explainer script once built.",
+      "cool": 8,
+      "buildable": 6
+    },
+    {
+      "type": "startup",
+      "title": "TubeAlpha: Fintuber Sentiment-Divergence Signal",
+      "paper": "2311.15247 Information Content of Financial Youtube Channel: Case Study of 3PROTV and Korean Stock Market",
+      "pitch": "The paper finds real, non-trivial alpha in a Korean financial YouTube channel: positively-mentioned stocks spike pre-announcement then crash (pump-and-dump pattern), negatively-mentioned stocks underreact and drift down post-announcement, and -- most interesting -- shifts in the channel's sentiment *tone relative to its own historical baseline* forecast Korean market portfolio returns, a signal that survives controlling for news sentiment, short-term rates, and liquidity risk. Build a pipeline (yt-dlp transcripts + LLM sentiment scoring + backtest against KOSPI/individual tickers) that computes each fintube channel's baseline-deviation tone signal and per-stock mention flags, ships first as a research dashboard, then productizes as a paid signal feed for retail/quant traders following Korean (and eventually US) financial YouTubers -- a domain nobody is systematically quantifying yet.",
+      "cool": 7,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "Kronecker Condition Number Lab",
+      "paper": "2607.12286 Structured Preconditioning in Affine-Invariant Geometry: Projection, Certificates, and Kronecker Separation",
+      "pitch": "The paper proves that the closest Kronecker-structured projection A\u2297B of a matrix is NOT always the one that minimizes the Hessian-relative condition number, gives a computable 'marginal-mismatch residual' certificate that detects this gap and points toward improvement, and shows 2x3 is the smallest matrix size where this separation strictly occurs. Build a small-matrix playground: sliders build/perturb a PD matrix, live panels show its naive Kronecker projection, that projection's condition number, the residual certificate value, and (toggle 'show counterexample') the paper's minimal 2x3 case where projection-optimal and condition-optimal diverge, with an arrow showing the descent direction the residual implies. Turns an abstract optimization/certificate result into something you can drag around and visibly break -- niche audience but a satisfying 'aha' for anyone who's fought preconditioners.",
+      "cool": 6,
+      "buildable": 7
+    },
+    {
+      "type": "demo",
+      "title": "Slippage Anatomy: Where Your Uniswap Fee Really Goes",
+      "paper": "2309.13648v2 \u2014 Don't Let MEV Slip: The Costs of Swapping on the Uniswap Protocol",
+      "pitch": "A single-page swap simulator that decomposes the total cost of a trade into its three real components straight from the paper: gas, benign price-impact slippage, and adversarial (MEV/sandwich) slippage. Sliders for trade size and pool choice (USDC-ETH vs PEPE-ETH) drive a stacked bar that animates as you drag \u2014 small trades show gas dominating, large trades show price-impact taking over, and switching to the PEPE pool bumps the adversarial-slippage slice ~80% higher than USDC, matching the paper's headline empirical finding. Underlying math is just a constant-product AMM curve plus a synthetic adversarial-probability function calibrated to the paper's reported ratio, so it's pure client-side arithmetic \u2014 no chain calls needed. Great 'feel the invisible tax' artifact for crypto Twitter.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "CWLATE Playground: Watch a Fuzzy Cutoff Lie to You (and Get Fixed)",
+      "paper": "2602.01417v1 \u2014 Identification and Estimation in Fuzzy Regression Discontinuity Designs with Covariates",
+      "pitch": "An interactive scatterplot with a draggable discontinuity threshold (framed as a sports/games cutoff \u2014 e.g. 'does crossing a minutes-played or win-total threshold cause a bonus/promotion') where treatment 'compliance' is noisy near the cutoff, exactly the fuzzy-RDD setting the paper studies. Toggle between the standard fuzzy-RDD Wald estimator and the paper's proposed Compliance-Weighted LATE (CWLATE, which weights by squared first-stage discontinuity), and watch the two estimates and their confidence bands live-update as you inject more compliance heterogeneity across a discrete covariate group slider \u2014 visibly reproducing the paper's core claim that CWLATE has lower MSE and more stable estimates when compliance varies across groups. All local-linear regression and bootstrap CIs run in-browser on synthetic data; no backend needed. Directly useful groundwork for the user's own NBA-props/threshold-effect modeling interests.",
+      "cool": 6,
+      "buildable": 8
+    },
+    {
+      "type": "project",
+      "title": "Risk-Controlled Sentinel: A Calibrated Real-Time Safety Monitor for LLM Output Streams",
+      "paper": "2607.02510v1 \u2014 Online Safety Monitoring for LLMs",
+      "pitch": "The paper's finding is deliberately unglamorous but useful: a dead-simple monitor \u2014 take a scalar signal from an external judge/verifier model, threshold it, and calibrate that threshold with conformal/risk-control guarantees \u2014 matches fancier sequential-hypothesis-testing monitors on math-reasoning and red-teaming benchmarks. Build a lightweight wrapper library (a few hundred lines) that sits between an app and any LLM API: it scores each response with a small judge model, maintains a calibration set, and computes a threshold that provably bounds the false-negative (missed-unsafe) rate at a chosen risk level, alarming/flagging in real time when scores drift past it. Ship it as a pip-installable middleware plus a small HTML dashboard showing the live score stream, the calibrated threshold line, and the running empirical risk \u2014 a direct, low-effort upgrade path for something like the user's own Sage/Sentinel bot infrastructure, which already has error-forwarding plumbing to hook this into.",
+      "cool": 7,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "The Golden Width: An Interactive Averageness-of-Faces Beauty Toy",
+      "paper": "2602.13368v3 \u2014 The Influence of Width Ratios on Structural Beauty in Male Faces",
+      "pitch": "A procedurally-drawn schematic face (canvas/SVG, no real photos needed \u2014 avoids the paper's own noted 'manipulation artifact' problem) whose interocular-distance-to-face-width ratio is controlled by a single slider spanning the paper's low/medium/high bins. As you drag, a live 'predicted attractiveness' curve peaks at the medium/average ratio the paper's Bayesian model identifies as most beautiful, visually replicating the 'averageness correlates with higher perceived attractiveness' result. Add a quiz mode that runs the actual two-alternative-forced-choice task from the study (two faces, pick the more attractive one, ratios randomized) and tallies your personal bias against the population curve at the end. Doubles as a tight, self-contained YouTube short concept ('I recreated a face-beauty psychology study \u2014 do you actually like average faces?') since the whole build is one HTML file and immediately shareable/quiz-bait.",
+      "cool": 8,
+      "buildable": 7
+    },
+    {
+      "type": "demo",
+      "title": "Incidence vs. Prevalence: Flatten-the-Curve Lab",
+      "paper": "2511.00138v1 \u2014 Incentives for self-isolation based on incidence rather than prevalence could help to flatten the curve",
+      "pitch": "The paper's SIS + imitation-dynamics model shows equilibrium prevalence only depends on isolation cost and time-in-isolation, but switching the isolation *trigger signal* from prevalence (how many are sick now) to incidence (new cases/day) meaningfully flattens the epidemic curve during the transient/early-outbreak phase, even though it doesn't change the long-run equilibrium. Build a single-page toy: an SIS compartmental sim running live (canvas line chart of I(t) and new-cases(t)), with a slider population that 'decides' to self-isolate based on either a prevalence threshold or an incidence threshold, using simple imitation-dynamics update rules for isolation adoption. Two side-by-side curves race in real time \u2014 user drags the cost/behavior-sensitivity sliders and literally watches the incidence-triggered population produce a lower, wider peak than the prevalence-triggered one, then watches both curves converge to the *same* equilibrium prevalence, exactly matching the paper's counterintuitive claim ('this matters for the sprint, not the marathon').",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Break & Grab: The DNA End-Tethering Race",
+      "paper": "2605.24987v1 \u2014 DNA end tethering through break-induced DNA-protein condensation",
+      "pitch": "The paper's core result is that after a DNA double-strand break, proteins near the break flip into a 'condensate-competent' state, and whether the two broken ends actually get tethered together is a kinetic race between polymer relaxation (ends diffusing apart via Rouse/Brownian motion) and condensation (proteins gluing them via liquid-liquid phase separation) \u2014 a race the cell reliably wins despite randomness. Build a canvas toy: two polymer chains (bead-spring, simple Brownian dynamics) with a 'break point' in the middle; a condensation-probability field switches on at t=0 and grows around the break; sliders control the relaxation rate vs. the condensation-onset/growth rate. Run many trials at once (ghost trails) to show a live success-rate meter \u2014 user drags the two rate sliders and watches the phase diagram emerge in real time: fast condensation + slow relaxation = ends reliably captured, and the reverse = ends drift apart and never re-meet, visually reproducing the paper's central kinetic-competition claim.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Shortcut Charging: Race the Capacitor",
+      "paper": "2605.18473v2 \u2014 Accelerating charging dynamics of electric double-layer capacitors",
+      "pitch": "Using the Poisson-Nernst-Planck model, the authors derive time-dependent 'shortcut to adiabaticity' voltage protocols (polynomial voltage ramps) that cancel out an arbitrary number of relaxation modes, letting an EDLC reach full charge in a driving time comparable to or shorter than its natural RC time \u2014 roughly an order of magnitude faster than a standard step-voltage charge. Build a single-file toy that solves a simplified 1D PNP system (finite differences on ion density + potential between two plates) in the browser, animates the ion cloud building up at each electrode, and lets the user race two protocols side by side: a plain step voltage vs. the derived polynomial shortcut. A live surface-charge-density readout shows the shortcut protocol slamming into equilibrium ~10x faster, directly visualizing the paper's headline number in a way anyone can feel by watching the ion clouds snap into place.",
+      "cool": 7,
+      "buildable": 6
+    },
+    {
+      "type": "startup",
+      "title": "Latent Breeder: Disentangled ML for Precision Agbio",
+      "paper": "2410.19922v1 (Compositional Autoencoder for genotype/environment disentanglement, 5-10x better trait prediction) + 2602.23269v2 (HATTER active-learning human-in-the-loop enzyme function prediction, competitive accuracy at a fraction of the labeling cost)",
+      "pitch": "Seed companies and biotech labs both suffer from the same disease: models tangled up by confounded data (genotype x environment interactions in crop trials; sequence-to-function gaps in enzyme engineering) and expensive labels (multi-site field trials; wet-lab functional assays). Package both papers' actual mechanisms into one SaaS: a compositional-autoencoder module that splits any genotype x environment phenotype dataset into clean genotype-specific and environment-specific latent factors (replicating the paper's 5-10x lift on traits like Days-to-Pollen and Yield on maize panels), fused with an active-learning querying loop (\u00e0 la HATTER) that tells a breeder or protein engineer exactly which next field trial or enzyme assay to run to most reduce model uncertainty. Pitch to seed companies (Corteva/Bayer-scale precision breeding budgets) and enzyme-engineering biotechs; tonight's demo is a synthetic-data landing page with a slider-driven latent-space visualizer (PCA-style scatter that visibly separates into genotype vs. environment clusters as you 'disentangle') plus a mocked active-learning query queue.",
+      "cool": 6,
+      "buildable": 4
+    },
+    {
+      "type": "demo",
+      "title": "The Counterwork Engine",
+      "paper": "2606.27486 - Jarzynski equality for counterwork under reversed memory-filtered driving",
+      "pitch": "A single-page Langevin-dynamics toy (canvas + JS Euler-Maruyama integrator) simulating a colloidal particle dragged through a moving harmonic trap, the classic optical-tweezer setup used to test Jarzynski's equality. Drag a slider to set the protocol speed \u03bb(t); the page fires hundreds of stochastic trajectories and builds a live histogram of work values W, whose exponential average \u27e8e^-W\u27e9 converges to the true \u0394F (shown as a dashed ground-truth line) \u2014 the textbook Jarzynski result. Then hit 'Reverse' to apply the paper's sign-inverting memory kernel, generating the effective protocol \u039b(t) that reverses the endpoints of \u03bb(t); a second histogram of counterwork C appears, and a live readout shows \u27e8e^-C\u27e9 landing on the reciprocal of the forward average (\u0394F_C = -\u0394F_W) plus a running check of the paper's Jensen-derived inequality \u27e8C\u27e9+\u27e8W\u27e9\u22650 \u2014 the user can try to crank sliders to break the inequality and watch it refuse to go negative on both sides. Lets a stat-mech audience literally feel a fairly abstract free-energy inequality instead of reading it.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "startup",
+      "title": "Groundcheck: Fidelity Audits for LLM Credit Explanations",
+      "paper": "2608.08126 - Accurate Ensembles, Fragile Narratives: Multi-Scale Stacking and a Fidelity Audit of LLM-Generated Explanations for Credit Risk",
+      "pitch": "The paper builds a strong credit-risk ensemble (ROC-AUC 0.9539) but finds its LLM-generated adverse-action narratives are dangerously unreliable: cases where the model 'named three factors as risk-increasing that the supplied attributions scored as risk-reducing, omitted the dominant driver, and introduced a feature never given to it,' with SHAP/LIME disagreeing substantially and calibration failing acceptable thresholds. Their conclusion \u2014 verification must happen post-generation, prompt engineering can't fix it \u2014 maps directly onto a live regulatory pain point (ECOA/Reg B require specific, accurate reasons for credit denial, and regulators are actively scrutinizing AI-generated adverse-action letters). Groundcheck is drop-in middleware that sits between a lender's model/attribution pipeline and its LLM narrative generator, running the paper's own audit methodology (sign-flip detection, omission detection, hallucinated-feature detection, cross-method attribution agreement, calibration/stability scoring) on every generated letter before it ships, blocking or flagging mismatches and producing a compliance-ready audit trail. Monetized per-audited-explanation or as a compliance subscription for banks/fintechs.",
+      "cool": 7,
+      "buildable": 5
+    },
+    {
+      "type": "demo",
+      "title": "Broken Gate: Spot the Agent",
+      "paper": "2607.18659 - Broken Gates: Re-evaluating Web Bot Defenses in the Age of LLM Agents",
+      "pitch": "An interactive canvas game replaying a handful of animated mouse-movement/click-timing traces and asking the visitor to classify each as human or LLM-agent-driven \u2014 dramatizing the paper's headline finding that 'challenge-based defenses are broadly ineffective against commercial solvers, which achieve near-perfect bypass at negligible cost' and that 'two agents with nearly indistinguishable behavioral footprints yield divergent outcomes.' After each guess, the demo reveals the twist: behaviorally the traces really are near-identical, but a hidden 'behind the curtain' panel shows the actual signals (headless flag, WebDriver property, TLS/JA3 fingerprint, execution-environment noise) that determined whether a real CAPTCHA system would have passed or blocked it \u2014 illustrating the paper's core claim that current bot gates key off environment authenticity, not behavior. Highly shareable 'can you spot the bot' format built on procedurally generated jittery-human vs. bezier-smooth-bot cursor paths, no backend needed.",
+      "cool": 9,
+      "buildable": 8
+    },
+    {
+      "type": "project",
+      "title": "Query Budget: Approximate-Sampling Visualizer",
+      "paper": "2606.11437 - The Power of Test-Time Training for Approximate Sampling",
+      "pitch": "A small interactive tool that makes the paper's two theoretical results tangible on a toy discrete state space (bit-strings or graph nodes). It runs a classic random-walk sampler against a noisy density oracle (noise level \u03b5 controlled by a slider) and plots oracle-query count needed to hit a target error \u2014 tracing out the paper's proven quadratic (1/\u03b5\u00b2) lower bound and showing the random-walk method sitting right on that optimal curve. Flipping a 'bounded class F' toggle switches to a test-time-training-style search over a small finite candidate list of distributions instead of blind random walking, and the second curve visibly breaks through the quadratic wall with far fewer queries \u2014 the paper's key finding that TTT surmounts the general lower bound precisely when the distribution class has bounded size. A live side-by-side chart makes an otherwise dry query-complexity proof into something you can watch happen.",
+      "cool": 6,
+      "buildable": 7
+    },
+    {
+      "type": "demo",
+      "title": "Feel the Disorder Threshold \u2014 Scattered Data Interpolation Breakdown",
+      "paper": "2607.22968v2 \u2014 Isoperimetric-Combinatorial Bounds for Range-Controlled Matchings and Quasi-Interpolation from Scattered Data",
+      "pitch": "Single-file canvas demo: a lattice of reference points Y at spacing h sits under a set of scattered/jittered points Q, jitter radius r controlled by a slider. The demo computes a live matching between Q and Y (animated connecting lines) and reconstructs a quasi-interpolated surface from Q's samples of a known test function, plotting reconstruction error against ground truth in real time. Below the paper's threshold r \u2264 Ch, the interpolation stays smooth and converges at the claimed O(h^s) rate as h shrinks; push r past the threshold (a Hall-type cube-population imbalance) and the matching visibly snaps/tangles and the reconstruction error blows up \u2014 letting you literally feel the isoperimetric-combinatorial cutoff the paper proves, not just read about it.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Grow the Grains \u2014 Live Persistent Homology for Point Patterns",
+      "paper": "2607.09228v1 \u2014 Central Limit Theorems for Functionals of Persistence Diagrams in Germ-Grain Random Set Models",
+      "pitch": "Single-file canvas toy: scatter 'germ' points under a chosen spatial process (Poisson/CSR, clustered, or hard-core repulsive \u2014 toggle switch), then animate a slider growing a disk of radius t around every point (the germ-grain model). Track Betti numbers live via union-find (b0) and Euler characteristic on a rasterized grid (b1 proxy), plotting a real-time Betti curve/APF-style functional. A built-in Monte Carlo null (many CSR simulations) produces a z-score/'p-value' band so the user can watch clustered or repulsive patterns statistically diverge from random exactly as the paper's breast-tissue goodness-of-fit test does \u2014 a hands-on feel for topological GoF testing on spatial data.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "startup",
+      "title": "Embedding Audit \u2014 trust scoring for biological foundation models",
+      "paper": "2602.22289v2 \u2014 What Topological and Geometric Structure Do Biological Foundation Models Learn?",
+      "pitch": "The paper's 141-hypothesis battery found real signal in scGPT/Geneformer embeddings (persistent homology significant in nearly every layer, manifold-aware distance beats Euclidean for regulatory gene pairs) but showed it's uneven: strong in immune tissue, collapsing in lung, and two independently-trained models agree on the embedding's global shape (canonical correlation 0.80) yet disagree on precise gene placement (72% retrieval accuracy). Turn that battery into a productized audit: biotech/pharma teams fine-tuning or querying a bio foundation model for target discovery submit their tissue/cell-type context and get back a 'trust report' \u2014 which gene-neighborhood claims are statistically robust under null controls vs which are noise for that specific tissue \u2014 before committing wet-lab budget to a 'discovered' relationship. A picks-and-shovels QA layer for the fast-growing bio-FM market.",
+      "cool": 6,
+      "buildable": 5
+    },
+    {
+      "type": "youtube",
+      "title": "The Square-Root Wall: Why Some Certificates Can Never Get Better",
+      "paper": "2607.12134v1 \u2014 The Certification Limits of KS-Type Layer Relaxations: A Square-Root Ceiling and Its Breakdown",
+      "pitch": "Pop-math explainer on convex-relaxation certificates: KS-type layer relaxations (assigning costs to individual layers plus pairwise couplings to bound a system's deficit) can never certify more than roughly \u221aN no matter how cleverly they're built \u2014 a clean, animatable impossibility result. The twist that makes the video: for geometric systems like Lennard-Jones particle interactions, that ceiling doesn't just hold, it collapses to a linear-deficit regime and then to total uselessness past a threshold. Visualize with an animated chain of coupled springs/dominoes for the generic case, then morph into a jittering 2D particle lattice for the Lennard-Jones breakdown \u2014 'the proof that knows its own limits' framing in the vein of a Quanta/3Blue1Brown deep dive.",
+      "cool": 7,
+      "buildable": 3
+    }
+  ]
+}
