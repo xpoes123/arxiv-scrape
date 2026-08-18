@@ -1,0 +1,196 @@
+{
+  "ideas": [
+    {
+      "type": "demo",
+      "title": "Lifted Sampler Playground",
+      "paper": "2606.12694 - A unified complexity bound for logconcave sampling",
+      "pitch": "The paper's core trick is 'exponential lifting': add an auxiliary velocity/direction variable to a stuck random walk so it can blast through slow-mixing regions of a constrained convex body, and it proves this gives a near-tight complexity bound whether the body is a tight polytope or a smooth well-conditioned blob. Build a single-page canvas demo with a 2D convex region (ellipse-in-polygon, a narrow slab, a star-shaped body) and two live particle swarms sampling it: a vanilla random-walk Metropolis sampler (visibly crawling, stuck bouncing off walls) vs. a bouncy/lifted sampler that keeps a direction and only 'reflects' at the boundary (visibly gliding, filling the shape fast). Overlay a live histogram/heatmap of visited density plus a mixing-time counter so the viewer literally watches the Poincare-constant improvement happen. Sliders to squeeze the body (make it thinner) show the gap between the two samplers widening exactly where the paper says lifting matters most.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Grid-Paper ECG Reasoner",
+      "paper": "2608.09053 - Diagnosing as Cardiologists Do: ECG Agents with Doctor-Grounded Priors",
+      "pitch": "LuminaECG's whole insight is that accuracy comes from displaying the ECG on real clinical grid paper and explicitly color-coding P-wave/QRS/T-wave as 'visual measurement primitives' before any diagnosis is made -- and this grounding is what pushes it to a 'clinically meaningful reader tier.' Build an HTML/canvas toy that draws a synthetic 12-lead-style ECG trace on authentic red/pink graph paper, auto-segments and color-tags each waveform component, and computes the classic measurements (PR interval, QRS duration, QT/QTc, heart rate) live in a side panel exactly the way the model is trained to reason. Add draggable sliders for PR interval, QRS width, and rhythm irregularity so users can 'induce' first-degree AV block, bundle branch block, or afib and watch both the trace and the auto-generated measurement-grounded diagnosis text change in real time -- turning the paper's training signal into a playable diagnostic-reasoning toy.",
+      "cool": 7,
+      "buildable": 8
+    },
+    {
+      "type": "startup",
+      "title": "Skill Leak Auditor",
+      "paper": "2608.04192 - Behavioral Skill Reconstruction: Reconstructing Hidden Functionality from LLM Agent Skills",
+      "pitch": "SkillClone shows that a purely black-box attacker -- interface hypothesis, benign structured queries, build a replica, iteratively repair via differential validation -- can achieve exact or partial functional reconstruction of a 'secret' agent skill across 30 tested skills, and that file-secrecy defenses (hiding the prompt/code) don't stop it because the attack never touches the files. As Claude Skills, GPTs, and custom-agent marketplaces grow, creators have no way to know how exposed their IP actually is. Build a paid auditing service: point it at your own published skill/GPT, it runs the SkillClone-style probe-and-differential-validate loop against it automatically, and returns a 'reconstruction risk score' plus the specific query patterns that leaked the most behavior, with suggested countermeasures (rate limiting on structured probes, output perturbation, watermarked completions). Sell to the emerging skill-marketplace ecosystem the same way security scanners sell to API platforms.",
+      "cool": 6,
+      "buildable": 5
+    },
+    {
+      "type": "project",
+      "title": "CTI Attack-Chain Compiler",
+      "paper": "2607.19742 - An Automated Framework for Extracting Reachable Attack Chains from Cyber Threat Intelligence Reports",
+      "pitch": "The paper's pipeline turns narrative threat-intel blog posts into formal 'attack units' (precondition, behavior, postcondition), normalizes them into predicates, repairs broken step-to-step dependencies, and compiles everything into Datalog rules -- reaching the stated attack goal in 19 of 20 real reports and surfacing 34 candidate attack paths via backward search. Build an open-source tool that takes any pasted CTI report or threat-intel blog URL, runs an LLM extraction pass to produce the same precondition/behavior/postcondition units, compiles them to a small Datalog/Prolog ruleset, and renders the resulting reachability graph as an interactive node-link diagram so a SOC analyst can click 'can the attacker reach domain admin from this phishing email' and see the actual inferred multi-step chain highlighted. Directly useful for threat-intel and red-team shops doing purple-team chain validation.",
+      "cool": 7,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "The Trust Gap: SDP Forward/Backward Error Visualizer",
+      "paper": "2607.12942v1 [math.OC] Strict complementarity in semidefinite programming, singularity degree, and the (dis)connection of forward and backward errors",
+      "pitch": "The paper gives a normal form for SDPs that lack strict complementarity (built from the singularity-degree characterization) and shows computationally that for these problems forward error (distance to the true optimizer) and backward error (KKT/constraint residual) become INVERSELY correlated, diverging by up to seven orders of magnitude. Build a single self-contained HTML page that instantiates a small 2x2/3x3 SDP from their normal-form family, lets you perturb the data with a slider, computes an approximate solution via a hand-rolled small eigen/projection solver (math.js), and plots forward vs backward error live on a log-log chart -- next to a toggle showing a strictly-complementary SDP where the two errors track each other normally. It's a visceral 'the solver said converged, but the answer is garbage' demo, relevant anywhere SDPs are trusted blindly (portfolio risk parity, robust control, sensor localization).",
+      "cool": 7,
+      "buildable": 8
+    },
+    {
+      "type": "startup",
+      "title": "Recursive Universal Portfolio robo-advisor",
+      "paper": "2311.13564v3 [q-fin.PM] High order universal portfolios",
+      "pitch": "Cover's universal portfolio is a decades-old, provably worst-case-optimal (log-regret, distribution-free) strategy that never got productized because it underperforms cap-weighted indices and has mediocre Sharpe. This paper's trick -- feed the 1st-order UP back into the market as a synthetic asset and recursively build a 2nd-order UP -- is shown numerically to beat the standard UP and improve the Sharpe ratio while keeping the zero-assumption 'universal' guarantee. That's a real differentiated pitch versus black-box ML funds: 'an adaptive index that needs no modeling assumptions, by construction.' MVP: implement 1st/2nd order UP over a basket of liquid ETFs, paper-trade, publish a live track record, license the signal to RIAs or ship as a robo-advisor sleeve.",
+      "cool": 6,
+      "buildable": 5
+    },
+    {
+      "type": "demo",
+      "title": "Catalytic Colony: mutually catalytic branching + rare-event dial",
+      "paper": "2607.10512v1 [math.PR] Strong uniqueness and large deviation principle for mutually catalytic super Markov chains",
+      "pitch": "The paper models two interacting populations as a 2D degenerate SDE where each type's branching/death rate is catalyzed by the other's local mass, proves strong uniqueness, and (for the irreducible 2-state case) a large deviation principle via weak-convergence/stochastic-control methods. Build a canvas particle-population simulator with two colonies whose growth rates catalyze each other per the paper's dynamics; a 'catalysis strength' slider and a 'rare event' dial that importance-samples toward improbable paths so users can watch -- and see a live estimate of the exponential rate/cost of -- one colony going extinct despite catalytic support from the other. A tactile way to feel a large deviation principle instead of reading a rate function.",
+      "cool": 8,
+      "buildable": 7
+    },
+    {
+      "type": "demo",
+      "title": "Zeta Line Racer: watching the bound on |zeta(1+it)| shrink",
+      "paper": "2607.01424v1 [math.NT] Utilizing Smoothing Techniques to Bound |zeta(1+it)|",
+      "pitch": "The paper proves new explicit bounds |zeta(1+it)| <= (1/2)log t + 1.57 (t>=3) and the sharper (1/3)log t + 2 log log t - 1.16 (t>=10^8), improving on the classical triangle-inequality/Riemann-Siegel bound. Build a single HTML page that numerically evaluates |zeta(1+it)| along Re(s)=1 (truncated Dirichlet series + Euler-Maclaurin correction, plenty accurate for t up to a few thousand) and plots it live against the old bound and the two new curves as you drag t. Watching the actual zeta value hug the new tight envelope while the classical bound sits far above it is a genuinely satisfying 'how much did the new math save us' visualization, with a one-paragraph explainer on why this constant matters for zero-free regions and prime gaps.",
+      "cool": 7,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Tipping Point Playground: watch a market snap",
+      "paper": "2309.14334 \u2014 Tasks Makyth Models: ML-Assisted Surrogates for Tipping Points",
+      "pitch": "The paper's actual result is that a stochastic agent-based market model, when reduced via manifold learning to a low-dimensional mean-field SDE, reveals a bifurcation where trader sentiment catastrophically flips regimes (a 'tipping point') as a coupling parameter crosses a threshold. Build a single-page canvas demo: hundreds of little agent dots (bullish/bearish) interacting with a herding-strength slider, plus a live-updating potential-well plot (double-well -> single-well as you drag) showing the free-energy landscape collapsing from bistable to monostable. When it collapses, all the dots visibly cascade to one side \u2014 you literally watch the market 'tip'. This is the paper's core finding (probability distribution of catastrophic shifts near criticality), made tactile.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "AI Contagion Network: the Implementation Tax simulator",
+      "paper": "2602.02607 \u2014 The Innovation Tax: Generative AI Adoption, Productivity Paradox, and Systemic Risk in US Banking",
+      "pitch": "The paper's causal estimate is stark: gen-AI adopting banks eat a 428bps ROE hit on average (517bps for small banks vs 129bps for large ones) from integration costs, while simultaneously becoming more correlated with each other ('significant positive spillovers' / algorithmic coupling) \u2014 a new contagion channel where one model failure can trigger correlated shocks across the network. Build a force-directed network demo: nodes are banks sized by assets, colored by ROE (drains as you crank an 'AI adoption' slider, hitting small banks harder per the paper's own asymmetry). A second slider is 'algorithmic coupling strength' \u2014 crank it and a single injected 'model failure' pulse cascades through edges, visibly taking down correlated banks in a chain reaction. Toggle coupling off and the same shock stays isolated. Makes the paper's 'efficiency now, fragility later' thesis viscerally felt in 30 seconds.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "project",
+      "title": "CML-Shrink: composite-likelihood shrinkage for correlated player props",
+      "paper": "2607.03596 \u2014 Empirical Bayes for Correlated Gaussian Sequence Model",
+      "pitch": "The paper's actual contribution is a Composite Marginal Likelihood (CML) empirical-Bayes estimator that deliberately ignores cross-correlations in the likelihood, yet still converges at rate n*^(-1/2) where n* is an 'effective sample size' discounted by the correlation matrix's spectral radius \u2014 nearly matching the minimax rate under arbitrary dependence, and tractable where the full likelihood isn't. That's exactly the regime your NBA-props edges live in: same-game player stat lines (rebounds, threes, points) are correlated Gaussian noise around true skill, and you're already leaning on GR-RTRMC completion for some of it. Build a small JS/Python library that takes a slate of correlated prop edges, estimates the empirical prior via CML instead of naively pooling or fully modeling the covariance, and shrinks noisy single-game edges toward it \u2014 with a synthetic-data notebook reproducing the paper's Hellinger-rate result before pointing it at real slates. Directly upgrades an existing pipeline rather than being a toy.",
+      "cool": 6,
+      "buildable": 6
+    },
+    {
+      "type": "youtube",
+      "title": "Why your left brain (not right) 'gets' grammar-perfect AI",
+      "paper": "2602.12811 \u2014 Left-right asymmetry in predicting brain activity from LLMs' representations",
+      "pitch": "The paper's finding is specific and counterintuitive: as LLMs (OLMo-2, Pythia, tracked across training checkpoints, across English/French/Chinese) get better at predicting fMRI brain activity, that predictive power skews increasingly toward the LEFT hemisphere \u2014 but only in step with the model's FORMAL linguistic competence (grammaticality judgments, well-formedness), not with arithmetic, world knowledge, or general reasoning, which show no such lateralization. A tight explainer video: animate two brain hemispheres lighting up differently as a model's training checkpoint slider advances, split-screen against two live capability curves (a grammar-acceptability score climbing vs. an arithmetic score climbing) \u2014 showing hemisphere asymmetry tracks only the grammar curve. Ends on the hook: 'GPT doesn't have a language brain because it's smart \u2014 it has one because it learned syntax.' Strong 6-8 minute pop-neuroAI video; needs real checkpoint data pulled (OLMo-2 intermediate checkpoints + a public fMRI-language dataset) so it's a research/scripting lift, not just animation.",
+      "cool": 7,
+      "buildable": 5
+    },
+    {
+      "type": "demo",
+      "title": "Viscoelastic First-Passage Race",
+      "paper": "2605.25215 - First-passage time distribution of a Brownian particle harmonically confined in a viscoelastic bath",
+      "pitch": "Single HTML/canvas page simulating a bead in a harmonic trap two ways at once: (1) simple Markovian Brownian motion (Ornstein-Uhlenbeck), and (2) a generalized Langevin equation with a multi-exponential (Maxwell-mode) memory kernel tuned to match the SAME zero-shear viscosity as case 1. Race them to hit the trap center (first passage), log thousands of trial times client-side, and plot the two first-passage-time histograms live. The payoff is the paper's actual counterintuitive result made visible: the viscoelastic particle's histogram develops a slow decaying tail and its MEAN first-passage time ends up longer than the plain-viscous particle even though both media have the same zero-shear viscosity. Sliders expose the memory relaxation time and mode weights so users can watch the tail grow/shrink in real time. No backend needed - Euler-Maruyama integration of a few coupled OU auxiliary variables approximates the memory kernel.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "SHAP Zero Playground: Instant Shapley Values from a One-Time Sketch",
+      "paper": "2410.19236 - SHAP zero Explains Biological Sequence Models with Near-zero Marginal Cost for Future Queries",
+      "pitch": "A toy 'guide RNA efficacy' scorer over short DNA strings (length ~10-12, alphabet ACGT) built from hand-coded pairwise/triple motif interactions acts as the black-box model. Mode A ('brute force') recomputes exact Shapley values for a typed-in sequence by summing over all 2^n feature subsets and shows a visible stopwatch. Mode B ('SHAP zero') does one upfront 'sketch' pass (a sparse Walsh-Hadamard/Fourier decomposition of the black box over the boolean cube) and then answers ANY new sequence's Shapley values from cached coefficients in milliseconds - letting the user literally feel 'near-zero marginal cost for future queries' as they type different sequences, while a bar chart highlights the epistatic (multi-position) interactions the sketch uncovered, mirroring the paper's claim of surfacing combinatorial interactions at scale.",
+      "cool": 8,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "Outbreak Roulette: Noise Beats the Threshold",
+      "paper": "2511.02882 - Asymptotic analysis of a stochastic SVEIS epidemic model using Black-Karasinski process",
+      "pitch": "An interactive S-V-E-I-S epidemic simulator (single HTML canvas, Euler-Maruyama SDE integration). Set R0 just under 1 so the deterministic model provably dies out. Then dial up 'environmental noise' - a Black-Karasinski-style log-Ornstein-Uhlenbeck process driving the transmission rate beta(t) - and run a swarm of stochastic trial epidemics simultaneously as animated case-count traces. A live histogram tracks extinction vs. persistence across trials, directly visualizing the paper's headline finding that random environmental fluctuations can sustain/facilitate outbreaks even when the deterministic threshold says the disease should vanish. Sliders for vaccination rate, noise volatility, and mean-reversion speed let users hunt for the tipping point.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "startup",
+      "title": "CultureMatch: nutrient-screen SaaS for growing 'unculturable' microbes",
+      "paper": "2602.21993 - Prediction of source nutrients for microorganisms using metabolic networks",
+      "pitch": "Turn the paper's genome-scale-metabolic-network screening method into a lab-facing web service: a microbiologist uploads a genome or MAG, the pipeline auto-drafts/annotates a metabolic model, runs the paper's source-nutrient prediction protocol, and returns a ranked shortlist of candidate carbon/nitrogen/energy sources to try in culture media - exactly the 'initial screen to inform culture and isolation experiments' the abstract describes. Huge addressable pain point: an estimated >99% of environmental microbial diversity remains uncultivated, and culture-media guessing is a major bottleneck for microbiome, phage-host, and novel-antibiotic discovery labs. Monetize as per-genome API credits or a lab subscription, with a freemium toy-network demo to hook academic users.",
+      "cool": 7,
+      "buildable": 3
+    },
+    {
+      "type": "demo",
+      "title": "Glassy Grammar: the Random Language Model phase-transition toy",
+      "paper": "2606.28103v1 - Phase structure of the Random Language Model",
+      "pitch": "Single-file HTML/JS toy that recreates the paper's core result: an RLM in the double-scaling limit behaves like a Random Energy Model and undergoes a *hierarchy* of phase transitions as grammar temperature drops -- first symbol correlations appear, then single-symbol distributions go non-uniform, then rule usage freezes into a glassy phase. Implement a toy REM (N random 'rule energies', Boltzmann-weighted sampling at temperature T), drive it with a slider, and show three linked live panels: (1) an entropy/participation-ratio curve vs T with visible kinks at each transition, (2) a Heaps'-law-style vocabulary-growth curve that visibly changes shape across the transitions, (3) a 'generated text' panel where symbols are drawn from the current weighted distribution -- at high T it's diverse gibberish, and as you slide toward the glassy regime you literally watch it crystallize into a handful of repeated frozen rules. Directly lets someone feel a physics-of-language phase transition instead of just reading about it.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "The Distortion Field: truth as network coherence, not consensus",
+      "paper": "2603.28984v1 - Truth and distortion in complex networks: a global consistency approach",
+      "pitch": "Interactive force-directed network demo (canvas/d3) implementing the paper's actual claim: model each node with a stated opinion plus multiple interaction layers (behavior, influence, information-sharing), compute a live 'global consistency' score, and show that this minimum-inconsistency state is NOT the same as majority vote or simple averaging -- the paper's headline empirical finding on their 1000-node synthetic networks. Give the user a slider to inject a small number of 'manipulative' nodes that broadcast conflicting constraints across layers, and watch two panels diverge in real time: a naive majority-opinion heatmap that still looks 'fine', versus the true global-coherence score cratering. Makes the paper's misinformation-detection pitch (a few bad actors can wreck coherence while most users still 'appear to agree') something you can click and watch happen.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Toll Booth: exploit a decision-focused-learning evader",
+      "paper": "2608.09036v1 - Decision-Focused Learning in Network Interdiction Games",
+      "pitch": "A playable Stackelberg interdiction game that dramatizes the paper's punchline. You are the interdictor with a fixed budget to raise costs on a handful of edges in a small road network; an AI evader tries to find the shortest path to a goal using a learned cost model. Toggle the evader's brain between three precomputed policies matching the paper's setup: prediction-focused learning (PFL), plain decision-focused learning (DFL), and adversarial DFL (A-DFL). With plain DFL, the evader looks flawless until you interdict it -- then it collapses, because its training left it inside a 'decision-equivalence class' of cost estimators that all score zero training loss but fail under attack, exactly the failure mode the paper identifies. Switch to A-DFL and the same interdiction budget barely dents it, since A-DFL was trained on interdicted scenarios. A genuinely game-shaped way to feel a fragile-vs-robust-learning result, right in David's poker/game-theory wheelhouse.",
+      "cool": 9,
+      "buildable": 6
+    },
+    {
+      "type": "youtube",
+      "title": "I Made 5 AIs Fight a Dark Souls Boss (None of Them Beat the Tutorial)",
+      "paper": "2608.09902v1 - DSLE: A Learning Environment for Dark Souls Boss Encounters",
+      "pitch": "Comedic-but-real explainer built around DSLE's actual numbers: across all 22 Dark Souls: Remastered bosses, a hand-coded expert system hit 63% wins and an evolutionary algorithm hit 43% against just the tutorial boss (Asylum Demon), while deep RL agents (PPO/DQN trained on raw visual input with sparse terminal rewards) topped out at a laughable 0.33% win rate on that same boss and 0% everywhere else. Video intercuts real paper figures/tables with gameplay footage of the agents flailing and dying, explains in plain terms why sparse rewards + real-time high-dimensional action spaces break standard deep RL, and closes with the host attempting the same boss alongside the bots. Rides two huge existing audiences (Souls-likes fandom + 'watch AI fail hilariously at games' content) while being grounded in a real, striking benchmark result.",
+      "cool": 9,
+      "buildable": 3
+    },
+    {
+      "type": "demo",
+      "title": "Rod Rave \u2014 Watch Hard Rectangles Spontaneously Align",
+      "paper": "2607.10510 [math.PR] Rigorous bound on the aspect ratio for the formation of a nematic phase in hard rod and hard rectangle systems on Z^2",
+      "pitch": "The paper rigorously proves that l\u00d7w hard rectangles on the 2D square lattice must form a nematic (aligned) phase once the aspect ratio k=l/w exceeds ~10^72 \u2014 a real theorem, but a number so absurd it's almost a joke next to the numerically-estimated threshold of k\u22487. Build a single-file canvas Monte Carlo simulator: local moves insert/delete/shift/rotate non-overlapping rectangles on a lattice at a chosen density, with a live order-parameter (nematic S) readout as you drag a slider for k from 1 to 25+. Watch the rods visibly snap into alignment around k\u22487-10, then flash a callout: 'the theorem only guarantees this at k\u226510^72 \u2014 you just watched it happen at k=8.' That gap between rigorous math and empirical reality is the whole hook, and it's genuinely visible/feelable in the sim, not just asserted.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Blindfolded Optimizer \u2014 Feel the Sharp O(1/\u221aT) Rate",
+      "paper": "2607.12938 [math.OC] Sharp Optimal Algorithm for Derivative-Free Stochastic Convex Optimization in One Dimension",
+      "pitch": "The paper gives the first algorithm that provably matches the \u03a9(1/\u221aT) lower bound for minimizing a convex function on [0,1] when you only get one noisy point-evaluation per round (no gradients) \u2014 closing a known theory gap. Build a single HTML page: a hidden convex bowl function, a visitor picks how many rounds T to run, and the page races three strategies live \u2014 naive ternary/golden-section search, plain random search, and the paper's sharp algorithm \u2014 plotting cumulative regret per round against the theoretical O(1/\u221aT) envelope overlaid as a dashed curve. Users watch the sharp algorithm's regret curve hug the theoretical line while the naive ones diverge from it, making an abstract 'matches the lower bound' claim into something you see converge in real time.",
+      "cool": 6,
+      "buildable": 9
+    },
+    {
+      "type": "startup",
+      "title": "MatchRate \u2014 Tunable-Speed Marketplace Matching Engine",
+      "paper": "2606.12692 [cs.DS] Random Proposals: A Softmax-Based Local-Improvement Framework for Maximum Weighted Matching",
+      "pitch": "The paper's Random Proposals algorithm gets an expected (1/2-\u03b5)-approximate maximum weighted matching in O(m log(1/\u03b5)) time via softmax-biased local improvement \u2014 i.e., a dial you can turn between 'fast, decent' and 'slower, near-optimal' instead of running full Hungarian/blossom algorithms. Package it as a matching microservice for two-sided marketplaces that need real-time weighted pairing at scale: poker staking platforms matching backers to players by edge/bankroll fit, sports-book same-side liquidity crossing (a natural extension of the SharpLab domain), or DFS lineup-swap matching. The pitch is literally 'set your latency budget, we set \u03b5' \u2014 a knob no current matching API exposes. A live softmax-convergence visualizer (nodes pulling toward partners as iterations run) doubles as the sales demo and is buildable tonight as a companion HTML toy.",
+      "cool": 7,
+      "buildable": 5
+    },
+    {
+      "type": "project",
+      "title": "BOLA Buster \u2014 Multi-Identity API Authorization Fuzzer",
+      "paper": "2607.20574 [cs.CR] AuthProbe: Specification-Driven, Multi-Identity Detection of Broken Object-Level Authorization in Recruitment API",
+      "pitch": "AuthProbe detects Broken Object-Level Authorization (BOLA/IDOR) bugs by driving an API with an OpenAPI spec under multiple real identities and diffing cross-identity responses against the legitimate owner's baseline \u2014 the paper reports catching every planted cross-identity leak in a synthetic recruitment API with zero false positives. Build a lightweight open-source CLI/pip package that takes an OpenAPI spec + 2+ bearer tokens, auto-walks object-ID-bearing endpoints, swaps IDs across identities, and flags any response that leaks another identity's data \u2014 essentially a pluggable re-implementation of the paper's core probe loop, runnable in CI. Given the household's cluster of live APIs (Stavid's /summary endpoint, Sage, SciBowl.Live's Django backend), this is a tool with an immediate real target, not just a toy.",
+      "cool": 6,
+      "buildable": 7
+    }
+  ]
+}

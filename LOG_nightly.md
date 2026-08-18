@@ -1,5 +1,51 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-17 — Rod Rave (autonomous run, judged/published on 2026-08-18)
+- **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed (all 3 builders
+  wrote files) but judging/publishing/logging never ran (stray `ideation_2026-08-17.js`/`_results.json`/
+  `buildoff_2026-08-17.js` left uncommitted, no `judge_2026-08-17.js` written yet). Picked up and finished at
+  the start of the 2026-08-18 session: wrote and ran a judge-only workflow against the 3 existing builds,
+  published, logged.
+- **Fetch:** fresh papers across categories, 24 ideas generated across all four categories.
+- **Top per category:**
+  - startup — **MatchRate — Tunable-Speed Marketplace Matching Engine** (cool 7, buildable 5): Random Proposals
+    algorithm gets expected (1/2-ε)-approx max weighted matching in O(m log(1/ε)) time via softmax-biased local
+    improvement, packaged as a speed/quality-dial matching API (arXiv:2606.12692)
+  - youtube — **I Made 5 AIs Fight a Dark Souls Boss (None of Them Beat the Tutorial)** (cool 9, buildable 3):
+    DSLE's real leaderboard — hand-coded expert system 63% wins vs evolutionary 43% vs underperforming deep RL,
+    all against just the tutorial boss (arXiv:2608.09902)
+  - project — **CTI Attack-Chain Compiler** (cool 7, buildable 6): pipeline turning narrative threat-intel
+    reports into formal attack-unit predicates compiled to Datalog, reaching the stated attack goal in 19/20
+    real reports tested (arXiv:2607.19742)
+  - demo — 3 selected for build-off: **AI Contagion Network** (arXiv:2602.02607, cool 8×buildable 9), **Rod
+    Rave** (arXiv:2607.10510, cool 8×buildable 9), **Glassy Grammar** (arXiv:2606.28103, cool 8×buildable 9)
+- **Built (3 of 3 completed):**
+  - A — **AI Contagion Network: the Implementation Tax simulator** (arXiv:2602.02607, gen-AI-adopting banks eat
+    a 428bps average ROE hit from integration costs — 517bps small banks vs 129bps large — while becoming more
+    correlated via shared algorithmic tooling, a new contagion channel): force-directed bank network, adoption
+    slider drains ROE (harder on small banks), coupling slider lets an injected model-failure pulse cascade
+    through correlated banks.
+  - B — **Rod Rave — Watch Hard Rectangles Spontaneously Align** (arXiv:2607.10510, l×w hard rectangles on the
+    2D square lattice provably form a nematic phase once aspect ratio k exceeds ~10^72, vs a numerically
+    estimated empirical onset around k≈7): live Monte Carlo simulation — real insert/delete/shift/rotate lattice
+    moves, not a scripted animation — with a nematic order-parameter readout as a k slider drives visible
+    spontaneous alignment around k≈7-8, flashing the 65-orders-of-magnitude gap to the proven bound.
+  - C — **Glassy Grammar: the Random Language Model phase-transition toy** (arXiv:2606.28103, a Random Language
+    Model in the double-scaling limit behaves like a Random Energy Model and undergoes a hierarchy of phase
+    transitions as "grammar temperature" drops): toy REM driven by a temperature slider with linked
+    entropy/vocabulary-growth/generated-text panels that crystallize into frozen repeated rules as T drops.
+  - **Judge:** all three verified valid, self-contained, dependency-free HTML/JS (tags balanced, JS passes
+    `node --check`, DOM ids exist, CDN scripts — d3@7.9.0, chart.js@4.4.4 — resolve with matching SRI hashes);
+    none disqualified. Every demo's claimed numbers/formulas cross-checked verbatim against the real arXiv
+    abstracts. Scores (wow/interactivity/polish/fidelity, sum/40): A 35, **B 36**, C 32. **B (Rod Rave) won** —
+    it's a genuine running physics simulation producing real emergent symmetry-breaking you watch happen from
+    local MC moves, not a pre-scripted animation, paired with the sharpest hook of the three (a 65-order-of-
+    magnitude gap between the rigorous proof and what you see on screen).
+- **Published:** demo at `demos/2026-08-17-rod-rave.html`, brief at `2026-08-17-nightly.html`, both mirrored
+  into `david-share` and registered in its manifest (commit `2b71304`, pushed 2026-08-18). Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-17-rod-rave.html and .../arxiv-scrape/2026-08-17-nightly.html
+  once the VPS pulls.
+
 ## 2026-08-16 — Interpolation Roulette (autonomous run, judged/published on 2026-08-17)
 - **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed (all 3 builders
   wrote files) but judging/publishing/logging never ran (stray `ideation_2026-08-16.js`/`_results.json`/
