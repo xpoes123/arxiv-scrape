@@ -1,0 +1,196 @@
+{
+  "ideas": [
+    {
+      "type": "demo",
+      "title": "Info-Limited Navigator: Why Bacteria Turn in Discrete Angles",
+      "paper": "2602.23324 - Discrete turn strategies emerge in information-limited navigation",
+      "pitch": "The paper's actual result: when you optimize up-gradient navigation speed subject to a fixed budget of sensory bits per unit time, the optimal reorientation strategy is NOT continuous steering -- it's discretized, and which discrete strategy wins (reversal only -> full tumble -> a fixed set of turn angles) depends on how much information you're allowed. Build a single-canvas toy: a swarm of dots climbing a gradient field, with a slider for 'bits/sec of sensory info available.' At each slider position the dots' turning behavior snaps to the paper's predicted optimal regime, and a side readout shows up-gradient speed achieved vs the theoretical bound. You literally watch the strategy jump from binary reversals to tumbles to N discrete angles as you turn up the information dial -- the phase transition becomes visceral instead of abstract. Whimsy angle: frame it as 'the bacterium plays 20 questions with the gradient.'",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Epidemic Momentum: The Conservation Law Hiding in Every Outbreak Curve",
+      "paper": "2511.01939 - Epidemic momentum and a conservation law for infectious disease dynamics",
+      "pitch": "The paper defines 'momentum' = prevalence weighted by potential-to-infect, and shows every outbreak trajectory (regardless of which renewal/SIR-family model generated it) traces a contour of a single conserved quantity in a phase plane -- which is also what lets you separately infer transmissibility vs prior immunity from one time series. Build an interactive phase-plane plot (prevalence vs momentum axes): drag sliders for R0 and starting immunity, run a synthetic epidemic, and watch the trajectory get pinned to its conserved-quantity contour in real time, next to the same run plotted as a normal case-count curve. Add a 'guess the immunity' mode: show only the case curve, let the user try to eyeball transmissibility vs immunity, then reveal how the conservation law nails the split exactly. Makes an invisible epidemiological invariant something you can literally see and manipulate.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Metabolic Coding Sandbox: How Much Does a Thought Cost?",
+      "paper": "2602.13421 - Metabolic cost of information processing in Poisson variational autoencoders",
+      "pitch": "Core finding: in a Poisson VAE, the KL term is provably proportional to each model neuron's firing rate, so turning up the beta (KL weight) monotonically sparsifies spiking and cuts baseline activity -- info fidelity trades directly against a literal energy cost, and this effect is specific to Poisson-coded models (a Gaussian control model, Grelu-VAE, doesn't show it). Build a toy: an input image/pattern encoded by a small grid of 'spiking' units rendered as pulsing dots, with a beta slider. As beta rises, watch reconstruction quality degrade while a 'metabolic battery' gauge drains slower -- and a toggle to switch the underlying coding scheme to the Gaussian control shows the effect vanish, proving it's not just sparsity for free. Good hook for a 'your brain is on an energy budget' framing.",
+      "cool": 7,
+      "buildable": 8
+    },
+    {
+      "type": "startup",
+      "title": "One-Shot Directed Evolution Copilot",
+      "paper": "2505.04823 - ProteinGuide (with 2410.16917 DNAHLM as the natural-language front end)",
+      "pitch": "ProteinGuide's headline empirical result: guiding a pretrained protein generative model on-the-fly (no retraining) with only ~2,000 labeled variants matched or beat seven rounds of wet-lab directed evolution on an adenine base editor's activity, and the same framework handles multi-objective guidance (e.g. stability vs activity) across architecture types (ESM3, ProteinMPNN, diffusion/flow models). The startup: a lab-facing SaaS where a bench scientist uploads a small assay dataset (hundreds to low-thousands of variants) and a plain-language goal ('increase editing efficiency, keep expression stable'), and the tool runs ProteinGuide-style guidance over open protein LMs to propose the next variant batch -- compressing what's normally 5-7 rounds of iterative evolution into 1-2. DNAHLM's chat-style genomic interface is the wedge for the non-ML-fluent biologist: describe the target property in English, get back a ranked variant list instead of having to hand-tune guidance objectives. Wedge market: CRISPR base-editor and enzyme-engineering labs paying for round-trip time reduction, not model access.",
+      "cool": 9,
+      "buildable": 3
+    },
+    {
+      "type": "demo",
+      "title": "The Five-Number Fraud Detector (Split Tallies live audit toy)",
+      "paper": "2606.13272 - Split Tallies: A Discrete Certificate Calculus for Auditing Dynamic Ordered Sets in Constant Memory",
+      "pitch": "Single-file HTML/canvas demo that lets you FEEL the paper's headline claim: an auditor watching a stream of insert/delete/query ops on a sorted list needs to remember only 'five machine words and a flag' (two hidden field accumulators mod a large prime p) to catch a cheating database maintainer with probability >= 1-(4T+1)/p. Build a two-panel UI: left panel is a visual ordered set (like a number line with tick marks) being maintained by an animated 'untrusted server' that occasionally lies about an insert/delete/rank query; right panel shows the auditor's tiny state (literally 5 numbers rendered as glowing digits) updating per operation via cheap modular arithmetic done in JS with BigInt. Add a 'cheat' toggle/slider the user can flip mid-stream to inject a bad operation, and the moment it happens the 5-number certificate visibly diverges/flashes red on the next checkpoint, while a running counter shows the state size never grows no matter how many thousands of ops have streamed by (contrast with a naive 'auditor' panel whose memory bar grows linearly with n, i.e. what the paper proves is provably necessary for deterministic/visible-coin auditors). This literally dramatizes the paper's core theorem: constant memory catches unbounded adversaries almost certainly, and this is optimal.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Prompt-Poison Playground: gaming an AI shopping recommender",
+      "paper": "2607.21951 - SIREN: PAIR-Driven Preference Manipulation in Web-RAG Recommenders",
+      "pitch": "An interactive single-page toy that simulates (client-side, no real LLM calls needed for the core loop) what SIREN actually demonstrated: that editing the CONTENT of one already-retrieved webpage -- while holding the rest of the retrieved context fixed -- can flip an LLM recommender's #1 pick, and that declarative/seeded-list framings beat directive ('buy me!') injections. Set up a fake 3-5 product comparison page (RAG context) with one editable 'your listing' textarea. Give the user a palette of the paper's actual technique categories (e.g. declarative ranking claims like 'Consensus: reviewers rank this #1', seeded competitor lists, review-injection, structured-data spoofing) as draggable snippet buttons they can insert into their listing. A simple, transparent scoring function (documented on-screen, weighted keyword/framing heuristics standing in for the LLM judge, calibrated loosely to the paper's finding that declarative+seeded beats directive) recomputes live and animates the ranking reshuffling, with a probability meter modeled on the paper's reported 0.805 mean reproduction rate once a payload 'reaches rank 1.' This is the strongest crossover with a YouTube explainer: 'I read the paper that hacks AI shopping assistants -- here's a toy version you can try', screen-recording the playground as the video's demo segment.",
+      "cool": 9,
+      "buildable": 8
+    },
+    {
+      "type": "project",
+      "title": "Fail-Closed Memory: a governed, source-bound memory layer for your own agents",
+      "paper": "2608.12476 - Governed Persistent Memory: Source-Bound State Semantics and Fail-Closed Release for Long-Horizon Agents",
+      "pitch": "A small, real library (SQLite + Python, no framework) implementing the paper's five executable clauses -- ledger integrity, source-bound admission, conflict isolation, non-revival after retraction, exact claim closure -- as a drop-in replacement for the ad-hoc memory patterns your own bots use (this arxiv-scrape repo's own MEMORY.md is exactly the kind of unaudited memory the paper is critiquing: files get appended to with no bitemporal tracking of when a claim was asserted vs retracted vs contradicted). Every fact gets stored with (source, asserted_at, valid_from, valid_until, status), writes go through a small state machine that refuses (fail-closed) to surface a claim if its supporting source was later retracted or if two live sources conflict on the same key, and a CLI lets you replay 'what did the agent believe as of time T'. The paper's own eval design (3,600-case benchmark of ledger scenarios, 2,400/2,400 correctness after governance vs 600/2,400 ungoverned) doubles as a ready-made test-suite pattern: write your own ~50-case scenario bank (contradiction, staleness, retraction-then-reassert) and assert the governed store gets 100% while a naive dict-based store fails most of them, giving a concrete before/after demo for a README or a Sage integration.",
+      "cool": 7,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "Task Vector Merge Sandbox: watch linear averaging break (and a tiny hypernetwork fix it)",
+      "paper": "2608.11499 - HyperFix: Combinatorial Nonlinear Correction for Task Vector Merging",
+      "pitch": "A toy that makes model-merging's core failure mode and HyperFix's fix visible without ever loading a real model. Define 3-4 synthetic 2D loss landscapes ('tasks'), each with its own optimum, rendered as contour/heatmap layers on a canvas. A 'base model' point starts at the origin; each task's 'task vector' is base->optimum. Sliders let the user pick a subset of tasks to merge; a 'naive linear merge' marker shows the plain weight-space average (task vector arithmetic), which visibly lands in a low-quality region between the optima whenever tasks pull in conflicting directions (destructive interference, the exact problem HyperFix's abstract targets: linear rescaling breaks down on new subsets). Then a small pre-trained-in-browser correction (literally a 2-4 input tiny MLP you train live in a few hundred JS steps on 'singleton/pair/triple' subset examples, mirroring HyperFix's training regime) nudges the merged point toward genuinely low joint loss across the selected subset, and a live 'total loss across selected tasks' readout shows the gap between linear-merge loss and corrected loss closing as you add more training subsets -- a direct, feelable analog of 'trained once on small subsets, generalizes to larger combinations.'",
+      "cool": 7,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Thermodynamic Length Explorer",
+      "paper": "2606.29751 \u2014 Finite-resolution exhaustive traversal of thermodynamic state spaces has divergent thermodynamic length",
+      "pitch": "The paper proves that \u03b5-dense exhaustive coverage of a d-dim thermodynamic state space needs path length L \u2273 C\u00b7\u03b5^(1-d) \u2014 finer resolution means combinatorially exploding protocol length/time. Build a single-file HTML demo using the paper's own worked example (overdamped harmonic trap, which has a closed-form Fisher/thermodynamic metric) rendered as a 2D grid on canvas. A slider sets resolution \u03b5 (grid cell count); a greedy 'boustrophedon' path animates visiting every cell center, with a live counter plotting cumulative thermodynamic length L(\u03b5) against the theoretical \u03b5^(1-d) curve overlaid in real time. Dragging the slider from coarse to fine makes the path visibly explode into a dense scribble while the counter races upward \u2014 you *feel* the divergence instead of reading the inequality. Pure canvas + JS math, no backend, no build step.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Defect Drift Playground: Spiral vs Fiber Waves",
+      "paper": "2605.25996 \u2014 Topology of pulsating active matter: Defect asymmetry controls emergent motility",
+      "pitch": "The paper shows that in pulsating (oscillating, non-self-propelled) active matter, mechanochemical coupling between local pulsation and repulsion breaks spatial/time-reversal symmetry, making topological defects drift \u2014 with a slider-like parameter controlling a crossover from slow spiral waves to fast fiber-like waves, explicitly analogized to cardiac arrhythmia. Build an HTML canvas demo running a local phase-oscillator lattice (simple coupled-oscillator / excitable-medium update rule, WebGL or plain 2D canvas at 60fps) seeded with a rotating defect. An 'asymmetry' slider tunes the coupling term; as you increase it, the defect core visibly detaches from its pinned spiral center and starts drifting across the grid, and the wave pattern morphs from smooth spirals into thin fast-moving fiber-like fronts \u2014 a direct, tactile illustration of the paper's central claim, framed with the cardiac-arrhythmia hook for shareability.",
+      "cool": 9,
+      "buildable": 8
+    },
+    {
+      "type": "startup",
+      "title": "Contactless Ferrofluid Micro-Sorter",
+      "paper": "2605.26458 \u2014 Directional Symmetry Breaking of Spherical Active Colloids by Magnetoviscous Coupling",
+      "pitch": "The paper shows magnetically-inert self-propelled spherical colloids (e.g. Janus swimmers, and by extension motile cells) can be steered transverse to an external magnetic field purely via the ferrofluid medium's anisotropic (magnetoviscous) rotational viscosity \u2014 an emergent torque that scales with both swimmer speed and field strength, with no magnetic labeling of the particle itself required. That's a real lab-on-chip primitive: a microfluidic chip filled with biocompatible ferrofluid, with an external field coil, that sorts/transports motile particles (sperm, bacteria, active droplets, synthetic micro-robots) by propulsion speed via how far they deflect transversely \u2014 replacing today's magnetic-bead-conjugation sorting (expensive, alters the target) with a field-programmable, label-free lane-splitting sorter. Pitch to fertility clinics (sperm motility sorting), microbiology labs, and micro-robotics companies as a 'contactless conveyor belt' controlled purely by adjusting field strength.",
+      "cool": 6,
+      "buildable": 3
+    },
+    {
+      "type": "youtube",
+      "title": "Time Has a Measurable 'Arrow' \u2014 The Physics of Imaginary Entropy",
+      "paper": "2606.29235 \u2014 Imaginary pseudo entropy encodes temporal orientation",
+      "pitch": "Pseudo entropy between quantum states at different times is complex-valued, and the paper gives the previously-meaningless imaginary part an actual operational meaning: it's what a 'replica interferometer' measures to tell whether a quantum transition ran forward or backward in time, and it bounds the best-possible success probability of distinguishing the two directions (with information only ever decreasing under a channel, saturating exactly at Petz recovery \u2014 a quantum mirror of the second law). Explainer video: open with a simple 'is this clip playing forward or backward' guessing game, then animate two entangled qubit 'clocks' and the interferometer phase measurement that formalizes the guess into a number. Close by tying the Petz-recovery equality condition to reversibility/irreversibility intuition. Ship a tiny companion HTML widget in the description: two Bloch spheres, a decoherence slider, and a live trace-distance/success-probability readout so viewers can play with the actual quantity the video describes.",
+      "cool": 8,
+      "buildable": 5
+    },
+    {
+      "type": "demo",
+      "title": "Tail Risk Truth-Teller",
+      "paper": "2607.05226 - The Exact Worst-Case Tail Probability under Bounded Kurtosis",
+      "pitch": "Single-page interactive visualizer for the paper's exact result: given only mean 0, variance 1, and a kurtosis cap \u03ba, what's the worst-case probability of exceeding threshold t? Sliders for t and \u03ba redraw two curves live: the classical Cantelli/Chebyshev bound (1/(1+t^2)) vs the paper's sharper V1(t,\u03ba), with the four regimes (Cantelli tongue / tail closed-form (\u03ba-1)/((t^2-1)^2+\u03ba-1) / plateau / central numeric root) color-coded on the plot so you can literally see where kurtosis information starts buying you something. Bolt on a 'bankroll ruin' mode: plug in a bettor's realized skewness-free kurtosis from a P&L series (poker session variance, NBA props CLV) and get a tighter worst-case bust probability than a naive Gaussian VaR would give \u2014 a direct, honest use of the exact math rather than a toy. All four regimes are closed-form or simple bisection, so it's pure client-side JS/canvas, no backend.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Crash Lab: Circuit Breaker vs Price Limit",
+      "paper": "2309.10220 - Comparing effects of price limit and circuit breaker (agent-based model) + 2602.01817 - Do designated market makers provide liquidity during downward extreme price movements?",
+      "pitch": "A canvas-based zero-intelligence-plus-momentum agent market where you toggle between a hard price limit and a cooling-off circuit breaker and watch the paper's actual failure mode happen in real time: with a price limit, cancel-shy sell orders pile into a wall right at the floor price and the market can't recover even after the limit lifts, exactly as the paper describes. A second toggle spreads the selling shock across a correlated basket instead of one stock, reproducing the DMM paper's finding \u2014 a simulated designated-market-maker agent keeps quoting depth when only one stock craters (idiosyncratic stress) but visibly pulls its book when the whole basket drops together (systemic stress), so 'why liquidity vanishes exactly when you need it' becomes something you watch happen rather than read about. Simple agent rules (random submit/cancel, a few momentum traders, one rule-based DMM) make this a one-night build with plain canvas + requestAnimationFrame, no libraries needed.",
+      "cool": 8,
+      "buildable": 7
+    },
+    {
+      "type": "startup",
+      "title": "CircuitVault: bounded-loss DeFi vaults with a real halt mechanism",
+      "paper": "2312.00033 - DeFi Security: Turning The Weakest Link Into The Strongest Attraction + 2309.10220 - price limit vs circuit breaker ABM",
+      "pitch": "The DeFi paper's 'Safe-House' contract already caps how much can move out of a vault within a window, cryptographically bounding max loss even from an insider or an exploited admin key. The market-microstructure paper independently found that circuit breakers (a full trading halt + cooldown) beat price limits (a soft band that just lets sell orders queue up and jam the book) specifically when the shock is a single erroneous/malicious event on one asset \u2014 which is precisely the shape of a rug-pull or oracle-manipulation drain on one DeFi pool, not a market-wide crash. Combine them: a vault wrapper that, on detecting an abnormal outflow velocity, doesn't just cap loss (Safe-House) but hard-halts withdrawals for a cooldown window (circuit-breaker logic) rather than a soft per-block cap that a draining exploit can just grind through \u2014 pitched to protocols as 'insurance-grade' custody, turning a security feature into a marketing headline exactly as the DeFi paper argues. Realistically an audited-smart-contract product, not a one-nighter, but the two papers together give you a parameter-justified design instead of a guessed one.",
+      "cool": 7,
+      "buildable": 3
+    },
+    {
+      "type": "demo",
+      "title": "Sign-Flip Solitaire: the NP-hard puzzle inside recommender systems",
+      "paper": "2607.04875 - On the Complexity of Low-Rank Matrix Signing and Entrywise Power Matrix Factorization",
+      "pitch": "A Lights-Out-style web toy built directly on Low-Rank Matrix Signing: you're given a small grid of positive numbers, and each click flips the sign of one entry. A live bar chart of singular values updates after every flip, and your score is how few flips it took to collapse the matrix to rank 1 or 2. Because the paper proves LRMS is polynomial for fixed r, a companion 'reveal optimal' button runs the actual fixed-parameter algorithm on your small grid (brute-force over sign patterns is fine at n\u22646) to show you the true minimum \u2014 versus the paper's headline result that this becomes strongly NP-hard the moment the grid and rank both scale, and that even approximating it (Frobenius norm) stays NP-hard at r=2. A tight explainer-video hook: 'this Lights-Out variant is secretly the reason making a recommendation matrix boring-and-low-rank is provably hard,' with the demo doubling as the video's B-roll interactive.",
+      "cool": 6,
+      "buildable": 7
+    },
+    {
+      "type": "demo",
+      "title": "Trend-Tide: Watch Mean-Reversion Go Extinct",
+      "paper": "2603.29593v1 - Be Water: An Evolutionary Proof for Trend-Following",
+      "pitch": "A single-page canvas sim that literally recreates the paper's core finding: seed a population of ~500-2000 toy agents split across the paper's five archetypes (trend-followers, mean-reverters, noise traders, fundamentalists, momentum-chasers), run a simplified order-flow price formation loop, and animate each agent's wealth as a colored dot growing/shrinking. Sliders control friction and UBI-equivalent 'basic income' (the paper's frictionless+UBI assumption is what let trend-following dominate). Watch mean-reversion wealth bars visibly collapse to zero over simulated time while trend-following wealth share climbs toward saturation -- the exact 'structurally fragile vs. evolutionarily dominant' result from the abstract, but felt in real time instead of read as a claim. Add a toggle to reintroduce transaction costs/no-UBI and watch the result partially reverse, which is itself an experiment the paper invites.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Panic Threshold: When Vibes Beat the Virus",
+      "paper": "2603.29282v1 - Social Amplification Dominates Collective Hazard Response",
+      "pitch": "An interactive toy with a small social network (a few hundred nodes on a force-directed graph) each carrying a stress level, driven by two inputs the user controls with sliders: 'hazard forcing' (an actual COVID-case-style curve) and 'negativity-bias contagion strength' (how much stress spreads node-to-node vs. decays). As you crank contagion strength past a critical value, the aggregate stress index visibly decouples from the hazard curve and the network flips from proportionate response into runaway amplification -- reproducing the paper's headline result that social dynamics outweighed direct hazard forcing in over 80% of US states. A live scatter of 'stress index vs hazard severity' shows the two curves diverge exactly at the phase transition the paper identifies, making the tipping point something you trigger with your mouse rather than read as a percentage.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Scrooge Sphere: A Qubit That Can't Avoid Being Fair",
+      "paper": "2606.29042v2 - Exact Hilbert-space Ergodicity from Continuous Monitoring",
+      "pitch": "Simulate a single continuously-monitored qubit's pure-state trajectory (Euler-Maruyama integration of the stochastic master equation, a well-known solvable case) and render it as a wandering dot on a three.js Bloch sphere that leaves a heat-trail. No matter which pure state you start the dot at, its long-run visitation density converges to the same fixed distribution over the sphere -- a hands-on illustration of the paper's claim that continuous monitoring with jump operators forming a 'deformed unitary 1-design' drives exact Hilbert-space ergodicity toward a unique late-time equilibrium (the Scrooge ensemble), regardless of initial condition. A second panel overlays the theoretical target density (derived from the chosen mixed state rho) so the user can literally watch the empirical heatmap converge onto the prediction as the sim runs longer -- turning an abstract quantum-information theorem into a 'watch the dot prove the theorem' toy.",
+      "cool": 8,
+      "buildable": 7
+    },
+    {
+      "type": "youtube",
+      "title": "The Planet Can't Cool Your GPUs",
+      "paper": "2603.28949v2 - The Planetary Cost of AI Acceleration: A Thermodynamic Outlook on Four Possible Paths Forward",
+      "pitch": "A ~10-minute explainer built around the paper's central reframe: AI scaling isn't bottlenecked by data or capital but by planetary heat-dissipation capacity -- civilization as, in the paper's own words, 'an exceedingly rare and highly expensive thermodynamic algorithm actively fighting the default settings of the cosmos.' Structure the video as the paper's four paths forward (efficiency scaling, architectural change, geographic/off-planet heat offload, and managed degrowth), each rendered as an animated Sankey diagram tracing energy from grid to datacenter to waste heat to atmosphere, with real PUE and hyperscaler power-draw numbers overlaid so viewers see how close current growth curves run to the thermodynamic ceiling the paper describes. Closing beat: contrast the four paths' plausibility, landing on the paper's implicit thesis that none of the four is free.",
+      "cool": 7,
+      "buildable": 5
+    },
+    {
+      "type": "demo",
+      "title": "Heilbronn Court \u2014 feel the anti-clustering optimum",
+      "paper": "2607.15021v2 \u2014 Heilbronn's Problem in the Unit Triangle: Certified Optimal Configurations for n<=8",
+      "pitch": "Single-page canvas toy: drag n points (n=3..8) inside a triangle; live-compute the area of the smallest triangle formed by any 3 points (the Heilbronn objective) and show your score as a % of the paper's certified optimum (exact & proof-verified for n<=7, best-known conjectured for n=8, from their mixed-integer/boundary-structure method). A 'reveal certified config' button snaps to the paper's actual optimal point set. Whimsy hook: this is literally the math of good basketball floor spacing \u2014 maximizing the minimum triangle area between any 3 players is exactly what kills 'three guys in a line' passing-lane clutter, so frame it as an 'NBA 5-out spacing grader' where you're trying to out-space the proven-optimal geometry.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Discrepancy Nudge \u2014 random points become quasi-random with one small shove",
+      "paper": "2607.12263v1 \u2014 Random sets are close to low-discrepancy sets",
+      "pitch": "The paper's actual result isn't 'random is already low-discrepancy' \u2014 it's that moving only a small expected fraction of a random sample turns it into a set with star discrepancy polylog(n)/n, matching hand-built low-discrepancy sequences. Build a 3-panel canvas demo: (1) raw uniform-random points with visible clumps/gaps and a live star-discrepancy estimate (grid/box-counting), (2) the same points after a cheap nudge/optimal-transport-style relocation of just a few of them, with discrepancy plunging toward the polylog(n)/n curve, (3) a true Halton/Sobol sequence for comparison. Slider for n so people can watch the gap close as n grows \u2014 makes an abstract analytic bound something you can literally watch happen.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "The Unmixable Line \u2014 an explicit impossibility proof you can watch tick",
+      "paper": "2607.25490v1 \u2014 An Exact Obstruction to Uniform Average Mixing on P_11",
+      "pitch": "The paper constructs an explicit 11x11 matrix Y showing the continuous-time quantum walk's average-mixing matrix M(t) on the 11-vertex path graph P_11 can never converge to uniform: the invariant <Y, M(t)>_F is pinned at 1 for all time, but uniformity would require it to hit 12/11. Simulate the quantum walk in-browser (11x11 Hamiltonian, eigendecomposition via math.js \u2014 tiny and fast), animate M(t) as a heatmap drifting and pulsing but never flattening to uniform, and plot the invariant as a needle stuck at 1 next to a red target line at 12/11 that it can provably never reach. It's a rare case where you can render a hard impossibility theorem as a physically intuitive 'gauge that refuses to move.'",
+      "cool": 8,
+      "buildable": 6
+    },
+    {
+      "type": "project",
+      "title": "QMC Poker Equity Bench \u2014 does quasi-random sampling actually help solvers?",
+      "paper": "2607.12263v1 \u2014 Random sets are close to low-discrepancy sets",
+      "pitch": "Build a range-vs-range Texas Hold'em equity simulator (client-side deck sampling + a JS hand evaluator) and benchmark convergence speed of three sampling schemes: plain Monte Carlo, a Sobol/Halton low-discrepancy sequence, and the paper's 'nudge a small fraction of random points' scheme. Poker solvers run exactly the finite-n Monte Carlo regime (thousands to low millions of deals) where the paper's polylog(n)/n bound starts to bite \u2014 so this turns an abstract asymptotic claim into an honest empirical answer to 'is QMC sampling worth the engineering cost for equity calcs, or is vanilla random already close enough?' Ships as a shareable results chart, useful bait for the poker-solver crowd.",
+      "cool": 6,
+      "buildable": 7
+    }
+  ]
+}

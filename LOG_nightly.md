@@ -1,5 +1,53 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-18 — Defect Drift Playground (autonomous run, judged/published on 2026-08-19)
+- **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed (all 3 builders
+  wrote files) but judging/publishing/logging never ran (stray `ideation_2026-08-18.js`/`_raw.txt`/
+  `_results.json`/`buildoff_2026-08-18.js` left uncommitted, no `judge_2026-08-18.js` written yet). Picked up
+  and finished at the start of the 2026-08-19 session: wrote and ran a judge-only workflow against the 3
+  existing builds, published, logged.
+- **Fetch:** fresh papers across categories, 24 ideas generated across all four categories.
+- **Top per category:**
+  - startup — **One-Shot Directed Evolution Copilot** (cool 9, buildable 3): ProteinGuide proposes protein
+    variants in a single guided-generative forward pass, competitive with iterative directed-evolution rounds,
+    with a natural-language front end (DNAHLM) for specifying the target property (arXiv:2505.04823 +
+    arXiv:2410.16917)
+  - youtube — **Time Has a Measurable 'Arrow' — The Physics of Imaginary Entropy** (cool 8, buildable 5):
+    imaginary pseudo-entropy encodes temporal orientation — a quantum-information quantity that points which way
+    time flows (arXiv:2606.29235)
+  - project — **Fail-Closed Memory** (cool 7, buildable 6): governed, source-bound persistent memory layer for
+    long-horizon agents that fails closed rather than open when provenance can't be verified (arXiv:2608.12476)
+  - demo — 3 selected for build-off: **Prompt-Poison Playground** (arXiv:2607.21951, cool 9×buildable 8),
+    **Defect Drift Playground** (arXiv:2605.25996, cool 9×buildable 8 combined), **Trend-Tide** (arXiv:2603.29593,
+    cool 8×buildable 9)
+- **Built (3 of 3 completed):**
+  - A — **Prompt-Poison Playground: gaming an AI shopping recommender** (arXiv:2607.21951, SIREN — editing the
+    content of one already-retrieved RAG page, holding the rest fixed, flips an LLM recommender's #1 pick;
+    declarative/seeded-list framings beat directive injections, 0.805 mean reproduction rate at rank 1 across 2
+    production Claude models): drag-and-drop palette of the paper's 23 real technique categories onto an editable
+    listing, with a live-reranking leaderboard (FLIP animation) and probability meter.
+  - B — **Defect Drift Playground: Spiral vs Fiber Waves** (arXiv:2605.25996, mechanochemical coupling between
+    local pulsation and repulsion in pulsating active matter breaks spatial/time-reversal symmetry, making
+    topological defects drift and driving a spiral-to-fiber wave crossover, cardiac-arrhythmia framing): a real
+    FitzHugh-Nagumo reaction-diffusion PDE simulated live on canvas — not a scripted animation — with an
+    asymmetry slider, defect-drift trail, and click-to-reseed.
+  - C — **Trend-Tide: Watch Mean-Reversion Go Extinct** (arXiv:2603.29593, "Be Water" — an evolutionary proof
+    that under frictionless/UBI-style conditions trend-following wealth share climbs toward saturation while
+    mean-reversion wealth collapses toward zero): 10,000-agent, 5-archetype market sim with wealth dots, price
+    tape, and stacked wealth-share chart, plus a friction toggle that partially reverses the result.
+  - **Judge:** all three verified valid, self-contained, dependency-free HTML/JS (balanced tags, no JS syntax
+    errors, no missing DOM ids, no external CDN dependencies to break); none disqualified. Every demo's claimed
+    numbers/claims cross-checked against the real arXiv abstracts. Scores (wow/interactivity/polish/fidelity,
+    sum/40): A 31, **B 34**, C 31. **B (Defect Drift Playground) won** — it's the only entry running an actual
+    live reaction-diffusion PDE solver rather than a stat-shuffling toy, producing a visually dramatic,
+    physically-motivated transformation (pinned spiral core → drifting core → fiber filaments) that directly
+    demonstrates the paper's ratchet/symmetry-breaking claim, and it was the most honest about what's
+    quantitative vs qualitative.
+- **Published:** demo at `demos/2026-08-18-defect-drift-playground.html`, brief at `2026-08-18-nightly.html`,
+  both mirrored into `david-share` and registered in its manifest (commit `907fb06`, pushed 2026-08-19). Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-18-defect-drift-playground.html and
+  .../arxiv-scrape/2026-08-18-nightly.html once the VPS pulls.
+
 ## 2026-08-17 — Rod Rave (autonomous run, judged/published on 2026-08-18)
 - **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed (all 3 builders
   wrote files) but judging/publishing/logging never ran (stray `ideation_2026-08-17.js`/`_results.json`/
