@@ -1,5 +1,47 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-19 — Circuit Breaker Lab
+- **Fetch:** 176 papers across 22 categories (8 each), sampled 30 round-robin for ideation.
+- **Ideate:** 24 ideas generated across 6 batches (demo / project / startup — no youtube idea stood out
+  tonight).
+- **Top per category:**
+  - startup — **ConsensusEdge — confusion-matrix aggregation for sharp bettors** (cool 6, buildable 5): ports
+    a sleep-staging paper's per-expert confusion-matrix fusion mechanism (86% acc / 85% F1 beating naive
+    consensus) to betting syndicates aggregating multiple handicappers/models (arXiv:2608.12446)
+  - project — **Mempool Linearizer Sandbox** (cool 7, buildable 8): animates Spanning Forest Linearization
+    (the fee-optimal transaction-ordering algorithm now shipped in Bitcoin Core) against a naive greedy
+    baseline on a random dependency DAG (arXiv:2607.23787)
+  - demo — 3 selected for build-off: **Watch a Neural Net Become a Gaussian Process** (arXiv:2607.06290,
+    cool 9×buildable 8), **Circuit Breaker Lab** (arXiv:2309.10220, cool 8×buildable 9), **Mingling Physics:
+    Fake Social Butterflies** (arXiv:2604.00652, cool 8×buildable 9)
+- **Built (3 of 3 completed):**
+  - A — **Watch a Neural Net Become a Gaussian Process** (arXiv:2607.06290, quantitative GP limits of Tensor
+    Programs — empirical distance from the limiting Gaussian decays like 1/√width, architecture-agnostic
+    including weight-shared/RNN-style nets): hundreds of tiny random one-hidden-layer MLPs sampled live
+    client-side, histogrammed against the analytic NNGP limit as a width slider drags N from 4 to 4096, with a
+    log-log Wasserstein-distance-vs-width plot overlaying a fitted regression slope against the paper's claimed
+    rate.
+  - B — **Circuit Breaker Lab** (arXiv:2309.10220, price limits vs. circuit breakers trace near-identical
+    recovery curves when matched on parameters, except a too-short price-limit time window lets sell orders
+    pile against the clamped band and stall recovery): a real toy limit-order-book ABM — zero-intelligence +
+    momentum/panic traders, actual order matching, live price/depth charts, fat-finger and panic-cascade shock
+    buttons, three regulation modes.
+  - C — **Mingling Physics: Fake Social Butterflies** (arXiv:2604.00652, heavy-tailed face-to-face contact
+    distributions reproduced by memoryless 2D random walkers with simple spatial targeting, no social memory
+    needed): a crowd of biased random walkers between localized zones, live contact-count histograms comparing
+    no-memory vs. memory-biased modes via Chart.js, crown icon on the "most popular" agent.
+  - **Judge:** all three verified valid, self-contained HTML/JS (balanced tags, `node --check` clean, DOM ids
+    resolve, headless-Playwright runs with zero console errors for B and C, CDN SRI hash verified for C); none
+    disqualified. Numbers/claims cross-checked against the real arXiv abstracts. Scores (wow/interactivity/
+    polish/fidelity, sum/40): A 34, **B 36**, C 32. **B (Circuit Breaker Lab) won** — the judge called it the
+    most viscerally fun to interact with (you can genuinely break the market and watch the stuck-order wall
+    form) while staying the most rigorously grounded, quoting the paper's core finding near-verbatim, with the
+    strongest UI polish of the three.
+- **Published:** demo at `demos/2026-08-19-circuit-breaker-lab.html`, brief at `2026-08-19-nightly.html`, both
+  mirrored into `david-share` and registered in its manifest (commit `0e9063b`, pushed 2026-08-19). Live at
+  share.djiang.xyz/arxiv-scrape/demos/2026-08-19-circuit-breaker-lab.html and
+  .../arxiv-scrape/2026-08-19-nightly.html once the VPS pulls.
+
 ## 2026-08-18 — Defect Drift Playground (autonomous run, judged/published on 2026-08-19)
 - **Note:** same stall pattern as prior nights — ideation and the 3-way build-off completed (all 3 builders
   wrote files) but judging/publishing/logging never ran (stray `ideation_2026-08-18.js`/`_raw.txt`/

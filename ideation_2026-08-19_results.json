@@ -1,0 +1,196 @@
+{
+  "ideas": [
+    {
+      "type": "demo",
+      "title": "The Impossible Lyapunov Function",
+      "paper": "2607.16171v1 - A Globally Asymptotically Stable Planar Homogeneous Polynomial Vector Field With No Polynomial Lyapunov Function",
+      "pitch": "Single-page canvas/d3 phase-portrait toy. Left panel: numerically integrate the paper's actual cubic planar vector field (globally asymptotically stable, integer coefficients) and stream dozens of trajectories spiraling into the origin -- visually obvious stability. Right panel: let the user try to 'certify' it by fitting a degree-2, 4, 6... polynomial Lyapunov candidate (just solve small SOS/least-squares systems client-side in JS) and watch every attempt fail to be positive-definite with negative-definite derivative everywhere, while a slider reveals the one weird trick that *does* work: the paper's smooth-but-non-polynomial degree-2-homogeneous function (smooth away from origin, radially unbounded). The hook is watching a system that is obviously, provably stable defeat every polynomial proof technique control theorists actually use (SOS/SDP solvers), which is exactly the paper's punchline and a real gotcha for the control/optimization community.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "project",
+      "title": "Mempool Linearizer Sandbox",
+      "paper": "2607.23787v2 - Bitcoin Mempool Linearization",
+      "pitch": "An interactive single-HTML tool that generates a random transaction dependency DAG (nodes = txns with random fee/size, edges = parent-must-precede-child) and animates the paper's actual algorithm: Spanning Forest Linearization, which iteratively merges and splits 'chunks' of transactions to converge on the fee-rate-optimal, dependency-respecting order, provably reaching the optimum (and now literally shipped in Bitcoin Core). Show a naive greedy-by-feerate ordering side by side, visually breaking dependency constraints or leaving fee-rate on the table, versus SFL converging to the true optimum with a running counter of merge/split operations. Because this is a real algorithm already merged into Bitcoin Core, it doubles as a genuinely useful teaching tool for wallet/mining-pool engineers trying to understand why their fee estimator picks the order it does -- a small step from demo to real dev tool (e.g. point it at a live mempool.space API feed of pending transactions instead of synthetic data).",
+      "cool": 7,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Ramsey Goodness Prover: Cycles Edition",
+      "paper": "2607.26956v1 - An Optimal Bound for Ramsey Goodness of Cycles",
+      "pitch": "An interactive graph-coloring toy that lets a user pick a cycle length n and a target graph H (start with H = K_m, a complete graph) and watch the paper's exact formula R(C_n,H) = (chi(H)-1)(n-1) + sigma(H) play out concretely: render Burr's extremal 2-coloring on (chi(H)-1)(n-1)+sigma(H)-1 vertices that provably avoids BOTH a monochromatic C_n in one color and a monochromatic H in the other, then let the user add one more vertex and watch the tool search for (and always find) the forced monochromatic C_n or H, i.e., feel the tightness of the bound with their own hands. A slider for n makes tangible the paper's real breakthrough: this exact formula only kicks in once n is at least a constant times |H|, so the demo can show the formula breaking down for small n and locking in once the threshold is crossed -- a rare chance to feel a genuinely recent extremal-graph-theory result rather than just Ramsey(3,3)=6 trivia.",
+      "cool": 7,
+      "buildable": 7
+    },
+    {
+      "type": "demo",
+      "title": "Sorting vs. Melting: The Entropic Heat Equation",
+      "paper": "2607.13849v1 - Rearranged Stochastic Heat Equations with an Entropy Gradient Structure",
+      "pitch": "A particle-based toy (canvas, a few hundred points on a line, no backend) that visualizes the paper's two competing forces on a probability density: the 'rearrangement' stochastic heat dynamics that noisily reshuffles particle order, and a new entropy-gradient-descent term that pulls the density toward maximum entropy (flattening it out). A slider dials the entropy-term strength from 0 (pure rearranged heat equation -- particles diffuse and self-sort into a smooth profile) up to strong (density visibly relaxes toward flat/uniform, mimicking the paper's 'corrected Dean-Kawasaki equation' fixed point), with a live histogram overlay showing the density evolving in real time. The visceral payoff is watching the same simulated particle cloud go from 'clumping and smoothing under its own diffusion' to 'being actively pulled toward uniformity,' which is precisely the tension the paper proves is resolvable via a splitting argument -- an approachable, watchable stand-in for a fairly hardcore SPDE result.",
+      "cool": 6,
+      "buildable": 6
+    },
+    {
+      "type": "demo",
+      "title": "Circuit Breaker Lab",
+      "paper": "2309.10220v1 \u2014 Comparing effects of price limit and circuit breaker in stock exchanges by an agent-based model",
+      "pitch": "Single-page canvas ABM: a toy limit-order-book market populated by zero-intelligence + momentum/panic traders, with a big 'fat-finger sell' or 'panic shock' button. Let the user pick a regulation mode \u2014 none, price-limit (hard-clamp the tradable band), or circuit-breaker (halt trading for N ticks once price crosses a threshold) \u2014 and expose the two knobs the paper says matter: limit price range and limit time range. Show live price path plus order-book depth so you can literally watch the paper's core finding: with matched range/time parameters the two mechanisms trace near-identical recovery curves, but when the price-limit's time window is shorter than typical order-cancellation time, sell orders pile up and block the floor from clearing, stalling recovery \u2014 while switching to a circuit breaker on an 'erroneous order' shock recovers cleanly. It's a market-microstructure toy people can break in real time.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Watch a Neural Net Become a Gaussian Process",
+      "paper": "2607.06290v1 \u2014 Quantitative Gaussian-Process limits of Tensor Programs",
+      "pitch": "A single HTML file that instantiates hundreds of tiny random one-hidden-layer MLPs (plain JS typed-array matmuls, no backend needed) at a fixed input, and histograms their outputs live against the analytically-computed limiting Gaussian (NNGP kernel for ReLU/erf). A width slider (N=4 to N=4096) shows the empirical distribution snapping into the Gaussian as N grows, with a live-plotted empirical-distance-vs-width curve overlaid on the paper's claimed O(1/sqrt(N)) decay line so you can visually confirm the rate, not just the limit. A toggle simulates a weight-shared ('RNN/transformer-style') variant to show the architecture-agnostic claim holds too. This turns an abstract convergence theorem into something you drag a slider and watch happen.",
+      "cool": 9,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Color Constancy: Human vs. Machine",
+      "paper": "2602.13887v1 \u2014 Human-Aligned Evaluation of a Pixel-wise DNN Color Constancy Model",
+      "pitch": "A checkershadow/dress-style illusion built in canvas: a gray target patch sits inside a colored 'illuminant' scene, and you calibrate an achromatic-matching task (drag a swatch until the patch looks neutral) \u2014 mirroring the paper's actual human-experiment task. Toggle switches remove the same cues the paper ablated (local surround color, spatial mean color of the scene) and, side-by-side, run a lightweight gray-world/von-Kries estimator standing in for the ResNet U-Net, whose constancy error is calibrated to degrade the same way the paper reports for the real DNN. The payoff: your own matching error and the model's error move together as cues get stripped, which is literally the paper's human-alignment finding, felt rather than read.",
+      "cool": 7,
+      "buildable": 7
+    },
+    {
+      "type": "startup",
+      "title": "CausalRx \u2014 causal-graph pharmacovigilance signals",
+      "paper": "2505.06949v1 \u2014 Causal knowledge graph analysis identifies adverse drug effects",
+      "pitch": "The paper builds a Drug-Disease Causal Knowledge Graph (explicit causal edges + confounder adjustment) over UK Biobank and MIMIC-IV, and shows it reproduces known adverse drug reactions with high precision while surfacing plausible undocumented ones, validated by improved prediction of shared drug indications. Productize that pipeline as a subscription signal-detection service for pharma drug-safety/regulatory-affairs teams and payer formulary committees: ingest FAERS + open biomedical KGs (Hetionet-style), apply the same causal-edge/confounder-adjustment machinery, and ship a ranked, precision-scored dashboard of 'known ADRs we correctly recovered' (trust signal) plus 'novel candidate ADRs' worth investigating, with drill-down provenance graphs. A scoped prototype (graph viz + a handful of precomputed causal signals over public FAERS data) is an evening build; the real product needs licensed EHR data and clinical review, so it's a multi-week MVP, not a tonight build.",
+      "cool": 6,
+      "buildable": 3
+    },
+    {
+      "type": "demo",
+      "title": "The Two-Way Player Theorem",
+      "paper": "2606.14995 \u2014 Optimality of Random Regular Graphs in Sparse Network Designs",
+      "pitch": "The paper proves that a random d-regular bipartite graph (every node connects to exactly d others, but which d is picked at random) hits the theoretical minimum average degree needed for near-full flexibility under demand uncertainty \u2014 matching or beating the hand-engineered 'chaining' designs from classic process-flexibility theory (Jordan-Graves), in both production-network and disruption-robust delivery settings. Build a single-page canvas demo framed as an NBA roster: nodes are 'positions a player can guard/play' vs 'games/matchups that need covering', edges are cross-training links. A slider sets average degree d (how many extra positions each player can flex into); a 'Shock' button randomly knocks out or overloads matchups (injuries/foul trouble); client-side max-flow (Ford-Fulkerson, ~80 lines of JS) computes what fraction of matchups still get covered. Three preset layouts at equal degree \u2014 pure specialists (d=1), a hand-built chain, and a random-regular graph \u2014 let the user watch the random-regular one match the chain's coverage with zero design effort, literally feeling the theorem. Could re-skin the same engine as a poker table seating/backup-dealer robustness toy for the whimsy angle.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Router Frontier Toy",
+      "paper": "2608.06867 \u2014 LLMRouter: Unified Infrastructure for Developing, Evaluating, and Deploying LLM Routers",
+      "pitch": "LLMRouter's xRouteBench result is that learned routers beat fixed-model baselines by 14.6% relative on quality-per-dollar, and cheap routers become competitive specifically as the cost budget tightens. Build a single HTML page with a synthetic query set, each tagged with a per-model (mini/mid/flagship) quality and cost estimate. A budget slider drives three simultaneous strategies rendered as animated dots settling onto a live quality-vs-cost scatter: 'always flagship' (fixed baseline), 'random pick' (worst-case baseline), and a tiny heuristic router (a few features -> logistic score, trained client-side on the synthetic set) \u2014 the gap between the router curve and the fixed-model line visibly widens as you drag the budget down, reproducing the paper's headline finding interactively instead of as a bar chart in a PDF.",
+      "cool": 6,
+      "buildable": 8
+    },
+    {
+      "type": "project",
+      "title": "PredictionCompass",
+      "paper": "2608.12447v2 \u2014 Geometric and Behavioral Stratification in Transformer Residual Streams",
+      "pitch": "The paper's core finding is that the 'prediction direction' (the unembedding direction matching the model's current top prediction) is a privileged, scale-invariant anchor: hidden-state variance near it is tightly structured and clusters related prompts, variance far from it is flat and undiscriminating, and causal patches near the direction cause immediate task-frame shifts while patches far from it only delay divergence. Build a small open-source tool (TransformerLens/nnsight + GPT-2/Pythia-class models) that, for any prompt, projects each layer's residual stream onto the current prediction direction, plots the near-vs-far stratification live, and exposes an interactive 'patch a random direction at distance r from the prediction axis' slider so users can replicate the paper's causal-intervention experiment themselves and watch next-token predictions wobble immediately (near) vs later (far). A nice mechanistic-interpretability portfolio piece / blog demo, not a single-file toy since it needs real model weights and a lightweight backend or Colab notebook.",
+      "cool": 8,
+      "buildable": 5
+    },
+    {
+      "type": "demo",
+      "title": "Ghost Gripper: Pre-Contact Abort Sandbox",
+      "paper": "2608.13438 \u2014 ContactGuard: Pre-Contact Execution Monitoring with Action-Conditioned Latent World Models",
+      "pitch": "ContactGuard's trick is rolling a learned world model forward a few steps under the policy's planned actions and aborting before contact if the predicted outcome looks like a failure (slip/miss/knock-over) \u2014 crucially it's a bolt-on monitor that needs no changes to the manipulation policy itself, which matters most for close-in wrist-camera approaches where normal contact sensors react too late. Build a Matter.js physics sandbox: a gripper (driven by intentionally noisy 'policy' control) approaches a block; a translucent 'ghost' gripper/block renders the world model's few-steps-ahead rollout prediction just ahead of the real one. When the ghost predicts a miss/topple, the real motion freezes and flashes 'ABORTED \u2014 predicted slip' before actual contact. A toggle for ContactGuard on/off plus a running tally over N auto-replayed trials reproduces the paper's headline (guarded runs dodge most pre-contact failures) as something you can watch happen, not just read as a percentage.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Marginal Regeneration: Soap Film vs Meniscus Flux Race",
+      "paper": "2605.27108v1 \u2014 Quantifying the liquid flow between a soap film and a vertical meniscus",
+      "pitch": "The paper's core empirical result is that the volumetric flux per unit length draining from a vertical soap film into its bounding meniscus follows a scaling law with a flux coefficient that stays roughly CONSTANT across a wide range of film heights and meniscus curvatures \u2014 this constant governs 'marginal regeneration,' the exchange mechanism that keeps foams alive. Build a single-file canvas toy: a vertical soap film thins over time while draining into a meniscus pool at the bottom (visualized as flowing dye streaks), with sliders for film height and plate/meniscus angle. A live side chart plots measured flux vs. the paper's scaling-law prediction using their fitted constant. Add a 'race' mode: two films side by side, one using the correct constant-coefficient physics and one using a naive (wrong) flux assumption \u2014 watch which film survives longer, making the abstract 'foam lifetime implication' viscerally visible.",
+      "cool": 7,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Dependency-Graph Rumor Race",
+      "paper": "2511.02437v1 \u2014 Asymptotic behavior for a general class of spreading models",
+      "pitch": "The paper unifies SIR epidemics and the Daley-Kendall rumor model into one coupled-ODE fluid-limit framework, and proves that whether a 'vanishing state' (susceptibles/ignorants) decays exponentially or only algebraically (fat-tailed, i.e. the rumor/disease lingers) depends on graph-theoretic conditions on a 'dependency graph' of who-influences-whom \u2014 and that small edits to that graph can qualitatively reshape the whole trajectory. Build an interactive d3-force node/edge editor where users design the dependency graph (frame it as an NBA locker-room trade-rumor network for the whimsy angle), then numerically integrate the generalized SIR/rumor ODE live (simple RK4 in JS) and plot the decay of 'people who haven't heard yet' on a log-scale axis. Toggling edges that satisfy vs. violate the paper's structural condition flips the tail from a straight line (exponential) to a curved, lingering one (algebraic) in real time \u2014 literally feeling the paper's main theorem.",
+      "cool": 8,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Smooth Enough to Cheat: Potential-Energy-Surface Interpolation Toy",
+      "paper": "2605.22584v2 \u2014 On the Regularity and Interpolation of Coupled Cluster Amplitudes in Canonical Orbital Basis",
+      "pitch": "The paper proves that, under non-degeneracy assumptions, coupled-cluster amplitudes are real-analytic functions of nuclear geometry \u2014 which is exactly why you can interpolate them from a handful of reference geometries instead of recomputing expensive CC at every point, and they validate this numerically. Build a canvas demo with a synthetic 'true' bond-stretch energy curve; the user clicks 5-8 sparse sample points and the app fits a polynomial/spline interpolant, overlaying it against the dense ground truth to show near-perfect reconstruction \u2014 dragging home the 'real-analytic \u21d2 sparse interpolation works' claim. A toggle switch simulates the paper's own caveat: breaking non-degeneracy (an avoided crossing) injects a kink into the true curve, and the same sparse-interpolation strategy visibly blows up, showing exactly where and why the theorem's assumptions matter.",
+      "cool": 7,
+      "buildable": 9
+    },
+    {
+      "type": "startup",
+      "title": "Oncology Paradox Miner",
+      "paper": "2603.02274v3 \u2014 Contextual Invertible World Models: A Neuro-Symbolic Agentic Framework for Colorectal Cancer Drug Response",
+      "pitch": "The paper's agentic layer (ML emulator + LLM reasoning on top) found two concrete, non-obvious findings from only 83 samples of GDSC data: that mutant KRAS dominates 5-FU resistance over the 'textbook' APC/Wnt pathway (the 'KRAS Shield'), and the counterintuitive 'PIK3CA Paradox' where repairing a driver mutation actually increases chemoresistance via a compensatory MAPK feedback loop. Productize the pattern rather than the single result: a subscription tool that runs the same quantitative-emulator-plus-LLM-agent pipeline over public pharmacogenomic panels (GDSC, DepMap, CCLE) across every drug x cancer-type combination, systematically surfacing 'fixing gene X worsens response' paradoxes for pharma target-validation teams to triage before committing to wet-lab experiments \u2014 cheap to pilot since it's mostly agent orchestration over existing public datasets and off-the-shelf regression emulators, not new wet-lab science.",
+      "cool": 6,
+      "buildable": 4
+    },
+    {
+      "type": "demo",
+      "title": "Committor Landscape Playground",
+      "paper": "2606.31832v2 \u2014 Navigating committor landscape of biomolecules with a general pairwise interaction model",
+      "pitch": "The paper's core object is the committor: for any point in configuration space, the probability that a stochastic trajectory hits basin B before basin A (they use this to find bifurcated transition mechanisms in chignolin folding). That's the exact same math as a live win-probability field or hold'em equity map. Build a single HTML canvas: user paints a 2D potential-energy landscape (two or more wells = 'folded'/'unfolded', or relabel them 'Win'/'Loss' for the whimsy toggle), drops thousands of Langevin/random-walk particles from every grid point, and for each point runs short 'shooting' trajectories to empirically estimate P(hits B first) \u2014 exactly the committor estimation procedure in the paper, just with a trivial 2D potential instead of a learned Pairformer. Color the whole landscape by that probability field in real time as the user drags the wells around or adds a saddle/barrier \u2014 you literally watch the transition-state ridge (the committor\u22480.5 contour) snap into place. This is the most direct 'feel the math' demo of the batch.",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Mingling Physics: Fake Social Butterflies",
+      "paper": "2604.00652v1 \u2014 Simple spatial processes can generate heterogeneous contact distributions in face-to-face interactions",
+      "pitch": "The paper's punchline: real face-to-face contact-count distributions (the classic SocioPatterns 'some people talk to everyone, most talk to a few' heavy tail) can be reproduced by dumb 2D random walkers with simple local targeting and mixing \u2014 no social memory, no personality, no preferential attachment needed. Build a single-file canvas demo: a crowd of dots doing biased random walks in a room (with configurable 'localized phases' \u2014 clusters/corners people linger in), log every contact (dots that touch), and plot a live histogram of contacts-per-person next to it. Add a toggle for 'give agents memory of past contacts' vs 'pure spatial, no memory' and show the histograms come out statistically indistinguishable \u2014 visually debunking the intuitive story that heavy-tailed social contact means some people are more 'social'. Strong whimsy hook: 'the popular kid at the party might just be standing in a good spot.'",
+      "cool": 8,
+      "buildable": 9
+    },
+    {
+      "type": "startup",
+      "title": "ConsensusEdge: confusion-matrix aggregation for sharp bettors",
+      "paper": "2608.12446v1 \u2014 Personalized Scorer Modeling: A Learning-Based Framework for Deriving Robust Sleep Stage Labels from Multiple Experts",
+      "pitch": "The paper's actual mechanism \u2014 model each expert's per-class confusion matrix from a learned classifier, normalize, then probabilistically fuse experts' labels rather than majority-voting \u2014 beats naive consensus for sleep staging (86% acc / 85% F1 on DOD-H). That's directly portable to SharpLab: instead of averaging multiple models'/tipsters' picks (or grading closing-line value blindly), fit each source's per-outcome confusion matrix against realized results (win/loss/push by bet type), then fuse their probability outputs weighted by where each one is historically reliable (e.g. Model A is great on unders but bad on player props). Pitch as a small service/module for betting syndicates or DFS groups aggregating multiple paid handicappers or in-house models into one calibrated probability, with an audit trail of who's actually good at what \u2014 same 'don't discard the weak experts, know where they're strong' insight the sleep paper proves works.",
+      "cool": 6,
+      "buildable": 5
+    },
+    {
+      "type": "demo",
+      "title": "Attention Head X-Ray",
+      "paper": "2608.06849v1 \u2014 Autonomy-of-Heads: Data-Free Sparse Attention from Frozen Query-Key Geometry",
+      "pitch": "The paper's finding is striking: you can tell whether an attention head is a 'retrieval head' (sharp, concentrated QK spectrum) or a 'streaming head' (diffuse spectrum) just by looking at the frozen weight matrices \u2014 zero data, zero forward pass needed \u2014 and pruning based on this gets 96.5% performance at 50% sparsity. Build a single HTML page using transformers.js (CDN, no backend) to load a small open model (distilgpt2/gpt2-small), pull each layer's Wq/Wk per head, compute the singular value spectrum of the QK kernel client-side, and render every head as a small spectrum sparkline colored by concentration (spiky=retrieval, flat=streaming) in a big grid \u2014 an actual mechanistic-interpretability toy people can play with on a real model in their browser, plus a slider that 'prunes' the diffuse heads and shows the claimed KV-cache/latency savings as a live counter.",
+      "cool": 9,
+      "buildable": 7
+    },
+    {
+      "type": "demo",
+      "title": "Disjointness Duel: Crack the Rectangle Cover",
+      "paper": "2607.27014v1 - Upper bounds for the monotone rank of the unique disjointness matrix",
+      "pitch": "The paper shows the covering/monotone rank of the 2^n x 2^n unique disjointness matrix is n^O(1)*(3/2)^n, matching the known 1.5^n lower bound (and SUM-rank <= 1.89^n) -- i.e. you provably cannot cover the 'disjoint pairs' pattern with fewer than ~1.5^n monochromatic combinatorial rectangles. Build a single-page canvas toy: pick n (3-6), render the 2^n x 2^n disjointness grid, and let the user manually try to tile all the 1-cells with axis-aligned monochromatic rectangles. A live counter compares their rectangle count to the theoretical ~1.5^n bound, and a 'reveal optimal' button animates the recursive near-optimal covering construction. It makes an abstract communication-complexity/circuit-lower-bound result into something you physically fight with a mouse and lose to exponential growth.",
+      "cool": 6,
+      "buildable": 9
+    },
+    {
+      "type": "demo",
+      "title": "Draw a Path, Grow a Signature",
+      "paper": "2607.13886v1 - Dynamic Universal Approximation via Signature Controlled Differential Equations",
+      "pitch": "The paper proves Sig-CDEs (differential equations driven through the path signature / iterated integrals) are 'dynamically universal': simple, low-parameter Sig-CDEs can approximate the solution of ANY well-posed path-dependent controlled differential equation arbitrarily well as you add signature depth. Build a canvas where the user draws a live control path with the mouse; the page computes the truncated path signature up to level k on the fly and feeds it through a tiny linear readout that drives a second object (e.g. a dot that must track a hidden memory-dependent target trajectory, like a delayed/nonlinear function of your squiggle). A depth slider (level 1 -> 4) visibly tightens the tracking error in real time, letting you FEEL universal approximation kick in as signature terms are added, plus a bar panel showing the growing iterated-integral coefficients.",
+      "cool": 7,
+      "buildable": 8
+    },
+    {
+      "type": "demo",
+      "title": "Blind RL vs Physics-Aware RL: Pendulum Race",
+      "paper": "2607.16177v1 - Physics-enhanced reinforcement learning (PEARL) for real-time optimal control",
+      "pitch": "PEARL's core claimed result is an actor-adjoint algorithm that backprops through a differentiable simulator (autodiff policy gradients) to control dynamical systems with dramatically fewer environment interactions than standard model-free RL, tested on parametric navigation-in-flow problems. Build a single HTML page with a small differentiable pendulum/boat-in-flow-field simulator in JS. Race two agents side by side toward a swing-up/navigation target: Agent A (naive blackbox RL, random-perturbation/REINFORCE-style policy search) vs Agent B (PEARL-style: gradient through the differentiable sim). A live 'environment interactions used' counter for each agent makes the paper's central sample-efficiency claim a literal, watchable race instead of a table in a PDF.",
+      "cool": 8,
+      "buildable": 7
+    },
+    {
+      "type": "project",
+      "title": "CarbonHedge: Sector Network Navigator",
+      "paper": "2311.12450v2 - Hedging carbon risk with a network approach",
+      "pitch": "The paper applies a Triangulated Maximally Filtered Graph + node2vec to S&P 500 sector correlation networks and finds the Utility sector is the robust, persistent hedge for CO2/carbon risk, while ESG risk is too diffusely defined to hedge this way -- and argues carbon (unlike ESG) is concrete enough to belong in bank capital requirements. Build a small tool that pulls recent sector ETF/constituent price data, constructs the correlation network, runs TMFG to sparsify it, overlays sector carbon-intensity data, and lets a user pick any sector to see its best carbon-hedge basket -- reproducing (and letting people query beyond) the paper's Utility-sector finding. Startup angle: package this as a compliance/allocation API for banks and funds anticipating Basel-style carbon capital rules, explicitly riding the paper's own policy argument that carbon (not ESG) is the measurable, sellable risk factor.",
+      "cool": 6,
+      "buildable": 5
+    }
+  ]
+}
