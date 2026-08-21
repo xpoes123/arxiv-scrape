@@ -1,5 +1,52 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-21 — Wire-Plane Sketchpad
+- **Fetch:** 176 papers across 22 categories (8 each, offset by day-of-year×3), sampled 30 for ideation.
+- **Ideate:** 24 ideas generated across 6 batches (demo / project / startup / youtube).
+- **Top per category:**
+  - startup — **Ratchet Memory: heat-driven bits that hold themselves** (cool 8, buildable 8): the paper
+    proves any local active dynamics is realizable by a many-body Brownian ratchet (static landscape + heat
+    current, no controller) and gives an Ising-ratchet memory bit that resists decay where the equilibrium
+    system forgets almost instantly — pitched as ultra-low-power edge/IoT state retention (arXiv:2607.01231)
+  - project — **Bipartite Cholesky ERI Toolkit** (cool 7, buildable 4): package the paper's bipartite
+    orbital/Cholesky-factor GNN as a PySCF + PyTorch-Geometric plugin, O(N⁴)→O(N³) correlation-energy
+    correction with a shipped "how similar is this molecule to my training set" confidence score
+    (arXiv:2605.25268)
+  - youtube — **The Autonomous AI That Proved a 17-Year-Old Number Theory Conjecture** (cool 8, buildable 6):
+    an AI theorem-prover (AxiomProver) closed the Amdeberhan-Medina-Moll conjecture on tan(arctan1+...+arctan n)
+    on a density-one set, formalized in Lean/Mathlib (arXiv:2607.05739)
+  - demo — 3 selected for build-off: **Wire-Plane Sketchpad** (arXiv:2603.03337, cool 9×buildable 8),
+    **Curvature Trap** (arXiv:2607.01948, cool 8×buildable 9), **The City Growth Illusion**
+    (arXiv:2603.30021, cool 8×buildable 10)
+- **Built (3 of 3 completed):**
+  - A — **The City Growth Illusion** (arXiv:2603.30021, urban-scaling exponents from cross-sectional city
+    snapshots can be a pure statistical artifact of heterogeneity, not evidence about how any city actually
+    grows): a few hundred synthetic cities all obeying one identical growth rule, staggered founding
+    dates/rates, live log-log OLS fit that produces a convincing sub/superlinear exponent out of zero coded
+    nonlinearity, with a toggle overlaying the true per-city curves.
+  - B — **Wire-Plane Sketchpad** (arXiv:2603.03337, the two-thirds power law — hand speed ∝ curvature⁻¹ᐟ³ —
+    is a fully covariant 3-tensor invariant under smooth plane deformations): draw any curve freehand, race
+    a power-law-speed dot against a constant-speed control dot, then drag six handles to warp the whole
+    canvas and watch the same slow/fast rhythm survive the deformation (99%+ correlation after a gentle warp).
+  - C — **Curvature Trap: Chiral Particles vs. the Wall** (arXiv:2607.01948, spinning but non-motile
+    particles stay uniform against straight walls but pile up under curved confinement, from chirality alone):
+    ~380 point particles in a curvature-slider superellipse container with tangential wall kicks, live
+    boundary heatmap and radial density profile.
+  - **Judge:** all three verified valid, self-contained HTML/JS (`node --check` clean, tags balanced, DOM ids
+    resolve, headless-Playwright end-to-end runs with zero console errors, CDN SRI hash verified for A);
+    none disqualified. Physics/stats independently re-run and cross-checked against real arXiv abstracts.
+    Scores (wow/interactivity/polish/fidelity, sum/40): A 34, **B 35.5**, C 36.5 — judge weighted wow-factor
+    and interactivity most heavily and picked **B (Wire-Plane Sketchpad)**: "the most novel, personal, and
+    immediately delightful interaction of the set" (direct-manipulation drawing + live warp-deformation),
+    narrowly ahead of C's tighter quantitative fidelity.
+- **Published:** demo at `demos/2026-08-21-wire-plane-sketchpad.html`, brief at `2026-08-21-nightly.html`,
+  both registered in `david-share/manifest.json` and pushed live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-21-nightly.html
+- **Note:** the 2026-08-20 run (Circuit Breaker Lab predecessor's next night) stalled after the 3-way
+  build-off — `buildoff_2026-08-20.js`/`ideation_2026-08-20.js` and 3 unjudged demo files exist locally but
+  were never judged, published, or logged. Left as-is (out of scope for tonight); flagging in case a future
+  run wants to pick it up or clean it up.
+
 ## 2026-08-19 — Circuit Breaker Lab
 - **Fetch:** 176 papers across 22 categories (8 each), sampled 30 round-robin for ideation.
 - **Ideate:** 24 ideas generated across 6 batches (demo / project / startup — no youtube idea stood out
