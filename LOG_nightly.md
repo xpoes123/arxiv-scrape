@@ -1,5 +1,30 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-22 — Impossible Memory (recovered, published a day late on 2026-08-23)
+- **Status:** the 2026-08-22 run stalled after the 3-way build-off, same failure mode flagged for
+  2026-08-20 — `ideation_2026-08-22.js`/`buildoff_2026-08-22.js` and 3 built demo files existed locally
+  but were never judged, published, or logged. Picked up and finished at the start of tonight's
+  (2026-08-23) run instead of re-running the pipeline from scratch, since the ideation results themselves
+  (startups/projects/youtube) weren't cached anywhere and weren't worth regenerating just to backfill a
+  brief — only the 3 build-off finalists' full pitches survived (embedded in `buildoff_2026-08-22.js`).
+- **3-way build-off finalists:** **Bullwhip Sandbox** (arXiv:2607.17491, multi-echelon supply-chain sim
+  showing bullwhip variance amplification as a structural/topological property, not injected noise),
+  **Impossible Memory** (arXiv:2607.01231, bilayer Ising ratchet — split hot/cold baths stabilize a
+  magnetized memory state under a symmetry-breaking field that erases the equivalent equilibrium system),
+  **The Urban Scaling Illusion** (arXiv:2603.30021, ~150 synthetic cities with honest linear individual
+  growth still yield a spurious superlinear cross-sectional scaling exponent).
+- **Judge:** all three verified running (headless Playwright, zero console errors, interactive elements
+  functionally exercised — incl. actually triggering the erase-vs-hold physics divergence in Impossible
+  Memory: equilibrium copy dropped to −0.96, ratchet copy held at +0.94 under an identical field kick).
+  Scores (wow/interactivity/polish/fidelity, sum/40): Bullwhip 33, **Impossible Memory 35**, Urban Scaling
+  32. Judge picked **Impossible Memory**: "turns an abstract, genuinely counterintuitive physics claim...
+  into a single-click, side-by-side falsification test" with the tightest fidelity-to-claim plus the
+  strongest visual/interactive payoff.
+- **Published:** demo at `demos/2026-08-22-impossible-memory.html`, brief at `2026-08-22-nightly.html`
+  (runner-up demos included in place of the lost startup/project/youtube sections), both registered in
+  `david-share/manifest.json` and pushed live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-22-nightly.html
+
 ## 2026-08-21 — Wire-Plane Sketchpad
 - **Fetch:** 176 papers across 22 categories (8 each, offset by day-of-year×3), sampled 30 for ideation.
 - **Ideate:** 24 ideas generated across 6 batches (demo / project / startup / youtube).
