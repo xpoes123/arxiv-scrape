@@ -1,5 +1,45 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-23 — Hot Hand ERW (recovered, published a day late on 2026-08-24)
+- **Status:** the 2026-08-23 run stalled again after the 3-way build-off — third time this exact failure
+  mode has hit (2026-08-20, 2026-08-22, now 2026-08-23): `ideation_2026-08-23.js`/`buildoff_2026-08-23.js`
+  and 3 built demo files existed locally but were never judged, published, or logged. This time the full
+  ideation results (24 ideas, all 4 categories) survived in `ideation_2026-08-23_results.json`, so the
+  brief below is complete rather than backfilled from build-off pitches alone. Picked up and finished at
+  the start of tonight's (2026-08-24) run.
+- **Fetch:** 30 papers sampled for ideation (per prior nights' pattern).
+- **Top per category (from `ideation_2026-08-23_results.json`):**
+  - demo — 3 selected for build-off: **Baby Entropy Engine** (arXiv:2603.29312, cool 9×buildable 9),
+    **Poincaré Coreset Playground** (arXiv:2606.16061, cool 8×buildable 9), **Hot Hand: Elephant Random
+    Walk Simulator** (arXiv:2607.15125, cool 8×buildable 9)
+  - project — **Panel-Vuong Model Picker for RAPM vs Elo** (cool 7, buildable 6): panel-data generalization
+    of the Vuong non-nested model-selection test for choosing between competing player-rating models
+    (arXiv:2601.22354)
+  - youtube — **The AI That Broke a 15-Year-Old Combinatorics Conjecture** (cool 9, buildable 5): Schubitopes
+    were conjectured always Ehrhart-positive since 2011; this paper finds the counterexamples
+    (arXiv:2608.00377)
+  - startup — **Programmable Chemical Space-as-a-Service** (cool 7, buildable 3): SpaceGFN lets drug-discovery
+    teams explicitly construct their generative search space instead of sampling a fixed learned distribution,
+    pitched as FTO-safe molecular discovery (arXiv:2603.00614)
+- **Built (3 of 3 completed, all verified running headless):** all three passed a Playwright check with zero
+  console errors and real interactive behavior confirmed by driving their controls.
+  - A — **Baby Entropy Engine** (arXiv:2603.29312): organized-zone/play-zone particle diffusion computing the
+    paper's Schnakenberg two-state entropy formula live; Maxwell-Demon Parent button loses to diffusion at
+    steady state, novelty-spike button reproduces the paper's curiosity-beats-punishment finding.
+  - B — **Hot Hand: Elephant Random Walk Simulator** (arXiv:2607.15125): 200 live ERW trajectories, p-slider,
+    live log-log regression that locks onto the theoretical exponent (0.904 fit vs. 0.900 target at p=0.95).
+  - C — **Poincaré Coreset Playground** (arXiv:2606.16061): draggable hyperbolic k-center clustering with a
+    coreset-size counter that stays far sublinear as background points are added (17→23 coreset vs. 60→260
+    total points), plus a naive-Euclidean-grid comparison panel.
+- **Judge:** all three verified running; scored wow/interactivity/polish/fidelity (sum/40): Baby Entropy
+  Engine 31, **Hot Hand ERW 34**, Poincaré Coreset 35 (closest runner-up). Judge picked **Hot Hand ERW**:
+  "a live regression fit locking onto the exact theoretical exponent while you watch" — the strongest raw
+  wow-factor of the set, and honest about visualizing the classical p=3/4 scaling law the paper's own
+  Schwarz-Christoffel asymptotics build on rather than overclaiming fidelity to the paper's specific result.
+- **Published:** demo at `demos/2026-08-23-hot-hand-erw.html`, brief at `2026-08-23-nightly.html`, both
+  registered in `david-share/manifest.json` and pushed live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-23-nightly.html
+
 ## 2026-08-22 — Impossible Memory (recovered, published a day late on 2026-08-23)
 - **Status:** the 2026-08-22 run stalled after the 3-way build-off, same failure mode flagged for
   2026-08-20 — `ideation_2026-08-22.js`/`buildoff_2026-08-22.js` and 3 built demo files existed locally

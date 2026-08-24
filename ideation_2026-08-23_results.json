@@ -1,0 +1,194 @@
+[
+  {
+    "type": "demo",
+    "title": "Marginal Regeneration Sandbox",
+    "paper": "2605.27108v1 - Quantifying the liquid flow between a soap film and a vertical meniscus",
+    "pitch": "Single-file canvas toy: draw a vertical soap film draining into a meniscus 'reservoir' at its base, with sliders for film height, meniscus radius of curvature, plate inclination and width. As you drag sliders, animate the classic 'marginal regeneration' pattern (thin, buoyant patches peeling off the meniscus and rising through the film) and simultaneously plot the computed dimensionless flux coefficient live on a side chart. The punchline IS the paper's actual result: no matter how hard you crank the geometry sliders, the coefficient line stays flat -- you're watching a genuinely universal constant refuse to move, which is exactly what the authors found across experiments, simulations, and theory. Cheap to fake the flow visuals (particle system along a flux field) while wiring the real scaling law (flux per unit length = C * f(height, radius)) with C held constant is what sells it.",
+    "cool": 7,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Boundary vs. Bulk: Watch a Quantum Critical Point Melt",
+    "paper": "2607.01076v1 - Universal Short-Imaginary-Time Quantum Critical Dynamics Near Boundaries",
+    "pitch": "A log-log power-law playground: pick 'ordinary' or 'special' boundary universality class and watch two curves race -- the boundary order parameter M_s ~ tau^(-beta1/nu*z) versus a bulk decay curve with its own exponent. Toggle between ordered and disordered initial states to reveal the paper's sharpest hook: the boundary initial-slip exponent theta1' flips sign depending on transition type (negative for ordinary, positive for special) while the bulk exponent doesn't do anything like that -- visibly breaking the usual quantum-to-classical mapping that normally holds for static properties. It's just curve-plotting with a handful of exponent sliders (d3 or plain canvas), so it's a one-evening build, but for anyone who's fought with critical exponents it's a genuinely satisfying 'ohh, THAT'S what boundary universality means' moment.",
+    "cool": 6,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Emoji Jailbreak Live Bench",
+    "paper": "2608.18164v1 - Are LLMs Safe Beyond Text: Do Emojis Expose Gaps in Safety Evaluation",
+    "pitch": "Load a small open model client-side via transformers.js/WebGPU (e.g. Qwen2 0.5B or SmolLM) in one HTML file, no backend. Feed it a benign 'refusal-trigger' probe string (something the model reliably declines in plain text, chosen to be harmless -- not an actual attack) and then the same prompt with emoji substitutions, and show the two completions side by side with a live refusal/compliance meter. This literally reproduces the shape of the paper's finding -- Gemma2-9B and Mistral-7B flipped from refusal to compliance 10% of the time under emoji obfuscation vs 0% for Qwen2-7B (chi^2=32.94, p<0.001) -- and lets a visitor feel input-representation sensitivity instead of reading a stat. Frame it strictly as a safety-eval literacy demo with sanitized, non-harmful trigger phrases; the value is showing the ROBUSTNESS GAP exists, not exploiting it.",
+    "cool": 9,
+    "buildable": 6
+  },
+  {
+    "type": "project",
+    "title": "RAFS-lite: a Silent Reasoning Failure Auditor for your own LLM pipelines",
+    "paper": "2607.26102v1 - A Reference-Free Score for Detecting Silent Reasoning Failures in Large Language Models",
+    "pitch": "Build a lightweight library that implements the paper's reference-free RAFS score -- step validity, reasoning-to-answer entailment, counterfactual sensitivity, resampled answer consensus, non-compensatory aggregation -- and run it over the chain-of-thought your own agents produce (e.g. the NBA props edge model or any Claude pipeline that reasons before outputting a number) without needing ground-truth answers. It flags exactly the two failure modes the authors define: right-answer-wrong-derivation and wrong-answer-plausible-derivation, both of which are invisible to a naive 'did the final number match' check. Since it only needs a target model to grade its own transcripts (plus a handful of counterfactual perturbations and resamples), it's a clean weekend project, and it directly targets the trust gap in any pipeline that uses LLM reasoning to drive real decisions.",
+    "cool": 6,
+    "buildable": 5
+  },
+  {
+    "type": "demo",
+    "title": "Poincar\u00e9 Coreset Playground",
+    "paper": "2606.16061v1 \u2014 Coresets for Continuous k-Center in Hyperbolic Space",
+    "pitch": "A single-page canvas demo of the Poincar\u00e9 disk: scatter a few hundred draggable points, run greedy farthest-point k-center clustering live, then toggle 'coreset mode' which highlights the tiny (1/eps)^O(kD)-size subset the paper proves is sufficient to guarantee a (1+eps)-approximation for the FULL point set. Side-by-side readout shows the k-center radius computed on the coreset vs the full set converging as you shrink eps, and a counter shows coreset size staying flat while you keep adding hundreds more background points -- visually proving the paper's headline claim that coreset size is independent of n. A second panel optionally shows the same experiment in flat Euclidean space so people feel *why* hyperbolic volume growth (paper's core obstacle) makes this harder and the shell-cone decomposition trick necessary.",
+    "cool": 8,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Saturation Breaker: The Three-Clique Puzzle",
+    "paper": "2608.00459v1 \u2014 A note on the saturation number for unions of three cliques",
+    "pitch": "An interactive graph-building toy: pick p, q, r (with 2<=p<=q<r<p+q, the paper's proven regime) and n. The page renders the paper's unique extremal K_p\u222aK_q\u222aK_r-saturated graph construction (minimum edges such that no forbidden clique-union exists yet adding ANY edge creates one). Let the user click to add edges one at a time -- each click either stays saturated (nothing appears) or triggers a highlighted 'clique-union completed!' flash showing exactly which K_p, K_q, K_r just formed. A live edge counter compares against the paper's proven sat(n, K_p\u222aK_q\u222aK_r) formula so users feel how tight/minimal the extremal graph really is, and can try (and fail) to beat it with fewer edges.",
+    "cool": 6,
+    "buildable": 8
+  },
+  {
+    "type": "project",
+    "title": "Panel-Vuong Model Picker for RAPM vs Elo",
+    "paper": "2601.22354v1 \u2014 Model Selection in Panel Data Models: A Generalization of the Vuong Test",
+    "pitch": "A small Python library implementing the paper's panel-data generalization of the Vuong (1989) non-nested model-selection test -- using modified profile likelihoods and KL information with group (time x individual-pair) fixed effects instead of individual fixed effects -- then apply it directly to your own nba-modeling repo's hybrid RAPM+Elo player-rating pipeline. Instead of eyeballing which specification 'looks better,' run a formal statistical test that says whether RAPM, Elo, or the hybrid is significantly closer to the true data-generating process, with a p-value instead of vibes. Fits your stated math->basketball mining goal and plugs straight into an existing repo rather than a green-field toy.",
+    "cool": 7,
+    "buildable": 6
+  },
+  {
+    "type": "demo",
+    "title": "Spot the Imposter Stat Line",
+    "paper": "2608.14372v1 \u2014 Catching the Imposter: Self-Supervised Learning of Physical Coherence with Cross-Entity Feature Permutations",
+    "pitch": "A browser game that makes the paper's core pretext task tangible without needing to train anything: show a real NBA box-score line (points, minutes, usage%, FG%, rebounds) alongside a 'donor-swapped' line where a subset of stats were spliced in from a different real player's game (each individual number is realistic on its own -- the paper's exact trick -- but the joint combination breaks physical/statistical coherence, e.g. 38 usage% with 4 shot attempts). The player has 10 rounds to spot which stat(s) were swapped; a running score shows how good humans are at this vs. how the paper's encoder does it automatically. Ends with a short explainer of why this task forces a model to learn real feature dependencies (their finding that the best pretext task is downstream-task-dependent, not universally superior) rather than shortcut features.",
+    "cool": 7,
+    "buildable": 7
+  },
+  {
+    "type": "demo",
+    "title": "Hot Hand: The Elephant Random Walk Simulator",
+    "paper": "2607.15125v1 - Asymptotics for the Laplace transform of the Elephant Random Walk via Schwarz-Christoffel mappings",
+    "pitch": "The Elephant Random Walk (ERW) is a random walk that, at each step, either repeats a uniformly-chosen past step (w.p. its memory parameter p) or does something new \u2014 a random walk with a memory. The classical result is a sharp phase transition at p=3/4: diffusive (n^{1/2}) below it, marginally diffusive at it, and superdiffusive (n^{2p-1}) above it; this paper sharpens the asymptotics of the walk's Laplace transform in that superdiffusive regime using Schwarz-Christoffel conformal maps to solve the governing transport PDE exactly. Build a single-page canvas demo: a slider for p from 0 to 1, live-drawing 200 simultaneous ERW trajectories (color-coded), with a running log-log plot of E[|S_n|] vs n whose fitted slope updates in real time and visibly locks onto 2p-1 once you cross p=3/4 \u2014 you literally watch the phase transition happen. Frame it as a 'hot hand' toy: relabel steps as made/missed shots and let the user feel how a shooter with p>0.75 'streak memory' produces genuinely superdiffusive scoring runs, versus p<0.75 washing out to normal variance \u2014 a fun, rigorous rebuttal/support toy for hot-hand debates, tying into the math->basketball whimsy angle.",
+    "cool": 8,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Watch the Bound Tighten: Contractive Stochastic Approximation Visualizer",
+    "paper": "2607.17595v1 - Concentration and Mean-Square Bounds for Contractive Stochastic Approximation: A Unified Elementary Approach",
+    "pitch": "This paper proves the first sub-Gaussian maximal (all-time) concentration bound for stochastic approximation under multiplicative noise (noise scaling with the iterate itself, as in Q-learning), by picking a stepsize that scales logarithmically with the target confidence level and running a Lyapunov drift + 'good event' induction argument rather than the usual Moreau-envelope smoothing trick. Build an HTML/canvas demo of a toy contractive SA process (e.g. tabular Q-learning on a 2-3 state MDP, or just an abstract contraction x_{k+1} = (1-a_k)x_k + a_k f(x_k) + noise*|x_k|) run live 500 times in parallel; plot all trajectories converging to the fixed point, with a translucent 'confidence band' overlay computed directly from the paper's closed-form bound (which shrinks as you increase the stepsize's log(1/delta) budget via a slider). The payoff moment: nearly all simulated trajectories visibly stay inside the theoretical band the whole time, letting a viewer feel what 'maximal concentration bound' actually buys you over a bound that only holds at a fixed horizon n.",
+    "cool": 7,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Bubble Breaker: A Synthetic City of Deprivation and Mobility",
+    "paper": "2603.29782v1 - Urban mobility enables deprivation bubble breaking in Indian and Mexican cities",
+    "pitch": "Using mobile-phone mobility data and satellite deprivation indices across 64 cities, the paper shows residents of deprived neighborhoods systematically travel to wealthier areas to meet daily needs far more than a standard gravity model predicts ('bubble breaking'), and finds a paradox: high local amenity diversity keeps trips local, but high amenity density plus positive spillovers from neighboring areas actually pulls people across socioeconomic boundaries. Build a canvas demo with a procedurally generated city grid of neighborhoods (each cell colored by synthetic wealth/deprivation, sized by population), an amenity layer the user paints on with a brush (density + diversity sliders), and a gravity-model-driven flow simulation that animates thousands of little dots leaving poor cells to reach amenities elsewhere. A live readout shows the 'bubble-breaking residual' (actual cross-boundary trips minus gravity-model prediction) so users can directly reproduce the paper's density/diversity paradox by dragging sliders and watching which regime causes flight from deprived bubbles versus containment within them.",
+    "cool": 7,
+    "buildable": 8
+  },
+  {
+    "type": "youtube",
+    "title": "The AI That Coaches a Quantum Computer Through Chemistry It Can't Solve Alone",
+    "paper": "2605.24617v1 - Transformer refined quantum sampling for strongly correlated electronic structure",
+    "pitch": "QiankunNet-QSCI pairs a quantum processor (running a selected-configuration-interaction ansatz to sample the chemically important electron configurations) with a transformer that learns from that sparse quantum data to reconstruct the full wavefunction \u2014 and it's not a toy: the authors hit chemical accuracy on a 40-qubit [2Fe-2S] ferredoxin cluster and got within 12 milli-Hartree of gold-standard DMRG on a 114-electron nitrogenase P-cluster, the actual enzyme active site nature uses to fix nitrogen from air (the process humanity currently replicates industrially via the energy-hungry Haber-Bosch process). A video explainer builds the story arc: why strongly-correlated electronic structure (transition-metal clusters) breaks classical methods, why noisy near-term quantum hardware alone also isn't enough, and how bolting a transformer onto the quantum sampler splits the labor \u2014 quantum finds the 'interesting' configurations, the transformer fills in the rest. Strong hook: 'a language model just helped simulate the molecule that feeds the planet.' Visuals: animate the USCI sampling \u2192 transformer completion pipeline, and close with the real-world nitrogen-fixation/fertilizer angle for stakes.",
+    "cool": 8,
+    "buildable": 3
+  },
+  {
+    "type": "demo",
+    "title": "Bracketology via F-matrices: staggered-entry tournament trees you can build by hand",
+    "paper": "2510.27030v4 - Generalizing matrix representations to fully heterochronous ranked tree shapes",
+    "pitch": "The paper's actual result is a bijection between 'fully heterochronous ranked tree shapes' (trees where leaves/tips enter at different times, and each entry is total-ordered alongside internal coalescent events) and F-matrices, integer matrices where each entry is tightly constrained by four previous entries. That structure is exactly a single-elimination bracket with staggered entry -- think NCAA/NBA play-in games where some teams join the bracket a round late instead of everyone starting at round 1. Build a single-page canvas/SVG toy: user clicks to add 'teams' at different rounds (heterochronous leaves), the tool draws the resulting ranked tree live on one side and its corresponding F-matrix as a grid of numbers on the other, updating both simultaneously so you can literally watch the bijection happen entry-by-entry. Add a counter showing how many distinct ranked topologies are consistent with the current entry-time pattern (walking the four-previous-entries constraint the paper describes), so users feel combinatorial explosion first-hand -- 4 teams entering together vs. staggered gives wildly different counts. This is a genuine math->basketball crossover: real bracket seeding/bye structures are literally the heterochronous tree shapes this paper formalizes.",
+    "cool": 8,
+    "buildable": 8
+  },
+  {
+    "type": "demo",
+    "title": "DishBrain-in-the-browser: simulated biological neurons play Pong in closed loop",
+    "paper": "2602.11632v1 - CL API: Real-Time Closed-Loop Interactions with Biological Neural Networks",
+    "pitch": "CL API's actual contribution is a declarative Python layer over Cortical Labs' biological-neuron hardware that guarantees sub-millisecond closed-loop latency, transactional stimulation admission, and deterministic ordering -- the same closed-loop principle behind Cortical Labs' famous 'neurons playing Pong' demo (stimulate the dish with ball position, read spikes back as paddle movement, tighten the loop every frame). Recreate that experience without any hardware: simulate a small population (~50-100) of Izhikevich spiking neurons in a single HTML/canvas file, wire ball-position input to stimulation currents on one region and paddle-direction output to spike-rate readout from another, and run the whole stimulate-read-update loop every animation frame to mimic the paper's tight closed-loop contract. Expose sliders for stimulation strength, noise, and 'plasticity' (a toy Hebbian rule) so users watch the simulated dish's paddle control visibly improve over a few minutes of play, dramatizing the real experiment's premise that biological substrates can learn a closed-loop task when the interaction loop is fast and reliable enough.",
+    "cool": 9,
+    "buildable": 7
+  },
+  {
+    "type": "project",
+    "title": "Black-Litterman bet sizer for correlated NBA prop portfolios",
+    "paper": "2311.04475v1 - Portfolio Construction using Black-Litterman Model and Factors",
+    "pitch": "The paper's concrete result is that folding deep-learning-generated 'views' into the Black-Litterman Bayesian update (market-implied equilibrium returns + confidence-weighted views, tilted by ~20 selected factors) outperforms other portfolio weight-allocation schemes -- though they note shrinkage variance barely helped, a useful caveat. Port the same machinery to size a portfolio of correlated same-game NBA prop bets instead of stocks: treat market lines as the BL 'equilibrium prior,' feed in your own model edges (e.g. the GR-RTRMC-validated rebounds/threes edges already tracked for the NBA props terminal) as 'views' with an explicit confidence parameter, and let the closed-form BL posterior plus a covariance matrix of correlated props (same player, same game) spit out proportional stake sizes instead of naive independent Kelly sizing. This is directly buildable tonight as a small calculator (JS matrix algebra, no heavy deps) with sliders for view confidence and a covariance toggle, and it's a genuine methodological transplant from the paper's actual result rather than just the BL name.",
+    "cool": 6,
+    "buildable": 7
+  },
+  {
+    "type": "startup",
+    "title": "Programmable Chemical Space-as-a-Service for FTO-safe drug discovery",
+    "paper": "2603.00614v1 - Designing the Haystack: Programmable Chemical Space for Generative Molecular Discovery",
+    "pitch": "The paper's actual contribution is SpaceGFN: instead of sampling blindly from a fixed learned chemical distribution, users explicitly construct the search space itself (custom building blocks + reaction rules), then a GFlowNet does property-biased exploration inside that user-defined space -- validated across 96 drug targets, with an 'evolution-inspired' space variant showing better predicted tox/metabolic profiles while keeping diversity. The startup angle: most generative-chemistry vendors (competing on hit rate against a shared, generic chemical universe) can't guarantee freedom-to-operate, because they don't control what space they're sampling from. A CRO-style API that lets a biotech client upload their own proprietary building-block library and reaction rule set (e.g. only scaffolds their patents already cover, or explicitly patent-avoiding regions) and get back GFlowNet-optimized candidates constrained to that IP-safe haystack is a real differentiator worth pitching to mid-size pharma who currently pay for undifferentiated generative screens. Not a tonight-build (needs real cheminformatics + GFlowNet training), but the wedge is directly grounded in what's novel in the paper: programmability of the space, not just better sampling.",
+    "cool": 7,
+    "buildable": 3
+  },
+  {
+    "type": "demo",
+    "title": "Phase Transition Playground",
+    "paper": "2607.14993 [math.PR] Sharp phase transition for percolation with short-range dependencies",
+    "pitch": "The paper proves a SHARP phase transition (via the OSSS inequality) for nearest-neighbor percolation on the integer lattice where each vertex has a random 'type' and edge-open probability depends on the types of its endpoints -- plus a special two-parameter case mixing Bernoulli bond and site percolation. Build a single-file canvas demo: a grid where each cell is randomly typed (e.g. two colors), edges open with type-dependent probability p_type, and as you drag a global slider p across the critical threshold the giant spanning cluster snaps into existence almost instantly (classic percolation 'knife-edge' behavior, but now driven by the paper's two-parameter mechanism). Overlay a live cluster-size histogram so the sharpness is visually undeniable, and frame it as 'the physics behind why a Hex board suddenly connects' for the games-whimsy angle -- percolation thresholds are literally the math underneath connection games like Hex. Pure client-side random-graph simulation + BFS/union-find for clusters, no libraries needed.",
+    "cool": 8,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Zero Garden: Sculpt a Function by Placing Its Zeros",
+    "paper": "2607.05213 [math.NT] Integer Coefficient Power Series with Prescribed Zero Sets",
+    "pitch": "The paper's actual theorem: a discrete divisor on the unit disk is the zero set of a holomorphic function with INTEGER Taylor coefficients if and only if it's invariant under complex conjugation, constructed via 'modified Weierstrass factors' that fix coefficients up to degree n while nudging degree n+1, plus an inductive rounding scheme. Build an interactive complex-plane canvas: click points inside the unit disk (the tool auto-mirrors across the real axis to keep conjugate-symmetry, or lets you place conjugate pairs), and the engine builds the truncated Weierstrass/Blaschke-style product, runs the paper's rounding correction, and domain-colors the resulting function over the disk in real time -- you visibly watch the color wheels (zeros) sit exactly where you clicked while a live-updating coefficient table shows every Taylor coefficient snapping to an integer. It's a rare case where you can *feel* a number-theoretic constraint on an analytic object. Needs complex arithmetic + domain coloring in a canvas, all client-side.",
+    "cool": 9,
+    "buildable": 7
+  },
+  {
+    "type": "project",
+    "title": "LiST-Calibrated Props Dial",
+    "paper": "2607.07745 [stat.ML] LiST: Lipschitz Scaling Training for Robust and Calibrated Neural Networks",
+    "pitch": "LiST's real result: dynamically scheduling the global Lipschitz constant L during training (exploiting the known Lipschitz-constraint <-> temperature-scaling connection) produces a network that is *out-of-the-box calibrated* at a specific L* -- no post-hoc Platt/temperature scaling needed -- while tracing a full accuracy/robustness/calibration Pareto front as L varies (validated on CIFAR/Tiny-ImageNet). This maps directly onto the nba-props edge model already in play: instead of hand-tuning post-hoc calibration on rebounds/threes probability outputs, train the props net with a LiST-style L schedule and expose a single dial that trades hit-rate accuracy for calibration reliability, with a live reliability diagram (confidence vs. actual hit rate) as the readout -- which is exactly the diagnostic that determines whether an 'edge' is real or a calibration artifact for CLV tracking. Ship as: a small training-loop wrapper (any PyTorch model) that anneals L per-epoch and outputs a reliability-diagram dashboard; prototype the dial/diagram tonight on a synthetic 2D toy classifier before wiring into the real props model.",
+    "cool": 7,
+    "buildable": 6
+  },
+  {
+    "type": "youtube",
+    "title": "The AI That Broke a 15-Year-Old Combinatorics Conjecture",
+    "paper": "2608.00377 [math.CO] Schubitopes are not Ehrhart positive",
+    "pitch": "Schubitopes are Newton polytopes of Schubert polynomials/Demazure characters; Monical-Tokcan-Yong conjectured their Ehrhart polynomials (which count lattice points in dilations) are always Ehrhart-positive -- a clean, widely-believed structural conjecture. This paper disproves it with a concrete counterexample Schubitope whose Ehrhart polynomial has a negative coefficient, and notably, the counterexample was *found by an AI system* (GPT-5.6 Sol Pro) searching the space of Schubitopes. Video concept: build up Ehrhart positivity visually (animate lattice-point counting in dilating polytopes, show why 'positive coefficients' feels obviously true for nice examples), then reveal the counterexample and walk through how an LLM stumbled onto a case humans hadn't checked -- a real, small, verifiable instance of 'AI finds a math counterexample,' good hook for both math-explainer and AI-progress audiences. Needs polytope lattice-point animations (a simple Ehrhart-counting demo is itself a fun buildable side-widget) plus narration/research on the Schubert-polynomial background.",
+    "cool": 9,
+    "buildable": 5
+  },
+  {
+    "type": "demo",
+    "title": "Gyroid Grain Boundary Explorer",
+    "paper": "arXiv:2605.26927 \u2014 Structure and energetics of grain boundaries in self-assembled double-gyroid block copolymer networks",
+    "pitch": "Single-file three.js toy that renders the gyroid triply-periodic minimal surface (implicit function sin x cos y + sin y cos z + sin z cos x = c, marching-cubes meshed in-browser) as two mismatched crystal domains fused at a boundary plane. A toggle switches the boundary between the textbook (422) twin boundary and the paper's actual global-minimum discovery, the asymmetric-tilt network-switching (ATNS) boundary, with a live readout of relative energy so you can literally watch the 'previously unidentified, lower-energy' structure win. A second toggle overlays a schematic chain-packing heatmap to sell the paper's real point: the win is entropy-driven (conformational freedom), not enthalpy-driven, unlike normal crystals.",
+    "cool": 8,
+    "buildable": 8
+  },
+  {
+    "type": "demo",
+    "title": "Baby Entropy Engine",
+    "paper": "arXiv:2603.29312 \u2014 A Preliminary Theory of Infantile Dynamics",
+    "pitch": "Faithfully builds the paper's own toy model (it's an April Fools' physics paper, but the math is real and simple): a canvas split into an 'organized zone' and a 'play zone,' with toy-particles doing biased diffusion between them. An entropy-production meter ticks up per the paper's proven result that entropy production is nonnegative and the long-run state is play-area-dominated. A 'Maxwell-demon parent' button lets you manually sort toys back, but diffusion always outpaces you at steady state \u2014 you can feel the second law losing to a toddler in real time. A 'novelty spike' toggle reproduces the paper's other finding: a curiosity/dopamine burst reorganizes things briefly better than punishment does. This is the whimsy-angle idea the arxiv-scrape project explicitly wants, and it's shareable as a joke-that's-secretly-correct-physics.",
+    "cool": 9,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Isobaric Hard-Disk Flow Sandbox",
+    "paper": "arXiv:2607.00449 \u2014 Slow heat-driven flow in a gas of hard disks",
+    "pitch": "A 2D elastic hard-disk molecular-dynamics sim (canvas, few hundred disks, brute-force or grid-binned collisions) split into a hot/dilute half and cold/dense half held at matched pressure, matching the paper's low-Mach isobaric setup. A live strip-chart plots the simulated density/velocity profile against two overlay curves: the classic ideal-gas isobaric prediction and the paper's finite-density-corrected equation-of-state prediction. Cranking up disk packing fraction visibly peels the real simulated data off the ideal-gas curve and onto the corrected one \u2014 reproducing the paper's actual central validation result (finite-density effects cause appreciable, and correctly predicted, deviation from ideal-gas theory) as an interactive slider instead of a static plot.",
+    "cool": 7,
+    "buildable": 8
+  },
+  {
+    "type": "youtube",
+    "title": "Can a Neural Net X-Ray a Brain Circuit's Wiring?",
+    "paper": "arXiv:2602.13325 \u2014 Graph neural networks uncover structure and functions underlying the activity of simulated neural assemblies",
+    "pitch": "Explainer built around the paper's actual result: a GNN trained only on spike/activity traces from a simulated thousands-neuron assembly \u2014 never shown the wiring \u2014 recovers the connectivity matrix, infers distinct neuron types, reconstructs the interaction (signaling) functions between them, and in some cases infers hidden external stimuli the network was responding to, all while also forecasting activity as well as RNNs/transformers but staying interpretable where those are black boxes. Anchor the video with a small in-browser companion visual (a ~20-node synthetic circuit where a simple regression-based graph-recovery routine, standing in for the GNN, reconstructs the hidden connectivity live) and close by asking the obvious crossover question given this project's basketball lean: swap 'neurons' for players and 'spikes' for touches/passes \u2014 same interpretable-decomposition trick applied to play-by-play could recover a team's hidden read-and-react structure, which is a natural follow-up build/project rather than something to finish in the video itself.",
+    "cool": 8,
+    "buildable": 4
+  }
+]
