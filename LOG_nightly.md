@@ -1,5 +1,48 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-24 — DLA Grower (recovered, published a day late on 2026-08-25)
+- **Status:** the 2026-08-24 run stalled after the 3-way build-off again — fourth time this exact failure
+  mode has hit (2026-08-20, 2026-08-22, 2026-08-23, now 2026-08-24): `ideation_2026-08-24.js`/
+  `buildoff_2026-08-24.js` and 3 built demo files existed locally but were never judged, published, or
+  logged. Full ideation results (23 ideas, all 4 categories) survived in `ideation_2026-08-24_results.json`
+  and the build-off script (with all 3 pitches) survived in `buildoff_2026-08-24.js`, so this recovery is
+  complete rather than backfilled. Picked up and finished at the start of tonight's (2026-08-25) run.
+- **Top per category (from `ideation_2026-08-24_results.json`):**
+  - demo — 3 selected for build-off (top cool×buildable products): **Memory Playground: When Sticky
+    Environments Make Active Matter Freeze** (arXiv:2605.29162, cool 9×buildable 9), **DLA Grower: Watch the
+    Fractal Amplitude Lock to the Dimension** (arXiv:2607.02216, cool 9×buildable 8), **Variance Is a Loan:
+    Population Bet-Hedging Meets the Kelly Criterion** (arXiv:2511.01905, cool 8×buildable 9)
+  - project — **Partial-Identification Bet Sizing: Betting Only When Every Model Agrees** (cool 7,
+    buildable 5): Manski's partial-identification framework applied to NBA props — only flag an edge when
+    every structurally-different fitted model agrees the market-implied probability falls outside their
+    combined interval (arXiv:2602.00355)
+  - youtube — **Where Should an AI Agent Spend Its Effort? (Training Credit vs. Inference Compute)**
+    (cool 7, buildable 6): paired explainer on TRCA (per-transition RL credit assignment) and depth-adaptive
+    looped-LM inference — both about spending a scarce resource exactly where it's earned
+    (arXiv:2608.16156 + arXiv:2608.09444)
+  - startup — **ModelJoust: Active Experiment Design to Kill Off Losing Prop Models Faster** (cool 7,
+    buildable 5): optimal-control-flavored active experiment design — rank which upcoming observation would
+    most cheaply discriminate between competing model candidates via KL-divergence (arXiv:2603.00709)
+- **Built (3 of 3 completed, all verified running headless via Playwright, zero console errors):**
+  - A — **Memory Playground** (arXiv:2605.29162): 200+ self-propelled disks with a leaky-integrator memory
+    kernel; sweeping the memory-timescale slider reproduces the paper's nonmonotonic clustering curve —
+    normal clumping, a scattered slow-nucleating haze at intermediate memory, clumping again at long memory.
+  - B — **DLA Grower** (arXiv:2607.02216): live diffusion-limited-aggregation sim computing box-counted
+    fractal dimension D and a harmonic-measure third-moment proxy D₃ from the actual running random walk,
+    watching the gap between them collapse toward zero as the cluster grows toward D≈1.71.
+  - C — **Variance Is a Loan** (arXiv:2511.01905): three synced panels (growth curve, cell colony, GBM
+    bankroll) sharing one eigenvalue formula, draggable crossover marker verified mathematically correct.
+- **Judge:** all three verified running under automated Playwright interaction (sliders/drag/click driven
+  programmatically, canvas pixel sampling confirmed real rendering); scored wow/interactivity/polish/fidelity
+  (sum/40): Memory Playground 31, **DLA Grower 35**, Variance Is a Loan 33. Judge picked **DLA Grower**:
+  unlike the other two, which model their paper's claim via a hand-tuned formula or a physics analogy, this
+  one actually computes the paper's headline quantities live from a genuine running random walk rather than
+  approximating them — the exact amplitude relation the paper proves, rendered as a convergence you watch
+  happen, on top of an inherently mesmerizing fractal-growth animation.
+- **Published:** demo at `demos/2026-08-24-dla-grower.html`, brief at `2026-08-24-nightly.html`, both
+  registered in `david-share/manifest.json` and pushed live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-24-nightly.html
+
 ## 2026-08-23 — Hot Hand ERW (recovered, published a day late on 2026-08-24)
 - **Status:** the 2026-08-23 run stalled again after the 3-way build-off — third time this exact failure
   mode has hit (2026-08-20, 2026-08-22, now 2026-08-23): `ideation_2026-08-23.js`/`buildoff_2026-08-23.js`

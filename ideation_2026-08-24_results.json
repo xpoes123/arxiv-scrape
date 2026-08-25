@@ -1,0 +1,194 @@
+[
+  {
+    "type": "demo",
+    "title": "BBP Phase Transition Playground: Why Your LoRA Adapter's \"Rank\" Is a Lie",
+    "paper": "2608.15351v1 - Spectral Rank Certification for Foundation Model Adapters",
+    "pitch": "The paper's headline finding (tested on 26 public LoRA adapters, 684 modules, 31,770 checkpoints) is that the *calibrated* effective rank of a LoRA update is usually far below its nominal rank, and that this is a statistically different question from the common '95% energy retention' heuristic. The underlying reason is the Baik-Ben Arous-Peche (BBP) phase transition: in a rank-r-plus-noise matrix, a singular value only pops visibly out of the Marchenko-Pastur noise bulk once its signal strength crosses a specific threshold - below that, it's statistically indistinguishable from noise no matter how you look at it. Build a single-file canvas demo: generate a synthetic weight-update matrix as 'planted low rank + Gaussian noise,' let the user drag two sliders (planted rank r, signal-to-noise strength), and animate the live eigenvalue histogram plus a bar chart of 'nominal rank' vs '95%-energy rank' vs 'chi-square-certified rank' updating in real time. The moment a slider crosses the BBP threshold, a spike visibly detaches from the bulk with a satisfying pop/highlight - you literally watch the paper's core claim happen. This is the most legible way to make 'foundation model adapters are secretly lower-rank than advertised' feel true rather than just be asserted.",
+    "cool": 8,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Privacy vs. Precision: A K-Clique Counting Playground",
+    "paper": "2606.17297v1 - Scalable K-clique Estimation with Differential Privacy",
+    "pitch": "The paper's result is that by replacing exact 'ladder function' local-sensitivity bounds with a smooth approximation-sensitivity framework, differentially private k-clique counting becomes 'several orders of magnitude faster' and is the first approach to scale to million-edge graphs and larger k, where the old exact method simply couldn't finish. Build an interactive single-file HTML toy: a small draggable node-link graph (20-40 nodes) where clicking pairs toggles edges. A live panel shows the true k-clique count (k selectable 3-6) computed exactly, next to a DP-noised estimate that updates as the user drags an epsilon slider - noise calibrated via the paper's approximate-sensitivity idea (a cheap local perturbation bound instead of brute-force smooth sensitivity). A second panel races two stopwatches: 'naive ladder-function-style computation' (which is deliberately made to visibly stall/spin as graph size grows) vs the fast approximate method, dramatizing the 'orders of magnitude faster, scales where the old one couldn't' claim. Great feel for the actual privacy-utility tradeoff plus the scalability win, all client-side JS on a graph small enough to brute-force honestly.",
+    "cool": 7,
+    "buildable": 8
+  },
+  {
+    "type": "project",
+    "title": "Profile Distiller: Verbal-RL Preference Compression for Sage/Stavid",
+    "paper": "2608.09507v2 - Learning Preference Adaptation for LLM Personalization via Verbal Reinforcement Learning",
+    "pitch": "AlignXada's claimed result: taking a bloated universal user-preference summary and iteratively rewriting it (verbal reinforcement learning - critique against task performance, then self-edit) into a task-specific version yields +3.82 points averaged across 13 tasks/39 model-task cells, beats RAG-style retrieval in 36/39 cells, and does it while shrinking the profile to 22.8% of its original token count. This maps directly onto a real gap already flagged in your own cross-repo notes: Sage's personalization memory (news/NBA/calendar preference blobs fed into prompts every turn) is currently just accumulated raw context, no compression or task-conditioning. Build a small library (`profile-distiller`, could live in `toolkit/djtoolkit/`) that: (1) takes Sage's raw user-preference store, (2) for a given task type (e.g. 'summarize NBA news', 'draft calendar reply') generates a task-specific condensed profile via one LLM call, (3) scores it against a held-out set of past interactions using a cheap Haiku judge, (4) verbally critiques and rewrites the summary if the score is low, repeating a few rounds. Ship it as an opt-in preprocessing step before Sage's morning check-in prompt, with a before/after token-count and quality log so you can literally verify the ~77% token reduction claim on your own data.",
+    "cool": 6,
+    "buildable": 5
+  },
+  {
+    "type": "youtube",
+    "title": "The CDN That Became a Cannon",
+    "paper": "2607.26589v1 - CDN Tsunami: Exploiting HTTP/3-HTTP/1.1 Conversion for DoS Attacks",
+    "pitch": "The paper's concrete finding: CDNs that accept HTTP/3 from clients but speak HTTP/1.1 to origin servers create a protocol-conversion mismatch attackers can exploit two ways - HTTP/3 Bandwidth Amplification (HBA, turning a small client request into a large flood at the origin) and HTTP/3 Connection Amplification (HCA, multiplying backend connections from one client connection) - and a Tranco Top-1M scan found 42,330 subdomains potentially vulnerable, with two CDN vendors confirming and patching after disclosure. This is a genuinely visual, underexplained attack class (most people know 'DDoS' but not 'protocol-smuggling amplification via CDN edge conversion'). Script a 6-8 minute explainer: animate the request path (client -HTTP/3-> CDN edge -HTTP/1.1-> origin), show exactly where request framing gets re-encoded and why that boundary is exploitable, walk through HBA vs HCA with simple before/after packet-size diagrams, then narrate the measurement study (why Tranco 1M, how they scored 'potentially vulnerable' without actually DoS-ing live sites) and the responsible disclosure outcome. Strong hook: 'the internet's traffic bodyguards can be turned into traffic cannons by a protocol handshake nobody audits.'",
+    "cool": 7,
+    "buildable": 4
+  },
+  {
+    "type": "demo",
+    "title": "Eight Faces, One Triangle \u2014 Congruent-Face Polyhedron Builder",
+    "paper": "2608.01109v1 - Congruent Triangular Faces, Reflections Allowed: Universal Realization and the Minimum Face Count in Problem B22",
+    "pitch": "The paper proves every nondegenerate triangle (once reflections are allowed) can be the sole face-shape of a convex polyhedron, and pins the minimum face count exactly: 4 for acute triangles, 6 for right/obtuse-isosceles triangles with sides lambda,lambda,beta satisfying lambda*sqrt(2) <= beta < lambda*sqrt(3), and 8 for everything else. Build a single-file three.js demo where you drag the three vertices of a 2D triangle and the app instantly constructs and spins the corresponding minimal convex solid in 3D, with a live badge showing the face count jumping 4 -> 6 -> 8 as the triangle's shape crosses those exact boundaries. It turns an abstract discrete threshold in a geometry proof into something you can feel by dragging a mouse.",
+    "cool": 8,
+    "buildable": 8
+  },
+  {
+    "type": "demo",
+    "title": "The Clock That Covers Itself \u2014 Ruzsa Number Explorer",
+    "paper": "2607.06167v1 - An improved upper bound on the Ruzsa number",
+    "pitch": "The Ruzsa number R_m is the smallest set size r such that some A subset of Z_m has A+A cover all of Z_m; the paper improves the universal bound to R_m <= 128 (from 192). Render Z_m as a clock face (m adjustable via slider), let the user click points to build a candidate set A, and draw every pairwise sum live, coloring covered vs. uncovered residues on the clock. A 'let it search' button runs a fast greedy/randomized solver to find a small covering set for the chosen m and animates the search, letting you watch |A| approach the proven ceiling of 128 in real time \u2014 makes an additive-combinatorics bound something you can poke at rather than just read.",
+    "cool": 6,
+    "buildable": 9
+  },
+  {
+    "type": "startup",
+    "title": "FairDraw \u2014 Pot-Based Scheduling for Incomplete Round Robins",
+    "paper": "2607.17901v1 - Finding Fair Draws for Incomplete Round Robin Tournaments",
+    "pitch": "The paper studies exactly the real-world headache of tournaments like UEFA's Swiss-stage draws: teams don't play everyone, opponents must be drawn from strength-based pots, association-mates must be avoided, and connectivity constraints must hold \u2014 the authors pin down the computational complexity of finding a fair such draw under these constraint combos and show experimentally that fair draws can be generated. Package that as a scheduling tool for rec leagues, esports circuits, and fantasy platforms that currently hand-roll 'fair-ish' partial schedules in spreadsheets: upload teams, pots, and constraints, get a provably-fair draw plus a fairness score. A tonight-buildable MVP is a single HTML page with a JS backtracking/local-search solver for small leagues (8-16 teams) and a live fairness-score visualization of the generated draw.",
+    "cool": 5,
+    "buildable": 6
+  },
+  {
+    "type": "demo",
+    "title": "AI-View Black-Litterman Factor Lab",
+    "paper": "2311.04475v1 - Portfolio Construction using Black-Litterman Model and Factors",
+    "pitch": "The paper blends 20 factor ETFs (global markets, asset classes, stock characteristics) via a Black-Litterman model whose 'views' are periodically generated by a deep-learning module, and finds this beats fixed-weight and pure-optimization baselines. Build a single-file HTML with math.js doing the matrix work: sliders let you set a view direction and confidence per factor, and the app recomputes the BL posterior live, animating the allocation bar chart shifting away from the market-cap prior toward your views. It's a hands-on gut-check for the paper's central claim \u2014 how much a confident 'view' actually moves a diversified portfolio versus just letting the prior dominate \u2014 and reuses machinery directly relevant to the NBA-props/edge-modeling work already in this workspace.",
+    "cool": 6,
+    "buildable": 8
+  },
+  {
+    "type": "demo",
+    "title": "Chaos Genome Browser: Lyapunov Exponents of DNA/RNA",
+    "paper": "2505.02276 \u2014 Liapunov exponent distributions and maps for multiple parameter logistic equation, applied to DNA/RNA sequences",
+    "pitch": "Single-file HTML/canvas toy that lets you paste (or pick a preset) DNA/RNA sequence and watch it turn into the paper's actual analysis pipeline live: map each base to one of 4 logistic-map parameters (A/T/C/G, or A/U/C/G), iterate the 4-parameter logistic equation per-window, and render (1) a scrolling Lyapunov-exponent trace (chaotic vs. stable regions) and (2) the paper's purine/pyrimidine binary classification map as a second color strip underneath, aligned base-for-base. Load two presets side by side \u2014 a sequence with introns vs. one without, or coding vs. non-coding \u2014 and you visibly SEE the exponent trace shift character exactly where the paper claims chaotic dynamics separate functional regions, i.e. you feel the actual math result (chaos as a structural signal) rather than reading about it. Pure client-side arithmetic (logistic map iteration is one line), no backend, no ML \u2014 just canvas + a color gradient and a text input, buildable in a single evening.",
+    "cool": 7,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "The Expressivity Knob: Diffusion Policy Trade-off Playground",
+    "paper": "2607.07967 \u2014 Expressivity and Statistical Trade-offs in Diffusion Policy Learning",
+    "pitch": "The paper proves a concrete two-term error bound for diffusion policies: approximation error shrinks like 1/K as the drift's Lipschitz budget K grows, but statistical (sample) error grows with K, giving a finite-sample gap of order n^{-2/(m+6)} that depends on both K and dataset size n. Build an interactive canvas where the left panel shows a simple 2D toy control task (e.g. a point-robot picking one of several goal 'modes'), and two sliders \u2014 K (policy expressiveness) and n (training samples) \u2014 actually redraw both a live simulated policy (a Gaussian-mixture-like stochastic policy sampled and animated as scattering dots converging toward optimal actions) AND the two real error curves (1/K approximation curve, n^{-2/(m+6)}(K) statistical curve, and their sum) plotted live on a small chart. Dragging K past the sweet spot for the current n visibly makes the animated dots get MORE erratic even though the policy is 'more expressive' \u2014 a direct, feel-it demonstration of the paper's central claim that bigger isn't free without more data. All math (the two closed-form rate curves plus a toy stochastic sampler) runs client-side in JS/canvas, no model training needed \u2014 single HTML file.",
+    "cool": 8,
+    "buildable": 8
+  },
+  {
+    "type": "project",
+    "title": "GPU-Parallel Order Book Sim for Sports/Prediction Markets",
+    "paper": "2308.13289 \u2014 JAX-LOB: A GPU-Accelerated limit order book simulator for large-scale RL trading",
+    "pitch": "JAX-LOB's actual contribution is a JAX-vectorized limit order book engine that runs thousands of books in parallel on a single GPU with drastically reduced per-message latency, specifically to make large-scale RL training and agent-based-model calibration tractable for market microstructure research. Port the same architecture to a prediction-market/sports-exchange order book (Polymarket/Kalshi-style, or an NBA player-prop exchange matching David's SharpLab work) so an RL market-maker or arbitrage agent can be trained against thousands of parallel simulated order flows instead of one slow sequential backtest \u2014 directly reusing the paper's core trick (batched matching-engine state as JAX arrays, vmap over books) rather than its finance-specific order types. This is a real multi-day build (JAX kernel design, order-matching correctness, RL training loop), not a tonight demo, but it's a natural extraction from a paper whose entire point is 'the sim was the bottleneck, here's how we removed it' \u2014 directly useful for SharpLab's CLV/edge-tracking pipeline.",
+    "cool": 8,
+    "buildable": 3
+  },
+  {
+    "type": "project",
+    "title": "Partial-Identification Bet Sizing: Betting Only When Every Model Agrees",
+    "paper": "2602.00355 \u2014 Coping with Inductive Risk When Theories are Underdetermined: Decision Making with Partial Identification",
+    "pitch": "Manski's actual proposal is concrete and directly portable to quant betting: instead of picking one point-estimate model when several theories are empirically indistinguishable given the data (inductive risk), compute the full partial-identification set \u2014 the range of outcomes consistent with ALL empirically-compatible models/assumptions \u2014 then apply an explicit decision rule (e.g. minimax regret or a Hurwicz-weighted criterion) over that bounded set rather than the model you happen to trust. Prototype this against David's NBA props edge modeling: run 3-5 structurally different but equally well-fit models for a prop (e.g. rebounds under GR-RTRMC completion vs. a simpler RAPM-blend vs. a pure-market-implied prior), compute the probability interval spanned by all of them instead of collapsing to one number, and only flag an edge when the market-implied probability falls entirely outside that bound for every model \u2014 a rigorous, paper-grounded upgrade to 'trust the model' that turns model disagreement itself into the risk signal. Buildable as a focused prototype (interval arithmetic + a couple of decision-rule functions over synthetic/backtested prop data) in a few sessions, not a single file, since it needs real historical prop data to be meaningful.",
+    "cool": 7,
+    "buildable": 5
+  },
+  {
+    "type": "demo",
+    "title": "Memory Playground: When Sticky Environments Make Active Matter Freeze",
+    "paper": "2605.29162 \u2014 Passive memory reshapes active persistence",
+    "pitch": "The paper's actual result: self-propelled particles in a viscoelastic (memory-bearing) medium show two regimes as you tune the memory relaxation timescale relative to the particle's self-propulsion persistence time. At INTERMEDIATE memory (comparable to persistence time), the delayed drag response acts like effective anti-persistence \u2014 particles get 'braked' just as they try to commit to a direction, which suppresses clustering and produces a long-lived metastable gas with slow nucleation. At LONG memory, early-time friction drops (the medium hasn't 'caught up' yet), effectively boosting propulsion and restoring normal MIPS-like phase separation. Build a single-file canvas demo: N self-propelled disks, each carrying an exponential memory kernel that convolves its velocity history into a delayed drag force (implement with a simple leaky-integrator recurrence, no real convolution needed \u2014 O(1) per particle per step). One slider controls memory timescale tau_m relative to persistence time tau_p. Sweep the slider live and watch the population go: normal clumping (short tau_m) -> a scattered, slow-nucleating haze (tau_m ~ tau_p, the paper's headline surprising regime) -> big clumps again (tau_m >> tau_p). Color particles by local density so the metastable regime is visually obvious as 'it just won't clump no matter how long you wait.' This is a strong feel-the-paper toy because the nonmonotonic clustering-vs-memory curve is the whole finding.",
+    "cool": 9,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Variance Is a Loan: Population Bet-Hedging Meets the Kelly Criterion",
+    "paper": "2511.01905 \u2014 The impact of nonheritable variation in division rates on population growth across environments",
+    "pitch": "The paper's math: population growth rate is the dominant eigenvalue of a linear model with phenotypically-structured (non-heritable) division-rate variance, and that eigenvalue responds NONLINEARLY to variance \u2014 in a good environment, variance in individual division rates strictly drags the growth rate down below the mean-rate case (Jensen's-gap style loss), while in a stressed/declining environment the SAME variance slows the decline (some lucky sub-population divides fast enough to rescue the group). That's exactly the shape of the Kelly-criterion tradeoff in compounding bankrolls (geometric vs arithmetic mean, variance drag) \u2014 a direct math-to-poker/trading bridge worth making explicit. Build a demo with two panels side by side, driven by literally the same eigenvalue formula: left panel is 'cells', right panel is 'bankroll'. One slider for environment harshness (nutrient/mean growth rate, negative to positive) and one for variance (heterogeneity in individual rates / bet size variance). Plot the realized long-run growth-rate curve vs variance for a few environment settings, and let the user drag a marker along it to see the crossover point where more variance flips from 'kills you' to 'saves you' \u2014 the paper's literal headline claim, made tactile. Cite the Chlamydomonas mutation-accumulation validation as the real-world grounding in a footnote/tooltip.",
+    "cool": 8,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Shrink the Fireball: Bayesian Spectroscopy for Hypersonic Reentry Heat Flux",
+    "paper": "2605.25368 \u2014 Bayesian Estimation of Spectroscopic Parameters: Application to the Atomic Nitrogen Bound-Bound System",
+    "pitch": "The paper's concrete number: by Bayesian-fitting 18 spectroscopic parameters (10 Einstein coefficients + 8 Stark broadening coefficients) against real NASA EAST shock-tube spectra instead of trusting published nominal values, they cut the propagated uncertainty on predicted radiative heat flux for a sphere reentering at 14 km/s from a standard deviation of 10.4 W/cm^2 down to 1.94 W/cm^2 \u2014 roughly a 5x tightening. Build a demo that dramatizes exactly that number: a stylized reentry capsule with a glowing shock layer, a velocity slider (10-14 km/s), and a heat-flux gauge that shows two overlaid probability distributions \u2014 'literature priors' (wide, shaky) vs 'Bayesian-updated posterior' (narrow, confident) \u2014 both computed from a simple closed-form heat-flux-vs-velocity scaling law with injected variance matching the paper's before/after numbers at 10 and 14 km/s (interpolate between). Add a toggle that 'streams in' synthetic shock-tube spectra one at a time (a few animated Gaussian emission lines with noise) and visibly narrows the posterior distribution live via a simple running Bayesian update \u2014 makes the abstract MCMC/PCE surrogate machinery legible as 'more data -> narrower gauge -> safer heat shield design margin'.",
+    "cool": 8,
+    "buildable": 7
+  },
+  {
+    "type": "startup",
+    "title": "ModelJoust: Active Experiment Design to Kill Off Losing Prop Models Faster",
+    "paper": "2603.00709 \u2014 A Closed-loop Framework to Discriminate Models Using Optimal Control",
+    "pitch": "The paper's actual method isn't passive A/B testing \u2014 it uses optimal control to choose which INPUT to apply to a system next specifically to maximize the predicted divergence between two or more candidate models' outputs, then compares against the real observed response, validated on distinguishing competing opsin photocurrent models from real electrophysiology data. That 'pick the next probe to maximally separate competing hypotheses' idea maps directly onto the props-model-selection problem already tracked in this environment's memory (rebounds/threes edges via GR-RTRMC completion): instead of passively waiting for enough games to see which of several competing player-prop models is right, actively rank which upcoming games/props would be maximally discriminating between the model candidates' predicted distributions (e.g. via KL-divergence or predicted-outcome-variance scoring over the model zoo) and prioritize backtesting/paper-trading capital or attention there first. Startup framing: a lightweight 'active model discrimination' scoring layer that sits on top of an existing quant model zoo (sports betting, trading signals, or A/B'd product features) and tells you which of your next N observations will most cheaply tell your models apart, shortening the 'which model do I trust' cycle from months of passive data collection to a targeted sequence of high-information bets/tests. Buildable-tonight version would be a toy demo (two synthetic candidate models + KL-divergence-driven 'next best probe' picker on a canvas plot) rather than the full startup, but the founding insight \u2014 optimal-control-flavored active experiment design for model selection \u2014 is the real transferable idea from the paper.",
+    "cool": 7,
+    "buildable": 5
+  },
+  {
+    "type": "demo",
+    "title": "DLA Grower: Watch the Fractal Amplitude Lock to the Dimension",
+    "paper": "2607.02216 \u2014 Exact amplitude relations for diffusion-limited aggregation",
+    "pitch": "Build a canvas DLA simulator (classic: launch random walkers from a circle, let them stick on contact to a growing seed cluster) and overlay a live-updating readout panel showing the cluster's fractal dimension (box-counting on the fly) next to the third moment of the harmonic measure's multifractal spectrum (approximated via the local growth-probability distribution around the cluster boundary \u2014 walker-hit density serves as a harmonic-measure proxy). The paper's actual claim is that these two numbers are exactly, universally linked via the Hastings-Levitov formulation, not just loosely correlated as previously known \u2014 so the demo's hook is watching the two live numbers visibly track each other as the cluster grows from 100 to 50,000 particles, across circular vs. a toggleable 'cylindrical/periodic' boundary mode (both geometries the paper covers). It's the most visually iconic stat-mech pattern (looks like lightning/coral/frost) paired with a number that actually means something instead of just being decoration.",
+    "cool": 9,
+    "buildable": 8
+  },
+  {
+    "type": "demo",
+    "title": "The Flame That Remembers Its Phase",
+    "paper": "2608.15337 \u2014 The Physical Cutoff Does Not Restore Homogenization: Phase-Dependent Burning in the Strain G-Equation",
+    "pitch": "A single-file toy that integrates the (positive-part) strain G-equation for a flame front riding a simple cellular/Taylor-Green-like periodic strain flow \u2014 the exact setup the paper studies. Let the user drop 3-4 flame-front markers at different phases within one flow cell and a toggle for 'physical cutoff on/off'. Prior theory (Xin-Yu-Ronney) expected the cutoff to homogenize everything into one effective burning velocity; the paper's actual finding is that it doesn't \u2014 markers starting O(epsilon) apart in phase keep an order-one gap in front position at every macroscopic time, with the correction oscillating and growing rather than averaging out. The demo plots front-position-vs-time traces for each marker live: with cutoff off they visibly diverge chaotically (expected), and the punchline is that turning cutoff on does NOT make the traces converge to one line \u2014 they stay permanently offset, which is the counterintuitive, literally-plotted result of the paper. Simplifying from full PDE to an ODE-along-streamline approximation keeps this buildable in an evening while preserving the qualitative punchline.",
+    "cool": 7,
+    "buildable": 6
+  },
+  {
+    "type": "demo",
+    "title": "Car Dependency Sketchpad: Draw a Metro Line, Watch the Index Drop",
+    "paper": "2604.01019 \u2014 Car Dependency in Urban Accessibility",
+    "pitch": "An interactive toy city on a canvas grid: pre-seeded population density blobs, a road network (fast for cars), and a sparse transit network (slow, fixed stops) \u2014 enough to compute a simplified version of the paper's Car Dependency Index (accessibility-gap between driving and transit isochrones per neighborhood, color-coded as a heatmap). The user draws new metro/bus lines with the mouse and watches the CDI heatmap update in real time along with a running 'predicted vehicles removed' counter, directly echoing the paper's real result that Rome's planned metro expansion was simulated to remove ~60,000 commuting vehicles, and their broader finding that isolated single-line projects have limited effect vs. systemic network expansion \u2014 which the demo can literally demonstrate by showing one line barely moving the city-wide number while a connected network of 3-4 lines moves it a lot. Great 'feel the paper' toy: car dependency is usually an abstract policy term, this makes the network-topology insight tangible.",
+    "cool": 8,
+    "buildable": 7
+  },
+  {
+    "type": "youtube",
+    "title": "Where Should an AI Agent Spend Its Effort? (Training Credit vs. Inference Compute)",
+    "paper": "2608.16156 \u2014 TRCA: Transition-wise Rubric Credit Assignment + 2608.09444 \u2014 Depth-adaptive Inference of Looped Language Models",
+    "pitch": "A explainer video pairing two same-week papers that are secretly the same idea applied at different points in the LLM agent lifecycle: TRCA solves 'which of my agent's 50 actions in a long task actually deserved credit' during RL training by scoring each transition on Evidence/Execution/Invalidity rubrics instead of waiting for one sparse terminal reward (real reported gains: +6-12.6% on WebShop, +1.9-18.3% on SearchQA with Qwen2.5 models) \u2014 while the looped-LM paper solves 'how many computation loops does this specific token deserve' at inference time via Continuous Depth Batching, hitting up to 99% of theoretical adaptive-depth speedup and 1.5-1.9x throughput gains. The video's spine: both papers are about replacing 'treat everything uniformly' with 'spend the resource (reward signal / compute) exactly where it's earned' \u2014 one on the credit axis, one on the compute axis \u2014 with side-by-side animated diagrams (a trajectory with rubric-colored transition arrows; a token stream with variable-height loop stacks) built as simple SVG/canvas animations to visualize both mechanisms concretely rather than just narrating abstractly.",
+    "cool": 7,
+    "buildable": 6
+  },
+  {
+    "type": "demo",
+    "title": "Depth Studio: the curse of dimensionality that isn't",
+    "paper": "2607.16092 - Dimension-invariant uniform consistency of the empirical spatial distribution function and its associated spatial depth estimator",
+    "pitch": "The paper's real result: the plug-in spatial depth estimator (depth(x) = 1 - ||mean_i (x_i-x)/||x_i-x||| |) converges uniformly in L1 at a rate that depends ONLY on sample size n, not on ambient dimension d or any tuning parameter -- a genuinely rare escape from the curse of dimensionality. Build a single HTML canvas: left panel is a live 2D point cloud where dragging points redraws a spatial-depth heatmap/contour field in real time (the formula is a closed-form vector average, trivial to compute per-pixel in JS). Right panel is a precomputed chart replaying the paper's punchline: sample the same construction at d = 2, 5, 20, 100 and plot empirical L1 error vs n for each -- the curves overlay almost exactly instead of fanning out, which is the whole 'dimension-invariant' claim made visible in one glance. No backend, no build step, closed-form math only.",
+    "cool": 8,
+    "buildable": 9
+  },
+  {
+    "type": "demo",
+    "title": "Weakly Convex Ball: watch rho tune itself",
+    "paper": "2606.17285 - An Adaptive Proximal Framework for Stochastic Weakly Convex Optimization (APS)",
+    "pitch": "The paper's actual contribution is the Adaptive Prox-Guided Scheme (APS): it adapts the proximal/weak-convexity parameter rho online, bidirectionally, via a noisy accept/reject descent test, hitting an O(eps^-2) bound for Moreau-envelope stationarity without ever being told the true weak-convexity constant -- and it stays robust even when the descent-test estimates are biased or heavy-tailed. Build a single-file canvas demo: a kinked, non-convex 1D/2D loss surface (e.g. a corrupted robust-regression loss) with a ball descending it two ways side-by-side -- one using a fixed, hand-picked rho (visibly stalls or overshoots on the kinks), the other running literal APS, with a little 'spring stiffness' gauge for rho visibly loosening/tightening after each accept/reject test, plus a toggle to inject heavy-tailed noise into the gradient oracle and watch APS keep converging while the fixed baseline breaks. This makes an abstract stochastic-optimization guarantee into something you can watch happen.",
+    "cool": 7,
+    "buildable": 7
+  },
+  {
+    "type": "demo",
+    "title": "The Decode Gap",
+    "paper": "2607.26574 - Attack Ensembles Expose a Safety-Utility Trade-off in Black-Box Guard Defenses Against Encoded VLM Jailbreaks",
+    "pitch": "The paper's headline number: across eleven published encoding attacks (base64-in-image, set-theory notation, formal logic, classical-language paraphrase, code, etc.), scoring a guard as 'broken' if ANY single attack in the ensemble gets through, no configuration of defenses lands ASR at or below 40% while keeping benign over-refusal under 70% -- the ensemble view is roughly 4x worse than any single-attack number a vendor would report, and closing one encoding channel just relocates success to another rather than removing it. Build an interactive HTML toy: a bank of toggle switches, one per encoding channel/defense layer, that recomputes two live gauges (Attack Success Rate, Over-Refusal Rate) from a small dataset hand-tuned to reproduce the paper's qualitative shape -- no matter which combination of toggles you flip, the point on the Pareto plot never crosses below the paper's reported frontier, visually proving 'you cannot toggle your way out of this trade-off.'",
+    "cool": 8,
+    "buildable": 8
+  },
+  {
+    "type": "startup",
+    "title": "Ensemble Red Team: real safety scores for VLM guardrails",
+    "paper": "2607.26574 - Attack Ensembles Expose a Safety-Utility Trade-off in Black-Box Guard Defenses Against Encoded VLM Jailbreaks",
+    "pitch": "The paper shows vendor safety claims (usually measured against one attack at a time) overstate real-world robustness by roughly 4x once you evaluate against an ensemble of eleven known encoding jailbreaks and count a break as 'any attack succeeds.' Package that exact eleven-attack ensemble methodology as an auditing service: enterprises deploying VLM content guards (for compliance, e.g. EU AI Act documentation) send API access, get back the true ASR/over-refusal Pareto curve instead of a single cherry-picked number, plus a report on which encoding channel is currently their weakest link. Sells to any company shipping a multimodal guardrail product as a second-opinion red-team benchmark, similar to how pen-test firms sell against a single vendor's self-reported security score.",
+    "cool": 7,
+    "buildable": 3
+  }
+]
