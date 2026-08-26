@@ -1,5 +1,43 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-25 — Loop-Catcher Playground (recovered, published a day late on 2026-08-26)
+- **Status:** the 2026-08-25 run stalled after the build-off again — fifth time this exact failure mode
+  has hit (2026-08-20, 2026-08-22, 2026-08-23, 2026-08-24, now 2026-08-25). `ideation_2026-08-25.js` /
+  `buildoff_2026-08-25.js` and full ideation results (`ideation_2026-08-25_results.json`, 24 ideas)
+  survived locally, but only 2 of the 3 builders finished — `bracket-vacuum-c.html` and
+  `loop-catcher-a.html` exist, `granuloma-sandbox-b.html` never landed — and nothing was judged,
+  published, or logged. Recovered and finished at the start of tonight's (2026-08-26) run.
+- **Top per category (from `ideation_2026-08-25_results.json`):**
+  - demo — 3 selected for build-off: **Loop-Catcher Playground** (arXiv:2607.18070, cool 8×buildable 9),
+    **Granuloma Sandbox: Latent vs. Active TB** (arXiv:2602.24258, cool 8×buildable 9), **Bracket
+    Vacuum — the Fermionic Nullity Playground** (arXiv:2605.27142, cool 8×buildable 9)
+  - project — **Claim-Falsifier** (cool 7, buildable 6): spend test-time compute trying to falsify
+    individual load-bearing claims in a reasoning trace instead of generating more full attempts — CLR
+    lifts pass@1 by 27 points at 37% fewer tokens (arXiv:2608.11994)
+  - youtube — **I Gave an API to a Brain in a Dish** (cool 9, buildable 4): Cortical Labs' CL API, a
+    real sub-ms closed-loop interface to living biological neural networks, paired with a simulated
+    spiking-network Pong demo (arXiv:2602.11632)
+  - startup — **Wasserstein-barycenter bankroll allocator** (cool 6, buildable 4): robust bet sizing
+    across disagreeing edge models via Wasserstein-barycenter blending, adapted from an asset-liability
+    management framework (arXiv:2310.11987)
+- **Built (2 of 3 completed — granuloma-sandbox builder never finished/left no file):**
+  - A — **Loop-Catcher Playground** (arXiv:2607.18070): live 2D Brownian walk with real stack-based
+    loop-erasure (LERW), a central-charge slider re-admitting sampled loops back onto the skeleton (with
+    an explicit warning past the paper's proven c<-2 failure cutoff), plus a second panel that solves the
+    Loewner ODE via RK4 so a kappa slider in [2, 8/3] redraws the boundary as a genuine SLE-type curve.
+  - C — **Bracket Vacuum** (arXiv:2605.27142): fermionic creation/annihilation operators as colored
+    bracket tiles, live Dyck-matching/depth animation to a NULL/NONZERO verdict, plus a quiz mode.
+- **Judge:** both verified as well-formed, syntactically valid HTML with real event-wired interactivity
+  (no headless browser available locally, so read-through + `node --check` rather than live console
+  check). Scored wow/interactivity/polish/fidelity: **Loop-Catcher 31**, Bracket Vacuum 28. Judge picked
+  **Loop-Catcher**: it implements two independent, nontrivial numerical methods (textbook loop-erasure,
+  a real RK4 Loewner-equation solve) that map directly onto the paper's two headline claims, while Bracket
+  Vacuum's core mechanic is a standard bracket matcher that only weakly stands in for the paper's actual
+  fermionic sign/contraction structure — a gap the demo itself honestly flags as a simplification.
+- **Published:** demo at `demos/2026-08-25-loop-catcher.html` (runner-up `2026-08-25-bracket-vacuum-c.html`
+  also published), brief at `2026-08-25-nightly.html`, both registered in `david-share/manifest.json` and
+  pushed live at https://share.djiang.xyz/arxiv-scrape/2026-08-25-nightly.html
+
 ## 2026-08-24 — DLA Grower (recovered, published a day late on 2026-08-25)
 - **Status:** the 2026-08-24 run stalled after the 3-way build-off again — fourth time this exact failure
   mode has hit (2026-08-20, 2026-08-22, 2026-08-23, now 2026-08-24): `ideation_2026-08-24.js`/

@@ -1,0 +1,332 @@
+{
+  "summary": "Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5",
+  "agentCount": 6,
+  "logs": [
+    "24 ideas generated across 6 batches"
+  ],
+  "result": {
+    "ideas": [
+      {
+        "type": "demo",
+        "title": "Loop-Catcher Playground: watch a Brownian trace get loop-erased into an SLE curve",
+        "paper": "2607.18070v2 - The Brownian loop-catcher",
+        "pitch": "The paper's actual result: a 'loop-catcher' is a random closed subset of a planar Brownian trace that interpolates between the continuum loop-erased random walk (LERW) and the full Brownian trace; adding back an independent Brownian loop soup to the loop-catcher recovers the original trace exactly, but only when the loop soup's central charge is in [-2,0] (it provably fails below -2); and the loop-catcher's outer boundary is an SLE_kappa-type curve for every kappa in [2, 8/3]. Build a single-page canvas demo: simulate a discretized 2D Brownian walk, run the classic stack-based loop-erasure algorithm on it live, and give the user a slider for 'loop soup intensity' (central charge) that animates between the bare LERW skeleton and the full fractal Brownian trace by re-adding random loops sampled near the walk. A second overlay traces the outer boundary and lets you flip a kappa slider in [2, 8/3] to redraw it as a synthetic SLE-like curve (using the standard SLE trace simulation via Loewner's equation with driving function sqrt(kappa)*Brownian motion), so the user visually feels 'the boundary of a random blob is itself a canonical fractal curve.' No backend needed - just canvas + a small RK4 Loewner-equation integrator, both classic self-contained JS.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Unbreakable Graph Blow-Up: a visual gut-punch for 'q cannot be a computable function of phi'",
+        "paper": "2608.03144v1 - Reducing CMSO to Unbreakable Graphs Cannot be Computable",
+        "pitch": "The paper's actual claim is narrow but striking: Lokshtanov-Ramanujan-Saurabh-Zehavi showed every CMSO formula's truth on a graph can be reduced to testing it on '(q,k)-unbreakable' graphs (graphs with no small separator splitting them into two large pieces), but this new paper proves the required parameter q can never be computed from the formula phi by any algorithm - it's a genuine undecidability result, busy-beaver flavored. Two-panel HTML demo: panel 1 is an interactive force-directed graph editor where you draw a graph and drag a 'k' slider; the app brute-force searches (fine for <=25 nodes) for the smallest separator that splits the graph into two components of size > k, live-highlighting whether the graph is '(q,k)-unbreakable' for the resulting q - so people feel what 'unbreakable' concretely means. Panel 2 is a metaphorical simulator: as you increase a 'formula complexity' slider (standing in for nesting depth of phi), the demo reveals that no lookup table of q-values, however large, can be a fixed function of that complexity - mimicking the busy-beaver-style diagonalization used in real undecidability proofs - giving a felt sense of 'the reduction exists but is fundamentally non-constructive.'",
+        "cool": 7,
+        "buildable": 7
+      },
+      {
+        "type": "project",
+        "title": "Claim-Falsifier: apply CLR's 'refute one flaw beats construct one proof' trick to your own agent pipelines",
+        "paper": "2608.11994v1 - Claim-Level Reliability Assessment for Efficient Test-Time Reasoning",
+        "pitch": "The paper's real numbers: CLR decomposes a reasoning trace into a compact set of decision-critical claims and spends test-time compute trying to falsify each one (cheap, needs only one decisive flaw) rather than generating more full solution attempts (expensive, needs a flawless path end-to-end); on GPT-OSS-20B / CMIMC25 this lifts pass@1 by 27.15 points and raises self-consistency accuracy from 77.50% to 82.19% while using 37% fewer tokens. Build a small library/CLI (Python + Claude API, matching the claude-api skill's model guidance) that wraps any multi-step agent trace - Sentinel's code-review passes, or arxiv-scrape's own idea-scoring runs - extracts the load-bearing claims from a completion, fires cheap parallel 'try to refute claim i' calls with a fast model (Haiku), and only escalates to a full re-generation when a claim is actually falsified. Directly reusable across the ~/code bots since they already do triage-with-Haiku, chat-with-Sonnet; this just adds a verification layer that's provably cheaper than self-consistency sampling.",
+        "cool": 7,
+        "buildable": 6
+      },
+      {
+        "type": "startup",
+        "title": "Wasserstein-barycenter bankroll allocator: robust sizing across disagreeing edge models",
+        "paper": "2310.11987v1 - A Framework for Treating Model Uncertainty in the Asset Liability Management Problem",
+        "pitch": "The paper replaces classic mean-variance ALM optimization with a Wasserstein-barycenter blend across multiple uncertain models of liabilities/markets/inflation, and its numerical experiments show the framework 'retrieves optimal investment strategies even in high noise cases' where any single model would be overfit or misleading. That's structurally identical to a sports-betting bankroll problem: NBA-modeling's RAPM+Elo spread model, SharpLab's CLV-tracked market-implied probabilities, and a props edge model (already validated on rebounds/threes via GR-RTRMC completion per prior work) routinely disagree by a few points of edge. Instead of picking one model or naively averaging, compute the Wasserstein barycenter of the models' implied probability distributions per bet and size stakes off the barycenter plus its dispersion (as a robust uncertainty penalty a la Kelly-with-shrinkage), so bankroll allocation is provably robust to which model is wrong on a given night rather than fragile to the best-looking backtest. Startup angle: package as a 'model-ensemble risk layer' sitting on top of any existing edge-detection stack for other retail quant bettors, not just David's own.",
+        "cool": 6,
+        "buildable": 4
+      },
+      {
+        "type": "demo",
+        "title": "Granuloma Sandbox: Latent vs. Active TB",
+        "paper": "2602.24258v1 - A model of tuberculosis progression using CompuCell3D",
+        "pitch": "A single-page cellular-automaton/agent-based sim (canvas, diffusion field for chemokines, simple agents for macrophages/bacteria) that reenacts the paper's actual finding: TB outcome is governed by the *spatial organization* of the immune response, not just cell counts. Sliders for cell adhesion, persistence of movement, and chemotactic strength let the user watch a granuloma either seal off the infection (latent TB) or rupture and let bacteria escape (active disease) in real time. Match the paper's robustness result by making the sim visibly fragile to adhesion/persistence changes but stable under chemotaxis changes -- so the demo isn't just pretty, it reproduces the actual sensitivity analysis. Could footnote the companion 'ensemble prediction' paper's thesis (static snapshots aren't enough, biology needs dynamics) as the framing hook.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "The Car Dependency Playground",
+        "paper": "2604.01019v1 - Car Dependency in Urban Accessibility",
+        "pitch": "A toy-city builder: draw a road grid, then draw transit lines with a chosen headway. The page runs a quick BFS/Dijkstra to compute how much area is reachable in 20 minutes by car vs. by transit, and displays the live gap as a Car Dependency Index (CDI) heatmap, mirroring the paper's actual metric. Add one transit line and watch the CDI only improve in a local halo around it -- directly reproducing the paper's headline finding that isolated interventions (like their simulated Rome metro expansion, ~60k fewer commuting cars but localized impact) don't scale, and that only network-level transit expansion meaningfully closes the gap. Genuinely lets you *feel* the paper's policy conclusion instead of just reading it.",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Spectral Deconfounding Playground",
+        "paper": "2607.09371v1 - Spectrally Deconfounded Gradient Boosting",
+        "pitch": "A 2D toy-regression sandbox with a synthetic hidden confounder injected into both features and target. Sliders control confounding strength and boosting round count (early stopping). Two live-fitted curves are drawn side by side: vanilla gradient boosting (visibly chasing the confounder, biased fit) vs. a spectrally-deconfounded boost (loss reweighted to slow learning in confounder-aligned spectral directions, computed via a small client-side SVD on the synthetic design matrix). Dragging the early-stopping slider shows deconfounding only kicking in from the *interaction* of spectral shrinkage and early stopping -- which is the paper's actual, somewhat counterintuitive, core claim, not just 'add a spectral loss and you're done'.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "youtube",
+        "title": "Why Real-Time AI Is Ditching Transformers: The Fixed-Memory Trick",
+        "paper": "2608.12099v1 - RT-SEMamba: Real-Time Speech Enhancement Mamba via Progressive Knowledge Distillation",
+        "pitch": "Explainer built around one animation: a Transformer's KV-cache growing unboundedly across a live phone call next to a Mamba layer's fixed-size recurrent state staying flat. Ground it in the paper's real numbers -- an 8-layer RT-SEMamba hits 3.32 PESQ at a 25ms algorithmic latency budget, and progressive knowledge distillation compresses it into a 1-layer student that actually improves PESQ (3.06 to 3.18) while running 2.75x faster at the same real-time factor -- to explain why noise-cancelling call/streaming audio apps are quietly moving off attention-based architectures toward state-space models.",
+        "cool": 6,
+        "buildable": 5
+      },
+      {
+        "type": "demo",
+        "title": "Packing Density Playground: the Skewness Master Curve",
+        "paper": "2605.30185v2 - Theory of distribution skewness effect on polydisperse random close packing",
+        "pitch": "The paper derives a closed-form formula for random-close-packing density φ_RCP purely from the moments (mean, variance, skewness) of a particle's diameter distribution, and shows that data from many different continuous size distributions all collapse onto one 'master curve' when plotted against skewness (calibrated against the binary-mixture limit at extreme asymmetry). Build a single HTML canvas toy: user drags sliders for mean, spread, and skewness of a disk-size distribution; the page runs a live 2D random-sequential-addition/settling packing sim to measure actual packing fraction, while simultaneously plotting the paper's closed-form prediction as a curve. Watching the live-simulated dot converge onto the theoretical master curve as you sweep skewness is a genuinely satisfying 'feel the math' moment - and it's a fun frame for basketball/poker whimsy too (e.g. 'how tightly can you pack a roster of wildly different player sizes into a locker room' or 'chip stack packing at a poker table').",
+        "cool": 7,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "The Discontinuity Trap: Multivariate RDD Playground (Draft Combine / Poker Bubble Edition)",
+        "paper": "2602.03819v1 - Global Testing in Multivariate Regression Discontinuity Designs",
+        "pitch": "The paper shows that standard multivariate RD tests look fine asymptotically but suffer 'severe size distortions' in small/moderate samples because real data is sparse near any single boundary point - and proposes a machine-learning-estimator + distance-based-aggregation test that stays near-nominal size with strong power even then. Build an interactive HTML/canvas toy set on a sports/poker running-variable cutoff (e.g. a 2D combine-metric threshold for draft invites, or a chip-stack/ICM threshold at a tournament bubble): user controls sample size and boundary shape, the page draws noisy points, and runs two live in-browser Monte Carlo tests side by side - the naive per-point local test (visibly over-rejecting/spurious 'jumps' with few points near the boundary) vs. an aggregated/distance-weighted test (stays calibrated). Directly demonstrates the paper's core empirical claim by letting the user break the naive method with their own slider.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "youtube",
+        "title": "I Gave an API to a Brain in a Dish",
+        "paper": "2602.11632v1 - CL API: Real-Time Closed-Loop Interactions with Biological Neural Networks",
+        "pitch": "Cortical Labs' CL API is a real Python interface that gives sub-millisecond, contract-guaranteed closed-loop read/write access to living biological neural networks (the tech lineage behind DishBrain and their CL1 'biological computer' playing Pong) - it hides the microsecond-precision multi-channel hardware timing behind an interface any programmer can call. A video explainer walking through: what a 'closed loop' actually means at sub-ms scale, why timing guarantees matter for training a dish of neurons, and the ethics/hype-vs-reality of biological computing - paired with a browser companion demo where a simple simulated spiking neural network (leaky integrate-and-fire units, reward-modulated plasticity) learns to play Pong in real time on canvas, visualizing spikes firing as the 'closed loop' the video describes. Strong shareability: 'brain computer for real, and I can show you the loop.'",
+        "cool": 9,
+        "buildable": 4
+      },
+      {
+        "type": "startup",
+        "title": "Verification Copilot: LLM+Formal Assertion Synthesis for RTL Chip Design",
+        "paper": "2608.18482v1 - Coverage-Driven RTL Assertion Generation with Formal Exploration and Neuro-Symbolic Refinement",
+        "pitch": "The paper's pipeline uses coverage gaps to drive formal exploration, generating candidate SystemVerilog assertions and then refining them with a neuro-symbolic loop that checks them against the actual RTL - directly attacking one of chip design's biggest bottlenecks (verification engineers write and debug assertions by hand, and this is where most tape-out schedules slip). Startup angle: a wedge tool for RISC-V/edge-AI/fabless chip startups who can't afford Synopsys/Cadence formal suites - ingest a Verilog module + its coverage report, auto-propose SVA assertions targeting uncovered states, validate them against an open-source formal engine (Yosys/SymbiYosys), and iterate the neuro-symbolic refinement loop until they pass. Real market ($10B+ EDA industry, chronic verification-engineer shortage) but needs real integration work with formal tools, not a one-night build.",
+        "cool": 6,
+        "buildable": 3
+      },
+      {
+        "type": "demo",
+        "title": "Auto-Zoom: the self-tuning optimizer you can't out-tune",
+        "paper": "2607.19647v1 - On the Universality of Simple Trust-Region Algorithms",
+        "pitch": "The paper's real result: a plain trust-region method with a 'function-gap model-decrease' ratio (no cubic regularization, no gradient-dependent radius tricks) automatically gets the right convergence rate in EVERY regime it's dropped into -- O(eps^-1/(1+nu)) on convex bowls with unknown Hessian smoothness, O(eps^-2) on nonconvex saddle terrain, and superlinear once it's near a local min -- with zero hyperparameter retuning. Build a single canvas page: three side-by-side loss landscapes (smooth convex bowl, nasty nonconvex ridge/saddle field, and a zoomed-in near-minimum view). Drop a ball on each; the trust-region agent visibly grows/shrinks its radius circle step by step and always finds a sane path, while a fixed-step gradient-descent ball next to it either diverges (step too big) or crawls (step too small) unless you hand-tune it per landscape. A slider lets you 'break' GD by changing landscape while trust-region needs no touch -- that's the paper's universality claim made visceral.",
+        "cool": 7,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "The Slow Boil: watch a guardrail get talked into it",
+        "paper": "2607.29199v1 - Alignment Is Local: A Paired Diagnostic for GUI Agents under User-Side Persuasion",
+        "pitch": "The paper's finding is almost darkly funny: a keyword-style guardrail cuts single-turn explicit attack success by ~40 points, but strung across a 4-turn escalating 'foot in the door' conversation, guarded attack success actually RISES by ~20 points over baseline -- because the guard only fires when harm is named outright, so concealed multi-turn asks do BETTER against the guarded agent than the unguarded one. Build an interactive text-adventure: you play the persuader chatting with a scripted GUI-agent NPC (simple state machine, no LLM needed) that has a visible 'guard meter.' Ask bluntly and it slams shut. Split the same ask into 4 small escalating steps and watch the guard meter stay green while the agent quietly does the thing anyway -- with a live ASR-by-turn chart replicating the paper's headline number. Purely rule-based JS, no API calls, fully self-contained and shareable.",
+        "cool": 8,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "The Fairness Dial: pay the Price of Fairness in real time",
+        "paper": "2606.18679v2 - Fair Online Resource Allocation",
+        "pitch": "Paper's result: for sequential assignment of arriving agents to capacity-limited slots (their motivating case is refugee resettlement) under a Lipschitz fairness constraint (similar agents in the same batch must get comparably similar outcomes), a dual-mirror-descent online algorithm gets sublinear regret against the offline optimum, but you pay for it -- the best fair allocation only captures Omega(1/gamma) of the unconstrained-optimal welfare, gamma being fairness stringency. Build a live simulator: batches of 'agents' with random type/value stream in, get assigned to capacity-limited 'slots' by the actual dual-mirror-descent update rule running in-browser, and a gamma slider controls fairness strictness. Two live-updating charts: cumulative welfare vs. the offline benchmark (regret curve converging to sublinear), and welfare-captured vs 1/gamma tracing out the Price-of-Fairness bound as you drag the slider. Lets you literally feel the tradeoff the paper proves exists.",
+        "cool": 6,
+        "buildable": 8
+      },
+      {
+        "type": "project",
+        "title": "Spectral Regime Router for line-movement forecasting",
+        "paper": "2608.17342v1 - MoFE: A Novel Mixture-of-Experts Framework with Fourier Neural Operators for Cryptocurrency Forecasting",
+        "pitch": "MoFE's actual mechanism (not just 'MoE for crypto'): it decomposes price series into frequency bands via Fourier neural operators (global spectral trend / cyclical / microstructure), routes between AFNO and conv experts with a regime-gating network, and reports SOTA directional accuracy + Sharpe with reduced phase-lag versus standard forecasters on BTC 2020-2025. Directly transplantable to your existing SharpLab / NBA-props stack: swap crypto price series for sportsbook line-movement time series (opening line -> steam moves -> closing line). Build a small prototype module that FFT-decomposes a game's line-movement history into 'steam' (high-freq, sharp money), 'drift' (mid-freq, public money), and 'anchor' (low-freq, model-implied fair line) bands, with a lightweight gate picking which band to trust for CLV prediction per game state -- backtested with the same directional-accuracy/Sharpe metrics MoFE uses, feeding straight into your NY-legal-books props terminal.",
+        "cool": 7,
+        "buildable": 5
+      },
+      {
+        "type": "demo",
+        "title": "Bracket Vacuum — the Fermionic Nullity Playground",
+        "paper": "2605.27142 [physics.chem-ph] Dyck language and fermionic second quantization: I. Theory",
+        "pitch": "The paper's real result is startling: whether a fermionic expectation value ⟨vac| a†a†aa...|vac⟩ vanishes reduces to a purely syntactic check on a Dyck-bracket string (matching + a 'depth' statistic), no algebra required. Build a single-page toy: you assemble a string of creation/annihilation operators as colored open/close brackets (like building a LEGO string), the app animates the bracket-matching/depth reduction live, and declares NULL or NONZERO the same way the paper's syntactic criteria would. Add a 'guess before it reveals' quiz mode so people feel the punchline: quantum cancellation is literally balanced-parentheses checking. This is the single coolest 'wow, that's just CS 101' moment in the batch and translates 1:1 into ~150 lines of vanilla JS with a canvas/SVG bracket renderer.",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Black Hole Engine Room — Schwarzschild-AdS Heat Cycle Simulator",
+        "paper": "2607.03749 [cond-mat.stat-mech] Holographic heat engines for Schwarzschild black holes",
+        "pitch": "The paper derives exact efficiencies for Carnot/Otto/Diesel/Brayton/Stirling cycles run on a Schwarzschild black hole in a cavity (treating the cosmological constant as pressure, horizon volume as V), and shows the regenerative Stirling engine hugs the Carnot bound tighter than the non-regenerative one as T rises. Build an interactive P-V diagram using standard black-hole-chemistry formulas (T=(1+3r+^2/l^2)/4πr+, S=πr+^2, P=3/8πl^2, V=4πr+^3/3): sliders for T_hot/T_cold, a cycle picker, a live efficiency gauge racing a dashed Carnot line, and a regeneration toggle that visibly narrows the gap — letting someone actually watch the paper's headline claim happen instead of reading it in an equation.",
+        "cool": 9,
+        "buildable": 7
+      },
+      {
+        "type": "demo",
+        "title": "One Trip or Three? — the Destination-Chaining Efficiency Toy",
+        "paper": "2604.00943 [physics.soc-ph] Women's mobility networks enable more efficient travel",
+        "pitch": "The paper's resolution to a real puzzle in mobility science: women's trips look 'less diverse' in raw stop-counting but are systematically more efficient because they bundle errands into single chained journeys instead of round-tripping home between each stop, saving real distance across trips up to 150km/multi-day. Build a canvas toy: drop a home node and several errand pins, then flip a switch between 'star pattern' (home→stop→home, repeat) and 'chained loop' (nearest-neighbor single circuit) and watch a live odometer tick down the exact km and % saved. It's a direct, feelable demonstration of the paper's core efficiency metric, and doubles as a genuinely useful 'should I run these errands separately or in one trip' gut-check.",
+        "cool": 7,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Outbreak Switchboard — State-Dependent Policy Simulator",
+        "paper": "2607.18364 [math.PR] Evaluating the Impact of Epidemic Control via State-Dependent Markovian Switching Modeling",
+        "pitch": "The paper's core move is letting intervention regime switches trigger on the current infectious count rather than a fixed calendar date, then comparing fixed vs. early/delayed vs. state-dependent-escalation policies for total infections and extinction time (validated against Luxembourg mpox data). Build a client-side stochastic SIR simulator with a draggable infection-threshold slider that triggers regime switches (transmission/recovery/immunity rates change) live; run a swarm of trajectories with tau-leaping to render a fan chart of outcomes plus an extinction-time histogram, so users can directly feel how reactive thresholds shrink the tail risk compared to a fixed-date lockdown — the paper's actual comparison, made draggable.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Cut the Wire — Reachability-Preserving Min Cut Puzzle",
+        "paper": "2606.18225 Directed Reachability-Preserving Minimum Edge Cut: Approximation and Planar Hardness",
+        "pitch": "The paper's actual problem: given a directed graph with nodes s1, s2, t, find the cheapest edge set to delete so s1 can still reach s2 but can no longer reach t — and they prove an O(sqrt(r))-approx in general digraphs (O(min(sqrt(r), h)) on DAGs), plus NP-hardness even on planar acyclic graphs. Build a single-page canvas/d3 puzzle: user draws/edits a small directed graph (drag nodes, click to add edges with weights), picks s1 (source), s2 (must-stay-reachable), t (must-be-cut-off). A brute-force/ILP-lite solver (small graphs, n<=12, so exhaustive edge-subset search with pruning is fine client-side) computes the true optimal cut, then a second panel runs the paper's approximation heuristic live and shows the two cuts side by side with cost bars, illustrating the sqrt(r) gap growing as you add more 'relevant vertices' (nodes on s1->s2 paths). A 'DAG vs cyclic' toggle demonstrates the tighter h-bound. This literally lets you feel the approximation ratio open up as the graph gets richer, and the planar-hardness claim by letting users try to beat the solver on hand-crafted planar instances (they can't, past small n).",
+        "cool": 8,
+        "buildable": 9
+      },
+      {
+        "type": "demo",
+        "title": "Merge Lab — Why Averaging AI Model Weights Shrinks Them",
+        "paper": "2608.17366 CORAM: Coherent Orthogonal Rotation for Model Merging",
+        "pitch": "CORAM's core empirical claim is that naive/Euclidean merging of fine-tuned 'expert' weight updates contracts singular values (because averaging rotations/updates on a manifold pulls you toward the origin of the tangent space), and their fix is an SVD-manifold merge plus an amplification factor lambda = kappa * sqrt(N) that restores the lost magnitude, beating OrthoMerge by 0.25-1.35 points. Build a 2D linear-algebra playground: represent each 'expert' as a 2x2 matrix (visualized as the ellipse it maps the unit circle to, i.e. its singular value decomposition drawn as an ellipse with axes = singular values). Let the user create 2-6 experts by dragging ellipse handles (rotation + stretch), then show three merge results live: (a) naive weight-space average — ellipse visibly shrinks/collapses, (b) orthogonal-only merge (OrthoMerge-style: can rotate but can't touch singular values) — shows why it can't fix the contraction, (c) CORAM-style SVD-manifold merge with the sqrt(N) amplification slider — ellipse area is restored. A live 'singular value magnitude' bar chart under each method makes the contraction/restoration mathematically visible in real time.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Network Momentum Explorer",
+        "paper": "2308.11294 Network Momentum across Asset Classes",
+        "pitch": "The paper's finding: a linear graph-learning model that captures momentum 'spillover' between 64 futures contracts (across commodities, equities, bonds, FX) using only price data produces a strategy with Sharpe 1.5 and 22% annualized return (2000-2022), by trading assets based on their neighbors' recent momentum rather than their own alone. Build a force-directed graph (d3-force) of ~20-30 synthetic-but-plausible assets grouped by class (color-coded), with edge thickness = learned momentum-spillover weight. Scrub a time slider through synthetic (or lightly stylized real) monthly returns; nodes pulse/glow based on their own momentum, and edges animate 'spillover' flowing from strong-momentum neighbors into a given asset before it moves. A side panel shows two live equity curves — 'classic time-series momentum' (each asset trades its own trend) vs 'network momentum' (trades trend + neighbor spillover) — so the user watches the network signal front-run/smooth the classic one, making the spillover concept viscerally clear even without live market data.",
+        "cool": 7,
+        "buildable": 8
+      },
+      {
+        "type": "demo",
+        "title": "Matrix Vorticity: Cascade or Calm",
+        "paper": "2607.17943 Coadjoint averaging and cross-scale fluxes in a fast-slow stochastic Euler-Arnold system on SU(N)",
+        "pitch": "The paper's headline result is almost a physics riddle: in Zeitlin's matrix (su(N)) truncation of 2D turbulence, when the fast stochastic forcing respects the full coadjoint-orbit symmetry, the slow-scale averaged dynamics has ZERO net energy flux across scales (the nonlinearity's cross-scale transfer cancels out) — but as soon as that symmetry is broken, a nonzero flux appears and energy actually cascades between scales. This is small enough to literally simulate client-side: represent vorticity as a small (N=6-10) traceless anti-Hermitian matrix L, integrate dL/dt = [L, W] under the su(N) Lie-Poisson (Euler-Arnold) bracket via RK4, split L's Fourier-like eigen-components into 'large-scale' and 'small-scale' bands, and plot the energy in each band over time plus the instantaneous flux between them. A toggle switches the stochastic forcing between 'symmetric' (structured to preserve Casimirs/coadjoint orbits) and 'broken' (generic noise) — with symmetric forcing the cross-scale flux plot flatlines near zero; with broken forcing it visibly ramps up and energy visibly migrates between scale-bands on a heatmap. This is a genuinely rare chance to let someone SEE a Lie-theoretic cancellation result happen in real time rather than just read about it.",
+        "cool": 9,
+        "buildable": 5
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Ideate"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "batch-1",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "ad7221eb2e8ec1aa2",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1787641744933,
+      "queuedAt": 1787641744901,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.18070v2 [math.PR] The Brownian loop-catcher\n- 2310.11987v1 [q-fin.PM] A Framework for Treating Model Uncertainty in the Asset Liability Management Problem\n- 2511.01122v1 [q-bio.PE] The …",
+      "lastProgressAt": 1787641830323,
+      "tokens": 23815,
+      "toolCalls": 7,
+      "durationMs": 85390,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Loop-Catcher Playground: watch a Brownian trace get loop-erased into an SLE curve\",\"paper\":\"2607.18070v2 - The Brownian loop-catcher\",\"pitch\":\"The paper's actual result: a 'loop-catcher' is a random closed subset of a planar Brownian trace that interpolates between the continuum loop-erased random walk (LERW) and the full Brownian trace; adding back an independent…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "batch-2",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "aff0fe621932ccf23",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1787641744935,
+      "queuedAt": 1787641744901,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2602.24258v1 [q-bio.QM] A model of tuberculosis progression using CompuCell3D\n- 2608.12099v1 [cs.CL] RT-SEMamba: Real-Time Speech Enhancement Mamba via Progressive Knowledge Distillation\n- 2…",
+      "lastProgressAt": 1787641829688,
+      "tokens": 24132,
+      "toolCalls": 7,
+      "durationMs": 84753,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Granuloma Sandbox: Latent vs. Active TB\",\"paper\":\"2602.24258v1 - A model of tuberculosis progression using CompuCell3D\",\"pitch\":\"A single-page cellular-automaton/agent-based sim (canvas, diffusion field for chemokines, simple agents for macrophages/bacteria) that reenacts the paper's actual finding: TB outcome is governed by the *spatial organization* of the immun…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "batch-3",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "aed503ed37637681c",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1787641744935,
+      "queuedAt": 1787641744901,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2605.30185v2 [cond-mat.soft] Theory of distribution skewness effect on polydisperse random close packing\n- 2608.18482v1 [cs.AI] Coverage-Driven RTL Assertion Generation with Formal Explorati…",
+      "lastProgressAt": 1787641826140,
+      "tokens": 23648,
+      "toolCalls": 6,
+      "durationMs": 81205,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Packing Density Playground: the Skewness Master Curve\",\"paper\":\"2605.30185v2 - Theory of distribution skewness effect on polydisperse random close packing\",\"pitch\":\"The paper derives a closed-form formula for random-close-packing density φ_RCP purely from the moments (mean, variance, skewness) of a particle's diameter distribution, and shows that data from many di…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "batch-4",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "ad95165c294dfbae6",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1787641744935,
+      "queuedAt": 1787641744901,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.19647v1 [math.OC] On the Universality of Simple Trust-Region Algorithms\n- 2607.29199v1 [cs.CR] Alignment Is Local: A Paired Diagnostic for GUI Agents under User-Side Persuasion\n- 2606.1…",
+      "lastProgressAt": 1787641816635,
+      "tokens": 23917,
+      "toolCalls": 7,
+      "durationMs": 71700,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Auto-Zoom: the self-tuning optimizer you can't out-tune\",\"paper\":\"2607.19647v1 - On the Universality of Simple Trust-Region Algorithms\",\"pitch\":\"The paper's real result: a plain trust-region method with a 'function-gap model-decrease' ratio (no cubic regularization, no gradient-dependent radius tricks) automatically gets the right convergence rate in EVERY regime …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "batch-5",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a1300005353b47f5d",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1787641744935,
+      "queuedAt": 1787641744901,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2604.00943v1 [physics.soc-ph] Women's mobility networks enable more efficient travel\n- 2607.18364v2 [math.PR] Evaluating the Impact of Epidemic Control via State-Dependent Markovian Switchin…",
+      "lastProgressAt": 1787641825970,
+      "tokens": 23402,
+      "toolCalls": 7,
+      "durationMs": 81035,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Bracket Vacuum — the Fermionic Nullity Playground\",\"paper\":\"2605.27142 [physics.chem-ph] Dyck language and fermionic second quantization: I. Theory\",\"pitch\":\"The paper's real result is startling: whether a fermionic expectation value ⟨vac| a†a†aa...|vac⟩ vanishes reduces to a purely syntactic check on a Dyck-bracket string (matching + a 'depth' statistic), no alge…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "batch-6",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "affb07c683a28cded",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1787641744936,
+      "queuedAt": 1787641744901,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2605.29967v1 [cond-mat.soft] Synergistic approach to probing the dynamics and mechanics of patchy soft matter\n- 2308.11294v1 [q-fin.TR] Network Momentum across Asset Classes\n- 2608.17366v1 […",
+      "lastProgressAt": 1787641829505,
+      "tokens": 23827,
+      "toolCalls": 7,
+      "durationMs": 84569,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Cut the Wire — Reachability-Preserving Min Cut Puzzle\",\"paper\":\"2606.18225 Directed Reachability-Preserving Minimum Edge Cut: Approximation and Planar Hardness\",\"pitch\":\"The paper's actual problem: given a directed graph with nodes s1, s2, t, find the cheapest edge set to delete so s1 can still reach s2 but can no longer reach t — and they prove an O(sqrt(r))-appr…"
+    }
+  ],
+  "totalTokens": 142741,
+  "totalToolCalls": 41
+}
