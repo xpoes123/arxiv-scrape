@@ -1,0 +1,194 @@
+[
+ {
+  "type": "demo",
+  "title": "BB Cycle Visualizer: Watch the 'Best' Optimizer Secretly Fail",
+  "paper": "2607.21579 - Barzilai-Borwein Fails Superlinear Convergence on an Open Set of Quadratics for Every Dimension n>=4",
+  "pitch": "The paper proves that for every dimension n>=4 there's a positive-measure open set of strictly convex quadratics + starting points where Barzilai-Borwein (a workhorse step-size rule used everywhere from ML to scientific computing) converges only geometrically, not superlinearly, because it gets trapped in a 7-cycle of step sizes -- with rates the authors pin down explicitly between rho_min=1e-6 and rho_max=0.61. Build a single-page demo: sliders set the eigenvalues of a diagonal quadratic (n=4-6) and a starting point; the page runs BB alongside plain gradient descent and plots log||gradient|| vs iteration for both, plus a small scatter of the raw BB step sizes. Preload the paper's counterexample eigenvalues/start so users can toggle into the 'broken' regime and literally watch the step-size sequence lock into a repeating cycle instead of accelerating -- a great 'the algorithm you trust has a blind spot' share for the ML/optimization crowd.",
+  "cool": 8,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "Eigen-Friendship Paradox Playground",
+  "paper": "2607.19549 - The Generalized Friendship Paradox for Eigenvectors",
+  "pitch": "The paper shows the classic 'your friends have more friends than you' paradox generalizes to a graph's principal eigenvector: in graphon-generated random graphs, each node's eigenvector entry is systematically smaller than the average of its neighbors' entries, and the paper derives the exact limiting distribution of that bias in terms of the graphon's top eigenvalue/eigenfunction. Build an interactive graph generator (d3 force layout) where the user picks a graphon shape (homophily blocks, hub-heavy, uniform) and node count N via sliders; the page runs power iteration client-side to get the Perron eigenvector, colors each node by its 'eigen-bias' (its value vs. its neighbors' average), and shows a live-updating histogram of bias across all nodes that visibly sharpens toward the paper's predicted limiting shape as N grows -- turning an abstract spectral theorem into something you can watch converge in real time.",
+  "cool": 7,
+  "buildable": 8
+ },
+ {
+  "type": "demo",
+  "title": "Zero-Crossing Comb: The Poisson Pattern Hiding in Random Noise",
+  "paper": "2607.19660 - Smallest gaps between zeros of stationary Gaussian processes",
+  "pitch": "The paper proves that for smooth stationary Gaussian processes, if you rescale the tiny gaps between the very closest zero-crossings, they converge to a Poisson point process with an explicit rate, and derives the limiting density of the k-th smallest gap. Build a canvas demo that generates a random stationary Gaussian process on the fly as a sum of cosines with random phases and a tunable correlation bandwidth (a lightweight spectral-representation trick, no backend needed), draws it as a wiggly line, ticks every zero-crossing along the x-axis, then runs the simulation thousands of times in the browser to build a live histogram of rescaled nearest-gap sizes -- animating it converging onto the theoretical Poisson intensity curve the paper predicts. Satisfying 'random noise has hidden structure' payoff, and the bandwidth slider lets you feel how the process's smoothness controls the clustering.",
+  "cool": 7,
+  "buildable": 9
+ },
+ {
+  "type": "youtube",
+  "title": "Gaps in the Giants: When Famous Combinatorics Proofs Break",
+  "paper": "2608.05508 (42-Queue Layout gap) + 2608.06437 (superlinear Radon numbers)",
+  "pitch": "A video essay pairing two 2026 'the textbook result wasn't actually proven' stories: Pupyrev's discovery that the celebrated queue-layout algorithm for planar graphs (claiming just 42 queues via product-structure decomposition) has a step where 'a choice required by the algorithm is not guaranteed to exist,' quietly invalidating the published upper bound; and the resolution of Palvolgyi's open question on Radon numbers, showing k-th Radon numbers can blow up as Theta(d(log d)^2) instead of scaling linearly with k as everyone assumed. Use simple looping animations -- queue layouts as train tracks with non-crossing/non-nesting arcs, Radon partitions as points splitting into two colored convex hulls -- to make two fairly opaque combinatorics papers legible, framed around the hook: 'how long can a wrong theorem survive peer review, and what does it take to catch it?'",
+  "cool": 7,
+  "buildable": 4
+ },
+ {
+  "type": "demo",
+  "title": "Epidemic Momentum Phase-Plane Explorer",
+  "paper": "2511.01939v3 - Epidemic 'momentum' and a conservation law for infectious disease dynamics",
+  "pitch": "The paper's real result is that outbreak trajectories in different epidemic models (SIR, renewal processes) all trace contours of one conserved quantity built from 'prevalence weighted by potential to infect.' Build a single-file demo: run an SIR simulation and a renewal-process simulation side by side, plot both in (prevalence, epidemic-momentum) phase space, and overlay the family of conserved-quantity contour lines from the paper's derivation. Sliders for R0 and pre-existing immunity move the trajectory onto a different contour but it always stays on *a* contour regardless of which model generates it -- visually proving the unification claim. Bonus 'detective mode': show only a truncated real-looking time series and have the user find where it lands on the phase plane to back out R0 and immunity separately, mirroring the paper's disentangling application. All math (SIR ODE via RK4, renewal-equation discrete update, the conserved quantity formula) is closed-form/cheap enough for real-time canvas plotting.",
+  "cool": 8,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "Molecular Unzipping Lab",
+  "paper": "2605.31462v1 - Cooperative Conformational Transitions in Macromolecules under Mechanical Stretching",
+  "pitch": "The paper exactly solves a two-state elastic-freely-jointed-chain transfer-matrix model (two Kuhn lengths, two force constants, a free-energy gap, and a nearest-neighbor cooperativity energy) and shows it reproduces three qualitatively different real force-extension behaviors: PEG (no cooperativity), hyaluronic acid (negative cooperativity, a softened smooth crossover), and B-DNA-to-S-DNA overstretching (positive cooperativity, a sharp plateau/jump). Build the transfer-matrix partition function directly in JS (small closed-form matrix, no numerics library needed) and expose sliders for ΔG, ΔLk, Δk, and the cooperativity energy J. Live-plot the force-extension curve and state-probability curve, with three preset buttons that snap the sliders to the paper's PEG/HA/DNA regimes so the user can literally drag J from negative to positive and watch a smooth curve turn into a discontinuous unfolding plateau in real time -- the actual physics of 'why does DNA click open under tension but PEG just stretches.'",
+  "cool": 7,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "Roaming Reaction Sandbox",
+  "paper": "2605.30872v1 - A Phase Space Signature of Quantum Roaming in Chesnavich's Model",
+  "pitch": "The paper's finding is that a specific quantum resonance for CH4+ -> CH3+ + H sits in phase space between the inner and outer transition states, with radial phase-space density peaked at intermediate radius and near-zero radial momentum, plus a standing (not rotating) angular structure -- the quantum fingerprint of classical 'roaming' trajectories that dodge the normal tight transition state. Build a classical trajectory sandbox: implement Chesnavich's model potential (ion-induced-dipole long-range term + Morse C-H stretch + bend potential, all published closed forms), fire trajectories via RK4 at chosen energy/impact parameter/angle, and plot each one live in both real space and (r, p_r) phase space. Color trajectories by outcome (direct dissociation vs. roaming) and let the user toggle a 'phase space signature' overlay showing exactly the region the paper flags (intermediate r, p_r ~ 0) so they can watch a roaming trajectory visit precisely that pocket before finally falling apart -- turning an abstract quantum-chaos diagnostic into something you watch happen classically.",
+  "cool": 8,
+  "buildable": 6
+ },
+ {
+  "type": "demo",
+  "title": "Collagen Supercoil Assembler",
+  "paper": "2504.21484v1 - Chiral interactions between tropocollagen molecules determine the collagen microfibril structure",
+  "pitch": "The paper's core claim is that a purely local, chirality-driven interaction between outward-facing residues on tropocollagen rods -- with no global assembly rule imposed -- is sufficient to drive spontaneous supercoiling into a right-handed, pentameric microfibril with ~67nm staggered periodicity, and that this is a robust global energy minimum. Build a canvas toy with a handful of rigid rod 'molecules' that only know a pairwise rule (prefer a fixed chiral offset angle + axial stagger to their neighbors) and relax the system via simple simulated annealing in-browser. Watch the rods self-organize from a random tangle into a twisted right-handed bundle with a visible periodic banding pattern purely from the local rule -- a direct, watchable demonstration that 'chirality at the residue scale forces handedness at the fibril scale,' with a chirality-sign toggle that flips the whole bundle from right- to left-handed to make the causality obvious.",
+  "cool": 7,
+  "buildable": 7
+ },
+ {
+  "type": "demo",
+  "title": "Mode-Weight Race: Diffusion-Path MCMC vs. Tempering",
+  "paper": "2607.11631 - Markov Chain Monte Carlo with Diffusion Paths",
+  "pitch": "The paper's core empirical claim is that diffusion-path sampling (MAD-Path) preserves the *relative weights* of asymmetric modes in a multimodal target, while classic power-tempering distorts them (a mode with 80% mass can get flattened toward 50/50 under tempering). Build a single HTML/canvas page with a hand-picked 2D Gaussian-mixture target with two very unevenly-weighted modes (e.g. 90%/10%). Run two live particle swarms side by side: one doing standard tempered Metropolis-Hastings (raise density to power beta(t), anneal beta 0->1), the other doing a toy diffusion-path sampler where the score of the noised marginal is analytically known in closed form for a Gaussian mixture (no neural net needed - this is the trick that makes it buildable in one file). Show a live bar chart of estimated mode masses on each side converging to the true 90/10 split vs. tempering's biased estimate. This literally lets someone *feel* the paper's headline result in 20 seconds of watching two swarms disagree.",
+  "cool": 8,
+  "buildable": 8
+ },
+ {
+  "type": "demo",
+  "title": "Prime Number Theory Playground: Digit Roulette + The Impossible Interval",
+  "paper": "2607.10654 (Prime Digit Distribution Conjecture) + 2607.10431 (Long Intervals Without Distinct Multiples)",
+  "pitch": "Two-tab single-file demo pairing both fresh number-theory results. Tab 1 'Digit Roulette': sieve primes client-side up to a user-adjustable 10^n (n up to ~7), pool every decimal digit from every prime, and animate a live 10-bar histogram racing toward the uniform 1/10 line as n grows, with the paper's O(log n / n) error bound drawn as a shrinking confidence band around each bar - you watch the theorem's convergence rate happen in real time instead of just reading '1/10 asymptotically.' Tab 2 'The Impossible Interval': an interactive puzzle built on Kominers' f(n,m)/F(n) result - user tries to drag-place distinct multiples a_1..a_n (with i | a_i) into a shrinking window (m, m+h]; a solver shows the greedy/smooth-number obstruction kicking in once h drops below the paper's ~n ln n / e threshold, turning 'liminf bound improved from van Doorn's constant to 1/e' into a hands-on 'why this is provably impossible' moment.",
+  "cool": 6,
+  "buildable": 8
+ },
+ {
+  "type": "startup",
+  "title": "Physics-of-the-Order-Book: Spoofing/Layering Detection API",
+  "paper": "2308.08683 - Detecting Financial Market Manipulation with Statistical Physics Tools",
+  "pitch": "The paper models the limit order book as a particle system and defines a momentum-like metric that outperformed Z-score anomaly detection at catching spoofing and layering during the LUNA flash crash and in Bitcoin markets. Package this as a real-time compliance API: exchanges, market makers, or prop desks stream order-book deltas in, the service computes the physics-derived momentum signal per instrument, and flags spoofing/layering bursts with a severity score plus a replay view of the offending order flow (directly reusing the paper's LUNA-crash case study as the demo dataset for a sales pitch). Given SharpLab's existing odds-ingestion pipeline, the same momentum-metric machinery could double as a 'steam move vs. genuine sharp money' detector for sportsbook order flow - a natural crossover pitch to make to that audience.",
+  "cool": 7,
+  "buildable": 4
+ },
+ {
+  "type": "demo",
+  "title": "Koopman Control Sandbox: Tame a Duffing Oscillator with Linear Algebra",
+  "paper": "2607.11344 - Learning to control switching nonlinear systems with Koopman operator regression",
+  "pitch": "The paper's result: a genuinely nonlinear, switching system (the double-well Duffing oscillator, one linear-switching mode per discrete control input) can be learned from finite trajectory samples via Koopman/EDMD regression into a *linear* switched model, then steered near-optimally with model-predictive control - with proven sub-optimality bounds versus the true dynamics. Build a browser sandbox: simulate the real (nonlinear) Duffing oscillator on canvas as a ball rolling in a double-well potential; let the user click 'sample trajectories' to generate synthetic data; run a small-matrix EDMD least-squares fit in plain JS to learn the linear switched Koopman model live; then run a short-horizon MPC loop (brute-force search over the small discrete switch sequence, since horizons are short) using the *learned* model to steer the ball to a target well, plotting learned-vs-true phase portraits side by side so the viewer watches 'linear regression tamed chaos' happen in real time.",
+  "cool": 6,
+  "buildable": 7
+ },
+ {
+  "type": "demo",
+  "title": "The Memory Meniscus",
+  "paper": "2605.31542 — Recovering the Shape of a Contact Line",
+  "pitch": "The paper finds a water-air-glass contact line trapped between two plates, cycled through repeated volume add/remove, eventually locks into a repeating shape ('the system has memory') because fixed enclosed volume creates a global constraint that lets only the single least-stable segment of the line move at a time — a small perturbing cycle disrupts the memory, one cycle at the original amplitude restores it, but a big-amplitude cycle erases it for good. Build a single-file canvas toy: a ring of pinned contact-line segments each with a random quenched depinning threshold; each 'cycle' (volume push/pull slider) only lets the globally weakest segment advance, exactly the extremal/self-organized-criticality rule the paper describes. Overlay the line's shape each cycle so the user visually watches transient shapes converge to a repeating attractor, then watches a big slider swing wipe the memory clean. It's a hands-on feel for hysteresis and memory arising in a system with no obvious memory element.",
+  "cool": 7,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "Rigged Gear Detector",
+  "paper": "2607.06131 — Force-Torque Reciprocity and the Inference of Concealed Dissipation in a Geared Brownian Machine",
+  "pitch": "The paper's headline result: for a Brownian motor where a visible coordinate is geared to a hidden internal rotor via a shared periodic potential with force-torque reciprocity (τ_int = -ℓF_x), you can reconstruct the hidden rotor's entropy production EXACTLY from measurements of the visible coordinate alone, with no timescale-separation assumption and info-flow correction terms vanishing identically. Turn this into a 'casino integrity' toy: simulate two coupled overdamped Langevin rotors in canvas — one you can 'watch' (a dial), one hidden (secretly driven by extra torque, i.e. rigged) — and let the user dial in how hard the hidden rotor is being cheated. The demo computes the inferred dissipation from the visible dial's trajectory statistics per the paper's formula and plots it against the true injected hidden dissipation, showing the two curves snap together. Framed as 'can you catch a rigged mechanism by watching only one gear?' — a fun blackjack/roulette-wheel-cheating hook for a poker/games-math audience.",
+  "cool": 8,
+  "buildable": 7
+ },
+ {
+  "type": "demo",
+  "title": "Quantum Gas = Card Deck: Partitions Meet Periodic Orbits",
+  "paper": "2607.06146 — Quantum Density of States and Integer Partitions: A Semiclassical Approach",
+  "pitch": "The paper shows the asymptotic integer-partition function p(n) is literally the smooth (averaged) part of a quantum system's semiclassical level density evaluated at integers, derived via the trace formula over classical periodic orbits — and for the 'distinct squares' partition case, the leftover oscillatory wiggles line up with periodic orbits indexed by Pythagorean triples. Build a two-panel single-file demo: left panel computes exact p(n) via the standard O(n^1.5) DP recursion and overlays the Hardy-Ramanujan smooth asymptotic curve as you scrub n up to a few hundred; right panel renders a toy square-billiard density of states built from a handful of leading periodic-orbit terms, and a toggle shows the oscillatory correction snapping onto the fine deviations from the smooth curve on the left. Genuinely surprising 3Blue1Brown-style 'huh, counting card-hand-like partitions IS a physics spectrum' moment, all pure client-side math, no assets or libraries needed.",
+  "cool": 9,
+  "buildable": 8
+ },
+ {
+  "type": "startup",
+  "title": "True 15-Minute City Score (Trip-Chaining Edition)",
+  "paper": "2604.00699 — Public transport in the 15-minute city + 2604.00943 — Women's mobility networks enable more efficient travel",
+  "pitch": "Two results combine into a real gap in existing accessibility products (Walk Score, Transit Score): (1) the Helsinki/Madrid/Budapest study shows multimodal transit substantially boosts amenity access and socio-spatial equity, but a single high-speed line alone doesn't — you need a polycentric network; (2) the 543k-person mobility study shows women's higher travel efficiency comes from chaining multiple destinations into one trip (up to 150km/multi-day), not from visiting fewer places. Existing city-accessibility scores measure straight-line, single-destination isochrones from home, missing both effects. A startup product: ingest OSM + GTFS per city and compute a 'chained-accessibility index' — how well a neighborhood supports realistic multi-stop errand chains via combined walk+transit, and how equitably that access is distributed across a polycentric (not hub-spoke) network — sold as a PropTech accessibility badge/API to real-estate listing sites and as an equity-auditing tool to city planning consultancies, positioned against the now-dated single-metric Walk Score. Tonight's buildable slice is a synthetic-grid (non-real-data) toy: a canvas city grid with random amenities and a toggle between 'chained trip' vs 'hub trip' routing that visually totals distance traveled, illustrating the core efficiency claim before ever touching real GTFS data.",
+  "cool": 6,
+  "buildable": 4
+ },
+ {
+  "type": "demo",
+  "title": "Wake & Return: the Freeze-Tag round-trip simulator",
+  "paper": "2606.21985 - Freeze-Tag with Return",
+  "pitch": "A single-page canvas toy: drop N sleeping robots anywhere inside a unit disk, then watch (or manually route) one awake robot tour and wake them all in a chain-reaction (each woken robot can wake others), classic Freeze-Tag style. Toggle a 'must return to start' switch and the makespan bar visibly jumps -- the paper proves that gap is never more than 1.959 and never less than 1.732 for points on a unit disk, and caps at 2+2*sqrt(2) if the points are in convex position. Let the user try to beat the algorithm's schedule by hand-dragging a wake order; a live makespan readout (with-return vs without-return) turns an abstract worst-case bound into something you can feel by racing the clock. Fully client-side: just point geometry, a greedy/near-optimal heuristic schedule (or brute force for small N), and requestAnimationFrame for the 'ping' wake animation.",
+  "cool": 8,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "Newton's Cube: the acceleration race track",
+  "paper": "2608.21359 - Primal Acceleration of Newton's Method",
+  "pitch": "A side-by-side convergence race on a user-editable 2D convex function (drag to reshape a bowl, or pick 'ill-conditioned', 'quartic', 'log-barrier' presets): gradient descent, plain Newton, cubic-regularized Newton, and this paper's new accelerated Newton method all start from the same point and their iterates animate down the loss landscape as glowing dots, with a live log-scale residual-vs-iteration chart. The punchline the paper claims -- O(1/k^3) functional-residual decay using only ONE linear solve per step, no cubic subproblem needed -- shows up as the new method's dot visibly lapping cubic-regularized Newton despite doing strictly less work per step. Add a 'linear solves used' counter next to each racer so the efficiency claim, not just the speed, is legible. Pure client-side JS math (2x2 or 3x3 Hessians, closed-form or a few CG iterations for 'Hessian-free' mode) -- no backend, no libraries needed beyond maybe math.js for display.",
+  "cool": 7,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "Tech-Tree Knapsack: the macroitem explorer",
+  "paper": "2606.22018 - Optimal Macroitem Sequences in the Precedence Constrained Knapsack Problem",
+  "pitch": "Frame the precedence-constrained knapsack as a game skill-tree/tech-tree: nodes have a cost (weight) and value (profit), edges are prerequisites forming a forest (in-tree or out-tree, like a real Civ/XCOM tech tree). A capacity slider lets the user drag their 'research budget' up and down; the app runs the paper's actual O(n log n) forest algorithm live and highlights the current 'macroitem' sequence -- groups of items collapsed by dominated precedence relations, sorted by profit/weight ratio -- with the paper's headline structural claim front and center: at any budget, the optimal fractional solution splits at most ONE macroitem. Watching that single 'partial' node visually shrink/grow smoothly as you drag the slider, while every other node snaps fully in or out, makes an abstract LP-duality theorem into a visceral 'aha'. Single HTML file: D3 or plain SVG for the tree, the forest DP computed directly in JS (no external solver).",
+  "cool": 7,
+  "buildable": 8
+ },
+ {
+  "type": "startup",
+  "title": "Canary: availability red-teaming for AI safety filters",
+  "paper": "2608.01373 - The Boy Who Cried Wolf",
+  "pitch": "Most AI safety red-teaming sells jailbreak testing (does the guardrail let bad stuff through); this paper shows the mirror-image failure mode is just as damaging and totally unmonitored -- adversarially perturbed but genuinely benign images can be pushed to false-positive at an 84% attack success rate against real state-of-the-art guard models via 'Unsafe Semantic Distillation', silently tanking user trust and throughput. Pitch: a subscription service that continuously fuzzes a customer's deployed moderation/guardrail stack with USD-style perturbations of the customer's own benign traffic and reports a false-positive attack-surface score alongside the usual jailbreak score -- sold to any company running content moderation at scale (image upload platforms, marketplaces, dating apps) who currently only audit for the 'wolf getting in', not the 'crying wolf'. The sales demo is buildable tonight as a browser toy: load a small pretrained image classifier via tensorflow.js, run a quick FGSM/PGD perturbation on an obviously benign stock photo, and show it flip from 'safe' to 'flagged' in real time in front of a prospect.",
+  "cool": 6,
+  "buildable": 5
+ },
+ {
+  "type": "demo",
+  "title": "Cyclicity Kaleidoscope: What Belief Propagation Actually Sees",
+  "paper": "2604.01201v2 - Message passing and cyclicity transition",
+  "pitch": "The paper's real result: the message-passing/cavity-method fixed point widely used to estimate 'giant component probability' in percolation does NOT compute that -- it computes 'reachability from cycles,' and the two only coincide on tree-like (locally acyclic) graphs. Build a single-page canvas demo: generate a random graph (configuration model, slider for average cyclicity/clustering), run bond percolation at probability p (slider), and show two numbers/heatmaps side by side in real time -- (A) ground-truth giant-component membership via brute-force union-find over many Monte Carlo percolation samples, and (B) the belief-propagation cavity marginal computed by iterating the message-passing equations on the same graph. Color nodes by agreement/disagreement between A and B, and plot both curves against p. As you crank up a 'cyclicity' slider from tree-like to highly-looped, watch the visible gap open up between the BP curve and the true giant-component curve -- literally watching the paper's central claim happen. This is a genuinely satisfying 'feel the math' toy because the disagreement is dramatic and visual (a whole cluster of nodes lights up wrong-colored).",
+  "cool": 8,
+  "buildable": 9
+ },
+ {
+  "type": "demo",
+  "title": "Tumor Dosing Lab: Metronomic vs Maximum Tolerated Dose",
+  "paper": "2603.16894v1 - Less Is More in Chemotherapy of Breast Cancer",
+  "pitch": "The paper's model tracks tumor cells, healthy cells, and immune cells with delay-differential equations and shows metronomic (frequent, low-dose) chemo protocols beat maximum-tolerated-dose (MTD) pulsing at equal cumulative drug, in part because MTD-induced oscillations let the tumor population rebound between pulses. Build an interactive ODE playground: implement the 4-equation delay model with RK4 + a fixed-size delay buffer in plain JS, expose sliders for dose size, dose interval, and immune-recruitment delay, and let the user set up a 'race' -- one protocol dialed to MTD (big infrequent pulses) vs one dialed metronomic (small frequent pulses), same total drug budget -- and watch two live line charts (tumor/healthy/immune populations over simulated months) diverge. Add a scoreboard showing final tumor burden and healthy-cell damage for each protocol so the 'less is more' result is an actual, replayable number, not just a vibe. Extremely shareable for a science-explainer audience since everyone intuits 'more chemo = better' and the demo breaks that.",
+  "cool": 8,
+  "buildable": 9
+ },
+ {
+  "type": "startup",
+  "title": "Continua: Turn Your 3-Arm A/B Test into a Continuous Personalization Engine",
+  "paper": "2602.05099v1 - Personalized Policy Learning through Discrete Experimentation",
+  "pitch": "The paper's DLPT framework solves a real, common pain point: companies can only run experiments with a handful of discrete treatment arms (e.g. 3 discount tiers, 3 notification frequencies) but actually want a continuous, per-user-optimal policy (the exact discount %, the exact price, the exact incentive payout) -- and they prove the resulting estimator is asymptotically unbiased with a root-n regret bound, validated in production with a major social media platform optimizing creator payout incentives. Startup: an API/SaaS that plugs into a company's existing experimentation platform (Optimizely, Statsig, in-house), ingests results from their already-run discrete-arm tests, and outputs a per-segment (or per-user) continuous policy function -- no new continuous-dial experiment infrastructure required. Pitch to marketplaces, creator-economy platforms, and D2C pricing teams as 'stop leaving money on the table between your test buckets,' with the differentiator being the theoretical guarantee (regret bound) versus black-box contextual bandit tools that need way more live traffic to converge.",
+  "cool": 7,
+  "buildable": 4
+ },
+ {
+  "type": "demo",
+  "title": "Service-Cut Certificates: Watch Your Cache Evict the Wrong Thing",
+  "paper": "2606.22270v1 - Service-Cut Certificates for Aligned Eviction in Tiered Cache Networks",
+  "pitch": "The paper's counter-intuitive real result: in a tiered cache network, evicting a block can disrupt downstream requests that never touched that block directly, so naive LRU-style eviction is provably unsafe -- their fix computes an exact weighted min-cut ('service-cut certificate') between the candidate eviction and protected downstream demand before allowing it, and they find a sharp 'zero-impact' phase transition around N*zeta ~ log(m). Build a single-file demo: draw a synthetic tiered cache DAG (edge -> regional -> origin caches) with weighted demand edges, implement a small Dinic's max-flow in JS, and let the user click any cached block to 'evict' it -- the demo highlights every downstream request path that gets cut (including indirect ones several hops away) and reports the exact service-cut weight, contrasted against what naive LRU would have evicted with no warning. Add a batch-simulation button that runs thousands of random evictions across a scaling parameter and plots the impact histogram, visually reproducing the paper's zero-impact phase-transition curve. Great for a systems/infra audience -- makes an abstract NP-complete-adjacent cache theory paper into something you can click and break.",
+  "cool": 7,
+  "buildable": 8
+ }
+]

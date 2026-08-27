@@ -1,5 +1,58 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-27 — Freeze-Tag with Return (recovered)
+- **Status:** the 2026-08-27 run's ideation and 3-way build-off both completed in full — all three
+  builders finished (`2026-08-27-bb-cycle-visualizer-a.html`, `2026-08-27-tumor-dosing-lab-b.html`,
+  `2026-08-27-freeze-tag-return-c.html`) — but the run stalled before judging, publishing, or logging.
+  Same recurring failure mode that's now hit most nights this month (stall right after the build-off).
+  Recovered and finished the same day. Repo was again parked on the unrelated `sharplab-arxiv-forum`
+  branch; switched back to `main` before doing any nightly work and left that branch (and everything
+  under `docs/superpowers/`) untouched.
+- **Fetch:** 176 fresh papers across 22 categories (8 each, offset by day-of-year×3), 30 sampled for
+  ideation, 6 batches, 24 ideas generated (`ideation_2026-08-27_results.json`).
+- **Top per category (from `ideation_2026-08-27_results.json`, 24 ideas):**
+  - demo — 3 selected for build-off: **BB Cycle Visualizer** (arXiv:2607.21579, cool 8×buildable 9),
+    **Tumor Dosing Lab** (arXiv:2603.16894, cool 8×buildable 9), **Freeze-Tag with Return**
+    (arXiv:2606.21985, cool 8×buildable 9). Highest-scoring demo idea overall was **Quantum Gas = Card
+    Deck: Partitions Meet Periodic Orbits** (arXiv:2607.06146, cool 9×buildable 8), not sent to the
+    build-off this night.
+  - project — none tagged this night (the ideation surfaced demo/youtube/startup ideas only).
+  - youtube — **Gaps in the Giants: When Famous Combinatorics Proofs Break** (cool 7, buildable 4): a
+    video essay pairing two 2026 "the textbook result wasn't actually proven" stories — a gap in the
+    celebrated 42-queue planar-graph layout algorithm and the superlinear blow-up of higher Radon
+    numbers (arXiv:2608.05508 + 2608.06437).
+  - startup — **Physics-of-the-Order-Book: Spoofing/Layering Detection API** (cool 7, buildable 4):
+    models a limit order book as a particle system and computes a momentum-like metric that out-detected
+    Z-score anomaly detection on the LUNA flash crash — a real-time market-manipulation compliance API,
+    with a natural SharpLab crossover as a "steam move vs genuine sharp money" detector (arXiv:2308.08683).
+- **Built (all 3 completed):**
+  - A — **BB Cycle Visualizer** (arXiv:2607.21579): runs real gradient descent and the Barzilai-Borwein
+    step-size rule side by side on a configurable diagonal quadratic (n=4–6), with log-scale
+    gradient-norm and step-size charts (Chart.js) and a preset that drives BB into a repeating step-size
+    cycle so it converges only geometrically instead of superlinearly. Honest note concedes its
+    "pathological" preset is an approximate cycle it found, not the paper's certified n=4 orbit.
+  - B — **Tumor Dosing Lab** (arXiv:2603.16894): live RK4 integration of a 4-variable delay-differential
+    tumor/healthy/immune/drug model with a ring-buffered immune-recruitment delay, racing metronomic vs
+    MTD protocols at equal total drug budget across four Chart.js panels + a scoreboard/verdict.
+    Mechanism is paper-faithful; parameters are illustrative, not fitted.
+  - C — **Freeze-Tag with Return** (arXiv:2606.21985): pure-canvas (no CDN) playable Freeze-Tag toy —
+    click/randomize sleeping robots in a unit disk, an event-driven greedy scheduler fires the wake
+    chain-reaction with animated pings, a "must return" toggle makes the makespan jump, a live meter
+    plots the return/open ratio against the paper's proven 1.732 / 1.959 / 2+2√2 bounds, plus a
+    hand-build-your-own-schedule puzzle mode that races the greedy heuristic.
+- **Judge:** all three read through as complete, non-truncated, self-contained HTML; extracted inline
+  scripts all pass `node --check`. Scored roughly Freeze-Tag 37/40, Tumor Dosing 34/40, BB Visualizer
+  31/40. Judge picked **Freeze-Tag with Return**: it's the only one of the three that's an actual
+  playable game (not sliders driving line charts), it renders the paper's proven bounds directly onto a
+  live meter, its event-driven scheduler + puzzle mode give the richest interactivity, and being
+  pure-canvas it carries zero CDN dependency to fail. Tumor Dosing had the strongest shareable narrative
+  ("less is more") but is fundamentally four line charts + sliders with admittedly unfitted parameters;
+  BB Visualizer's math is real but its visual is just two log-scale charts for a niche audience and its
+  fidelity is the most hedged (approximate cycle, not the paper's certified orbit).
+- **Published:** demo at `demos/2026-08-27-freeze-tag-return.html`, brief at `2026-08-27-nightly.html`,
+  both registered in `david-share/manifest.json` and pushed live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-27-nightly.html
+
 ## 2026-08-26 — Zero Forcing Duel (recovered, published a day late on 2026-08-27)
 - **Status:** the 2026-08-26 run's ideation and 3-way build-off both completed in full — all three
   builders finished (`zero-forcing-duel-a.html`, `chromatic-sandbox-b.html`, `living-helix-c.html`) —
