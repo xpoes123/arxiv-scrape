@@ -5,3 +5,10 @@ papers*.json
 nfl-rating-completion/data/
 *.parquet
 demos/
+
+# SDD scratch (progress ledger, task briefs/reports)
+.superpowers/
+
+# Nightly-generated forum digest + vote cache (regenerated each run)
+digest_*.json
+votes.json
