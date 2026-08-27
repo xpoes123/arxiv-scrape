@@ -28,7 +28,7 @@ KEYFILE="$HOME/.config/sage/console.key"
   rc=$?
 
   # Guardrail: a real run rewrites papers_nightly.json today. If not, the run no-op'd.
-  if [ "$DATE" != "$(date -u -r papers_nightly.json +%F 2>/dev/null)" ]; then
+  if [ "$DATE" != "$(date -r papers_nightly.json +%F 2>/dev/null)" ]; then
     echo "!!! GUARDRAIL: papers_nightly.json not refreshed today — run produced no output. Marking failed."
     rc=1
   fi
