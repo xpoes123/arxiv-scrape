@@ -5,3 +5,6 @@ papers*.json
 nfl-rating-completion/data/
 *.parquet
 demos/
+
+# SDD scratch (progress ledger, task briefs/reports)
+.superpowers/
