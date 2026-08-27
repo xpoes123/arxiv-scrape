@@ -22,6 +22,8 @@ def validate(payload: dict) -> list[str]:
     if not isinstance(papers, list):
         return ["'papers' must be a list"]
     errs = []
+    if not payload.get("date"):
+        errs.append("missing top-level 'date'")
     if len(papers) > 3:
         errs.append(f"max 3 papers, got {len(papers)}")
     for i, p in enumerate(papers):
@@ -37,11 +39,13 @@ def validate(payload: dict) -> list[str]:
 
 
 def demo():
-    ok = {"papers": [{"title": "T", "arxiv_id": "1", "url": "u", "tldr": "t",
+    ok = {"date": "2026-08-27",
+          "papers": [{"title": "T", "arxiv_id": "1", "url": "u", "tldr": "t",
                       "hot_take": "h", "why": "w", "question": "q", "tags": ["poker"]}]}
     assert validate(ok) == [], validate(ok)
-    assert validate({"papers": [{}]}), "empty paper should error"
-    assert validate({"papers": [ok["papers"][0]] * 4}), "4 papers should error"
+    assert validate({"papers": ok["papers"]}), "missing date should error"
+    assert validate({"date": "d", "papers": [{}]}), "empty paper should error"
+    assert validate({"date": "d", "papers": [ok["papers"][0]] * 4}), "4 papers should error"
     assert validate({"papers": "x"}) == ["'papers' must be a list"]
     print("validate_digest self-check OK")
 
