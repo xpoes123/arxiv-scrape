@@ -1,5 +1,50 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-26 — Zero Forcing Duel (recovered, published a day late on 2026-08-27)
+- **Status:** the 2026-08-26 run's ideation and 3-way build-off both completed in full — all three
+  builders finished (`zero-forcing-duel-a.html`, `chromatic-sandbox-b.html`, `living-helix-c.html`) —
+  but the run stalled before judging, publishing, or logging happened. Recovered and finished at the
+  start of tonight's (2026-08-27) run. Also found the repo checked out to an unrelated stray branch
+  (`sharplab-arxiv-forum`, two commits: a design spec + implementation plan for a "SharpLab arxiv
+  discussion forum" feature, authored by a separate session earlier tonight) — left that branch alone
+  and switched back to `main` before doing any nightly work, since that feature is out of scope for
+  this playbook.
+- **Top per category (from `ideation_2026-08-26_results.json`, 24 ideas):**
+  - demo — 3 selected for build-off: **Zero Forcing Duel** (arXiv:2608.04579, cool 8×buildable 9),
+    **Chromatic Sandbox: Try to 4-Color the Plane** (arXiv:2608.04542, cool 9×buildable 7), **Living
+    Helix — Cooperative Nucleation Simulator** (arXiv:2605.30868, cool 8×buildable ~7)
+  - project — **Universal Lattice Ising Playground** (cool 7, buildable 8): one Metropolis MC engine
+    that swaps between 11 Archimedean lattices, 20 2-uniform lattices, and fractal tilings via a
+    site/bond dilution mask on a single host lattice (arXiv:2607.05308)
+  - youtube — **The Watermark That Lies** (cool 9, buildable 6): a backdoored VAE encoder makes a
+    diffusion watermark verify normally on benign images but silently evade detection 94.6% of the time
+    when a stealthy trigger is present, tested against 3 watermark schemes and 17 published defenses
+    (arXiv:2608.00543)
+  - startup — **No-Restow** (cool 6, buildable 4): a provably-tight online stack-assignment rule for
+    small ports/warehouses that guarantees zero future restows given yard dimensions and access-point
+    count (arXiv:2606.21376)
+- **Built (all 3 completed):**
+  - A — **Zero Forcing Duel** (arXiv:2608.04579): the paper's actual alternating-seed two-player game
+    on path/cycle/star/complete graphs (n=3–9), automatic zero-forcing cascades, a greedy AI opponent,
+    and a live scoreboard benchmarking the player's seed count against a brute-force Z(G) and the
+    proven 2·Z(G) bound.
+  - B — **Chromatic Sandbox** (arXiv:2608.04542): click-to-paint 4-coloring sandbox built from an exact
+    7-fold-symmetric 21-vertex seed motif assembled into a larger unit-distance graph, with live
+    monochromatic-edge detection.
+  - C — **Living Helix** (arXiv:2605.30868): a running kinetic Monte Carlo sim of cooperative helix
+    nucleation/growth/merging in a fluctuating polymer chain, rendered as glowing twisted ribbons.
+- **Judge:** all three read through as syntactically well-formed, complete, non-truncated HTML with
+  real interactivity. Scored roughly Zero Forcing Duel 36/40, Living Helix 34/40, Chromatic Sandbox
+  33/40. Judge picked **Zero Forcing Duel**: its interactive mechanic — alternating seeds, automatic
+  cascades, brute-force Z(G) benchmark — directly implements the paper's proven theorem rather than
+  approximating it. Chromatic Sandbox had the richest polish and pointer interaction but its own
+  in-demo documentation concedes the assembled graph isn't guaranteed to actually require 5 colors,
+  undercutting its central "aha" moment; Living Helix was the most visually striking and physically
+  faithful but had no player objective, reading as an ambient simulator rather than a game.
+- **Published:** demo at `demos/2026-08-26-zero-forcing-duel.html`, brief at `2026-08-26-nightly.html`,
+  both registered in `david-share/manifest.json` and pushed live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-26-nightly.html
+
 ## 2026-08-25 — Loop-Catcher Playground (recovered, published a day late on 2026-08-26)
 - **Status:** the 2026-08-25 run stalled after the build-off again — fifth time this exact failure mode
   has hit (2026-08-20, 2026-08-22, 2026-08-23, 2026-08-24, now 2026-08-25). `ideation_2026-08-25.js` /
