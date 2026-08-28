@@ -26,15 +26,18 @@ Work in `/home/david/code/arxiv-scrape`. Steps:
    forum votes): up-weight ideas whose tags have a net-positive score in `votes.tags` and down-weight
    net-negative ones. This is a soft bias — a killer paper in an unpopular tag can still make it.
 
-3. **Pick the top 3 demo-worthy ideas.** From the ideation, take the 3 with the best **cool × buildable**
-   score that make good *interactive* web toys — a playable explainer, an interactive visualization, or a
-   toy that lets you *feel* a mind-bending result from a paper. Each must be buildable as a single
-   self-contained HTML file (no build step, no backend). One idea per builder below.
+3. **Pick the forum top-3 — these ARE the build-off candidates.** From the ideation, choose the
+   **top 3 by discussion score** (max 3, fewer is fine). **Hard constraint: at least one of the 3 must be
+   buildable-tonight** as a single self-contained HTML toy (a playable explainer, an interactive
+   visualization, or a toy that lets you *feel* a mind-bending result) — so the digest ALWAYS ships with a
+   playable demo. When discussion scores are close, prefer a set where 2–3 are buildable so the build-off
+   (step 4) has real competition. The demo is built for one of these 3 papers, never a separate paper.
 
-3.5 **Pick the forum top-3 & write `digest_<date>.json`.** Independently of the demo picks, choose the
-   **top 3 by discussion score** (max 3, fewer is fine). Write `digest_<date>.json` (`<date>` = `date +%F`)
-   with this exact shape — `nightly.sh` validates it (`validate_digest.py`) and posts it to the SharpLab
-   forum via Sage, one thread per paper, each seeded with 👍/👎:
+3.5 **Write `digest_<date>.json`** (`<date>` = `date +%F`) for the forum top-3 from step 3. Write the
+   `papers` now; fill `demo_url`/`demo_arxiv_id` AFTER the build-off (step 4) so they point at the winning
+   demo — which, by step 3's constraint, is always one of these 3 papers. `nightly.sh` validates the file
+   (`validate_digest.py`) and posts it to the SharpLab forum via Sage, one thread per paper, seeded 👍/👎.
+   Exact shape:
    ```json
    {
      "date": "<date>",
@@ -49,16 +52,20 @@ Work in `/home/david/code/arxiv-scrape`. Steps:
        }
      ],
      "demo_url": "https://share.djiang.xyz/arxiv-scrape/demos/<date>-<slug>.html",
-     "demo_arxiv_id": "<arxiv id of the paper the demo was built from, if it is one of the 3>"
+     "demo_arxiv_id": "<arxiv id of the build-off winner — always one of the 3 papers above>"
    }
    ```
    Use ONLY these tags: betting, poker, sports, games, gambling, decision-theory, ai, math, bio,
-   physics, econ, whimsy. Set `demo_url`/`demo_arxiv_id` only if tonight's built demo corresponds to one
-   of the 3 forum papers; otherwise omit them (the demo still publishes to share.djiang.xyz regardless).
+   physics, econ, whimsy. **Always** set `demo_url`/`demo_arxiv_id` to the build-off winner (step 4) — the
+   step-3 buildable constraint guarantees the winner is one of these 3 papers, so the digest always links a
+   playable demo (which is also published to share.djiang.xyz as usual). Only in the rare case where NO
+   forum paper could be built at all do you omit them.
 
 4. **BUILD — 3-way subagent build-off, then judge.** This is the centerpiece.
-   - Spawn **3 builder subagents in parallel** (use the Agent tool, all in one message so they run
-     concurrently — or a Workflow `parallel()`). Give each ONE of the 3 ideas. Each builder writes a
+   - Spawn one builder subagent per **buildable** forum paper from step 3 (up to 3, in parallel via the
+     Agent tool in one message — or a Workflow `parallel()`). If only one forum paper is buildable, build
+     just that one (no competition needed); the goal is that the digest always has a demo, tied to a paper
+     people are discussing. Each builder writes a
      genuinely polished, interactive `demos/<date>-<slug-N>.html` (N = a, b, c): good visuals, real
      interactivity, a clear "wow", grounded in the paper's actual result. **CDN libraries are encouraged**
      (three.js, d3, p5.js, etc. via `<script src="https://cdn...">`) for richer visuals — still one HTML
