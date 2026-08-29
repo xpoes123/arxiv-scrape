@@ -1,0 +1,364 @@
+[
+  {
+    "type": "demo",
+    "title": "Triple-Jointed Escape: Racing Langevin Diffusions Out of a Losing Streak",
+    "paper": "2607.20882v2 - An Eyring-Kramers Law for the Hypoelliptic Third-Order Langevin Diffusion",
+    "pitch": "The paper derives the sharp Arrhenius exponential AND prefactor for mean escape time from a metastable well when noise cascades through a 3-level H\u00f6rmander chain (jerk -> acceleration -> velocity -> position) instead of hitting position directly -- and proves the cascaded ('hypoelliptic third-order') system has a strictly SMALLER prefactor than standard underdamped Langevin, i.e. it escapes faster despite the kick being 'further away' from the thing that's stuck. Build a single-page canvas demo: a double-well potential (think 'stuck in a bad streak' basin) with two balls simultaneously simulated via Euler-Maruyama -- one classic underdamped Langevin, one third-order hypoelliptic -- racing to escape the well, plus a live histogram of first-passage times overlaid with the paper's closed-form Kramers prefactor prediction. Let users drag the well depth/friction sliders and watch the theoretical vs empirical prefactor track in real time.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 8,
+    "discussion_why": "the counterintuitive 'noise from further away escapes faster' result maps directly onto tilt/variance debates in poker and sports betting bankroll management, and the live race + histogram makes an abstract stochastic-process claim visibly, arguably verifiable.",
+    "tags": [
+      "physics",
+      "decision-theory",
+      "whimsy",
+      "math"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Regime-Escape Alarm: Kramers Law Meets Few-Shot Trend Detection",
+    "paper": "2607.20882v2 (Eyring-Kramers) x 2310.10500v2 (X-Trend few-shot trend-following)",
+    "pitch": "X-Trend's paper shows a cross-attention few-shot model beats classic time-series momentum by 10x Sharpe and recovers from regime breaks (like COVID) twice as fast by matching new market windows against a context set of historical 'regimes.' Eyring-Kramers gives a closed-form law for how long a system stays trapped in a metastable state before flipping, driven by the curvature at the well bottom and the saddle it must cross. Fit a toy double-well potential to a rolling volatility/momentum signal per asset, use the Kramers formula to output an expected 'time-in-regime' with confidence bands, and pair it with an X-Trend-style attention layer that flags 'this regime shift looks like these N historical windows' -- a bankroll/streak alarm for systematic sports bettors and trend-following traders who currently eyeball moving averages.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 8,
+    "discussion_why": "directly speaks to the trading/betting-streak crowd's favorite argument -- 'is this a real regime shift or just variance' -- by putting a rigorous escape-time number on gut-feel streak calls.",
+    "tags": [
+      "betting",
+      "econ",
+      "decision-theory",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Momentum in Range-Space: Nesterov-Accelerated Distributions",
+    "paper": "2607.23008v1 - Nesterov acceleration in optimizing over probability measures",
+    "pitch": "The paper shows heavy-ball and Nesterov momentum can be lifted onto the Wasserstein-2 space of probability measures via a Hamiltonian formulation, achieving the same non-asymptotic accelerated convergence rates as Euclidean Nesterov, now proven for particle-based (i.e. finite-sample) representations of a distribution. Build a canvas demo where a cloud of particles represents a 'range' (a weighted distribution over hand-strength or bet-sizing) and two clouds race under (a) plain Wasserstein gradient flow vs (b) the paper's Nesterov-lifted flow toward a target distribution (e.g. a bimodal GTO-like mixture); show the accelerated cloud overshoot-and-correct (classic Nesterov oscillation) while converging in fewer steps, with a live Wasserstein-distance-vs-iteration plot for both.",
+    "cool": 7,
+    "buildable": 9,
+    "discussion": 7,
+    "discussion_why": "poker players argue about how fast to 'converge' a range against a new opponent read, and literally watching momentum overshoot-then-correct in distribution space turns an abstract optimization-theory result into a visceral, arguable animation.",
+    "tags": [
+      "poker",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Untangle This Bet: the Squarefree Matrix Trick for Telling Knots Apart",
+    "paper": "2608.06372v1 - Squarefree Matrix Formulas for the CWR Invariant of Alternating Knots and Links",
+    "pitch": "The paper's actual trick: attach a commuting variable to each vertex of a knot's Tait graph, take matrix traces, and keep only the squarefree terms to isolate simple cycles -- this gives closed-form formulas for the CWR_4 and CWR_5 invariant components (plus vanishing criteria tied to graph bipartiteness) for any alternating knot/link. Build a short explainer + tiny interactive companion: hardcode Tait-graph adjacency matrices for a handful of classic alternating knots/links (trefoil, figure-8, Hopf link, etc.), compute the squarefree trace live in-browser, and pose it as a bar-bet -- 'these two tangled loops of rope look identical, are they actually the same knot?' -- with the invariant giving a provable yes/no the eye can't.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 5,
+    "discussion_why": "less native to betting/poker but the 'provably untanglable bar bet' framing and the sheer 'wait, math can prove two knots are different without untying them' surprise still lands as a fun whimsy/games detour on a math-adjacent Discord.",
+    "tags": [
+      "math",
+      "whimsy",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Jewel Flood \u2014 the Flood-It level that turns NP-complete on you",
+    "paper": "2606.23837v1 Flood-It with Jewelry -- Characterizing the Game Complexity for Cograph Generalizations",
+    "pitch": "The paper classifies 1024 graph classes for the single-player Flood-It game by which of ten 'jewel' subgraphs (extensions of P4, e.g. bull, gem, P5) are forbidden: free of bull+gem+P5 is polynomial-time solvable, while thin-spider graphs excluding eight specific jewels are NP-complete -- they nail 896/1024 classes. Build a single-page canvas toy: generate a small board's adjacency graph, run a live forbidden-subgraph scan against the paper's jewel list, and flip a badge between 'POLY-TIME SOLVABLE' (green, with the actual optimal-move count computed) and 'NP-COMPLETE ZONE' (red, solver disabled, 'good luck'). Let users drag nodes to add/remove edges and watch the badge flip in real time as they cross the complexity boundary -- a literal, clickable phase transition in game difficulty.",
+    "cool": 7,
+    "buildable": 9,
+    "discussion": 6,
+    "discussion_why": "A puzzle that visibly snaps from 'solvable' to 'provably no shortcut exists' as you nudge one edge is a great 'wait, really?' math hook for the games crowd, though it's more math-nerd than betting-floor material.",
+    "tags": [
+      "games",
+      "math"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Prove-you're-clean: zero-knowledge anti-RTA verification for poker and chess",
+    "paper": "2608.02774v1 Privacy-Preserving AI Verification via Minimal Information Disclosure",
+    "pitch": "MID formalizes verification as three knobs -- evidence channel, collection policy, release transformation -- over physical measurements, and shows a Groth16 zk-SNARK linear-projection mechanism hits 'perfect held-out verification and zero measured collateral leakage' on 3 of 6 tasks (identity/hardware/compute-scale checks) with explicit privacy-utility frontiers on the rest. Pitch: a licensable verification layer for poker sites/chess.com-style platforms where a player's device proves 'my decision-time distribution and process list match a no-solver-assistance profile' via a zk circuit, without ever revealing the screen, process names, or timing trace itself -- exactly MID's 'authorized result only, zero collateral' guarantee. Tonight's demo: a toy snarkjs circuit that proves a decision-time sample falls inside a human-only reference distribution without revealing the sample, with a slider showing the real privacy-utility tradeoff curve from the paper.",
+    "cool": 9,
+    "buildable": 6,
+    "discussion": 9,
+    "discussion_why": "Real-time-assistance and engine-cheating accusations are one of the most recurring flashpoints on poker/chess discords, and 'you can prove innocence without showing your screen' is a genuine surprise that people will immediately argue is either genius or gameable.",
+    "tags": [
+      "poker",
+      "gambling",
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Edit Ledger: credit-assignment for betting-model tweaks",
+    "paper": "2608.23631v1 TRACE: Transition-Aware Residual Control for Multi-Objective Materials Discovery",
+    "pitch": "TRACE fixes a real gap in agent-driven optimization: agents know which final candidates succeeded but not which specific edit caused the improvement, especially when one edit helps one objective and hurts another -- tracking parent-edit-child transitions and pooling their effects lifted macro hit-rate from 18.13% to 25.96% over the prior SOTA (LLEMA). Port the same transition-ledger idea to a toy sports/props model: every parameter tweak (line threshold, weighting, feature) is logged as a parent-child transition with observed effect on two competing objectives (hit rate vs. CLV/variance), the ledger ranks which edits are safe to reuse vs. which quietly regressed the other objective, rendered as a branching skill-tree UI. Directly useful for anyone iterating a props/spread model who currently just eyeballs 'did that last tweak help.'",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "Bettors are constantly arguing over which specific model tweak actually caused a hot/cold streak versus variance -- a tool that formally separates 'this edit helped' from 'you got lucky' is catnip for a decision-theory-minded betting crowd.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "sports"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Overload-o-meter: an adaptive learner that scores how you explain +EV concepts",
+    "paper": "2608.17150v1 KnowSim: Evaluating Information Calibration in LLM Assistants with User Simulators that Learn",
+    "pitch": "KnowSim's core move is a user simulator with an explicit knowledge state -- a graph of Information Units with prerequisite edges that update under learning-theory rules -- scored on three axes: Knowledge Gain, Delivery Calibration, and Cognitive Overload, validated against 705 real human-AI conversations where different models won at different knowledge levels. Build a client-side toy: a simulated 'poker student' with a small prerequisite graph (pot odds -> equity -> ICM -> GTO ranges), the user types explanations at each step, and the demo scores Knowledge Gain/Delivery Calibration/Cognitive Overload live using the same update rules, visualizing when you dumped GTO jargon on someone who hadn't learned pot odds yet.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "Poker and sports-betting coaching communities constantly fight over 'you're overloading beginners with solver talk' vs 'dumbing it down too much' -- a meter that quantifies exactly that tradeoff on your own explanation is a fun mirror to hold up on a coaching-heavy discord.",
+    "tags": [
+      "poker",
+      "decision-theory",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "CFMM Geometry Explorer: Sculpt an AMM Curve, Watch Arbitrage Iron It Flat",
+    "paper": "2308.08066 \u2014 The Geometry of Constant Function Market Makers",
+    "pitch": "The paper's core result is that every constant-function market maker (CFMM) \u2014 Uniswap-style constant-product, StableSwap, concentrated-liquidity, LMSR prediction markets, whatever \u2014 reduces to a unique canonical trading function that is nondecreasing, concave, and homogeneous, connected to its portfolio-value function by conic duality. Build a single-file canvas toy: let the user drag control points to sculpt an arbitrary (possibly non-concave, kinked) trading-function curve for a 2-asset pool, then hit 'run arbitrageurs' and watch simulated arbitrage trades literally iron out any non-concave kinks into the canonical concave hull in real time, with the implied marginal price and portfolio value plotted alongside. Add a toggle that overlays a binary LMSR curve (the AMM behind prediction markets) on the same axes so users see that a Polymarket-style prediction market and a Uniswap pool are the same geometric object with different curve shapes.",
+    "cool": 8,
+    "buildable": 9,
+    "discussion": 8,
+    "discussion_why": "Watching arbitrage physically flatten a bad curve into the 'correct' shape is a genuine wait-really moment, and the LMSR overlay turns it into a direct betting/prediction-market/decision-theory argument starter.",
+    "tags": [
+      "econ",
+      "betting",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Menu-Pricer: Real-Time Differentiated-Demand Pricing for Prop/Parlay Menus",
+    "paper": "2602.05137 \u2014 Nested Pseudo-GMM Estimation of Demand for Differentiated Products",
+    "pitch": "The paper shows a nested pseudo-GMM trick that swaps the order of GMM optimization and the BLP fixed-point inversion, making the market-share-to-mean-utility inversion closed-form and separable per product \u2014 so demand estimation over huge product catalogs scales far better than classic BLP, with efficiency gains growing faster than linearly in the number of products. Pitch a B2B pricing engine for sportsbooks/DFS/prediction markets that treats a player-prop or parlay menu as 'differentiated products' (the way economists treat cereal SKUs) and re-estimates cross-elasticities and reprices the whole menu in near real time after a lineup change or line move, instead of an overnight batch job \u2014 a natural extension of SharpLab-style odds/CLV infrastructure.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 7,
+    "discussion_why": "Treating your parlay menu like a grocery-store SKU catalog is a genuinely surprising econ framing that betting-minded people will want to argue about (and it's a real fit for the SharpLab quant-lab crowd).",
+    "tags": [
+      "econ",
+      "betting",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Averageness Slider: Crowd-Replicate the Beauty-Math Paper Live",
+    "paper": "2602.13368 \u2014 The Influence of Width Ratios on Structural Beauty in Male Faces",
+    "pitch": "The study morphs interocular distance relative to face width across 21 variants from low/medium/high baseline ratios and finds (via Bayesian analysis) that proportions closer to the population average are rated most attractive, not the extremes. Build a single-file toy: a procedurally warped canvas face mesh with a hidden ratio parameter, presented as pairwise A/B votes ('which is more attractive?'); every vote gets logged client-side and live-plotted as a histogram of win-rate vs width ratio, so a Discord channel voting together watches its own curve peak near the middle in real time instead of at either extreme \u2014 an informal live replication of the paper's finding.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 9,
+    "discussion_why": "Face-attractiveness debates are inherently high-engagement and relatable, and 'the crowd's votes literally plot a bell curve peaking at average' is a delightfully surprising, whimsical payoff for a betting/games-minded server.",
+    "tags": [
+      "bio",
+      "whimsy",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Gauge-Cheat: Watch a Toy Neural Net Game Its Own Loss Function",
+    "paper": "2607.12501 \u2014 Gauge-Fixing the Forward-Forward Objective",
+    "pitch": "The paper's diagnosis of Forward-Forward training (sum-of-squared-activations 'goodness') is that a layer can cut loss cheaply by just inflating weight magnitude rather than actually learning to separate real vs. fake data \u2014 a scale/'gauge' exploit; their fix is a scale-invariant whitened goodness derived from a likelihood-ratio account, which recovers 4-7 points of accuracy and closes 16-61% of the gap to backprop specifically because it removes the gauge-cheat, not just because it caps the inflation. Build a tiny in-browser toy: 2-3 trainable units on a 2D scatter of real vs. contrastive points, a live weight-norm gauge dial, and a toggle between vanilla goodness and whitened goodness \u2014 with vanilla on, watch the norm dial spin up while the decision boundary barely moves (loss drops via cheating); flip to whitened and watch the boundary snap to the actual separator instead.",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 6,
+    "discussion_why": "'The AI cheats its own scoring metric instead of learning' is an inherently discussable, slightly unsettling AI/decision-theory story, even if it's a softer fit for a betting-first crowd.",
+    "tags": [
+      "ai",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Volatility Flip: The Variance Simulator That Explains Why Bankroll Variance Is Sometimes Your Friend",
+    "paper": "2511.01905 - The impact of nonheritable variation in division rates on population growth across environments",
+    "pitch": "The paper's real result (validated on Chlamydomonas mutation-accumulation experiments) is that non-heritable variability in individual division rates has opposite effects depending on the environment: it drags DOWN the population growth rate (dominant eigenvalue) when conditions are favorable, but BUFFERS the population against decline when conditions are stressful -- because growth compounds multiplicatively and Jensen's inequality punishes variance under growth but rewards it under decline. Build a single-file canvas demo: a slider for 'variance in individual rate' and a toggle for 'favorable vs stressful environment,' simulating a population of agents (or reframed as bettors with variable edge/stake) and plotting the population/bankroll trajectory live alongside the analytic log-growth curve. Users watch the exact same variance knob flip from harmful to protective as the environment flips -- which is precisely the arithmetic-vs-geometric-mean tension at the heart of Kelly criterion debates.",
+    "cool": 8,
+    "buildable": 9,
+    "discussion": 9,
+    "discussion_why": "This is a disguised Kelly-criterion/volatility-drag demo -- 'high variance saves you when you're losing but kills you when you're winning' is exactly the kind of counterintuitive claim that starts a fight in a betting/poker Discord about staking strategy.",
+    "tags": [
+      "bio",
+      "gambling",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Reset or Grind: First-Passage Time Explorer for Run-and-Tumble Particles",
+    "paper": "2606.00560 - Velocity Resetting of Inertial Run-and-Tumble Particles in Non-Newtonian Media",
+    "pitch": "The paper's claimed result is specific and surprising: for a run-and-tumble particle with inertial velocity resetting moving through shear-thickening media, there's an optimal resetting rate that minimizes the time to reach a target (a U-shaped first-passage-time curve); but in shear-thinning media, no such optimum exists -- you should never reset, just grind. Build a canvas sim where a particle random-walks/tumbles toward a target with a 'reset rate' slider and a 'medium type' toggle, running thousands of trials to live-histogram first-passage times and show the U-curve appear/disappear depending on medium. Frame it explicitly as a 'when should you reset your strategy vs keep grinding' toy -- directly analogous to stochastic-resetting search theory, which is already used to model foraging, algorithm restarts, and (informally) bankroll/tilt resets.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 8,
+    "discussion_why": "Stochastic resetting is a genuinely surprising physics result (sometimes quitting and restarting is provably faster, sometimes it's provably worse) that maps almost too cleanly onto 'should I cut my losses and reset my session/bankroll' arguments poker and sports-betting players have constantly.",
+    "tags": [
+      "physics",
+      "decision-theory",
+      "gambling"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Population-Context Line-Anomaly Detector",
+    "paper": "2603.05534 - In-batch Relational Features Enhance Precision in An Unsupervised Medical Anomaly Detection Task",
+    "pitch": "The paper's actual result: augmenting a CNN autoencoder's latent space with in-batch relational context (via batch-wise hypergraph estimation + a shared-weight graph convolution layer, producing a 'population-aware embedding') lifted brain-MRI anomaly detection from baseline to 0.90 AUC-ROC (+5.7% absolute) and 0.78 AP (+16% absolute), with gains that scale with batch size -- i.e., judging an individual scan relative to a mini-batch of 'normal' peers beats judging it in isolation. Port the same trick to betting markets: instead of flagging a line as anomalous against a fixed statistical threshold, embed it jointly with a batch of comparable lines (same sport, market type, book tier) via the same autoencoder+graph-conv architecture, and score anomaly relative to that live peer context -- a plausible signal for mispricing, arbing, or fixing.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 7,
+    "discussion_why": "Repurposing a medical 'is this scan weird compared to its peers' trick into 'is this line weird compared to its peers' is a fun, slightly conspiratorial pitch (match-fixing/line-anomaly detection) that a sharp betting crowd will immediately want to poke holes in.",
+    "tags": [
+      "betting",
+      "ai",
+      "bio"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Chemistry Inside a Mirror Box: Can an Empty Cavity Change a Reaction Rate?",
+    "paper": "2605.31188 - Thermal chemical reactivity in Frenkel exciton-polariton cavities",
+    "pitch": "The paper's actual claim, using a generalized Tavis-Cummings model with explicit polariton dispersion and molecule counting: putting molecules in a strongly-coupled optical microcavity measurably shifts their thermally-driven chemical reactivity, and the effect is biggest for small, dilute molecular ensembles, grows with Rabi splitting (coupling strength), and is more pronounced at low temperature. A short explainer builds up 'why would bouncing light between two mirrors change chemistry' from vacuum-field fluctuations to polariton dressed states, paired with one small interactive toy widget (sliders for molecule count / coupling strength / temperature driving a toy reaction-rate curve) to let viewers feel the parameter dependence the paper reports.",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 3,
+    "discussion_why": "Genuinely wild physics ('a mirror box changes your chemistry') but it has no natural hook into betting/poker/sports -- scored low here on purpose since it's a general-science-audience piece, not a Discord-debate starter.",
+    "tags": [
+      "physics",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Rainbow Round-Robin",
+    "paper": "2608.06369 \u2014 A proof of Andersen's rainbow path conjecture for large n (math.CO)",
+    "pitch": "The paper proves that for large n, every proper edge-coloring of the complete graph K_n contains a rainbow path visiting almost all n vertices (each color used at most once) \u2014 closing a decades-open conjecture and beating the prior n-O(sqrt(n) log n) record. The killer crossover: a proper edge-coloring of K_n is literally a round-robin sports schedule (each color class = one perfect-matching round). Build a single HTML/canvas app: pick n (say 6-24 teams/players), auto-generate the standard round-robin coloring, then animate a backtracking/greedy search live-highlighting a rainbow Hamiltonian-ish path through it. Add a 'break the conjecture' sandbox where users hand-draw colorings for small n and watch how hard it is to avoid a rainbow path as n grows. Frame it as 'can you build a season schedule where a team's sequence of opponents never repeats a round-color, touching almost every other team exactly once' \u2014 instantly legible to anyone who's run a league or poker rotation.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "Turns an abstract Ramsey-flavored combinatorics proof into a literal fantasy-league/poker-rotation scheduling puzzle \u2014 concrete, arguable, and has a genuine 'wait, that's always possible?' surprise.",
+    "tags": [
+      "math",
+      "sports",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Bluff Gradient: The Learning-Speed Race",
+    "paper": "2607.22982 \u2014 Finite-Time Analysis of the Natural Policy Gradient in Finite-Horizon MDPs (math.OC)",
+    "pitch": "The paper gives the first finite-time guarantees for exact NPG in finite-horizon MDPs: constant step size only gets sublinear O(H^2/t) convergence, but a specific increasing step-size schedule flips it to linear/geometric convergence O((1-1/theta)^t). Tabular NPG has a closed form (softmax multiplicative-weights update: policy(a|s) \u221d policy(a|s) * exp(eta * Q(a,s))), so it's exactly implementable client-side. Build a toy horizon-3/4 poker-style decision tree (bet/check/call vs a fixed opponent range) and race two learners side by side: constant-step NPG vs the paper's increasing-step schedule, plotting distance-to-optimal-policy per iteration on a log axis so users watch one curve bend (sublinear) and the other go dead straight (linear/exponential). A horizon slider shows the H^2 penalty blowing up iteration counts in real time.",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 8,
+    "discussion_why": "Directly answers 'how many hands does an AI need to learn optimal bluffing,' and the punchline that just changing the step-size schedule mathematically guarantees exponentially faster learning is a genuine surprise for a decision-theory-literate poker crowd.",
+    "tags": [
+      "poker",
+      "ai",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Cascade Radar: Markovian Hawkes for Bet-Flow Risk",
+    "paper": "2607.20838 \u2014 Long-memory Markov chains with power-law intensities (math.PR)",
+    "pitch": "The paper builds a finite-dimensional nonlinear Markov chain whose event intensity follows a power law, proves it's Harris-recurrent/ergodic, and shows via the local Whittle estimator that it exhibits genuine long-memory behavior near the boundary of its stability region \u2014 matching classical (infinite-memory) Hawkes processes but staying cheap to filter online since the state is finite-dimensional. Pitch: a real-time risk module for sportsbooks/prop-trading desks that fits this model to live bet-arrival streams and flags when a market has drifted toward the 'near-instability' long-memory regime \u2014 i.e., a steam move or correlated bet cascade forming \u2014 versus normal Poisson-ish flow, something classical Hawkes MLE is too slow to do live. Prototype tonight as a simulate-and-visualize demo: generate self-exciting arrival bursts, run the Markov intensity filter, and show a live 'cascade score' gauge crossing into the danger zone.",
+    "cool": 6,
+    "buildable": 6,
+    "discussion": 8,
+    "discussion_why": "Steam moves and bet cascades are exactly what sharp bettors argue about constantly, and 'a finite-memory Markov chain can fake infinite memory' is a legitimately surprising math result to drop on a betting Discord.",
+    "tags": [
+      "betting",
+      "gambling",
+      "econ",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Universe's Amnesia Clock",
+    "paper": "2607.07556 \u2014 Entanglement Asymmetry in Random Quantum Automata (cond-mat.stat-mech)",
+    "pitch": "The paper measures 'entanglement asymmetry' (how far a subsystem's charge distribution is from symmetric) in random quantum cellular automata versus fully Haar-random circuits. Both eventually restore local U(1) symmetry, but for automata the timescale to do so depends on the initial state (it doesn't for Haar circuits) \u2014 because participation-entropy conservation and how uniformly charge sectors get explored are coupled, and asymmetry decay tracks subsystem coherence decay exactly. Script a short explainer: 'why does a quantum system remember how it started, even after it forgets everything else' \u2014 visualize charge sectors spreading unevenly across a 1D chain for different initial states, with a playful framing that the opening conditions of a system (like the seed stacks/hands at a poker table) can permanently set how fast information equalizes.",
+    "cool": 8,
+    "buildable": 5,
+    "discussion": 5,
+    "discussion_why": "Genuinely cool quantum-info visual and a real 'wait, it remembers the initial state?' surprise, but the poker/betting tie is only an analogy, not a mechanism, so it lands more as whimsy than hard debate fuel.",
+    "tags": [
+      "physics",
+      "whimsy",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Deck-Count Duel: Watch Q-Learning Race a Card Counter",
+    "paper": "2308.07329v1 [q-fin.TR] Variations on the Reinforcement Learning performance of Blackjack",
+    "pitch": "Single self-contained HTML/JS page implementing tabular Q-learning for blackjack from scratch, with a slider for shoe size (1 deck up to 8 decks, or continuous-shuffle). A live chart shows the Q-learning agent's convergence rate to optimal strategy right next to a hard-coded basic-strategy + Hi-Lo counting bot grinding hands; as you drag the deck-count slider you watch both the RL convergence speed and the counter's house edge shift in real time -- directly reproducing the paper's core claim that shoe size materially changes both how fast an RL agent learns optimal play and how much edge a card counter actually realizes against the house.",
+    "cool": 8,
+    "buildable": 9,
+    "discussion": 9,
+    "discussion_why": "Card counting and an AI learning to beat blackjack are both bread-and-butter gambling-Discord topics, and 'deck size secretly changes how fast you learn to win' is exactly the kind of casino-rules 'wait, really?' fact that starts an argument.",
+    "tags": [
+      "gambling",
+      "ai",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Contradiction Untangler: Preference-Graph Stat Arb",
+    "paper": "2310.08284v1 [q-fin.PM] Statistical arbitrage portfolio construction based on preference relations",
+    "pitch": "Interactive demo generating a handful of synthetic random-walk price series, computing pairwise mean-reversion z-score signals for every pair, and drawing the resulting directed 'preference graph.' Toggle pairs on and off and watch naive independent pairs-trading create contradictions (told to be long AND short the same name at once), then hit 'resolve' to see the paper's preference-relation algorithm collapse them into one consistent portfolio. Sliders for number of securities included and transaction cost visually reproduce the paper's two headline claims: performance improves as more securities are added, and returns stay robust even at high transaction costs.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "Watching a graph literally untangle contradictory long/short signals is a satisfying 'aha,' and quant/arb-minded bettors will instantly recognize it as the same headache as holding opposite bets at two different books.",
+    "tags": [
+      "econ",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Catch the Cheat: Live Memorization Radar",
+    "paper": "2607.12438v1 [stat.ML] Fisher Rank Inflation: A Spectral Signature of Memorization under Label Noise",
+    "pitch": "Single HTML file using TensorFlow.js to train a tiny 2-layer classifier live in the browser on a synthetic 2D dataset, with a slider controlling what fraction of labels are corrupted. Each epoch it computes the per-example last-layer gradients, takes their SVD, and plots the effective rank over training time -- reproducing the paper's headline 'rank bump' during the memorization phase -- next to a scatter of points colored by gradient contribution, so you can watch corrupted points come to dominate the top contributors right at the rank peak, exactly as the paper reports (69-96% of top contributors being corrupted at peak, an inflation signal that precedes visible test-accuracy degradation).",
+    "cool": 9,
+    "buildable": 6,
+    "discussion": 6,
+    "discussion_why": "It's a literal live spectral lie-detector for a neural net catching itself cheating -- viscerally cool to watch, though it's more an AI/ML hook than a betting or poker one for this crowd.",
+    "tags": [
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Incremental Upcoding Radar",
+    "paper": "2602.04092v2 [econ.EM] Time-to-Event Estimation with Unreliably Reported Events in Medicare Health Plan Payment + 2606.23655v1 [cs.DS] Dynamic estimation of slowly varying sequences",
+    "pitch": "A toy library that pairs the econ.EM paper's upcoding-intensity time-to-event estimators (built to stay robust when reported events are unreliable/undercoded) with the cs.DS paper's warm-started sequential-approximation trick: since the paper shows you can reuse prior computations and hit a tighter O(sum of changes) cost bound with on-the-fly change detection instead of recomputing from scratch, apply that to rolling upcoding-intensity re-estimation across successive Medicare monitoring windows. Simulate a panel of enrollees with slowly drifting coding intensity (mirroring the econ.EM paper's own open-source R simulator), then show the wall-clock savings of warm-starting each period's estimate versus full recomputation, while still catching the same upcoding spikes the original estimator flags.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 5,
+    "discussion_why": "It's a step removed from betting/poker, but 'catch the party quietly gaming a scoring system for money' is the exact same instinct that drives sharp-vs-square and insurer-vs-sportsbook talk, just aimed at Medicare coding instead of odds.",
+    "tags": [
+      "econ",
+      "bio",
+      "decision-theory"
+    ]
+  }
+]

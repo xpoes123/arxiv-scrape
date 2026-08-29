@@ -1,5 +1,52 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-29 — Deck-Count Duel
+- **Status:** clean run start-to-finish, no recovery needed. Also recovered the stalled 2026-08-28 run
+  (logged below) at the start of tonight's session before starting fresh work.
+- **Fetch:** 176 fresh papers across 22 categories (offset by day-of-year×3), 30 sampled for ideation
+  with explicit dedup against the last 5 nights' ideation scripts (0 overlap), 6 batches, 24 ideas
+  generated (`ideation_2026-08-29_results.json`). `votes.json` still all-zero (first week of forum
+  voting), so no tag bias applied.
+- **Forum top-3 / build-off candidates (all three tied at discussion 9, all buildable-tonight demos —
+  real competition):** **Volatility Flip** (arXiv:2511.01905, cool 8×buildable 9), **Deck-Count Duel**
+  (arXiv:2308.07329, cool 8×buildable 9), **Averageness Slider** (arXiv:2602.13368, cool 7×buildable 8).
+  A 4th idea tied at discussion 9 — **Prove-you're-clean: zero-knowledge anti-RTA verification**
+  (arXiv:2608.02774, startup type, buildable 6) — was passed over for the build-off in favor of the
+  three higher-buildable demos, but surfaced in the brief.
+- **Also surfaced:** startup — Prove-you're-clean zk-SNARK anti-cheat verification for poker/chess
+  (arXiv:2608.02774); project — Edit Ledger: credit-assignment for betting-model tweaks
+  (arXiv:2608.23631); demo — Triple-Jointed Escape: Racing Langevin Diffusions Out of a Losing Streak
+  (arXiv:2607.20882, cascaded noise escapes a metastable well strictly faster than direct noise).
+- **Built (all 3 completed):**
+  - A — **Volatility Flip** (arXiv:2511.01905): 200 simulated bankrolls compound multiplicatively via a
+    lognormal shock matrix under a favorable/stressful environment toggle and a volatility slider; a
+    log-scale fan chart, survival-rate chart, and live "Jensen's tax" (σ²/2) stat panel let you watch
+    the same variance knob flip from harmful to protective as the regime flips. Hand-rolled canvas
+    charts (no charting lib). Math verified via a standalone Node test (survival 100%→23% as σ rises in
+    the favorable regime; baseline is always exactly 0% survival in the stressful regime while any σ>0
+    produces nonzero survival). No headless-browser interactivity pass.
+  - B — **Deck-Count Duel** (arXiv:2308.07329): real tabular Q-learning (epsilon-greedy, Bellman
+    updates) trains live client-side against a genuinely shuffled/depleting shoe, racing a hardcoded
+    basic-strategy + Hi-Lo true-count betting bot over hundreds of thousands of simulated hands; a
+    deck-count slider (1-8 decks + continuous-shuffle mode) drives convergence, bankroll, and
+    edge-vs-deck-count charts. Simulation validated standalone in Node (flat-bet edge -0.3% to -1.2%,
+    Hi-Lo edge +0.97% at 1 deck declining to -1.13% under CSM) and end-to-end in headless Playwright
+    (zero console errors across every control, screenshot-verified).
+  - C — **Averageness Slider** (arXiv:2602.13368): procedurally-drawn SVG faces at 21 interocular-ratio
+    variants, pairwise A/B voting logged to localStorage building a live win-rate-by-ratio histogram
+    that should peak near the average ratio, with a reference line for the paper's reported peak (0.40
+    used as an illustrative midpoint since the exact reported ratio wasn't available). Headless
+    Playwright-verified end-to-end including localStorage persistence across reload.
+- **Judge:** scored roughly Deck-Count Duel 35/40, Volatility Flip 33/40, Averageness Slider 22/40
+  (Averageness docked hardest for an admittedly guessed reference ratio and a result that depends on one
+  person's aesthetic bias converging over a session rather than simulating the paper's actual
+  population-level finding). Picked **Deck-Count Duel**: the only one of the three where you watch real
+  live computation unfold (Q-learning training in front of you) rather than a pre-set outcome, the most
+  technically ambitious, and the most rigorously tested via headless-browser verification.
+- **Published:** demo at `demos/2026-08-29-deck-count-duel.html`, brief at `2026-08-29-nightly.html`,
+  both registered in `david-share/manifest.json` and pushed live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-29-nightly.html
+
 ## 2026-08-28 — Tunnel or Climb (recovered, finished 2026-08-29)
 - **Status:** the 2026-08-28 run's fetch, ideation, and 3-way build-off all completed in full — all
   three builders finished (`2026-08-28-trust-arena-a.html`, `2026-08-28-auc-lies-b.html`,
