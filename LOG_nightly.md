@@ -1,5 +1,49 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-28 — Tunnel or Climb (recovered, finished 2026-08-29)
+- **Status:** the 2026-08-28 run's fetch, ideation, and 3-way build-off all completed in full — all
+  three builders finished (`2026-08-28-trust-arena-a.html`, `2026-08-28-auc-lies-b.html`,
+  `2026-08-28-tunnel-or-climb-c.html`) and `digest_2026-08-28.json` was written — but the run stalled
+  before judging, publishing, or logging. Same recurring stall-after-build-off failure mode as most
+  nights this month. Recovered and finished at the start of tonight's (2026-08-29) run.
+- **Fetch:** 176 fresh papers across 22 categories, 30 sampled for ideation, 24 ideas generated
+  (`ideation_2026-08-28_results.json`), no votes.json signal yet (all-zero, first week of forum voting).
+- **Forum top-3 / build-off candidates:** **LLM Trust Arena** (arXiv:2604.18596, cool 8×disc 9) — seeds
+  iterated-trust-game cooperation rates from the paper's measured 48x cross-provider spread;
+  **Same AUC, Different Truth** (arXiv:2608.02821, cool 7×disc 9) — two detectors share ~0.85 AUC but
+  diverge wildly in detection rate at a fixed threshold; **Tunnel or Climb** (arXiv:2606.23614,
+  cool 8×disc 9) — quantum tunneling's provable spectral-gap edge over classical hill-climbing past a
+  barrier.
+- **Also surfaced:** demo — ParlaySplit: Topological X-Ray for Your Bet Slip (arXiv:2310.09578, real
+  persistent-homology Vietoris–Rips complex over bet-slip correlations); youtube — I Tried to Poison a
+  Sports-Betting AI With Fake Injury Tweets (arXiv:2608.17153, reasoning models resist fake evidence but
+  can still be swayed after flagging it as fake); project — Dark Figures: Hidden-Signal Extraction
+  Pipeline for SharpLab (arXiv:2511.01920, Kalman filter for hidden Zika infections ported to hidden
+  sharp-money signal in line movement).
+- **Built (all 3 completed):**
+  - A — **LLM Trust Arena** (arXiv:2604.18596): personas seeded from the paper's real per-provider
+    cooperation rates, iterated Prisoner's-Dilemma-style trust game with a rounds-remaining slider,
+    watch endgame defection kick in for most personas while the Anthropic-calibrated one still
+    cooperates. Uses a CDN Chart.js dependency; endgame decay curves are hand-tuned heuristic shapes,
+    not derived from a real game-theoretic computation.
+  - B — **Same AUC, Different Truth** (arXiv:2608.02821): fully self-contained; computes real
+    Mann-Whitney AUC via rank-sum, generates genuine Gaussian-mixture vs. Gamma synthetic distributions,
+    drag directly on the histograms to move the operating threshold and watch ROC position/TPR/detection
+    gap update live.
+  - C — **Tunnel or Climb** (arXiv:2606.23614): fully self-contained; real complex-valued
+    Crank–Nicolson finite-difference solve (Thomas algorithm) of the 1D discrete Schrödinger equation on
+    a bowl+spike potential, racing a genuine Metropolis/simulated-annealing classical walker on the
+    identical landscape live, plus a background success-rate-vs-spike-height sweep chart.
+- **Judge:** scored roughly Tunnel or Climb 35/40, Same AUC 34/40, Trust Arena 27/40 (Trust Arena docked
+  for a non-self-contained CDN dependency and scripted-not-computed endgame curves). Picked **Tunnel or
+  Climb**: the most technically ambitious of the three (a real PDE solver running in-browser) and the
+  most visceral — classical walkers physically bounce off the barrier while the quantum probability
+  density visibly leaks through it, with a live sweep chart showing success-rate curves diverge exactly
+  as spectral-gap theory predicts. Same AUC was a close second on tightness of interactivity.
+- **Published:** demo at `demos/2026-08-28-tunnel-or-climb.html`, brief at `2026-08-28-nightly.html`,
+  both registered in `david-share/manifest.json` and pushed live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-28-nightly.html
+
 ## 2026-08-27 — Freeze-Tag with Return (recovered)
 - **Status:** the 2026-08-27 run's ideation and 3-way build-off both completed in full — all three
   builders finished (`2026-08-27-bb-cycle-visualizer-a.html`, `2026-08-27-tumor-dosing-lab-b.html`,
