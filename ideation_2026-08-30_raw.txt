@@ -1,0 +1,506 @@
+{
+  "summary": "Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5, scored on cool/buildable/discussion",
+  "agentCount": 6,
+  "logs": [
+    "24 ideas generated across 6 batches"
+  ],
+  "result": {
+    "ideas": [
+      {
+        "type": "demo",
+        "title": "Kac-Bernstein Independence Breaker",
+        "paper": "2607.20646v1 [math.PR] The Independence-Preserving Property and Planar Web Geometry",
+        "pitch": "The paper proves that a real-analytic map F sending independent (X,Y) to independent (U,V) is only possible when the log-densities solve a specific Abelian functional equation — tying classical facts like Kac-Bernstein (if X+Y and X-Y are independent, X and Y must be Gaussian) to planar 4-web geometry. Build a single-page canvas demo: user picks a distribution shape via a slider (Gaussian <-> uniform <-> skewed/heavy-tailed), the page draws live samples of X,Y, computes U=X+Y and V=X-Y, scatter-plots (U,V), and shows a running mutual-information/correlation-of-squares estimate. As you slide toward Gaussian the dependence flatlines to ~0; slide away and a visible curved dependence pattern (the 'web') reappears. Add a second panel for a general Yang-Baxter-style map to gesture at the paper's broader classification result.",
+        "cool": 8,
+        "buildable": 9,
+        "discussion": 7,
+        "discussion_why": "'sum and difference of two random numbers being independent forces them to be Gaussian' is a genuine wait-really math magic trick, and it's a direct gut-check on the independence assumptions bettors implicitly make when stacking correlated legs into a parlay.",
+        "tags": [
+          "math",
+          "decision-theory",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "State Anomaly Neutralizer: Tilt Sandbox",
+        "paper": "2608.22354v2 [cs.AI] SANE: State Anomaly Neutralization for Stable Extreme-Context Delta-Rule Models",
+        "pitch": "SANE's actual result is a hard trade-off curve: at compression strength alpha=3-5 a delta-rule model survives a 100M-token prefix (24,000x its training length) with reasoning intact (score 33-36), while too little compression overflows and too much destroys reasoning entirely. Build an HTML/canvas toy that simulates a toy recurrent 'state norm' random-walking upward with occasional localized spikes as synthetic tokens stream in; a slider for tanh-compression alpha clips the spikes, and a second line plots a synthetic 'reasoning capacity' score that degrades once alpha gets too aggressive. Frame it explicitly as a betting/poker tilt model: your 'bankroll variance' (state norm) needs clipping after a bad-beat spike, but clip too hard (flat betting after every loss) and you strangle your edge (reasoning score) — same U-shaped trade-off the paper found for a totally different reason.",
+        "cool": 7,
+        "buildable": 8,
+        "discussion": 8,
+        "discussion_why": "An AI blowing up after 100M tokens is a great hook on its own, and mapping the exact alpha-tradeoff curve onto Kelly-capping / bet-sizing-after-tilt is the kind of decision-theory analogy that starts real arguments about how hard to cap size after a downswing.",
+        "tags": [
+          "ai",
+          "decision-theory",
+          "gambling"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "SuperShap: Clustered Shapley Explainability for Bet Time-Series",
+        "paper": "2409.18156v1 [q-bio.GN] A novel application of Shapley values for large multidimensional time-series data",
+        "pitch": "The paper's actual trick is grouping raw time points into 'superpixel'-style temporal clusters (borrowed from image Shapley methods) so Shapley values become computable on a 31,200-point forensic DNA signal instead of being 2^N-hard. Port that exact trick to SharpLab: a small library that takes a live win-probability or odds-movement time series, auto-clusters it into contiguous temporal segments (change-point or fixed-window based), and computes Shapley attributions per segment to answer 'which minutes of the game / which odds moves actually drove the model's edge call' — same superpixel-for-time compression, new domain, directly reusable in an existing SharpLab pipeline.",
+        "cool": 6,
+        "buildable": 7,
+        "discussion": 6,
+        "discussion_why": "Explainable-AI-for-a-bet-model is catnip for the 'is this signal or overfit noise' argument quant bettors love to have, especially once you can point at a specific 3-minute window of a game and say 'that's what moved the model.'",
+        "tags": [
+          "betting",
+          "ai",
+          "math"
+        ]
+      },
+      {
+        "type": "startup",
+        "title": "Pareto Edge Engine: fatigue-aware in-game prop signals",
+        "paper": "2608.22387v1 [cs.AI] Self-Supervised Graph Representation Learning for In-The-Wild Wearable and Smartphone based Emotion Recognition + 2608.02274v1 [cs.CR] A Multi-Objective AutoML-based Efficient Intrusion Detection System for EV Charging Networks",
+        "pitch": "Paper 1's real result: framing wearable sensor streams as a graph and training with self-supervised masking + semi-supervised labels beats full-label baselines by 4.3-7.8% using only 20-25% of the labels (K-EmoPhone dataset) — i.e. you can extract reliable arousal/valence-like state signals from very little ground truth. Paper 2's real result: LightGBM feature selection plus a genetic multi-objective search finds models that trade off accuracy vs latency vs size on a genuine Pareto front rather than just chasing accuracy. Combine both recipes into a product: run the same graph-SSL architecture on publicly available in-game biometric proxies (available wearable/tracking feeds from leagues that release them) to flag fatigue/arousal state changes, then use the same multi-objective AutoML search to pick a model variant small and fast enough to score in real time for live in-game prop markets, explicitly optimizing accuracy/latency/size like the IDS paper does for EV charging security.",
+        "cool": 7,
+        "buildable": 4,
+        "discussion": 9,
+        "discussion_why": "Biometric-inferred fatigue signals feeding real-time prop betting is exactly the 'is this genius or dystopian' edge case that lights up a betting/sports Discord, plus it's a legitimate open question whether wearable-label-efficient SSL actually transfers to noisy in-game data.",
+        "tags": [
+          "sports",
+          "betting",
+          "bio"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Order Flow Whisperer",
+        "paper": "2307.15599v2 - Understanding the worst-kept secret of high-frequency trading",
+        "pitch": "The paper's actual result: it solves a market-maker's optimal-quoting PDE and shows that when the maker has an edge on the true efficient price, the OPTIMAL strategy is to quote a book that produces a predictive volume imbalance -- the imbalance-predicts-price effect traders exploit is endogenously manufactured by informed quoting, not a free-standing statistical fact about markets. Build a single-page canvas toy: two sliders, 'market maker informedness' and 'inventory aversion'. Underneath runs a simplified discrete-time version of the paper's control problem (a greedy inventory-skew heuristic approximating the PDE's qualitative behavior) driving a live limit order book on one side and a price-path chart on the other. As you crank informedness up from 0, watch the bid/ask depth imbalance visibly start to LEAD the price series, with a rolling correlation/predictive-R^2 readout that climbs in real time -- letting someone feel the exact mechanism the paper proves: the signal quant funds pay millions to detect is a byproduct of someone else's optimal play, not an inefficiency.",
+        "cool": 8,
+        "buildable": 9,
+        "discussion": 9,
+        "discussion_why": "Directly rewires how a betting/trading-savvy Discord thinks about 'reading the tape' -- the shock is that the signal isn't informational leakage, it's the informed player's OPTIMAL bluff-tell, a poker-adjacent idea that will spark immediate 'wait, so order flow is basically a forced tell?' arguments.",
+        "tags": [
+          "betting",
+          "gambling",
+          "decision-theory",
+          "econ"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Soliton Zoo: Box-Ball Playground",
+        "paper": "2607.06942v1 - Invariant Measures for Soliton Systems Generated by Mealy Automata",
+        "pitch": "The paper proves that for box-ball systems generated by Mealy automata (BBS-S(2), BBS-V(2), BBS-C(2)) certain random initial conditions -- i.i.d. Bernoulli fills, or in the BBS-C(2) case full Markov-distributed fills -- stay statistically identical (invariant) forever as the balls evolve and collide, and it derives the exact phase shift each 'soliton' (a block of balls) picks up when it passes through another. Build a one-file HTML box-ball simulator: a 1D strip of cells, click to drop balls or hit 'randomize (Bernoulli p)' to seed per the paper's invariant measure, then step the automaton and watch solitons of different sizes glide, collide, and swap places with a visible phase-shift jump exactly matching the paper's formula. A toggle overlays a live histogram of cell-occupancy statistics proving it stays put (invariant) generation after generation -- turning an abstract ergodic-theory theorem into a satisfying, Conway's-Life-adjacent toy anyone can poke at.",
+        "cool": 8,
+        "buildable": 9,
+        "discussion": 6,
+        "discussion_why": "Cellular-automaton toys always hook the puzzle/board-game crowd on a games Discord, and 'random noise that's mathematically guaranteed to stay random forever' is a genuinely surprising, shareable factoid even without a gambling hook.",
+        "tags": [
+          "math",
+          "games",
+          "whimsy",
+          "physics"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Duck Curve Duel",
+        "paper": "2604.00674v1 - Managing the Mismatch: The Role of Flexibility on the Path to a Carbon-Neutral Energy System",
+        "pitch": "The paper's headline numbers: by 2045 solar-driven daily flexibility needs roughly quadruple, and a grid caught without enough flexibility eats a 6.9% system-cost penalty and +14 EUR/MWh prices, while deploying V2G, smart EV charging, and industrial demand response actually CUTS system costs by 3.3% versus the no-flexibility baseline. Turn this into a single-page slider game: a stylized 24-hour solar generation curve plus demand curve renders live; the player allocates a fixed pool of 'flexibility points' across EV smart-charging, V2G discharge, and industrial shifting, and the demo recomputes a simplified cost/price index each time, snapping to the paper's actual before/after numbers at the two extremes (no flexibility vs. full flexibility) so the delta a player achieves is grounded in the real study, not a made-up curve.",
+        "cool": 7,
+        "buildable": 7,
+        "discussion": 6,
+        "discussion_why": "The 'wait, spending more on flexibility infra actually makes electricity CHEAPER, not just greener' result is a genuine surprise that plays well as a decision-theory/resource-allocation puzzle even on a crowd more into betting than energy policy.",
+        "tags": [
+          "physics",
+          "econ",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "The Reaction That Cheats Physics (and the AI That Caught It)",
+        "paper": "2605.30165v1 - Tunneling phase diagram: A machine-learning framework for multidimensional kinetic isotope effects",
+        "pitch": "The paper's real finding: kinetic isotope effect (KIE) measurements conflate several quantum and classical effects, so a raw KIE number can't tell you how much quantum tunneling is actually happening. Their ML model decodes the nonlinear KIE-vs-tunneling-factor (kappa) relationship well enough to isolate 'true' tunneling strength (R^2 > 0.98), and in doing so it uncovers an anomalous high-KIE/low-kappa regime spanning 300-600K -- reactions that LOOK like they're heavily tunneling by the traditional metric but, per the decoupled model, mostly aren't. A tight explainer video: open with the classic 'electron/proton teleports through a wall it shouldn't be able to cross' hook, build up why chemists have used KIE as a tunneling proxy for decades, then reveal the twist -- the AI found a temperature band where that proxy is systematically lying, essentially catching chemistry 'bluffing' about how quantum it's being. A phase-diagram heatmap animation (KIE vs kappa vs T) is the visual centerpiece.",
+        "cool": 8,
+        "buildable": 4,
+        "discussion": 5,
+        "discussion_why": "Niche physical-chemistry result, but 'a widely-trusted proxy metric turns out to be misleading in a specific, ML-discovered regime' is a pattern-matches-to-everything hook (stats in sports, tells in poker) that can bait a decent side discussion even from a non-chemist crowd.",
+        "tags": [
+          "ai",
+          "physics",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Predictable You Are Not",
+        "paper": "2607.20818v2 [math.PR] Self-Balancing Sequential Sampling: Fast Convergence with Controlled Predictability",
+        "pitch": "A single-file canvas toy that runs two live sequences side-by-side: a plain i.i.d. coin flip vs. the paper's self-balancing sampler. The paper proves the self-balancing process converges its running balance at O(n^-1) — quadratically faster than i.i.d.'s O(n^-1/2) — while remaining the unique solution to an entropy-regularized objective that keeps it provably no easier to guess than a fair coin (its count process even converges to an Ornstein-Uhlenbeck process under weak bias). The demo lets the visitor try to 'beat' the sampler by clicking their next guess every round; a live scoreboard shows their prediction accuracy pinned near 50% even as a second chart shows the running balance snapping to zero far faster than the i.i.d. control. A 'cheat' slider injects the paper's weak-bias term so users can watch the OU-process convergence emerge in real time on the balance chart.",
+        "cool": 8,
+        "buildable": 9,
+        "discussion": 9,
+        "discussion_why": "Directly hits the 'is the shuffle/RNG rigged' conspiracy that haunts every online poker room and casino app, and the counterintuitive result (evenly balanced but NOT predictable) is a genuine 'wait, really?' math fact perfect for audit scheduling, ref assignment, and drug-testing arguments too.",
+        "tags": [
+          "gambling",
+          "decision-theory",
+          "math"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Go-or-Grow: The Tumor's Table-Selection Problem",
+        "paper": "2510.23360v1 [q-bio.PE] Effect of intratumor heterogeneity in managing the go-or-grow dichotomy of cancer cells: a game theory approach",
+        "pitch": "An interactive single-page game-theory sandbox that reproduces the paper's core threshold result: drag a slider for the proportion of BAP1-mutated ('punctuated') subclones in the tumor and watch the Nash-equilibrium motility (migrate-vs-proliferate) rate spike once that proportion drops below a critical threshold, then collapse once mutants dominate — exactly matching their claimed non-monotonic finding for clear-cell renal carcinoma. Frame it for a poker/sports crowd as 'when do you leave your seat' — with few aggressive regs at the table, moving (metastasizing) pays; once they dominate, grinding in place wins. The payoff functions are the actual ones from the paper, just exposed as sliders, so the analogy sits on top of a real reproduction, not just vibes.",
+        "cool": 7,
+        "buildable": 7,
+        "discussion": 7,
+        "discussion_why": "Genuine game-theoretic equilibrium with a surprising threshold effect, dressed in a poker/table-selection metaphor that's exactly the kind of 'is this actually the same math as X' argument a decision-theory-literate Discord loves to pick apart.",
+        "tags": [
+          "bio",
+          "decision-theory",
+          "games"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Splat Lab: Milkshake vs. Water on a Sand Trap",
+        "paper": "2606.00319v1 [cond-mat.soft] Impact of viscoelastic polymer solution droplets on a granular bed",
+        "pitch": "A canvas physics toy where you flick virtual droplets (tunable from water-like to thick polymer/viscoelastic) onto a simulated granular bed and watch crater width follow the paper's actual discovered regimes: a low-energy plateau, then power-law crater growth — with viscoelastic drops flipping into the power-law regime at markedly lower impact energy than Newtonian ones of the same size, because the polymer changes how impact energy splits between droplet deformation and grain dissipation. Skinned as a golf-bunker-shot whimsy toy ('will it plug in the sand?') for extra shareability, with a toggle to see the raw dimensionless energy-vs-crater-diameter curve from the paper underneath the game skin.",
+        "cool": 7,
+        "buildable": 8,
+        "discussion": 6,
+        "discussion_why": "Mostly a delightful whimsy/physics surprise (a viscoelastic drop craters at way lower energy than water) with a light golf-bunker-variance hook for sports betting talk, rather than a deep decision-theory debate.",
+        "tags": [
+          "physics",
+          "whimsy",
+          "sports"
+        ]
+      },
+      {
+        "type": "startup",
+        "title": "Tout Buster: Propaganda-Technique Scanner for Betting Picks",
+        "paper": "2608.22388v1 [cs.AI] ProBel: Propaganda Detection with Techniques, Spans, and Explanations",
+        "pitch": "ProBel builds a bilingual benchmark scoring news text on 23 propaganda techniques (loaded language, appeal to authority, slogans, cherry-picking, bandwagon, false urgency, etc.) with a single multi-task model beating specialized ones. Those same techniques map almost 1:1 onto sports-betting 'tout' copy ('LOCK OF THE DAY', fake win-streak screenshots, manufactured urgency). Tout Buster is a lightweight moderation bot/browser extension for betting Discords and forums that scores incoming picks/screenshots against the same 6 coarse categories and surfaces a 'propaganda density' badge plus the flagged spans before anyone copies a bet — pitched as a paid moderation add-on for betting communities and cappers marketplaces that want to self-police scam touts.",
+        "cool": 6,
+        "buildable": 6,
+        "discussion": 8,
+        "discussion_why": "Every betting Discord has beef with scam touts and this gives them actual language to point at — high relatability, direct fit to gambling/betting culture, and a fun 'the propaganda-detection paper is basically a tout detector' reveal.",
+        "tags": [
+          "betting",
+          "ai",
+          "gambling"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Duel the Demon: Cold-Damping Work Extractor",
+        "paper": "2607.06822 - A neural-network Maxwell's demon learns cold damping for work extraction",
+        "pitch": "Single-file canvas sim of an underdamped harmonic oscillator (the micromechanical cantilever from the paper) buffeted by thermal noise. The user (or a toggled 'trained demon' AI) shifts the trap position each tick based on either position-only or velocity feedback; a live work-meter tracks cumulative extracted energy against the paper's theoretical power bound. Flipping on velocity feedback reproduces the paper's actual finding: the demon discovers cold damping (trap displacement roughly linear in velocity, raising effective damping / lowering effective temperature) and gets close to the optimum, dramatically beating the naive position-based strategy visualized side by side.",
+        "cool": 8,
+        "buildable": 9,
+        "discussion": 6,
+        "discussion_why": "Racing a near-optimal 'house' bound with a dumb vs. smart strategy is a fun edge/EV framing bettors will get instantly, even though the substrate is physics not gambling.",
+        "tags": [
+          "physics",
+          "whimsy",
+          "games"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Generalist Gambit: Evolving Robustness via Environmental Noise",
+        "paper": "2510.24602 - Learning to generalize in evolution through annealed population heterogeneity",
+        "pitch": "Interactive population simulator: two colonies of agents face a stream of shifting environments (think 'opponent styles' or 'bet types'). One colony is homogeneous (every individual sees the same environment each round); the other has annealed heterogeneity (different individuals see different environment instances at once, per the paper). Sliders control environment-switch rate and heterogeneity spread. The demo directly visualizes the paper's real mechanism -- a variance-weighted demographic noise term that penalizes across-environment fitness variance -- by showing specialist genotypes dominate then collapse when the environment shifts, while the heterogeneous colony converges on generalist strategies that survive every shift, plotted live as a fitness-variance chart.",
+        "cool": 8,
+        "buildable": 8,
+        "discussion": 8,
+        "discussion_why": "Overfitting to one reads/opponent pool vs. building a robust generalist strategy is a constant live debate in poker and sports-betting circles, and this is a legit bio-to-strategy crossover, which is a nice 'wait, evolution proves this?' surprise.",
+        "tags": [
+          "bio",
+          "decision-theory",
+          "poker",
+          "games"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "The Shuffle Theorem: Knot Theory Hiding in Your Card Deck",
+        "paper": "2608.06225 - Noncrossing Combinatorics, the Full Twist, and Decategorification of Knot Invariants",
+        "pitch": "Explainer (with an embedded interactive braid-on-cards widget) built around the paper's actual result: positive powers of the full twist braid element generate exactly the noncrossing partitions, while negative powers generate cluster complexes, and this combinatorics computes the a,z=0-HOMFLYPT knot polynomial. Frame it as 'twisting' a deck of cards -- animate a braid diagram acting on card positions, showing which orderings (noncrossing partitions) are reachable after k twists, and connect it to the real casino/poker question of how many riffle shuffles are needed before ordering becomes unpredictable. The companion demo lets viewers drag a twist-power slider and watch the reachable-partition set grow from noncrossing partitions into cluster-complex territory.",
+        "cool": 7,
+        "buildable": 6,
+        "discussion": 7,
+        "discussion_why": "Card-shuffle randomization is a genuine recurring casino/poker-integrity argument, and 'a knot invariant secretly counts your shuffles' is exactly the surprising, whimsical hook that gets shared in a games Discord.",
+        "tags": [
+          "math",
+          "games",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Multi-Window Ensemble Picker for Betting Edge Models",
+        "paper": "2309.00626 - An Ensemble Method of Deep Reinforcement Learning for Automated Cryptocurrency Trading",
+        "pitch": "Port the paper's actual novel mechanism -- selecting a subset of trained models by evaluating them across multiple rolling validation periods (not one backtest window), then combining survivors via a mixture-distribution policy instead of naive averaging, and reporting a distribution of granular out-of-sample results rather than a single headline metric -- into a reusable tool for SharpLab-style sports edge models (e.g. rebounds/threes props). Feed in several trained models, auto-select the ones that are robust across multiple historical slices, blend them into one signal, and surface the out-of-sample performance distribution to flag models that only looked good on one lucky backtest window.",
+        "cool": 6,
+        "buildable": 5,
+        "discussion": 7,
+        "discussion_why": "Single-backtest-window overfitting is THE recurring fight among quant sports bettors and poker solvers-users, so a concrete multi-window robustness-selection method lands as directly actionable, not just academic.",
+        "tags": [
+          "betting",
+          "sports",
+          "decision-theory",
+          "ai"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Bankroll Truth Serum: The Acceptability Index Lab",
+        "paper": "2310.02014 Utility-based acceptability indices (crossed with 2308.00013 Bitcoin Gold, Litecoin Silver for a real backtested return series)",
+        "pitch": "Pitera & Rasonyi define a new performance measure: instead of Sharpe-ratio-style stats, you compute a 'certainty equivalent' via a scaled utility function and turn that into an acceptability index that depends explicitly on your risk aversion. Build a single-page tool where you paste (or pick from presets) a strategy's return series -- e.g. the Bitcoin Gold paper's own backtested Price-to-Utility crypto strategy, a parlay payout distribution, or a Kelly-sized sports betting log -- and a slider lets you dial risk aversion from log-utility (Kelly) to increasingly risk-averse power utility. The chart re-ranks 3-4 candidate strategies live as you move the slider, so people watch their favorite '+EV' strategy visibly fall out of favor once you crank up risk aversion, and a supposedly 'worse' low-variance strategy jump to #1. That's the paper's actual claim made visceral: acceptability isn't one number, it's a function of your utility.",
+        "cool": 8,
+        "buildable": 8,
+        "discussion": 9,
+        "discussion_why": "Directly weaponizes the eternal Kelly-vs-fractional-Kelly, 'is this bet actually +EV for ME' argument that every betting/poker Discord has monthly, and it's a genuine 'wait, really' when the ranking of strategies flips under your own eyes.",
+        "tags": [
+          "betting",
+          "gambling",
+          "decision-theory",
+          "econ"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Draft Meltdown: How Bad Can a Live Auction Get?",
+        "paper": "2606.22520 Submodular Welfare Maximization with Budget Constraints in the Random-Order Model",
+        "pitch": "The paper's headline number is brutal: even the best known polynomial-time algorithm for online budgeted item allocation only guarantees ~1/14.85 (about 6.7%) of the offline optimum in the worst case (1/6.86 for the pure matching case), even though items arrive in a friendly random order rather than adversarially. Build a live fantasy-auction/waiver-wire simulator: players (items) with random valuations to several GMs (budget-constrained agents) arrive one at a time in random order, and you can toggle between 'naive greedy pick' and a paper-style repeated-multilinear-extension-flavored algorithm, watching a running bar chart of achieved welfare vs. the (computed after the fact) offline optimum. Let users manually draft too and compare their score to both algorithms -- most people's gut-feel draft beats naive greedy but still falls miles short of optimal, which is the whole point of the paper.",
+        "cool": 8,
+        "buildable": 8,
+        "discussion": 9,
+        "discussion_why": "Auction drafts (fantasy sports, DFS salary caps, waiver wires) are core Discord content, and the reveal that provably-good algorithms only capture ~7% of optimal welfare is a genuine shock that will spawn 'no way that's optimal' arguments.",
+        "tags": [
+          "sports",
+          "games",
+          "gambling",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Eventown: The Parity Puzzle",
+        "paper": "2608.06248 On uniform eventowns",
+        "pitch": "Cherkashin & Prozorov push the classic Eventown/Oddtown bound: for k-subsets of an n-set with every pairwise intersection even, the max family size is C(n/2, k/2), achieved by an 'atomic' family (built from pairing up elements into blocks) -- and they prove it holds for realistic n instead of only astronomically large n. Turn it into a bite-size daily puzzle: pick a small n and k, show a grid of togglable k-subsets, live-check every pairwise intersection mod 2, and keep a running counter against the proven binom(m,t) ceiling. Add a 'reveal the atomic solution' button that draws the pairing-into-blocks construction so people see WHY the extremal families look the way they do.",
+        "cool": 7,
+        "buildable": 9,
+        "discussion": 5,
+        "discussion_why": "Pure combinatorics is less native to a betting Discord, but a tight daily puzzle with a hard provable ceiling has real Wordle-for-nerds appeal and the 'linear algebra beats brute force' reveal is a fun flex to argue over.",
+        "tags": [
+          "math",
+          "games",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Random Graph Roulette: Watching Universality Kick In",
+        "paper": "2608.06358 Universality in random graphs via optimal linking systems: trees and beyond",
+        "pitch": "The result: at edge probability just p = C ln(n)/n, a random graph G(n,p) suddenly contains EVERY bounded-degree spanning tree with high probability -- a sharp threshold, not a gradual one. Build a slider over p that redraws G(n,p) for modest n (~60-150 nodes) and runs a fast embedding search for a tree/cycle-factor pattern you pick (path, star, binary tree, or a ring-of-triangles 'cycle factor'), showing a red/green flip as p crosses the threshold. Frame one mode as 'Collusion Null-Model Check': load a toy chip-transfer or seating graph and ask whether the suspicious sub-pattern you're eyeballing is actually MORE likely to appear by pure chance at that graph's density than people assume -- using the paper's own threshold as the baseline for 'this would show up randomly anyway'.",
+        "cool": 8,
+        "buildable": 7,
+        "discussion": 7,
+        "discussion_why": "The sharp phase transition ('one slider tick and the graph goes from definitely-no-tree to definitely-every-tree') is a great 'wait, really' moment, and framing it as a poker/table-game collusion null-model gives the math a gambling hook people will actually argue about.",
+        "tags": [
+          "math",
+          "poker",
+          "games",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Metaorder Mirror",
+        "paper": "2308.01112v1 (order-splitting behavior of individual trading accounts)",
+        "pitch": "Single-file HTML toy that simulates the paper's confirmed LMF order-splitting model: generate synthetic metaorders whose length distribution follows the fitted power law P(L)∝L^-(α+1), then plot the resulting sign-autocorrelation of trades and watch it decay with the exact exponent γ≈α-1 the authors validated on 9 years of Tokyo Stock Exchange data as you drag α. A second panel reframes the same curve as 'a bettor spreading one $50k position across 40 sub-accounts over 3 days' -- showing that the statistical fingerprint a sportsbook risk team would use to catch a syndicate splitting bets to dodge limits is mathematically identical to the one economists use to spot institutional order-splitters.",
+        "cool": 7,
+        "buildable": 8,
+        "discussion": 9,
+        "discussion_why": "Directly reframes a market-microstructure result as 'this is how books catch sharps splitting action across accounts' -- immediate relevance + a genuine wait-really moment for a betting Discord.",
+        "tags": [
+          "betting",
+          "decision-theory",
+          "math"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Rumor Immunity Dial",
+        "paper": "2603.29833v1 (Copy-Spread-Annihilate Dynamics in Degree-Assortative Networks)",
+        "pitch": "Canvas force-graph where a slider rewires the network from hub-to-hub (assortative) to hub-to-leaf (disassortative) while a 'signal' -- a bad-beat story, a promo code, a bluff tell -- copies itself to neighbors each tick and annihilates on collision. A live lifetime readout recreates the paper's actual non-monotonic result: signal survival peaks near *neutral* assortativity, not at either extreme, because hub amplification and short-cycle annihilation trade off. Dragging the slider live-in-browser is the whole 'aha' -- you feel the hump the paper only shows as a static plot.",
+        "cool": 8,
+        "buildable": 8,
+        "discussion": 8,
+        "discussion_why": "Counterintuitive non-monotonic result (more hub-clustering isn't always better for virality) maps straight onto affiliate-code spread and Discord rumor/meme survival, with a strong whimsy hook.",
+        "tags": [
+          "games",
+          "gambling",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "startup",
+        "title": "SplitWatch",
+        "paper": "2308.01112v1 + 2603.29833v1 (order-splitting statistics + assortative-network signal survival)",
+        "pitch": "An analytics service for sportsbooks and syndicates built on the paper's validated LMF signature: ingest bet-ticket timestamps/sizes across accounts, fit the same metaorder-length power law and sign-autocorrelation exponent used to unmask institutional order-splitters, and flag syndicates spreading action across sub-accounts to dodge limits. Layer in the assortativity paper as the 'stealth' side: model a syndicate's account-referral topology as a network and estimate how long a compliance 'flag' signal would take to propagate and annihilate internally before the whole ring gets limited -- sell detection to books, sell self-audits ('are we leaving a fingerprint?') to bettor collectives.",
+        "cool": 7,
+        "buildable": 4,
+        "discussion": 9,
+        "discussion_why": "Sits squarely in the betting-syndicate cat-and-mouse debate David's crowd lives in -- half the room will want to build it, the other half will want to beat it.",
+        "tags": [
+          "betting",
+          "gambling",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "The Sieve That Finally Got Faster",
+        "paper": "2606.22851v1 (Faster enumeration of primes)",
+        "pitch": "Explainer covering Harvey's actual result: the first algorithm to enumerate primes up to N with an asymptotic speedup by a positive power of log N over the classical Sieve of Eratosthenes -- N(log log N)^{1+o(1)} bit operations non-rigorously, using fast polynomial arithmetic over finite fields plus error-correcting-code ideas, beating 40+ years of incremental work since Pritchard and Atkin-Bernstein. Pair the narration with a tiny embedded HTML demo racing operation-count curves (classical sieve vs. the new asymptotic) on a log-log chart as N scales, then a short honest segment on why this matters for crypto key generation, not your poker shuffle RNG.",
+        "cool": 7,
+        "buildable": 6,
+        "discussion": 4,
+        "discussion_why": "Genuine 'wait, this took 40 years?' nerd-snipe, but it's an honest stretch to tie to betting/poker beyond a passing crypto-RNG aside.",
+        "tags": [
+          "math",
+          "whimsy"
+        ]
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Ideate"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "batch-1",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a5d0186c5f27b4d5b",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1788073509658,
+      "queuedAt": 1788073509638,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2608.22354v2 [cs.AI] SANE: State Anomaly Neutralization for Stable Extreme-Context Delta-Rule Models\n- 2607.20646v1 [math.PR] The Independence-Preserving Property and Planar Web Geometry\n- 2…",
+      "lastProgressAt": 1788073583650,
+      "tokens": 24041,
+      "toolCalls": 7,
+      "durationMs": 73992,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Kac-Bernstein Independence Breaker\",\"paper\":\"2607.20646v1 [math.PR] The Independence-Preserving Property and Planar Web Geometry\",\"pitch\":\"The paper proves that a real-analytic map F sending independent (X,Y) to independent (U,V) is only possible when the log-densities solve a specific Abelian functional equation — tying classical facts like Kac-Bernstein (if X+Y …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "batch-2",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a58abea8429cce5a4",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1788073509658,
+      "queuedAt": 1788073509638,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2605.30165v1 [physics.chem-ph] Tunneling phase diagram: A machine-learning framework for multidimensional kinetic isotope effects\n- 2607.06942v1 [cond-mat.stat-mech] Invariant Measures for S…",
+      "lastProgressAt": 1788073586430,
+      "tokens": 24212,
+      "toolCalls": 7,
+      "durationMs": 76771,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Order Flow Whisperer\",\"paper\":\"2307.15599v2 - Understanding the worst-kept secret of high-frequency trading\",\"pitch\":\"The paper's actual result: it solves a market-maker's optimal-quoting PDE and shows that when the maker has an edge on the true efficient price, the OPTIMAL strategy is to quote a book that produces a predictive volume imbalance -- the imbalance-pr…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "batch-3",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "ab195f7823f588c6d",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1788073509659,
+      "queuedAt": 1788073509639,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2608.22388v1 [cs.AI] ProBel: Propaganda Detection with Techniques, Spans, and Explanations\n- 2607.20818v2 [math.PR] Self-Balancing Sequential Sampling: Fast Convergence with Controlled Predi…",
+      "lastProgressAt": 1788073610613,
+      "tokens": 23723,
+      "toolCalls": 7,
+      "durationMs": 100954,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Predictable You Are Not\",\"paper\":\"2607.20818v2 [math.PR] Self-Balancing Sequential Sampling: Fast Convergence with Controlled Predictability\",\"pitch\":\"A single-file canvas toy that runs two live sequences side-by-side: a plain i.i.d. coin flip vs. the paper's self-balancing sampler. The paper proves the self-balancing process converges its running balance at O(n^-…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "batch-4",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a669090042bf9f7de",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1788073509659,
+      "queuedAt": 1788073509639,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2309.00626v1 [q-fin.TR] An Ensemble Method of Deep Reinforcement Learning for Automated Cryptocurrency Trading\n- 2510.26115v2 [q-bio.PE] Quenched coalescent for diploid population models wit…",
+      "lastProgressAt": 1788073587667,
+      "tokens": 24272,
+      "toolCalls": 7,
+      "durationMs": 78008,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Duel the Demon: Cold-Damping Work Extractor\",\"paper\":\"2607.06822 - A neural-network Maxwell's demon learns cold damping for work extraction\",\"pitch\":\"Single-file canvas sim of an underdamped harmonic oscillator (the micromechanical cantilever from the paper) buffeted by thermal noise. The user (or a toggled 'trained demon' AI) shifts the trap position each tick ba…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "batch-5",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a2c97fa4d34aa8a4d",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1788073509659,
+      "queuedAt": 1788073509639,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2308.00013v1 [q-fin.TR] Bitcoin Gold, Litecoin Silver: An Introduction to Cryptocurrency's Valuation and Trading Strategy\n- 2606.22520v1 [cs.DS] Submodular Welfare Maximization with Budget C…",
+      "lastProgressAt": 1788073609715,
+      "tokens": 27773,
+      "toolCalls": 6,
+      "durationMs": 100056,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Bankroll Truth Serum: The Acceptability Index Lab\",\"paper\":\"2310.02014 Utility-based acceptability indices (crossed with 2308.00013 Bitcoin Gold, Litecoin Silver for a real backtested return series)\",\"pitch\":\"Pitera & Rasonyi define a new performance measure: instead of Sharpe-ratio-style stats, you compute a 'certainty equivalent' via a scaled utility function an…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "batch-6",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a9eff2f5982f67ccf",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1788073509659,
+      "queuedAt": 1788073509639,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You're mining fresh arXiv papers for cool project/startup/YouTube-video/demo ideas. Here are 5 papers (fetch each abstract from arxiv.org/abs/<id> if you need more than the title to judge the actual result):\n- 2607.11408v1 [math.NT] The combinatorics of sector renormalization\n- 2605.31355v5 [cond-mat.soft] Spontaneous flows and interfacial instabilities in oxygen-sensitive living active matter\n- 2…",
+      "lastProgressAt": 1788073615720,
+      "tokens": 24333,
+      "toolCalls": 7,
+      "durationMs": 106061,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Metaorder Mirror\",\"paper\":\"2308.01112v1 (order-splitting behavior of individual trading accounts)\",\"pitch\":\"Single-file HTML toy that simulates the paper's confirmed LMF order-splitting model: generate synthetic metaorders whose length distribution follows the fitted power law P(L)∝L^-(α+1), then plot the resulting sign-autocorrelation of trades and watch it decay…"
+    }
+  ],
+  "totalTokens": 148354,
+  "totalToolCalls": 41
+}
