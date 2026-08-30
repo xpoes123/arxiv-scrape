@@ -1,5 +1,57 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-30 — Bankroll Truth Serum
+- **Status:** clean run start-to-finish, no recovery needed.
+- **Fetch:** 176 fresh papers across 22 categories (offset by day-of-year×3), 30 sampled for ideation
+  with explicit dedup against the last 4 nights' ideation scripts (0 overlap), 6 batches, 24 ideas
+  generated (`ideation_2026-08-30_results.json`). `votes.json` still all-zero (forum voting hasn't
+  produced signal yet), so no tag bias applied.
+- **Forum top-3 / build-off candidates (all three tied at discussion 9, all buildable-tonight demos —
+  real competition):** **Order Flow Whisperer** (arXiv:2307.15599, cool 8×buildable 9), **Predictable,
+  You Are Not** (arXiv:2607.20818, cool 8×buildable 9), **Bankroll Truth Serum** (arXiv:2310.02014,
+  cool 8×buildable 8). Two other discussion-9 ideas — **Pareto Edge Engine** (startup, buildable 4) and
+  **SplitWatch** (startup, buildable 4) — were passed over for the build-off in favor of the three
+  higher-buildable demos, but surfaced in the brief.
+- **Also surfaced:** startup — Pareto Edge Engine: wearable-fatigue-signal prop-betting engine
+  (arXiv:2608.22387 + arXiv:2608.02274); startup — Tout Buster: propaganda-technique scanner repurposed
+  as a scam-tout detector (arXiv:2608.22388); demo — Draft Meltdown: online auction algorithms can land
+  at ~7% of optimal welfare (arXiv:2606.22520); youtube — The Shuffle Theorem: a knot invariant secretly
+  counts card-shuffle structure (arXiv:2608.06225).
+- **Built (all 3 completed):**
+  - A — **Order Flow Whisperer** (arXiv:2307.15599): a market maker quotes bid/ask depth against a
+    jump-diffusion efficient price; an "informedness" slider controls how accurately she predicts the
+    next jump direction, skewing book depth toward the safe side — that skew *is* the imbalance. A second
+    "inventory aversion" slider adds unrelated confound noise. Two live charts (imbalance, price w/ jump
+    markers) plus a rolling Pearson correlation/R² between imbalance(t) and price move(t+1). Headless
+    Playwright-verified: R² ≈0.02–0.07 (noise) at informedness 0 vs. 0.38–0.82 at informedness 1; caught
+    and fixed a real bug where the "wrong guess" fallback matched the true jump direction by chance 50%
+    of the time, inflating the noise floor.
+  - B — **Predictable, You Are Not** (arXiv:2607.20818): three sequential-sampling rules run side by
+    side (pure i.i.d., naive greedy rebalancing, the paper's self-balancing rule) over a configurable
+    K-sided die, each tracking frequency convergence and a live "guess the due option" predictability
+    exploit. A β slider on the self-balancing rule's softmax trades convergence speed against
+    predictability. Headless Playwright-verified across every control (play/pause/step/fast-forward/β/K/
+    reset), zero console errors; numerically confirmed at β=0.20 self-balancing matches greedy's ~0%
+    deviation while staying near i.i.d.'s ~50% predictability baseline, climbing toward greedy's 100% as
+    β→1.5.
+  - C — **Bankroll Truth Serum** (arXiv:2310.02014): four illustrative return streams (steady low-vol,
+    high-vol/high-mean, fat-left-tail, moderate) plotted as live cumulative bankroll paths; a CRRA
+    risk-aversion slider recomputes each strategy's real certainty-equivalent growth rate live and
+    re-ranks an animated leaderboard. At γ=0 the high-variance strategy ranks #1 on raw EV; by γ=10 it's
+    dead last with a negative CE while the steady strategy takes over, with the other two crossing in
+    between. Verified via `node --check` plus a headless Chrome (puppeteer-core) pass confirming zero
+    console errors, correct rank-flip math, and a responsive-layout bug caught and fixed on mobile
+    (420px).
+- **Judge:** scored Predictable You Are Not 34/40 and Bankroll Truth Serum 34/40 (tied), Order Flow
+  Whisperer 31/40. Picked **Bankroll Truth Serum** on the tie-break that matters most for a demo: the
+  interaction directly *is* the paper's result — one slider drag visibly reorders four strategies via a
+  correct closed-form CRRA calculation, an immediate "aha" versus Predictable's more abstract dual-chart
+  tradeoff that needs two charts read together to land, plus the cleanest execution (CSS-transitioned
+  leaderboard reordering, log-scale wealth paths, synced utility-curve mini-chart).
+- **Published:** demo at `demos/2026-08-30-bankroll-truth-serum.html`, brief at
+  `2026-08-30-nightly.html`, both registered in `david-share/manifest.json` and pushed live at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-30-nightly.html
+
 ## 2026-08-29 — Deck-Count Duel
 - **Status:** clean run start-to-finish, no recovery needed. Also recovered the stalled 2026-08-28 run
   (logged below) at the start of tonight's session before starting fresh work.
