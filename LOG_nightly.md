@@ -1,5 +1,50 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-08-31 — Market Maker Stress Test
+- **Status:** clean run start-to-finish, no recovery needed. Fetch timed out at the default 2-minute
+  Bash limit on the first attempt (22-category fetch mid-flight) but wasn't backgrounded — reran in
+  foreground with a longer timeout and it completed normally.
+- **Fetch:** 176 fresh papers across 22 categories (offset by day-of-year×3), 30 hand-picked for
+  ideation across 6 batches, 90 ideas generated (`ideation_2026-08-31_results.json`). `votes.json` still
+  all-zero (no forum voting signal yet), so no tag bias applied.
+- **Forum top-3 / build-off candidates:** two ideas tied at discussion 9 — **Gut vs Grind**
+  (arXiv:2602.11478, cool 8×buildable 9) and **Market Maker Stress Test** (arXiv:2602.01817, cool
+  8×buildable 8) — plus **Pay-to-Peek** (arXiv:2606.25166, discussion 8×buildable 9), swapped in over a
+  tied-discussion-9 youtube idea (buildable only 4) to keep the build-off a genuine 3-way demo
+  competition. Two other discussion-9 candidates, **Sharpe Ratio Lies** (arXiv:2310.02014) and **AI
+  Prisoner's Dilemma Arena** (arXiv:2604.18596), were skipped as forum picks because both papers already
+  ran in the last two nights' digests (2026-08-30 and 2026-08-28) — still surfaced in the brief.
+- **Also surfaced:** demo — AI Prisoner's Dilemma Arena: LLMs diverge 48-fold on cooperation across
+  providers (arXiv:2604.18596); demo — Bet-Size Tuner: a provably sharp-rate blind search for tuning a
+  Kelly fraction (arXiv:2607.12938); project — Sharp-Money Line-Move Backtester: ports HFT order-flow
+  imbalance to sportsbook CLV signals (arXiv:2307.15599); youtube — Why Betting Syndicates Split Into
+  Small Cells: optimal spatial structure for collective information-gatherers (arXiv:2510.23297).
+- **Built (all 3 completed, all verified via headless jsdom/Playwright execution, zero real runtime
+  errors):**
+  - A — **Gut vs Grind** (arXiv:2602.11478): timed 5s "gut" pick (Type 1) on a procedurally generated
+    poker/betting scenario, followed by an untimed "grind" pick (Type 2) with full EV breakdown revealed;
+    separate simulated bankrolls per pathway, persisted via localStorage, Chart.js session comparison.
+    Judge flagged fidelity as the weak point — the gameplay is a generic System-1/System-2 metaphor
+    bolted onto the paper's actual (and more abstract) supervenience/equation-selection causal claim.
+  - B — **Market Maker Stress Test** (arXiv:2602.01817) — **WINNER**: 8 game cards, one slider controls
+    how many crash simultaneously (1 = isolated, 8 = correlated slate-wide). A DMM bot avatar physically
+    repositions itself via live bounding-rect math — absorbing the shock (tightening spreads, green
+    inventory) at scope=1, fleeing to a corner with particle FX and blown-out spreads at scope>1. Live
+    per-card sparklines, inventory gauge, liquidity provided/consumed meter. Tightest, most legible
+    mapping of the three to its paper's actual finding (fidelity 9/9, wow 9/9).
+  - C — **Pay-to-Peek** (arXiv:2606.25166): job-scheduling game — peek at a job's true processing time
+    for a cost, or run blind on the upper bound; live weighted-completion-time tracking against a ghost
+    opponent running the paper's proven 2.1523-competitive randomized algorithm on the same adversarial
+    sequence. Most substantive decision-driven gameplay of the three (interactivity 9/9); close runner-up.
+- **Judge verdict:** Market Maker Stress Test wins on audiovisual craft (fleeing/absorbing bot animation,
+  particle effects, live gauges) plus the directness of its one-slider mapping to the paper's headline
+  result; Pay-to-Peek was the closest runner-up on substance of the interaction loop.
+- **Published:** demo at
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-08-31-market-maker-stress-test.html, brief at
+  https://share.djiang.xyz/arxiv-scrape/2026-08-31-nightly.html (both registered in manifest.json,
+  committed+pushed to `xpoes123/david-share` — commit `ba99b0d`). `digest_2026-08-31.json` written for
+  the forum post (3 papers, demo_arxiv_id=2602.01817).
+
 ## 2026-08-30 — Bankroll Truth Serum
 - **Status:** clean run start-to-finish, no recovery needed.
 - **Fetch:** 176 fresh papers across 22 categories (offset by day-of-year×3), 30 sampled for ideation
