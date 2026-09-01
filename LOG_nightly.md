@@ -1,5 +1,60 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-01 — Poker DNA
+- **Status:** clean run start-to-finish, no recovery needed. Fetch timed out at the default 2-minute Bash
+  limit on the first attempt (mid-flight across 22 categories) but wasn't backgrounded — reran in
+  foreground with a longer timeout and it completed normally, same pattern as 2026-08-31.
+- **Fetch:** 176 fresh papers across 22 categories (offset by day-of-year×3), 30 randomly sampled across
+  categories for ideation across 6 batches, 88 ideas generated (`ideation_2026-09-01_results.json`).
+  `votes.json` still all-zero (no forum voting signal yet), so no tag bias applied.
+- **Forum top-3 / build-off candidates (all three tied at discussion 9, all buildable-tonight demos —
+  real competition):** **Robust Kelly / Leverage Stress-Tester** (arXiv:2310.02084, cool 8×buildable 8),
+  **Gold vs Silver: PU-Ratio Signal Game** (arXiv:2308.00013, cool 8×buildable 7), **Poker DNA: k-mer
+  Fingerprinting** (arXiv:2409.11683, cool 9×buildable 7). Two other discussion-9 ideas tied to papers
+  already built/won in the last two nights — **Order Book Imbalance Market-Maker Toy**
+  (arXiv:2307.15599, won 2026-08-30 as "Order Flow Whisperer") and **Chemo Kelly**
+  (arXiv:2603.16894, won 2026-08-27/28 window as "Tumor Dosing Lab") — were excluded as repeats.
+- **Also surfaced:** project — Bankroll Recurrence Bust-Checker: models staking systems as integer linear
+  recurrences and applies the paper's Skolem-Problem sieve to check if they can ever bust to zero
+  (arXiv:2607.15510); youtube — An AI Just Proved a 20-Year-Old Math Conjecture: ChatGPT 5.6 Pro resolved
+  Feige's 2004 conjecture on small-deviation bounds (arXiv:2607.23980); project — SharpLab Liquidity
+  Fragility Score: near-linear-time minimal-removable-set enumeration applied to betting-market liquidity
+  (arXiv:2606.26639); youtube — I Stress-Tested a Paper Claiming 325% Returns from an LSTM
+  (arXiv:2310.00747); demo — Chromatic Chicken: an unbeatable Ramsey-theory coloring bar-bet
+  (arXiv:2608.09649); demo — Fractal Market Weather Generator: an exactly-computable multiplicative
+  cascade rendered as a live fractal field (arXiv:2608.24897).
+- **Built (all 3 completed, all verified — Playwright/jsdom headless execution plus independent
+  Python/Node reference implementations of each demo's core math, zero real runtime errors):**
+  - A — **Robust Kelly / Leverage Stress-Tester** (arXiv:2310.02084): implements the paper's actual
+    growth-rate formula g(L)=L(μ−r)+r−fee−½γL²σ² with a real worst-case grid search over a user-set
+    (μ,σ) uncertainty box; toggles between Leveraged-ETF and Sports-Bet-Edge framings, CRRA γ
+    Full/Half/Quarter-Kelly presets, and a Monte Carlo fan-chart panel. Caught and fixed a real bug where
+    widening the vol band toward zero blew up leverage to absurd values; verified against an independent
+    Python reference implementation.
+  - B — **Gold vs Silver: PU-Ratio Signal Game** (arXiv:2308.00013): an 8-round compounding wagering game
+    — synthetic BTC/LTC price + UTXO-age-derived Price-to-Utility signal each round, player bets
+    buy/hold/sell against the signal and naive buy-and-hold in parallel. No CDN dependency, hand-rolled
+    canvas charts. Verified across 25 simulated full games under four strategies confirming the signal has
+    genuine, correctly-signed edge.
+  - C — **Poker DNA: k-mer Fingerprinting** (arXiv:2409.11683) — **WINNER**: treats 9 synthetic poker
+    players' action logs as "genomes," k-mer-shingles them, and renders a live 9×9 Jaccard/MinHash
+    similarity heatmap with a k-length slider as the central interactive variable. One planted
+    near-identical bot pair; at k=1–2 the metric collapses (everyone ≈1.0, too coarse), k=4–8 cleanly
+    isolates the bot pair, k=10 dilutes even the true match — the paper's own k-selection tradeoff played
+    out live. MinHash toggle approximates exact Jaccard within noise. Verified via jsdom end-to-end
+    interaction plus a hand-traced Jaccard example and a full 9-player Node simulation across k=1..10.
+- **Judge verdict:** Poker DNA wins — all three demos were polished and fully functional (wow/
+  interactivity/polish all scored 7-9 across the board), but Poker DNA's single dial (k-mer length) *is*
+  the object the paper studies, so manipulating it reproduces the paper's actual finding in real time
+  (fidelity 10/10) rather than illustrating a generic concept with a betting skin. Robust Kelly was most
+  rigorous but most "generic slider-dashboard" in feel (fidelity 9); Gold vs Silver was the most fun
+  standalone game but leaned on synthetic narrative over the paper's measured backtest (fidelity 7).
+- **Published:** demo at https://share.djiang.xyz/arxiv-scrape/demos/2026-09-01-poker-dna.html, brief at
+  https://share.djiang.xyz/arxiv-scrape/2026-09-01-nightly.html (both registered in manifest.json,
+  committed+pushed to `xpoes123/david-share` — commit `b645772`). `digest_2026-09-01.json` written for
+  the forum post (3 papers, demo_arxiv_id=2409.11683).
+
+
 ## 2026-08-31 — Market Maker Stress Test
 - **Status:** clean run start-to-finish, no recovery needed. Fetch timed out at the default 2-minute
   Bash limit on the first attempt (22-category fetch mid-flight) but wasn't backgrounded — reran in
