@@ -1,5 +1,68 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-02 — Loser's Repetition
+- **Status:** clean run start-to-finish, no recovery needed. Fetch (176 papers/22 categories, offset
+  day-of-year×3=735) completed in foreground on the first try this time, well under the timeout.
+- **Fetch:** 176 fresh papers, 30 randomly sampled across categories for ideation across 6 batches,
+  89 ideas generated (`ideation_2026-09-02_results.json`). `votes.json` still all-zero (no forum voting
+  signal yet), so no tag bias applied.
+- **Forum top-3 / build-off candidates (all three tied at discussion 9, all with strong buildable-tonight
+  demo ideas — real competition):** **Syndicate-size / Splinter to Win** (arXiv:2510.23297, cool 8,
+  demo-buildable 9) — collective-foraging ecology applied to whether a betting/poker study group should
+  splinter into smaller cliques; **Bankroll Under Fat Tails** (arXiv:2607.27073, cool 8, buildable 8) —
+  parameter-free adaptive staking vs. classic fixed-parameter Kelly under heavy-tailed noise and edge
+  drift; **Loser's Repetition** (arXiv:2604.03683, cool 7-8, buildable 8) — a chess rule reform making
+  forced threefold repetition an instant loss instead of a draw, to kill grandmaster draw-fests. Excluded
+  as repeats: chemo dosing (arXiv:2603.16894, won 2026-08-27/28) and poker-DNA k-mer fingerprinting
+  (arXiv:2409.11683, won 2026-09-01) both resurfaced in ideation but scored low today and weren't real
+  contenders anyway.
+- **Also surfaced:** demo — The Convergence Illusion Simulator: recreates a real econometric bias where
+  naive regressions overstate how fast bad teams/countries catch up to good ones, framed as the NBA/NFL
+  tanking-and-parity debate (arXiv:2602.04060); demo — Steam Detector: Who's the Sharp Book?: ports
+  stock-market volatility-clustering + Granger causality to sportsbook line movements to find which book
+  leads (arXiv:2307.13422); project — Quenched Bankroll: borrows a population-genetics quenched/annealed
+  distinction to frame "run bad" vs. "run good" as your one realized bankroll path vs. the full distribution
+  of possible paths (arXiv:2510.26115); demo — Bet on the Primes: a betting mini-game built on the open
+  Riemann-Hypothesis-adjacent question of how random the Möbius function really is (arXiv:2607.25002);
+  youtube — Gambler's Ruin, But the Casino Is Infinite-Dimensional and Curved, bridging random-walk
+  gambler's ruin to a random-hyperbolic-manifold paper (arXiv:2607.25065); demo — Party Seating Shuffler:
+  animates a hard-core-model mixing result past its classical "should stall" threshold, watching it keep
+  converging anyway (arXiv:2606.27545).
+- **Built (all 3 completed, all verified — headless Chromium/Playwright interaction plus Node
+  syntax-checks and, for two of the three, standalone reference-math verification):**
+  - A — **Splinter to Win** (arXiv:2510.23297): four side-by-side canvas foraging simulations (solo /
+    small-squad / user-slider / grand-coalition) sharing sliders for population, resource abundance, and
+    skill heterogeneity, plus a live closed-form utility-vs-group-size curve with the numerically-computed
+    optimum marked — reproducing the paper's finding that scarcity and heterogeneity both push the optimal
+    group size down. Verified via `node --check`, tag-balance check, and a live-updating totals check
+    (canvas resource counts genuinely accumulate, not decorative).
+  - B — **Bankroll Under Fat Tails** (arXiv:2607.27073): races a classic fixed-parameter Kelly-style
+    strategy against a restart-AdaGrad-plus-Hedge adaptive strategy (a real, simplified implementation of
+    the paper's parameter-free mechanism) on Lomax-distributed simulated betting rounds, with sliders for
+    tail-heaviness and edge drift and a bad-beat trigger button. Verified with a Node DOM/Chart.js stub
+    harness driving 5,000+ simulated rounds across benign/extreme/drift/bad-beat scenarios — zero
+    exceptions, all values finite and in-bounds.
+  - C — **Loser's Repetition** (arXiv:2604.03683) — **WINNER**: a fully playable chess board (chess.js +
+    unicode pieces) enforcing the paper's asymmetric repetition rule directly against real FEN position
+    history — the mover who forces a third repetition loses instantly rather than drawing — with a
+    pulsing "danger square" preview before you move, a simple material-eval bot opponent, and a toggle
+    back to classic rules for comparison. Verified in headless Chromium: played a real 8-ply knight-shuffle
+    repetition through to completion, confirmed the repetition counter, danger-square highlight, and
+    "WHITE WINS" / classic-mode "DRAW" outcomes all fire correctly on the exact triggering ply.
+- **Judge verdict:** Loser's Repetition wins on wow-factor and polish (9/9/9 vs. 7/8/8 and 7/8/8) — it's
+  the only one of the three you can actually win or lose rather than watch as a dashboard, and the
+  danger-square preview makes the paper's rule change viscerally felt rather than just charted. Bankroll
+  Under Fat Tails was judged the most numerically rigorous (fidelity 8, a real restart-AdaGrad+Hedge
+  implementation, not a themed random walk); Splinter to Win was the most information-dense (four parallel
+  sims plus a correct argmax curve, fidelity 7). Loser's Repetition's one knock: it generalizes the paper's
+  literal "repetition = loss for White" to "loss for whoever forces it" (disclosed, reasonable, but a real
+  deviation) — fidelity scored 7 for that reason, lowest of the three, yet still won overall on feel.
+- **Published:** demo at https://share.djiang.xyz/arxiv-scrape/demos/2026-09-02-losers-repetition.html,
+  brief at https://share.djiang.xyz/arxiv-scrape/2026-09-02-nightly.html (both registered in
+  manifest.json, committed+pushed to `xpoes123/david-share` — commit `67acd4e`). `digest_2026-09-02.json`
+  written for the forum post (3 papers, demo_arxiv_id=2604.03683).
+
+
 ## 2026-09-01 — Poker DNA
 - **Status:** clean run start-to-finish, no recovery needed. Fetch timed out at the default 2-minute Bash
   limit on the first attempt (mid-flight across 22 categories) but wasn't backgrounded — reran in
