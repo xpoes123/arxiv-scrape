@@ -1,5 +1,63 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-03 — Poker Table Telephone
+- **Status:** clean run start-to-finish, no recovery needed. Fetch (176 papers/22 categories, offset
+  day-of-year×3=738) completed in foreground. `votes.json` still all tag-scores zero (no forum voting
+  signal yet), so no bias applied to selection.
+- **Fetch/ideate:** 30 papers hand-selected for category diversity across all 22 categories, 6 batches
+  of 5, 84 ideas generated (`ideation_2026-09-03_results.json`).
+- **Forum top-3 / build-off candidates (all tied or near discussion 9):** **Hold or Fold**
+  (arXiv:2608.26035, cool 8, buildable 8) — belief-revision-in-dialogue paper showing patient
+  evidence-accumulation beats reacting to every local mismatch, i.e. a formal case against poker/betting
+  tilt; **Handicapper Credibility Score** (arXiv:2409.15678, cool 9, buildable 7) — an LLM cell-type
+  annotation reliability method that scores rater credibility from agreement patterns alone, with zero
+  ground truth, mapped onto grading sports touts; **Poker Table Telephone** (arXiv:2606.29152, cool 8,
+  buildable 7) — a new deterministic ad-hoc-radio-network gossiping protocol, reframed as how fast a
+  signal spreads around a table when only one seat can broadcast at a time without colliding.
+- **Also surfaced:** demo — AI Tells: a CUSUM lie detector that catches a computer-use agent's false
+  "task complete" claim ~31 steps early (arXiv:2608.27808); demo — EV Separation Playground: a
+  v-separation influence-diagram builder proving when the street-by-street Bellman shortcut in poker/
+  parlay decision trees breaks (arXiv:2607.16717); demo — Latent Whale Finder: peels a visible
+  betting-Discord friend graph away to reveal the hidden peer-effect structure that actually drives pick
+  correlation (arXiv:2602.06435); demo — Arbitrage Cube: borrows an extremal-combinatorics hypercube
+  density bound as a same-game-parlay correlation ceiling for sportsbook risk (arXiv:2608.12237);
+  project — Tell-Cam: ports a penguin motion-signature re-ID pipeline onto poker-table webcam feeds for
+  home-game collusion/tell detection (arXiv:2603.03603); youtube — Your Mac Is Eavesdropping on Its Own
+  GPU: a 94.8%-accurate Apple Silicon cache side-channel attack recovering LLM keywords
+  (arXiv:2608.09075).
+- **Built (all 3 completed, all verified self-contained — HTML/JS syntax-checked, tag-balance checked,
+  logic inspected for real computation vs. decorative randomness):**
+  - A — **Hold or Fold** (arXiv:2608.26035): a poker hand-reading game with 6 sequential ambiguous
+    tells; player locks an opening read then chooses HOLD/REVISE per tell, competing live against four
+    distinct bot policies (Stubborn/never-revise, Twitchy/mismatch-driven, Amnesiac/short-memory,
+    Patient/uncertainty-accumulating) mirroring the paper's actual four strategies. Builder
+    independently verified in a 20,000-hand standalone simulation that Patient beats the others
+    (~83.6% vs. ~72% accuracy) before writing the file, and wired a "Deal New Hand" / "Auto-Run 20
+    Hands" mode plus a Chart.js win-rate-over-time chart so the statistical edge is visible, not just
+    claimed.
+  - B — **Handicapper Credibility Score** (arXiv:2409.15678): a panel of 6-14 simulated sports
+    handicappers (Sharp/noise/Fade/Sheep archetypes) pick winners each round, and a real 20-iteration
+    Dawid-Skene-style binary EM — refit live in-browser every round — infers each capper's reliability
+    purely from inter-capper agreement, never touching outcomes. "Reveal True Skills" unmasks the real
+    archetypes for comparison, and a naive-agreement baseline is shown getting visibly fooled by the
+    Sheep copycats.
+  - C — **Poker Table Telephone** (arXiv:2606.29152) — **WINNER.** Two live SVG poker tables (4-10
+    seats, ring + adjustable extra links) race side by side: Naive (random per-tick broadcast, visible
+    red collision-flash animations, slow messy convergence) vs. Smart (a real distance-2 graph coloring
+    computed from the seating graph, giving a provably collision-free round-robin schedule via
+    `tick % numColors`). Per-seat radial knowledge-progress rings, a live theory panel comparing the
+    paper's Õ((mn)^0.6) bound to the prior Õ(n^{4/3}) one, zero CDN dependencies (works offline).
+- **Judge's call:** picked Poker Table Telephone over Hold or Fold (close second — genuinely distinct
+  bot-policy logic, just less visually inventive) and Handicapper Credibility Score (most rigorous math
+  of the three, real EM, but table/chart-heavy presentation had less "wow" than a live animated race).
+  All three were verified non-faked (real algorithms, not relabeled randomness) — no disqualifications.
+- **Published:** demo + brief written to `david-share/arxiv-scrape/`, registered in `manifest.json`,
+  committed and pushed (commit `b760492`) — VPS picks it up on its own `git pull`, not done by this run.
+  Live at https://share.djiang.xyz/arxiv-scrape/demos/2026-09-03-poker-telephone.html and
+  https://share.djiang.xyz/arxiv-scrape/2026-09-03-nightly.html
+- **Forum digest:** `digest_2026-09-03.json` written and validated (`validate_digest.py` OK), demo_url/
+  demo_arxiv_id filled with the build-off winner — `nightly.sh` posts it to the SharpLab forum.
+
 ## 2026-09-02 — Loser's Repetition
 - **Status:** clean run start-to-finish, no recovery needed. Fetch (176 papers/22 categories, offset
   day-of-year×3=735) completed in foreground on the first try this time, well under the timeout.
