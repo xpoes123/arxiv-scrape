@@ -1,5 +1,61 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-04 — Poker Table Food Chain
+- **Status:** clean run start-to-finish, no recovery needed. Fetch (176 papers/22 categories, offset
+  day-of-year×3=741) completed in foreground. `votes.json` still all tag-scores zero (no forum voting
+  signal yet), so no bias applied to selection.
+- **Fetch/ideate:** 30 papers hand-selected for category diversity across all 22 categories, 6 batches
+  of 5, 82 ideas generated (`ideation_2026-09-04_results.json`).
+- **Forum top-3 / build-off candidates (all tied at discussion 9):** **Poker Table Food Chain**
+  (arXiv:2604.04538, cool 9, buildable 8) — a Hodge-decomposition framework for untangling supply-chain
+  transaction networks, reframed as splitting a home-game chip-transfer log into a clean predator/prey
+  hierarchy plus a "pure churn" cyclic residual; **Read-Proof Bluff Counter** (arXiv:2608.10521, cool 9,
+  buildable 8) — a differentially-private saturating-counter defense for CPU branch predictors, reframed
+  as a formal epsilon-bounded unexploitability dial for poker bet-sizing tendencies; **Read the Room**
+  (arXiv:2608.27176, cool 9, buildable 7) — a paper on AI models getting fooled by text/tone
+  contradictions in dialogue, reframed as a poker-tell trainer using browser SpeechSynthesis prosody.
+- **Also surfaced:** demo — Robust Kelly Sandbox: ambiguity-averse portfolio math ported to bankroll
+  sizing under uncertain edge estimates (arXiv:2310.00553); demo — Elephant Walk Race: a tampered-memory
+  random walk with a sharp 50%-retained-memory phase transition, a formal answer to hot-hand arguments
+  (arXiv:2607.28614); demo — Kyle's Broken Market: more trading rounds make Kyle's 1985 insider-trading
+  equilibrium price path oscillate instead of converge (arXiv:2307.09392); demo — GFlowNet Slot Machine:
+  greedy jackpot-chasing RL vs. flow-proportional sampling as dueling slot machines (arXiv:2608.10171);
+  demo — Is Your "Provably-Fair" Casino RNG Actually Fair?: a polynomial-mod-p bias checker for
+  crypto-casino commit-reveal RNG schemes (arXiv:2607.21259); startup — Spillover-Aware Odds Engine:
+  infers teammate prop-line spillover from historical shock-reaction timing alone, no depth chart needed
+  (arXiv:2602.04230).
+- **Built (all 3 completed, all independently verified with hand-derived math traces, not just eyeballed
+  — each builder confirmed real computation vs. decorative randomness before returning):**
+  - A — **Poker Table Food Chain** (arXiv:2604.04538) — **WINNER.** Free-text/generated chip-transfer log
+    → real weighted graph Laplacian + divergence vector → hand-rolled Gaussian elimination with partial
+    pivoting solves `(L + J/n + εI)·Φ = b` → animated split into a ranked hierarchy ladder (gradient
+    component) and a "chaos loop" diagram (curl/cyclic residual). Builder verified the decomposition
+    identity `x_ij = grad_ij + resid_ij` holds with zero floating-point error across three graphs, and
+    that a pure-circular-churn preset collapses hierarchy score to exactly 0%, matching a by-hand
+    derivation.
+  - B — **Read-Proof Bluff Counter** (arXiv:2608.10521): a real 4-state saturating counter with
+    deterministic vs. DP-noised (randomized-response) update modes, an epsilon slider tied to the update-
+    noise probability via `q = 2/(e^ε+1)`, and a genuine online order-2 Markov attacker learning the
+    counter's pattern hand-by-hand. Builder honestly surfaced that empirical attacker accuracy can exceed
+    the single-update theoretical bound under repeated observation — exactly the gap the paper itself
+    flags as unproven — rather than hiding the discrepancy.
+  - C — **Read the Room** (arXiv:2608.27176): a 12-round poker-tell quiz using SpeechSynthesis with
+    per-tone rate/pitch/pause profiles (confident/nervous/sarcastic/flat) and a synced pitch-contour
+    canvas visualization as a fallback for inconsistent TTS quality across browsers.
+- **Judge's call:** picked Poker Table Food Chain over Read-Proof Bluff Counter (very close second — 9/9/9/9
+  on all four axes, equally real math, but narrower interactivity: sliders on a fixed simulation vs. truly
+  freeform user input) and Read the Room (disqualified from serious contention — traced through and found
+  the tone "profiles" and per-line ground truth were pre-authored constants rather than derived from any
+  live analysis, plus a real scoring bug where `correct = line.consistent ? true : (choice === 'tone')`
+  makes all 6 "consistent" rounds unloseable regardless of what the user picks).
+- **Published:** demo + brief written to `david-share/arxiv-scrape/`, registered in `manifest.json`,
+  committed and pushed (commit `58fae6d`) — VPS picks it up on its own `git pull`, not done by this run.
+  Live at https://share.djiang.xyz/arxiv-scrape/demos/2026-09-04-poker-food-chain.html and
+  https://share.djiang.xyz/arxiv-scrape/2026-09-04-nightly.html
+- **Forum digest:** `digest_2026-09-04.json` written and validated (`validate_digest.py` OK), demo_url/
+  demo_arxiv_id filled with the build-off winner — `nightly.sh` posts it to the SharpLab forum.
+
+
 ## 2026-09-03 — Poker Table Telephone
 - **Status:** clean run start-to-finish, no recovery needed. Fetch (176 papers/22 categories, offset
   day-of-year×3=738) completed in foreground. `votes.json` still all tag-scores zero (no forum voting
