@@ -1,5 +1,60 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-05 — One Empty Locker, Two Inspections
+- **Status:** clean run start-to-finish, no recovery needed. Fetch (176 papers/22 categories, offset
+  day-of-year×3=744) completed in foreground. `votes.json` still all tag-scores zero (no forum voting
+  signal yet), so no bias applied to selection.
+- **Fetch/ideate:** 30 papers hand-selected for category diversity across all 22 categories, 6 batches
+  of 5, 90 ideas generated (`ideation_2026-09-05_results.json`).
+- **Forum top-3 / build-off candidates:** **Fake Stats, Real Bets — Authority Theater**
+  (arXiv:2608.27167, cool 9, buildable 8, discussion 10) — a paper showing LLM agents jump from 6.5%→54.0%
+  commitment on a provably unknowable question once it's dressed in a professional "market panel," even
+  when every number on the panel is fabricated; **100 Prisoners + 1 Empty Locker Simulator**
+  (arXiv:2608.13074, cool 9, buildable 9, discussion 9) — a twist on the classic 100-prisoners problem with
+  N-1 players, two inspections each, and one deliberately empty locker, with an exact closed-form optimum
+  (involutions of N over N!); **AMM Sportsbook Simulator** (arXiv:2307.08768, cool 8, buildable 8,
+  discussion 9) — an axiom-derived liquidity AMM for decentralized sportsbooks, compared against classic
+  LMSR.
+- **Also surfaced:** project — Bad Beat Nowcasting: ports earthquake-exceedance nowcasting onto poker
+  session logs to estimate how "overdue" a big downswing is (arXiv:2604.03383); demo — Discord Hyperbolic
+  Map: embeds a server's mention graph into the same hyperbolic-geometry layout used for city-mobility
+  networks (arXiv:2604.04459); demo — Antbook: a sportsbook built on peer-reviewed ant run-and-tumble
+  kinematics (arXiv:2603.02665); youtube — Your Poker Strategy Is Also How Cancer Spreads: a tumor
+  evolutionary-game paper independently re-deriving balanced mixed-strategy equilibria (arXiv:2510.23360);
+  project — Solver Disagreement Poker Trainer: auto-curates poker training spots by entropy of
+  disagreement across GTO-adjacent solvers (arXiv:2608.30035); demo — Tilt Physics: an Mpemba-effect
+  polymer paper reframed as "does a deeper stack push through variance faster" (arXiv:2607.15266).
+- **Built (all 3 completed, all independently verified — each builder confirmed real computation vs.
+  decorative randomness before returning, hand-traced math included in each report):**
+  - A — **Authority Theater** (arXiv:2608.27167): a 6-round game with real unknowable events (unflipped
+    coin, undrawn card) shown once bare and once inside a fabricated "SharpLine Terminal" dashboard (fake
+    consensus splits, animated sparkline, pulsing "LIVE" badge), tracking the player's own commit rate per
+    framing before revealing the paper's real 6.5%→54.0% / 24.5%→36.8% numbers, plus a 12-agent live
+    Bernoulli simulation at the paper's measured rates.
+  - B — **100 Prisoners + 1 Empty Locker Simulator** (arXiv:2608.13074) — **WINNER.** N slider (4-30),
+    three selectable strategies (random guess, naive pointer, paper's proven-optimal two-inspection
+    construction), animated player-by-player locker reveal, and a live Monte-Carlo-vs-theory convergence
+    chart. Builder implemented the involution recurrence with BigInt for exact display and proved by hand
+    (and the judge independently re-derived) that the optimal strategy's win condition reduces exactly to
+    "the underlying permutation is an involution" — a real bijectivity argument, not a fitted curve.
+  - C — **AMM Sportsbook Simulator** (arXiv:2307.08768): real LMSR (log-sum-exp cost function) and a
+    constant-product AMM (mint-and-swap with a solved quadratic for exact cost) running side by side on
+    identical bet sequences, plus an LP-withdrawal control showing LMSR re-pricing instantly via its
+    softmax versus CPMM just getting slippier. Builder hand-verified both cost functions against traced
+    examples (LMSR cost to move price to 60% = $22.31; CPMM buy-20-shares cost ≈ $10.50).
+- **Judge's call:** picked the Locker Simulator over Authority Theater (most stylish and conceptually
+  cleverest — its fabricated dashboards literally embody the paper's finding — but its "math" is
+  essentially weighted coin-flips replaying the paper's summary statistics rather than a derived result)
+  and the AMM Sportsbook (equally rigorous math, but reads more like a functional spreadsheet/dashboard
+  than a "wow" demo). No disqualifications — all three ran cleanly and were mathematically honest.
+- **Published:** demo + brief written to `david-share/arxiv-scrape/`, registered in `manifest.json`,
+  committed and pushed (commit `20563b7`) — VPS picks it up on its own `git pull`, not done by this run.
+  Will be live at https://share.djiang.xyz/arxiv-scrape/demos/2026-09-05-locker-simulator.html and
+  https://share.djiang.xyz/arxiv-scrape/2026-09-05-nightly.html once the VPS pulls.
+- **Forum digest:** `digest_2026-09-05.json` written and validated (`validate_digest.py` OK), demo_url/
+  demo_arxiv_id filled with the build-off winner — `nightly.sh` posts it to the SharpLab forum.
+
+
 ## 2026-09-04 — Poker Table Food Chain
 - **Status:** clean run start-to-finish, no recovery needed. Fetch (176 papers/22 categories, offset
   day-of-year×3=741) completed in foreground. `votes.json` still all tag-scores zero (no forum voting
