@@ -1,5 +1,71 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-06 — Max-Cut Party Splitter
+- **Status:** clean run start-to-finish, no recovery needed. Fetch (176 papers/21 categories, offset
+  day-of-year×3=747) completed in foreground (first attempt hit the 2-minute default Bash timeout mid-fetch
+  and had to be rerun with a longer timeout — no data loss, `fetch_papers.py` only writes at the end).
+  `votes.json` still all tag-scores zero (no forum voting signal yet), so no bias applied to selection.
+- **Fetch/ideate:** 30 papers hand-selected for category diversity, cross-checked against every arXiv ID
+  previously mentioned in this log (248 IDs) to avoid re-surfacing already-built papers — 6 batches of 5,
+  88 ideas generated (`ideation_2026-09-06_results.json`).
+- **Forum top-3 / build-off candidates (top-2 tied at discussion 9, both buildable — 3rd chosen at
+  discussion 8 to keep all three demos buildable for real competition):** **Max-Cut Party Splitter**
+  (arXiv:2606.28478, cool 9, buildable 8) — Max-Cut on planar graphs solves exactly via a shortest-path
+  mapping, but the same algorithm run on a toroidal graph only gives a provable upper bound, not the true
+  answer; **Slow Roll or All In?** (arXiv:2606.08766, cool 9, buildable 7) — fluid-injection rate into a
+  fault gouge determines whether failure is diffuse/uniform (slow injection) or sharply localized (fast
+  injection), a rigorous physics analogue of grinding vs. all-in bankroll variance; **Water-Filling Bet
+  Allocator** (arXiv:2608.00740, cool 8, buildable 9) — the continuous quadratic knapsack problem is
+  exactly the math of splitting a fixed bankroll across capped bets via a dynamic threshold (water-filling).
+- **Also surfaced:** youtube — Turning Mercury Into Gold With Fusion Reactors: the real (n,2n) transmutation
+  pathway letting a fusion reactor co-produce gold from mercury waste, $200T reserve valuation
+  (arXiv:2604.02590); demo — Boids & the Big Bet: fish-schooling stimulus-response math reskinned as poker
+  players reacting to a big shove, live influence-graph rewiring (arXiv:2603.01682); project — Bankroll SCOP
+  Satisficing Frontier Planner: renders the whole frontier of (contribution, risk) pairs hitting a bankroll
+  goal instead of one Kelly number (arXiv:2309.05926); demo — Tunnelling Consensus: coupled oscillator
+  opinion-agents that flip the whole network's consensus past a threshold, no single agent visibly moving
+  first — an analogue of steam moves (arXiv:2604.03940); youtube — Murmurations: the flock-like pattern
+  first spotted by ML in elliptic curve data, extended here to Hecke L-functions over Gaussian integers
+  (arXiv:2607.20853); demo — Almost-Dominance Duel: optimal transport computes exactly how "almost" one
+  payout distribution dominates another via a single gamma (arXiv:2607.28215).
+- **Built (all 3 completed, all independently verified by their own builder before returning, then
+  re-verified by the judge from the raw shipped code — not just trusting builder self-reports):**
+  - A — **Max-Cut Party Splitter** (arXiv:2606.28478) — **WINNER.** Generates a genuinely planar rivalry
+    graph (zero edge crossings, via recursive triangle subdivision, exactly 3n-6 edges), lets the user drag
+    nodes and click to assign teams with a live cut-weight score, reveals the true optimum via exhaustive
+    brute force (exact for n≤16), then a "Go Toroidal" button adds wrap-around edges and shows the naive
+    planar-derived bound diverge from the freshly-recomputed true optimum. Builder hand-traced a 4-node
+    graph by manual enumeration (matched brute force exactly) and ran 200 randomized trials confirming
+    bound ≥ true always held. Judge independently extracted the shipped brute-force function and stress-
+    tested it against 2,000 random graphs (n=3–8) vs. full 2^n enumeration — zero mismatches.
+  - B — **Slow Roll or All In?** (arXiv:2606.08766): a live finite-difference solve of a pore-pressure
+    diffusion PDE with a nonlinear dilative-sink term on a 30-cell grid, with an injection-rate slider
+    styled as poker aggression (Nit Grind → All-In Jam), a live heatmap/pressure-profile chart, and two
+    autonomous slow/fast reference panels running side by side. Builder extracted the literal shipped
+    `<script>` and re-ran it in Node: slow injection (rate 0.02) reached 78% pressure at the far edge
+    before failure (diffuse), fast injection (rate 0.6) reached 0% at the far edge (sharply localized) —
+    judge re-ran the same update function independently and confirmed the qualitative divergence.
+  - C — **Water-Filling Bet Allocator** (arXiv:2608.00740): exact dynamic-threshold/bisection solver for
+    the continuous quadratic knapsack problem, visualized as animated fill-tubes per bet with ghost lines
+    showing the uncapped desired allocation. Builder hand-traced a 5-bet, budget-36 example (τ=1.2,
+    x=[6.2,11,4,7.6,7.2], sum=36 exactly, correct KKT conditions) and confirmed it in a standalone Node run
+    to ~1e-15 error. Judge re-ran the same example plus 20,000 random feasible perturbations, confirming
+    none ever improved on the solver's objective value — a genuine KKT-verified optimum.
+  - **Judge's call:** picked Max-Cut Party Splitter for having the tightest paper-to-demo mapping of the
+    three — its central "wow" moment (an exact algorithm's answer degrading to a mere provable bound once
+    topology changes) *is* the paper's actual contribution, not a metaphor layered on top, and it's the
+    most game-like of the three (drag, click, get surprised). Slow Roll or All In was the most technically
+    flashy (live PDE + two autonomous reference sims per frame) but its poker framing was judged the
+    loosest of the three; Water-Filling was the most rigorously verifiable (literal KKT check) but read
+    more like a control panel than a "wow" demo. No disqualifications — all three ran cleanly.
+- **Published:** demo + brief written to `david-share/arxiv-scrape/`, registered in `manifest.json`,
+  committed and pushed (commit `936fc16`) — VPS picks it up on its own `git pull`, not done by this run.
+  Will be live at https://share.djiang.xyz/arxiv-scrape/demos/2026-09-06-maxcut-party-splitter.html and
+  https://share.djiang.xyz/arxiv-scrape/2026-09-06-nightly.html once the VPS pulls.
+- **Forum digest:** `digest_2026-09-06.json` written and validated (`validate_digest.py` OK), demo_url/
+  demo_arxiv_id filled with the build-off winner — `nightly.sh` posts it to the SharpLab forum.
+
+
 ## 2026-09-05 — One Empty Locker, Two Inspections
 - **Status:** clean run start-to-finish, no recovery needed. Fetch (176 papers/22 categories, offset
   day-of-year×3=744) completed in foreground. `votes.json` still all tag-scores zero (no forum voting
