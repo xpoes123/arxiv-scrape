@@ -1,5 +1,49 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-07 — Patch Forager: Stay or Leave the Table
+- **Status:** clean run start-to-finish. Fetch (176 papers/22 categories, offset day-of-year×3=750)
+  again hit the 2-minute default Bash timeout mid-fetch on the first attempt and was rerun with a longer
+  timeout — no data loss, `fetch_papers.py` only writes at the end. `votes.json` still all tag-scores zero
+  (no forum voting signal yet), so no bias applied to selection.
+- **Fetch/ideate:** 30 papers hand-selected for category diversity, cross-checked against every arXiv ID
+  previously mentioned in this log (257 IDs) to avoid re-surfacing already-built papers — 6 batches of 5,
+  86 ideas generated (`ideation_2026-09-07_results.json`).
+- **Forum top-3 / build-off candidates (all 3 buildable demos, so a real 3-way competition):**
+  **Tilt Reset Calculator** (arXiv:2607.16474, discussion 10 — the single highest-discussion idea of the
+  night) — stochastic-resetting theory says a wide class of random search processes finds its target
+  faster with a provably optimal *nonzero* restart rate, formalizing "should I have quit after that bad
+  beat"; **The 61.8% Dial** (arXiv:2602.15266, cool 9, buildable 9) — a golden-ratio partition of
+  information (61.8% committed to prediction, 38.2% held in reserve) as the neuro-cognitive route to
+  antifragility, dressed as a poker/market confidence gauge; **Patch Forager: Stay or Leave the Table**
+  (arXiv:2607.29476, cool 9, buildable 8) — reward-maximizing foragers learn a patch's depletion rate fine
+  but systematically fail to learn its true composition, because that requires exploring past the point
+  where leaving already looks locally optimal.
+- **Build-off winner: Patch Forager** (`2026-09-07-patch-forager.html`). All three builds ran clean under
+  headless-browser verification (Playwright/Puppeteer/jsdom, zero console errors) and the judge confirmed
+  each against the real arXiv abstracts before scoring. Patch Forager won on "keep playing" factor — it's
+  the only one of the three that's an actual competitive game (you vs. two AI ghost agents racing the same
+  hidden-quality patches, poker-table or loot-zone skin), with the richest interaction surface (live score
+  chart, per-agent belief panel, sparkline, fast-forward, then a summary table + bar chart + narrative
+  punchline), and it delivers the paper's real finding as an emergent, *felt* result — you watch the
+  reward-maximizer "win" on raw score while visibly guessing wrong about which patches were actually good.
+  Runner-ups: Tilt Reset Calculator (`2026-09-07-tilt-reset-calculator-a.html`, most rigorous/quantitative
+  — a real client-side Monte Carlo implementing the CV>1 resetting-helps heuristic) and The 61.8% Dial
+  (`2026-09-07-the-618-dial-b.html`, most conceptually elegant — correctly keeps the paper's balance-function
+  maximum p*≈0.882 distinct from the separate self-similarity-derived 1/φ≈0.618 figure, the easy mistake to
+  make with this paper). Live: https://share.djiang.xyz/arxiv-scrape/demos/2026-09-07-patch-forager.html
+- **Also surfaced:** project — Right Triangle SIM: a head-to-head Sim-style avoidance game on isosceles
+  right triangles in a grid, with an optional perfect-play hint from the paper's Gaussian-integer
+  construction (arXiv:2607.22828); demo — Discord Herd-o-Meter: an Ising model relabeled as a betting
+  community, watching consensus magnetize or stay disordered with a live susceptibility/fragility readout
+  (arXiv:2607.16735); demo — Sycophancy-o-Meter: paste a bad decision and see a scripted sycophantic AI
+  reply next to a scripted contingent one, side by side (arXiv:2609.00211); youtube — The Math That Catches
+  Sharks: Bayesian change-point detection is the same statistical primitive behind spotting a shark at the
+  table and a big trader in the order book (arXiv:2307.02375); demo — GTO Solver as Dynamite: the paper's
+  disruption model reframed as "how much does solver access actually move win-rate," a toy answer to
+  "did solvers ruin poker" (arXiv:2609.00207); project — Poker Collusion Pattern Detector: flags
+  statistically improbable mutual coordination between players from betting patterns alone, no chat log
+  needed (arXiv:2602.14843).
+
 ## 2026-09-06 — Max-Cut Party Splitter
 - **Status:** clean run start-to-finish, no recovery needed. Fetch (176 papers/21 categories, offset
   day-of-year×3=747) completed in foreground (first attempt hit the 2-minute default Bash timeout mid-fetch
