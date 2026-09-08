@@ -1,5 +1,35 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-08 — Tilt Contagion at the Final Table
+- **Status:** clean run start-to-finish. Fetch (176 papers/22 categories, offset day-of-year×3=753) again
+  hit the 2-minute default Bash timeout mid-fetch on the first attempt and was rerun with a longer timeout
+  (same pattern as 2026-09-07) — no data loss, `fetch_papers.py` only writes at the end. `votes.json` now
+  carries real signal from last week's forum votes: decision-theory, gambling, poker, games, and physics
+  each net -1, everything else 0 — a soft down-weight applied, no tag was popular enough yet to swing a
+  pick.
+- **Fetch/ideate:** 30 papers hand-selected for category diversity — 6 batches of 5, 87 ideas generated
+  (`ideation_2026-09-08.js`).
+- **Forum top-3 / build-off candidates (all 3 buildable demos, so a real 3-way competition):**
+  **Alchemist Calculator: Your Mercury, In Gold** (arXiv:2604.02590, discussion 9, buildable 9) —
+  high-flux fusion reactors can transmute mercury pollution into stable gold via neutron bombardment,
+  pollution remediation that pays for itself; **AI Doomsday Countdown Clock** (arXiv:2604.04956,
+  discussion 9, buildable 9) — a "10th planetary boundary" argument that unchecked AI compute scaling
+  breaches a critical waste-heat threshold in under 6.5 years; **Zombie Infection at the Final Table**
+  (arXiv:2607.29409, discussion 9, buildable 8) — a rigorous SIR-on-graphs model (originally built for
+  zombie outbreaks) where infected nodes get removed at a rate proportional to their susceptible-neighbor
+  count, reskinned as poker-table tilt contagion.
+- **Build-off winner: Tilt Contagion at the Final Table** (`2026-09-08-final-table-tilt.html`). All three
+  builds passed structural verification (balanced tags, clean JS syntax, all DOM refs resolving, live CDN
+  check). The judge scored Mercury→Gold 6/6/8/7 (wow/interactivity/polish/fidelity) and AI Countdown
+  7/8/8/6, both grounded in a single closed-form formula restated as sliders/animation. Tilt Contagion
+  scored 9/9/8/9 for being the only finalist running an actual live Gillespie stochastic simulation on a
+  seating-chart graph — sparse Ring Table vs. denser Rail Crowd topology, a λ slider driving both the live
+  game and a background 140-trial × 22-point Monte Carlo sweep that directly reproduces the paper's
+  monotonicity-in-λ theorem, plus a poker-flavored event log narrating every bust.
+- **Live URL:** https://share.djiang.xyz/arxiv-scrape/demos/2026-09-08-final-table-tilt.html (brief:
+  https://share.djiang.xyz/arxiv-scrape/2026-09-08-nightly.html). Digest written to
+  `digest_2026-09-08.json` (validated OK) for `nightly.sh` to post to the SharpLab forum.
+
 ## 2026-09-07 — Patch Forager: Stay or Leave the Table
 - **Status:** clean run start-to-finish. Fetch (176 papers/22 categories, offset day-of-year×3=750)
   again hit the 2-minute default Bash timeout mid-fetch on the first attempt and was rerun with a longer
