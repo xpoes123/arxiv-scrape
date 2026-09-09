@@ -1,5 +1,36 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-09 — Epidemic or Extinction
+- **Status:** clean run start-to-finish. Fetch (176 papers/22 categories, offset day-of-year×3=756) succeeded
+  in one shot. `votes.json` carries the same signal as last night — decision-theory, gambling, poker, games,
+  and physics each net -1, everything else 0 — soft down-weight applied, no tag popular enough yet to force a
+  pick on its own.
+- **Fetch/ideate:** 30 papers hand-selected for category diversity across 20 categories (cs.DS, math.CO/NT/OC/PR,
+  physics.soc-ph/chem-ph, cond-mat.soft/stat-mech, q-bio.PE/NC/BM/QM, q-fin.PM/TR, econ.EM, stat.ML), deduped
+  against all 267 arXiv IDs previously mentioned in this log — 6 batches of 5, 97 ideas generated via a
+  Workflow run (`wf_7de6f6b6-c65`).
+- **Forum top-3 / build-off candidates (2 of 3 buildable, so a real head-to-head):**
+  **Epidemic or Extinction: The Prediction Game** (arXiv:2510.21371, discussion 8, buildable) — an SIR model
+  with a bounded random transmission coefficient instead of a fixed one, where the paper proves the noise
+  level alone (not just the average rate) can flip a disease between dying out and going permanently endemic;
+  **Kelly Criterion for Neurons** (arXiv:2602.15787, discussion 8, buildable) — synapses provably minimize
+  signal variance under a fixed mean and a metabolic energy budget, with real data sitting on a
+  precision-∝-energy⁵ frontier structurally identical to a bettor's bankroll-sizing problem; **Bet Committee:
+  Multi-Persona Pick Debates** (arXiv:2309.03736, discussion 8, not buildable as a single HTML file) —
+  TradingGPT's layered-memory, distinct-personality, inter-agent-debate architecture lifted directly into a
+  sports-pick generator.
+- **Build-off winner: Epidemic or Extinction** (`2026-09-09-epidemic-or-extinction.html`). Both builds passed
+  verification (`node --check` on extracted scripts, balanced tags, all DOM refs resolving, live CDN check;
+  the judge went further and actually executed both pages end-to-end in a jsdom+node-canvas harness with
+  real Chart.js rendering). Judge scored Epidemic 8/9/8/9 (wow/interactivity/polish/fidelity) vs. Kelly
+  Neurons 8/7/8/8 — Epidemic won on interactivity (a real predict-then-reveal game with streak/accuracy
+  scoring vs. a slider-driven explainer) and fidelity (a full Euler–Maruyama stochastic SIR simulation whose
+  480-trial noise sweep directly reproduces the paper's extinction-probability threshold, vs. Kelly Neurons'
+  elegant but hand-fit `(1-p)^(-1/5)` cost function reverse-engineered to hit the paper's exponent).
+- **Live URL:** https://share.djiang.xyz/arxiv-scrape/demos/2026-09-09-epidemic-or-extinction.html (brief:
+  https://share.djiang.xyz/arxiv-scrape/2026-09-09-nightly.html). Digest written to `digest_2026-09-09.json`
+  (validated OK) for `nightly.sh` to post to the SharpLab forum.
+
 ## 2026-09-08 — Tilt Contagion at the Final Table
 - **Status:** clean run start-to-finish. Fetch (176 papers/22 categories, offset day-of-year×3=753) again
   hit the 2-minute default Bash timeout mid-fetch on the first attempt and was rerun with a longer timeout
