@@ -1,5 +1,38 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-10 — Hypergraph Public Goods Playground
+- **Status:** clean run start-to-finish. Fetch (176 papers/22 categories, offset day-of-year×3=759) succeeded
+  in one shot. `votes.json` unchanged from prior nights: poker, decision-theory, gambling, games, and physics
+  each net -1, everything else 0 — soft down-weight applied.
+- **Fetch/ideate:** 30 papers hand-selected one-per-category across all 22 categories (plus 8 extra picks
+  from math.PR, q-fin.TR, physics.soc-ph, q-bio.PE, cond-mat.stat-mech, math.CO, q-bio.NC, econ.EM for
+  fun-fit density) — deduped against 270 prior arXiv IDs mentioned in this log (no collisions) — 6 batches of
+  5 via a Workflow run (`wf_cfeab6a1-bcf`, `ideation_2026-09-10.js`), 86 ideas generated.
+- **Forum top-3 / build-off candidates (all 3 buildable, real 3-way competition):**
+  **Generalized Maximum Entropy: When and Why you need it** (arXiv:2510.27006, discussion 9, buildable 8) —
+  proves classical Shannon max-entropy secretly assumes independence, so any correlated system (like parlay
+  legs) needs the paper's one-parameter UJK-family entropy instead; **Large deviations in quantum dynamics
+  and complexity** (arXiv:2607.20959, discussion 9, buildable 8) — three definitions of "how rare" a quantum
+  outcome is converge at timescales O(1), e^N, and e^(e^N) respectively, meaning true complexity is
+  functionally unmeasurable in any realistic time; **Emergence of cooperation in nonlinear higher-order
+  public goods games** (arXiv:2604.07228, discussion 9 for the project variant / 8 for the demo variant,
+  buildable 8) — whether cooperation survives or collapses in group games hinges on a synergy/discounting
+  nonlinearity parameter layered on hypergraph group structure.
+- **Build-off winner: Hypergraph Public Goods Playground** (`2026-09-10-hypergraph-pgg.html`). All three
+  builds passed self-verification (`node --check`, DOM-ref checks, tag balance, live CDN checks) and the
+  judge went further, loading all three in headless Chromium via Playwright, exercising every control, and
+  independently re-deriving each demo's core math/simulation rather than trusting builder claims — zero
+  console errors on any of the three. Judge scored Hypergraph PGG 9/9/8/9 (wow/interactivity/polish/fidelity,
+  total 35) vs. MaxEnt Parlay 7/8/8/9 (32) vs. Exponential Wall 8/5/8/8 (29) — PGG won because it's a real,
+  live, perturbable agent-based simulation (400 agents, actual hyperedge groups of 2-5, the paper's own
+  nonlinear payoff formula, Fermi imitation-update) that the judge forced to convergence at both slider
+  extremes and confirmed the phase transition is genuine (0% cooperation at w=0.5, ~100% at w=2.0), versus
+  MaxEnt Parlay's more cerebral/spreadsheet-y correctness and Exponential Wall's single-slider-driven passive
+  charts (honestly disclosed as stylized curves, not a live sim).
+- **Live URL:** https://share.djiang.xyz/arxiv-scrape/demos/2026-09-10-hypergraph-pgg.html (brief:
+  https://share.djiang.xyz/arxiv-scrape/2026-09-10-nightly.html). Digest written to `digest_2026-09-10.json`
+  (validated OK) for `nightly.sh` to post to the SharpLab forum.
+
 ## 2026-09-09 — Epidemic or Extinction
 - **Status:** clean run start-to-finish. Fetch (176 papers/22 categories, offset day-of-year×3=756) succeeded
   in one shot. `votes.json` carries the same signal as last night — decision-theory, gambling, poker, games,

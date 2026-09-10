@@ -1,0 +1,1311 @@
+[
+  {
+    "type": "demo",
+    "title": "Causal Direction Illusion",
+    "paper": "2609.03705v1 \u2014 Federated Causal Discovery via Regression-Directed Cumulants",
+    "pitch": "Single-page toy: drag a slider to rescale one variable in a two-node causal scatterplot and watch a LiNGAM/cumulant-style 'causal arrow' flip direction in real time \u2014 dramatizing the paper's actual finding that these methods secretly rank by a variance-ladder along the DAG, not true statistical asymmetry, and that plain standardization silently breaks them.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "surprise \u2014 'wait, rescaling flips causation?' undercuts trust in any correlation-vs-causation claim thrown around in sports/betting analytics chats",
+    "tags": [
+      "math",
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Guess the Causal Arrow (Sportsball Edition)",
+    "paper": "2609.03705v1 \u2014 Federated Causal Discovery via Regression-Directed Cumulants",
+    "pitch": "A quiz game using real box-score pairs (turnovers\u2194losses, threes attempted\u2194wins, etc.): user guesses which way causation runs, then the app reveals what a naive cumulant-based causal-discovery algorithm would conclude \u2014 and why it's often wrong, tying directly into the paper's variance-ladder gotcha.",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 8,
+    "discussion_why": "direct relatability \u2014 'does X cause winning or does winning cause X' is a permanent fixture of sports-analytics arguments",
+    "tags": [
+      "sports",
+      "decision-theory",
+      "games",
+      "math"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "CausalVault: Federated Causal Discovery for Hospital Consortia",
+    "paper": "2609.03705v1 \u2014 Federated Causal Discovery via Regression-Directed Cumulants",
+    "pitch": "Package FedRCD as a compliance-friendly SaaS: hospitals/insurers run one communication round of cumulant exchange to jointly discover causal structure (e.g., which interventions actually drive outcomes) without pooling patient data under GDPR/HIPAA.",
+    "cool": 5,
+    "buildable": 3,
+    "discussion": 3,
+    "discussion_why": "niche B2B health-data play, little natural pull for a betting/poker/games crowd",
+    "tags": [
+      "ai",
+      "math",
+      "bio",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "LLM Half-Life Clock",
+    "paper": "2609.04699v1 \u2014 Model Retirement Creates Reproducibility Risk in Biomedical AI Publications",
+    "pitch": "Enter a model name + a paper's publish date; get a 'reproducibility risk' gauge built from the paper's retirement-schedule dataset, plus a scrolling graveyard timeline of retired models overlaid against the papers that cited them right before they died.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "the 'wait, really \u2014 42% of cited models are already gone?' stat is a strong shareable surprise, if a bit adjacent to core betting/poker turf",
+    "tags": [
+      "ai",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Model Provenance Registry",
+    "paper": "2609.04699v1 \u2014 Model Retirement Creates Reproducibility Risk in Biomedical AI Publications",
+    "pitch": "A registry service that snapshots model version, weights hash, and I/O behavior at time-of-citation for journals/pharma, so a paper's LLM-dependent results stay auditable and reproducible even after the vendor sunsets the model.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 3,
+    "discussion_why": "solves a real compliance pain point but is a quiet infra sell, not a debate-starter",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Science Built on Borrowed Time",
+    "paper": "2609.04699v1 \u2014 Model Retirement Creates Reproducibility Risk in Biomedical AI Publications",
+    "pitch": "Explainer video walking through the 61k-abstract study: how a median 538-day retirement window is quietly rotting the reproducibility of biomedical AI research, framed as a betting-style 'over/under: will the model in this Nature paper still exist by the time you read it.'",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 4,
+    "discussion_why": "surprising stat carries it, but the topic itself sits outside betting/poker/sports interest",
+    "tags": [
+      "ai",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Poison the Sportsbook AI",
+    "paper": "2609.00470v1 \u2014 TRIS: A Tri-Layer Retrieval Integrity Sieve Against Knowledge Poisoning",
+    "pitch": "Interactive playground framed as a betting-assistant chatbot: user crafts a malicious 'odds update' document to inject into its retrieval knowledge base and tries to steer it into recommending a bad bet, then watches a TRIS-lite sieve (clustering + trigger-payload detection + consistency check) catch and reject it live.",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 8,
+    "discussion_why": "hits the gambling crowd's nerve directly \u2014 'could someone hack your betting bot into feeding you -EV picks' plus the eye-popping 67-87% real-world attack success rate",
+    "tags": [
+      "ai",
+      "betting",
+      "gambling",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "RAG Firewall (open-source TRIS middleware)",
+    "paper": "2609.00470v1 \u2014 TRIS: A Tri-Layer Retrieval Integrity Sieve Against Knowledge Poisoning",
+    "pitch": "Ship the three-layer sieve (embedding-space clustering, trigger-payload structural filter, LLM consistency check) as a drop-in middleware package for any RAG stack, matching the paper's reported drop from 67-87% attack success down to 3-14%.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 4,
+    "discussion_why": "solid dev tool but appeals mainly to people already building RAG systems",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "How to Poison an AI's Brain (And How to Stop It)",
+    "paper": "2609.00470v1 \u2014 TRIS: A Tri-Layer Retrieval Integrity Sieve Against Knowledge Poisoning",
+    "pitch": "Explainer breaking down knowledge-poisoning attacks on RAG systems and the tri-layer defense, using the paper's before/after accuracy numbers (13-33% under attack to 58-76% recovered) as the hook.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 5,
+    "discussion_why": "solid 'wait really, that easy to hack an AI' surprise factor for a general audience",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Spoof My Fitbit",
+    "paper": "2608.17082v1 \u2014 SentryBus: A Multi-Vantage Observability Model for I2C Sensor-Interface Manipulation",
+    "pitch": "Browser toy simulating an I2C bus trace (timing, transfer lengths, register reads) from a fitness tracker; user tries to inject fake heart-rate/step data and watches the SentryBus-style detector flag the anomaly via timing/data-transition signatures \u2014 framed as 'could you cheat a Strava KOM or a step-count wager.'",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 7,
+    "discussion_why": "whimsical hardware-hacking angle lands squarely on real fitness-tracker wager/Strava-cheating drama Discords love to relitigate",
+    "tags": [
+      "whimsy",
+      "betting",
+      "gambling"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Can You Hack a Heart Rate Monitor to Win a Bet?",
+    "paper": "2608.17082v1 \u2014 SentryBus: A Multi-Vantage Observability Model for I2C Sensor-Interface Manipulation",
+    "pitch": "Video exploring wearable sensor spoofing (I2C bus manipulation) through the lens of fitness-challenge wagers and Strava-segment betting, using SentryBus's real bench numbers (0.842% timing footprint of a stealthy interposer, 6304s stable baseline) to show how subtle the attack \u2014 and the detection \u2014 really is.",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 8,
+    "discussion_why": "direct betting+whimsy+surprise hook: cheating on a fitness bet via hardware sensor spoofing is a wild 'wait, that's a real threat model' moment",
+    "tags": [
+      "betting",
+      "gambling",
+      "whimsy",
+      "bio"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "OSS I2C Anomaly Detector for Hobbyist Wearables",
+    "paper": "2608.17082v1 \u2014 SentryBus: A Multi-Vantage Observability Model for I2C Sensor-Interface Manipulation",
+    "pitch": "Port SentryBus's passive host-side detection features (timing, sequence, address-behavior fingerprints) into a small library for Raspberry Pi/Arduino projects protecting DIY health sensors from tampering.",
+    "cool": 5,
+    "buildable": 4,
+    "discussion": 3,
+    "discussion_why": "useful maker-community tool but low natural pull for a betting/poker Discord",
+    "tags": [
+      "bio",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "BWT Speed Race",
+    "paper": "2607.02113v1 \u2014 Faster Cache-Efficient Pattern Matching for Deterministic Wheeler Pangenome Graphs",
+    "pitch": "Side-by-side animated race between naive backward search and the new binary-search-plus-scan method on a small Wheeler automaton, ticking up I/O operations and elapsed 'nanoseconds' per character to dramatize the paper's claimed 500x speedup and sub-3ns-per-char rate.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 4,
+    "discussion_why": "'wait, really \u2014 500x just from cache-friendly layout' is a solid nerd-surprise but has thin overlap with betting/poker/sports interests",
+    "tags": [
+      "math",
+      "bio"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "How Genome Search Got 500x Faster",
+    "paper": "2607.02113v1 \u2014 Faster Cache-Efficient Pattern Matching for Deterministic Wheeler Pangenome Graphs",
+    "pitch": "Explainer on FM-index/Wheeler-graph pattern matching and why cache-aware binary search crushed the naive backward-search bottleneck, drawing an analogy to why poker solvers and massive hand-history databases live or die on the same cache-efficiency tricks.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 5,
+    "discussion_why": "the poker-solver/hand-history analogy is the one thread likely to actually hook a poker-adjacent audience",
+    "tags": [
+      "math",
+      "bio",
+      "poker"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Cache-Efficient Backward Search Library",
+    "paper": "2607.02113v1 \u2014 Faster Cache-Efficient Pattern Matching for Deterministic Wheeler Pangenome Graphs",
+    "pitch": "Implement and open-source the binary-search-plus-scan algorithm as a drop-in replacement for existing Wheeler-graph/FM-index libraries used in pangenome tools, trading the reported ~15x memory overhead for the 500x speedup where it matters.",
+    "cool": 5,
+    "buildable": 4,
+    "discussion": 2,
+    "discussion_why": "purely a bioinformatics-tooling contribution, essentially no betting/poker/sports resonance",
+    "tags": [
+      "bio",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Hypergraph Palette Sparsifier Playground",
+    "paper": "2608.19623 - Palette Sparsification for General Uniform Hypergraphs",
+    "pitch": "Single-page canvas demo: generate a random r-uniform hypergraph with max degree \u0394, then show it get properly colored using only tiny randomly-sampled per-vertex lists (size ~sqrt(log n)) drawn from a palette barely bigger than \u0394^(1/(r-1)). Slider for r, n, \u0394; live 'it still works!' reveal plus a counterexample mode showing it breaking below the threshold.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "wins on surprise -- 'you only need this few random colors?' is a neat wait-really moment even for non-mathematicians",
+    "tags": [
+      "math",
+      "games"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Conflict-Free Draft/Seating Resolver",
+    "paper": "2608.19623 - Palette Sparsification for General Uniform Hypergraphs",
+    "pitch": "Turn the sparsification trick into a practical tool: model 'no repeat opponents/groupings' constraints (fantasy draft pods, poker table seating, tournament brackets) as a hypergraph coloring problem and use small randomized candidate lists to find a valid assignment fast instead of brute-force backtracking.",
+    "cool": 6,
+    "buildable": 6,
+    "discussion": 6,
+    "discussion_why": "fits games/poker crowd via a genuinely useful scheduling tool, moderate surprise that a hard combinatorial problem yields to random sampling",
+    "tags": [
+      "games",
+      "poker",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "You Only Need sqrt(log n) Colors",
+    "paper": "2608.19623 - Palette Sparsification for General Uniform Hypergraphs",
+    "pitch": "Short explainer building intuition for palette sparsification via a simple 3-uniform hypergraph animation, then generalizing from graphs to hypergraphs and tying to why sublinear/streaming coloring algorithms care about this bound.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 4,
+    "discussion_why": "niche math surprise factor carries it but low relevance to betting/games crowd",
+    "tags": [
+      "math"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Decision-Focused NBA Props Staking Engine",
+    "paper": "2608.08718 - Integrated Learning and Robust Optimization",
+    "pitch": "Replace the current predict-then-Kelly-size pipeline in the NBA props terminal with an ILRO-style setup: train the predictor end-to-end through a robust bet-sizing LP (RSPO+ convex surrogate) so the model is judged by the bankroll decisions it induces, not just MSE, with a built-in uncertainty set for line/model misspecification.",
+    "cool": 8,
+    "buildable": 5,
+    "discussion": 8,
+    "discussion_why": "direct hit on the betting/decision-theory crowd -- 'accuracy isn't the point, the bet size is' is exactly the kind of claim that starts a Discord argument",
+    "tags": [
+      "betting",
+      "sports",
+      "ai",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Predict vs. Decide: The Regret Gap",
+    "paper": "2608.08718 - Integrated Learning and Robust Optimization",
+    "pitch": "Single HTML page with a toy newsvendor/allocation problem. Sliders control label noise and model misspecification; two live charts compare decision regret for a standard MSE-trained predictor vs. a decision-focused (robust) trained one, making the ILO/ILRO thesis tangible without any backend.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "surprising and directly relevant to anyone who sizes bets off a model -- shows a scenario where the 'more accurate' model actually makes worse bets",
+    "tags": [
+      "decision-theory",
+      "betting",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Robust Decision-Focused ML Platform",
+    "paper": "2608.08718 - Integrated Learning and Robust Optimization",
+    "pitch": "Consulting/SaaS pitch: offer the ILRO framework (RSPO+ loss, robust LP layer) as a plug-in training wrapper for firms doing predict-then-optimize under scarce/noisy data -- transportation routing, portfolio allocation, staffing -- where the paper shows the biggest gains are with limited samples and high-dim decisions.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 5,
+    "discussion_why": "solid econ/ai pitch but too enterprise-B2B to spark much Discord banter",
+    "tags": [
+      "ai",
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Corner Growth Race: Watching Directions Fight",
+    "paper": "2608.07236 - Negative association of Busemann functions in exponential LPP",
+    "pitch": "Canvas animation of the exponential corner-growth model: run last-passage percolation in two nearby asymptotic directions simultaneously and visually show the negative association -- when one direction's Busemann increment surges, the other visibly lags, live-updating a correlation readout.",
+    "cool": 8,
+    "buildable": 7,
+    "discussion": 6,
+    "discussion_why": "whimsical, mesmerizing growth-model animation with a genuine 'wait, they fight each other?' surprise beat",
+    "tags": [
+      "math",
+      "physics",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "From Solitaire to Random Growth: the KPZ Connection",
+    "paper": "2608.07236 - Negative association of Busemann functions in exponential LPP",
+    "pitch": "Explainer tracing patience-sorting/longest-increasing-subsequence card puzzles through RSK correspondence to last-passage percolation and Tracy-Widom fluctuations, landing on this paper's negative-association result as a punchline about hidden order in randomness.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 6,
+    "discussion_why": "whimsy plus a genuine card-game hook (patience sorting) gives it real crossover appeal for a games-minded audience",
+    "tags": [
+      "math",
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Correlated Streaks Bankroll Risk Model",
+    "paper": "2608.07236 - Negative association of Busemann functions in exponential LPP",
+    "pitch": "Borrow the paper's negative-association concentration inequality as inspiration for a bankroll risk tool that assumes correlated (not independent) hot/cold streaks across simultaneous bets/tables, giving tighter, more honest variance estimates than naive independence assumptions used in most staking calculators.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 7,
+    "discussion_why": "directly useful and debatable for the poker/gambling crowd -- 'your bankroll variance calculator is lying to you' is a discussion starter",
+    "tags": [
+      "poker",
+      "gambling",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Quadratic Residue Roulette",
+    "paper": "2607.29566 - The least quadratic residue and integers represented by quadratic forms",
+    "pitch": "Single-file betting mini-game: house picks a modulus n, player wagers on whether a random square-free r is a QR mod n. True odds hover near 50/50 but the paper's constructed 'anomalous' moduli (huge least-residue) let you build a bonus round where the house edge visibly shifts -- number theory dressed as a casino game, with a leaderboard.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "rare direct math-to-gambling mashup that's genuinely playable and surprising -- perfect whimsy/gambling crossover for a betting Discord",
+    "tags": [
+      "gambling",
+      "math",
+      "whimsy",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Least QR Explorer",
+    "paper": "2607.29566 - The least quadratic residue and integers represented by quadratic forms",
+    "pitch": "Interactive HTML tool: type any modulus n, instantly see \u2113(n) computed and visualized on a residue grid, with a gallery of the paper's specially-constructed moduli where \u2113(n) is unexpectedly huge, showing why 'the smallest square root is usually small' is a hard theorem, not a triviality.",
+    "cool": 6,
+    "buildable": 9,
+    "discussion": 4,
+    "discussion_why": "clean, easy build but appeal mostly limited to math-curious folks rather than the betting/games crowd",
+    "tags": [
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Why Nobody Can Prove the Smallest Non-Square Is Small",
+    "paper": "2607.29566 - The least quadratic residue and integers represented by quadratic forms",
+    "pitch": "Explainer on the open problem of bounding the least quadratic non-residue/residue, tying in GRH, Vinogradov's conjecture, and the practical payoff (Tonelli-Shanks needs a non-residue) -- ending on this paper's near-optimal bounds and its adversarial 'worst-case modulus' construction.",
+    "cool": 6,
+    "buildable": 4,
+    "discussion": 4,
+    "discussion_why": "pure number-theory intrigue but thin overlap with betting/games so lower discussion pull",
+    "tags": [
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Adversarial Market Game (Regime-Switching Zero-Sum LQ)",
+    "paper": "2309.05003 - Multidimensional indefinite stochastic Riccati equations and zero-sum SLQ games with non-Markovian regime switching",
+    "pitch": "Playable HTML canvas: you control a portfolio against an AI adversary that secretly toggles hidden bull/bear/crash regimes; the page numerically solves a simplified scalar Riccati ODE in real time to compute each side's optimal closed-loop feedback strategy, letting you feel how a no-shorting constraint changes the game's equilibrium.",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 8,
+    "discussion_why": "frames investing as an explicit zero-sum game against an adversary, which is catnip for a betting/decision-theory Discord's 'is the market really out to get you' debate",
+    "tags": [
+      "econ",
+      "gambling",
+      "decision-theory",
+      "games"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Regime-Aware Robust Hedging Overlay for SharpLab",
+    "paper": "2309.05003 - Multidimensional indefinite stochastic Riccati equations and zero-sum SLQ games with non-Markovian regime switching",
+    "pitch": "Implement a simplified version of the paper's closed-loop zero-sum LQ feedback strategy as a worst-case hedging overlay on top of SharpLab's CLV tracking -- treat 'the market/book' as an adversarial regime-switching opponent and size hedges to the provably optimal minimax strategy instead of a heuristic.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 6,
+    "discussion_why": "concretely useful for the user's own betting-quant stack, sparking debate on whether treating the market as adversarial actually improves CLV",
+    "tags": [
+      "betting",
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Regime-Switching Portfolio Insurance",
+    "paper": "2309.05003 - Multidimensional indefinite stochastic Riccati equations and zero-sum SLQ games with non-Markovian regime switching",
+    "pitch": "Fintech pitch: sell a worst-case-optimal hedging strategy (grounded in provable closed-form Riccati solutions) as 'portfolio insurance' for funds worried about abrupt regime shifts (vol spikes, recessions), differentiated from heuristic tail-risk hedges by having an actual game-theoretic optimality guarantee.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 5,
+    "discussion_why": "solid econ pitch but heavy math prerequisite makes it a harder sell for casual Discord debate",
+    "tags": [
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Regime-Switch Order Flow Detector",
+    "paper": "2307.02375v2 Online Learning of Order Flow and Market Impact with Bayesian Change-Point Detection",
+    "pitch": "Single-page HTML toy: paste/simulate a tick-by-tick buy/sell sequence, run a simplified Bayesian online change-point detector client-side (JS port of BOCPD) and animate a 'run-length' probability heatmap showing when the market silently switched from one large-order regime into another, with a concave price-impact curve plotted live underneath.",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 6,
+    "discussion_why": "surprise axis \u2014 most bettors/traders assume order flow is either random or trending, not that there's a detectable hidden regime clock ticking underneath",
+    "tags": [
+      "econ",
+      "math",
+      "betting",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Line-Move BOCPD: Sportsbook Odds Regime Sniffer",
+    "paper": "2307.02375v2 Online Learning of Order Flow and Market Impact with Bayesian Change-Point Detection",
+    "pitch": "Port the score-driven BOCPD model from tick data to live odds/line movement feeds (feeds SharpLab's CLV tracker): detect when a book's line-move 'regime' has shifted (sharp money entering vs public squares) in real time and flag it before the market fully reprices, same logic as detecting a large institutional order being worked.",
+    "cool": 8,
+    "buildable": 4,
+    "discussion": 8,
+    "discussion_why": "direct fit with betting/CLV \u2014 bettors argue constantly about whether 'the line is moving because of sharps' and this gives a statistical test for it",
+    "tags": [
+      "betting",
+      "gambling",
+      "econ",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "How Wall Street (and Vegas) Detect a Whale Mid-Trade",
+    "paper": "2307.02375v2 Online Learning of Order Flow and Market Impact with Bayesian Change-Point Detection",
+    "pitch": "Explainer video connecting Bayesian change-point detection in NASDAQ order flow to poker tell-reading and sportsbook line-move detection: same math (online regime inference under uncertainty), three totally different domains, one unifying 'detect the whale before it's obvious' story.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "whimsy + relatability \u2014 reframes a dense market-microstructure paper as 'reading tells' which pokes right at poker Discord culture",
+    "tags": [
+      "betting",
+      "poker",
+      "econ",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Forecaster Panel Roulette: Watch Bad Data Fake a Trend",
+    "paper": "2602.05226v1 Predictive Synthesis under Sporadic Participation",
+    "pitch": "Interactive single-file demo where users toggle which of N synthetic 'forecasters' show up each round (mimicking sporadic survey participation) and watch naive equal-weight pooling produce fake jumps in the aggregate forecast, side-by-side with the paper's coherent Bayesian update staying smooth \u2014 a visceral 'see the artifact' toy.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "surprise \u2014 reveals that consensus forecasts (inflation, betting-market consensus lines, prediction-market aggregates) can lie purely from who showed up, not new info",
+    "tags": [
+      "econ",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Sharp-Weighting for Sparse Tipster Panels",
+    "paper": "2602.05226v1 Predictive Synthesis under Sporadic Participation",
+    "pitch": "Apply the paper's latent-state Bayesian combination (instead of renormalize-on-dropout) to a panel of sports/poker forecasters or tipsters who post picks irregularly \u2014 maintain a persistent latent skill/opinion estimate for absent members so your consensus line doesn't artificially swing when your best capper skips a week.",
+    "cool": 6,
+    "buildable": 4,
+    "discussion": 6,
+    "discussion_why": "decision-theory nerds on a betting Discord love 'how do you aggregate an incomplete panel of experts' arguments (crowd wisdom vs cherry-picking)",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "econ",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Wrinkle Machine: Grow-a-Brain Point Cloud Simulator",
+    "paper": "2607.21840v1 Toward High-Fidelity 3D Point-Cloud Learning for Brain Folding Morphology Prediction Using Trans-Unet",
+    "pitch": "WebGL/three.js single-file toy that lets you drag sliders (growth rate, cortical thickness, stiffness) on a stylized brain-patch mesh and watches folds emerge over 'states 0 to 3', loosely mimicking the finite-element brain-growth model the paper trains on \u2014 a satisfying, squishy, shareable visual with zero backend.",
+    "cool": 9,
+    "buildable": 7,
+    "discussion": 4,
+    "discussion_why": "pure whimsy/shareability \u2014 mesmerizing procedural-growth visual, though it's a stretch from betting/poker discussion territory",
+    "tags": [
+      "bio",
+      "physics",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Why Your Brain Has Wrinkles (and How AI Predicts Them)",
+    "paper": "2607.21840v1 Toward High-Fidelity 3D Point-Cloud Learning for Brain Folding Morphology Prediction Using Trans-Unet",
+    "pitch": "Short explainer translating the Trans-Unet 3D-to-2D point-cloud trick (unwrap a folding cortex into a flat grid so a U-Net + attention model can predict its future folds) into an accessible 'how mechanical buckling makes brains wrinkly, and how we can now forecast the pattern' story with the growth simulator as the visual hook.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 3,
+    "discussion_why": "whimsy-only \u2014 cool science content but has essentially no betting/poker/games angle to spark server debate",
+    "tags": [
+      "bio",
+      "physics",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "'Am I Screwed?' Dementia-Risk Score Card",
+    "paper": "2602.16887v1 Construction of a classification model for dementia among Brazilian adults aged 50 and over",
+    "pitch": "Build a single-page calculator reproducing the paper's published odds ratios (illiteracy 7.42x, age 90+ 11.0x, low grip strength 2.5x, physical inactivity 1.61x, depressive symptoms 1.72x, higher education 0.44x protective, etc.) so users punch in their stats and get an illustrative relative-risk multiplier plus the paper's AUC/sensitivity caveats \u2014 a legit, sourced self-assessment toy.",
+    "cool": 6,
+    "buildable": 9,
+    "discussion": 5,
+    "discussion_why": "relatability \u2014 everyone has an opinion on which lifestyle factor 'really' matters for cognitive decline, sparks the same debate as fitness-tracker metrics",
+    "tags": [
+      "bio",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Grip Strength Betting Line: Gamify a Health Risk Score",
+    "paper": "2602.16887v1 Construction of a classification model for dementia among Brazilian adults aged 50 and over",
+    "pitch": "Turn the Random Forest model's feature importances into a 'build your own risk profile' slider game with a mock betting-odds display (e.g. '+250 to be classified high-risk') alongside the model's actual reported 0.776 AUC / 0.311 F1 so people see how noisy a 'good' medical classifier's odds really are \u2014 a Trojan horse for teaching people to distrust flashy AUC numbers.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "decision-theory surprise \u2014 reframing a 0.776 AUC model as betting odds shows gamblers how weak 'good' medical AI predictions actually are compared to a coin flip parlay",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "bio",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Cryptic Pocket: How Drugs Find Hidden Doors on Proteins",
+    "paper": "2504.17624v1 Deciphering the unique dynamic activation pathway in a GPCR",
+    "pitch": "Explainer using the NTSR1 receptor's Markov-state-model activation pathway to show how a 'cryptic allosteric site' only appears in a fleeting intermediate conformation \u2014 visualized as a protein doing a slow-motion transformation revealing a secret door mid-flex, tying to addiction-treatment relevance (biased signaling reduces drug-abuse potential).",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 3,
+    "discussion_why": "whimsy/surprise on molecular biology, but weakest fit to betting/poker/games so debate potential on that server is low",
+    "tags": [
+      "bio",
+      "physics",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Markov State Explorer: The Receptor as a Board Game",
+    "paper": "2504.17624v1 Deciphering the unique dynamic activation pathway in a GPCR",
+    "pitch": "Single-file interactive graph/board-game visualization of the paper's Markov State Model: nodes are conformational states (inactive \u2192 intermediates \u2192 active), edges are transition probabilities from the simulation, and clicking a node reveals whether a cryptic pocket is 'open' there \u2014 literally playable like a probabilistic board game, framed for a games-minded Discord as 'random walk on a protein.'",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 5,
+    "discussion_why": "games angle \u2014 a Markov chain you can click through like a board game is a natural bridge to a Discord that already thinks in terms of state transitions and probabilities (poker hand trees)",
+    "tags": [
+      "bio",
+      "games",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Biased-Signaling Screening-as-a-Service",
+    "paper": "2504.17624v1 Deciphering the unique dynamic activation pathway in a GPCR",
+    "pitch": "Pitch (not tonight-buildable) for a computational biotech micro-service: run the paper's NEB+Markov-state-model+temporal-network pipeline as a paid screening tool for pharma teams hunting cryptic allosteric sites and biased-signaling-selective compounds on other GPCRs, positioning against slower wet-lab-only discovery.",
+    "cool": 6,
+    "buildable": 2,
+    "discussion": 2,
+    "discussion_why": "lowest fit \u2014 pure biotech B2B pitch with no natural connection to the betting/poker/games audience",
+    "tags": [
+      "bio",
+      "physics"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Poker Hand DNA: Sequence-Clustering Playstyles",
+    "paper": "2409.04922v2 Nearest Neighbor CCP-Based Molecular Sequence Analysis",
+    "pitch": "Treat poker action sequences per hand (bet/raise/call/fold across streets) as 'molecular sequences' and run a lightweight nearest-neighbor correlated-clustering-and-projection (per the CCP-NN paper) to map thousands of hands into a 2D 'player-style genome' explorable in-browser.",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 8,
+    "discussion_why": "Direct poker fit plus the surprise of borrowing genomic sequence-clustering math to fingerprint playstyles.",
+    "tags": [
+      "poker",
+      "ai",
+      "bio",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Genome vs Playbook: One Projection, Two Worlds",
+    "paper": "2409.04922v2 Nearest Neighbor CCP-Based Molecular Sequence Analysis",
+    "pitch": "Single-page toy that runs the same correlated-clustering projection on DNA k-mer vectors and NBA play-call sequences side by side, showing both snap into similar-looking manifold shapes \u2014 an 'everything is a sequence' party trick.",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 6,
+    "discussion_why": "Whimsical cross-domain payoff ('wait, really?') that non-bio people will screenshot and argue over.",
+    "tags": [
+      "whimsy",
+      "bio",
+      "sports",
+      "ai"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Why Matrix Diagonalization Is Dead Weight: CCP vs CCP-NN",
+    "paper": "2409.04922v2 Nearest Neighbor CCP-Based Molecular Sequence Analysis",
+    "pitch": "Explainer walking through how nearest-neighbor density estimation replaces expensive matrix diagonalization in Correlated Clustering and Projection, racing the two methods live on a toy dataset.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 4,
+    "discussion_why": "Mostly a technical-education play with modest crossover appeal beyond an AI-curious audience.",
+    "tags": [
+      "ai",
+      "bio",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Entropy Rate Calculator: What Your Heartbeat Is Hiding",
+    "paper": "2603.04074v1 Dose-Dependent Cardiac Complexity Changes in Children Following Prenatal Glucocorticoid Exposure",
+    "pitch": "Paste RR-interval/HRV CSV data (or use a bundled sample) into a single HTML page that computes multiscale sample entropy, approximate entropy, and the paper's more-robust 'entropy rate decay' live as you scrub a stress-window slider.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "Solid 'huh, my own biometric data' hook but limited direct betting/poker pull on its own.",
+    "tags": [
+      "bio",
+      "math"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Tilt-o-Meter: HRV Entropy Decay as a Poker Tilt Alarm",
+    "paper": "2603.04074v1 Dose-Dependent Cardiac Complexity Changes in Children Following Prenatal Glucocorticoid Exposure",
+    "pitch": "Wearable-fed app that flags rising 'tilt' using the paper's entropy-rate-decay metric (shown uniquely robust under stress) instead of raw heart rate, calibrated on a mental-arithmetic-style stress task the way the paper isolated dose effects during the Trier Social Stress Test's arithmetic segment.",
+    "cool": 8,
+    "buildable": 5,
+    "discussion": 9,
+    "discussion_why": "Turns a real, paper-validated biomarker into a live-streamed poker-tilt argument-starter ('your watch says you're on tilt').",
+    "tags": [
+      "poker",
+      "gambling",
+      "bio",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Your Heart Rate Might Remember Before You Were Born",
+    "paper": "2603.04074v1 Dose-Dependent Cardiac Complexity Changes in Children Following Prenatal Glucocorticoid Exposure",
+    "pitch": "Explainer on the prenatal-steroid dose-response finding, translating 'entropy rate decay' into plain language and ending on the tilt-detection hook from the Tilt-o-Meter concept.",
+    "cool": 6,
+    "buildable": 4,
+    "discussion": 6,
+    "discussion_why": "Strong surprise factor \u2014 prenatal exposure showing up in cardiac complexity 8-15 years later \u2014 carries the video.",
+    "tags": [
+      "bio",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "MaxEnt vs Reality: Break the Independence Assumption",
+    "paper": "2510.27006v1 Generalized Maximum Entropy: When and Why you need it",
+    "pitch": "Interactive toy where a classic Shannon MaxEnt distribution badly fits correlated dice/parlay-leg outcomes; a slider morphs it into the paper's UJK/Tsallis-family generalized entropy until it matches, visualizing entropy vs. real correlated data live.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 9,
+    "discussion_why": "Nails the betting crowd's favorite gripe \u2014 sportsbooks pricing parlays as if legs are independent \u2014 with real math backing it up.",
+    "tags": [
+      "betting",
+      "gambling",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Correlated Parlay Pricer",
+    "paper": "2510.27006v1 Generalized Maximum Entropy: When and Why you need it",
+    "pitch": "Implement the paper's generalized-entropy framework to derive fair same-game-parlay odds under real leg correlation, then quantify the hidden vig baked in by books' independence assumption versus the corrected price.",
+    "cool": 8,
+    "buildable": 7,
+    "discussion": 9,
+    "discussion_why": "Gives bettors an actual number for 'how much extra vig am I eating on parlays,' guaranteed to start arguments.",
+    "tags": [
+      "betting",
+      "gambling",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "MaxEnt Poker Ranges Under Correlation",
+    "paper": "2510.27006v1 Generalized Maximum Entropy: When and Why you need it",
+    "pitch": "Build opponent hand-range estimates using generalized max-entropy instead of naive per-street independence, comparing range shapes and EV against the standard independent-frequency baseline.",
+    "cool": 7,
+    "buildable": 6,
+    "discussion": 7,
+    "discussion_why": "Reframes a classic poker-theory debate (range construction) with a rigorous 'your assumption is provably biased' angle.",
+    "tags": [
+      "poker",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Math Mistake Hidden in Every Parlay Bet",
+    "paper": "2510.27006v1 Generalized Maximum Entropy: When and Why you need it",
+    "pitch": "Explainer connecting the Shore-Johnson independence axiom to real correlated betting markets, building up to the same parlay-mispricing punchline as the demo/project versions.",
+    "cool": 6,
+    "buildable": 4,
+    "discussion": 7,
+    "discussion_why": "Takes an abstract entropy axiom and lands it on the exact bet type a betting Discord already argues about.",
+    "tags": [
+      "betting",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Cheap Guess, Expensive Answer: A Downfolding Toy",
+    "paper": "2606.12326v1 Transferable Machine Learning of Electronic Hamiltonians with Superposition-of-Atomic-Potentials Features",
+    "pitch": "Single-page toy chemistry sim showing a minimal-basis 'cheap' calculation predicting a large-basis 'expensive' one (mirroring the paper's downfolding scheme), letting users see how much accuracy survives the shortcut.",
+    "cool": 5,
+    "buildable": 6,
+    "discussion": 3,
+    "discussion_why": "Interesting to physics/AI nerds but has little natural pull for a betting/poker/games crowd.",
+    "tags": [
+      "physics",
+      "ai"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Teaching AI Chemistry's Rulebook, Not the Answer Key",
+    "paper": "2606.12326v1 Transferable Machine Learning of Electronic Hamiltonians with Superposition-of-Atomic-Potentials Features",
+    "pitch": "Explainer contrasting property-prediction ML (memorize answers) with Hamiltonian learning (learn the generating rule), using the paper's QM9 and organic-semiconductor transfer-integral results as the payoff.",
+    "cool": 6,
+    "buildable": 4,
+    "discussion": 3,
+    "discussion_why": "Clean AI-education angle, but the chemistry content won't spark betting-adjacent debate.",
+    "tags": [
+      "physics",
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Rulebook Learning for Box Scores",
+    "paper": "2606.12326v1 Transferable Machine Learning of Electronic Hamiltonians with Superposition-of-Atomic-Potentials Features",
+    "pitch": "Borrow the paper's core trick \u2014 learn the generating operator instead of the output stat \u2014 to predict full advanced box-score metrics from a team's minimal box score, echoing the paper's minimal-to-large-basis downfolding.",
+    "cool": 5,
+    "buildable": 5,
+    "discussion": 4,
+    "discussion_why": "A stretch analogy from quantum chemistry to sports stats, mild novelty for a stats-minded crowd.",
+    "tags": [
+      "sports",
+      "ai",
+      "physics"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Multifractal Turbulence Playground",
+    "paper": "2606.14696v2 Scalar dissipation anomaly and scalar-gradient scaling in turbulence",
+    "pitch": "Canvas-based multiplicative-cascade simulator with Reynolds/Schmidt sliders that renders the paper's cliff-like scalar fronts live and reads out the fractal dimension creeping toward the paper's predicted 7/3.",
+    "cool": 9,
+    "buildable": 9,
+    "discussion": 5,
+    "discussion_why": "Mesmerizing, screenshot-bait visual with a genuine 'wait, that number is universal?' hook, if lighter on betting fit.",
+    "tags": [
+      "physics",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Guess the Reynolds Number",
+    "paper": "2606.14696v2 Scalar dissipation anomaly and scalar-gradient scaling in turbulence",
+    "pitch": "Turn the cascade simulator into a wagering guessing game \u2014 two turbulence renders side by side, players stake points on which has the higher Re_lambda before revealing, with a leaderboard.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "Adds an actual stakes/wagering mechanic on top of a physics toy, tailor-made for a gambling-minded Discord.",
+    "tags": [
+      "whimsy",
+      "physics",
+      "gambling",
+      "games"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Momentum Cliffs: Multifractal Analysis of Win-Probability Swings",
+    "paper": "2606.14696v2 Scalar dissipation anomaly and scalar-gradient scaling in turbulence",
+    "pitch": "Apply the paper's joint velocity-scalar multifractal/intermittency machinery to in-game win-probability or live-odds tick data, hunting for turbulence-style 'cliff' fronts in comeback momentum swings.",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 8,
+    "discussion_why": "A legitimately surprising cross-domain transplant of hard physics math onto the exact momentum debates sports bettors already have.",
+    "tags": [
+      "betting",
+      "sports",
+      "physics",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Pole Dance: Quasinormal Mode Visualizer",
+    "paper": "2607.20991 Flavour current correlators and the non-Abelian hydrodynamic approximation",
+    "pitch": "Single-page toy: drag sliders for chemical potential ratio mu_3/mu and frequency/momentum window, watch poles in the complex-omega plane move from the 'hydrodynamic diffusion pole' regime into the 'AdS2/extended hydro' regime the paper identifies, with a live plot of the resummed low-omega logarithm approximation vs the naive hydro prediction diverging.",
+    "cool": 6,
+    "buildable": 6,
+    "discussion": 3,
+    "discussion_why": "wins on whimsy/surprise for physics nerds but has almost no natural hook into betting/poker/sports.",
+    "tags": [
+      "physics",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Black Hole That Computes Fluid Dynamics",
+    "paper": "2607.20991 Flavour current correlators and the non-Abelian hydrodynamic approximation",
+    "pitch": "Explainer video using the Pole Dance demo as the visual centerpiece: holographic duality, why 'hydrodynamics' can extend far beyond its textbook regime of validity, and what quasinormal modes are \u2014 framed as 'physicists found a hidden regime where the rules still work, just like traders finding a regime where a stale model still holds.'",
+    "cool": 7,
+    "buildable": 3,
+    "discussion": 3,
+    "discussion_why": "surprise factor of holography is real but the betting/poker crossover is a stretch, so debate value stays low.",
+    "tags": [
+      "physics",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Collapse Simulator: Percolation on a Living Network",
+    "paper": "2604.07347 Temporal Structure Mediates the Robustness and Collapse of Plant-Pollinator Networks",
+    "pitch": "Interactive force-directed network toy: pick 'temporal turnover' on/off, remove nodes randomly vs targeted, and watch a live phase-transition curve reveal bistable high-diversity/low-diversity states and sudden catastrophic collapse vs gradual decline \u2014 directly visualizes the paper's percolation math.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "surprise: the same math explains why a betting syndicate, a parlay chain, or a poker staking network suddenly implodes instead of degrading gracefully.",
+    "tags": [
+      "physics",
+      "bio",
+      "econ",
+      "decision-theory",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Percolation Risk Analytics for Liquidity Networks",
+    "paper": "2604.07347 Temporal Structure Mediates the Robustness and Collapse of Plant-Pollinator Networks",
+    "pitch": "Apply the paper's temporal-percolation framework (built for pollinator ecosystems) to DeFi liquidity pools, prediction-market order books, or sportsbook risk-sharing networks \u2014 sell early-warning 'bottleneck detection' dashboards to risk desks who currently only stress-test with static snapshots.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 6,
+    "discussion_why": "fits squarely in econ/gambling risk debate \u2014 'can ecology math predict the next liquidity crunch' is a good bar argument.",
+    "tags": [
+      "econ",
+      "gambling",
+      "physics",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Pollinator Poker Night: Network-Collapse Party Game",
+    "paper": "2604.07347 Temporal Structure Mediates the Robustness and Collapse of Plant-Pollinator Networks",
+    "pitch": "Discord bot mini-game for the SharpLab/poker server: players form a dependency graph (who backs whom, who shares reads), each round a random or chosen 'extinction' event removes a node, and the bot narrates cascading secondary extinctions \u2014 a literal playable version of the paper's bistable collapse dynamics.",
+    "cool": 7,
+    "buildable": 6,
+    "discussion": 7,
+    "discussion_why": "whimsy plus direct relatability \u2014 everyone in a staking/backing network has watched one implosion take out the whole group.",
+    "tags": [
+      "games",
+      "whimsy",
+      "decision-theory",
+      "poker"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Straighten the Flow: Optimal Transport Playground",
+    "paper": "2608.07042 Limit Points of Reflow with Minibatch Optimal Transport",
+    "pitch": "Draw two 2D point clouds by hand (a 'latent' blob and a 'target' shape), watch flow-matching trajectories connect them with curvy, crossing paths, then hit 'reflow' repeatedly and watch the paths visibly straighten and stop crossing as they converge toward the N-cyclically-monotone / optimal-transport coupling the paper proves is the limit.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 4,
+    "discussion_why": "wins purely on whimsy/surprise (satisfying to watch tangled paths untangle) with a thin AI-crowd discussion pull.",
+    "tags": [
+      "ai",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "OT Bet-Matching Engine",
+    "paper": "2608.07042 Limit Points of Reflow with Minibatch Optimal Transport",
+    "pitch": "Repurpose the paper's minibatch-OT machinery as a liquidity-matching engine: given a book of bettors wanting to lay/back at different prices and sizes, compute the optimal-transport coupling that minimizes total matched cost/spread, and animate it as flows between two columns of orders \u2014 a genuinely different way to think about exchange matching than price-time priority.",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 7,
+    "discussion_why": "surprise crossover \u2014 an ML training trick reframed as a literal order-matching algorithm is a 'wait, that actually works?' pitch for exchange bettors.",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "math",
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "DeepLOB for Sports Exchanges",
+    "paper": "2308.01915 LOB-Based Deep Learning Models for Stock Price Trend Prediction: A Benchmark Study",
+    "pitch": "Port the paper's benchmarked CNN/LSTM/attention architectures (trained on FI-2010-style order-book snapshots) from equities to Betfair/Polymarket order-book history, predicting short-horizon odds-movement direction, and report whether the same relative model ranking (which architecture wins) holds in a sports-exchange microstructure.",
+    "cool": 8,
+    "buildable": 5,
+    "discussion": 9,
+    "discussion_why": "direct hit on betting/decision-theory: 'can you actually front-run line movement the way quant funds front-run price moves' is exactly the argument this crowd has.",
+    "tags": [
+      "betting",
+      "sports",
+      "gambling",
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Order Book Trend Guessing Game",
+    "paper": "2308.01915 LOB-Based Deep Learning Models for Stock Price Trend Prediction: A Benchmark Study",
+    "pitch": "Single HTML page replays anonymized ticking limit-order-book snapshots (canned data), lets the user guess up/down/flat for the next move, then reveals what the paper's best benchmark model predicted and what actually happened \u2014 gamifies the exact task the benchmark study measures and shows how hard/easy it really is.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "relatability \u2014 bettors and traders both think they can read a tape, and this demo either confirms or humbles that intuition live.",
+    "tags": [
+      "betting",
+      "gambling",
+      "ai",
+      "games"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "LOB-Alpha for Prediction Markets",
+    "paper": "2308.01915 LOB-Based Deep Learning Models for Stock Price Trend Prediction: A Benchmark Study",
+    "pitch": "Sell short-horizon momentum/reversal signals derived from order-book microstructure on Polymarket/Kalshi/Betfair, using the best-performing architecture from the paper's benchmark as the base model, targeted at bettors and market-makers who currently trade on gut feel.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 8,
+    "discussion_why": "econ/gambling debate bait \u2014 a real 'would you pay for this signal' argument with clear stakes.",
+    "tags": [
+      "betting",
+      "gambling",
+      "econ",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Hypergraph Public Goods Playground",
+    "paper": "2604.07228 Emergence of cooperation in nonlinear higher-order public goods games",
+    "pitch": "Interactive toy: set group-size mix (2-player vs mixed higher-order games), a synergy/discount nonlinearity slider, and network type (scale-free vs random), then watch cooperation fraction evolve round by round on a live hypergraph \u2014 rerun the same parameters twice to expose the paper's bistability (same setup, two different fates).",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 8,
+    "discussion_why": "surprise: identical starting conditions producing opposite outcomes is a great 'wait, really?' that maps directly onto why some poker/staking groups stay cooperative and others collapse.",
+    "tags": [
+      "games",
+      "decision-theory",
+      "math",
+      "econ",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Group Chip Pool: A Live Nonlinear Public Goods Game",
+    "paper": "2604.07228 Emergence of cooperation in nonlinear higher-order public goods games",
+    "pitch": "Discord bot mini-game for a poker/betting server: each round, players anonymously contribute chips to a shared pot with a nonlinear multiplier (synergy at low contributions, discounting at high), pot gets split among contributors \u2014 a literal playable instance of the paper's model that will surface real free-rider behavior in the group.",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 9,
+    "discussion_why": "directly playable social-dilemma game inside a poker/gambling community is maximum debate fuel \u2014 people will argue about strategy and call each other out.",
+    "tags": [
+      "poker",
+      "games",
+      "decision-theory",
+      "gambling",
+      "econ"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Why Groups Cooperate (Until They Suddenly Don't)",
+    "paper": "2604.07228 Emergence of cooperation in nonlinear higher-order public goods games",
+    "pitch": "Explainer video using the Hypergraph Playground demo: walks through why public goods games with higher-order (group) interactions behave nothing like the textbook pairwise prisoner's dilemma, and ties the bistability result to real examples like staking pools, backing groups, and crowdfunded syndicates.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 6,
+    "discussion_why": "clean relatability hook for anyone who's been in a betting syndicate or home-game staking arrangement.",
+    "tags": [
+      "games",
+      "decision-theory",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Inbreeding Coalescent Simulator",
+    "paper": "2510.26115v2 \u2014 Quenched coalescent for diploid population models with selfing and overlapping generations",
+    "pitch": "Single-page canvas toy: draw a small pedigree (generations of parents/offspring) with a selfing-rate slider and population-size slider, then animate the gene genealogy (coalescent tree) that results from THAT specific pedigree ('quenched') vs. the theoretical average over all pedigrees ('annealed'). Punchline callout: crank selfing up and watch genealogies collapse almost instantly \u2014 this is literally the math behind 'purebred dog' and 'royal family' inbreeding jokes.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "wins on surprise/whimsy (inbreeding math made visual) more than on betting/poker fit",
+    "tags": [
+      "bio",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Pedigree Collapse Calculator",
+    "paper": "2510.26115v2 \u2014 Quenched coalescent for diploid population models with selfing and overlapping generations",
+    "pitch": "Small tool: input generations-back and an assumed rate of close-relative mating (selfing/cousin marriage analog), output the expected inbreeding coefficient and variance in ancestor count \u2014 generates shareable 'fun facts' like genealogy hobbyists love ('at 10 generations back you likely share ancestors with yourself').",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "mild surprise/whimsy, genealogy-hobbyist appeal but thin overlap with betting/poker/games",
+    "tags": [
+      "bio",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Math of the Habsburg Jaw",
+    "paper": "2510.26115v2 \u2014 Quenched coalescent for diploid population models with selfing and overlapping generations",
+    "pitch": "Pop-sci explainer using the quenched-vs-annealed coalescent distinction to explain why knowing an ACTUAL family tree (not just population averages) changes predictions about shared DNA \u2014 hook it with royal-family inbreeding and purebred-dog genetics.",
+    "cool": 7,
+    "buildable": 3,
+    "discussion": 5,
+    "discussion_why": "wins on surprise/whimsy as a narrative hook, weak decision-theory/betting tie-in",
+    "tags": [
+      "bio",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The Exponential Wall",
+    "paper": "2607.20959v1 \u2014 Large deviations in quantum dynamics and complexity",
+    "pitch": "Three synced panels on one HTML page, each with its own 'time' slider scaled differently: an observable histogram that snaps to its final shape almost instantly (O(1)), a measurement-outcome histogram that needs exponentially more 'time' (e^N) to fill in its tails, and an expectation-value curve needing doubly-exponential time (e^e^N) to settle. Frame the slider as 'number of hands/bets played' \u2014 visceral proof that your win-rate looks stable at 500 samples while the true tail (bad-beat frequency, true max drawdown) isn't sampled until orders of magnitude more.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 9,
+    "discussion_why": "hits decision-theory/betting hardest: it's a physics-grounded version of the 'small sample size' argument that never stops raging on a poker/betting Discord",
+    "tags": [
+      "physics",
+      "math",
+      "betting",
+      "poker",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Tail Sampler \u2014 how many bets until you've seen your real downside",
+    "paper": "2607.20959v1 \u2014 Large deviations in quantum dynamics and complexity",
+    "pitch": "Client-side tool: paste your P&L/hand-history series, it fits an empirical rate function (Cram\u00e9r-style large-deviations estimate) and reports how many more sessions you'd need to actually observe your true 1-in-10,000 drawdown, contrasted with what your current sample 'looks like' it's telling you.",
+    "cool": 7,
+    "buildable": 6,
+    "discussion": 8,
+    "discussion_why": "directly weaponizable in every 'my win-rate is real' argument on a betting/poker server",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Why Casinos Don't Fear Your Winning Streak",
+    "paper": "2607.20959v1 \u2014 Large deviations in quantum dynamics and complexity",
+    "pitch": "Explainer connecting the paper's 'frontier between explored and unexplored outcomes' to gambler's-ruin and house-edge intuition: your streak feels meaningful because you're sampling the fast-converging center of the distribution, while the true tail that would prove or disprove skill is exponentially out of reach.",
+    "cool": 7,
+    "buildable": 3,
+    "discussion": 7,
+    "discussion_why": "wins on gambling fit \u2014 reframes a classic 'am I actually good' debate with real physics backing",
+    "tags": [
+      "gambling",
+      "physics",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Complexity Frontier Racer",
+    "paper": "2607.20959v1 \u2014 Large deviations in quantum dynamics and complexity",
+    "pitch": "Whimsical two/three-lane 'race' toy where hidden information reveals at O(1), e^N, and e^e^N rates respectively \u2014 visually dramatizes why 'true complexity' of a system is functionally unmeasurable on human timescales, playable as a party/Discord-screen-share icebreaker.",
+    "cool": 8,
+    "buildable": 7,
+    "discussion": 6,
+    "discussion_why": "wins on whimsy/surprise as a visceral gag more than on direct betting relevance",
+    "tags": [
+      "physics",
+      "whimsy",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Guess My Shape",
+    "paper": "2608.19609v1 \u2014 The integer point enumerator of one irrational translate of P is a complete invariant",
+    "pitch": "Puzzle demo: reveal only a table of lattice-point counts L_{P+y}(t) for t = 1..10 of a hidden polygon shifted by a magic irrational vector; player tries to reconstruct the polygon on a grid. Reveal at the end that the paper *proves* this is always uniquely solvable when y's coordinates plus 1 are linearly independent over the rationals \u2014 a legit 'wait, that number sequence secretly IS the shape' mind-bender.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "wins on surprise for a puzzle/math-nerd crowd, only loosely brushes the games tag",
+    "tags": [
+      "math",
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Polytope Reconstructor",
+    "paper": "2608.19609v1 \u2014 The integer point enumerator of one irrational translate of P is a complete invariant",
+    "pitch": "Implement the paper's core trick in 2D: recover a polygon's facet inequalities from the discontinuities of its shifted lattice-point-counting function, as a small standalone solver/portfolio piece.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 4,
+    "discussion_why": "wins narrowly on 'wait, really?' math surprise but is otherwise a niche nerd-flex with little group discussion pull",
+    "tags": [
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Loaded Dice Fingerprint",
+    "paper": "2608.19609v1 \u2014 The integer point enumerator of one irrational translate of P is a complete invariant",
+    "pitch": "Frame the complete-invariant trick as a magic trick: take a 2-3-way pot-odds probability simplex, apply the irrational-shift counting function, and show a spectator can uniquely 'fingerprint' any equity region from nothing but a short list of integers \u2014 a nerdy bar-bet style demo for poker/game-theory fans.",
+    "cool": 7,
+    "buildable": 6,
+    "discussion": 5,
+    "discussion_why": "wins on whimsy/surprise via the poker-equity framing device, though the math itself is only decorative there",
+    "tags": [
+      "math",
+      "poker",
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Foundation Models Don't Need Fancy Tokenizers",
+    "paper": "2602.16626v1 \u2014 A Systematic Evaluation of Sample-Level Tokenization Strategies for MEG Foundation Models",
+    "pitch": "Short explainer on the finding that simple, non-learnable binning of brain signals matches learned autoencoder tokenizers for MEG foundation models \u2014 a case study in premature complexity for an ML-engineer audience.",
+    "cool": 5,
+    "buildable": 3,
+    "discussion": 4,
+    "discussion_why": "wins mildly on 'wait, simple beats fancy' surprise, but has almost no betting/poker/games overlap",
+    "tags": [
+      "ai",
+      "bio"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Tokenizing Brainwaves",
+    "paper": "2602.16626v1 \u2014 A Systematic Evaluation of Sample-Level Tokenization Strategies for MEG Foundation Models",
+    "pitch": "Interactive toy: generate a synthetic MEG-like waveform, let the user toggle between a simple fixed quantizer and a 'learned' autoencoder-style tokenizer, and watch the reconstructions come out nearly identical \u2014 a direct visual demonstration of the paper's headline result.",
+    "cool": 6,
+    "buildable": 7,
+    "discussion": 3,
+    "discussion_why": "mostly an AI/engineering novelty toy with minimal pull for a betting/poker/games audience",
+    "tags": [
+      "ai",
+      "bio"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Sportsbook Market-Share Modeler",
+    "paper": "2602.05137v2 \u2014 Nested Pseudo-GMM Estimation of Demand for Differentiated Products",
+    "pitch": "Apply the paper's fast BLP-style differentiated-products demand model to sportsbooks as competing 'products' (price = effective vig/promo generosity), estimating cross-elasticities and predicting market-share shifts when a book changes its promo structure \u2014 a natural SharpLab-adjacent tool.",
+    "cool": 8,
+    "buildable": 5,
+    "discussion": 8,
+    "discussion_why": "wins on betting/econ fit \u2014 directly formalizes the constant 'which book actually has the best product' debate",
+    "tags": [
+      "betting",
+      "econ",
+      "gambling",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "GMM Speed Race",
+    "paper": "2602.05137v2 \u2014 Nested Pseudo-GMM Estimation of Demand for Differentiated Products",
+    "pitch": "Side-by-side animated visualization: classic nested-fixed-point BLP estimation (slow spiral convergence) vs. nested pseudo-GMM (near-instant) on a toy demand system, with a 'number of products' slider (imagine it as number of player-prop markets) that shows the compute-time gap exploding \u2014 visceralizes the paper's 'efficiency gains grow more than proportionally' claim.",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 5,
+    "discussion_why": "mostly an econometrics-nerd flex, though 'why are there 500 player props now' resonates lightly with betting-market gripes",
+    "tags": [
+      "econ",
+      "math",
+      "betting"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "PriceDiff \u2014 BLP-as-a-service for betting/DFS product teams",
+    "paper": "2602.05137v2 \u2014 Nested Pseudo-GMM Estimation of Demand for Differentiated Products",
+    "pitch": "Pitch a small SaaS letting sportsbooks/DFS platforms run fast differentiated-demand estimation on their own live prop menus, to optimally price odds and promos in near-real time as products get added or removed.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 6,
+    "discussion_why": "wins on decision-theory/betting fit by raising 'are books already doing this to us' suspicion",
+    "tags": [
+      "betting",
+      "econ",
+      "decision-theory"
+    ]
+  }
+]
