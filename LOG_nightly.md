@@ -1,5 +1,44 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-11 — Bad Beat Insurance Bot
+- **Status:** clean run start-to-finish. Fetch (176 papers/22 categories, offset day-of-year×3=762) succeeded
+  in one shot. `votes.json` carries the same signal as prior nights — poker, decision-theory, gambling,
+  games, and physics each net -1, everything else 0 — soft down-weight applied (0.3x per tag) to discussion
+  scores before ranking.
+- **Fetch/ideate:** 30 papers hand-selected one-per-category across all 22 categories (plus 8 extra picks
+  from cs.DS, physics.soc-ph, cond-mat.soft, q-fin.TR, q-bio.NC, q-bio.QM, math.CO, q-bio.PE for fun-fit
+  density) — deduped against 273 prior arXiv IDs mentioned in this log (no collisions) — 6 batches of 5 via
+  a Workflow run (`wf_b026e7f0-7fe`, `ideation_2026-09-11.js`), 91 ideas generated.
+- **Forum top-3 / build-off candidates (all 3 buildable, real 3-way competition):** top-ranked idea by raw
+  discussion score was a tie between a startup pitch (Cross-Market Momentum Signals, discussion 9, buildable
+  4) and another startup (Retention RL, discussion 9, buildable 4); both were passed over per the playbook's
+  "prefer 2-3 buildable when scores are close" rule in favor of the next-highest-scoring buildable demos on
+  the same three distinct papers: **Modeling Memory-Dependent Reliability of LLMs: A Hidden Markov Model**
+  (arXiv:2607.22951, discussion 10, buildable 8) — proves the hot-hand fallacy debate from basketball is a
+  real, measurable autocorrelation in LLM answer streaks, and the naive i.i.d. confidence interval on
+  accuracy is provably too narrow once you fit the hidden 2-state model; **COMA: A Compositional Misleading
+  Attack Class on Security-RAG** (arXiv:2608.17960, discussion 9, buildable 8) — every retrieved document
+  can be individually true and the composition can still mislead, defended by a leave-one-out causal
+  counterfactual test; **PersuaRL: RL-Driven Multi-Expert Selection for Persuasive Dialogue** (arXiv:2609.01188,
+  discussion 9, buildable 8) — an RL agent learns which rhetorical persona (Authority/Scarcity/Social
+  Proof/Empathy) to deploy turn by turn, optimized purely to convert, not to be honest.
+- **Build-off winner: Bad Beat Insurance Bot** (`2026-09-11-bad-beat-insurance.html`, from the PersuaRL
+  paper). All three builds passed self-verification (`node --check`, tag-balance parsing, DOM-ref
+  cross-checks, numerical validation of any stats claimed) and the judge went further, driving all three
+  live in headless Chromium via Playwright — every slider, button, and game/chat flow actually exercised,
+  zero console errors on any of the three, none disqualified. Judge scored **Bad Beat Insurance Bot**
+  9/9/9/8 (wow/interactivity/polish/fidelity, total 35) — a **tie** with **Hot Hand LLM dashboard** 8/8/9/10
+  (35) — vs. **Misleading Stat Pack** 8/9/9/7 (33). The tiebreak went to Bad Beat Insurance Bot on audience
+  fit: it turns the paper's finding into something that happens *to you* (the bot visibly pivots rhetorical
+  tactics mid-conversation when you resist, then the debrief narrates its policy's actual turn-by-turn
+  reasoning), which lands as a sharper "wow, it's optimizing to convert me, not to be honest" moment for a
+  betting/poker Discord than the Hot Hand dashboard's more rigorous-but-cerebral Wilson/HMM confidence-interval
+  math (verified live to satisfy its own i.i.d.-convergence claim) or the Misleading Stat Pack's strong game
+  loop but thinner (linear-additive, not truly compositional) fidelity to COMA's actual attack mechanic.
+- **Live URL:** https://share.djiang.xyz/arxiv-scrape/demos/2026-09-11-bad-beat-insurance.html (brief:
+  https://share.djiang.xyz/arxiv-scrape/2026-09-11-nightly.html). Digest written to `digest_2026-09-11.json`
+  (validated OK) for `nightly.sh` to post to the SharpLab forum.
+
 ## 2026-09-10 — Hypergraph Public Goods Playground
 - **Status:** clean run start-to-finish. Fetch (176 papers/22 categories, offset day-of-year×3=759) succeeded
   in one shot. `votes.json` unchanged from prior nights: poker, decision-theory, gambling, games, and physics
