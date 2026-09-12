@@ -1,5 +1,41 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-12 — Bluff Detector
+- **Status:** clean run overall, but the fetch step (offset day-of-year×3=765) hit heavy arXiv 429s/timeouts
+  on the first two attempts (8 min then a full 10 min timeout, only 1/22-6/22 categories succeeding). Added
+  incremental checkpointing + a `--resume` flag to `fetch_papers.py` (writes after every category, skips
+  already-fetched categories on resume) so a killed/timed-out run doesn't lose progress — third attempt with
+  a clean `papers_nightly.json` completed all 22 categories cleanly. Fetched 176 papers, sampled 30 round-robin
+  across categories for ideation, 6 batches of 5.
+- **Ideas:** 85 generated. `votes.json` showed all tags at 0 or -1 (games, poker, decision-theory, gambling,
+  physics net -1) — a weak, mostly-flat signal, applied as a light discussion-score bias.
+- **Forum top-3 (by adjusted discussion score, all three buildable-tonight):**
+  1. Bluff Detector with Limited Memory — quantum stabilizer testing/learning under limited coherent memory
+     (arXiv:2607.02444) ← BUILT, won
+  2. Pipeline Madness: OCR+LLM Bracket — 35-pipeline document-extraction benchmark, 75% scored F1<0.25
+     (arXiv:2608.18289)
+  3. Portfolio of Predictions — hedging forecast combinations, optimal weights can go negative
+     (arXiv:2308.15384)
+- **Built (3-way build-off, all three from the forum top-3 above):**
+  - A — Bluff Detector with Limited Memory: poker-framed live Θ(n−k) vs Θ(n²/k) sample-complexity curves,
+    slider-driven, plus a "deal hands" race simulator (testing vs. fully learning an opponent's range).
+  - B — Pipeline Madness: 32-seed March-Madness bracket of OCR+LLM/VLM configs, F1 scores hand-calibrated to
+    match the paper's real aggregate stats (4/35 >0.5, ~75% <0.25), confetti finish.
+  - C — Portfolio of Predictions: real portfolio-theory math (Gauss-Jordan inversion, Cholesky, Monte Carlo
+    verification) showing when the optimal forecast-combination weight goes negative.
+  - **Judge's pick: A, Bluff Detector** — all three passed "does it run" (headless Playwright / Node checks),
+    but A won on implementing the paper's actual scaling laws as live slider-driven formulas (vs. B's
+    pre-calibrated lookup table) and the most charming reframing of an obscure quantum-memory result into
+    poker-native language, edging out C's superior mathematical rigor on shareability.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-12-bluff-detector.html (winner)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-12-pipeline-madness-b.html (runner-up, linked from brief)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-12-portfolio-predictions-c.html (runner-up, linked from brief)
+  - https://share.djiang.xyz/arxiv-scrape/2026-09-12-nightly.html
+  - david-share commit 6cea271. LIVE after VPS `git -C /opt/share pull`.
+- **Digest:** `digest_2026-09-12.json` written and validated (3 papers, demo_url/demo_arxiv_id point at the
+  build-off winner) for `nightly.sh` to post to the SharpLab forum.
+
 ## 2026-09-11 — Bad Beat Insurance Bot
 - **Status:** clean run start-to-finish. Fetch (176 papers/22 categories, offset day-of-year×3=762) succeeded
   in one shot. `votes.json` carries the same signal as prior nights — poker, decision-theory, gambling,
