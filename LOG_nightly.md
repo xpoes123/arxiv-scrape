@@ -1,5 +1,53 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-13 — Gaslight the Geolocator
+- **Status:** degraded fetch night. `fetch_papers.py` (offset day-of-year×3=768) hit a sustained, near-total
+  arXiv IP block — 7 attempts over ~90 minutes (with cooldowns up to 3 min between retries) cleared only 2 of
+  22 categories (cs.AI, cs.CL, 16 papers) before every remaining call kept 429ing/timing out with zero
+  incremental progress across the last several attempts. Unlike prior nights' transient bursts (which cleared
+  on a 3rd attempt), this looked like a sustained block, so continuing to retry stopped being productive —
+  proceeded with the 16 papers fetched, minus one dupe (`2609.01188` PersuaRL, already covered 2026-09-11),
+  leaving 15 unique cs.AI/cs.CL papers for ideation (3 batches of 5, down from the usual 6).
+- **Ideas:** 48 generated. `votes.json` signal unchanged from recent nights (games, decision-theory, physics,
+  gambling, poker net -1; everything else 0) — light down-weight applied to discussion scores.
+- **Forum top-3 (by adjusted discussion score, all three buildable-tonight — real 3-way competition):**
+  1. GeoContext: One Context Ladder, Two Failure Modes in Vision-Language Geolocation — feeding a
+     vision-language model a false location hint makes it anchor on the lie, and 83.8% of its wrong
+     location-confirmations came with ≥80% confidence (arXiv:2609.05761) ← BUILT, won
+  2. The Normalization of Deviance in AI Development — maps Challenger/TMI/737 MAX organizational failure
+     patterns onto AI labs (arXiv:2609.05749)
+  3. LLMPEDIA — 1.3M claims extracted straight from LLM memory, only 68.4% true against Wikipedia, 30.5%
+     unverifiable (arXiv:2609.01182)
+- **Built (3-way build-off, all three from the forum top-3 above):**
+  - A — Gaslight the Geolocator: GeoGuessr-style bluffing game — drop pins to feed a simulated
+    vision-language model false proximity claims and location hints, live dashboard converges toward the
+    paper's real stats (83.8% high-confidence false-confirms, flat hint-anchoring across distance bands,
+    error scaling with lie distance) as you play.
+  - B — Normalization of Deviance slippery-slope game: 10-round ship/hold decisions as VP of Safety, a
+    compliance badge stays "100% PASS" while true risk climbs underneath, reveal chart compares your trail to
+    real Challenger/TMI/737 MAX timelines. Builder caught and fixed a double-click race and a Chart.js sizing
+    runaway during testing, and rebalanced the risk math after sim testing showed disaster was ~100%
+    unavoidable regardless of strategy.
+  - C — LLM Calibration Casino: Vegas-neon betting game, wager chips on whether 54 trivia claims are
+    true/false/unverifiable, deck calibrated to LLMPEDIA's real 68.4%/30.5% split, summary compares player
+    calibration to a simulated overconfident LLM. Builder caught and fixed a real soft-lock bug (bankroll
+    could drop below the minimum chip size without triggering the bust check).
+  - **Judge's pick: A, Gaslight the Geolocator** — all three passed "does it run" (Playwright headless
+    Chromium playthroughs, zero console errors), but A won for being the only demo where the player performs
+    the paper's actual exploit (bluffing the model) rather than watching it happen to a character, plus the
+    live dashboard visibly converging toward the paper's real 83.8% stat and the highest visual craft
+    (procedural scene generation, animated map mechanics) — edging out B's more passive but excellent reveal
+    chart and C's solid execution (minor "50 vs 54 claims" copy inconsistency).
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-13-gaslight-geolocator.html (winner)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-13-deviance-game-b.html (runner-up, linked from brief)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-13-llm-calibration-casino-c.html (runner-up, linked
+    from brief)
+  - https://share.djiang.xyz/arxiv-scrape/2026-09-13-nightly.html
+  - david-share commit 649ab13. LIVE after VPS `git -C /opt/share pull`.
+- **Digest:** `digest_2026-09-13.json` written and validated (3 papers, demo_url/demo_arxiv_id point at the
+  build-off winner) for `nightly.sh` to post to the SharpLab forum.
+
 ## 2026-09-12 — Bluff Detector
 - **Status:** clean run overall, but the fetch step (offset day-of-year×3=765) hit heavy arXiv 429s/timeouts
   on the first two attempts (8 min then a full 10 min timeout, only 1/22-6/22 categories succeeding). Added

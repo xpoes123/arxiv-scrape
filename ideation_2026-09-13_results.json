@@ -1,0 +1,689 @@
+[
+  {
+    "type": "demo",
+    "title": "Monolith vs. Orchestrator Cost Simulator",
+    "paper": "2609.05758v2 - Dynamic Response",
+    "pitch": "Single-page toy: a slider set (conversation complexity, escalation rate, tool count) drives two animated pipelines side-by-side -- one giant monolithic LLM call, one bounded ReAct orchestrator with typed tools -- showing live latency, hallucination-rate, and $-per-1k-turns diverge in real time, seeded from the paper's actual numbers (8.3%->89.1% selector precision, 2.14%->0% hallucination, 3.87s->2.24s latency, 10x cost cut).",
+    "cool": 6,
+    "buildable": 9,
+    "discussion": 4,
+    "discussion_why": "mild surprise value (\"wait, smaller+structured beats bigger\") but limited betting/poker/games hook",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Bet-Slip Orchestrator: typed-tool agent for sportsbook support",
+    "paper": "2609.05758v2 - Dynamic Response",
+    "pitch": "Apply the paper's architecture (bounded ReAct orchestrator + typed entity/action tools + small generator) to a sportsbook customer-support use case -- e.g., \"cash out my bet slip\", \"why was my parlay voided\" -- to kill structured-action hallucination on money-moving actions, which is exactly the failure mode that's catastrophic in a betting product.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 6,
+    "discussion_why": "betting-relevant: a hallucinated cash-out action is a real financial-safety story people will argue about",
+    "tags": [
+      "betting",
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Why Bigger LLM Isn't Better: the customer-support case study",
+    "paper": "2609.05758v2 - Dynamic Response",
+    "pitch": "Explainer video walking through how a huge company swapped one giant model for a modular agent swarm and got more accurate, faster, and 10x cheaper -- a concrete rebuttal to \"just use the biggest model\" hype, framed around the specific before/after metrics.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 4,
+    "discussion_why": "solid AI-engineering discourse fodder but not natively a betting/poker/games conversation",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "AgentOps Audit: monolith-to-orchestrator migration service",
+    "paper": "2609.05758v2 - Dynamic Response",
+    "pitch": "Small consultancy/product that audits a company's single-prompt LLM support bot, replays their real transcripts through a typed-tool orchestrator prototype, and hands back a report projecting the hallucination/cost/latency deltas -- selling the exact before/after framing this paper validates.",
+    "cool": 5,
+    "buildable": 3,
+    "discussion": 3,
+    "discussion_why": "niche B2B pitch, low shareability outside AI-ops circles",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "GameFilm-QL: relational query engine over NBA broadcast footage",
+    "paper": "2609.05756v1 - Concord",
+    "pitch": "Port Concord's Video Relational Algebra idea (transcript-first + detect-track-join instead of raw-frame MLLM calls) onto NBA/NFL broadcast footage for SharpLab/nba-modeling: query things like \"every clip where a driving lane opened after a screen\" by joining tracked player positions instead of feeding hours of video to a multimodal model, cutting analysis cost the same way the paper cut it to ~5% of video duration sent to the MLLM.",
+    "cool": 8,
+    "buildable": 5,
+    "discussion": 7,
+    "discussion_why": "directly feeds NBA-props edge-finding, the kind of \"free alpha\" tooling a betting Discord will actually want to poke holes in",
+    "tags": [
+      "sports",
+      "betting",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Video-Query Cost Calculator",
+    "paper": "2609.05756v1 - Concord",
+    "pitch": "Single HTML page: pick a query type (narrated-video transcript search vs. cross-camera object join) and drag a \"footage hours\" slider; it animates what fraction of the raw video Concord-style optimization actually needs to send to a costly multimodal model, live-computing dollars saved using the paper's real numbers (87% cost reduction, F1 .364->.813 with zero MLLM calls on the tracking task).",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "the \"wait, you can skip the AI entirely and still win\" twist (F1 .364->.813 with zero MLLM calls) is a fun surprise beat",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "GameFilm SQL: cheap video-querying SaaS for scouting/betting shops",
+    "paper": "2609.05756v1 - Concord",
+    "pitch": "Package the transcript-first / detect-track-join optimization as an API that lets sportsbooks, scouting departments, and prop shops run natural-language queries over game film for a fraction of the cost of brute-force MLLM video analysis -- pitch is literally \"query a whole season for what one game used to cost.\"",
+    "cool": 7,
+    "buildable": 3,
+    "discussion": 6,
+    "discussion_why": "sits right at the sports+betting+decision-theory intersection people on a SharpLab-style server care about",
+    "tags": [
+      "sports",
+      "betting",
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "How to Make AI Watch an Entire NBA Season for $10",
+    "paper": "2609.05756v1 - Concord",
+    "pitch": "Explainer/demo video building a toy version of the video relational algebra on public game clips, showing the cost collapse from \"feed every frame to GPT\" to \"transcript+tracking then join\" -- a viral-shaped \"AI cost hack\" narrative.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 6,
+    "discussion_why": "sports-video-for-cheap has obvious pull for anyone doing prop research or scouting on a budget",
+    "tags": [
+      "sports",
+      "ai"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Challenger Disaster and the AI Labs Repeating It",
+    "paper": "2609.05749v1 - Normalization of Deviance",
+    "pitch": "Video essay mapping Challenger, Three Mile Island, and the 737 MAX onto contemporary AI lab practices, built around the paper's core, unsettling claim: orgs can follow every safety process to the letter and still walk straight into catastrophe -- ending on \"the pre-disaster period is still interruptible, if anyone's watching for it.\"",
+    "cool": 8,
+    "buildable": 4,
+    "discussion": 8,
+    "discussion_why": "prime debate bait -- \"which AI lab is currently in its Challenger phase\" is the kind of question that splits a room",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Normalization of Deviance: the slippery-slope game",
+    "paper": "2609.05749v1 - Normalization of Deviance",
+    "pitch": "Single-file choose-your-own-adventure HTML game: you're an org manager (AI lab, refinery, or NASA program, player's choice) making a string of small, individually-reasonable safety trade-offs under deadline pressure; a hidden risk meter creeps up invisibly each round, and the game reveals -- after the inevitable disaster -- exactly which \"reasonable\" decisions compounded, letting players replay and see how early they could've caught it.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 9,
+    "discussion_why": "the \"wait, I made every individually defensible call and still caused a disaster\" gut-punch is exactly the kind of thing a decision-theory-minded Discord will replay and argue about",
+    "tags": [
+      "decision-theory",
+      "games",
+      "ai",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Deviance Scorecard: org self-assessment tool",
+    "paper": "2609.05749v1 - Normalization of Deviance",
+    "pitch": "A short interactive checklist site that scores a team/company against the paper's normalization-of-deviance red flags (compliance-without-substance, silenced dissent, incremental risk creep, deadline-driven waivers) and returns a \"how close to Challenger are you\" risk profile.",
+    "cool": 5,
+    "buildable": 6,
+    "discussion": 5,
+    "discussion_why": "useful but more of a corporate self-help tool than a spark for banter",
+    "tags": [
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "LLM Calibration Casino",
+    "paper": "2609.01182v1 - LLMPEDIA",
+    "pitch": "A single-file slot-machine-styled page: it shows a real-sounding factual claim generated by an LLM, you place a chip bet on TRUE or FALSE before revealing the verdict, and your running bankroll gets crushed by the house edge baked into the paper's real base rate -- LLM claims are only 68.4% factual (21pp below what MMLU implies) with ~31% unverifiable \"insufficient\" claims acting as house-edge landmines.",
+    "cool": 9,
+    "buildable": 8,
+    "discussion": 9,
+    "discussion_why": "literally a betting mechanic wrapped around an AI-trust surprise stat -- maximal overlap with gambling + decision-theory + \"wait, really?\"",
+    "tags": [
+      "gambling",
+      "betting",
+      "ai",
+      "decision-theory",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Multi-Model Belief Comparator",
+    "paper": "2609.01182v1 - LLMPEDIA",
+    "pitch": "A lightweight site where you type a topic and see side-by-side what GPT-5-mini, DeepSeek-V3.2, and Llama-3.3-70B each \"believe\" from parametric memory (no retrieval), flagged against the LLMPEDIA factuality audit -- a browsable \"model belief map\" instead of a single chat answer.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 6,
+    "discussion_why": "the cross-model disagreement angle (\"which model is more full of it\") is inherently arguable",
+    "tags": [
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "I Fact-Checked 1.3 Million Things ChatGPT Believes",
+    "paper": "2609.01182v1 - LLMPEDIA",
+    "pitch": "Explainer/quiz-format video walking through the LLMPEDIA audit methodology and results, pausing periodically to quiz the viewer \"true, false, or unverifiable?\" on real extracted claims before revealing the 68.4% factuality rate.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 7,
+    "discussion_why": "quiz format plus a genuinely shocking headline number drives strong \"wait, really?\" reactions",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Confidence vs. Correctness Scatter",
+    "paper": "2609.01182v1 - LLMPEDIA",
+    "pitch": "Interactive scatter plot (built from the paper's published breakdowns) letting you filter by model, topic, and political-persona variant to see where LLM confidence diverges most from verified accuracy -- a self-contained data-viz toy rather than a game.",
+    "cool": 6,
+    "buildable": 7,
+    "discussion": 5,
+    "discussion_why": "solid calibration-nerd content but less inherently arguable than the casino framing",
+    "tags": [
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "BPE vs. Learned Tokenizer, Side by Side",
+    "paper": "2609.01151v1 - Subword Segmental BabyLMs",
+    "pitch": "Single-page visualizer: type any sentence and watch it get segmented two ways -- fixed BPE chunks vs. a toy learned subword-segmental scheme approximating SubSegGPT's morphology-aware splits -- with colored token boundaries so you can literally see where the learned approach aligns with real morphemes and BPE doesn't.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 3,
+    "discussion_why": "genuinely satisfying nerd-toy but has no natural betting/games/gambling hook",
+    "tags": [
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Tokenization Is the Hidden Bottleneck for Small AI Models",
+    "paper": "2609.01151v1 - Subword Segmental BabyLMs",
+    "pitch": "Explainer covering the BabyLM Challenge and why teaching a small model to learn its own tokenizer jointly with pretraining beats fixed BPE on sample efficiency, using SubSegGPT/SubSegDeBERTa's results as the case study.",
+    "cool": 5,
+    "buildable": 4,
+    "discussion": 3,
+    "discussion_why": "solid ML-education content but a niche audience outside tokenizer nerds",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Open Subword-Segmental Tokenizer Trainer",
+    "paper": "2609.01151v1 - Subword Segmental BabyLMs",
+    "pitch": "Small open-source library implementing the paper's learnable segmentation approach so other BabyLM-challenge entrants (or anyone training a tiny model) can swap in a jointly-learned tokenizer instead of fixed BPE.",
+    "cool": 5,
+    "buildable": 4,
+    "discussion": 2,
+    "discussion_why": "useful tooling but appeals to a narrow ML-research crowd, not a betting/games server",
+    "tags": [
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Optical Compression Slider",
+    "paper": "2609.01147 - On the Design Fundamentals of Pixel Text Representation Learning",
+    "pitch": "Single HTML page: paste text, it renders as a pixel image (canvas), then a slider progressively downsamples/JPEG-compresses the rendered image while a mocked-up 'semantic retention' curve (calibrated to the paper's reported 80%-token-compression robustness) shows how much meaning survives before the text becomes visually unreadable. Makes the counterintuitive 'you can read text as a blurry picture and still retrieve it' claim tangible.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "wins on surprise -- 'wait, you can shrink text images by 80% and an AI still reads them?'",
+    "tags": [
+      "ai",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Why Some AIs Read Words as Pictures",
+    "paper": "2609.01147 - On the Design Fundamentals of Pixel Text Representation Learning",
+    "pitch": "Explainer on the pixel-language-model trend (PIXEL, CLIPPO, Pixel Linguist II): why ditching tokenizers and rendering text as images fixes multilingual/OOV problems and enables 'optical context compression' -- screenshotting a doc instead of tokenizing it to save context budget.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 4,
+    "discussion_why": "wins on surprise for an AI-curious audience unfamiliar with tokenizer-free models",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "PixelDoc: Screenshot-Based Context Compression",
+    "paper": "2609.01147 - On the Design Fundamentals of Pixel Text Representation Learning",
+    "pitch": "Wrap the open-sourced Pixel Linguist II encoder in a small RAG pipeline that stores long documents as rendered pixel-image chunks instead of tokenized text, cutting context-window/token costs for retrieval while staying robust under heavy compression -- a real efficiency play for long-doc chat tools.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 3,
+    "discussion_why": "wins on relatability for anyone burning tokens on long-context RAG",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Judge Showdown: Holistic vs. Decomposed",
+    "paper": "2609.01139 - Does task decomposition improve automatic NLG evaluation?",
+    "pitch": "Static HTML scatter-plot/toggle demo visualizing the paper's core finding: decomposed LLM-judge scores vs. holistic single-shot scores plotted against human labels, showing they track almost identically -- letting users flip between 'break it into rubric steps' and 'just ask for a score' views and see decomposition buys nothing without human-label training data.",
+    "cool": 5,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "wins on debate -- mirrors the poker/sports argument of 'granular breakdown' handicappers vs. 'gut number' bettors, and which actually wins",
+    "tags": [
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "LLM-as-Judge Folk Wisdom, Debunked",
+    "paper": "2609.01139 - Does task decomposition improve automatic NLG evaluation?",
+    "pitch": "Explainer video on why 'decompose the eval into sub-criteria' -- the standard advice for building LLM judges/graders -- turns out to add nothing once you control for whether human labels were used, undercutting a lot of eval-pipeline best practice.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "wins on surprise for anyone who has built an LLM grading rubric assuming decomposition helps",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Dual-Mode Grader Harness",
+    "paper": "2609.01139 - Does task decomposition improve automatic NLG evaluation?",
+    "pitch": "A small evaluation library with a config flag to run LLM-judge grading either holistically or decomposed into sub-rubrics, useful for grading generated content quality (e.g., auto-written NBA prop writeups or poker hand-history summaries) without over-engineering an eval pipeline that the paper shows doesn't pay off.",
+    "cool": 5,
+    "buildable": 6,
+    "discussion": 3,
+    "discussion_why": "wins on relatability for anyone building internal AI QA tooling",
+    "tags": [
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Denoise the Crowd (SVD Ranking Toy)",
+    "paper": "2609.01135 - Overfitting Mitigation via Singular Value Decomposition in Minimum Bayes Risk Decoding",
+    "pitch": "Client-side HTML+JS (numeric.js) toy: load a noisy pairwise win/comparison matrix (default: 8 NBA teams' head-to-head records, or swap in poker player results / handicapper picks), run SVD live in the browser, and drag a rank-k slider to watch the 'true skill' ranking emerge and stabilize out of noisy upset results -- a hands-on version of the paper's core trick (low-rank filtering separates real consensus from noise) applied straight to sports rankings.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 8,
+    "discussion_why": "wins on fit -- directly recreates the 'wisdom of crowds vs. upset noise' argument every sports/poker Discord has, with actual math backing it",
+    "tags": [
+      "sports",
+      "poker",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Consensus Power Rankings via SVD",
+    "paper": "2609.01135 - Overfitting Mitigation via Singular Value Decomposition in Minimum Bayes Risk Decoding",
+    "pitch": "Feed SharpLab's collected handicapper picks / power rankings / model outputs into a pairwise-comparison matrix and apply the paper's low-rank SVD denoising to extract a 'true consensus' ranking that's robust to any single overfit source -- a direct transplant of MBR's utility-matrix trick onto sports betting model aggregation.",
+    "cool": 7,
+    "buildable": 6,
+    "discussion": 6,
+    "discussion_why": "wins on fit with betting/sports quant work already underway",
+    "tags": [
+      "betting",
+      "sports",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Hidden Math Behind Wisdom of Crowds",
+    "paper": "2609.01135 - Overfitting Mitigation via Singular Value Decomposition in Minimum Bayes Risk Decoding",
+    "pitch": "Explainer connecting SVD-MBR's denoising trick to everyday ranking problems -- sports power rankings, poker player pools, ensemble betting model aggregation -- showing visually how a rank-k SVD strips 'noise' (upsets, small-sample flukes) from 'signal' (real skill).",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "wins on surprise -- a text-generation paper's math turns out to be a generic sports-ranking denoiser",
+    "tags": [
+      "sports",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Thinking Without Words",
+    "paper": "2609.01117 - Latent Recurrent Thoughts: Recurrent Refinement of Proposed Latents for Reasoning with Frozen LLMs",
+    "pitch": "Single-file animated visualization: a Countdown-numbers or Sudoku puzzle on one side, and on the other a 2D projection (canned/precomputed trajectory) of the model's 'latent thought vector' spiraling toward a solution over recurrent refinement steps, with a step-count slider -- makes 'AI reasoning without ever generating a word' visually mesmerizing instead of abstract.",
+    "cool": 9,
+    "buildable": 7,
+    "discussion": 6,
+    "discussion_why": "wins on whimsy/surprise -- watching an AI 'think' as a moving dot rather than text is genuinely eerie and shareable",
+    "tags": [
+      "ai",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "AI That Reasons Without Using Words",
+    "paper": "2609.01117 - Latent Recurrent Thoughts: Recurrent Refinement of Proposed Latents for Reasoning with Frozen LLMs",
+    "pitch": "Explainer on the emerging 'continuous latent reasoning' trend (Coconut, LRT, etc.) -- why forcing every reasoning step into English tokens might be a crutch, and how a tiny recurrent network bolted onto a frozen LLM can out-reason chain-of-thought at a fraction of the compute.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "wins on surprise for anyone who assumes 'more chain-of-thought text = more reasoning'",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Latent Reasoner for Countdown/Puzzle Games",
+    "paper": "2609.01117 - Latent Recurrent Thoughts: Recurrent Refinement of Proposed Latents for Reasoning with Frozen LLMs",
+    "pitch": "Replicate LRT at small scale: bolt a tiny recurrent latent-refinement network onto a frozen open-weight LLM and train it (answer-only supervision, no traces) to solve the Countdown numbers game and Sudoku -- a scrappy weekend research replication with a genuinely game-flavored benchmark.",
+    "cool": 8,
+    "buildable": 4,
+    "discussion": 5,
+    "discussion_why": "wins on cool factor for the AI/games crowd wanting a hands-on replication",
+    "tags": [
+      "ai",
+      "games",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Guess the Dialect",
+    "paper": "2609.01113 - EDRAC: Benchmarking Arabic Dialect Reading Comprehension",
+    "pitch": "Single-page trivia game: short Arabic phrases (with English gloss) drawn from Egyptian, Moroccan, Emirati, Syrian, and Saudi dialects (from EDRAC's passage domains) are shown one at a time; players guess the dialect of origin, get instant reveal + a one-line fun fact about the divergence, and a running score -- pure client-side, hardcoded examples, no backend.",
+    "cool": 7,
+    "buildable": 9,
+    "discussion": 7,
+    "discussion_why": "wins on whimsy and 'wait, these are basically different languages?' surprise, plus built-in regional banter/rivalry appeal",
+    "tags": [
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Why Your AI Assistant Doesn't Understand Moroccan Arabic",
+    "paper": "2609.01113 - EDRAC: Benchmarking Arabic Dialect Reading Comprehension",
+    "pitch": "Explainer on Arabic dialect diversity and why NLP/voice assistants trained on Modern Standard Arabic fail hard on naturally spoken dialects -- using EDRAC's benchmark gaps between semantic answer quality and dialectal fidelity as the hook.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "wins on surprise for a general audience unaware how fragmented spoken Arabic is",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Dialect-Fidelity QA-as-a-Service",
+    "paper": "2609.01113 - EDRAC: Benchmarking Arabic Dialect Reading Comprehension",
+    "pitch": "Niche eval/QA vendor for MENA-facing apps (fintech, gaming, gambling platforms expanding into Gulf markets) that benchmarks and certifies chatbot/support-bot responses for genuine dialectal fidelity rather than just MSA correctness, using an EDRAC-style human+LLM pipeline.",
+    "cool": 5,
+    "buildable": 3,
+    "discussion": 4,
+    "discussion_why": "wins on relatability for anyone who's dealt with a support bot that 'technically' answers but sounds foreign",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Agent Wiring Room",
+    "paper": "2609.05774v1 Inference-Time Graph Engineering for Multi-Agent LLM Workflows",
+    "pitch": "Single-page animated visualizer showing ReActNet-style dynamic communication graphs forming differently for a math problem vs a code task vs a chat query -- nodes light up and edges redraw per reasoning stage, with canned traces for each task type so it needs no backend.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 4,
+    "discussion_why": "Cool AI-orchestration nerdery but stays abstract, not near betting/poker beyond a loose 'strategy graph' framing.",
+    "tags": [
+      "ai",
+      "games"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "BetCouncil",
+    "paper": "2609.05774v1 Inference-Time Graph Engineering for Multi-Agent LLM Workflows",
+    "pitch": "A multi-agent sports-betting analyzer where an odds agent, injury-news agent, sharp-money agent, and contrarian agent get wired into a task-adaptive communication graph (a la ReActNet) instead of a fixed pipeline, and the app shows the live graph plus the consensus pick and dissent.",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 8,
+    "discussion_why": "Proposing an AI 'sharp council' that picks bets is prime bait for a betting Discord to argue over whether they'd trust the consensus.",
+    "tags": [
+      "betting",
+      "sports",
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "I Gave My AI Agents a Seating Chart",
+    "paper": "2609.05774v1 Inference-Time Graph Engineering for Multi-Agent LLM Workflows",
+    "pitch": "Explainer using a poker-table seating analogy -- who talks to whom and when matters more than who's in the room -- to walk through ReActNet's dynamic graphs, demoed on a small betting-agent swarm.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 6,
+    "discussion_why": "The poker seating-chart hook is fun but the payload is technical, so it pulls the ai/poker crowd more than it sparks a fight.",
+    "tags": [
+      "ai",
+      "poker",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Poker Corpus Scout",
+    "paper": "2609.05766v1 Data Scout: Targeted Web Crawling for Domain-Specific Pretraining Corpora",
+    "pitch": "Apply Data Scout's taxonomy-expansion + probe-classifier crawl to poker theory (solver breakdowns, GTO forum threads, hand-history writeups) to build a niche corpus that's largely absent from CommonCrawl, then fine-tune a small model that actually talks GTO correctly.",
+    "cool": 6,
+    "buildable": 6,
+    "discussion": 5,
+    "discussion_why": "Appeals to the technical poker-theory crowd's building-in-public instinct more than it generates open debate.",
+    "tags": [
+      "poker",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The CommonCrawl Blind Spot",
+    "paper": "2609.05766v1 Data Scout: Targeted Web Crawling for Domain-Specific Pretraining Corpora",
+    "pitch": "Single-HTML treemap toy (canned numbers from the paper) letting you pick a niche domain -- sports betting, poker, medicine -- and see the simulated share of high-quality pages that are invisible to standard web crawls, echoing the paper's 63.2% CommonCrawl-missing stat.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "Genuine 'wait, Google-scale crawls miss most of this?' surprise, though it's not gambling-adjacent on its own.",
+    "tags": [
+      "ai",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Scout Corpora",
+    "paper": "2609.05766v1 Data Scout: Targeted Web Crawling for Domain-Specific Pretraining Corpora",
+    "pitch": "Sell curated, high-density training corpora for underserved verticals (betting analytics, actuarial math, poker theory) using the targeted-crawl-plus-probe method that beat plain filtering by 70x -- a data-supply moat rather than a model moat.",
+    "cool": 6,
+    "buildable": 4,
+    "discussion": 4,
+    "discussion_why": "A B2B data-supply pitch has low relatability for a casual betting/poker server.",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Quantize My Cache",
+    "paper": "2609.05764v1 Interface-Aware KV Cache Quantization for Dense On-Chip NVM in Long-Context LLM Decoding",
+    "pitch": "Single-HTML toy where you drag sliders for bit-width and rotation strength on synthetic KV vectors and watch a live tradeoff curve of energy savings vs reconstruction error, computed client-side with formulas approximating the paper's scheme.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 3,
+    "discussion_why": "Pure systems/hardware toy with almost no pull toward betting, poker, or whimsy.",
+    "tags": [
+      "ai",
+      "physics"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Context Cost Calculator",
+    "paper": "2609.05764v1 Interface-Aware KV Cache Quantization for Dense On-Chip NVM in Long-Context LLM Decoding",
+    "pitch": "A single-HTML calculator: input model size, context length, and bits-per-token, get an estimated memory footprint and energy cost using the paper's reported 3-4x read-energy and 8x metadata multipliers -- useful for hobbyists sizing local long-context bots.",
+    "cool": 5,
+    "buildable": 8,
+    "discussion": 3,
+    "discussion_why": "A handy utility, but calculators don't generate arguments.",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Why AI Forgets Less for Less Money",
+    "paper": "2609.05764v1 Interface-Aware KV Cache Quantization for Dense On-Chip NVM in Long-Context LLM Decoding",
+    "pitch": "Explainer translating KV-cache quantization + NVM hardware into dollar-per-million-tokens economics, framed around 'long context is about to get much cheaper' for anyone running local research or betting bots.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 4,
+    "discussion_why": "Cost-economics framing gives mild relatability but stays outside the gambling/poker lane.",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Gaslight the Geolocator",
+    "paper": "2609.05761v1 GeoContext: One Context Ladder, Two Failure Modes in Vision-Language Geolocation",
+    "pitch": "A GeoGuessr-style single-HTML game (bring-your-own API key) where you feed a vision-language model deliberately wrong location hints and watch it get bluffed, with a running score for 'biggest successful bluff' -- directly recreating GeoContext's hint-sycophancy failure mode as a game.",
+    "cool": 10,
+    "buildable": 8,
+    "discussion": 10,
+    "discussion_why": "Bluffing an AI with a fake hint is literally a poker mechanic in a shareable toy -- maxes surprise, whimsy, and gambling-crowd relatability at once.",
+    "tags": [
+      "games",
+      "ai",
+      "whimsy",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "I Bluffed an AI Into Guessing the Wrong Country",
+    "paper": "2609.05761v1 GeoContext: One Context Ladder, Two Failure Modes in Vision-Language Geolocation",
+    "pitch": "Viral video demoing GeoContext's finding by feeding a VLM increasingly outrageous location lies, framed explicitly as 'running a poker bluff on a machine that always believes your story over the cards.'",
+    "cool": 9,
+    "buildable": 6,
+    "discussion": 9,
+    "discussion_why": "Frames a real published failure mode as a poker bluff against a machine -- instantly relatable hook for a poker-heavy server.",
+    "tags": [
+      "ai",
+      "poker",
+      "whimsy",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Confidence Trap",
+    "paper": "2609.05761v1 GeoContext: One Context Ladder, Two Failure Modes in Vision-Language Geolocation",
+    "pitch": "Single-HTML chart visualizing the paper's stat that 83.8% of false location-confirmations came with >=0.8 confidence, framed as a betting-calibration diagram, with a slider letting you compare your own guessed-confidence-vs-accuracy to the model's.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 9,
+    "discussion_why": "Directly visualizes overconfidence-while-wrong, the exact pathology bettors obsess over in themselves and their opponents.",
+    "tags": [
+      "decision-theory",
+      "betting",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "RAG Energy Slider",
+    "paper": "2609.05760v1 RAGMark: A Comprehensive Framework for Benchmarking Retrieval-Augmented Generation Systems",
+    "pitch": "Single-HTML simulator using RAGMark's published numbers -- toggle reranking and compression on/off and watch projected latency, energy, and answer-quality bars shift, illustrating the reported 66% energy cut from combining both.",
+    "cool": 5,
+    "buildable": 8,
+    "discussion": 3,
+    "discussion_why": "A systems-tradeoff toy with little pull for a betting/poker crowd.",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "RAGMark-lite",
+    "paper": "2609.05760v1 RAGMark: A Comprehensive Framework for Benchmarking Retrieval-Augmented Generation Systems",
+    "pitch": "A lightweight open-source profiler devs drop into their own RAG stack to get a per-stage (retriever/reranker/generator) latency and energy breakdown, modeled on RAGMark's modular measurement approach.",
+    "cool": 5,
+    "buildable": 6,
+    "discussion": 3,
+    "discussion_why": "Solid dev utility but not something that starts an argument.",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "GreenRAG",
+    "paper": "2609.05760v1 RAGMark: A Comprehensive Framework for Benchmarking Retrieval-Augmented Generation Systems",
+    "pitch": "An energy-aware RAG optimization SaaS that auto-tunes enterprise pipelines using RAGMark's cross-stage interaction findings (upstream reranking/compression choices cascading into downstream cost savings).",
+    "cool": 5,
+    "buildable": 3,
+    "discussion": 3,
+    "discussion_why": "An enterprise infra cost-savings pitch has low relatability outside ML ops teams.",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  }
+]
