@@ -1,5 +1,61 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-15 — Prop Firm Challenge Monte Carlo
+- **Status:** worse degraded-fetch night than 09-13. `fetch_papers.py` (offset day-of-year×3=774) hit a total
+  export.arxiv.org block from the first call — 4 consecutive attempts (spanning ~35 minutes, each already
+  burning its internal 15s/30s/60s retry backoff per category) returned 429 on every single category, 0/21
+  papers fetched. A manual `curl` confirmed the export API was returning a bare `Rate exceeded.` body site-wide
+  for this IP, not a per-category fluke. Rather than keep retrying a dead endpoint, built a fallback fetcher
+  (`fetch_papers_fallback.py`) that scrapes `arxiv.org`'s HTML listing (`/list/<cat>/recent`) and abstract
+  (`/abs/<id>`, via `citation_*` meta tags) pages instead — same site, different endpoint, not covered by the
+  export API's rate limiter. It worked cleanly for CS/math/quant (10 categories, 79 papers) but 406'd on every
+  bio/chem/physics category tried (math.CO also 406'd) partway through the run — unclear why those specifically,
+  possibly a secondary throttle that kicked in after ~50 requests. Sampled 30 papers (3 per successful category)
+  for ideation, 6 batches of 5.
+- **Ideas:** 87 generated. `votes.json` signal still flat (all tags at 0, first week of voting) — no bias
+  applied.
+- **Forum top-3 (by discussion score, all three tied at 9/10 and all buildable — real 3-way competition):**
+  1. Gate Design and Stage-Dependent Incentives in Retail Proprietary-Trading Evaluations — passing a
+     prop-firm funded-trader eval is closer to a sizing-juiced coin flip than proof of skill, ~9x gate gap
+     between eval and funded-stage pass rates (arXiv:2609.14859) ← BUILT, won
+  2. Resolution Is Not Settlement, Part II — on-chain data from 99k+ resolved Polymarket conditions shows a
+     real median ~3min gap (long tail) between a bet resolving and you actually getting paid
+     (arXiv:2609.15373)
+  3. The Universe of Universes — formalizes the "implosion threshold" where adding more models/experts to a
+     consensus starts making aggregate accuracy worse, not better (arXiv:2609.15314)
+  (A 4th idea, "Signal Soup" on arXiv:2609.12477, tied at 9/9 too but was dropped for thematic overlap with
+  #3 — both are "more X doesn't help" ensemble-skepticism stories; picked the 3 most distinct hooks instead.)
+- **Built (3-way build-off, all three from the forum top-3 above):**
+  - A — Implosion Threshold Simulator: add tipster/model "experts" one at a time to a betting consensus (slider
+    or auto-play), watch a status badge flip "BUILDING EDGE" → "PAST IMPLOSION THRESHOLD" as accuracy rises then
+    tanks past θ*, with a live dartboard scatter and two Chart.js charts (accuracy-vs-N, Benefit Yield bars).
+  - B — The Settlement Funnel: animated Oracle Resolution → Protocol Finality → Holder Redemption pipeline
+    (SVG flow + D3 histogram), a "simulate a bet" button that runs a token through the pipeline live, delay
+    distribution calibrated to the paper's ~182-200s median gap and long unclaimed tail. Builder caught and
+    fixed two real bugs via screenshot review (low-contrast stage subtext, overlapping histogram bucket labels).
+  - C — Prop Firm Challenge Monte Carlo: six sliders (position size, trader count, drawdown limit, profit
+    target, eval/funded windows) feed a live two-stage Monte Carlo sim — thousands of zero-edge random-walk
+    traders clear the eval via sizing alone, then the same cohort's equity paths blow up against the funded
+    stage's trailing drawdown with no profit-target exit. Headline "Gate Gap" stat reproduces the paper's ~9x
+    finding organically from the barrier math, not hardcoded (builder verified via a Node.js sim replica across
+    parameter sweeps).
+  - **Judge's pick: C, Prop Firm Challenge Monte Carlo** (28/32/35 out of 40 on wow/interactivity/polish/
+    fidelity) — all three ran clean under headless Playwright with zero console errors, but C won for being the
+    most genuinely parametric (6 independently reactive sliders driving one cascading simulation, vs. A and B's
+    single primary interaction) and the tightest fidelity to its paper's actual mechanism (a driftless random
+    walk against a fixed barrier is close to a certain eventual hit — the demo's blow-up-day histogram makes
+    that mechanism visible, not just asserted).
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-15-prop-firm-monte-carlo.html (winner)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-15-settlement-funnel-b.html (runner-up, linked from
+    brief)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-15-implosion-threshold-a.html (runner-up, linked from
+    brief)
+  - https://share.djiang.xyz/arxiv-scrape/2026-09-15-nightly.html
+  - david-share commit 65c3cec. LIVE after VPS `git -C /opt/share pull`.
+- **Digest:** `digest_2026-09-15.json` written and validated (3 papers, demo_url/demo_arxiv_id point at the
+  build-off winner) for `nightly.sh` to post to the SharpLab forum.
+
 ## 2026-09-13 — Gaslight the Geolocator
 - **Status:** degraded fetch night. `fetch_papers.py` (offset day-of-year×3=768) hit a sustained, near-total
   arXiv IP block — 7 attempts over ~90 minutes (with cooldowns up to 3 min between retries) cleared only 2 of
