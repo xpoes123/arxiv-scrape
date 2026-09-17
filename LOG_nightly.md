@@ -1,5 +1,79 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-17 — Bad Beat Generator
+- **Status:** clean night. `fetch_papers.py` worked on the first try — 176 papers across 22 categories.
+  Sampled 30 (deterministic stratified pick, 1-2 per category) for ideation, 6 batches of 5, 86 ideas.
+  `votes.json` still flat (all tags 0) — no bias applied.
+- **Process fix:** the last two nights (09-14, 09-16) had their build-off killed by the headless `claude -p`
+  runner's 600s background-task idle-wait ceiling — a `Workflow`-based build-off backgrounds by design, and
+  waiting on it via an idle turn hits the ceiling before 3 real builders + a judge can finish. Fixed by running
+  the build-off as 3 parallel **foreground** (`run_in_background: false`) Agent calls in one message instead
+  of a backgrounded Workflow — a blocking tool call isn't subject to the idle-wait ceiling. Also used this
+  session to recover the two prior orphaned nights (see below).
+- **Forum top-3 (by discussion score, all tied at 9/10, all buildable):**
+  1. On-Policy and Off-Policy Learning for Large Action Spaces — sharing statistical strength across a huge
+     action space (structured Thompson sampling) beats treating every action as independent (arXiv:2607.28408)
+  2. Effect of intratumor heterogeneity in managing the go-or-grow dichotomy of cancer cells — a tumor-cell
+     grow-or-migrate game theory model with a sharp resource-depletion threshold (arXiv:2510.23360)
+  3. On the β=2 Partition function for Dirichlet L-functions in the q-aspect — log-correlated random field math
+     behind why correlated randomness clusters extremes worse than independence predicts (arXiv:2608.09906) ←
+     BUILT, won
+- **Built (3-way build-off):**
+  - A — Thousand-Armed Bandit Casino: 1000 slot machines with spatially-correlated payouts, racing naive
+    independent Thompson sampling against a structured/clustered agent (meTS-inspired), live regret-curve
+    chart. Builder caught and fixed a real canvas-scaling bug (`putImageData` writing at native resolution into
+    a corner instead of filling the larger canvas) and verified the structured agent's regret edge headlessly
+    across seeds (~5-15x less regret than naive).
+  - B — Go or Grow: Table Selection Simulator: agent-based sim of bettors on a resource-depleting grid choosing
+    to grind or migrate, sliders for depletion/regen/heterogeneity/migration-risk, live grow/go population
+    chart. Builder verified via headless Playwright that the population genuinely flips from ~100% grow to a
+    stable ~40/60 mixed strategy, matching the paper's coexistence result.
+  - C — Bad Beat Generator: side-by-side i.i.d. vs. log-correlated (branching-random-walk) bankroll simulators
+    with identical mean/variance per step, live spaghetti plots + drawdown histograms. Correlated worst-drawdown
+    consistently larger than i.i.d.'s across every setting tested (2.7-3.6x at defaults, 11.6x at extreme
+    parameters) — verified via headless Chromium with zero console errors.
+  - **Judge's pick: C, Bad Beat Generator** (35/34/31 out of 40 on wow/interactivity/polish/fidelity, all three
+    genuinely close) — all three passed every technical check (tag balance, `node --check`, correct SRI hashes,
+    zero console errors, controls verified to actually move the needle at non-default settings) with no "the
+    mechanic never triggers" problem this time. C won on having the most visually compelling payoff (dual
+    spaghetti plot + auto-updating histogram + dynamic punchline sentence) and the most dramatic, consistent
+    headline number directly proving the paper's log-correlated extreme-value claim.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-17-bad-beat-variance.html (winner)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-17-table-selection-b.html (runner-up, linked from brief)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-17-bandit-casino-a.html (runner-up, linked from brief)
+  - https://share.djiang.xyz/arxiv-scrape/2026-09-17-nightly.html
+  - david-share commit 34ded9a. LIVE after VPS `git -C /opt/share pull`.
+- **Digest:** `digest_2026-09-17.json` written and validated (3 papers, demo_url/demo_arxiv_id point at the
+  build-off winner) for `nightly.sh` to post to the SharpLab forum.
+
+## 2026-09-16 — Real Signal or Ghost?
+- **Status:** recovered late. The original 09-16 run (started 07:00 UTC) hit the same background-task timeout
+  described above: `Workflow`-based build-off got killed after 600s with only 2 of 3 builders finished
+  (bettor-swarm-c, signal-or-ghost-b — the third, hot-hand-head-fake, never wrote its file), so the judge never
+  ran and the demo/brief never published. The digest still posted to the forum on schedule that night (demo_url
+  fields don't gate the validator) but with no linked demo. Recovered during the 09-17 session: judged the two
+  survivors headlessly (jsdom + node-canvas + Chart.js, simulated interaction, not just static reads).
+- **Forum top-3 that night:** Initial-Condition-Robust Inference in Autoregressive Models (arXiv:2602.09382,
+  hot-hand-style confidence intervals), INTENSE: Detecting and disentangling neuronal selectivity in calcium
+  imaging data (arXiv:2603.04622, mutual-information + permutation-test signal-vs-noise detector) ← BUILT, won,
+  Collective phases in overdamped magnetic self-propelled spherocylinders (arXiv:2606.19498, active-matter
+  phase transitions).
+- **Judge's pick: signal-or-ghost-b** (32/40 vs. 25/40) — ran cleanly end to end: driven through all three
+  case types (real signal, confounded, pure noise), correctly showed a confounded pair passing the raw
+  significance test (p=0.003) while its conditional MI collapsed from 0.228 to 0.050 bits once the hidden
+  confound was controlled for — a faithful reproduction of INTENSE's actual disentanglement method. The rival
+  (bettor-swarm-c, a chiral-active-matter "sharp money vs. the herd" sim) had real polish but its central
+  advertised mechanic — falling through five distinct collective phases as sliders move — never actually
+  triggered; every preset/slider extreme tested stayed stuck on "Gas."
+- **Published (git push only, late):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-16-signal-or-ghost.html (winner)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-16-bettor-swarm-c.html (runner-up, linked from brief)
+  - https://share.djiang.xyz/arxiv-scrape/2026-09-16-nightly.html
+  - david-share commit 34ded9a. LIVE after VPS `git -C /opt/share pull`.
+- **Digest:** `digest_2026-09-16.json` already posted to the forum on 09-16 (no demo link at the time); local
+  copy updated with demo_url/demo_arxiv_id for the record, not re-posted.
+
 ## 2026-09-15 — Prop Firm Challenge Monte Carlo
 - **Status:** worse degraded-fetch night than 09-13. `fetch_papers.py` (offset day-of-year×3=774) hit a total
   export.arxiv.org block from the first call — 4 consecutive attempts (spanning ~35 minutes, each already
@@ -55,6 +129,36 @@
   - david-share commit 65c3cec. LIVE after VPS `git -C /opt/share pull`.
 - **Digest:** `digest_2026-09-15.json` written and validated (3 papers, demo_url/demo_arxiv_id point at the
   build-off winner) for `nightly.sh` to post to the SharpLab forum.
+
+## 2026-09-14 — 100ms: The Bluff-Catcher
+- **Status:** recovered late. The original 09-14 run hit the same background-task timeout as 09-16 (see
+  above) — `Workflow`-based build-off got killed after 600s, but this time all 3 builders had already
+  finished (bluff-catcher-a, stubborn-minority-b, secret-handshake-c); only the judge/publish steps were lost.
+  The digest still posted to the forum on schedule with no linked demo. Recovered during the 09-17 session:
+  judged all three headlessly via Playwright, driving each demo's controls through multiple settings, not just
+  defaults.
+- **Forum top-3 that night:** Autonomous Cyber Defense in Connected Vehicles: A Multi-Agent Approach to V2X
+  Security (arXiv:2608.19135, covert coordination hidden in normal-looking traffic) ← BUILT, won, Scaling Laws
+  for Majority-based Opinion Dynamics in the Presence of Stubborn Agents (arXiv:2608.11071, bistability forced
+  by a small fixed minority), Beyond the Transcript: Detecting Covert Coordination in Latent Multi-Agent
+  Communication (arXiv:2608.19161, collusion detection via latent activations).
+- **Judge's pick: bluff-catcher-a** (33/40 vs. 31/40 vs. 25/40) — the only one of the three with zero verified
+  defects: budget genuinely ticks down, countdown ring redraws, Chart.js scoring and a persistent leaderboard
+  all fire correctly, payoff matrix matches the paper's asymmetric-cost framing. Runner-up secret-handshake-c
+  had a dramatic reveal mechanic but a real false-positive problem (flagged an innocent, non-colluding pair as
+  colluding in half of 8 test trials, once at 100% confidence). stubborn-minority-b had the most rigorous math
+  but its bistability badge was flatly wrong at the exact default slider settings (a degenerate code path at
+  the symmetric default), only correct once nudged off-center.
+- **Published (git push only, late):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-14-bluff-catcher.html (winner)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-14-secret-handshake-c.html (runner-up, linked from
+    brief)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-14-stubborn-minority-b.html (runner-up, linked from
+    brief)
+  - https://share.djiang.xyz/arxiv-scrape/2026-09-14-nightly.html
+  - david-share commit 34ded9a. LIVE after VPS `git -C /opt/share pull`.
+- **Digest:** `digest_2026-09-14.json` already posted to the forum on 09-14 (no demo link at the time); local
+  copy updated with demo_url/demo_arxiv_id for the record, not re-posted.
 
 ## 2026-09-13 — Gaslight the Geolocator
 - **Status:** degraded fetch night. `fetch_papers.py` (offset day-of-year×3=768) hit a sustained, near-total
