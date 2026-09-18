@@ -1,5 +1,47 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-18 — Parlay Curvature Cascade
+- **Status:** clean night. `fetch_papers.py` worked on the first try — 176 papers across 22 categories.
+  Hand-picked 30 (one per category, extras on strongest hits) for ideation, 6 batches of 5, 88 ideas.
+  `votes.json` still flat (all tags 0) — no bias applied.
+- **Process:** ran the build-off as 3 parallel background `Agent` calls (not a `Workflow`), polling via
+  `ScheduleWakeup` between task-notifications rather than blocking — all 3 completed cleanly (3.3-5.5 min each),
+  no timeout issues.
+- **Forum top-3 (by discussion score, all tied at 9/10, all three buildable-tonight — full 3-way competition):**
+  1. JumpStart Your Policy Learning with Lessons from 160,000 Training Runs — after fair hyperparameter tuning,
+     no offline RL algorithm consistently dominates; "best strategy" rankings are a tuning artifact (arXiv:2609.13730)
+  2. A golden-ratio partition of information and the balance between prediction and surprise — neuroscience
+     paper proposing the brain balances known/surprising information near the golden ratio (arXiv:2602.15266)
+  3. Sandpile Economics: Theory, Identification, and Evidence — hidden network curvature predicts cascading
+     collapse better than raw connectivity (arXiv:2604.13890) ← BUILT, won
+- **Built (3-way build-off):**
+  - A — P-Hacking Playground: six synthetic betting/trading strategies race one unchanged seeded market; sliders
+    for lookback/filter-threshold/smoothing plus a bet-sizing toggle reshuffle the Sharpe-ranked leaderboard live
+    with a leader-flip counter, directly dramatizing the paper's tuning-scrambles-rankings finding. Builder
+    verified the ranking math in a standalone Node script before embedding, plus `node --check` and a tag/DOM-ref
+    audit (no headless render available in that sandbox).
+  - B — The Golden Ratio of Bluffing: draggable slider moves a marker across two live beta-kernel curves —
+    antifragility peaking exactly at 1/φ≈0.618, vulnerability at ≈0.882 — with GTO poker bet-sizing reference
+    lines overlaid. Builder used headless Playwright, caught and fixed a real Chart.js canvas-resize feedback
+    loop (unbounded growth to 65000px), and confirmed zero console errors across desktop/mobile viewports.
+  - C — Parlay Curvature Cascade: D3.js force-directed graph of 12 same-game parlay legs wired by correlation
+    edges, each scored live by an actual (simplified) Forman-Ricci curvature formula computed client-side.
+    Click a leg to shock it and watch a multi-wave cascade animate through; a naive-connectivity-vs-curvature-
+    aware slider makes the identical shock on the identical graph go from contained to blowing through most of
+    the parlay. Builder verified via `node --check`, tag balance, and SRI hash verification against the real
+    fetched D3 CDN file.
+  - **Judge's pick: C, Parlay Curvature Cascade** (26/22/19 out of 30 on wow+interactivity+fidelity) — all three
+    verified working via headless `firefox --screenshot` render plus SRI hash checks (zero blocked CDN loads,
+    all populated UI). C won on the most genuine interactivity (physics-based dragging, animated multi-wave
+    cascade, live-recomputed curvature, a toggle that visibly demonstrates the paper's central claim) and the
+    most faithful implementation of the paper's actual math, not just a stylized stand-in.
+- **Published:** brief at `arxiv-scrape/2026-09-18-nightly.html`, demo at
+  `arxiv-scrape/demos/2026-09-18-parlay-curvature-cascade.html`, both registered in `manifest.json`, committed
+  and pushed to `xpoes123/david-share` (commit `0010e42`). Live at
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-09-18-parlay-curvature-cascade.html
+- **Forum digest:** `digest_2026-09-18.json` written and validated (`validate_digest.py` OK), `demo_url`/
+  `demo_arxiv_id` pointed at the build-off winner. Posting to the SharpLab forum is handled by `nightly.sh`.
+
 ## 2026-09-17 — Bad Beat Generator
 - **Status:** clean night. `fetch_papers.py` worked on the first try — 176 papers across 22 categories.
   Sampled 30 (deterministic stratified pick, 1-2 per category) for ideation, 6 batches of 5, 86 ideas.
