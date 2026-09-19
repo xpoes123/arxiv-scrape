@@ -1,5 +1,51 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-19 — Parlay Shockwave Simulator
+- **Status:** clean night. `fetch_papers.py` worked on the first try — 176 papers across 22 categories.
+  Hand-picked 30 (one strong hit per category, extras on the strongest) for ideation, 6 batches of 5, 85 ideas.
+  `votes.json` still flat (all tags 0) — no bias applied.
+- **Process:** ran the build-off as 3 parallel foreground `Agent` calls (`run_in_background: false`) in one
+  message, not a backgrounded `Workflow` — per the 09-17 log's fix, this sidesteps the headless idle-wait
+  ceiling. All 3 builders + the judge completed cleanly (1.7–8.3 min each).
+- **Forum top-3 (by discussion score, all tied at 9/10, all three buildable-tonight — full 3-way competition):**
+  1. Noise-Driven Escape from Metastable Phases explains Grokking in Deep Neural Networks — grokking is
+     noise-driven escape from a metastable state, following Arrhenius escape-time scaling (arXiv:2606.17120)
+  2. A quantum double-or-nothing game: The Kelly Criterion for Spins — an adaptive quantum measurement strategy
+     provably beats classical Kelly betting on the same stream (arXiv:2308.01305)
+  3. One-point fluctuations for exponential last passage percolation under upper-tail conditioning — a
+     freak-high result far downstream warps fluctuation statistics along the whole chain (arXiv:2608.20552)
+     ← BUILT, won
+- **Built (3-way build-off):**
+  - A — Downswing Escape Simulator: a ball undergoes real Euler–Maruyama Langevin dynamics in a quartic
+    double-well potential (poker downswing = stuck losing pattern, breakthrough = generalization). A
+    temperature-sweep button runs trials across 9 noise levels and fits the empirical escape time against the
+    analytic Kramers-rate prediction (fitted slope 1.76 vs true barrier 2.00 in the judge's run) — real physics,
+    not a faked curve. Verified via `node --check` + headless Playwright, zero console errors.
+  - B — Quantum vs. Classical Kelly Bankroll Race: a real Bloch-sphere qubit sim (Born-rule projective
+    measurement, 181-point Bayesian posterior grid) races an adaptive quantum-measurement bettor against
+    classical Kelly on the same stream. Builder caught and fixed a wealth-overflow bug (switched to log-space
+    tracking) and a Chart.js canvas-growth bug during Playwright-driven stress testing. Judge's run: quantum
+    bankroll ~2.85e106× vs classical's ~45× at θ=80°.
+  - C — Parlay Shockwave Simulator: a real last-passage-percolation DP over a grid of i.i.d. exponential
+    weights, framed as parlay legs. Runs genuine rejection sampling (thousands of baseline grids, keep only
+    those where the far corner clears a high threshold) rather than faking the conditioned distribution, then
+    renders a variance-ratio heatmap plus click-to-inspect probe histograms with live skewness stats. Verified
+    via `node --check`, tag-balance check, and headless Playwright with pixel-level canvas sampling.
+  - **Judge's pick: C, Parlay Shockwave Simulator** — all three rendered cleanly with zero console errors and
+    real interactivity (confirmed via Playwright, not just builder self-reports). C won for implementing the
+    paper's actual experimental method with zero shortcuts (real DP + real rejection sampling, no closed-form
+    approximation) and the sharpest, most on-brand metaphor for a betting Discord ("your last leg hits huge —
+    watch the shockwave ripple backward through every earlier leg").
+- **Published:** brief at `arxiv-scrape/2026-09-19-nightly.html`, demo at
+  `arxiv-scrape/demos/2026-09-19-parlay-shockwave.html`. Also registered the two runner-up demos
+  (`2026-09-19-downswing-escape-a.html`, `2026-09-19-quantum-kelly-b.html`) in the manifest — prior nights'
+  briefs linked to unregistered runner-up demos that silently 404'd (confirmed live: 09-18's
+  `p-hacking-playground-a.html` returns 404); fixed tonight by registering all three demos, not just the
+  winner. All committed and pushed to `xpoes123/david-share` (commit `3eaf1e0`). Live at
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-09-19-parlay-shockwave.html
+- **Forum digest:** `digest_2026-09-19.json` written and validated (`validate_digest.py` OK), `demo_url`/
+  `demo_arxiv_id` pointed at the build-off winner. Posting to the SharpLab forum is handled by `nightly.sh`.
+
 ## 2026-09-18 — Parlay Curvature Cascade
 - **Status:** clean night. `fetch_papers.py` worked on the first try — 176 papers across 22 categories.
   Hand-picked 30 (one per category, extras on strongest hits) for ideation, 6 batches of 5, 88 ideas.
