@@ -1,5 +1,60 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-20 — Tilt Mpemba Simulator
+- **Status:** clean night. `fetch_papers.py` was auto-backgrounded by the harness (hit the default 2min
+  foreground timeout) — waited it out via `TaskOutput(block:true)` rather than treating it as a violation of
+  the "never background the fetch" rule; 176 papers across 22 categories fetched. Hand-picked 30 (diversified
+  away from last few nights' betting/gambling/math/physics-heavy pulls toward more bio/whimsy/ai, since
+  `votes.json` shows those tags net negative) for ideation, 6 batches of 5, 83 ideas.
+- **Process:** ran the build-off as 3 parallel foreground `Agent` calls (`run_in_background: false`) in one
+  message, matching the 09-19 fix. The judge agent initially returned early with only 2 of 3 verifications
+  done (it had fanned out to its own sub-verification agents and reported back before they all finished) —
+  had to `SendMessage` it twice to force it to wait for the third and issue a decisive verdict. Worth noting
+  for future nights: a judge agent's first response isn't always its final one if it delegates internally.
+- **Forum top-3 (by votes-adjusted discussion score, all three buildable-tonight — full 3-way competition):**
+  1. Fact or friction: Jumps at ultra high frequency — a sudden price move can look like a discontinuous jump
+     at coarse sampling and resolve into ordinary continuous noise at fine sampling (arXiv:2602.10925)
+  2. Mpemba effect in a chemomechanical model of the Kinesin molecular motor — a system starting farther from
+     equilibrium can relax back to it faster than one starting closer, the classic hot-water-freezes-faster
+     paradox inside a real molecular motor (arXiv:2607.27998) ← BUILT, won
+  3. Predicting success of cooperators across arbitrary heterogeneous environmental landscapes — cooperation
+     outcomes are set by the spatial arrangement of good/bad patches, not their average quality
+     (arXiv:2604.12546)
+- **Built (3-way build-off):**
+  - A — Bad Beat or Just Variance: simulates a pure continuous diffusion (no injected jump term) and computes
+    a real Barndorff-Nielsen-Shephard bipower-variation jump-test z-statistic from the same underlying path
+    resampled at 9 different resolutions, reframed as a poker equity curve. Coarse sampling flags "JUMP
+    DETECTED," fine sampling correctly reads "NO JUMP — JUST VARIANCE." Verified via a Node prototype (to
+    confirm the effect isn't seed-cherry-picked) plus headless Playwright, zero console errors.
+  - B — Tilt Mpemba Simulator: a genuine reversible 5-state continuous-time Markov chain (two tilted poker
+    players relaxing to a calm baseline), diagonalized live in-browser via a hand-written Jacobi eigensolver
+    (no library call). Builder discovered a plain birth-death chain is provably totally positive (no crossover
+    possible for any rates) via a failed grid search, then added tunable non-adjacent "impulsiveness" edges to
+    break that property — the actual mechanism enabling a real Mpemba crossover. Verified by prototyping the
+    eigen-decomposition in Python/numpy first, then headless Chromium, zero console errors.
+  - C — Spatial Prisoner's Dilemma: Segregation Edition: two live 80×80 evolutionary-game grids sharing the
+    exact same multiset of environmental quality values, reassigned into segregated-clusters vs. intermixed
+    arrangements, running a real imitate-the-best-neighbor update rule with a live Moran's I statistic.
+    Builder caught a real init-order crash and a payoff-model bug (first attempt collapsed cooperation to ~0%
+    in both boards) via headless testing, then parameter-swept a Node-side replica to find a payoff regime
+    where the segregation effect reproduces across 12/13 random seeds. Verified via headless Chromium, zero
+    console errors, and a 450-generation stress run with no frame lag.
+  - **Judge's pick: B, Tilt Mpemba Simulator** — all three passed with genuine (non-faked) math and zero
+    console errors. B won for being the only demo solving real numerical linear algebra live in the browser
+    and for delivering the most counterintuitive, tweetable result: the more-tilted player calms down first,
+    backed by an honest mechanism (a live table of sign-flipping eigenmode coefficients) and a "kill the
+    effect" κ=0 control that breaks the paradox exactly as predicted.
+- **Published:** brief at `arxiv-scrape/2026-09-20-nightly.html`, demo at
+  `arxiv-scrape/demos/2026-09-20-tilt-mpemba.html`. Also registered the two runner-up demos
+  (`2026-09-20-bad-beat-variance-a.html`, `2026-09-20-segregation-cooperation-c.html`) in the manifest,
+  continuing the 09-19 fix so runner-up links in the brief don't 404. Committed and pushed to
+  `xpoes123/david-share` (commit `36c78b3`). Did not SSH to the VPS — a separate VPS-side `git pull` makes it
+  live per the playbook. Live (after VPS pull) at
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-09-20-tilt-mpemba.html
+- **Forum digest:** `digest_2026-09-20.json` written and validated (`validate_digest.py` OK), `demo_url`/
+  `demo_arxiv_id` pointed at the build-off winner. Posting to the SharpLab forum is handled by `nightly.sh`.
+
+
 ## 2026-09-19 — Parlay Shockwave Simulator
 - **Status:** clean night. `fetch_papers.py` worked on the first try — 176 papers across 22 categories.
   Hand-picked 30 (one strong hit per category, extras on the strongest) for ideation, 6 batches of 5, 85 ideas.
