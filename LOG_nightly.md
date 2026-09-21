@@ -1,5 +1,47 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-21 — Spin-Network Consensus Visualizer
+- **Status:** clean night. `fetch_papers.py` finished inside the shell tool's 2min timeout window but printed
+  its exit-143 after; the JSON file (128 papers, 16 categories) had already been fully written by then —
+  confirmed via a direct file read rather than trusting the exit code. Sampled 30 evenly across the fetch
+  order for ideation, 6 batches of 5, 83 ideas.
+- **Forum top-3 (by votes-adjusted discussion score, all three buildable-tonight — full 3-way competition):**
+  1. The Role of Twitter in Cryptocurrency Pump-and-Dumps — Twitter-driven buyers sell latest and eat the
+     biggest losses when the pump reverses (arXiv:2306.02148)
+  2. Bridging Network Psychometrics and AI: An Ising-Potts Model with LLM-Derived Weights — a sparse top-K
+     rater-agreement graph, weighted by LLM-embedding similarity, settles into consensus spin clusters
+     (arXiv:2609.08797) ← BUILT, won
+  3. Record Grouping Controls Evidence Weight in Language Models — splitting the same evidence into more
+     chunks raises an LLM's stated confidence by up to 33 points with zero new information (arXiv:2609.08698)
+- **Built (3-way build-off):**
+  - A — Pump-and-Dump Bagholder Simulator: a playable real-time buy/sell game against an animated price chart
+    and a phase-shifting hype-tweet feed (quiet → pump FOMO → crash denial → capitulation). Round-end P&L is
+    classified against a counterfactual "value if sold at each tick" curve, directly demonstrating the paper's
+    late-seller-loses-most finding with the player's own numbers. Verified via a full headless Playwright run
+    (load, buy, sell, full round), zero console errors.
+  - B — Spin-Network Consensus Visualizer: players are Potts spins on a genuine sparse top-K agreement graph,
+    updated with real Metropolis-Hastings dynamics (temperature slider, live anneal-to-consensus). Injecting a
+    "colluding pair" boosts one edge's weight to 0.995; the builder caught and fixed a real bug where scoring
+    the anomaly only against the pre-filtered top-K edges hid the effect, switching to a z-score against the
+    full ambient pairwise distribution — 20/20 true positives, 0/20 false positives across N=8–24. Verified via
+    a scripted DOM-mock harness driving 500+ animation frames and every control.
+  - C — Split vs Merge: The AI Jury: three canned scenarios (betting handicap, trial, stock pitch) toggle the
+    same facts between one merged paragraph and separate bullet points, driving an animated confidence gauge
+    between precomputed values (+27 to +30 points, matching the paper's documented +10 to +33 range) with no
+    live API call. Clean and bug-free but a lookup table rather than a running simulation — lowest wow/
+    interactivity of the three per the judge.
+- **Judge verdict:** Spin-Network Consensus Visualizer (B) won — the only one of the three that runs the
+  paper's actual mechanism live (real sparse-graph construction, real MCMC dynamics, real ambient-distribution
+  anomaly scoring) rather than illustrating or hand-tuning toward it. Bagholder Simulator (A) was ranked a
+  close, fully-functional runner-up; Split vs Merge (C) was the most polished-but-least-dynamic of the three.
+- **Published:** demo copied to `demos/2026-09-21-ising-collusion.html`, brief written to
+  `2026-09-21-nightly.html`, both plus the two runner-up demos registered in `david-share/manifest.json` and
+  pushed (commit `4d5b6a7`). Live at
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-09-21-ising-collusion.html and
+  https://share.djiang.xyz/arxiv-scrape/2026-09-21-nightly.html.
+- **Digest:** `digest_2026-09-21.json` written and validated (`validate_digest.py` OK), `demo_url`/
+  `demo_arxiv_id` pointed at the build-off winner post-judging.
+
 ## 2026-09-20 — Tilt Mpemba Simulator
 - **Status:** clean night. `fetch_papers.py` was auto-backgrounded by the harness (hit the default 2min
   foreground timeout) — waited it out via `TaskOutput(block:true)` rather than treating it as a violation of
