@@ -1,5 +1,57 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-22 — Pandemic Odds
+- **Status:** clean night. `fetch_papers.py` finished in the foreground within the timeout window; 176
+  papers across 22 categories written to `papers_nightly.json`. Selected 30 papers for ideation: 1 from
+  every category plus 2 extra each from cs.AI/cs.CL/q-bio.NC/q-bio.PE, steering toward ai/bio/whimsy-leaning
+  categories per `votes.json` (betting, decision-theory, gambling, math, physics all net -1; ai, bio, econ,
+  games, poker, sports, whimsy at 0). 6 batches of 5, 87 ideas.
+- **Forum top-3 (by votes-adjusted discussion score, all three buildable-tonight — full 3-way competition):**
+  1. Effect of intratumor heterogeneity in managing the go-or-grow dichotomy of cancer cells — a tumor's
+     stay-vs-migrate mix settles into an evolutionarily stable equilibrium, the same math as GTO poker mixed
+     strategies (arXiv:2510.23360)
+  2. Empirical Evaluation of Membership Inference Attacks on NLP Text Classifiers — a simple confidence-score
+     threshold outs whether a specific text trained a model, no hacking required (arXiv:2609.10935)
+  3. SIR models with demography, random transmission coefficient and non-autonomous vaccination rate —
+     eradication vs. permanent endemic disease hinges on a sharp stochastic threshold (arXiv:2510.21371)
+     ← BUILT, won
+- **Built (3-way build-off):**
+  - A — Grow or Go: Cancer Cells Play GTO Poker: 220 canvas cell-agents run a real replicator-dynamics ODE
+    live each frame, migrating between a "Primary Tumor" and "Metastatic Site" blob as sliders for nutrient
+    scarcity and heterogeneity/mutation rate drive the population toward its evolutionarily stable grow/go
+    ratio; doughnut + convergence-line charts track simulated vs. theoretical ESS in real time, with a
+    click-to-perturb canvas. Verified via headless Playwright — sliders, buttons, and canvas click all update
+    correctly, zero console errors, simulated value converged to within 0.001 of the theoretical ESS.
+  - B — Did the Solver Train on Your Hands?: trains a real bag-of-words logistic regression live via
+    full-batch gradient descent on synthetic poker hand summaries (animated loss chart), then exposes a
+    draggable confidence-threshold membership-inference attack over a live strip-plot, plus a "guess
+    member/non-member" scoring game pitting the player against the simple-threshold attacker. Cited numbers
+    (94.66%/87.56% accuracy, AUC 0.5615/0.5800) matched the real abstract exactly — tightest fidelity of the
+    three. Verified end-to-end via headless Playwright: trained, dragged/snapped the threshold, played two
+    rounds, zero console errors.
+  - C — Pandemic Odds: Bet the Threshold: four synced live canvases (bounded Ornstein-Uhlenbeck noise
+    preview, vaccination ramp curve, clickable theorem-threshold number-line, 150-trajectory percentile fan
+    chart) plus a full betting/bankroll game with localStorage persistence and a running bet-history table.
+    Wager play-money on "eradication" or "endemic" before a live Monte Carlo SIR simulation reveals the
+    empirical split against the paper's actual theoretical threshold. Verified end-to-end via headless
+    Playwright: zone banner, bet selection, Monte Carlo run, bankroll debit, and history row all worked, zero
+    console errors.
+- **Judge verdict:** Pandemic Odds (C) won — richest of the three (4 synced canvases vs. 2 sliders for A or
+  plainer line/strip charts for B), highest polish (persistent bankroll, zone banners, round history), and
+  the most paper-specific fidelity (the actual bounded-noise construction and named eradication/endemic
+  theorems, not a generic SIR toy), edging out A on interactivity/polish and B on wow-factor/breadth while
+  matching B's fidelity. Grow or Go (A) was the most visually organic but had the shallowest control surface;
+  Did the Solver Train on Your Hands? (B) had the tightest quantitative fidelity to its source paper but the
+  plainest visuals.
+- **Published:** winner copied to `demos/2026-09-22-pandemic-odds.html`, brief written to
+  `2026-09-22-nightly.html`, both plus the two runner-up demos registered in `david-share/manifest.json` and
+  pushed (commit `fd22acb`). Live at
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-09-22-pandemic-odds.html and
+  https://share.djiang.xyz/arxiv-scrape/2026-09-22-nightly.html once the VPS pulls.
+- **Digest:** `digest_2026-09-22.json` written and validated (`validate_digest.py` OK), `demo_url`/
+  `demo_arxiv_id` pointed at the build-off winner post-judging.
+
+
 ## 2026-09-21 — Spin-Network Consensus Visualizer
 - **Status:** clean night. `fetch_papers.py` finished inside the shell tool's 2min timeout window but printed
   its exit-143 after; the JSON file (128 papers, 16 categories) had already been fully written by then —
