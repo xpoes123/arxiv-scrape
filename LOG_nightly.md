@@ -1,5 +1,49 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-25 — Sandwich Attack Simulator
+- **Status:** clean night, with one hiccup: `export.arxiv.org/api` returned HTTP 406 on nearly every category
+  (both `fetch_papers.py` and the HTML-scraping `fetch_papers_fallback.py` hit it) — the fallback still got
+  68 papers across 9 categories (cs.LG/AI/CL/CR/DS, math.CO/OC, q-fin.TR, stat.ML) before rate-limiting choked
+  off the rest (bio/physics/q-bio/econ categories all 406'd). Downselected to 29 papers for ideation (steered
+  away from math per `votes.json`'s net-negative tag scores), 6 batches, 75 ideas.
+- **Forum top-3 (by votes-adjusted discussion score, all three buildable-tonight — full 3-way competition):**
+  1. Predicting Emerging Topics from Outliers: A Prospective Study of Weak Signals in Embedding Space — some
+     "noise" points in embedding space are tomorrow's story, and a model can spot which ones before anyone
+     else does (arXiv:2609.29183)
+  2. BridgeMem: Causal Dyadic Transition Residuals for Temporal Knowledge Graph Forecasting — "Team A owns
+     Team B" has real predictive signal a generic power-rating model throws away (arXiv:2609.29268)
+  3. No Place to Hide: An Analysis on Protected Order Flow Sandwich Attacks — "private RPC protection" barely
+     stops front-runners; 28M sandwich attacks slipped through on Solana alone (arXiv:2609.28115) ← BUILT, won
+- **Built (3-way build-off):**
+  - A — Spot the Signal: click-to-predict game over a live k-NN density heuristic computed across two
+    jittered embedding-space views (standing in for cross-model consensus), with a physics-based reveal
+    animation and running F1 score across rounds. Cited the paper's real F1≈0.77 (full population) / >0.90
+    (high-consensus) / 0.76–0.80 (chronological eval) figures accurately. Verified via headless Playwright —
+    3 full click/reveal/score rounds, zero console errors (one bug caught and fixed pre-delivery).
+  - B — Head-to-Head Residual Odds: generates two synthetic NBA teams and a synthetic head-to-head timeline,
+    then runs BridgeMem's actual mechanism live — a recency-weighted log-odds residual with empirical-Bayes
+    shrinkage (λ=n/(n+k)) blended against the baseline power rating via a trust slider, with a sparse-history
+    fallback toggle. Highest math fidelity of the three (cited the paper's exact 0.0028–0.0216 MRR gain) but
+    the least visually flashy — a dense formula-readout UI with no big payoff moment. Verified via headless
+    Playwright: all buttons/slider/toggle/tooltips wired, zero console errors.
+  - C — Sandwich Attack Simulator: a real constant-product AMM (x·y=k, 0.3% fee) simulator where a searcher
+    bot computes its profit-maximizing front-run size via genuine binary + ternary search (not a scripted
+    number), with a staged animated price-impact chart, live mempool visualization, a protected-RPC toggle
+    that only dents (not eliminates) the attack rate exactly as the paper found, a fast-forward-1000-trades
+    stress test, and a running tally extrapolating toward the paper's real 28.0M-attack Solana figure.
+    Verified via headless Playwright: submit/toggle/fast-forward/reset all work, zero console errors.
+- **Judge verdict:** Sandwich Attack Simulator (C) won — combined the richest interactivity (staged chart +
+  mempool view + stress test) and highest polish (wow 9, interactivity 9, polish 9) with strong fidelity
+  (8/10, extrapolates to the paper's actual headline number), edging out B on wow-factor/visual payoff despite
+  B's higher fidelity score (9/10, exposed formula panel) and A's fiddly small-click-target game feel (wow 8,
+  interactivity 8).
+- **Published:** winner copied to `demos/2026-09-25-sandwich-attack.html`, brief written to
+  `2026-09-25-nightly.html`, both plus the two runner-up demos registered in `david-share/manifest.json` and
+  pushed (commit `f0d9ef6`). Live at
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-09-25-sandwich-attack.html and
+  https://share.djiang.xyz/arxiv-scrape/2026-09-25-nightly.html once the VPS pulls.
+
+
 ## 2026-09-22 — Pandemic Odds
 - **Status:** clean night. `fetch_papers.py` finished in the foreground within the timeout window; 176
   papers across 22 categories written to `papers_nightly.json`. Selected 30 papers for ideation: 1 from

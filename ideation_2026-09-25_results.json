@@ -1,0 +1,1159 @@
+[
+  {
+    "type": "demo",
+    "title": "Strategic Debate Simulator",
+    "paper": "2609.29189 - When Honesty is Not Enough in AI Debate",
+    "pitch": "Single-page toy: two AI debaters argue whether an NFL prop is +EV. Toggle each debater's 'disclosure strategy' (full transparency vs strategic omission) and watch the judge verdict stay identical while the transcript and hidden framing change entirely \u2014 a live illustration of 'strategic interactive oversight' (a correct verdict doesn't pin down the arguments behind it).",
+    "cool": 8,
+    "buildable": 7,
+    "discussion": 8,
+    "discussion_why": "surprise axis: 'wait, the AI can lie by omission and still get graded correct?' is a great gotcha for a betting-advice-skeptical crowd",
+    "tags": [
+      "ai",
+      "decision-theory",
+      "betting",
+      "games"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The AI Debate Trick That Fools Honest Verdicts",
+    "paper": "2609.29189 - When Honesty is Not Enough in AI Debate",
+    "pitch": "Explainer breaking down 'strategic interactive oversight' via a poker-bluffing analogy: you can play a hand honestly and still control what your opponent learns from it. Uses the debate simulator above as the visual centerpiece.",
+    "cool": 7,
+    "buildable": 6,
+    "discussion": 7,
+    "discussion_why": "relatability: reframes an alignment paper as a bluffing/information-control story pokers players already have intuition for",
+    "tags": [
+      "ai",
+      "poker",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Parlay Judge Transparency Score",
+    "paper": "2609.29189 - When Honesty is Not Enough in AI Debate",
+    "pitch": "Two-model debate tool for a handicapper Discord: models argue for/against a bet, produce a verdict, and a separate cross-examiner score flags how much relevant info was withheld \u2014 operationalizing the paper's proposed mitigation (expanded cross-examination) as a bet-vetting feature.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 8,
+    "discussion_why": "fit axis: directly targets the 'is this AI capper actually being straight with me' anxiety betting Discords already argue about",
+    "tags": [
+      "ai",
+      "betting",
+      "gambling",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Gradient-Free Brain",
+    "paper": "2609.29281 - Online Task Adaptation via Self-Organisation",
+    "pitch": "Browser neural cellular automaton grid: draw a few example symbols/shapes, watch cells self-organize and 'learn' to classify new ones via only local memory updates \u2014 zero backprop, zero gradient step, at inference time. All frozen weights were meta-trained offline; you're watching pure emergent adaptation live.",
+    "cool": 9,
+    "buildable": 6,
+    "discussion": 5,
+    "discussion_why": "whimsy axis: watching a grid of glowing cells visibly 'figure out' a task with no training loop reads as genuinely magical/ant-colony-like",
+    "tags": [
+      "ai",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Self-Organizing Live Win-Probability Model",
+    "paper": "2609.29281 - Online Task Adaptation via Self-Organisation",
+    "pitch": "Apply the frozen-weights/fast-memory NCA trick to in-game win probability: when a roster/injury changes mid-slate, the model adapts via local memory updates instead of a full retrain, staying live-servable with no downtime.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 6,
+    "discussion_why": "surprise axis: a live-odds model that updates itself with zero retraining is a genuine 'wait, really?' for anyone who's dealt with model-refresh lag in sports betting",
+    "tags": [
+      "ai",
+      "sports",
+      "betting",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Head-to-Head Residual Odds",
+    "paper": "2609.29268 - BridgeMem: Causal Dyadic Transition Residuals for Temporal Knowledge Graph Forecasting",
+    "pitch": "Interactive matchup graph: pick two NBA teams, see their pairwise event history (blowouts, upsets, close games) rendered as a timeline, and a slider shows how BridgeMem-style likelihood-ratio adjustments shift the baseline win probability away from generic power ratings \u2014 with a toggle to fall back to aggregate stats when pairwise data is sparse, matching the paper's adaptive trust mechanism.",
+    "cool": 8,
+    "buildable": 7,
+    "discussion": 9,
+    "discussion_why": "fit + surprise axis: 'does head-to-head history actually predict outcomes or is it just recency bias / gambler's fallacy' is a perennial, hot betting-Discord argument this demo makes concrete",
+    "tags": [
+      "sports",
+      "betting",
+      "gambling",
+      "math",
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Matchup Residual Layer for NBA Props",
+    "paper": "2609.29268 - BridgeMem: Causal Dyadic Transition Residuals for Temporal Knowledge Graph Forecasting",
+    "pitch": "Bolt a BridgeMem-style residual correction layer onto the existing RAPM+Elo NBA props model: encode prior matchup-specific events between the two teams/players and their temporal lags as a likelihood-ratio nudge on top of the base prediction, exactly as the paper does for TKG forecasting.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 7,
+    "discussion_why": "fit axis: a real, pluggable upgrade to an existing in-house sports model that the betting Discord can immediately poke at with backtests",
+    "tags": [
+      "sports",
+      "betting",
+      "math",
+      "ai"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "MatchupEdge API",
+    "paper": "2609.29268 - BridgeMem: Causal Dyadic Transition Residuals for Temporal Knowledge Graph Forecasting",
+    "pitch": "Sell dyadic-transition-residual adjustments as a drop-in overlay API for DFS lineup optimizers and sportsbook line-shopping tools \u2014 pairwise 'this team vs this opponent' signal that off-the-shelf power-rating models ignore.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 6,
+    "discussion_why": "econ axis: a plausible niche B2B pitch (sell an edge nobody else is modeling) that sports-betting nerds will want to poke holes in",
+    "tags": [
+      "sports",
+      "betting",
+      "econ",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Self-Tuning Signal Denoiser",
+    "paper": "2609.29216 - FB-GDM: Fully-Bayesian Guided Diffusion Models for High-Dimensional Linear Inverse Problems via Unsupervised Variational Inference",
+    "pitch": "Canvas toy: feed in a noisy/corrupted 1D curve (e.g. a live win-probability graph or a stock line), reconstruct it with a simplified Bayesian precision estimator that infers its own noise level instead of a hand-tuned slider \u2014 side-by-side against a manual-tune baseline to show the auto-calibrated version converging just as well without ground truth.",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 5,
+    "discussion_why": "surprise axis: 'it tunes its own denoising strength with no ground truth and still nails it' is a legit wait-really for anyone who's hand-tuned a Kalman filter",
+    "tags": [
+      "ai",
+      "math",
+      "physics"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Diffusion Models That Tune Themselves",
+    "paper": "2609.29216 - FB-GDM: Fully-Bayesian Guided Diffusion Models for High-Dimensional Linear Inverse Problems via Unsupervised Variational Inference",
+    "pitch": "Explainer on why removing the manual hyperparameter-calibration step from diffusion-model guidance (DPS/\u03a0GDM) matters \u2014 no ground truth needed, yet it matches oracle-calibrated performance within 0.1 dB on image restoration.",
+    "cool": 6,
+    "buildable": 6,
+    "discussion": 4,
+    "discussion_why": "whimsy/ai axis: solid explainer material but limited natural pull toward the betting/poker crowd this Discord is built around",
+    "tags": [
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Calibration-Free Restoration API",
+    "paper": "2609.29216 - FB-GDM: Fully-Bayesian Guided Diffusion Models for High-Dimensional Linear Inverse Problems via Unsupervised Variational Inference",
+    "pitch": "Image restoration/inpainting API targeted at insurance-claim photos and real-estate listing photos \u2014 industries that have plenty of degraded images but no clean paired ground truth to calibrate a guided diffusion model against.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 3,
+    "discussion_why": "econ axis: a believable vertical-SaaS pitch, but the least relevant paper here to betting/games so discussion pull is limited",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Sharp Money Spectrogram",
+    "paper": "2609.29270 - Learnable Time-Frequency Masks for Explaining Time-Series Classifiers",
+    "pitch": "Paste or generate a betting-line movement series; a toy 'sharp vs. public money' classifier fires, and a sparse learned frequency-mask overlay (built with an in-browser FFT) highlights exactly which oscillation bands \u2014 not raw price levels \u2014 drove the call, mirroring the paper's XACT time-frequency attribution.",
+    "cool": 8,
+    "buildable": 7,
+    "discussion": 8,
+    "discussion_why": "surprise axis: 'your sharp-money detector isn't looking at the line move size, it's looking at its rhythm' is a genuine wait-really for line-watchers",
+    "tags": [
+      "betting",
+      "gambling",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "XACT Layer for SharpLab's CLV Classifier",
+    "paper": "2609.29270 - Learnable Time-Frequency Masks for Explaining Time-Series Classifiers",
+    "pitch": "Add a real time-frequency attribution layer to SharpLab's existing line-movement/sharp-detection classifiers so flags come with a sparse frequency-mask explanation instead of a black-box score \u2014 directly usable by CLV-tracking users.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 6,
+    "discussion_why": "fit axis: a concrete explainability upgrade to a live in-house betting tool the Discord already uses and can stress-test",
+    "tags": [
+      "betting",
+      "gambling",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Your Model Isn't Looking at the Numbers, It's Looking at the Rhythm",
+    "paper": "2609.29270 - Learnable Time-Frequency Masks for Explaining Time-Series Classifiers",
+    "pitch": "Explainer on frequency-domain interpretability for time series, using line-movement and heart-rate-style examples to show why classifiers often key off periodic patterns invisible in the raw time domain.",
+    "cool": 7,
+    "buildable": 6,
+    "discussion": 5,
+    "discussion_why": "whimsy axis: reframes a dry XAI paper around a genuinely fun 'it's about vibes/rhythm not values' hook",
+    "tags": [
+      "ai",
+      "math",
+      "betting"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Sketchiest Medical AI Paper of the Week",
+    "paper": "2609.29187",
+    "pitch": "React/explainer video dissecting the 'Entropy Triangle Method' paper live \u2014 the abstract literally says the best oversampling method is 'oversampling techniques for shark scent' (garbled SMOTE?), claims two unnamed 'firsts in machine learning and medicine,' and reports 85%+ accuracy on an 11-class arrhythmia problem with zero baseline comparison. Walk through the red flags one by one as comedy + genuine ML-literacy content.",
+    "cool": 6,
+    "buildable": 4,
+    "discussion": 7,
+    "discussion_why": "wins on surprise/whimsy \u2014 'shark scent' as a machine learning technique is the kind of unhinged detail that gets screenshotted and passed around a Discord",
+    "tags": [
+      "bio",
+      "ai",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "BS Paper Detector",
+    "paper": "2609.29187",
+    "pitch": "Single-page HTML scorer: paste an abstract (or fill sliders for sample size, claimed accuracy jump, number of 'novel framework' buzzwords, presence of nonsense terms) and get a red-flag score with a snarky verdict. Seed it with this paper and the RL classifier-selection paper as calibration examples people can compare their own arXiv finds against.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "wins on relatability \u2014 everyone in a betting/quant Discord has a mental checklist for 'is this handicapper's claimed edge real,' this just formalizes it for papers instead of picks",
+    "tags": [
+      "ai",
+      "whimsy",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Bandit Picks: which handicapper do you trust this week?",
+    "paper": "2609.29181",
+    "pitch": "Single HTML canvas visualizing a multi-armed bandit choosing among several simulated 'classifiers' (reframed as tipsters/models), each with a hidden true win rate and noisy observed results. Watch the explore/exploit tradeoff play out live, with a slider for exploration rate and a running regret counter \u2014 directly mirrors the paper's 'RL picks the best classifier' idea but made tangible and gambling-flavored.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 8,
+    "discussion_why": "wins on betting/decision-theory fit \u2014 bandit algorithms for 'which tout do I follow this week' is exactly the debate a gambling Discord has informally every Sunday",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "ai",
+      "math",
+      "sports"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "This Paper Claims RL Boosted Accuracy From 63% to 98%. Here's the Catch.",
+    "paper": "2609.29181",
+    "pitch": "Skeptical breakdown video: a 35-point accuracy jump on a small medical dataset from a hand-named 'Fourth Degree Learning' reward scheme screams data leakage or overfitting to a tiny test set. Explain what a legitimate ablation would look like and why huge jumps in small-N papers should trigger suspicion \u2014 useful literacy for anyone evaluating 'my model has a 65% win rate' claims too.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 6,
+    "discussion_why": "wins on surprise \u2014 the 'wait, really, 98%?' reaction is the hook, and the skepticism transfers directly to how people should read betting-model claims",
+    "tags": [
+      "ai",
+      "whimsy",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Pass^k Calculator: why your 'reliable' AI agent fails most of the time",
+    "paper": "2609.29167",
+    "pitch": "Single HTML toy built on IndicBankBench's strict pass^k metric (43-58% strict-pass vs 60-74% at-least-once-success across 11 models). Enter a per-trial success rate and a number of independent trials k, and watch reliability crater \u2014 with the calculator explicitly relabeled as a parlay odds calculator (p^k) so the audience sees banking-agent reliability and parlay hit-rate are literally the same math.",
+    "cool": 8,
+    "buildable": 9,
+    "discussion": 9,
+    "discussion_why": "wins on surprise + betting fit \u2014 reframing 'AI agent reliability' as parlay math (p^k compounding to near-zero) is the exact kind of 'wait, that's just a parlay' moment that spreads on a betting Discord",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math",
+      "ai",
+      "gambling"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "pass^k reliability audit for Sage/Sentinel",
+    "paper": "2609.29167",
+    "pitch": "Adopt IndicBankBench's methodology (run every task 3x, report strict pass^3 vs at-least-once success) as a lightweight harness for David's own bots \u2014 Sage's dispatch/reminder actions, Sentinel's issue-to-PR flow. Surfaces flaky behaviors that look fine on a single spot-check but fail under repetition, before they cause a real missed reminder or bad deploy.",
+    "cool": 6,
+    "buildable": 6,
+    "discussion": 5,
+    "discussion_why": "wins on relatability for anyone running personal agent infra \u2014 'it worked when I tried it once' is a universally recognized trap",
+    "tags": [
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Your AI Agent's 70% Success Rate Is a Parlay",
+    "paper": "2609.29167",
+    "pitch": "Explainer connecting the IndicBankBench strict-pass^3 finding to compounding probability generally: three independent 70% tasks chained together succeed only ~34% of the time, same as a three-leg +140-per-leg parlay. Use it to teach viewers why 'my agent nailed it in the demo' doesn't mean production-safe, using betting math as the intuition pump.",
+    "cool": 7,
+    "buildable": 3,
+    "discussion": 8,
+    "discussion_why": "wins on decision-theory/betting fit \u2014 it's a genuine 'huh, I never thought about AI reliability that way' crossover between AI safety and gambling math",
+    "tags": [
+      "betting",
+      "ai",
+      "decision-theory",
+      "gambling"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Verifiable-reward injury/line-movement extractor for SharpLab",
+    "paper": "2609.29230",
+    "pitch": "Borrow EAGER's core idea \u2014 reward structured extraction on explicit, checkable criteria (structural validity, groundedness, coverage, no over-generation) rather than a single pass/fail \u2014 to build a nightly extractor that turns raw sports news/injury-report text into structured events (player, status, date, source) feeding SharpLab's odds pipeline, with the verifiable-reward checklist doubling as a QA gate on extraction quality.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 5,
+    "discussion_why": "wins on relatability for the SharpLab crowd \u2014 clean structured injury data feeding line-movement analysis is a real pain point",
+    "tags": [
+      "sports",
+      "betting",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Watch the Reward Shape the Extraction (RLVR toy)",
+    "paper": "2609.29230",
+    "pitch": "Single HTML page with a fake sports headline feed and a toy 'extractor' whose guesses (trigger, event type, arguments) get scored live against six visible reward components (validity, accuracy, groundedness, coverage, over-generation penalty, span precision), animating a total-reward bar as the extraction improves across simulated training steps \u2014 makes 'reinforcement learning with verifiable rewards' viscerally understandable without any real model.",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 6,
+    "discussion_why": "wins on whimsy \u2014 turning an abstract RLVR concept into a satisfying reward-bar-fills-up toy is inherently shareable even outside the AI-literate crowd",
+    "tags": [
+      "ai",
+      "sports",
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Spot the Signal",
+    "paper": "2609.29183",
+    "pitch": "Prediction game in a single HTML canvas: a cloud of embedding-space dots appears, most are pure noise, but some are 'anticipatory outliers' that will cluster into a named trend a few seconds later. Click the ones you think will become tomorrow's story before the animation reveals the answer, score tracked like a prediction market \u2014 directly gamifies the paper's F1-0.9-on-high-consensus-outliers finding.",
+    "cool": 9,
+    "buildable": 8,
+    "discussion": 9,
+    "discussion_why": "wins on whimsy/surprise \u2014 'can you out-predict the embedding model at spotting the next big thing from pure noise' is an instantly playable bar-bet-style toy tailor-made for a games/gambling Discord",
+    "tags": [
+      "games",
+      "whimsy",
+      "decision-theory",
+      "betting",
+      "ai"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Signal Scout: early-warning weak-signal detector for betting markets",
+    "paper": "2609.29183",
+    "pitch": "Apply the paper's geometric-outlier-in-embedding-space approach to SharpLab's data feeds (Twitter/beat-writer chatter, injury reports, line movements): embed incoming text nightly, flag scattered outlier documents whose position predicts they'll become a confirmed storyline (injury escalation, coaching change, sharp-money narrative) before the market has priced it in \u2014 essentially an automated 'weak signal' scanner for finding edges before they're consensus.",
+    "cool": 8,
+    "buildable": 4,
+    "discussion": 8,
+    "discussion_why": "wins on betting fit \u2014 'detect sharp money/news before the line moves' is the single most coveted capability in the sports betting Discord's worldview",
+    "tags": [
+      "betting",
+      "sports",
+      "econ",
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Nightly outlier tracker for NBA prop research",
+    "paper": "2609.29183",
+    "pitch": "Lightweight pipeline feeding nba-modeling/SharpLab: embed each night's injury-report and beat-writer headlines, track which 'noise' points drift toward forming a new cluster over the following days, and surface a ranked 'watch list' of early signals worth digging into for prop edges \u2014 a smaller, David-scoped version of the Signal Scout startup idea.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 5,
+    "discussion_why": "wins on relatability for the props-modeling crowd \u2014 a concrete, scoped tool that plugs into an existing pipeline rather than a speculative product",
+    "tags": [
+      "sports",
+      "betting",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Intransitive League Detector",
+    "paper": "2609.24804 FPT Isomorphism Test for F-Free Tournaments",
+    "pitch": "Single HTML page: paste any round-robin results (who-beat-whom for a league, a poker/chess ladder, or a fantasy division) and it builds the directed 'tournament' graph, counts 3-cycles (A beat B, B beat C, C beat A), and tells you 'no consistent ranking exists' when the league is genuinely intransitive -- with a visual force-directed graph highlighting the cyclic triads. Bonus mode: paste two seasons' results and it brute-force checks graph isomorphism (are these literally the same tournament structure under a relabeling of teams?) using the small-tournament case of the paper's algorithm.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 8,
+    "discussion_why": "surprise -- most sports arguments assume a 'true' power ranking exists, and this tool can mathematically prove one doesn't for a given season",
+    "tags": [
+      "sports",
+      "games",
+      "math",
+      "betting",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Math of Who Beat Whom",
+    "paper": "2609.24804 FPT Isomorphism Test for F-Free Tournaments",
+    "pitch": "Explainer connecting the paper's graph-theory result (tournaments = complete directed graphs, F-free = avoiding some forbidden sub-pattern) to something everyone recognizes: round-robin sports standings, rock-paper-scissors, and why 'Team A is better than Team B' can be logically impossible to fully rank. Use the demo above as the visual centerpiece.",
+    "cool": 7,
+    "buildable": 6,
+    "discussion": 6,
+    "discussion_why": "relatability -- reframes an abstract FPT algorithms paper as 'why your bracket predictions keep failing'",
+    "tags": [
+      "sports",
+      "math",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Sandwich Attack Simulator",
+    "paper": "2609.28115 No Place to Hide: Protected Order Flow Sandwich Attacks",
+    "pitch": "Interactive single-page AMM simulator: user sets a trade size and slippage tolerance, hits 'submit', and watches a bot front-run + back-run the trade in an animated order book/price-impact chart, extracting the exact profit an MEV sandwicher would pocket. Toggle 'private RPC protection ON' to show it barely helps, mirroring the paper's finding of tens of millions of attacks slipping past supposed protections (28M on Solana alone).",
+    "cool": 8,
+    "buildable": 9,
+    "discussion": 9,
+    "discussion_why": "surprise -- \"protected\" order flow still got sandwiched 28 million times, a stat sharp betting/crypto crowds will immediately argue about",
+    "tags": [
+      "gambling",
+      "econ",
+      "betting",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Prediction-Market MEV Shield",
+    "paper": "2609.28115 No Place to Hide: Protected Order Flow Sandwich Attacks",
+    "pitch": "A protected-RPC / order-routing service specifically for prediction market traders (Polymarket, Kalshi-adjacent on-chain venues) who assume their trades are private -- given David's own kalshi-research project, this is a direct 'eat your own dog food' pitch: audit whether Kalshi/Polymarket order flow is actually exposed the way Ethereum/Solana DEX flow is.",
+    "cool": 6,
+    "buildable": 3,
+    "discussion": 7,
+    "discussion_why": "fit -- directly hits betting + decision-theory + econ, the paper's exact attack surface most closely maps to prediction markets",
+    "tags": [
+      "gambling",
+      "betting",
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Grid Guardian: Cut the Sensor or Trust It?",
+    "paper": "2609.28170 Safety-Aware Zero Trust Enforcement for IoT and Cyber-Physical Systems",
+    "pitch": "A single-HTML decision game built on the paper's IEEE 30-bus grid case study: you're the Safety Engine. Each round a component looks compromised -- isolate it (cyber-safe, but you might black out real substations) or trust it (keep the lights on, but risk letting an attacker in). Score tracks cyber-risk avoided vs. physical harm caused, visualized on a live grid diagram, ending with 'here's the tradeoff curve you actually walked.'",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "decision-theory -- it's a pure risk/reward tradeoff game (hedge vs. hold) dressed up as infrastructure security, which sports-bettor brains will map instantly",
+    "tags": [
+      "decision-theory",
+      "games",
+      "physics"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Security Patch That Could Black Out a City",
+    "paper": "2609.28170 Safety-Aware Zero Trust Enforcement for IoT and Cyber-Physical Systems",
+    "pitch": "Explainer on why 'zero trust' (just cut off anything suspicious) breaks down for physical infrastructure -- isolating a compromised sensor on a power grid can cause the exact blackout you were trying to prevent. Uses the Grid Guardian demo as an interactive centerpiece the viewer can play along with.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 4,
+    "discussion_why": "surprise -- 'the cybersecurity fix itself causes the outage' is a genuine wait-really moment even outside security circles",
+    "tags": [
+      "physics",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Roast My Parlay: Film-Noir Bet Narrator",
+    "paper": "2609.28205 GUIAuditor: Post-hoc Child Safety Forensics via GUI Provenance",
+    "pitch": "Repurpose the paper's core trick -- turning a raw sequence of logged actions into a human narrative -- into a pure-JS toy with zero AI backend: paste your bet slip history (or Discord message log, or poker hand history) and a rule-based template engine spits out a hard-boiled detective narration ('At 11:47pm, the mark doubled down on a same-game parlay he had no business making...'). No LLM call needed, just witty templating keyed on patterns (chasing losses, hedge, parlay size).",
+    "cool": 8,
+    "buildable": 7,
+    "discussion": 7,
+    "discussion_why": "whimsy -- turns everyone's embarrassing bet history into shareable, self-roasting content, tailor-made for a betting Discord",
+    "tags": [
+      "gambling",
+      "betting",
+      "whimsy",
+      "games"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Sage Screen-Time Narrator",
+    "paper": "2609.28205 GUIAuditor: Post-hoc Child Safety Forensics via GUI Provenance",
+    "pitch": "Apply the paper's 'evidence distillation' idea (89% data reduction vs. periodic sampling, natural-language forensic queries) to a lighter-weight personal use case: a narrated daily digest of your own phone/desktop activity for Sage's morning check-in ('you opened Twitter 14 times before 9am') rather than child surveillance -- self-quantification via GUI-event narration.",
+    "cool": 5,
+    "buildable": 4,
+    "discussion": 3,
+    "discussion_why": "relatability -- self-tracking framed as being 'forensically audited by your own AI' has mild whimsy but limited betting/games tie-in",
+    "tags": [
+      "ai",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Low-Resource TTS Prosody A/B Booth",
+    "paper": "2609.29146 BanglaKontho: Closing the Long-Form Gap in Bangla TTS",
+    "pitch": "A single-page audio A/B tester comparing short-utterance-trained TTS (choppy, ASR-style prosody) vs. long-form audiobook-trained TTS (natural narration) on the same sentences, using the paper's reported WER/MOS gap (16.0%/3.16 vs 9.5%/4.46) as the hook -- listeners guess which clip came from which corpus.",
+    "cool": 5,
+    "buildable": 4,
+    "discussion": 2,
+    "discussion_why": "surprise -- mildly interesting 'can you hear the difference' game but has no betting/games/gambling hook",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "300 Million Speakers, No Good AI Voice",
+    "paper": "2609.29146 BanglaKontho: Closing the Long-Form Gap in Bangla TTS",
+    "pitch": "Explainer on the low-resource-language TTS gap: why the world's 7th most-spoken language (Bangla) has worse synthetic speech than languages with a fraction of its speakers, and what a 20-hour audiobook corpus + text normalizer fixes.",
+    "cool": 5,
+    "buildable": 5,
+    "discussion": 2,
+    "discussion_why": "relatability -- a genuine 'wait, really?' stat (7th most spoken, barely any TTS) but no natural fit to the betting/games audience",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Planted Clique Detective",
+    "paper": "2609.24780",
+    "pitch": "Single-file HTML/canvas toy: generate a random Erdos-Renyi graph, secretly plant a clique of size lambda*sqrt(n), and let the user drag a lambda slider to watch a color-coding subgraph-count detector light up the clique as lambda crosses the paper's thresholds (0.6066 for trees, 0.3320 for the matrix-multiplication algorithm) -- a live phase transition you can feel with a slider.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "surprise: there's a hard mathematical wall (sqrt(n)) between graphs that 'look' random and ones that secretly aren't, and it underlies crypto hardness assumptions.",
+    "tags": [
+      "math",
+      "ai",
+      "games"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Collusion Radar",
+    "paper": "2609.24780",
+    "pitch": "Take the paper's fast signed-subgraph-counting trick (built for finding planted cliques in noise) and repurpose it as an anomaly detector over a graph of poker players who repeatedly table together or bettors whose action mirrors each other -- flag statistically improbable dense subgraphs as candidate collusion rings, same math as detecting a hidden clique in a random graph.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 8,
+    "discussion_why": "directly on-topic for a poker/betting Discord: 'here's the actual algorithm that could catch a chip-dumping ring'.",
+    "tags": [
+      "poker",
+      "gambling",
+      "math",
+      "ai"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Sqrt(n) Wall: Why Finding a Hidden Group Is (Almost) Impossible",
+    "paper": "2609.24780",
+    "pitch": "Explainer on the planted clique problem's statistical-computational gap: information-theoretically you could find a clique of size log(n), but every known poly-time algorithm needs roughly sqrt(n) -- walk through why, tie it to detecting coordinated betting syndicates and to cryptographic hardness assumptions built on this exact gap.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 7,
+    "discussion_why": "'wait, really?' factor: a problem that's trivially solvable with infinite compute but believed impossible in polynomial time, dressed up as a detective story.",
+    "tags": [
+      "math",
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Limit the Sharps",
+    "paper": "2609.24624",
+    "pitch": "Interactive bipartite-graph toy modeling bettors vs. profitable bet types they cover: the user plays the 'book' and picks t bettors to limit/ban to maximize the minimum vertex cover (i.e. minimize remaining exploitable edge) the syndicate can still extract -- a direct gamified version of vertex cover interdiction mapped onto the real practice of books limiting sharps.",
+    "cool": 8,
+    "buildable": 7,
+    "discussion": 9,
+    "discussion_why": "maps 1:1 onto the most argued-about topic in sports betting Discords -- books limiting winning bettors -- but with an actual optimization theory behind it.",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Interdictle",
+    "paper": "2609.24624",
+    "pitch": "A daily NP-hard puzzle (Wordle-style, single HTML file, seeded by date): given a small bipartite graph and a budget t, find the t vertices to delete that maximize the resulting minimum vertex cover, with a shareable score/emoji grid.",
+    "cool": 6,
+    "buildable": 9,
+    "discussion": 5,
+    "discussion_why": "whimsy: turns a Sigma_2^p-complete theorem into a shareable daily brain-teaser.",
+    "tags": [
+      "games",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Complexity Onion: A Hard Problem Inside a Hard Problem",
+    "paper": "2609.24624",
+    "pitch": "Explain interdiction games (attacker picks removals, defender then solves an NP-hard problem on what's left) and why that nesting jumps you from NP-complete to Sigma_2^p-complete -- then show the paper's twist: on bipartite graphs vertex cover itself is easy in poly time, yet interdicting it is still NP-complete, a genuinely surprising jump in hardness from adding just one adversarial layer.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 8,
+    "discussion_why": "great hook for a betting/security-games audience: 'even when the underlying game is easy, deciding who to ban to break it is provably harder.'",
+    "tags": [
+      "math",
+      "decision-theory",
+      "betting"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Tardiness = Max-Cut",
+    "paper": "2609.28751",
+    "pitch": "Single-machine scheduling visualizer: drag jobs (weight, release date) onto a timeline, watch total weighted tardiness computed live, then flip a view that shows the exact same cost as a scaled MAX-CUT value on an auto-generated graph -- makes the paper's core reduction (schedule choice = graph cut) tangible.",
+    "cool": 6,
+    "buildable": 7,
+    "discussion": 4,
+    "discussion_why": "mostly an OR/CS-nerd delight rather than a betting hook, but the 'a scheduling problem literally IS a graph problem' reveal is a solid surprise beat.",
+    "tags": [
+      "math",
+      "games"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Bad-Beat Queue",
+    "paper": "2609.28751",
+    "pitch": "Apply the paper's phase-grid 3/2-approximation algorithm to a live-bet or DFS-lineup settlement queue with hard lock times and stake-weighted penalties for late grading -- a genuinely useful small scheduler for a betting-ops pipeline with a proven worst-case guarantee.",
+    "cool": 5,
+    "buildable": 6,
+    "discussion": 5,
+    "discussion_why": "relatable to anyone who's been annoyed by slow bet grading, but the connection is more operational than gambling-strategy.",
+    "tags": [
+      "betting",
+      "econ",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Scheduling Problem That Took 16 Years to Crack",
+    "paper": "2609.28751",
+    "pitch": "Tell the history: a natural single-machine scheduling variant sat open since 2010 until this paper found a MAX-CUT reduction proving it's strongly NP-hard, plus a near-3/2-approximation algorithm as the consolation prize.",
+    "cool": 6,
+    "buildable": 4,
+    "discussion": 4,
+    "discussion_why": "'wait, that simple a problem was open for 16 years?' is a nice surprise beat, but has little gambling/game crossover.",
+    "tags": [
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Provably Fair Shuffle Visualizer",
+    "paper": "2609.28595",
+    "pitch": "Enter r, a, q, e into a single HTML page; it checks the paper's exact criterion for whether X^r(X^{q-1}+a) permutes the finite field, then draws the induced permutation as a chord/arc diagram over a deck-sized set of points so you can visually see it's a genuine bijection -- turns dense finite-field algebra into a shuffle you can watch.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "surprise: this is close to the actual math (permutation polynomials / format-preserving encryption) that real online-poker RNGs use to shuffle decks provably-fairly.",
+    "tags": [
+      "poker",
+      "gambling",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Secret Math Behind a 'Fair' Online Poker Shuffle",
+    "paper": "2609.28595",
+    "pitch": "Explain permutation polynomials/binomials over finite fields, then connect them to format-preserving encryption -- the real technique online casinos use to turn a card index into a shuffled position with a provable one-to-one guarantee -- using this paper's newly-proved complete characterization as the hook.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 8,
+    "discussion_why": "feeds directly into the evergreen 'is online poker rigged' debate with actual math instead of vibes.",
+    "tags": [
+      "poker",
+      "gambling",
+      "math"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Verifiable Shuffle-as-a-Service",
+    "paper": "2609.28595",
+    "pitch": "Package the now-complete characterization of permutation binomials into a lightweight, publicly-auditable shuffle library that online poker/casino operators can license instead of building bespoke Feistel-network format-preserving encryption -- pitch: cheaper to implement, easy for regulators to verify the permutation property algebraically.",
+    "cool": 7,
+    "buildable": 3,
+    "discussion": 7,
+    "discussion_why": "trust/fairness in online poker RNGs is one of the most recurring flame-war topics in poker communities.",
+    "tags": [
+      "poker",
+      "gambling",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Bankroll Autopilot",
+    "paper": "2609.28263",
+    "pitch": "Interactive simulation: +EV bets stream in one at a time against a fixed bankroll across several correlated markets; toggle between naive greedy, full LP-resolve-every-time, and the paper's RASGD (one O(m) price update per arrival, no re-solving) and watch live regret curves diverge -- shows a single-file, no-backend way to feel the difference between 'optimal but slow' and 'nearly-optimal and instant.'",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 8,
+    "discussion_why": "'wait, really?' -- an algorithm that matches the regret of constantly re-solving a linear program while doing O(1) work per bet is a genuine surprise for a betting/decision-theory crowd.",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "econ"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Exposure Engine",
+    "paper": "2609.28263",
+    "pitch": "Real-time bet/ticket acceptance infra for sportsbooks or betting syndicates managing correlated exposure across many live in-play markets: use RASGD-style dual-price updates (O(m) per incoming ticket, no LP re-solve) to decide accept/size/reject at the speed odds actually move.",
+    "cool": 8,
+    "buildable": 4,
+    "discussion": 8,
+    "discussion_why": "directly targets the real infra pain point of in-play trading desks juggling many simultaneous correlated exposures under a hard bankroll cap.",
+    "tags": [
+      "betting",
+      "gambling",
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "How Sportsbooks (and Uber, and OpenAI) Price Things Without Solving a Linear Program",
+    "paper": "2609.28263",
+    "pitch": "Use sequential sports bets against a limited bankroll as the running example to build intuition for online linear programming and dual/shadow prices, then reveal that this paper's algorithm gets the same regret as constantly re-solving the LP while using O(m) work per arrival -- ties LLM inference allocation, ride pricing, and bet sizing into one idea.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 7,
+    "discussion_why": "connects an AI-infra headline (LLM inference at scale) to a betting-native mental model, good crossover bait for a mixed Discord.",
+    "tags": [
+      "betting",
+      "econ",
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Sample Size Slider: Posted vs Personalized Pricing",
+    "paper": "2609.28181",
+    "pitch": "Single HTML toy: generate N synthetic 'bettor max-stake' valuations from a chosen distribution, drag a slider on N and watch three curves converge in real time \u2014 optimal personalized revenue, naive mean-based posted price, and the paper's order-statistic posted price. Canvas chart shows the 1/n error decay live, with a distribution picker (uniform, exponential, heavy-tailed) to show when order statistics beat the mean.",
+    "cool": 7,
+    "buildable": 9,
+    "discussion": 7,
+    "discussion_why": "surprise axis \u2014 'wait, a single order statistic beats the mean and gets you almost all the personalized revenue?' is a genuine wait-really moment",
+    "tags": [
+      "econ",
+      "math",
+      "betting",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Why Your Sportsbook Doesn't Need to Know You to Rip You Off",
+    "paper": "2609.28181",
+    "pitch": "Explainer connecting the paper's result to sportsbook limit-setting and dynamic odds: books don't need a full personalization model to nearly match perfect price discrimination against sharp bettors \u2014 a handful of samples and an order-statistic rule gets them most of the way there. Use the demo above as the visual centerpiece.",
+    "cool": 7,
+    "buildable": 5,
+    "discussion": 8,
+    "discussion_why": "hits betting relatability hard \u2014 every sharp bettor has a story about getting limited, this gives it a math explanation",
+    "tags": [
+      "betting",
+      "gambling",
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Yard Sale Haggler",
+    "paper": "2609.28181",
+    "pitch": "Whimsical wrapper on the same math: an AI 'yard sale vendor' character sets a single posted price for a box of junk after peeking at a few past customers' willingness-to-pay, narrated with silly commentary each time the order-statistic rule nails it versus a naive average. Same underlying single-HTML simulation, just reskinned for shareability.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "wins on whimsy \u2014 turns dense combinatorics into a goofy garage-sale bit that's easy to screenshot",
+    "tags": [
+      "whimsy",
+      "econ",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Fail-Closed AI Gate Simulator",
+    "paper": "2609.29108",
+    "pitch": "Interactive state-machine toy: an 'AI trading agent' proposes actions each tick (bid, adjust position, cancel), and a visible permission gate either allows, blocks, or fails-closed based on toggleable rules (exposure limit, regulatory window, audit-trail requirement). Single HTML, no backend \u2014 just a scripted event feed and a gate that lights up green/red with an audit log panel scrolling below.",
+    "cool": 5,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "decision-theory framing \u2014 should an autonomous trading agent default to 'do nothing' when uncertain, and is that actually safer or just slower",
+    "tags": [
+      "ai",
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Europe Just Banned YOLO Trading Bots (and it's a good idea)",
+    "paper": "2609.29108",
+    "pitch": "Explainer on why EU electricity market rules force AI trading systems into a bounded, auditable, fail-closed design instead of an unconstrained predict-and-act loop \u2014 framed as a preview of where all regulated algo-trading (including sports betting exchanges) is probably headed.",
+    "cool": 5,
+    "buildable": 4,
+    "discussion": 6,
+    "discussion_why": "relatability for anyone running an algo/bot \u2014 'should your bot be allowed to act if it's not sure' is a live debate in betting-bot circles too",
+    "tags": [
+      "ai",
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Cash-Constrained Execution Sandbox",
+    "paper": "2609.27786",
+    "pitch": "Single HTML Almgren-Chriss simulator: sliders for budget, volatility, market impact, and number of assets. Watch the optimal trade schedule bend from a smooth front-loaded liquidation into a 'sell-first, cash-feasible' shape as you tighten the cash constraint, with a live chart of cash drawdown vs implementation shortfall. Directly portable to a 'bankroll-constrained bet-laddering' skin for SharpLab.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 6,
+    "discussion_why": "decision-theory crossover \u2014 this is Kelly-criterion-style bankroll management with a rigorous name, which sharp bettors will argue about",
+    "tags": [
+      "econ",
+      "math",
+      "decision-theory",
+      "betting"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Bankroll-Constrained Bet Allocator",
+    "paper": "2609.27786",
+    "pitch": "Port the paper's cash-constrained QCQP formulation to SharpLab: given a portfolio of live +EV bets across books, compute the execution schedule (which bets to place first, how much to stake) that respects a hard bankroll cap at every timestep rather than assuming infinite capital, same 'sell-first, cash-feasible' logic applied to bet placement order.",
+    "cool": 6,
+    "buildable": 4,
+    "discussion": 7,
+    "discussion_why": "directly gambling/betting relevant \u2014 bankroll management under multiple simultaneous +EV opportunities is a constant Discord argument",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "econ"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Optimal Execution Math That's Secretly Kelly Criterion for Institutions",
+    "paper": "2609.27786",
+    "pitch": "Explainer connecting Almgren-Chriss-with-cash-constraints to the intuition poker/sports bettors already have about bankroll management \u2014 you can be 'right' about the optimal trade/bet size and still go broke if you don't sequence cash flow correctly.",
+    "cool": 6,
+    "buildable": 4,
+    "discussion": 7,
+    "discussion_why": "bridges an institutional-finance paper to something every poker/betting Discord regular has opinions about (bankroll ruin)",
+    "tags": [
+      "betting",
+      "poker",
+      "decision-theory",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Friction Killer: Watch AI Alpha Evaporate",
+    "paper": "2609.23703",
+    "pitch": "Single HTML backtest visualizer preloaded with a canned news-sentiment strategy return series. Sliders for transaction cost, latency (ms delay before you can act on a signal), and slippage. Drag them up from zero and watch the equity curve go from a nice up-and-to-the-right line to flat/negative in real time \u2014 a visceral demonstration of the paper's 'accuracy is not the same as profitability' finding.",
+    "cool": 8,
+    "buildable": 9,
+    "discussion": 8,
+    "discussion_why": "surprise + AI-hype-debunking \u2014 great 'wait really' moment showing a seemingly great AI strategy dies from friction alone",
+    "tags": [
+      "ai",
+      "econ",
+      "betting",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "MFAST-Lite: News-to-Bet Sentiment Pipeline",
+    "paper": "2609.23703",
+    "pitch": "Small pipeline that pulls sports headlines/injury news, runs a lightweight LLM sentiment/impact classifier, and back-simulates whether acting on it (after realistic odds-market latency and vig) would actually beat closing line value \u2014 the sports-betting analogue of the paper's MFAST framework, aimed at SharpLab's CLV tracking.",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 7,
+    "discussion_why": "AI+betting combo is exactly the kind of 'does this actually beat the market' claim that draws instant Discord skepticism and debate",
+    "tags": [
+      "ai",
+      "betting",
+      "sports",
+      "gambling"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "I Built an AI Headline Trader \u2014 Then Added Reality and It Died",
+    "paper": "2609.23703",
+    "pitch": "Narrative video built around the friction-killer demo: start with a seemingly great LLM-driven trading/betting strategy, then progressively turn on latency, costs, and slippage sliders live until the edge disappears, ending on the paper's core lesson that most 'AI finds alpha' claims skip the market-frictions step.",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 8,
+    "discussion_why": "surprise + AI hook \u2014 this is the exact 'gotcha' arc that gets shared and argued about in AI and betting circles alike",
+    "tags": [
+      "ai",
+      "econ",
+      "betting",
+      "gambling"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Tick-to-Book Latency Waterfall",
+    "paper": "2609.21173",
+    "pitch": "Single HTML animated timeline bar showing a market data packet's journey from wire to order book: decode, dispatch, handler execution, reply \u2014 with a toggle between 'classic actor mailbox' (async queue, context switches, visible latency bumps) and 'fast_send' (inline synchronous call) rendering the same journey collapsing to a hairline. Numbers pulled straight from the paper's ~7us floor and sub-1% framework overhead.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 5,
+    "discussion_why": "surprise for the technical crowd \u2014 'synchronous inline actors are faster than async mailboxes' inverts what most people assume about concurrency",
+    "tags": [
+      "physics",
+      "math",
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "fast_send Scheduling Race, in the Browser",
+    "paper": "2609.21173",
+    "pitch": "JS toy simulating a growing swarm of actors sending synchronous request/reply chains, with two schedulers racing side by side \u2014 one doing classic O(N) mailbox dispatch, one doing fast_send's O(1) grouped inline calls \u2014 bars/counters animate the scheduling overhead diverging as N grows, making the complexity-class difference visually obvious instead of abstract.",
+    "cool": 6,
+    "buildable": 8,
+    "discussion": 4,
+    "discussion_why": "mostly a technical-audience whimsy/surprise play \u2014 a concurrency complexity gap you can actually watch happen",
+    "tags": [
+      "math",
+      "ai",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Concurrency Pattern HFT Firms Said Was Too Slow \u2014 Until This Trick",
+    "paper": "2609.21173",
+    "pitch": "Explainer on why the actor model (mailboxes, message-passing, Erlang-style isolation) was written off for microsecond trading, and how fast_send's 'just call the handler inline and treat the reply as a value' trick recovers safety without eating the async tax \u2014 useful crossover content for the algo-trading-adjacent portion of a betting/trading Discord.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 5,
+    "discussion_why": "niche technical surprise \u2014 satisfying for anyone who's argued async vs sync in a trading-bot context, less broad appeal",
+    "tags": [
+      "ai",
+      "math",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Rolling Conformal Prediction Playground",
+    "paper": "2609.26951 Rolling Conformal Prediction in Sequential Model Training",
+    "pitch": "Single-page HTML sim: a stream of 'prop bet' outcomes feeds a toy model that updates every game. Toggle between classic split-conformal (needs a held-out calibration chunk, goes stale) and rolling-CP (calibrates on every new point, no splitting) and watch live prediction-interval bands plus a running coverage counter. Inject a regime shift (e.g. a star player gets hurt) and show rolling-CP's proven worst-case 'coverage never worse than 1-2\u03b1' band holding while naive intervals blow past it.",
+    "cool": 7,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "surprise: a formal 'your interval can never be worse than 2x miscalibrated' guarantee sounds too good, and it maps straight onto live in-game line/prop uncertainty.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math",
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Always-Calibrated Prop Intervals for SharpLab",
+    "paper": "2609.26951 Rolling Conformal Prediction in Sequential Model Training",
+    "pitch": "Wire rolling-CP into SharpLab's prop-line pipeline so prediction intervals recalibrate on every completed game instead of relying on a fixed held-out calibration set. Removes the 'stale calibration set' failure mode when a team's rotation or pace changes mid-season.",
+    "cool": 6,
+    "buildable": 5,
+    "discussion": 5,
+    "discussion_why": "relatable to anyone tracking model drift on live prop lines, but it's an internal pipeline change, not a spectacle.",
+    "tags": [
+      "betting",
+      "sports",
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Confidence Interval That Can't Lie (More Than 2x)",
+    "paper": "2609.26951 Rolling Conformal Prediction in Sequential Model Training",
+    "pitch": "Explainer using betting-line examples: what conformal prediction is, why split-conformal breaks under continual retraining, and how rolling-CP gets a distribution-free 'factor-two' worst-case coverage guarantee with zero data splitting -- dramatized as 'a warranty on your uncertainty.'",
+    "cool": 7,
+    "buildable": 4,
+    "discussion": 6,
+    "discussion_why": "surprise hook ('a math-proven worst case') plus direct decision-theory relevance to anyone trusting a model's confidence.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Passing-Network Regression Toy",
+    "paper": "2609.26867 Additive Nonparametric Regression with Spatial and Network Objects",
+    "pitch": "Reframe the paper's GP-based functional regression (brain network -> activation curve) as: edit a toy team passing network (drag edge weights) and watch a GP-predicted 'performance curve' for the game update live, with uncertainty bands shrinking as more historical games are added as training context.",
+    "cool": 6,
+    "buildable": 6,
+    "discussion": 4,
+    "discussion_why": "niche math-to-sports bridge; interesting to the stats-curious crowd but doesn't hit betting/gambling directly.",
+    "tags": [
+      "sports",
+      "math",
+      "ai"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Your Brain Scan Is a Function, Not a Number",
+    "paper": "2609.26867 Additive Nonparametric Regression with Spatial and Network Objects",
+    "pitch": "Explainer on functional/additive nonparametric regression over network-valued predictors, using fantasy-football team networks as the intuitive stand-in for fMRI brain networks -- 'how do you regress on a whole graph, not a number?'",
+    "cool": 5,
+    "buildable": 3,
+    "discussion": 3,
+    "discussion_why": "genuinely niche stats topic; interesting but low overlap with betting/games banter.",
+    "tags": [
+      "math",
+      "bio",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Watch the Algorithm Decide Where to Look Closer",
+    "paper": "2609.26843 Gaussian-process surrogate indicators for residual-based adaptive GMsFEM",
+    "pitch": "Canvas visualization of adaptive mesh refinement on a 2D high-contrast diffusion field (think oil-in-rock or heat-through-weird-material). Toggle between the classic expensive residual (H^-1) marking and the paper's GP-surrogate marking; show near-identical refinement patterns appearing ~2x faster, with a live FPS/compute counter proving the speedup.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 4,
+    "discussion_why": "mesmerizing 'AI silently speeds up a physics solver by 2x with no accuracy loss' surprise, but weak natural tie to betting/poker.",
+    "tags": [
+      "math",
+      "physics",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Dorfler Marking as a Bankroll Strategy",
+    "paper": "2609.26843 Gaussian-process surrogate indicators for residual-based adaptive GMsFEM",
+    "pitch": "Reframe the paper's core allocation rule (greedily refine the mesh cells holding the most 'error mass', now scored fast via a GP surrogate instead of an expensive residual) as an interactive chip-allocation toy: multiple 'bets' each have an expensive true-EV score and a cheap GP-predicted EV score; let users compare allocating a fixed bankroll under each, watching how closely the cheap surrogate tracks the real greedy-optimal allocation.",
+    "cool": 7,
+    "buildable": 7,
+    "discussion": 7,
+    "discussion_why": "surprising cross-domain reframe of PDE mesh-refinement math as a Kelly-style greedy allocation game -- directly gambling/decision-theory flavored and debatable ('is greedy-on-a-cheap-proxy good enough?').",
+    "tags": [
+      "decision-theory",
+      "gambling",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Line-Movement Anomaly Detector",
+    "paper": "2205.06398 Outlier Detection for Multi-Network Data",
+    "pitch": "Apply ODIN's influence-measure-under-a-hierarchical-GLM approach (built for flagging one bad brain-scan network among many) to a set of correlated per-game sportsbook odds-movement graphs. Auto-flag books/games whose line-movement network looks statistically 'off' from the rest -- a lightweight steam/manipulation screen for SharpLab.",
+    "cool": 8,
+    "buildable": 6,
+    "discussion": 9,
+    "discussion_why": "directly on-target for gambling: 'stats method built for bad brain scans can flag suspicious betting markets' is a strong surprise + relatability hook.",
+    "tags": [
+      "betting",
+      "gambling",
+      "sports",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Spot the Corrupted Network",
+    "paper": "2205.06398 Outlier Detection for Multi-Network Data",
+    "pitch": "Grid of small force-directed graphs (framed as per-game player-interaction networks); one is secretly injected with noise. Users guess which one looks 'off' by eye, then reveal the ODIN-style influence-score ranking to see if the stats beat human intuition. Self-contained HTML with a live leaderboard of human-vs-algorithm accuracy.",
+    "cool": 8,
+    "buildable": 8,
+    "discussion": 7,
+    "discussion_why": "game-like 'can you beat the algorithm' format is exactly the kind of whimsical, arguable content that gets replayed and debated on a Discord.",
+    "tags": [
+      "games",
+      "whimsy",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "MatchGuard: Network-Based Fix Detection",
+    "paper": "2205.06398 Outlier Detection for Multi-Network Data",
+    "pitch": "Productize influence-measure outlier detection (as in ODIN) as a monitoring service for sportsbooks/regulators: build a 'network' per game or market cluster from correlated betting/odds/social signals, continuously score each for anomalous influence, and alert on likely match-fixing or coordinated betting rings before payouts.",
+    "cool": 8,
+    "buildable": 3,
+    "discussion": 8,
+    "discussion_why": "high-stakes, genuinely controversial pitch ('can stats actually catch match-fixing, or is this snake oil') -- prime bait for a betting-forum argument.",
+    "tags": [
+      "gambling",
+      "betting",
+      "sports",
+      "decision-theory"
+    ]
+  }
+]
