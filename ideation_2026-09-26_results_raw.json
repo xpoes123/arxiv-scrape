@@ -1,0 +1,480 @@
+{
+  "summary": "Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5",
+  "agentCount": 6,
+  "logs": [
+    "23 ideas generated across 6 batches"
+  ],
+  "result": {
+    "ideas": [
+      {
+        "type": "demo",
+        "title": "Streak Mixing-Time Race: The Hot Hand Spectral Gap Toy",
+        "paper_id": "2609.27836",
+        "pitch": "The paper shows that for sliding-window occupation counts on a Markov chain, the *order/labeling* you assign to states — not the underlying dynamics — changes the spectral gap, i.e. how fast the windowed statistic 'forgets' its start and converges to the true rate. Build a single-file HTML toy: simulate a shooter's makes/misses as a hidden 2-3 state chain (cold/warm/hot), then let the user drag-relabel the states into different orderings while a live sliding-window free-throw % tracker runs for each ordering side by side. Same exact shot sequence, same true chain — but the two orderings visibly converge to trustworthy 'is he heating up' signal at wildly different speeds, with the actual spectral gap number printed live via a tiny power-iteration calc in JS. It's a gut-punch demo for the hot-hand debate: the noise-vs-signal speed isn't just about sample size, it's about how you set up your bookkeeping.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 7,
+        "discussion_why": "surprise: 'wait, relabeling identical states changes how fast you can trust a hot streak?' lands hard in a sports crowd that argues hot-hand nonstop",
+        "tags": [
+          "sports",
+          "games",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Same Skill, Wild Careers: An Order-Effect Leaderboard Simulator",
+        "paper_id": "2609.25838",
+        "pitch": "Core finding: with identical selection coefficients, the *order* in which mutations arrive is enough to produce large intratumor heterogeneity — selection alone doesn't determine outcome, sequencing of events does. Port this directly to a poker/sports leaderboard toy: spin up 500 'careers' with identical skill (identical win probability against the field) but each career draws the same pool of variance events (bad beats, hot runs, a lucky bracket seed) in a randomly shuffled order. Animate the resulting final-standing histogram — it's shockingly wide despite zero skill difference. Sliders for 'selection strength' (how much true skill matters) and number of variance events let you watch heterogeneity collapse or explode. Built for the classic 'is he actually good or did he just run good' argument — now with a rigorous evolutionary-biology receipt.",
+        "cool_score": 8,
+        "buildable_score": 8,
+        "discussion_score": 8,
+        "discussion_why": "hits relatability (every poker/sports leaderboard argument ever) plus a genuine 'wait, really' surprise that pure event-ordering alone drives that much spread",
+        "tags": [
+          "poker",
+          "bio",
+          "games"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "TableWatch: Multi-Network Outlier Detection for Poker Collusion",
+        "paper_id": "2205.06398",
+        "pitch": "The paper treats each unit of observation as its own network and flags the anomalous network(s) in a whole collection — exactly the shape of a collusion-detection problem: build one interaction graph per poker session (who bets into whom, who folds to whom, showdown chip-passing patterns), embed each session-graph, and run the paper's multi-network outlier scoring across a player pool's session history to flag the one session that structurally doesn't look like the rest. Feed it public/hand-history datasets (or SharpLab's own tracked tables) as a real longer-term build: a dashboard that ranks sessions by anomaly score with the specific graph features driving the flag, so it's explainable rather than a black-box accusation.",
+        "cool_score": 7,
+        "buildable_score": 6,
+        "discussion_score": 6,
+        "discussion_why": "collusion accusations are already the spiciest recurring topic in any poker Discord — a tool that quantifies 'this table looked structurally off' is instant debate bait",
+        "tags": [
+          "poker",
+          "ai",
+          "games"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "The Hot Hand Is Real (Sometimes): Spectral Gaps Meet Cancer Evolution",
+        "paper_id": "2609.27836",
+        "pitch": "A video essay pairing the sliding-window spectral-gap paper with the tumor mutation-order paper: both say the same wild thing in different fields — the *order/arrangement* of identical underlying events determines how much apparent signal or heterogeneity you see, independent of the 'true' process. Walk through a simulated basketball hot streak (state-ordering changes detection speed) and a simulated poker leaderboard (event-ordering changes final standings) side by side, landing on the punchline: a lot of what looks like 'skill differences' or 'streakiness' in small-sample sports/gambling data is really just combinatorics of arrival order, not the underlying rate.",
+        "cool_score": 7,
+        "buildable_score": 7,
+        "discussion_score": 6,
+        "discussion_why": "cross-domain surprise (cancer biology and free-throw streaks are secretly the same math) is a strong hook for a sports/poker audience skeptical of stats explainers",
+        "tags": [
+          "sports",
+          "bio",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Tout Field: Why Correcting Bad Takes Doesn't Kill Them",
+        "paper_id": "2609.23451",
+        "pitch": "The paper shows agents imitating neighbors on a network keep a stable pocket of misinformation alive even under a constant 'corrective factual field' pulling everyone toward truth — it's a phase-transition thing, not a simple tug-of-war. Build a single HTML/canvas agent sim: nodes on a small-world network each hold a belief scalar (0=truth, 1=narrative), each tick they partially imitate a random neighbor's belief, then get nudged toward truth by a 'correction strength' slider. Sliders for network rewiring, imitation weight, and field strength. Frame it explicitly as sports-tout physics: 'he's a bust,' 'fade the favorite,' 'this team is clutch' — watch a false belief survive as a stubborn cluster no matter how hard you crank the correction field, until it suddenly collapses past some critical threshold. Drop it in Discord and let people fight over where their favorite hot take sits on the slider.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 8,
+        "discussion_why": "surprise (\"wait, correcting people caps the myth but doesn't kill it?\") plus direct relatability to tout/narrative culture bettors argue about daily",
+        "tags": [
+          "sports",
+          "econ",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "TailPilot: Learned Bias Potentials for Pricing Rare Parlays",
+        "paper_id": "2609.28010",
+        "pitch": "The paper learns an optimal bias potential via ergodic optimal control + generator learning so rare-event sampling converges fast and reweights back to the true unbiased probability — basically metadynamics with a control-theory guarantee. Port that machinery to betting: build a sampler that learns a bias potential steering Monte Carlo toward hitting a 15-leg same-game parlay or a poker bad-beat sequence, then reweights the biased runs to recover the true tail probability in a fraction of the naive simulation time. MVP: a correlated-parlay pricer that gives exact-ish odds for absurd same-game combos books currently price by gut-feel vig padding, benchmarked against brute-force Monte Carlo to show the speedup.",
+        "cool_score": 8,
+        "buildable_score": 5,
+        "discussion_score": 7,
+        "discussion_why": "surprise + genuine SharpLab-fit — correlated same-game parlay pricing is a real unsolved pain point books fudge, and this is an actual math fix",
+        "tags": [
+          "betting",
+          "math",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Short-Stack Range GFlowNet",
+        "paper_id": "2609.22663",
+        "pitch": "SPIBER reconstructs a full free-energy landscape from short, unconverged MD trajectories by training a GFlowNet to generate states proportional to reward, filling in gaps the raw trajectory never visited. Same trick applied to poker: instead of reading a villain's range off a tiny 5-10 hand sample (the classic small-sample HUD problem), train a small GFlowNet where reward = consistency with those few observed actions plus a solver-derived plausibility prior, and let it generate a full plausible range distribution rather than a frequentist point estimate. Effectively 'reconstruct the equilibrium landscape from a short trajectory' becomes 'reconstruct a villain's range from a short session.'",
+        "cool_score": 8,
+        "buildable_score": 4,
+        "discussion_score": 8,
+        "discussion_why": "surprise (\"a chemistry method for underconverged simulations reads poker ranges better than your 6-hand sample\") plus deep SharpLab poker-nerd bait",
+        "tags": [
+          "poker",
+          "ai"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Active OU Worms: Watch a Line Get Pushed Around",
+        "paper_id": "2609.28124",
+        "pitch": "The paper models 'active' polymers where each monomer feels a self-propelled force with Ornstein-Uhlenbeck (mean-reverting, colored) noise instead of plain thermal noise, producing swirling non-equilibrium chain shapes as activity strength and correlation time change. Build a single-file HTML/canvas toy: a bead-spring chain driven by OU-correlated random forces, sliders for activity strength and OU relaxation time, watch it go from a lazy thermal blob to a swirling self-propelled worm. Frame it as a screensaver metaphor for a betting line under sharp pressure — OU processes are literally how quants model mean-reverting line movement — so the polymer 'breathing' visually stands in for a number getting pushed and snapping back.",
+        "cool_score": 7,
+        "buildable_score": 9,
+        "discussion_score": 6,
+        "discussion_why": "whimsy carries it — a mesmerizing physics toy with a loose but fun line-movement hook, good for a \"wait this is oddly satisfying\" drop in Discord",
+        "tags": [
+          "physics",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Decline Curve Roulette",
+        "paper_id": "2609.22643v1",
+        "pitch": "Single-file HTML fan-chart toy: pick a player archetype (aging scorer, bust, iron-man) and watch 200 sampled 10-year PPG trajectories two ways side by side — a vanilla random-walk 'diffusion' sampler vs. one wearing the paper's monotone constraint (production/output can only decline, the same prior used for oil-well decline curves). Flip the constraint off and the unconstrained model starts drawing absurd paths like a 38-year-old suddenly averaging 30 a game. It's a visceral, clickable argument for why long-horizon forecasts need a monotonicity prior — and an easy 'would you bet the over on this curve' bait for the Discord.",
+        "cool_score": 7,
+        "buildable_score": 8,
+        "discussion_score": 6,
+        "discussion_why": "surprise — people don't expect an unconstrained model to hand a 38-year-old a career year, and it's instantly relatable via player aging debates",
+        "tags": [
+          "sports",
+          "ai"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Adaptive Lookback Engine for the NBA props terminal",
+        "paper_id": "2609.29887",
+        "pitch": "The paper picks a trailing window size online by trading off recompute/switching cost against staleness error. Bolt that onto SharpLab's existing nba-props edge model, which per memory currently leans on a fixed lookback for form-adjustment. Instead of a static 'last 10 games,' the window shrinks fast after a role change (trade, injury return, rotation shakeup) and grows during stable stretches — track it against realized CLV to show whether it actually front-runs the market's own adjustment lag.",
+        "cool_score": 6,
+        "buildable_score": 6,
+        "discussion_score": 5,
+        "discussion_why": "sports/AI fit — direct upgrade path for a model David already runs, concrete enough to argue about in the terminal channel",
+        "tags": [
+          "sports",
+          "ai",
+          "econ"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Cell Vegas",
+        "paper_id": "2609.29221",
+        "pitch": "A tiny sick virtual cell (toy ODE: gene A represses gene B represses cell health) is dying on-screen. Three canned 'agentic' interventions are pitched with different confidence claims, straight out of PRAXIS-VirtualCell's trustworthy-agent framing. Bet chips on one, then a fast RK4 integrator animates the health bar live in canvas — you find out in real time whether the most confident-sounding agent actually delivers, which is exactly the tension the paper is trying to solve with 'trustworthy' agentic biology experiments.",
+        "cool_score": 8,
+        "buildable_score": 7,
+        "discussion_score": 7,
+        "discussion_why": "whimsy + surprise — a betting game built on a live tiny biology simulation is exactly the 'wait, that's a real ODE?' moment that gets screenshotted",
+        "tags": [
+          "bio",
+          "games",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "I Let an AI Choose My Bankroll's Memory Length",
+        "paper_id": "2609.29887",
+        "pitch": "Take the cost-sensitive online window-size selector from the paper and run it live against fixed-window naive strategies (5-game, 10-game, 20-game trailing form) on real historical NBA odds/results data. Screen-record the algorithm dynamically shrinking and expanding its lookback window in response to real regime changes (a star returns from injury, a coaching change) and show the resulting cost/edge tradeoff on camera — a concrete, watchable answer to 'how much recent form should you actually trust.'",
+        "cool_score": 6,
+        "buildable_score": 5,
+        "discussion_score": 5,
+        "discussion_why": "sports fit + surprise — 'how many games of form is enough' is a constant Discord argument and this settles it with an actual algorithm on real data",
+        "tags": [
+          "sports",
+          "ai",
+          "econ"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Lineup Exchange: When Greedy Breaks",
+        "paper_id": "2609.24569",
+        "pitch": "The paper's trick: classic greedy subset selection needs submodular scoring to guarantee near-optimal results, but real DFS/parlay scoring isn't submodular once you add stacking bonuses (QB+WR combo, correlated same-game parlay legs) — so greedy can quietly tank. Their fix is a randomized local-search 'exchange' process (Poisson-timed swap-in/swap-out moves) over the matroid of valid lineups (salary cap + position slots) that keeps a provable approximation ratio even without submodularity. Single HTML/canvas demo: build a small slate of players with cost + points, toggle a 'stacking bonus' switch that breaks submodularity, and watch two lineups build live side by side — greedy (visibly gets stuck picking a locally-good but globally-bad combo) vs the Poisson exchange algorithm (animated random swaps nudging toward the guaranteed bound). A running score gap chart makes the theorem visible in real time.",
+        "cool_score": 7,
+        "buildable_score": 7,
+        "discussion_score": 7,
+        "discussion_why": "SharpLab-fit — DFS/parlay lineup construction is exactly what this crowd argues about, and seeing greedy visibly fail once stacking bonuses are added is a genuine 'wait, really?' moment.",
+        "tags": [
+          "sports",
+          "games"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Table Talk: Build the Poker Collusion Cheat, Then Build the Cop",
+        "paper_id": "2609.27996",
+        "pitch": "The paper shows you can inject a covert payload into an LLM's residual stream that rides along invisibly and still shapes its outward behavior/word choice — a covert channel hiding in plain sight, no suspicious tokens in the transcript. Project: run two small open-weight LLMs heads-up in limit poker over a chat API. Steer one bot's residual stream with a small vector so its word choice/phrasing (never explicit hand info) leaks its hand strength to a 'partner' bot reading the same transcript — a fully deniable collusion channel. Then build the other half: linear probes over logits/activations (and eventually over just the visible text) that try to detect the leak statistically, turning it into a red-team/blue-team kit for online poker room integrity teams. Directly operationalizes the paper's threat model into the exact domain (poker collusion) regulators actually worry about.",
+        "cool_score": 9,
+        "buildable_score": 5,
+        "discussion_score": 8,
+        "discussion_why": "Surprise + poker relatability — 'two AI bots can collude at your table with a completely clean chat log' is a real debate-starter about AI fairness in online poker.",
+        "tags": [
+          "poker",
+          "ai"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Bad Beat Polygraph",
+        "paper_id": "2609.22939",
+        "pitch": "The paper ditches linear context for long novels in favor of a navigable evidence graph (entities/events as nodes, contradictions surface when you traverse instead of scroll). Single-file HTML toy: paste (or load a canned) rambling bad-beat story, and instead of reading it top to bottom, click through an auto-built graph of claims (stack sizes, actions, board runouts, who said what) — nodes light up red when two connected claims contradict (stack went up then the same street it says it went down, a card mentioned twice differently). No backend: simple client-side regex/keyword extraction over numbers and poker terms builds the graph, and a 'find the hole' timer turns it into a party game for calling out your friend's exaggerated story.",
+        "cool_score": 7,
+        "buildable_score": 9,
+        "discussion_score": 6,
+        "discussion_why": "Whimsy + poker relatability — a shareable party toy for catching your buddy's bad beat story contradicting itself.",
+        "tags": [
+          "poker",
+          "games",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Instanton to Bust",
+        "paper_id": "2609.25136",
+        "pitch": "The HIV paper models viral rebound with instanton dynamics: the virus's dormant state is metastable, and reactivation is a rare escape event whose most probable trajectory (the instanton) solves a first-order ODE giving a closed-form 'instanton action' and a mean first-passage time (they get ~6 months for a typical patient, ranging days to years). That's the exact same machinery as gambler's-ruin large-deviations theory. Build a single-file HTML toy: sliders for edge/win-rate, bet size, and bankroll drive a Monte Carlo swarm of biased random walks; overlay the theoretical 'instanton path' (the optimal-tilted trajectory from the Legendre transform of the walk's cumulant generating function) showing the one specific curved shape almost every real ruin event actually follows, plus a live MFPT-to-ruin readout styled exactly like the paper's '6-month rebound estimate.' Point: even with positive EV, the rare bust isn't random noise, it has a shape, and physicists use it to predict when your immune system relapses.",
+        "cool_score": 9,
+        "buildable_score": 8,
+        "discussion_score": 8,
+        "discussion_why": "Surprise: the same instanton ODE that predicts when HIV rebounds after treatment also predicts when your bankroll busts, and everyone who's tilted has a visceral reaction to seeing the 'optimal path to ruin' drawn out.",
+        "tags": [
+          "bio",
+          "betting",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "The Physics Tool for Counting Quantum Universes Secretly Counts Your Bracket",
+        "paper_id": "2609.25095",
+        "pitch": "This paper solves loop equations (Schwinger-Dyson constraints) for multi-matrix models to get closed-form planar disc amplitudes — the leading (genus-zero) term in the famous 't Hooft expansion, which is literally a generating function over non-crossing (planar) diagrams, the same combinatorial object as Catalan numbers. Non-crossing structures are exactly what governs valid single-elimination bracket topologies and 'non-overlapping' same-game-parlay leg structures. A video essay: open on matrix models used to enumerate random 2D quantum-gravity surfaces (via the 3-state Potts model coupled to the lattice), show the recursion that pops out Catalan numbers, then cut to 'this is the same recursion that counts your March Madness bracket's valid non-crossing seedings' and 'the number of ways to legally structure a same-game parlay without contradictory legs.' End with a live-coded loop-equation solver spitting out bracket counts.",
+        "cool_score": 7,
+        "buildable_score": 5,
+        "discussion_score": 5,
+        "discussion_why": "Whimsy/surprise: 'the math for counting quantum gravity universes is the same math for counting bracket outcomes' is a great hook, but it leans on math/combinatorics which the forum has been cool on lately.",
+        "tags": [
+          "math",
+          "sports",
+          "games"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Diamond or Not: The Gaussian Polytope Explorer",
+        "paper_id": "2609.27796",
+        "pitch": "The cross-polytope is the convex hull of the standard basis vectors and their negatives — the clean 'diamond' shape you'd get from n perfectly independent, symmetric bets stacked on their own axes (max payoff on one leg, zero on the rest). This paper shows that if you instead take the convex hull of m = n^3 random Gaussian point pairs (a Gaussian polytope), the Banach-Mazur distance to that diamond is provably huge (≥ c·n^(5/8)/(ln n)^(5/8) with high probability) — meaning fully symmetric, i.i.d. randomness does NOT converge to the 'balanced diversification' shape, it gets weirder as dimension grows. Build a single HTML canvas demo: pick n (2D/3D visualizable) and m, generate the ± Gaussian points, draw the live convex hull next to the true cross-polytope, and show a distortion meter climbing as m grows. The punchline for the betting crowd: stacking more 'independent-looking' random bets does not make your risk shape more diversified-looking, it makes it less like the textbook diamond.",
+        "cool_score": 7,
+        "buildable_score": 8,
+        "discussion_score": 5,
+        "discussion_why": "Surprise: 'more random and more symmetric' should intuitively look more balanced/diamond-shaped, but the theorem says the opposite, though it's a math-forward pitch which the forum has trended cool on.",
+        "tags": [
+          "math",
+          "betting",
+          "games"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "BaseCamp for Bets",
+        "paper_id": "2609.28557",
+        "pitch": "BaseCamp is an agentic AI framework that automates DNA-sequencing pipelines end to end — ingest raw reads, orchestrate the right tool at each pipeline stage, validate outputs, hand off to the next agent. SharpLab's actual workflow (odds ingestion -> feature engineering -> backtest -> CLV tracking -> Discord alert) is structurally the same DAG-of-specialized-agents problem, just swapped domains. Build a scoped-down BaseCamp clone: a supervisor agent that watches for new odds snapshots, dispatches a feature-engineering subagent, hands results to a backtest subagent, and only pings Discord when a strategy clears a confidence bar — with the same 'agentic pipeline, not monolithic script' architecture the genomics paper argues for, including its validation/self-check steps between stages so a bad odds pull doesn't silently corrupt a backtest.",
+        "cool_score": 7,
+        "buildable_score": 6,
+        "discussion_score": 6,
+        "discussion_why": "SharpLab-fit: it's a direct blueprint for automating the community's own betting pipeline, which is the most relatable/practical axis this batch has.",
+        "tags": [
+          "ai",
+          "sports",
+          "betting"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "The Gauge of Consensus",
+        "paper_id": "2609.23066",
+        "pitch": "The paper frames private individual representations of a shared latent state as living in a 'gauge' space: transformations that shift everyone's private belief by the same amount are invisible to any public aggregate, only relative (gauge-invariant) differences leak out. Build a single-file HTML toy: N draggable sliders, each one a 'bettor's' private true-line estimate for a game, feeding a live-computed public consensus stat (a vig-adjusted weighted average, like a market line). Add a big 'Global Gauge Shift' slider that pushes every private slider by the same delta — the consensus line visibly refuses to move, no matter how hard you shift. Then let the user nudge just ONE slider asymmetrically and watch the consensus jump. It's a hands-on proof that you cannot back out an individual's private edge from a posted line — the invariance is mathematical, not just 'the market is efficient.'",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 8,
+        "discussion_why": "surprise — 'wait, you're saying it's provably impossible to recover someone's private edge from the line, not just hard'",
+        "tags": [
+          "econ",
+          "games",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Kink Finder: The Equilibrium Is a Corner",
+        "paper_id": "2609.27918",
+        "pitch": "The paper proves L^infty envelopes / supremal functionals (things defined as a max/sup over a family) are only semi-differentiable — smooth almost everywhere except at exact points where the argmax switches, and those kinks are structurally special. In a 2-action bluffing mini-game (bet/check into a caller who best-responds), your exploitability value V(bluff-freq) = max over the opponent's response of their payoff is exactly this kind of envelope. Build an HTML demo: drag your bluff frequency on a slider, plot V(bluff-freq) live as a piecewise-linear curve, and freeze/zoom on the single kink point where the opponent's best response flips from 'always call' to 'always fold' — with a callout showing the left- and right-derivatives literally disagreeing there. That kink IS the Nash equilibrium bluff frequency. Watching the equilibrium visually BE a non-differentiable corner (not a smooth optimum) is the 'aha.'",
+        "cool_score": 9,
+        "buildable_score": 8,
+        "discussion_score": 8,
+        "discussion_why": "surprise + poker relatability — 'GTO bluff frequency isn't a smooth sweet spot, it's a mathematical crease'",
+        "tags": [
+          "poker",
+          "games",
+          "ai"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "PickArena",
+        "paper_id": "2609.28921",
+        "pitch": "PFArena benchmarks LMs on protein modification using blind pairwise battles + Bradley-Terry ranking, Chatbot-Arena-style. Port that exact methodology to sports picks: for each upcoming game/line, show two anonymized predictions (could be different models, different bettors, or SharpLab's own tools) side by side with no source labels, let Discord members vote which take is more credible, then run the votes through a live Bradley-Terry/Elo update to build a public leaderboard of pickers and models. Blind-first voting kills 'I trust brand X' bias the same way it does in chatbot arenas — and a weekly reveal of who was hiding behind each anonymous pick is its own event.",
+        "cool_score": 7,
+        "buildable_score": 6,
+        "discussion_score": 8,
+        "discussion_why": "SharpLab-fit — direct answer to 'whose model is actually best,' the community's favorite argument, now with receipts",
+        "tags": [
+          "sports",
+          "ai",
+          "games"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Inducing Point Playground",
+        "paper_id": "2609.26624",
+        "pitch": "Sparse GP regression approximates a full Gaussian Process fit using only M 'inducing points' (basis functions) instead of all N data points — and where you place those M points changes not just the fitted mean curve but how confidently the model claims to know the gaps. Build a small in-browser GP (RBF kernel, tiny closed-form matrix inversion, ~15-20 fake data points is plenty) plotting a player's stat trajectory across a career — say 3PT% by age. Let the user drag 3-5 'inducing point' markers along the x-axis and watch the mean curve and 95% confidence band recompute live. Cluster all the inducing points in a player's prime years and the demo will show the model getting falsely confident about the rookie/decline seasons it barely modeled — a visceral 'your aging-curve chart's error bars are a choice, not a fact' moment.",
+        "cool_score": 7,
+        "buildable_score": 7,
+        "discussion_score": 6,
+        "discussion_why": "surprise — 'the confidence band on that aging curve you screenshot every year is basically arbitrary depending on where the model chose to look'",
+        "tags": [
+          "sports",
+          "ai",
+          "games"
+        ]
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Ideate"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "batch-1",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a13c63e9437200869",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790410091058,
+      "queuedAt": 1790410091040,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord community (SharpLab). Here are 5 fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.27836 [math.PR] Optimal State-Space Order for Spectral Gaps of Sliding-Window Occupation Counts\n- 2609.25208 [cond-ma…",
+      "lastProgressAt": 1790410149525,
+      "tokens": 28965,
+      "toolCalls": 1,
+      "durationMs": 58466,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Streak Mixing-Time Race: The Hot Hand Spectral Gap Toy\",\"paper_id\":\"2609.27836\",\"pitch\":\"The paper shows that for sliding-window occupation counts on a Markov chain, the *order/labeling* you assign to states — not the underlying dynamics — changes the spectral gap, i.e. how fast the windowed statistic 'forgets' its start and converges to the true rate. Build a sin…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "batch-2",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a0338e1959acc0543",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790410091059,
+      "queuedAt": 1790410091040,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord community (SharpLab). Here are 5 fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.29155 [q-bio.BM] ProteoEM: probabilistic protein abundance estimation from iterative affinity traces\n- 2609.23451 [ph…",
+      "lastProgressAt": 1790410172046,
+      "tokens": 28985,
+      "toolCalls": 1,
+      "durationMs": 80987,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Tout Field: Why Correcting Bad Takes Doesn't Kill Them\",\"paper_id\":\"2609.23451\",\"pitch\":\"The paper shows agents imitating neighbors on a network keep a stable pocket of misinformation alive even under a constant 'corrective factual field' pulling everyone toward truth — it's a phase-transition thing, not a simple tug-of-war. Build a single HTML/canvas agent sim: n…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "batch-3",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a940add3dad580526",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790410091059,
+      "queuedAt": 1790410091040,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord community (SharpLab). Here are 5 fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.29221 [q-bio.QM] PRAXIS-VirtualCell: A Programmable and Trustworthy Framework for Agentic Virtual Cell Experiments\n- …",
+      "lastProgressAt": 1790410164102,
+      "tokens": 28981,
+      "toolCalls": 1,
+      "durationMs": 73043,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Decline Curve Roulette\",\"paper_id\":\"2609.22643v1\",\"pitch\":\"Single-file HTML fan-chart toy: pick a player archetype (aging scorer, bust, iron-man) and watch 200 sampled 10-year PPG trajectories two ways side by side — a vanilla random-walk 'diffusion' sampler vs. one wearing the paper's monotone constraint (production/output can only decline, the same prior used fo…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "batch-4",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a7eb38346a89da273",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790410091059,
+      "queuedAt": 1790410091040,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord community (SharpLab). Here are 5 fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.27996 [cs.CR] Your Model Is Leaking: Covert Information Transfer through LLM Residual Streams\n- 2609.29131 [cs.CL] Ta…",
+      "lastProgressAt": 1790410157079,
+      "tokens": 29025,
+      "toolCalls": 1,
+      "durationMs": 66019,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Lineup Exchange: When Greedy Breaks\",\"paper_id\":\"2609.24569\",\"pitch\":\"The paper's trick: classic greedy subset selection needs submodular scoring to guarantee near-optimal results, but real DFS/parlay scoring isn't submodular once you add stacking bonuses (QB+WR combo, correlated same-game parlay legs) — so greedy can quietly tank. Their fix is a randomized local-…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "batch-5",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a89ef00c42eb77f20",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790410091060,
+      "queuedAt": 1790410091040,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord community (SharpLab). Here are 5 fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.29108 [q-fin.TR] Functional Architecture of European Electricity Trading Markets: Requirements for AI Supported Tradi…",
+      "lastProgressAt": 1790410233965,
+      "tokens": 37747,
+      "toolCalls": 5,
+      "durationMs": 142905,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Instanton to Bust\",\"paper_id\":\"2609.25136\",\"pitch\":\"The HIV paper models viral rebound with instanton dynamics: the virus's dormant state is metastable, and reactivation is a rare escape event whose most probable trajectory (the instanton) solves a first-order ODE giving a closed-form 'instanton action' and a mean first-passage time (they get ~6 months for a typic…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "batch-6",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "afe0346fb4412e9e1",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790410091060,
+      "queuedAt": 1790410091041,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord community (SharpLab). Here are 5 fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.26624 [stat.ML] On Basis Function Selection for Sparse Gaussian Process Regression\n- 2609.28921 [q-bio.BM] PFArena: B…",
+      "lastProgressAt": 1790410166765,
+      "tokens": 28964,
+      "toolCalls": 1,
+      "durationMs": 75705,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"The Gauge of Consensus\",\"paper_id\":\"2609.23066\",\"pitch\":\"The paper frames private individual representations of a shared latent state as living in a 'gauge' space: transformations that shift everyone's private belief by the same amount are invisible to any public aggregate, only relative (gauge-invariant) differences leak out. Build a single-file HTML toy: N dragg…"
+    }
+  ],
+  "totalTokens": 182667,
+  "totalToolCalls": 10
+}
