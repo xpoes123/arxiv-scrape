@@ -6,16 +6,18 @@ import xml.etree.ElementTree as ET
 NS = {"a": "http://www.w3.org/2005/Atom"}
 
 def search(query, max_results=10, start=0):
+    # ponytail: urlencode escapes ':' to %3A by default; arXiv's API 406s on the escaped form.
     url = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode({
         "search_query": query,
         "start": start,
         "max_results": max_results,
         "sortBy": "submittedDate",
         "sortOrder": "descending",
-    })
+    }, safe=":")
     # ponytail: arXiv asks for >=3s between calls; one call here, sleep if you loop.
     # ponytail: arXiv 429s/hangs the default Python-urllib UA; send a browser-like one.
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; arxiv-scrape/1.0)"})
+    # ponytail: urllib sends no Accept header by default; arXiv's export API 406s without one.
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; arxiv-scrape/1.0)", "Accept": "*/*"})
     # ponytail: arXiv throttles hard under load (429s/hangs); retry with backoff, raise upgrade if still flaky.
     for attempt, backoff in enumerate((15, 30, 60)):
         try:

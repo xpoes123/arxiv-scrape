@@ -1,5 +1,57 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-26 — Same Skill, Wild Careers
+- **Status:** rough night on fetching, clean night on everything downstream. Found and fixed two real bugs in
+  `arxiv_scrape.py`: (1) `urllib`'s default request sends no `Accept` header and arXiv's export API 406s
+  without one; (2) `urlencode()` percent-escapes the `:` in `cat:cs.LG` to `%3A`, which the export API *also*
+  406s on — added `safe=":"`. Verified the fix works in isolation, but by the time it landed the API had
+  started genuinely IP-rate-limiting this box from all the debugging traffic (single isolated calls kept
+  succeeding, calls inside a tight loop kept 406ing regardless of backoff) — so the real fetch fell back to
+  `fetch_papers_fallback.py` (HTML-scrapes arxiv.org listing pages instead of the export API) for everything
+  past the first 2 categories, landing 159 papers across 21/22 categories (only `econ.EM` 406'd). Downselected
+  to 30 papers for ideation (deduped 2 cross-listed papers first), 6 batches, 23 ideas. The `arxiv_scrape.py`
+  fix should mean tomorrow's primary path just works.
+- **Forum top-3 (by votes-adjusted discussion score, all three buildable-tonight — full 3-way competition):**
+  1. Network imitation sustains misinformation despite a corrective factual field — correcting a bad take
+     doesn't kill it, just shrinks the cult around it until it snaps (arXiv:2609.23451)
+  2. Mutation Order and Selection Shape Intratumor Heterogeneity in Tumor Evolution — identical skill, only
+     event order differs, and outcome spread is still enormous (arXiv:2609.25838) ← BUILT, won
+  3. Stochastic Field Theory of HIV Latency: Instanton Dynamics and the Path to Viral Rebound — the same math
+     predicting HIV rebound also predicts your bankroll's most likely path to zero (arXiv:2609.25136)
+- **Built (3-way build-off):**
+  - A — Tout Field: a Watts-Strogatz small-world network sim on canvas where each node holds a belief scalar
+    and imitates a random neighbor, pulled toward truth by a correction-strength field, with an added
+    conformity/social-proof term (found necessary after the builder validated the paper's literal update rule
+    in a standalone Node harness and discovered it was a linear ODE that decays to zero at *any* correction
+    strength — no real threshold). With the conformity term, a seeded "hot take" cluster genuinely survives
+    thousands of ticks below a critical correction strength and collapses within a few hundred ticks above it.
+    Click-to-seed-a-narrative interaction, live stat chips, sparkline, histogram. Verified via headless
+    Playwright, zero console errors.
+  - B — Same Skill, Wild Careers: 300–1000 identical-skill "careers" draw the same pool of poker/sports
+    variance events in independently shuffled order, scored via a decaying-momentum compounding walk (an
+    early boost keeps compounding into every future step, mirroring the paper's founder-effect mechanic).
+    Selection-strength slider verified live: 100% collapses every career to exactly 1.00× (zero spread), 0%
+    produces 20×+ spreads on identical skill. Poker-nicknamed leaderboard reshuffles a "guy" from #3 to #491
+    on re-run. Verified via headless Playwright across default/extreme/spike params and mobile viewport, zero
+    console/page errors.
+  - C — Instanton to Bust: a Monte Carlo swarm of biased gambler's-ruin random walks with a genuine
+    Cramér/Legendre-transform derivation of the most-probable path to ruin (the "instanton") overlaid and
+    cross-checked against the empirical average of busted paths, plus a closed-form mean-first-passage-time
+    readout. Verified via `node --check` on the extracted script and hand-traced logic (no headless browser
+    used for this one); judge later re-verified live via Playwright — closed-form ruin probability at default
+    params matched a hand-computed `(q/p)^(S0/b)` calculation exactly.
+- **Judge verdict:** Same Skill, Wild Careers (B) won — the judge drove all three live via headless Playwright
+  (sliders, buttons, math cross-checks) rather than reading statically. B's single slider produces the
+  cleanest, most legible "whoa" moment of the three (spread collapsing from 19.7× to exactly 1.00× on one
+  drag) plus the tightest SharpLab-audience fit ("is he good, or did he run good?"), edging out A's more
+  visually mesmerizing but slower-unfolding network animation (wow 8, fidelity 7 — the threshold mechanic
+  needed an added term not strictly derived from the paper) and C's most mathematically rigorous but least
+  flashy line-chart presentation (fidelity 9, wow 7).
+- **Published:** winner copied to `demos/2026-09-26-order-effect-leaderboard.html`, brief written to
+  `2026-09-26-nightly.html`, both pushed to `david-share` and registered in its manifest. Live at
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-09-26-order-effect-leaderboard.html and
+  https://share.djiang.xyz/arxiv-scrape/2026-09-26-nightly.html (pending the VPS's next `git pull`).
+
 ## 2026-09-25 — Sandwich Attack Simulator
 - **Status:** clean night, with one hiccup: `export.arxiv.org/api` returned HTTP 406 on nearly every category
   (both `fetch_papers.py` and the HTML-scraping `fetch_papers_fallback.py` hit it) — the fallback still got
