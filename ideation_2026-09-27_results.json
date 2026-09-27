@@ -1,0 +1,356 @@
+[
+  {
+    "type": "demo",
+    "title": "E-Power Play: The Sequential Betting Duel",
+    "paper_id": "2609.27765",
+    "pitch": "Single-file HTML that turns 'e-power vs Chernoff-Stein exponent' into a race you can feel. Two wealth bars grow in real time: a test supermartingale (an e-process \u2014 literally a betting strategy against the null hypothesis, doubling your stake when you're right) climbing at its e-power exponential rate, next to the fixed-sample Neyman-Pearson test's Chernoff-Stein exponent waiting for a pre-set sample size before it can even declare a verdict. Sliders control true effect size and the null's parameters; the display shows, for any given effect, how much rate you sacrifice by insisting on anytime-valid stopping vs batch testing \u2014 and where they cross. Frame it explicitly as 'how many bets until you can PROVE your handicapper has an edge, without picking your sample size in advance.'",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "Sequential testing of an edge is the exact question every serious sports bettor and poker grinder argues about ('how many hands/bets before variance stops fooling you') \u2014 this makes the math viscerally a betting-strategy race, high SharpLab-fit, and the counterintuitive result (you pay a real, quantifiable rate penalty for not fixing n in advance) is a great debate starter.",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Edge-or-Noise: Anytime-Valid CLV Tracker",
+    "paper_id": "2609.27765",
+    "pitch": "Replace SharpLab's fixed-window CLV significance checks with an e-process (test supermartingale) tracker: every bet updates a running 'wealth' statistic that is a valid betting-against-the-null test at every stopping time, so you can declare 'this model has positive CLV' the moment evidence crosses a threshold instead of waiting for an arbitrarily chosen sample size \u2014 and you get to choose the growth-rate optimal (e-power maximizing) test given an assumed true edge, directly informed by the paper's Type-II error analysis. Ships as a small library + dashboard tile alongside the existing nba-props/SharpLab CLV logging.",
+    "cool_score": 6,
+    "buildable_score": 7,
+    "discussion_score": 8,
+    "discussion_why": "Directly answers the recurring Discord argument 'my model is only 40 bets in, is that even a sample' with real anytime-valid statistics instead of vibes \u2014 high SharpLab-fit and genuinely useful, though less flashy/shareable than a visual demo.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Ramsey Roulette: Color the Graph, Dodge the Triangle",
+    "paper_id": "2609.28455",
+    "pitch": "Single-file HTML party game on a complete graph K_n: click edges to color them red or blue (a third color for the 'k' part of R(3,3,k) if you want the harder version), and the game ends the instant any color forms a triangle (red/blue) or a k-clique in the third color. A live counter shows n vs the current best-known bounds for R(3,3,k) from the paper, so players feel exactly how close they are to the point where a monochromatic structure becomes unavoidable \u2014 turns an abstract combinatorics bound into a 'how long can you survive' arcade challenge.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 6,
+    "discussion_why": "Fun, whimsical, and genuinely a game (fits a games-loving Discord), but Ramsey numbers are more of a curiosity than a betting/decision-theory hook, so it'll spark 'huh, neat' more than sharp debate.",
+    "tags": [
+      "math",
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Stale Line Arbitrage: Consensus Under Latency",
+    "paper_id": "2609.27902",
+    "pitch": "HTML simulator modeling sportsbooks as agents in a resilient multi-agent consensus network, each broadcasting its 'fair price' with random latency and a fraction of agents faulty/adversarial (mirroring the paper's collaborative monitoring under latency + resilience setup). Watch the network converge toward true consensus probability while a highlighted 'arbitrage window' shows exactly when and how long a fast, well-connected agent could exploit the lag between books before the slow ones catch up. Sliders for latency variance, fraction of adversarial/noisy agents, and network topology let you see how resilience guarantees shrink or widen the exploitable window.",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 9,
+    "discussion_why": "Line-shopping and 'who moves first' arbitrage windows are a constant, contentious topic on betting Discords, and reframing it as a rigorous resilient-consensus-under-latency problem (with adversarial agents) gives sharp bettors a genuinely new, surprising mental model for why some books always lag \u2014 high buzz potential.",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The Cyclic Judgment Trap",
+    "paper_id": "2609.23977",
+    "pitch": "Single-file HTML quiz that reproduces the paper's binding-motivated contextuality cyclic test: same underlying prop scenario (e.g. 'Team A covers AND under hits AND star player scores 25+') gets shown to the user in different question orders/framings, and their yes/no judgments get tallied live into a KCBS-style cyclic inequality (like the Bell/Leggett-Garg tests the paper runs on perception and judgment). At the end it shows the user their own 'contextuality score' \u2014 how much their probability judgments violated classical, order-independent logic purely because of framing order. Reframe the scenarios as sportsbook line-setting / same-game-parlay questions so the takeaway lands as: bettors' (and books') implied probabilities are provably non-classical and order-dependent, which is exactly the kind of soft spot SGP pricing exploits.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 9,
+    "discussion_why": "Extremely high on all fronts: it's a real personality test people will screenshot ('I scored 0.8 on the contextuality index'), it's directly about exploitable irrationality in same-game parlay pricing (core SharpLab territory), and the underlying claim -- that human judgment behaves like a quantum system, violating classical probability -- is a genuine debate-starter about free will, rationality, and whether bettors (or oddsmakers) can ever be 'coherent'.",
+    "tags": [
+      "decision-theory",
+      "gambling",
+      "betting",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Prop Aggregation Audit for nba-props-terminal",
+    "paper_id": "2609.27912",
+    "pitch": "The paper characterizes a specific failure mode: tree-based forecasters (GBMs, random forests) that look great at the leaf level systematically collapse -- develop biased, miscalibrated forecasts -- once you aggregate up a hierarchy (e.g. store->region->national). Port their five-panel diagnostic (bias decomposition, nonlinearity-driven aggregation gap, hierarchy-depth sensitivity, calibration drift, panel heterogeneity) onto nba-props-terminal: train per-player leaf models for rebounds/points/threes, sum to team totals and game totals, and check whether the GR-RTRMC-validated player-level edges actually survive aggregation into team totals, live parlays, or DFS lineup sums -- or whether they quietly invert, the exact way the paper shows tree ensembles do.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 8,
+    "discussion_why": "Directly threatens a claim SharpLab cares about (validated player prop edges) by asking whether those edges disappear or flip once summed into game totals/SGPs -- a sharp, falsifiable, slightly uncomfortable question that any props bettor on the server will want to argue about, with real econometrics backing it rather than vibes.",
+    "tags": [
+      "sports",
+      "betting",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "SuperPCA Player Archetype Explorer",
+    "paper_id": "2609.26406",
+    "pitch": "Single HTML page (embedded synthetic/small precomputed NBA per-36 stat matrix) that lets the user drag sliders for sample size (games) vs dimensionality (stat categories tracked) and watch two PCA runs update side by side: vanilla PCA, which visibly degenerates into noise-driven, nonsensical 'archetypes' once dimensions approach or exceed sample count, versus the paper's efficient subspace-based estimator, which stays stable in the same high-dimension-low-sample regime. Makes the classic small-n-high-p pitfall (which quietly haunts small-sample player/lineup clustering) visually obvious in 30 seconds of slider-dragging.",
+    "cool_score": 6,
+    "buildable_score": 7,
+    "discussion_score": 5,
+    "discussion_why": "More of a math/modeling-nerd hook than a betting debate -- interesting to anyone building player archetype or lineup-similarity models but doesn't have the immediate gambling-table argument value of the other two ideas.",
+    "tags": [
+      "math",
+      "ai",
+      "sports"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Sign Flip: Watching a Graph Become an Expander",
+    "paper_id": "2609.23855",
+    "pitch": "Single-file HTML toy built around Bilu-Linial signing: draw a small d-regular graph, then let the user (or an auto-solver implementing the paper's polynomial-time interlacing-polynomial search) flip edge signs to +1/-1. A live eigenvalue-spectrum panel redraws after every flip, and a big readout tracks the signed adjacency matrix's spectral radius racing down toward the 2*sqrt(d-1) Ramanujan bound the paper proves is always achievable in poly time (a constructive answer to the old Bilu-Linial conjecture via Kadison-Singer-style partitioning). Include a 'double the graph' button that performs one signed lift so people can watch an expander get built recursively, generation by generation, in real time.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "discussion_why": "Expanders underpin card-shuffling bounds and network-robustness arguments the math/poker crowd loves quoting, and 'we can now build near-Ramanujan graphs in poly time, constructively' is a genuinely surprising/counterintuitive result worth arguing about even without direct betting tie-in.",
+    "tags": [
+      "math",
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "ChronosAttack Red-Team Harness for Sage/Sentinel",
+    "paper_id": "2609.27857",
+    "pitch": "The paper shows an LLM agent can be steered into wrong decisions purely by adversarially reordering/delaying tool calls, with every individual tool output left untouched. Build a sandboxed replay harness that wraps Sage's and Sentinel's real tool-call sequences, fuzzes call ordering and injected latency, and scores each agent's 'schedule sensitivity' -- does delaying the 'check calendar' or 'fetch odds' tool by N ms flip the final action even though nothing lied to it? Direct fit for David's own production agent fleet, and a natural pre-deploy gate next to the existing pre-arm-audit self-test on live-trader.",
+    "cool_score": 7,
+    "buildable_score": 7,
+    "discussion_score": 8,
+    "discussion_why": "Blends agentic-AI security with SharpLab's actual domain: 'you can flip a betting agent's decision by just delaying the odds-feed call, no fake data needed' is exactly the counterintuitive, stakes-real claim that gets a betting/decision-theory Discord arguing about whether their own automation is exploitable.",
+    "tags": [
+      "ai",
+      "decision-theory",
+      "gambling"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Memory Scope Firewall",
+    "paper_id": "2609.29144",
+    "pitch": "Package the paper's fix for cross-family interference in agent memory as drop-in middleware for anyone running a fleet of persistent agents (David's own Sage/Sentinel/SciBowl/weekly-audit setup is the perfect dogfood case): auto-tag every persisted memory with its originating agent-family, enforce scoped retrieval so one agent's learned facts can't silently bleed into and corrupt another's context, and ship an audit dashboard that surfaces detected interference incidents before/after the fix ships.",
+    "cool_score": 6,
+    "buildable_score": 5,
+    "discussion_score": 5,
+    "discussion_why": "Less betting-specific, but 'is agent memory pollution actually a real production bug or academic paranoia' is a live debate for anyone running multi-agent fleets, and the arxiv-scrape/MEMORY.md system itself is a walking example to argue over.",
+    "tags": [
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "I Let an Adversary Reorder My Trading Bot's Tool Calls",
+    "paper_id": "2609.27857",
+    "pitch": "Build a toy betting agent on camera (fetch-odds -> compute-EV -> place-bet tools), demonstrate normal correct behavior, then apply ChronosAttack: delay or reorder the fetch-odds call by a few hundred ms without altering a single number returned, and show the same agent now places a -EV bet. The hook is that nothing was lied to -- pure timing did it.",
+    "cool_score": 8,
+    "buildable_score": 6,
+    "discussion_score": 9,
+    "discussion_why": "Maximum overlap with the target audience -- betting, gambling, and decision-theory people watching their own instincts about 'the bot just needs correct data' get demolished by a timing-only attack is the kind of visceral, shareable surprise that drives real Discord arguments.",
+    "tags": [
+      "betting",
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Stark Tilt: the Quantum Mpemba Simulator",
+    "paper_id": "2609.24993",
+    "pitch": "The paper shows a driven lattice system (Stark localization from a linear tilt field) can exhibit the quantum Mpemba effect: a state that starts FARTHER from the steady state relaxes to it faster than one that starts closer, once the tilt crosses a localization threshold. Build a single-file HTML/canvas toy: a 1D chain of 'quantum walkers' with a tilt-strength slider and two colored initial states (one near-equilibrium, one far). Plot trace-distance-to-steady-state curves live and let the crossing point appear as you drag the tilt slider past the localization transition. Frame it as 'the guy who tilted harder actually calms down first' \u2014 same mechanism as prior Mpemba-tilt demos but driven by Stark localization physics specifically, with a genuine crossing-curve payoff rather than just a temperature analogy.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 6,
+    "discussion_why": "Counterintuitive result (farther=faster) is inherently debate-bait, and the poker-tilt framing is a natural SharpLab hook, but it's the second Mpemba-flavored demo in recent weeks so novelty/surprise is a bit diminished for repeat viewers.",
+    "tags": [
+      "physics",
+      "math",
+      "poker"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "CrossBook Execution Engine",
+    "paper_id": "2609.27786",
+    "pitch": "The paper solves feasible multi-asset optimal execution when trades are constrained by a running cash budget (you can't always afford your theoretically optimal trade schedule, so the algorithm has to find the best FEASIBLE path). Port this directly to sports betting: instead of assets and price impact, use correlated bet legs (same-game parlay pieces, or the same side across multiple books) and 'price impact' = line movement your own volume causes. Build a SharpLab module that takes a target multi-leg position and a bankroll cap, then sequences bet placement across books/time to minimize cumulative slippage while never violating the cash constraint at any step \u2014 literally the paper's cash-constrained execution algorithm with betting-market impact functions swapped in for equity impact functions.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 8,
+    "discussion_why": "This is squarely in SharpLab's wheelhouse (bet sizing, line movement, bankroll constraints) \u2014 a betting Discord will argue hard about whether 'price impact' from a single bettor is even real at retail book stakes, which is exactly the kind of sharp-vs-square debate that thread lives for.",
+    "tags": [
+      "betting",
+      "sports",
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Frobenius Syndicate Radar",
+    "paper_id": "2609.27200",
+    "pitch": "The econometrics paper proves Frobenius-norm tests are locally optimal specifically against DENSE high-dimensional covariance alternatives \u2014 i.e., they catch widespread, diffuse correlation structure that sparse/pairwise tests (built to catch a few strongly-correlated pairs) provably miss. That's exactly the blind spot in current book-side integrity tools, which mostly flag pairwise account correlation. Pitch: a monitoring service for sportsbooks/exchanges that runs a Frobenius-type test over the full bettor x market covariance matrix to surface diffuse arb rings or information-sharing syndicates that spread correlated action thinly across dozens of accounts to stay under pairwise-detection thresholds. Bonus module borrows the concentrated-equity active-management paper's framework to also flag when the BOOK's own liability is dangerously concentrated across correlated markets (its own version of a concentrated-portfolio risk report).",
+    "cool_score": 6,
+    "buildable_score": 5,
+    "discussion_score": 8,
+    "discussion_why": "Direct hit on gambling integrity/collusion detection \u2014 a favorite conspiracy-adjacent topic on betting Discords ('are the books catching arb rings or not') \u2014 plus real decision-theory/math meat to argue the false-positive tradeoffs, strong blend of relatability and rigor.",
+    "tags": [
+      "gambling",
+      "betting",
+      "math",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The Reciprocal Risk Machine",
+    "paper_id": "2609.27757",
+    "pitch": "The paper studies negative moments of the support function h_K(theta) of convex bodies \u2014 essentially E[1/h_K(theta)^p] \u2014 and shows how these blow up as a convex body gets 'thin' or spiky in some direction, tying into the isotropic constant. Build an interactive HTML toy: drag control points to deform a 2D convex shape, and watch a live-updating gauge of its negative moment integral spike as you pinch the shape thin in one direction. Frame it as visceral intuition for why reciprocal-odds math (Kelly criterion's E[1/return], or parlay payout ratios) can blow past your instincts \u2014 a shape that LOOKS only slightly weird can have infinite-feeling downside because you're integrating 1/x, not x. Good as a 90-second YouTube short too: 'the shape of bad luck.'",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 6,
+    "discussion_why": "Sharp, visual 'aha' about why reciprocal/inverse quantities (Kelly, odds ratios) misbehave versus intuition \u2014 a nice whimsical math-meets-gambling hook, though it's more of a solo insight than a natural argument-starter compared to the syndicate or execution ideas.",
+    "tags": [
+      "math",
+      "whimsy",
+      "gambling",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Last Call: The Bubble-Detachment Toy",
+    "paper_id": "2609.24342",
+    "pitch": "Single-file HTML/canvas toy that solves a simplified Young-Laplace shooting problem live: drag sliders for cavity radius, contact angle, and capillary length (i.e. 'is this a champagne flute or a boiling pot'), and watch a bubble grow from a nucleation site until it hits one of the paper's three real detachment modes \u2014 necking at the cavity, sideways instability, or spread-then-neck on the surrounding surface. Overlay the actual critical volume curve so people can see why a beer bubble detaches at a totally different size than a Perrier bubble or a boiling bubble. Ends with a 'guess the detachment volume' mini-game mode for shareability.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 4,
+    "discussion_why": "Mostly a physics curiosity/whimsy piece \u2014 satisfying to play with and easy to gif into a Discord, but it doesn't touch betting/decision-theory so debate potential is low; scored on 'huh, neat' shareability plus how tonight-buildable it is.",
+    "tags": [
+      "physics",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Regime Radar: Gambler's-Ruin Detector via Dynamical Mean-Field Theory",
+    "paper_id": "2609.30154",
+    "pitch": "The ecology paper reduces a whole multispecies community to one effective stochastic process and shows abundance time series fall into exactly three regimes \u2014 stable coexistence, intermittent near-extinction, or unbounded growth \u2014 separated by analytical boundaries, with a Gamma-law steady-state distribution and a multivariate-regression trick to infer 'interaction strength', environmental noise, and timescale WITHOUT ever reconstructing the full interaction network. Port that regression directly onto bankroll curves, CLV time series, or a team's rolling win-rate: same three regimes map onto 'grinding out steady edge,' 'live but one bad month from busted (near-extinction),' and 'unsustainable heater about to mean-revert.' Feed it into SharpLab as a bankroll-health / streak-classifier that spits out a quantitative extinction-risk (bust probability) number instead of vibes about hot hands.",
+    "cool_score": 8,
+    "buildable_score": 6,
+    "discussion_score": 9,
+    "discussion_why": "Directly hits SharpLab's bread and butter (bankroll management, hot-hand debates, gambler's ruin) with a genuinely counterintuitive tool: a rigorous physics-of-ecosystems method that quantifies 'is this streak real or are you about to go extinct' \u2014 exactly the kind of claim that starts an argument and gets tested against people's own bankroll logs.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math",
+      "gambling"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "TrustProbe: Training-Free Shortcut Audit for the NBA Props Terminal",
+    "paper_id": "2609.29523",
+    "pitch": "The pathology paper doesn't train anything new \u2014 it uses TabPFN as a frozen, gradient-free probe to check whether a foundation model's embeddings actually encode real biological signal versus '(shortcut-sensitive, tissue-specific, or unstable under perturbation)' noise. Same audit design, aimed at the nba-props terminal: freeze whatever features/embeddings the prop model already produces, use TabPFN in-context (no fine-tuning) to test whether they still predict props when you resample context (different opponents, home/away, back-to-back vs rest), perturb inputs slightly, or hold out entire player-groups \u2014 i.e., is the model actually reading skill signal, or just shortcutting on the Vegas line and team ID? Ships as a standalone report card next to each prop model: 'decodable & stable' vs 'shortcut-sensitive, don't trust this one.'",
+    "cool_score": 7,
+    "buildable_score": 7,
+    "discussion_score": 8,
+    "discussion_why": "Hits the perennial sharps-vs-squares argument about whether a 'smart' model is actually smart or just parroting the closing line \u2014 a training-free, no-fine-tuning trust audit gives a concrete, arguable number instead of anecdote, and ties straight into an existing SharpLab tool so it's a real upgrade, not just a toy.",
+    "tags": [
+      "ai",
+      "sports",
+      "betting",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Viruses Have a Heartbeat: The Breathing-Mode Explainer",
+    "paper_id": "2609.27410",
+    "pitch": "Short explainer built around the MBFV paper's core trick: model a viral capsid as a macroscopic coupled harmonic oscillator, fold mass-loading straight into the elastodynamic equations, and get an analytical breathing-mode frequency that finally matches Low-Frequency Raman Scattering data instead of the pre-existing models that missed it. Visual hook: capsids literally 'breathing' at different frequencies depending on geometry (icosahedral vs helical vs other), rendered as pulsing 3D shells with the actual eigenfrequencies sonified \u2014 plus the hook that resonance-matched frequencies are a live research lead for non-chemical antiviral strategies (shake it apart instead of poisoning it).",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 3,
+    "discussion_why": "Pure sci-pop whimsy with a neat 'sound of a virus' hook, but it doesn't touch betting/poker/games/decision-theory so it wouldn't generate much SharpLab Discord debate beyond 'huh, cool.'",
+    "tags": [
+      "bio",
+      "physics",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Cyclic Polytope Lattice-Point Prover",
+    "paper_id": "2609.28417",
+    "pitch": "Single-file HTML: build a cyclic polytope from moment-curve points (i, i^2) for n=5-8, slide a dilation factor t=1..12, and brute-force count integer lattice points inside it each frame (ray-casting over a grid) to trace out its Ehrhart quasi-polynomial live. Next to it, construct the paper's family of lattice zonotopes (Minkowski sums of the polytope's edge vectors) and count their lattice points too. A running-average line converges exactly onto the cyclic polytope's count for every t, turning the paper's headline claim (cyclic-polytope Ehrhart poly = average of zonotope Ehrhart polys, which implies real-rooted, log-concave, unimodal h*-vectors) into something you watch snap into place pixel by pixel.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 5,
+    "discussion_why": "Pure combinatorics porn for the quant/math crowd on the server -- decent surprise ('this lopsided polygon's point-count is literally the average of a bunch of boring symmetric parallelogram tilings') but no direct betting hook, so it's a niche-but-fun watch-the-proof-converge toy rather than a debate starter.",
+    "tags": [
+      "math",
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Rebound Roulette",
+    "paper_id": "2609.29972",
+    "pitch": "Single-file HTML that Euler-integrates the paper's 5-compartment ODE (uninfected CD4+ T cells, latent cells, actively infected cells, free virus, CTL effectors) day by day. Sliders set ART efficacy (blocking new infection vs. cutting viral output) and CTL killing rate; each simulated day the app flips a weighted coin at your chosen 'adherence probability' -- miss the roll and that day's drug efficacy craters, exactly like the paper's declining/periodic-efficacy regime that provably produces sustained forced oscillations and rebound. Live charts of viral load and CD4 count, a rebound-risk gauge, and a 'days since last rebound' streak counter make it feel like a bankroll-ruin sim where the chip stack is your immune system.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 8,
+    "discussion_why": "High relatability (treatment adherence framed as a gambling streak) plus a genuine decision-theory gut-punch: the model shows small, repeated non-compliance probabilities stack into abrupt nonlinear rebound the same way small negative-edge bets compound into bankroll ruin -- a counterintuitive tail-risk lesson dressed as a morbid, shareable toy.",
+    "tags": [
+      "bio",
+      "gambling",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Critical Concentration Meter",
+    "paper_id": "2609.24905",
+    "pitch": "The paper's 'channel concentration' is literally sum-of-squared-normalized-response-weights -- the exact same formula as the Herfindahl-Hirschman Index bettors use for handle/odds concentration, and the inverse-participation-ratio poker players intuit as 'how collapsed is villain's range.' Build a two-panel HTML toy: left panel sweeps a synthetic transverse-field-Ising-style control parameter h through its critical point h_c, plotting channel concentration live (with the paper's exact closed-form values -- 2/3 Ising, 1/3 XX model, ~0.8515 three-state Potts -- marked as reference dots); right panel lets you drag sliders redistributing 'handle' across N betting outcomes and shows the identical HHI spike as money piles onto one side right before a steam move. Same math, two domains, side by side.",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 8,
+    "discussion_why": "Directly SharpLab-flavored (market concentration / steam moves) with a genuinely surprising unifying claim -- condensed-matter physicists and sportsbook quants computing the exact same statistic without knowing it -- which is prime 'wait, is a steam move literally a phase transition?' bait for a betting Discord.",
+    "tags": [
+      "physics",
+      "betting",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Formula That Predicts Quantum Phase Transitions AND Steam Moves",
+    "paper_id": "2609.24905",
+    "pitch": "A video essay built around one reveal: 'channel concentration' from this quantum-geometry paper, market-concentration HHI, and 'how collapsed is my opponent's range' in poker are the same sum-of-squares formula wearing three costumes. Open on the paper's clean closed-form numbers (2/3 for the Ising model, 1/3 for XX pairing, ~0.8515 for three-state Potts), pivot to a live screen-capture of the Critical Concentration Meter demo dragging betting handle around until it spikes, then close on a poker hand where a range visibly collapses to one combo on the river -- same spike, same math, three worlds.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 7,
+    "discussion_why": "A cross-domain 'one formula secretly runs physics, markets, and poker' claim is exactly the kind of shareable, mildly provocative unifying-theory content that gets clipped and argued over, though as a passive video it invites less direct back-and-forth than an interactive demo.",
+    "tags": [
+      "physics",
+      "econ",
+      "betting",
+      "poker"
+    ]
+  }
+]

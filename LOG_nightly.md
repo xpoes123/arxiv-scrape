@@ -1,5 +1,44 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-27 — The Cyclic Judgment Trap
+- **Status:** primary fetch (`fetch_papers.py`, with last night's Accept-header + `safe=":"` fix in place)
+  still 406'd on the very first two categories (cs.LG, cs.AI) — looks like the IP-level rate-limit from last
+  night's debugging session hadn't cleared. Went straight to `fetch_papers_fallback.py` (HTML-scrape path),
+  landed 159 papers across 21/22 categories (only `physics.soc-ph` missing) in ~5 min. Downselected to 28
+  papers for ideation (diverse across all categories), 6 batches, 23 ideas.
+- **Forum top-3 (by discussion score — all three landed on `demo` type with no paper overlap, a clean
+  3-way build-off with zero forced picks):**
+  1. The Type-II Error of Test Supermartingales: e-Power versus the Chernoff-Stein Exponent — the real rate
+     penalty you pay for anytime-valid ("stop whenever you're convinced") edge-proving vs a fixed-sample test
+     (arXiv:2609.27765)
+  2. Resilient Monitoring of Social Dynamical Systems through Collaborative Multi-Agent Networks under
+     Latency — sportsbooks as a resilient-consensus network under latency; the formula for how long a
+     line-shopping arbitrage window stays open (arXiv:2609.27902)
+  3. Binding-Motivated Contextuality: A Cross-Domain Cyclic Test in Perception and Judgment — human
+     probability judgments provably violate order-independence, the same soft spot same-game-parlay pricing
+     exploits (arXiv:2609.23977) ← BUILT, won
+- **Built (3-way build-off):**
+  - A — E-Power Play (`2026-09-27-e-power-duel-a.html`): an e-process (anytime-valid test supermartingale)
+    races a fixed-sample Neyman-Pearson test on the same underlying Bernoulli bet stream — real KL-divergence
+    math (e-power ceiling KL(p1‖p0), Chernoff-Stein exponent KL(p0‖p1)), Ville's-inequality stopping boundary,
+    live bets-to-prove readouts. Flawless build, no bugs found in judging.
+  - B — Stale Line Arbitrage (`2026-09-27-stale-line-arbitrage-b.html`): a 12-node D3 force-directed
+    "sportsbook network" converging on a fair price under latency + adversarial noise, with a hand-rolled
+    Jacobi eigenvalue solver computing live algebraic connectivity (verified against closed-form ring/complete
+    graph values) and a failure/recovery mechanic. Deep, but a CSS overlay bug clips the panel heading on
+    first load.
+  - C — The Cyclic Judgment Trap (`2026-09-27-cyclic-judgment-trap.html`): 8 shuffled conditional-probability
+    questions about a same-game parlay, chained around a 4-prop Bayes cycle — coherent beliefs must
+    telescope to a consistent ratio, most people's won't. Live-computed "contextuality score" (verified 1%
+    for consistent answers, 99% for contradictory ones, ~45% for realistic noise), animated reveal, shareable
+    result string.
+  - **Judge's pick: C, The Cyclic Judgment Trap.** Scored A=36/40, B=30.5/40, C=35.5/40 — A edged out C on
+    pure mathematical fidelity, but C won the tie-break on "would this make someone stop scrolling": a
+    personal quiz with a shareable verdict beats watching two line charts race, especially for a page meant
+    to go out to a Discord forum.
+- **Live:** https://share.djiang.xyz/arxiv-scrape/2026-09-27-nightly.html (brief) ·
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-09-27-cyclic-judgment-trap.html (winning demo)
+
 ## 2026-09-26 — Same Skill, Wild Careers
 - **Status:** rough night on fetching, clean night on everything downstream. Found and fixed two real bugs in
   `arxiv_scrape.py`: (1) `urllib`'s default request sends no `Accept` header and arXiv's export API 406s
