@@ -1,0 +1,515 @@
+{
+  "summary": "Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5",
+  "agentCount": 6,
+  "logs": [
+    "24 ideas generated across 6 batches"
+  ],
+  "result": {
+    "ideas": [
+      {
+        "type": "demo",
+        "title": "Small-Sample Theater",
+        "paper_id": "2609.30633",
+        "pitch": "The paper's trick is 'uniform-phase init': instead of invoking the CLT to get well-behaved activation statistics (which needs many units summing together and quietly breaks in narrow layers), they exploit the exact periodic symmetry of sin(theta) with theta uniform on [0,2pi) — a property that holds identically at width 2 or width 2000, no asymptotics required. Build a single-file HTML demo with two linked panels. Left panel: a tiny sine-activation ('SIREN-style') net where you drag a width slider from 2 to 512 and watch live activation histograms for (a) standard Gaussian-variance init, which visibly skews/misbehaves at low width, vs (b) phase-based init, which stays exactly stable at every width. Right panel: the same lesson in betting terms — a capper's win/loss record simulator where you pick N (5 to 1000 bets) and a true win rate, then overlay the 'normal-approximation' confidence interval bettors casually eyeball against the exact binomial CI. At low N the normal approx claims significance the exact math doesn't support — literally the same failure mode (trusting an asymptotic shortcut before it kicks in) that the paper engineers around with an exact structural trick instead of an approximation.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 9,
+        "discussion_why": "SharpLab-fit is very high — 'this tout's 62% over 40 bets is +EV' is a recurring Discord argument, and this demo gives a visceral, draggable way to settle it with exact binomial math. Surprise comes from the unlikely bridge (neural net weight init explains why your CLV significance test lies to you at small N). Whimsy is decent (a sine-activation toy doubling as a tout-detector). Straightforward relatability keeps it high even for non-math people.",
+        "tags": [
+          "betting",
+          "math",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Prime Generators vs. the Quantum Factoring Clock",
+        "paper_id": "2609.25393",
+        "pitch": "The theorem: for almost all q <= Q, you can generate the entire multiplicative group (Z/qZ)* using at most (log Q)^(1+eps) primes, each no bigger than (log Q)^C — a tiny 'generating set' of small primes reconstructs the whole group of units mod q. The paper's motivation is Regev's quantum factoring speedup, which leans on exactly this kind of compact generator. Build an HTML/BigInt toy: pick a modulus q, get a pool of small primes (2,3,5,7,11,13,17...), and toggle which ones are 'in your generating set.' A live coverage meter (and a residue-class heatmap) shows what fraction of (Z/qZ)* is reachable as products of your chosen primes with exponents 0/1, updating as you add primes — turning the paper's asymptotic bound into a playable 'how few small primes does it take to cover everything mod q' game. Frame the payoff explicitly: this is the same compact-generator machinery behind quantum algorithms that threaten RSA, which underpins commit-reveal 'provably fair' RNG schemes casinos and crypto-gambling sites rely on.",
+        "cool_score": 7,
+        "buildable_score": 8,
+        "discussion_score": 6,
+        "discussion_why": "Lower direct betting relevance than the other ideas, but the crypto/quantum-factoring hook (RSA underlies provably-fair casino RNG commit-reveal schemes) is a genuine surprise angle for a gambling-adjacent crowd, and 'cover the whole group with a handful of small primes' makes a satisfyingly whimsical mini-game. Debate potential is moderate — more a fun tangent than a hot-button argument.",
+        "tags": [
+          "math",
+          "gambling",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "startup",
+        "title": "AudioEdge — live broadcast audio as an in-play betting signal",
+        "paper_id": "2609.30784",
+        "pitch": "The paper's injector writes audio-conditioned vectors straight into a frozen LLM's KV cache — the backbone never gets fine-tuned, so injection cost scales with the injector's width, not the whole model's, and text performance is untouched. That's a cheap, bolt-on way to give any frozen model (including whatever SharpLab already trusts for text reasoning) live audio ears. Startup: ingest live broadcast/stadium audio feeds (commentator tone shifts, crowd roar amplitude spikes, coach's mic'd-up sideline chatter, referee calls before the box score updates) through a small trained injector, and let the frozen LLM reason over odds movement using that as an additional, near-real-time signal layer that beats stats-only in-play models on latency. Pitch it as a plug-in feed for an existing in-play pricing pipeline, not a new giant multimodal model to host.",
+        "cool_score": 8,
+        "buildable_score": 5,
+        "discussion_score": 8,
+        "discussion_why": "Extremely SharpLab-native — 'is there alpha in crowd noise/commentator tone before the market moves' is exactly the kind of new-signal claim that triggers a full debate thread (skeptics vs believers). Surprise/counterintuitive because it treats audio vibe as a priced-in-lag exploit rather than a novelty feature. Lower whimsy, but high relatability for anyone who's watched a line move right after a crowd goes silent.",
+        "tags": [
+          "betting",
+          "sports",
+          "ai"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Leak-Proofing SharpLab's Public Graph Stats",
+        "paper_id": "2609.28899",
+        "pitch": "The paper shows that when you publish the output of a graph filter (a 'graph shift operator', e.g. an Elo-diffusion or passing-network smoothing filter) applied to differentially-private input signals, whether the underlying network topology stays hidden depends entirely on where the filter's zeros sit relative to the graph's frequency content — protection can silently fail and the full network becomes recoverable once the privacy budget is loose enough. Build a small Python module for SharpLab/nba-modeling: given a graph filter used to smooth or diffuse stats (passing networks, sharp-money flow between books, bettor-syndicate graphs) and a candidate DP noise budget, check the filter's zero placement against the graph's actual spectrum and flag whether the published, smoothed output provably hides the raw network — or suggest a reshaped filter that does. Useful before publishing any derived network feature (e.g. a passing-network diffusion stat) that shouldn't leak roster structure or syndicate identity.",
+        "cool_score": 6,
+        "buildable_score": 6,
+        "discussion_score": 5,
+        "discussion_why": "Niche but real for the quant/decision-theory crowd — 'can publishing your smoothed edge accidentally leak your syndicate's actual network' is a sharp, less-relatable-but-clever argument. Moderate surprise (privacy protection hinging on filter zero placement is a neat, non-obvious result); low whimsy, lower general betting-floor relatability than the other three.",
+        "tags": [
+          "decision-theory",
+          "math",
+          "ai"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Minimax Duel: Higher-Order Solver Speedrun",
+        "paper_id": "2609.28246",
+        "pitch": "The paper shows p-th-order oracle methods hit near-optimal convergence rates (roughly O(1/k^{(p+1)/2})) on convex-concave minimax problems, way outpacing plain gradient descent-ascent. Frame it as a poker-adjacent saddle-point game: a bettor picking a bluff frequency x vs a caller picking a call frequency y, payoff surface f(x,y) drawn as a live contour plot. Two dots race toward the Nash equilibrium — one driven by vanilla simultaneous gradient descent-ascent, one by a 2nd-order (Newton-type) step — with an iteration counter showing the theoretical gap in real time. Sliders let you reshape the payoff matrix (bluff-catcher EV, bet sizing) and watch both solvers re-race. Single HTML file, canvas + a bit of linear algebra in JS, no backend.",
+        "cool_score": 7,
+        "buildable_score": 8,
+        "discussion_score": 7,
+        "discussion_why": "Poker players argue about solver convergence and 'how many iterations is enough' constantly — seeing higher-order beat GDA by a visible margin is a concrete, arguable claim. Decision-theory/poker fit is strong; the surprise is moderate (most know GTO solvers exist, fewer have seen the order-of-convergence math made visual); whimsy is low since it's fairly technical.",
+        "tags": [
+          "poker",
+          "math",
+          "decision-theory",
+          "ai"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Steam Move Simulator: LOB Phase Transitions",
+        "paper_id": "2609.31260",
+        "pitch": "The paper's agentic limit-order-book model shows market impact undergoes a genuine phase transition as the mix of momentum/aggressive vs market-making agents crosses a critical threshold — liquidity collapses non-continuously, not gradually. Build a canvas LOB: animated bid/ask ladder with order flow, two sliders (fraction of momentum traders, order arrival rate) and a live 'impact' readout. Cross the critical fraction and spreads blow up and price impact goes convex in real time — plus a heatmap tab plotting the phase diagram (impact vs the two sliders) so you can see the critical boundary directly. Maps 1:1 onto sportsbook line behavior: syndicate/whale money triggering a steam move once enough 'momentum' liquidity piles in.",
+        "cool_score": 8,
+        "buildable_score": 7,
+        "discussion_score": 8,
+        "discussion_why": "Directly betting-relevant (steam moves, line freezes, why a book yanks a number) — high SharpLab-fit. The 'phase transition, not gradual' framing is genuinely counterintuitive to most bettors who think of line movement as smooth. Games/whimsy comes from watching the book visibly 'break' when you drag a slider too far.",
+        "tags": [
+          "betting",
+          "gambling",
+          "econ",
+          "games"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Adaptive-Window CLV Retrainer for SharpLab",
+        "paper_id": "2609.29887",
+        "pitch": "The paper's cost-sensitive online window-size selection algorithm picks how much recent history a model should train on, balancing regret from a stale/too-short window against the 'cost' of switching windows too often — with regret bounds proving it beats any fixed window in expectation. SharpLab currently uses fixed rolling windows (30/60-day) to recalibrate edge/CLV models. Swap in this algorithm: treat a model refit as the 'transaction cost,' let the window length adapt online as new closing-line data streams in, and backtest against the fixed-window baseline on SharpLab's existing CLV database. Real, scoped, ships as a module with a before/after regret plot.",
+        "cool_score": 6,
+        "buildable_score": 6,
+        "discussion_score": 7,
+        "discussion_why": "This is the highest SharpLab-fit idea of the batch — it's literally 'how long should our lookback window be' which the team already argues about. Less flashy/whimsical than the demos, but the decision-theory payoff (provable regret bound beating any fixed choice) is a strong, concrete claim to debate with real backtest numbers attached.",
+        "tags": [
+          "betting",
+          "decision-theory",
+          "econ"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Hot Hand Machine: Memory Kernels vs the Fallacy",
+        "paper_id": "2609.28371",
+        "pitch": "The paper's memory-conditioned diffusion model generalizes Langevin dynamics by adding a tunable memory kernel — noise that's correlated with its own past instead of Markovian/white. Build a 'shooter' toy: a sequence of make/miss outcomes generated by a generalized Langevin process, with a single slider for memory-kernel strength/decay time (0 = pure i.i.d. coin flips, high = strong autocorrelation). At zero memory you get textbook random makes/misses; crank the kernel and streaky, 'hot hand'-looking runs emerge purely from noise correlation, no skill change anywhere in the model. Overlay a live histogram of streak lengths for the simulated shooter next to a real NBA shooter's game log so people can eyeball whether 'hot hand' evidence is distinguishable from pure memory-kernel noise.",
+        "cool_score": 9,
+        "buildable_score": 8,
+        "discussion_score": 9,
+        "discussion_why": "Hot hand is one of the most argued-about topics in sports/betting circles (and it's had real academic reversals), so this is prime discussion bait. It's genuinely surprising that a pure physics noise model with no skill parameter can reproduce 'hot hand'-looking streaks. High whimsy — dressing a stat-mech diffusion paper as a basketball shooting machine.",
+        "tags": [
+          "sports",
+          "physics",
+          "whimsy",
+          "math"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "The Ask-or-Bet Line: a Value-of-Information Calculator for Live Betting",
+        "paper_id": "2609.30706",
+        "pitch": "LAVOIR trains a single-pass encoder to decide, on the fly, whether it's worth 'asking a question' before committing to a decision — amortizing the classic VoI = E[value after info] - E[value now] - cost(info) tradeoff so it doesn't need to re-solve an expected-value integral every time. Build a single HTML file that turns this into a live-betting toy: you're staring at a line (spread, moneyline, prop) with a countdown clock. You can bet now, or pay a 'time cost' (line could move against you) to wait for a signal (injury report drops, weather update, starting lineup confirmed) that has some probability of flipping your edge. The tool lets you drag sliders for signal informativeness (how much it narrows your win-probability estimate), cost of waiting (expected CLV erosion per second), and your current edge — then draws the actual VoI curve and marks the crossover point where 'wait' beats 'bet now.' The punchline: most bettors' gut feel about 'let's see if he's active before I lock in' is a real, computable VoI problem, and the break-even point is often much sooner than people assume.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 9,
+        "discussion_why": "Directly hits SharpLab's core debate — 'do you bet early or wait for news' — with actual decision-theory math behind it instead of vibes; plugging in real numbers (e.g. NBA injury report drop time vs CLV decay) will make people argue about their own habits and post screenshots of their sliders.",
+        "tags": [
+          "betting",
+          "gambling",
+          "decision-theory",
+          "poker"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Littlestone Line: How Many Mistakes Is Your Handicapping Rule Guaranteed to Make?",
+        "paper_id": "2609.25127",
+        "pitch": "The paper gives efficient algorithms for stable regularity lemmas and near-tight Littlestone-dimension mistake bounds — i.e., for an online learner picking from a hypothesis class, there's a hard worst-case cap on how many mistakes it can make before it's forced to converge, and that cap is a structural property (Littlestone dimension) of the rule class itself, not the data. Build a single-file toy: user picks a simple 'handicapping rule family' (e.g. threshold rules on point-spread-vs-Elo-gap, or 'bet favorite if line moved >X'), the tool computes/animates the Littlestone dimension of that family and plays out an adversarial sequence of games designed to maximize your mistakes, showing you hit the theoretical mistake bound exactly. Toggle between rule families (thresholds vs. intervals vs. conjunctions) and watch the guaranteed-mistakes number jump — a visceral way to see that 'more flexible model = worse worst-case guarantee' even before you touch real data.",
+        "cool_score": 7,
+        "buildable_score": 8,
+        "discussion_score": 7,
+        "discussion_why": "Nerdier and more math-forward than the VoI demo, but it lands a genuinely counterintuitive point sports-model tinkerers will argue about — that adding flexibility to your rule set can strictly worsen your worst-case mistake guarantee, which cuts against the instinct to always add more features to a handicapping model.",
+        "tags": [
+          "math",
+          "betting",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Pick Truster: a Knowledge-Graph Consistency Checker for AI Sports Takes",
+        "paper_id": "2609.30484",
+        "pitch": "The KG-based evaluation framework probes whether an LLM's answer is actually grounded in a consistent chain of entity relations, or just a plausible-sounding surface pattern — it builds a knowledge graph of ground-truth facts and checks whether the model's reasoning path stays on-graph. Build a small project around a sports/betting knowledge graph (player -> team -> injury status -> game -> odds movement) and run any LLM's 'here's my pick and why' output through a consistency checker: does its stated reasoning chain (e.g. 'X is out, so Y gets more usage, so the total goes up') actually trace a valid path through real, current graph edges, or does it silently substitute stale/wrong facts while sounding confident? Output a per-pick 'grounding score' instead of trusting the vibes of an AI-generated betting take.",
+        "cool_score": 7,
+        "buildable_score": 6,
+        "discussion_score": 7,
+        "discussion_why": "AI-generated picks are already a running argument on betting Discords ('is the AI actually reasoning or just pattern-matching confidently wrong facts'); a concrete grounding-score tool gives people ammo to actually test that instead of arguing from vibes, and the reveal of AI picks failing on stale facts is inherently shareable.",
+        "tags": [
+          "ai",
+          "sports",
+          "decision-theory",
+          "betting"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Surge Fleet: Game-Day Rideshare/Shuttle Dispatch as an RL Gym",
+        "paper_id": "2609.30628",
+        "pitch": "OpenHail is an event-driven Gymnasium environment for controlling an electric ride-hailing fleet (dispatch, charging, repositioning) under real-world event dynamics. Fork the environment shape for a stadium-adjacent problem: game-day rideshare/shuttle dispatch where demand spikes are driven by known events (tip-off, final buzzer, overtime uncertainty) instead of generic city demand — train and visualize an agent that has to decide fleet repositioning and charging tradeoffs against a probabilistic 'game ends at T +/- overtime' distribution, which is a fun secondary hook (surge pricing literally depends on a sports outcome distribution).",
+        "cool_score": 6,
+        "buildable_score": 5,
+        "discussion_score": 4,
+        "discussion_why": "Interesting systems-and-RL project but thin on betting/poker/gambling relevance and less immediately arguable than the other three — mostly appeals to the ops/econ-minded corner of the server rather than sparking a real debate.",
+        "tags": [
+          "ai",
+          "econ",
+          "games"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "The Leak Line: Exact Sandwich-Attack Thresholds as a Poker Tell Simulator",
+        "paper_id": "2609.31379",
+        "pitch": "The paper derives an exact threshold: below a certain fraction of mempool info leaked, sandwich attacks are provably unprofitable; above it, they're a guaranteed squeeze — no gray zone, a hard phase transition. Build a single-file HTML toy that reframes this as a poker/trading 'tell' slider: you control how much of your order (or hand) is observable pre-commit, and the demo plots attacker EV in real time, snapping from -EV to +EV exactly at the paper's derived threshold with a visible cliff, not a gradual ramp. Side-by-side panel shows the same math applied to a private mempool tx and to a poker player's bet-sizing tell, so the 'the math doesn't care if it's MEV or a five-bet' point lands.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 9,
+        "discussion_why": "Direct SharpLab-fit (gambling/decision-theory + a literal sandwich-attack mechanic your Discord already argued about on 9/25), and the counterintuitive hook — a sharp threshold rather than gradual risk — is exactly the kind of 'wait, it's a cliff not a slope?' fact that generates replies. Poker framing pulls in the poker crowd too.",
+        "tags": [
+          "gambling",
+          "poker",
+          "betting",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Leaderboard Mirage: What Happens When You Only Show Your Best Run",
+        "paper_id": "2609.28177",
+        "pitch": "Paper shows LLM leaderboard rankings swing wildly once you account for the hidden model-selection step (labs quietly submit their best checkpoint out of N trained). Build an HTML toy where you pick a 'true skill' distribution, a number of hidden attempts N, and a noise level, then watch a live leaderboard of fake models reshuffle as N increases — the eventual #1 is mostly noise, not skill, once N is large enough. Add a toggle to relabel the same simulation as 'fantasy lineup selection' or 'backtested betting strategies' (submit the strategy that happened to hit) so it reads as one general multiple-comparisons trap, not just an AI story.",
+        "cool_score": 7,
+        "buildable_score": 9,
+        "discussion_score": 8,
+        "discussion_why": "Multiple-comparisons/selection bias is catnip for a betting-strategy crowd who've all seen 'backtested' systems that are secretly cherry-picked, and the AI-leaderboard framing adds a current-events hook. Surprise factor: watching a literally-random model climb to #1 just from N growing is a visceral 'oh no' moment.",
+        "tags": [
+          "ai",
+          "math",
+          "decision-theory",
+          "betting"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Concentration-Aware Kelly: Bet Sizing for Correlated Slates",
+        "paper_id": "2609.27113",
+        "pitch": "The paper studies active portfolio management when the market itself is concentrated (a handful of names dominate index weight), showing standard active-share and tracking-error math breaks down and needs a concentration-adjusted benchmark. Sports betting bankrolls have the same structural problem — a same-game parlay slate is dominated by 2-3 highly correlated legs, and naive per-bet Kelly ignores that correlation, systematically over-betting. Build a SharpLab module that takes a slate of bets with a correlation matrix, computes a concentration-adjusted 'active share' for the parlay vs. a flat-staking benchmark, and outputs correlation-corrected Kelly stakes — basically porting the paper's concentrated-benchmark correction into bankroll management.",
+        "cool_score": 6,
+        "buildable_score": 6,
+        "discussion_score": 7,
+        "discussion_why": "Directly answers a recurring Discord argument ('is my same-game parlay actually diversified or am I just betting the same thing three times') with real math instead of vibes — high SharpLab-fit, moderate surprise since sharps already suspect this but rarely see it formalized.",
+        "tags": [
+          "betting",
+          "gambling",
+          "econ",
+          "math"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "Average Before or After You Rank? The DiD Trick That Flips Who's the MVP",
+        "paper_id": "2609.27944",
+        "pitch": "The paper's core tension — aggregate a distributional treatment effect before or after quantile inversion — changes your answer to 'what's the typical effect,' even with identical raw data. Pitch a short video that reframes this with a sports example: does the 'improvement' from a coaching change look different if you compute each player's percentile shift then average, versus average team stats first then find the percentile? Walk through a toy NBA dataset showing the two orderings produce genuinely different 'who improved most' rankings, ending on the paper's punchline that neither ordering is wrong — they're answering different questions, and most stat-heads never ask which one they mean.",
+        "cool_score": 6,
+        "buildable_score": 7,
+        "discussion_score": 7,
+        "discussion_why": "This is a legit 'gotcha' that plagues every sports-stats argument (does Player A or B 'improve more') without people realizing the aggregation order is doing the work — good bait for a sports-analytics-adjacent Discord to argue about, moderate surprise, lower whimsy than the others.",
+        "tags": [
+          "sports",
+          "math",
+          "econ",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "One Pixel, One Fold: UAP Bot Fooler",
+        "paper_id": "2609.30605",
+        "pitch": "Single-file HTML toy that bakes in a tiny hand-coded 'DQN' (a few dozen weights in JS) deciding bet/fold from 4 poker-ish features (pot odds, hand strength, position, stack depth). The paper's trick is a *universal* adversarial perturbation δ — one fixed offset vector, optimized once, that's added to many different states and still flips the policy's decision, plus an explainability layer (feature-attribution/saliency) showing which input dims the attack is riding. Demo lets you drag a global δ slider-set (not per-hand — the same δ across all deals, that's the 'universal' part) and watch a grid of 20 poker situations flip their bet/fold decision in real time, with a bar chart showing |∂action/∂feature| so you can literally see which feature the exploit is hijacking. The hook: your gut read of 'the bot folded a monster hand' turns out to be one shared, tiny nudge across every hand, not per-hand adversity — a visceral, no-backend way to feel why 'universal' perturbations are scarier than per-input ones for any RL-driven bot (poker, trading, IDS).",
+        "cool_score": 8,
+        "buildable_score": 8,
+        "discussion_score": 7,
+        "discussion_why": "Direct relatability to anyone who's built or trusted a poker/trading bot ('could someone break my bot with one static nudge?'), genuine surprise (universal >> per-instance intuition), plus whimsy of watching a whole grid of hands flip at once. Less pure-betting-math than idea 2/3 so mid-high rather than top discussion score.",
+        "tags": [
+          "poker",
+          "games",
+          "ai",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Shortcut-Learning Auditor for SharpLab Models",
+        "paper_id": "2609.28725",
+        "pitch": "The IoT-IDS paper's forensic method is the real prize, not the security use case: leave-one-feature-out AUC drop + train/test distribution-shift probing to catch models that look great because they've memorized a leakage artifact (e.g. a capture-setup ID field), not because they learned the real signal. Port that exact forensic harness onto SharpLab / nba-props-terminal models — run leave-one-feature-out on every prop model (rebounds, threes, etc.), flag any feature whose removal tanks AUC by more than a naive baseline should allow, and cross-check against the GR-RTRMC-validated edges already in memory. Also add a temporal-holdout probe (train on early season, test on late, per the paper's data-leakage framing) since sports data is exactly the kind of time-correlated feed where shortcut learning hides (e.g. a 'pace' feature that's secretly post-game-derived). Output: a per-model leakage scorecard you run before trusting any new prop edge.",
+        "cool_score": 7,
+        "buildable_score": 6,
+        "discussion_score": 9,
+        "discussion_why": "This is the paper most directly weaponizable against the audience's own live models — nothing sparks a betting Discord like 'your backtested edge might be a leakage artifact.' High SharpLab-fit, high surprise (a model with 65% hit rate that's actually cheating off a leaked column), and it's concrete enough to argue about with real numbers.",
+        "tags": [
+          "betting",
+          "sports",
+          "ai",
+          "math"
+        ]
+      },
+      {
+        "type": "startup",
+        "title": "Agentic Min-Cut Arb Engine",
+        "paper_id": "2609.07204",
+        "pitch": "The paper runs an LLM agent loop that proposes, benchmarks, and iteratively rewrites shared-memory exact minimum-cut code (think Karger-Stein/Hao-Orlin variants), auto-discovering faster implementations tuned to specific graph shapes. Cross-book arbitrage detection is literally a min-cut/max-flow problem: model each market as a flow network (nodes = outcomes, edges = book/line pairs, capacities = stake limits), and the min cut over that graph bounds your worst-case exposure / identifies the arb-closing set of bets. Sportsbook odds graphs have a very specific sparse, near-bipartite structure that generic min-cut solvers aren't tuned for — so point the same agentic algorithm-engineering loop at *that* graph shape specifically, let it self-improve a solver overnight against live odds-feed graph snapshots, and ship the result as a real-time arb/hedge engine that's provably faster than off-the-shelf NetworkX/igraph for this exact topology. Pitch as a B2B tool for prop shops/syndicates: 'the algorithm engineers itself against your actual graph, not a textbook benchmark.'",
+        "cool_score": 9,
+        "buildable_score": 5,
+        "discussion_score": 8,
+        "discussion_why": "Catnip for the quant/arb crowd on a betting Discord — turns an abstract algorithms paper into 'my arb finder rewrites its own code against live odds graphs,' which is both a flex and a debate starter about whether self-improving algorithm loops actually beat hand-tuned solvers in practice.",
+        "tags": [
+          "betting",
+          "gambling",
+          "math",
+          "ai"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "I Attacked My Own Bot With a Single Static Vector",
+        "paper_id": "2609.30605",
+        "pitch": "5-minute video built around the demo above: cold open with the poker-bot grid flipping en masse from one shared perturbation, then zoom into the explainability bar chart to show which feature got hijacked, then pivot to 'this is the same failure mode as prompt-injection attack chains on email agents' (2609.30657) — one crafted trigger, many downstream actions flipped. Ends on the practical question for the betting/agent-building audience: if you're running an RL or LLM-agent bot with real money behind it, have you ever tested it against a *universal* perturbation instead of one-off adversarial noise?",
+        "cool_score": 7,
+        "buildable_score": 7,
+        "discussion_score": 6,
+        "discussion_why": "Good hook and cross-paper synthesis (adversarial RL + prompt-injection chains) but it's explainer content rather than something people argue with directly — solid watch, lighter debate fuel than the audit or arb ideas.",
+        "tags": [
+          "ai",
+          "games",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Peek-Proof Factor Referee for SharpLab",
+        "paper_id": "2609.27051",
+        "pitch": "The paper's trick: instead of judging an LLM-proposed investment factor with a single fixed-horizon backtest p-value, wrap it in an anytime-valid test (e-values / test martingales) so you can monitor the factor's live performance continuously and stop the moment it either proves out or busts, without inflating your false-positive rate — plus e-BH style FDR control across the hundreds of factors the LLM proposes. Port this directly into SharpLab: have an LLM agent propose betting factors (situational trends, RLM signals, referee tendencies, backtoback fatigue splits) and replace the usual 'run it on 3 seasons of history and eyeball the ROI' step with a running e-process. You get a live 'edge confidence' number that's honest under optional stopping — the exact failure mode that turns fake backtested edges into real losses when deployed on live lines. Ships as a `djtoolkit`-style module: feed it a stream of graded bets/factor outcomes, get back a monotone-valid confidence sequence instead of a p-value you're tempted to peek at.",
+        "cool_score": 8,
+        "buildable_score": 6,
+        "discussion_score": 9,
+        "discussion_why": "Directly hits the rawest nerve in any betting Discord — 'my backtest showed 8% ROI but it died in three weeks live' — and gives a rigorous, arguable answer (optional stopping / multiple testing) rather than vibes. High SharpLab-fit, genuinely counterintuitive to people who think a good backtest p-value is enough, and sparks the eternal 'is this factor real or noise' fight.",
+        "tags": [
+          "betting",
+          "decision-theory",
+          "ai",
+          "math"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Peek-Proof: The p-Hacking Simulator",
+        "paper_id": "2609.27051",
+        "pitch": "Single-file HTML toy that makes the paper's core motivation viscerally felt: simulate a coin-flip 'betting strategy' with zero real edge, and let the user click 'check significance' at any point as data streams in. A live p-value line shows how often you'd get fooled into declaring 'significant edge!' if you stop the moment p<0.05 (spoiler: near-certain given infinite peeks, by the law of the iterated logarithm) — right alongside an anytime-valid e-value/confidence-sequence line that never lets you cheat, no matter when you stop. Big red 'I QUIT HERE, WAS I RIGHT?' button that reveals the ground truth (there is no edge) after each run, tallying how many times each method got fooled. Canvas chart, no backend, playable in 30 seconds.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 9,
+        "discussion_why": "This is the exact argument that erupts weekly in gambling/poker Discords ('my sample is only 200 bets but it's +7% ROI, is it real?'). Making people watch themselves get fooled by their own stopping rule in real time is both funny and a gut-punch — high whimsy, high surprise, and every regular in a betting server has a hot take on sample size.",
+        "tags": [
+          "betting",
+          "gambling",
+          "decision-theory",
+          "math"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Cold-Start Props: NPBoost for Rookie/Return Player Lines",
+        "paper_id": "2609.28122",
+        "pitch": "NPBoost fuses Neural Processes (which meta-learn a predictive distribution from a small 'context set' — few-shot by design) with gradient-boosted fixed effects (which capture entity-level structure like player/team identity the way a hierarchical model would). That's almost exactly the shape of the nba-props-terminal problem: most player-prop models are great once a player has 500 career games of data and terrible for rookies, players returning from injury, or minutes-role changes, precisely the situations where the market is softest. Build an NPBoost-style layer on top of the existing GR-RTRMC rebounds/threes completion work: treat each player's last N games as the context set the Neural Process conditions on, let gradient-boosted fixed effects absorb the player/team/opponent structure, and output a calibrated predictive interval (not just a point estimate) for the prop line — with the interval explicitly widening for low-context players, which is the signal for 'the book's number is a guess too.'",
+        "cool_score": 7,
+        "buildable_score": 5,
+        "discussion_score": 7,
+        "discussion_why": "Sports-modeling nerds in the Discord will argue hard about whether uncertainty-aware cold-start models actually beat the market's own vig-adjusted number on thin-sample players — that's a real, arguable edge claim, not just a cool paper reference.",
+        "tags": [
+          "sports",
+          "ai",
+          "math"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "The Draft Cliff: RDD Heterogeneity Visualizer",
+        "paper_id": "2609.27691",
+        "pitch": "Regression discontinuity designs (last team into the playoffs vs. first team out, last lottery pick before the cutoff, salary right above/below a cap threshold) usually report one average local treatment effect at the cutoff. This paper's point: that single number can hide wildly heterogeneous effects across covariates — the 'jump' at the cliff isn't the same for every subgroup, and averaging over them can even mask a sign flip. Single-file HTML demo: draw a scatter of simulated teams around a threshold (e.g., 8th vs 9th playoff seed) where two hidden subgroups (say, young-core vs. veteran-core teams) have opposite-sign effects on next-year win totals. Show the naive RD line (looks like a modest positive bump — 'making the playoffs helps') next to the subgroup-split test statistic that reveals it's actually two very different stories canceling out. Sliders for bandwidth and subgroup effect size let you watch the naive average lie in real time.",
+        "cool_score": 7,
+        "buildable_score": 8,
+        "discussion_score": 8,
+        "discussion_why": "Sports Discords love 'was that playoff/lottery result actually meaningful or just luck at the cutoff' debates (tanking arguments, play-in narratives) — this gives a concrete, playable version of 'the average effect can be a mirage,' which is both counterintuitive and catnip for the stats-brained crowd.",
+        "tags": [
+          "sports",
+          "decision-theory",
+          "math",
+          "econ"
+        ]
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Ideate"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "batch-1",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "ac3c33a4a9894327e",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790583062559,
+      "queuedAt": 1790583062531,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas. Here are fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.30633 [cs.LG] Stable initialization without the CLT\n- 2609.30489 [cs.AI] BioEVAL: A global, multi-institutional benchmark of large language and multimodal models for bioengineering\n…",
+      "lastProgressAt": 1790583189764,
+      "tokens": 39058,
+      "toolCalls": 6,
+      "durationMs": 127205,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Small-Sample Theater\",\"paper_id\":\"2609.30633\",\"pitch\":\"The paper's trick is 'uniform-phase init': instead of invoking the CLT to get well-behaved activation statistics (which needs many units summing together and quietly breaks in narrow layers), they exploit the exact periodic symmetry of sin(theta) with theta uniform on [0,2pi) — a property that holds identicall…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "batch-2",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a27684b40ee7f4250",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790583062560,
+      "queuedAt": 1790583062531,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas. Here are fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.28246 [math.OC] Near-Optimal Higher-Order Oracle Complexity for Convex--Concave Minimax Optimization\n- 2609.29887 [q-fin.PM] Cost-Sensitive Online Window Size Selection for Portfoli…",
+      "lastProgressAt": 1790583117380,
+      "tokens": 28899,
+      "toolCalls": 1,
+      "durationMs": 54820,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Minimax Duel: Higher-Order Solver Speedrun\",\"paper_id\":\"2609.28246\",\"pitch\":\"The paper shows p-th-order oracle methods hit near-optimal convergence rates (roughly O(1/k^{(p+1)/2})) on convex-concave minimax problems, way outpacing plain gradient descent-ascent. Frame it as a poker-adjacent saddle-point game: a bettor picking a bluff frequency x vs a caller picking…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "batch-3",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a029025e5ecc2c1a9",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790583062560,
+      "queuedAt": 1790583062531,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas. Here are fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.30628 [cs.LG] OpenHail: An Event-Driven Gymnasium Environment for Electric Ride-Hailing Fleet Control\n- 2609.30484 [cs.AI] Do LLMs Understand Context? A Knowledge Graph-Based Evalua…",
+      "lastProgressAt": 1790583113889,
+      "tokens": 28953,
+      "toolCalls": 1,
+      "durationMs": 51329,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"The Ask-or-Bet Line: a Value-of-Information Calculator for Live Betting\",\"paper_id\":\"2609.30706\",\"pitch\":\"LAVOIR trains a single-pass encoder to decide, on the fly, whether it's worth 'asking a question' before committing to a decision — amortizing the classic VoI = E[value after info] - E[value now] - cost(info) tradeoff so it doesn't need to re-solve an expected…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "batch-4",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "adfd166e02d23c7a5",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790583062560,
+      "queuedAt": 1790583062531,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas. Here are fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.28238 [math.OC] Second-Order Stationarity with Common Random Losses: Matching Tolerance Bounds\n- 2609.27113 [q-fin.PM] Active Portfolio Management in Concentrated Equity Markets\n- 2…",
+      "lastProgressAt": 1790583098089,
+      "tokens": 28910,
+      "toolCalls": 1,
+      "durationMs": 35529,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"The Leak Line: Exact Sandwich-Attack Thresholds as a Poker Tell Simulator\",\"paper_id\":\"2609.31379\",\"pitch\":\"The paper derives an exact threshold: below a certain fraction of mempool info leaked, sandwich attacks are provably unprofitable; above it, they're a guaranteed squeeze — no gray zone, a hard phase transition. Build a single-file HTML toy that reframes this…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "batch-5",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "aa5199aa442648ff4",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790583062560,
+      "queuedAt": 1790583062531,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas. Here are fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.30605 [cs.LG] Probabilistic Robustness-driven Universal Adversarial Perturbations with Explainability against Deep Reinforcement Learning-based Intrusion Detection System\n- 2609.304…",
+      "lastProgressAt": 1790583123917,
+      "tokens": 28957,
+      "toolCalls": 1,
+      "durationMs": 61357,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"One Pixel, One Fold: UAP Bot Fooler\",\"paper_id\":\"2609.30605\",\"pitch\":\"Single-file HTML toy that bakes in a tiny hand-coded 'DQN' (a few dozen weights in JS) deciding bet/fold from 4 poker-ish features (pot odds, hand strength, position, stack depth). The paper's trick is a *universal* adversarial perturbation δ — one fixed offset vector, optimized once, that's add…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "batch-6",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a9bcb41a0cbe2015e",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1790583062560,
+      "queuedAt": 1790583062532,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas. Here are fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n- 2609.28202 [math.OC] Matching Upper and Lower Bounds for Higher-Order Nonconvex Finite-Sum Optimization\n- 2609.27051 [q-fin.PM] Propose, Don't Judge: An Anytime-Valid Referee for LLM Age…",
+      "lastProgressAt": 1790583118453,
+      "tokens": 28938,
+      "toolCalls": 1,
+      "durationMs": 55893,
+      "resultPreview": "{\"ideas\":[{\"type\":\"project\",\"title\":\"Peek-Proof Factor Referee for SharpLab\",\"paper_id\":\"2609.27051\",\"pitch\":\"The paper's trick: instead of judging an LLM-proposed investment factor with a single fixed-horizon backtest p-value, wrap it in an anytime-valid test (e-values / test martingales) so you can monitor the factor's live performance continuously and stop the moment it either proves out or bus…"
+    }
+  ],
+  "totalTokens": 183715,
+  "totalToolCalls": 11
+}

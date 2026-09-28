@@ -1,5 +1,49 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-28 — Peek-Proof
+- **Status:** rough night on fetching. `export.arxiv.org/api` 406'd on essentially every request regardless
+  of client (urllib, curl, raw http.client), delay between calls, or start-offset — spent a long debugging
+  pass isolating this (ruled out UA/Accept-Encoding/HTTP-version/connection-reuse as causes; it really is
+  intermittent backend flakiness, not a client bug) before falling back to `fetch_papers_fallback.py`
+  (HTML-scrape of arxiv.org listing pages instead of the export API). That fallback also partially 406'd
+  partway through, but landed 73 papers across 10/22 categories (cs.LG/AI/CL/CR/DS, math.OC, q-fin.PM/TR,
+  econ.EM, stat.ML) before stalling on the rest — comfortably above the ~30 needed.
+- **Sampled:** 30 papers round-robin across the 10 successful categories, 6 batches of 5. `votes.json` tag
+  scores were all neutral (0) tonight, so no up/down-weighting applied.
+- **Ideas:** 24 generated. Seven ideas tied at the top discussion_score (9); picked 3 distinct papers, all
+  independently demo-buildable, steering away from one 2609.27051-adjacent duplicate pairing and away from
+  another mempool/sandwich-attack paper since that exact theme was built 2026-09-25.
+- **Forum top-3 (all three buildable-tonight — full 3-way competition):**
+  1. Memory-Conditioned Diffusion Model for Generalized Langevin Dynamics — memory-kernel noise alone
+     manufactures "hot hand"-looking streaks with zero skill parameter touched (arXiv:2609.28371)
+  2. LAVOIR: Teaching a Single-Pass Decision Encoder When and What to Ask with Amortized Value of Information
+     — "wait for the injury report" is a real, computable optimal-stopping problem (arXiv:2609.30706)
+  3. Propose, Don't Judge: An Anytime-Valid Referee for LLM Agents That Mine Investment Factors — anytime-valid
+     e-values close the optional-stopping loophole that kills backtested edges live (arXiv:2609.27051) ← BUILT, won
+- **Built (3-way build-off):**
+  - A — Hot Hand Machine (arXiv:2609.28371): genuine Ornstein-Uhlenbeck memory-kernel shot simulator, fixed
+    45% true make rate, live Monte-Carlo streak histogram vs. exact DP-computed i.i.d. theoretical
+    distribution. Builder caught and fixed a real Chart.js canvas-reuse bug via headless-Chromium testing.
+  - B — The Ask-or-Bet Line (arXiv:2609.30706): live-betting value-of-information calculator, closed-form
+    Bayesian VoI curve on canvas with crossover markers, animated bet-now-vs-wait race, 3 tuned real-world
+    presets. No headless browser available to the builder; verified via node syntax check + standalone math
+    execution across all presets and slider extremes instead.
+  - C — **Peek-Proof: The p-Hacking Simulator** (arXiv:2609.27051): streams a genuinely fair coin, contrasts
+    a classical p-value (51.5% of simulated peekers fooled by n=1250) against a real sequential
+    likelihood-ratio e-value (3.3% fooled) — Ville's inequality proven live via canvas charts + a running
+    scoreboard.
+  - **Judge's pick: C, Peek-Proof** — all three ran error-free in headless Chromium (interaction-tested: slider
+    drags, button clicks, zero console errors). Scored A 34/40, B 30/40, C 35/40 (wow/interactivity/polish/
+    fidelity). B lost points on fidelity — a stylized VoI toy rather than a mechanistic match to LAVOIR's
+    single-pass encoder. C won on the sharpest "whoa" moment and the tightest fidelity to its source paper.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-28-peek-proof.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-09-28-nightly.html
+  - Runner-ups also published: demos/2026-09-28-hot-hand-machine-a.html, demos/2026-09-28-ask-or-bet-line-b.html
+  - david-share commit 2beffc8. LIVE after VPS `git -C /opt/share pull`.
+- **Digest:** `digest_2026-09-28.json` written and validated (`validate_digest.py` OK, 3 papers,
+  demo_url/demo_arxiv_id set to the build-off winner) — ready for `nightly.sh` to post to the SharpLab forum.
+
 ## 2026-09-27 — The Cyclic Judgment Trap
 - **Status:** primary fetch (`fetch_papers.py`, with last night's Accept-header + `safe=":"` fix in place)
   still 406'd on the very first two categories (cs.LG, cs.AI) — looks like the IP-level rate-limit from last
