@@ -1,0 +1,315 @@
+[
+  {
+    "type": "demo",
+    "title": "Rules Lawyer: Letter vs. Spirit Simulator",
+    "arxiv_id": "2609.23083v1",
+    "description": "The paper shows you can targeted-adapt an LLM to consistently favor either the letter or the spirit of a stated rule, and that this single dial significantly shifts its rulings across a wide set of novel vignettes \u2014 the reading a model favors is a controllable setting, not a fixed trait. Build a single-page game: feed it real betting/poker/sports edge cases (sportsbook 'palpable error' voids, bad-beat jackpot technicalities, salary-cap workarounds, angle-shooting, a QB kneeling to avoid a stat-triggered payout), show two canned personas \u2014 Letter-bot and Spirit-bot \u2014 issuing opposite rulings, and have users guess which one the actual book/league sided with before revealing it.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 9,
+    "tags": [
+      "decision-theory",
+      "betting",
+      "gambling",
+      "poker",
+      "games",
+      "ai"
+    ],
+    "hot_take": "Every sportsbook already runs in 'letter mode' by default \u2014 they just haven't admitted their T&Cs are a fine-tunable setting, not a fixed policy.",
+    "question": "If a book let you see whether its dispute-resolution AI was tuned to 'letter' or 'spirit,' would you actually deposit more with the spirit-mode book, or is that just a marketing knob nobody would pay for?"
+  },
+  {
+    "type": "demo",
+    "title": "Arb Watch: Minimum Dominating Set as a Betting Toy",
+    "arxiv_id": "2607.22384v1",
+    "description": "The paper's contribution is a dynamic data structure that keeps answering 'minimum distance-r dominating/independent set of size k' queries fast as a sparse graph gets edges inserted and deleted live. Reframe the abstraction as a betting toy: nodes = sportsbooks/props, edges = lines that move together (correlated markets); the dominating set is the smallest set of books you must watch to catch every arb, and the independent set is the largest set of bets you can place with zero correlated exposure. Build a canvas graph where edges flicker on/off (simulating correlations shifting in real time) and a greedy heuristic recomputes and highlights the current minimum 'watch list' live.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "tags": [
+      "math",
+      "betting",
+      "gambling",
+      "decision-theory",
+      "games"
+    ],
+    "hot_take": "Line shopping is just graph domination with a bankroll attached \u2014 most 'sharp' arb hunters are running an unnamed algorithm by hand.",
+    "question": "If you had to pick the fewest books to monitor and still catch every correlated arb across your usual markets, how many would it actually take before the subscriptions aren't worth it?"
+  },
+  {
+    "type": "youtube",
+    "title": "The One-Layer Blind Spot: An Induction-Head Toy",
+    "arxiv_id": "2609.32319v1",
+    "description": "The paper leans on a proven result (the Sanford-Hsu-Telgarsky obstruction) that single-layer attention is structurally incapable of certain 'induction' tasks \u2014 find the last occurrence of X, copy what came right after it \u2014 and shows that lifting attention onto a symplectic phase space (echoing Hairer's lift of the Stormer-Verlet integrator) escapes the obstruction's premise entirely rather than just tightening a bound. Pair the explainer with a small interactive attention-heatmap toy: type a repeating sequence (cards dealt, pot sizes, a betting pattern), toggle '1-layer' vs 'phase-lift' attention, and watch the 1-layer version literally fail to locate the repeat while the lifted version finds it \u2014 a visceral answer to 'why does the AI keep botching the count.'",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 6,
+    "tags": [
+      "ai",
+      "math",
+      "poker",
+      "games"
+    ],
+    "hot_take": "There's a proven mathematical reason a single-layer 'attention' can't track the count at the table \u2014 it's not a training bug, it's a theorem.",
+    "question": "Does it change how much you trust an LLM co-pilot at the table if its failure mode is provably structural rather than just 'needs more scale'?"
+  },
+  {
+    "type": "demo",
+    "title": "Bankroll Doomsday Simulator",
+    "arxiv_id": "2306.16563v2",
+    "description": "The retirement paper's whole pitch is: stop giving people a single point estimate for '30 years from now' \u2014 run thousands of Monte Carlo paths over stochastic inflation/returns and show the probability spread instead. That's exactly the tool a bettor needs but never builds for their own bankroll. Single HTML file: sliders for starting bankroll, per-bet edge, odds, bet-sizing rule (flat % vs fractional Kelly), and number of bets. Runs thousands of simulated seasons client-side, plots median growth curve plus 5th/95th percentile bands, and reports probability of ruin \u2014 same output format as a retirement calculator, just pointed at a sportsbook account instead of a 401k.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "math"
+    ],
+    "hot_take": "Your bankroll's fate is a retirement plan you're mismanaging way worse than your actual 401k \u2014 most bettors size bets like they'll never go on a losing streak, which is the one thing Monte Carlo always finds.",
+    "question": "What Kelly fraction gets your risk-of-ruin under 5% over a full season at your actual edge \u2014 and be honest, are you betting anywhere close to that size?"
+  },
+  {
+    "type": "demo",
+    "title": "Sieve Roulette",
+    "arxiv_id": "2608.26384v4",
+    "description": "The paper reframes the Eratosthenes sieve as a discrete dynamical system: a cycle of prime-gaps evolves by recursion each 'stage,' and the driving terms of various lengths behave like a Markov chain generating prime constellations under twice the next prime. Build a spinning-wheel visualization where each revolution corresponds to a sieve stage, gaps light up on a wheel like roulette pockets, and a live tally shows the empirical Markov transition frequencies between gap-lengths/constellations. Users can 'bet' on the next gap or constellation, then watch whether the sieve behaves more structured (rigged wheel) or more like true noise than their gut expects.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "tags": [
+      "math",
+      "games",
+      "whimsy"
+    ],
+    "hot_take": "The sieve of Eratosthenes is running the same kind of state machine as a casino wheel \u2014 except this one's provably deterministic and you still can't find the edge.",
+    "question": "If prime-gap sequences really cycle like a Markov chain, is there a 'system' hiding in there the way roulette players keep dreaming of finding wheel bias \u2014 or is that just gambler's fallacy wearing a number-theory costume?"
+  },
+  {
+    "type": "project",
+    "title": "The Kink in Your Worst Case",
+    "arxiv_id": "2609.27918v1",
+    "description": "Danskin's envelope theorem says the derivative of a max over a compact parameter set equals the derivative at the current argmax \u2014 the classic engine behind minimax/robust optimization. This paper extends that to generalized L-infinity ('worst-case over everything') envelopes. Build an interactive two-line/payoff-function demo (think a toy rock-paper-scissors or a 'worst-case loss given opponent's mixed strategy' game): as you drag a parameter slider, the value function is visibly the upper envelope of several curves, kinked at switch points between which strategy is worst-case-optimal, yet still 'semi-differentiable' everywhere. Makes visible why minimax equilibria in games/poker toy models have exploitable-but-smooth sensitivity even through the kinks.",
+    "cool_score": 6,
+    "buildable_score": 7,
+    "discussion_score": 6,
+    "tags": [
+      "decision-theory",
+      "games",
+      "math",
+      "poker"
+    ],
+    "hot_take": "Every 'optimal' minimax poker strategy is secretly living right on a kink in a worst-case envelope \u2014 the theorem just tells you which direction it's about to bend when your opponent adjusts.",
+    "question": "When your solver output flips strategies at a threshold stack size or bet size, is that a real strategic cliff \u2014 or just the kink in an envelope function that a slightly different model would smooth over?"
+  },
+  {
+    "type": "demo",
+    "title": "The Backtest Lie: Two-Way Clustered SE Simulator",
+    "arxiv_id": "2602.16376v3",
+    "description": "Grounded in the paper's two-way cluster-robust sandwich variance estimator for quantile regression: interactive HTML tool where you generate a fake sports-betting backtest (e.g. ROI by bet, clustered by team AND by season), see the naive standard error scream 'significant edge!', then watch the confidence interval blow up once you apply proper two-way cluster-robust SE. Sliders control cluster correlation strength and sample size so users can feel how fast a 'proven system' stops being proven.",
+    "cool_score": 6,
+    "buildable_score": 9,
+    "discussion_score": 8,
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math",
+      "sports"
+    ],
+    "hot_take": "Half the '+EV systems' passed around gambling Twitter would die instantly under a two-way cluster-robust SE \u2014 most backtests only pretend to control for one axis of correlation and call it rigor.",
+    "question": "When you backtest a system, do you cluster your standard errors by anything at all, or do you just trust the raw p-value on pooled bets?"
+  },
+  {
+    "type": "demo",
+    "title": "Currency Tug-of-War: Three-Way Dominance Simulator",
+    "arxiv_id": "2305.00585v1",
+    "description": "Built from the paper's influence-battle model of USD, euro, and a hypothetical BRICS currency competing for trade-preference dominance across 194 countries (2010-2020 UN Comtrade data). A playable HTML sim: three competitors start with given trade-share and momentum, network-effect rules push the system toward one dominant winner or a stable multipolar split depending on initial conditions \u2014 showing how close 'de-dollarization' really has to get before it becomes self-reinforcing.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "tags": [
+      "econ",
+      "math",
+      "betting",
+      "decision-theory"
+    ],
+    "hot_take": "De-dollarization chatter is mostly vibes \u2014 the actual influence-dynamics math says a challenger currency needs a huge head start or it never escapes the incumbent's gravity well.",
+    "question": "If a book offered odds on 'a BRICS currency overtakes USD+EUR trade share by 2035,' what price would you actually take?"
+  },
+  {
+    "type": "demo",
+    "title": "Clutch Gene Simulator: Lattice Protein Folding as Hot-Hand Analog",
+    "arxiv_id": "2503.23280v1",
+    "description": "Based on the finding that adding a solvation energy term to a 27-mer lattice protein Monte Carlo model sharpens folding into a cooperative, two-state, topology-dependent transition (vs. gradual collapse without it). Reframed as a toy: watch a lattice chain fold on canvas, toggle solvation on/off, and see the difference between a smooth gradual collapse (no hidden cooperativity) and a sudden all-or-nothing 'snap' into the folded state (with it) \u2014 a physical model of whether streaks/'the zone' could be a real phase transition versus just variance.",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 6,
+    "tags": [
+      "bio",
+      "physics",
+      "games",
+      "whimsy",
+      "decision-theory"
+    ],
+    "hot_take": "The 40-year 'hot hand' fight in basketball analytics is basically arguing about cooperativity \u2014 and a 27-residue protein simulation just showed exactly the kind of hidden interaction term (solvation) that turns gradual drift into a real all-or-nothing snap.",
+    "question": "Is 'the zone' a genuine cooperative phase transition, or just variance wearing a good narrative?"
+  },
+  {
+    "type": "demo",
+    "title": "The Backtest That Lies to You (Event-Keyed CRN Sandbox)",
+    "arxiv_id": "2603.11084v1",
+    "description": "Grounded in the paper's actual fix: agent-based/Monte Carlo sims reuse 'common random numbers' across counterfactual scenarios to cut variance when comparing strategies, but naive seed-reuse misaligns draw indices across scenarios and silently breaks causal validity \u2014 their fix is event-keyed hashing so each stochastic draw is tied to the specific event it represents, not its position in a draw sequence. Build a single HTML/JS toy: simulate two betting/staking strategies over the same synthetic season of games. Toggle between 'naive shared seed' (draws consumed in strategy-dependent order) and 'event-keyed hashing' (draws keyed to the actual game/event). Show live that the naive version can literally flip which strategy looks better, purely from misalignment \u2014 no real edge difference, just a bookkeeping bug in your Monte Carlo.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math",
+      "gambling"
+    ],
+    "hot_take": "If you've ever compared two staking systems on 'the same simulated season' with a shared RNG seed, there's a real chance your backtest ranking is an artifact of draw misalignment, not skill.",
+    "question": "Anyone here running paired Monte Carlo backtests (comparing staking plans, hedges, or bet-sizing rules on the same simulated outcomes)? Do your random draws get keyed to the actual game/event, or just pulled off a shared global seed in whatever order your code happens to consume them?",
+    "discussion_rationale": "Directly hits SharpLab's core activity (strategy backtesting) with a genuine 'wait, really?' bug class most quants don't know they have; cheap to build as an interactive flip-the-ranking demo."
+  },
+  {
+    "type": "demo",
+    "title": "Cut the Outbreak: A Connectivity-Not-Suitability Puzzle",
+    "arxiv_id": "2510.24955v2",
+    "description": "Grounded in geohabnet's core claim: for biosecurity/invasion/conservation planning, which patches matter is driven by habitat *connectivity* (network position) not just standalone habitat *suitability* \u2014 a site can be low-suitability but critical as a bridge. Build a single-file canvas puzzle: a randomly generated network of habitat patches (nodes) with edges weighted by dispersal likelihood. Player gets a budget to remove/protect k nodes to minimize (or maximize) post-removal connectivity of the giant component. Score reveals that the 'obviously biggest' node is often not the optimal pick \u2014 a low-degree bridge node beats it, exactly geohabnet's point.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "tags": [
+      "games",
+      "bio",
+      "decision-theory",
+      "whimsy"
+    ],
+    "hot_take": "Most biosecurity policy (and honestly most people's mental model of 'stop the spread') still targets the biggest hub instead of the best bridge \u2014 this paper's whole point is that the two are often different nodes.",
+    "question": "Given only 3 removals to minimize a spreading network's reach (virus, invasive species, or a meme), do you take out the highest-degree node or hunt for the best bridge? Play the puzzle and tell us which strategy actually wins.",
+    "discussion_rationale": "Turns an obscure R package's finding into an actual playable optimization game \u2014 strong whimsy/games fit, decent decision-theory crossover (resource-constrained network attack is poker-adjacent thinking) even if less directly 'betting.'"
+  },
+  {
+    "type": "startup",
+    "title": "Route Markets: Betting on Spread Corridors, Not Just Outbreak Yes/No",
+    "arxiv_id": "2510.24955v2",
+    "description": "geohabnet's reframe \u2014 model *how patches connect*, not just where a species/pathogen could live \u2014 suggests prediction markets are pricing the wrong question. Current outbreak/invasive-species markets (where they exist) are binary 'will it spread to region X by date Y.' A connectivity-model-driven market could instead let traders price *which corridor* an invasion/outbreak takes, using network centrality/betweenness as the pricing signal, giving biosecurity agencies and reinsurers a genuinely new instrument instead of a coarser binary bet.",
+    "cool_score": 6,
+    "buildable_score": 3,
+    "discussion_score": 6,
+    "tags": [
+      "econ",
+      "gambling",
+      "decision-theory",
+      "bio"
+    ],
+    "hot_take": "Prediction markets have spent a decade perfecting 'will X happen' and completely ignored 'through which path' \u2014 that's uncollected edge sitting in plain sight for anyone with a connectivity model.",
+    "question": "Would a market on invasion/outbreak *routes* (not just binary occurrence) actually attract enough liquidity to be tradeable, or is corridor-level specificity too niche even for prediction-market degenerates?",
+    "discussion_rationale": "Novel econ/gambling angle for the crowd that likes obscure market design, but genuinely not an overnight build \u2014 flagged low on buildability on purpose since it's a concept pitch, not a demo."
+  },
+  {
+    "type": "demo",
+    "title": "The Collector's Curse",
+    "arxiv_id": "2604.20829v2",
+    "description": "The paper shows random-walk exploration of a network maps exactly onto the coupon collector problem on complete graphs, and derives the full large-deviation distribution (not just the mean) for how many distinct nodes/items you've hit after t steps on general networks. Turn that into a single-page toy: user picks a 'deck size' (loot box pool, trading-card set, parlay leg pool, whatever) and watches a live histogram of 'steps to complete the set' build up across thousands of simulated walkers, with the paper's large-deviation tail curve overlaid against the naive mean estimate. The punchline is visual: the mean says '200 pulls,' but the tail says a meaningful chunk of players need 3-4x that, exactly the shape that makes loot-box economics and 'complete the promo' sportsbook parlays profitable for the house.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 8,
+    "tags": [
+      "gambling",
+      "math",
+      "games",
+      "decision-theory",
+      "whimsy"
+    ],
+    "hot_take": "Every 'complete your collection' mechanic in gaming and sportsbook promos is a coupon-collector problem wearing a costume, and the tail is where they make their money, not the mean.",
+    "question": "If you knew your favorite loot box / parlay-builder promo's real completion-time distribution (not the advertised average), would you still grind it?"
+  },
+  {
+    "type": "demo",
+    "title": "Which Pipeline Stage Is Your Edge Actually Coming From?",
+    "arxiv_id": "2609.32318v1",
+    "description": "The paper's core move is 'compositional controllability': when two long-horizon agent pipelines get different leaderboard scores, you can't tell if it's the retrieval stage, the reasoning stage, or the write-up stage that caused the gap unless you control each stage independently and bound the residual. Build a toy simulator with three toggleable 'pipeline stages' (data window, feature/staking rule, bet-sizing rule) each injecting its own synthetic noise/bias, showing a single 'backtest ROI' number that swings wildly \u2014 then let the user lock stages one at a time to watch the score converge toward the true underlying edge. It's a hands-on argument for why a SharpLab backtest leaderboard (whose model 'beats the market') is unfalsifiable until you decompose it the same way this paper decomposes agent leaderboards.",
+    "cool_score": 6,
+    "buildable_score": 7,
+    "discussion_score": 8,
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math",
+      "ai"
+    ],
+    "hot_take": "Your backtest leaderboard and an AI benchmark leaderboard have the same disease: you're ranking pipelines, not edges, and nobody's controlling for the stage that's actually doing the work.",
+    "question": "Which stage of your own betting pipeline (data source, feature engineering, staking) have you never actually isolated and tested alone?"
+  },
+  {
+    "type": "youtube",
+    "title": "The Noise Hiding Inside Every 'Edge'",
+    "arxiv_id": "2609.32444v1",
+    "description": "This RL paper finds that LLMs trained with RLVR silently drift because the probability distribution used during training sampling doesn't match the one used at inference (a 'logit-displacement' bias), and they fix it with a calibration term (CIS). Pair that with the leaderboard-certification paper's finding that agent score gaps are often just uncontrolled pipeline differences, not real capability gaps. A video essay connects both to sports/betting modeling: the same story keeps happening \u2014 a system looks like it has 'skill' or 'edge,' but a chunk of that apparent edge is just measurement mismatch between how the model was built vs. how it's actually deployed (backtest vs. live, training distribution vs. game-day distribution). Concrete hook: walk through both papers' diagnostic plots, then reframe them as 'your CLV tracker has the same training/inference mismatch bug.'",
+    "cool_score": 6,
+    "buildable_score": 3,
+    "discussion_score": 7,
+    "tags": [
+      "ai",
+      "decision-theory",
+      "betting",
+      "math"
+    ],
+    "hot_take": "Half of the 'alpha' people report in both AI benchmarks and betting models is just training/inference distribution mismatch wearing a lab coat.",
+    "question": "Has your live betting performance ever quietly decayed from your backtest in a way that looked like bad luck but was actually a silent distribution shift?"
+  },
+  {
+    "type": "demo",
+    "title": "Insider Edge Calculator",
+    "arxiv_id": "2609.02164",
+    "description": "Paper solves stochastic optimal control when the controller already knows information that will only become public later (e.g. a future price/outcome), swapping the standard adapted Ito integral for a 'forward integral' since Ito math is literally undefined for a non-adapted (informed) strategy. Build an HTML toy: simulate a price/line path, let the user toggle 'insider mode' where they see the next tick a few seconds before it's public, and plot the paper's optimal control (bet size over time) against the honest Kelly strategy on the same path -- visualizing exactly how much edge the math assigns to peeking, and why the normal stochastic-calculus toolkit breaks once you do.",
+    "cool_score": 7,
+    "buildable_score": 7,
+    "discussion_score": 8,
+    "tags": [
+      "betting",
+      "math",
+      "decision-theory",
+      "gambling"
+    ],
+    "hot_take": "Every 'sharp bettor' with suspiciously good timing is just running unlicensed forward-integral calculus on insider information.",
+    "question": "If you legally get a 5-second peek at line movement before it's public (arb/scalp style), how much of your 'edge' is literally this forward-integral math working as the paper predicts, versus something else?"
+  },
+  {
+    "type": "demo",
+    "title": "Clone the Sharp Arena",
+    "arxiv_id": "2609.07131",
+    "description": "AgentLeak shows a weak attacker-controlled agent can absorb a stronger proprietary agent's task-solving capability through limited black-box interaction alone -- no weights needed, just watching outputs. Build a playable toy: a hidden 'Sharp Bot' plays a biased prediction/strategy game with a real edge, a 'Clone Bot' only gets a query budget to observe its outputs, and a live chart shows the Clone Bot's win-rate converging toward the Sharp's as the query budget rises -- a hands-on version of the paper's capability-transplant curve, reframed as 'how many hands of a solver's plays do you need to see before you basically ARE the solver.'",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 9,
+    "tags": [
+      "ai",
+      "betting",
+      "poker",
+      "decision-theory"
+    ],
+    "hot_take": "Selling picks IS AgentLeak in the wild -- cappers have been cloning sharper cappers' capability through 'limited black-box interaction' forever, it just didn't have a paper name.",
+    "question": "How many hands/bets of watching a solver-backed player would it actually take you to functionally clone their strategy without ever touching the solver?"
+  },
+  {
+    "type": "project",
+    "title": "Tilt Cascade Monitor",
+    "arxiv_id": "2609.02320",
+    "description": "The paper introduces the M^T/G/1 queue for systems where sending one packet automatically triggers a follow-up packet after a random delay, and solves the resulting queue-length/burstiness dynamics exactly via matrix-analytic methods. Reskin the literal model as a bankroll tool: every loss auto-triggers a 'revenge bet' after a random delay (exactly the paper's triggering mechanism), animate the pending-bet queue building up on a canvas, and use the paper's stability condition to flag in real time when a betting session's trigger rate crosses into an unbounded, exploding backlog versus staying stable.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "tags": [
+      "gambling",
+      "math",
+      "whimsy",
+      "decision-theory"
+    ],
+    "hot_take": "Your tilt spiral isn't a personal failing, it's an unstable M^T/G/1 queue -- and almost nobody checks whether their triggering rate has crossed the stability boundary until it's too late.",
+    "question": "Could a sportsbook (or a self-exclusion tool) compute your personal 'tilt queue stability threshold' from real bet-timing data and flag you before the queue blows up?"
+  }
+]

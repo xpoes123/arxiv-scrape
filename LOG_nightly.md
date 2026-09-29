@@ -1,5 +1,39 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-29 — The Backtest That Lies to You
+- **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`, clean fetch, no
+  429s tonight). 30 sampled round-robin for ideation, 6 batches of 5.
+- **Ideas:** 18 generated. `votes.json` tag scores were all still 0 (no net signal yet), so no bias applied.
+- **Forum top-3 (by discussion score, all tied at 9, all buildable-tonight):**
+  - Rules Lawyer: Letter vs. Spirit Simulator (arXiv:2609.23083, letter/spirit-of-the-law LLM steering)
+  - Bankroll Doomsday Simulator (arXiv:2306.16563, Monte Carlo retirement simulation math)
+  - The Backtest That Lies to You (arXiv:2603.11084, event-keyed CRN hashing) ← BUILT, won build-off
+- **Also surfaced:** project — Tilt Cascade Monitor (M^T/G/1 triggered-queue paper reskinned as a
+  revenge-betting stability monitor, arXiv:2609.02320); youtube — The Noise Hiding Inside Every 'Edge'
+  (RLVR training/inference mismatch + leaderboard-certification papers, arXiv:2609.32444); startup — Route
+  Markets: Betting on Spread Corridors (geohabnet connectivity reframed as a corridor-pricing market,
+  arXiv:2510.24955).
+- **Built (3-way build-off):**
+  - A — Rules Lawyer (arXiv:2609.23083): 8-scenario game guessing Letter-bot vs. Spirit-bot rulings on
+    sportsbook/poker disputes, confetti + streak tracker, zero JS errors.
+  - B — Bankroll Doomsday Simulator (arXiv:2306.16563): live Monte Carlo fan-chart comparing flat vs.
+    fractional-Kelly bankroll sizing, zero JS errors on normal use — but judge found a real bug: pushing
+    sliders to their max breaks the currency formatter into raw scientific notation.
+  - C — **The Backtest That Lies to You** (arXiv:2603.11084): side-by-side naive-shared-seed vs.
+    event-keyed-hashing betting-strategy sim with a live draw-index-vs-game-index drift chart, held up
+    cleanly under aggressive interaction (500-season batch runs, auto-run, slider extremes).
+  - **Judge's pick: C** — all three ran clean under normal use, but C had the tightest fidelity to its
+    source paper's actual mechanism and was the only one that survived aggressive interaction testing
+    without degrading (B's number formatter broke at slider extremes).
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-29-event-keyed-crn.html (winner)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-29-rules-lawyer-a.html (runner-up)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-29-bankroll-doomsday-b.html (runner-up)
+  - https://share.djiang.xyz/arxiv-scrape/2026-09-29-nightly.html
+  - david-share commit e1f1193. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-09-29.json` written and validated (3 papers, demo_url/demo_arxiv_id set to
+  the build-off winner).
+
 ## 2026-09-28 — Peek-Proof
 - **Status:** rough night on fetching. `export.arxiv.org/api` 406'd on essentially every request regardless
   of client (urllib, curl, raw http.client), delay between calls, or start-offset — spent a long debugging
