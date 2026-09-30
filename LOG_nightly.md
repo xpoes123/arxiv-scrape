@@ -1,5 +1,42 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-09-30 — Lock-In Visualizer
+- **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`; first fetch
+  attempt hit the 2-min tool timeout mid-run but the retry with an extended timeout completed cleanly, no
+  429s). 30 sampled round-robin for ideation, 6 batches of 5.
+- **Ideas:** 95 generated. `votes.json` tag scores were all still 0 (no net signal yet), so no bias applied.
+- **Forum top-3 (by discussion score, all buildable-tonight, all three built for real competition):**
+  - LOCKR: Stable-but-Wrong Lock-In in Diffusion Language Models (arXiv:2609.27220, discussion 9) ← BUILT, won build-off
+  - Mean-field equilibrium of heterogeneous agents under market impact (arXiv:2609.03115, discussion 9)
+  - Meet, Compare, or Abstain: LatWeave (arXiv:2609.27225, discussion 8)
+- **Also surfaced:** startup — MicroKelly (real-time correlated-parlay Kelly optimizer via covariance
+  sparsification, arXiv:2306.12639); youtube — Why Your Backtest Lies (pt. 2): Debiased Machine Learning
+  (Riesz representers / automatic DML explained via betting backtests, arXiv:2602.17543); project — Matroid
+  DFS Lineup Optimizer (daily-fantasy rosters as an independence-system realization, arXiv:2609.17568).
+- **Built (3-way build-off):**
+  - A — **Lock-In Visualizer** (arXiv:2609.27220): procedurally-generated toy denoising trajectories where
+    the user guesses real-vs-wrong convergence from the hidden-state path alone, then compares their guess
+    against a naive confidence-only detector (converges to a coin flip, as the paper predicts) and a
+    LOCKR-style trajectory detector. Zero console errors under a full headless interaction pass.
+  - B — Line Mover (arXiv:2609.03115): live mean-field market-impact simulator with sliders for agent count,
+    horizon heterogeneity, and impact-awareness. Ran clean, but the judge found a real fidelity bug on
+    interaction: the headline "impact-awareness" slider barely moved the informativeness readout across its
+    whole range — the paper's core self-cancellation result mostly didn't show up in play.
+  - C — Abstain or Bet (arXiv:2609.27225): best visual production of the three (animated D3 knowledge
+    lattice), correctly abstains vs. a confident-guesser mode that fabricates — but its reasoning chains
+    were pre-scripted per question rather than computed live off the graph, so less "real" than A or B.
+  - **Judge's pick: A** — all three ran clean with zero console errors, but A was the only one where playing
+    it actually reproduces the paper's exact result (confident-looking trajectories that are secretly wrong,
+    fooling a naive detector into a coin flip) rather than a bug (B) or a scripted illustration (C).
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-30-lock-in-visualizer.html (winner)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-30-line-mover-b.html (runner-up)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-09-30-abstain-or-bet-c.html (runner-up)
+  - https://share.djiang.xyz/arxiv-scrape/2026-09-30-nightly.html
+  - david-share commit 83f077f. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-09-30.json` written and validated (3 papers, demo_url/demo_arxiv_id set to
+  the build-off winner).
+
 ## 2026-09-29 — The Backtest That Lies to You
 - **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`, clean fetch, no
   429s tonight). 30 sampled round-robin for ideation, 6 batches of 5.
