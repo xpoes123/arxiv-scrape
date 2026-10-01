@@ -1,5 +1,39 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-01 — Poison the Picks
+- **Papers:** arXiv heavily rate-limited/timed-out tonight on the fetch (`fetch_papers.py 8 $(($(date +%j)*3))`)
+  — only the first 5 of 21 categories (cs.LG, cs.AI, cs.CL, cs.CR, cs.DS) returned before repeated 429s/timeouts
+  on math/q-fin/q-bio/physics; stopped fighting it and proceeded with 37 unique CS/AI/security papers (enough
+  to clear the ~30-paper bar even without full category diversity). 8 batches of 5 for ideation.
+- **Ideas:** 31 generated. `votes.json` tag scores were all still 0 (no net signal yet), so no bias applied.
+- **Forum top-3 (by discussion score — a 6-way tie at 9, broke it toward the 3 highest-buildable demos so all
+  three could compete for real):**
+  - ToxicRAG: Single-Shot Knowledge Poisoning of RAG Systems (arXiv:2609.11082, discussion 9) ← BUILT, won build-off
+  - JevOut: Natural Context Can Flip Decision Models (arXiv:2609.30243, discussion 9)
+  - Sensitivity and Differential Privacy in Metric Voting with Distortion below Three (arXiv:2607.26388, discussion 9)
+- **Built tonight (3-way build-off, judged live in headless Chrome):**
+  - A — **Poison the Picks** (ToxicRAG, arXiv:2609.11082): toy RAG sportsbook assistant with live in-browser
+    TF-IDF/cosine retrieval; craft and "optimize" one adversarial document and watch it climb from winning 0/6
+    sample queries to 5/6, hijacking the assistant into citing a fabricated pick as fact.
+  - B — Flip My Bet (JevOut, arXiv:2609.30243): click context chips to flip a betting confidence gauge while
+    the underlying facts panel never changes.
+  - C — The MVP Distortion Simulator (metric voting, arXiv:2607.26388): drag voters/MVP candidates in 2D and
+    watch Plurality/Borda/Copeland/Lottery-rule distortion diverge live against the true optimum.
+  - **Judge's pick: A, Poison the Picks** — all three ran clean in headless Chrome except B, which threw one
+    console error (invalid SVG `height="auto"` attribute) and whose flips turned out to be scripted
+    per-scenario constants rather than computed. A won on fidelity (a literal, not just thematic,
+    reimplementation of single-document RAG poisoning, with genuinely computed dominance numbers) and
+    wow-factor. C was a close second — flawless and the most algorithmically rigorous — but had a thinner
+    narrative payoff.
+- **Also surfaced:** project — Selective Relearning for CLV (ROSS-style rollout filtering ported to a CLV
+  pipeline to separate real signal from survivorship-biased noise, arXiv:2609.35954); project — Bad Beat
+  Conspiracy Radar (agentic conspiracy-detection repointed at sportsbook forums, arXiv:2609.30250); demo —
+  Top-N Lies (sampling-strategy bias made visible, arXiv:2609.11218).
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-01-poison-picks.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-01-nightly.html
+  - david-share commit 11c4f67. LIVE after VPS `git -C /opt/share pull`.
+
 ## 2026-09-30 — Lock-In Visualizer
 - **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`; first fetch
   attempt hit the 2-min tool timeout mid-run but the retry with an extended timeout completed cleanly, no
