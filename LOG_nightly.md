@@ -1,5 +1,58 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-02 — Whale Watch
+- **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`); the first
+  attempt 429'd hard on cs.LG even after exhausting its 15/30/60s backoff and the 2-min tool timeout killed
+  it mid-run, but a `--resume` retry with a longer timeout picked up cleanly (only cs.LG needed a second
+  resume after that). 30 sampled round-robin across all 22 categories for ideation, 6 batches of 5.
+- **Ideas:** 21 generated (all project/demo this round, no startup/youtube ideas surfaced). `votes.json` tag
+  scores were all still 0 (no net signal yet), so no bias applied. Top idea per type: project — **Fair
+  Split: Spencer's Six Deviations Draft Balancer** (arXiv:2608.00140, discussion 8); demo — **Whale Watch**
+  (arXiv:2305.07559, discussion 9, highest of the night).
+- **Forum top-3 (by discussion score, all buildable-tonight):**
+  - Whale Watch / PRIME: A Price-Reverting Impact Model of a cryptocurrency Exchange (arXiv:2305.07559,
+    discussion 9) ← BUILT, won build-off
+  - The Correlation Tax / Efficient Solution of Portfolio Optimization Problems via Dimension Reduction and
+    Sparsification (arXiv:2306.12639, discussion 8)
+  - Squares Coverage Showdown / Approximation Algorithms for Geometric Maximum Coverage (arXiv:2607.29160,
+    discussion 8)
+- **Built tonight (3-way build-off, judged in headless Chromium):**
+  - A — **Whale Watch** (PRIME, arXiv:2305.07559): drag a log-scaled order-size slider and a live "preview
+    if fired now" ghost curve updates on every drag; fire the order for real and watch a square-root
+    market-impact calc split into a permanent "sharp agent" belief shift and a temporary "square agent"
+    shock that decays back exponentially, order-book depth crater on the hit side and refill as it decays,
+    and a trade tape log the realized slippage. Zero console errors under a full interaction pass; the
+    impact math checked out by hand (455x size increase → exactly 21.3x impact = √(910/2)).
+  - B — The Correlation Tax (portfolio optimization, arXiv:2306.12639): 5 correlated same-game bet legs,
+    drag edge/volatility/correlation/risk-aversion sliders and watch a real Frank-Wolfe-solved efficient
+    frontier (covariance PSD-projected via a live Jacobi eigendecomposition) update, with a flat-stake
+    marker visibly falling off the frontier as correlation rises. The math was genuinely rigorous, but a
+    reproducible Chart.js canvas-resize feedback loop balloons the page to 10,000px+ tall exactly when you
+    drag the correlation slider — the demo's core interaction — which the judge ruled a disqualifying
+    broken-layout bug.
+  - C — Squares Coverage Showdown (geometric max coverage, arXiv:2607.29160): a 10x10 NFL squares grid
+    weighted by real last-digit score frequencies, comparing a real greedy zone selection against a real
+    swap-based local search side by side, with a genuine non-monotonic coverage gap (0pp at k≤4, peaking
+    +4.5pp around k=7, back to 0pp by k=13+) as the pick budget slider moves. Ran completely clean, no
+    console errors, but visually flatter than A or B — a grid-of-divs comparison rather than a spectacle.
+  - **Judge's pick: A, Whale Watch** — the only entry that was simultaneously bug-free under real
+    interaction, numerically faithful to its source paper, and genuinely thrilling to play with; B's
+    equally rigorous math was undercut by a real layout-breaking bug on its headline interaction, and C was
+    honest but comparatively flat as an experience.
+- **Also surfaced:** project — Dream Weaver: Hippocampus vs. Neocortex Maze (brain's topological-indexing /
+  metric-condensation split as an explore-then-sleep maze, arXiv:2603.03362); demo — Read You Like a Book
+  (AI memory systems inferring hidden facts from implicit cues, reframed as poker-tell leakage,
+  arXiv:2609.32574); demo — Phase-Transition Alarm: Live Ising Complexity Meter (variance-of-information
+  complexity measure peaking at the 2D Ising phase transition, arXiv:2608.19485).
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-02-whale-watch.html (winner)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-02-kelly-markowitz-b.html (runner-up)
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-02-squares-coverage-c.html (runner-up)
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-02-nightly.html
+  - david-share commit 34584d9. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-10-02.json` written and validated (3 papers, demo_url/demo_arxiv_id set to
+  the build-off winner).
+
 ## 2026-10-01 — Poison the Picks
 - **Papers:** arXiv heavily rate-limited/timed-out tonight on the fetch (`fetch_papers.py 8 $(($(date +%j)*3))`)
   — only the first 5 of 21 categories (cs.LG, cs.AI, cs.CL, cs.CR, cs.DS) returned before repeated 429s/timeouts
