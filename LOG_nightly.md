@@ -1,5 +1,47 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-04 — Cluster Mirage
+- **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`), clean fetch,
+  no rate-limiting this time. 30 sampled round-robin across all 22 categories for ideation, 6 batches of 5.
+  (Note: an in-progress 2026-10-03 run left orphaned `ideation_2026-10-03*` files in the repo with no
+  matching log entry or commit — that run appears to have stalled before publish; left untouched, not
+  investigated as part of tonight's run.)
+- **Ideas:** 24 generated. `votes.json` tag scores were all still 0 (no net signal yet — no votes recorded
+  last week), so no bias applied. Five ideas tied at the top discussion score (9/10), three of them
+  standalone buildable demos — an unusually strong night for the forum top-3.
+- **Forum top-3 (by discussion score, all buildable-tonight):**
+  - Cluster Mirage / Hybrid eTFCE-GRF: Exact Cluster-Size Retrieval with Analytical p-Values for
+    Voxel-Based Morphometry (arXiv:2603.11344, discussion 9) ← BUILT, won build-off
+  - How Many Bets Until You're "Normal"? / The Berry-Esseen Constant Conjecture is Eventually True
+    (arXiv:2609.06358, discussion 9)
+  - Hot Hand Illusion Machine / Recurrent neural network based parameter estimation of Hawkes model on
+    high-frequency financial data (arXiv:2304.11883, discussion 9)
+- **Built tonight (3-way build-off, judged in headless Chromium/Playwright):**
+  - A — **How Many Bets Until You're "Normal"?** (Berry-Esseen, arXiv:2609.06358): dual-panel live binomial
+    simulation (coinflip vs. longshot bet, matched edge) converging to the normal CDF, with a real
+    Berry-Esseen error envelope C·ρ/(σ³√n), KS stat, and a "scale bar" showing how absurd the paper's proven
+    threshold N=2·exp(10^17) actually is. Highest fidelity of the three but the driest presentation.
+  - B — **Cluster Mirage** (GRF cluster correction, arXiv:2603.11344): 50×50 noise grid, real Gaussian blur,
+    naive per-cell thresholding lights up dozens of fake "significant" cells, then a real client-side GRF
+    cluster-extent correction (Euler-characteristic density → resels → null cluster size → per-cluster
+    p-value) fades almost all of them back to noise. Chart.js null-distribution overlay, live formula panel,
+    re-roll button. Best combination of wow-factor, polish, and honest fidelity to the actual paper.
+  - C — **Hot Hand Illusion Machine** (Hawkes self-excitation, arXiv:2304.11883): blind A/B shot-ticker
+    guessing game, one stream a true Poisson process, the other a genuine Ogata-thinned Hawkes process,
+    localStorage "percent fooled" tally. Most interactive and fun of the three, but never actually
+    demonstrates the paper's real claimed contribution (an RNN that estimates Hawkes parameters faster than
+    MLE) — it borrows the intensity formula for a cognitive-bias point instead.
+  - **Judge's pick: B, Cluster Mirage** — all three ran clean under headless interaction with zero console
+    errors and real non-blank canvas output, so the pick came down to wow+polish+fidelity balance: B had
+    the best animated reveal, the richest live math panel, and stayed honestly scoped as a 2D toy analog of
+    the real 3D VBM pipeline.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-04-cluster-mirage.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-04-nightly.html
+  - david-share commit 76bf0e0. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-10-04.json` written with the 3 forum picks + demo_url/demo_arxiv_id set to
+  the build-off winner; posted by `nightly.sh` via Sage, not by this run directly.
+
 ## 2026-10-02 — Whale Watch
 - **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`); the first
   attempt 429'd hard on cs.LG even after exhausting its 15/30/60s backoff and the 2-min tool timeout killed
