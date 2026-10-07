@@ -1,5 +1,52 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-07 — Gambler's Ruin, the CTMC Way
+- **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`). First fetch
+  attempt timed out at 2 minutes on cs.LG/cs.AI/cs.CL/cs.CR (checkpointed 32 papers); a `--resume` retry with
+  a 10-minute timeout picked up the remaining 18 categories cleanly. 30 sampled round-robin across all 22
+  categories for ideation, 6 batches of 5.
+  (Note: 2026-10-05 and 2026-10-06 left orphaned `ideation_*`/`buildoff_*` files and demos on disk — both
+  nights appear to have stalled after building demos but before judging/publishing/logging, same pattern as
+  the 2026-10-03 orphan noted in the 10-04 entry. Left untouched again, not investigated as part of tonight's
+  run.)
+- **Ideas:** 23 generated. `votes.json` tag scores had mild positive signal on betting/ai/decision-theory/math
+  (+1 each, no negatives yet), a soft bias applied but didn't change the outcome — four ideas tied at the top
+  discussion score (9/10), three of them standalone buildable demos.
+- **Forum top-3 (by discussion score, all buildable-tonight):**
+  - Gambler's Ruin, the CTMC Way / Evaluating the effectiveness of Stochastic CTMC and deterministic models
+    in correlating rabies persistence in human and dog populations (arXiv:2510.25777, discussion 9) ← BUILT,
+    won build-off
+  - Fake Tiers Detector / Nonparametric Hypothesis Testing of High-dimensional Clustering With Application to
+    Single-cell RNA Data (arXiv:2609.05683, discussion 9)
+  - Printing Press Phase Diagram / A phase transition in monetary function explains expansion without
+    inflation (arXiv:2604.24035, discussion 9)
+- **Built tonight (3-way build-off, judged in headless Chromium/Playwright):**
+  - A — **Fake Tiers Detector** (clustering significance, arXiv:2609.05683): user picks a theme (NBA/poker/QB
+    tiers), runs k-means on a scatter, cranks a noise slider, and a real permutation test in JS returns a
+    p-value + verdict with a null-distribution histogram. The statistical logic was correct, but a
+    CSS/Chart.js resize feedback loop sent the canvases to tens of thousands of pixels tall, rendering blank
+    off-screen — **disqualified** on a rendering bug, not a math bug.
+  - B — **Gambler's Ruin, the CTMC Way** (stochastic vs. deterministic persistence, arXiv:2510.25777):
+    deterministic exponential-growth bankroll curve side-by-side with a genuine client-side Gillespie
+    stochastic simulation (real exponential waiting times, real birth/death rates, absorbing at zero),
+    revealed live via "Roll Again" with a bust/survive tally, plus an N-sweep validating the closed-form
+    Kendall extinction-probability formula against live batch simulation. Zero visual defects, richest real
+    computation, clearest gut-punch for a betting audience.
+  - C — **Printing Press Phase Diagram** (monetary phase transitions, arXiv:2604.24035): growth-rate +
+    "phase knob" sliders drive a real difference-equation model with a hysteresis state variable; price level
+    stays flat while money supply balloons, then visibly kinks once the phase boundary is crossed, with a
+    genuine divergent hysteresis loop on reversal and QE/COVID preset buttons.
+  - **Judge's pick: B, Gambler's Ruin, the CTMC Way** — A was disqualified outright (blank canvases in a real
+    browser window despite correct math); between B and C, B had zero defects, the richest live computation
+    (simulation + closed-form validation side by side), and landed the most immediate "wow" for a betting
+    crowd: watching individual bankrolls bust at zero from pure variance despite a positive edge.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-07-gamblers-ruin-ctmc.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-07-nightly.html
+  - david-share commit 05ce1ba. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-10-07.json` written with the 3 forum picks + demo_url/demo_arxiv_id set to
+  the build-off winner; posted by `nightly.sh` via Sage, not by this run directly.
+
 ## 2026-10-04 — Cluster Mirage
 - **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`), clean fetch,
   no rate-limiting this time. 30 sampled round-robin across all 22 categories for ideation, 6 batches of 5.
