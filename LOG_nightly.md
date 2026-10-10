@@ -1,5 +1,77 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-09 — The Hedge Floor (recovered from stall)
+- **Note:** the 2026-10-09 run stalled after the 3-way build-off but before judging/publishing/logging —
+  same recurring pattern flagged on 2026-10-03/05/06/08. Found and finished on 2026-10-10: all 3 demos were
+  already built, so this was judge + publish only, no new fetch/ideation/build.
+- **Forum top-3 (from `digest_2026-10-09.json`, already posted by `nightly.sh` with an empty demo_url):**
+  - Non-blowup of stochastic heat equations by noise (arXiv:2609.13963) — noise rescues a superlinear
+    reaction term from finite-time blowup; variance as airbag, not enemy.
+  - Online Discrepancy Minimization for Sub-Gaussian Inputs via Regularization and Restriction
+    (arXiv:2608.10040) ← BUILT, won build-off
+  - Day-ahead Coordination of Virtual Power Plants via Deterministic Bi-Level Optimization (arXiv:2609.17927)
+- **Built (3-way build-off, judged headless via Playwright on 2026-10-10):**
+  - A — **Martingale Blowup Lab** (arXiv:2609.13963): two bankroll panels running a double-after-loss
+    martingale system, deterministic vs. real injected SDE noise (Euler–Maruyama in Lamperti-transformed
+    space, exact critical noise threshold σ_crit=√(2/p) derived and displayed). Runs clean, no bugs —
+    confirmed blowup math by hand-calc.
+  - B — **The Hedge Floor** (arXiv:2608.10040): live sportsbook risk-desk race — pure-greedy vs. the
+    paper's actual regularize-then-restrict algorithm (cosh(η·S) hedge potential restricted to top-k riskiest
+    coordinates) vs. random bookmaker, racing to keep running liability near zero against a √n reference
+    line. Runs clean, all controls work, three lanes visibly diverge matching the paper's claim.
+  - C — **Spread Setter: Vegas Moves First** (arXiv:2609.17927): sportsbook-leader Stackelberg game with a
+    "leader moves first" toggle. Underlying math was correct (margin $782 → -$8,342 under front-running,
+    confirmed by forcing state via console) but the on-page toggle — the demo's core mechanic — doesn't
+    respond to clicks in a real browser (checkbox hidden with no handler bridging it to the visible pill).
+    **Disqualified**: broken when actually exercised, despite correct math underneath.
+  - **Judge's pick: B (The Hedge Floor)** — both A and B ran bug-free with real underlying math; C
+    disqualified on interactivity. B edges out A: a live 3-lane race makes the paper's advantage immediately
+    visible and dynamic, where A's payoff is two static-ish line charts.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-09-the-hedge-floor.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-09-nightly.html
+  - david-share commit c29799c, pushed. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** backfilled `demo_url`/`demo_arxiv_id` in `digest_2026-10-09.json` on disk for
+  record-keeping; does not retroactively fix the already-posted Discord message (same caveat as 10-08).
+
+## 2026-10-08 — What Does 65% Even Mean (recovered from stall)
+- **Note:** the 2026-10-08 run stalled after the 3-way build-off but before judging/publishing/logging —
+  same recurring pattern flagged on 2026-10-03/05/06. Found and finished on 2026-10-09: all 3 demos were
+  already built and valid, so this was judge + publish only, no new fetch/ideation/build.
+- **Papers:** 176 fresh papers across 22 categories, 30 sampled round-robin, 6 ideation batches (per prior
+  run's artifacts — `ideation_2026-10-08.js`/`buildoff_2026-10-08.js`).
+- **Forum top-3 (all buildable-tonight):**
+  - What Does 65% Even Mean? / A Unifying Perspective on Probabilities as Model Predictions
+    (arXiv:2609.09855) ← BUILT, won build-off
+  - Segregation From Nothing / Relocation without preference: A destination-agnostic Schelling-type
+    metapopulation model (arXiv:2604.24998)
+  - Market Maker Arena / Optimal Market Making in the Chinese Stock Market (arXiv:2306.02764)
+- **Built (3-way build-off, judged in headless Chromium/Playwright on 2026-10-09):**
+  - A — **Segregation From Nothing** (arXiv:2604.24998): destination-agnostic relocation lattice sim with
+    a live segregation-index chart. Runs clean, no JS errors — but default sliders (relocations=250 vs
+    drift=35) sit in the well-mixed regime, so the demo's own default run doesn't visibly show the paper's
+    headline result without manually retuning (confirmed the mechanism is real by dialing relocations to 0).
+    Fidelity gap, not a broken build.
+  - B — **Market Maker Arena** (arXiv:2306.02764): stochastic-control bid/ask arcade game vs. simulated
+    order flow (noise + hidden informed trader), reservation-price formula drawn live as a "ghost quote."
+    Runs clean, formulas match the paper's result exactly.
+  - C — **What Does 65% Even Mean?** (arXiv:2609.09855): three linked panels — frequentist convergence,
+    single-event Bayesian credence, and a real calibration curve — reconstructing the paper's actual
+    Bayesian/frequentist reconciliation argument live. Runs clean, most interactive (7 sliders + 3 buttons).
+  - **Judge's pick: C** — all three ran bug-free (verified via headless Chromium: loaded each, drove every
+    control, checked console errors and canvas pixel data). C won on polish (dynamic narrative copy, not
+    just charts), interactivity, and fidelity — it reconstructs the paper's argument as three linked sims
+    rather than visualizing a single result. A was docked for a real out-of-the-box fidelity gap (needs
+    manual retuning to show its own headline effect); B was a close, clean second in a pure-finance setting.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-08-what-does-65-mean.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-08-nightly.html
+  - david-share commit 81da365. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-10-08.json` already existed with the 3 forum picks (and had presumably
+  already been posted by `nightly.sh` on the night of 2026-10-08 with an empty demo_url, since that step
+  runs independently of the build-off). Backfilled `demo_url`/`demo_arxiv_id` in the file on disk for
+  record-keeping, but this does not retroactively fix any already-sent Discord message.
+
 ## 2026-10-07 — Gambler's Ruin, the CTMC Way
 - **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`). First fetch
   attempt timed out at 2 minutes on cs.LG/cs.AI/cs.CL/cs.CR (checkpointed 32 papers); a `--resume` retry with
