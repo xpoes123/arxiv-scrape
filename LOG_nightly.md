@@ -1,5 +1,122 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-12 — Hot Hand Diffusion Lab
+- **Papers:** 168 fresh papers across 21 categories (cs.CR hit a 429 and returned 0), 30 sampled
+  round-robin, 6 ideation batches (`ideation_2026-10-12.js`).
+- **Top idea per category:**
+  - *Demo* — Clutch Gene or Statistical Ghost (arXiv:2610.02173): a model's "self-repair" after ablation
+    follows a fixed affine law set before the ablation, not heroic compensation — mapped onto a prop-market
+    "did he really step up" question.
+  - *Project* — Condensate Casino (arXiv:2607.07325): a driven KMP lattice reframed as a casino floor where
+    slight sharp-money bias condenses chip mass onto a shrinking, oscillating set of "whale" seats.
+  - *Startup* — CoupledOdds — SGP Fair-Price Engine (arXiv:2608.09513): multimarginal optimal transport over
+    correlated player-prop marginals to find same-game-parlay mispricing books leave on the table.
+  - *YouTube* — Why Your Poker Bot Calls a Friend (arXiv:2610.07816): step-level cloud handoff for small-model
+    agents, framed as a poker player re-reading hand strength street-by-street before calling in a bigger
+    stack.
+- **Forum top-3 (all buildable-tonight, all discussion_score 9):**
+  - Every Ablation Is a Dose: Counterweights and the Semblance of Self-Repair (arXiv:2610.02173)
+  - Steady-State Convergence of Stochastic Approximation (arXiv:2609.14922)
+  - Current fluctuations in a gas of active Ornstein-Uhlenbeck particles (arXiv:2608.25916) ← BUILT, won
+    build-off
+- **Built (3-way build-off, judged via Playwright — every slider/toggle driven with real input/click events,
+  not just traced statically):**
+  - A — **Clutch Gene or Statistical Ghost** (arXiv:2610.02173): 5-man lineup, each teammate's stat response
+    to a λ ("star involvement") slider follows a real per-player affine law E_r(λ)=own_r+γ_r·λ; a mode toggle
+    flips between the naive "he stepped up!" view and the counterweight view showing the full pre-drawn line.
+    Runs clean, verified λ=1 produces exact hand-computed values. Scored wow 7 / interactivity 7 / polish 9 /
+    fidelity 8 — thinnest control surface of the three.
+  - B — **Elo's Noise Floor** (arXiv:2609.14922): real Elo simulator — hidden true skill, logistic match
+    outcomes, K-factor slider, live rating trace + steady-state histogram compared against the paper's √K
+    theoretical scaling. Skill-shock and reveal-true-skill controls verified live. Scored wow 8 / interactivity
+    9 / polish 8 / fidelity 9 — richest control set, very close second.
+  - C — **Hot Hand Diffusion Lab** (arXiv:2608.25916): real discrete-time Ornstein-Uhlenbeck "bankroll
+    walkers" (not a fake streak hack) with a τ (persistence-time) slider; live log-log Var(t) plot with the
+    paper's closed-form theory curve overlaid, fitted exponent moving ~0.99 → ~1.6 as τ increases via real
+    keyboard-driven slider input. Scored wow 9 / interactivity 8 / polish 8 / fidelity 9.
+  - **Judge's pick: C (Hot Hand Diffusion Lab)** — all three ran bug-free with every control genuinely wired;
+    C wins on the most visually dramatic, most literal 1:1 proof of its paper's result (the fitted diffusion
+    exponent visibly bending off the slope-1 reference line as τ climbs).
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-12-hot-hand-diffusion-lab.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-12-nightly.html (also links the two runner-up demos, which
+    were registered in the manifest too so those links don't 404)
+  - david-share commit eac325e, pushed. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-10-12.json` written with `demo_url`/`demo_arxiv_id` pointing at the winner,
+  validated via `validate_digest.py` — `nightly.sh` posts it.
+
+## 2026-10-09 — The Hedge Floor (recovered from stall)
+- **Note:** the 2026-10-09 run stalled after the 3-way build-off but before judging/publishing/logging —
+  same recurring pattern flagged on 2026-10-03/05/06/08. Found and finished on 2026-10-10: all 3 demos were
+  already built, so this was judge + publish only, no new fetch/ideation/build.
+- **Forum top-3 (from `digest_2026-10-09.json`, already posted by `nightly.sh` with an empty demo_url):**
+  - Non-blowup of stochastic heat equations by noise (arXiv:2609.13963) — noise rescues a superlinear
+    reaction term from finite-time blowup; variance as airbag, not enemy.
+  - Online Discrepancy Minimization for Sub-Gaussian Inputs via Regularization and Restriction
+    (arXiv:2608.10040) ← BUILT, won build-off
+  - Day-ahead Coordination of Virtual Power Plants via Deterministic Bi-Level Optimization (arXiv:2609.17927)
+- **Built (3-way build-off, judged headless via Playwright on 2026-10-10):**
+  - A — **Martingale Blowup Lab** (arXiv:2609.13963): two bankroll panels running a double-after-loss
+    martingale system, deterministic vs. real injected SDE noise (Euler–Maruyama in Lamperti-transformed
+    space, exact critical noise threshold σ_crit=√(2/p) derived and displayed). Runs clean, no bugs —
+    confirmed blowup math by hand-calc.
+  - B — **The Hedge Floor** (arXiv:2608.10040): live sportsbook risk-desk race — pure-greedy vs. the
+    paper's actual regularize-then-restrict algorithm (cosh(η·S) hedge potential restricted to top-k riskiest
+    coordinates) vs. random bookmaker, racing to keep running liability near zero against a √n reference
+    line. Runs clean, all controls work, three lanes visibly diverge matching the paper's claim.
+  - C — **Spread Setter: Vegas Moves First** (arXiv:2609.17927): sportsbook-leader Stackelberg game with a
+    "leader moves first" toggle. Underlying math was correct (margin $782 → -$8,342 under front-running,
+    confirmed by forcing state via console) but the on-page toggle — the demo's core mechanic — doesn't
+    respond to clicks in a real browser (checkbox hidden with no handler bridging it to the visible pill).
+    **Disqualified**: broken when actually exercised, despite correct math underneath.
+  - **Judge's pick: B (The Hedge Floor)** — both A and B ran bug-free with real underlying math; C
+    disqualified on interactivity. B edges out A: a live 3-lane race makes the paper's advantage immediately
+    visible and dynamic, where A's payoff is two static-ish line charts.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-09-the-hedge-floor.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-09-nightly.html
+  - david-share commit c29799c, pushed. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** backfilled `demo_url`/`demo_arxiv_id` in `digest_2026-10-09.json` on disk for
+  record-keeping; does not retroactively fix the already-posted Discord message (same caveat as 10-08).
+
+## 2026-10-08 — What Does 65% Even Mean (recovered from stall)
+- **Note:** the 2026-10-08 run stalled after the 3-way build-off but before judging/publishing/logging —
+  same recurring pattern flagged on 2026-10-03/05/06. Found and finished on 2026-10-09: all 3 demos were
+  already built and valid, so this was judge + publish only, no new fetch/ideation/build.
+- **Papers:** 176 fresh papers across 22 categories, 30 sampled round-robin, 6 ideation batches (per prior
+  run's artifacts — `ideation_2026-10-08.js`/`buildoff_2026-10-08.js`).
+- **Forum top-3 (all buildable-tonight):**
+  - What Does 65% Even Mean? / A Unifying Perspective on Probabilities as Model Predictions
+    (arXiv:2609.09855) ← BUILT, won build-off
+  - Segregation From Nothing / Relocation without preference: A destination-agnostic Schelling-type
+    metapopulation model (arXiv:2604.24998)
+  - Market Maker Arena / Optimal Market Making in the Chinese Stock Market (arXiv:2306.02764)
+- **Built (3-way build-off, judged in headless Chromium/Playwright on 2026-10-09):**
+  - A — **Segregation From Nothing** (arXiv:2604.24998): destination-agnostic relocation lattice sim with
+    a live segregation-index chart. Runs clean, no JS errors — but default sliders (relocations=250 vs
+    drift=35) sit in the well-mixed regime, so the demo's own default run doesn't visibly show the paper's
+    headline result without manually retuning (confirmed the mechanism is real by dialing relocations to 0).
+    Fidelity gap, not a broken build.
+  - B — **Market Maker Arena** (arXiv:2306.02764): stochastic-control bid/ask arcade game vs. simulated
+    order flow (noise + hidden informed trader), reservation-price formula drawn live as a "ghost quote."
+    Runs clean, formulas match the paper's result exactly.
+  - C — **What Does 65% Even Mean?** (arXiv:2609.09855): three linked panels — frequentist convergence,
+    single-event Bayesian credence, and a real calibration curve — reconstructing the paper's actual
+    Bayesian/frequentist reconciliation argument live. Runs clean, most interactive (7 sliders + 3 buttons).
+  - **Judge's pick: C** — all three ran bug-free (verified via headless Chromium: loaded each, drove every
+    control, checked console errors and canvas pixel data). C won on polish (dynamic narrative copy, not
+    just charts), interactivity, and fidelity — it reconstructs the paper's argument as three linked sims
+    rather than visualizing a single result. A was docked for a real out-of-the-box fidelity gap (needs
+    manual retuning to show its own headline effect); B was a close, clean second in a pure-finance setting.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-08-what-does-65-mean.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-08-nightly.html
+  - david-share commit 81da365. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-10-08.json` already existed with the 3 forum picks (and had presumably
+  already been posted by `nightly.sh` on the night of 2026-10-08 with an empty demo_url, since that step
+  runs independently of the build-off). Backfilled `demo_url`/`demo_arxiv_id` in the file on disk for
+  record-keeping, but this does not retroactively fix any already-sent Discord message.
+
 ## 2026-10-07 — Gambler's Ruin, the CTMC Way
 - **Papers:** 176 fresh papers across 22 categories (`fetch_papers.py 8 $(($(date +%j)*3))`). First fetch
   attempt timed out at 2 minutes on cs.LG/cs.AI/cs.CL/cs.CR (checkpointed 32 papers); a `--resume` retry with
