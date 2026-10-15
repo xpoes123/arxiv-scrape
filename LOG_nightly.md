@@ -1,5 +1,53 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-15 — The Fitness Mirage
+- **Papers:** 176 fresh papers across 22 categories (per_cat=8, offset=day-of-year×3=864), 30 hand-picked
+  for diversity + buildability, 6 ideation batches (`ideation_2026-10-15.js`).
+- **Top idea per category:**
+  - *Demo* — The Fitness Mirage (arXiv:2510.20500): a hidden population's fitness ranking is recoverable
+    from noisy generation data only above a real solvability boundary — below it, no estimator, not even
+    the optimal one, can tell true skill from drift. Mapped onto "was your fantasy league champion even a
+    knowable question?"
+  - *Project* — Sit-Out Line (arXiv:2608.18875): an exact algorithm for every optimal partial Wasserstein
+    matching of points on a line, repurposed on posted sportsbook lines to find the complete menu of
+    guaranteed-middle pairings at every bet-count budget.
+  - *Startup* — Bot Arena: Emergent Market League (arXiv:2303.11959): a Discord sandbox where members'
+    trading bots trade against each other — the market emerges from their competition — with a
+    side-betting layer on which bot wins.
+  - *YouTube* — Nothing Deceives Like Success (arXiv:2604.27188): a social-learning model where a field
+    converges on whoever "looks successful" rather than on truth, reskinned as sports-betting tout culture.
+- **Forum top-3 (all buildable-tonight, all discussion_score 9, tag-bias-boosted top picks):**
+  - Fitness inference tested by in silico population genetics (arXiv:2510.20500) ← BUILT, won build-off
+  - Ratio-Dependent Contrarian Activation in Opinion Dynamics (arXiv:2604.27226)
+  - Reward Hacking and Agent Containment Failure: A Monte Carlo Study Based on the 2026 Hugging Face
+    Incident (arXiv:2609.32390)
+- **Built (3-way build-off, judged via headless jsdom/Playwright smoke tests driving real clicks, slider
+  events, and Monte Carlo runs — not just static review):**
+  - A — **The Fitness Mirage** (arXiv:2510.20500): real Wright-Fisher simulation of 12 lineages, drag-to-rank
+    guessing UI, an honestly-implemented MPL-style optimal estimator scored by Kendall τ against both the
+    user's guess and ground truth, plus a persistent log-log phase diagram across replays. Verified
+    end-to-end via Playwright (sliders → run → drag-rank → reveal) with zero console errors in both
+    solvable and mirage regimes.
+  - B — **Fade Phase Transition** (arXiv:2604.27226): 240-agent canvas swarm running the paper's exact
+    ratio-dependent contrarian-flip rule in triads; derived the real critical α*≈3.75 from the mean-field
+    recursion and confirmed it live in the stochastic sim. Best raw visual spectacle, but more a
+    watch-the-toy simulator than a scored game.
+  - C — **The 5-Leg Doom Parlay** (arXiv:2609.32390): sportsbook-styled parlay slip over the paper's
+    5-stage breach chain, live naive-average vs. correct-chained-probability gap, a correlation knob
+    (common-shock copula interpolating to the Fréchet bound), and an animated 100k-trial Monte Carlo
+    histogram. Tightest betting-genre fit and cleanest build (no CDN deps), but more a generic
+    averaging-fallacy lesson than paper-specific.
+  - **Judge's pick: A (The Fitness Mirage)** — richest actual scored game loop of the three, and its reveal
+    ("the optimal estimator failed too — this wasn't a try-harder problem") is the most direct, honestly
+    earned payoff of its cited paper's real result.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-15-fitness-mirage.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-15-nightly.html (also links the two runner-up demos,
+    registered in the manifest too so those links don't 404)
+  - david-share commits 057ceb4, a619a9f, pushed. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-10-15.json` written with `demo_url`/`demo_arxiv_id` pointing at the
+  winner, validated via `validate_digest.py` — `nightly.sh` posts it.
+
 ## 2026-10-12 — Hot Hand Diffusion Lab
 - **Papers:** 168 fresh papers across 21 categories (cs.CR hit a 429 and returned 0), 30 sampled
   round-robin, 6 ideation batches (`ideation_2026-10-12.js`).

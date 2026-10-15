@@ -1,0 +1,397 @@
+[
+  {
+    "type": "demo",
+    "title": "Frozen Lattice Gambit",
+    "paper_id": "2609.19905v1",
+    "pitch": "Single-file HTML canvas game straight out of the percolation-MDP setup: a d=2 integer lattice where every edge got a random payoff baked in before the token ever moves. Two modes side by side \u2014 'Fog' (you only see payoffs on edges touching your current cell, must commit each move live, classic online decision-making) and 'Oracle' (full lattice revealed, solved via backward-induction DP for the true optimal path over a fixed horizon). Drop a slider for horizon length and watch the gap between your fog-of-war score and the DP-optimal score open up \u2014 a visceral demo of the value of information when the randomness isn't adaptive, it's just pre-committed and waiting to be discovered.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 7,
+    "discussion_why": "Sparks a 'wait, is this even gambling?' debate \u2014 the payoffs are random but frozen before you start, so it's really an information/search problem wearing a gambling costume. Decision-theory and games crowd will argue about whether greedy online play ever beats a few steps of look-ahead.",
+    "tags": [
+      "games",
+      "decision-theory",
+      "math",
+      "gambling"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Flip the Vote",
+    "paper_id": "2608.18772v1",
+    "pitch": "Single HTML page: paste in any vote tally (election results, but also NBA MVP ballot points, All-Star fan voting, playoff seeding tiebreaks) and pick a voting rule \u2014 Plurality, Condorcet, STV. The page computes the paper's 'decisive margin': the exact amount of differential-privacy noise that can be injected before the winner becomes unreliable, then animates a Monte Carlo cloud of noisy re-runs showing what fraction actually flip the outcome at a chosen privacy budget epsilon. Side-by-side bar chart comparing how fragile each voting rule is for the same tally \u2014 some rules need way less noise to flip than others.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 9,
+    "discussion_why": "Directly hits the 'wait, really?' nerve \u2014 people assume vote totals are solid ground truth, but this shows exact fragility numbers. Doubles as sports-awards ammo (MVP voting controversies) and political debate fuel, with decision-theory rigor backing it instead of vibes.",
+    "tags": [
+      "decision-theory",
+      "math",
+      "econ",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Bot Arena: Emergent Market League",
+    "paper_id": "2303.11959v2",
+    "pitch": "A persistent Discord-integrated sandbox implementing the paper's multi-agent RL trading setup: members submit short, sandboxed trading scripts (simple buy/sell/hold API over a simulated order book) that all get dropped into the same arena and trade against EACH OTHER \u2014 the market literally emerges from their competition, same as the paper's self-play agents. Weekly season with a leaderboard, and a side-betting layer where other members wager server points on which bot wins each round. Monetizable as a 'write your own quant, no capital at risk' onboarding funnel for a real paper-trading or SharpLab-adjacent product.",
+    "cool_score": 9,
+    "buildable_score": 5,
+    "discussion_score": 9,
+    "discussion_why": "Hits every angle: AI bots competing is inherently watchable (esports energy), betting on the outcome layers gambling directly onto decision-theory, and 'whose bot exploited the others' is exactly the kind of drama that generates ongoing Discord threads.",
+    "tags": [
+      "ai",
+      "econ",
+      "betting",
+      "games",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Concentration Regime Flag",
+    "paper_id": "2609.27113v2",
+    "pitch": "A lightweight tracker (fits naturally into SharpLab) that computes the Herfindahl-Hirschman-style market concentration index for the S&P 500 daily and flags, per the paper's stochastic-portfolio-theory result, which regime we're in: diversified (equal-weight should beat cap-weight) vs. concentrated (cap-weight wins). Posts a weekly 'EW vs CW verdict' card with the live concentration number so the 'just buy the index' debate has an actual rigorous referee instead of vibes-based takes.",
+    "cool_score": 6,
+    "buildable_score": 7,
+    "discussion_score": 6,
+    "discussion_why": "Classic finance-bro debate ('equal weight or cap weight') gets a hard quantitative referee, which is satisfying but less surprising/whimsical than the other three \u2014 solid econ nerd fuel rather than a jaw-dropper.",
+    "tags": [
+      "econ",
+      "math",
+      "betting"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The Tell: Bayesian Market Impact as Poker Signaling",
+    "paper_id": "2303.08867v4",
+    "pitch": "Single-file HTML toy where you're a Bayesian market maker watching an informed trader's meta-order get sliced into clips. Each clip updates your posterior on their true size, and the price impact curve you watch emerge live traces the paper's sqrt(Q) law -- not because of mechanical slippage, but because every order is a 'tell' the maker is reading. A slider lets you control how fast the trader dumps size (aggressive blast vs. slow drip); dumping fast = big tells = big impact, exactly like over-betting a strong hand gives away the read. A side-by-side panel reframes it explicitly as GTO bet-sizing vs. range protection so poker players get the 'wait, this IS the same math' moment.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 8,
+    "discussion_why": "Directly bridges poker tells/bet-sizing with institutional trading mechanics -- a genuine 'the math is identical' surprise that poker and markets people will both argue about (is bluffing really just order-splitting?), plus clean decision-theory/math framing.",
+    "tags": [
+      "poker",
+      "betting",
+      "decision-theory",
+      "math",
+      "gambling"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "LP Blender: How Much Fee Keeps You From Getting Sniped",
+    "paper_id": "2305.14604v2",
+    "pitch": "Single HTML page simulating a constant-product AMM pool under a random-walk external price with discrete block times, directly implementing the fee-augmented Milionis et al. model from the paper. You play LP (pick the fee in bps) while a bot arbitrageur auto-snipes every block where mispricing exceeds the fee; live bars track LP bleed vs. arb profit. Crank the fee to zero and watch LPs get vacuumed dry every block; crank it too high and volume (and your fee income) dies -- turning the paper's closed-form bleed-vs-fee curve into a playable breakeven hunt.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 7,
+    "discussion_why": "Gambling/econ crowd loves a concrete 'here's exactly how much you're getting fleeced' number, and the LP-vs-arbitrageur framing is basically a casino-edge argument in DeFi clothing -- good debate fuel on whether providing liquidity is ever +EV.",
+    "tags": [
+      "gambling",
+      "econ",
+      "games",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Nothing Deceives Like Success: Why Your Favorite Capper Is Probably a Fluke",
+    "paper_id": "2604.27188v1",
+    "pitch": "A video that takes the paper's social-learning model -- scientists copying whichever method 'looks successful' and converging on a confident but wrong consensus -- and reskins it as sports betting tout culture. Run the paper's toy simulation live on screen: seed a population of cappers with random noise-level edges, let them copy whoever's hottest over a rolling window, and show the population converging on a shared 'system' that has zero real predictive power, purely because success is a terrible proxy for correctness in a short sample. Punchline: the field (and the Discord) doesn't drift toward truth, it drifts toward whoever got lucky loudest.",
+    "cool_score": 8,
+    "buildable_score": 6,
+    "discussion_score": 9,
+    "discussion_why": "Extremely relatable and slightly inflammatory for a betting Discord -- everyone has opinions on touts and hot-hand cappers, the underlying claim is genuinely surprising ('the whole field converges on an illusion, not the truth'), and it gives people a rigorous-sounding reason to roast whoever's been bragging about their last 5 picks.",
+    "tags": [
+      "sports",
+      "betting",
+      "decision-theory",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Order Flow Food Web: A Sportsbook Market-Maker Sandbox",
+    "paper_id": "2303.07393v4",
+    "pitch": "Port the paper's three-trophic-level market ecosystem -- optimal-execution RL agents, dumb liquidity takers, fast electronic market makers -- into a sportsbook line-movement sandbox: sharp bettors (RL agents optimizing CLV), squares (noise bettors chasing public teams), and a bookmaker algo (market maker adjusting the line/vig). Run it to see what equilibrium strategies emerge -- does the bookmaker's optimal vig-widening response to sharp pressure reproduce real steam-move patterns? Useful as an actual backtest sandbox for SharpLab before risking real money on a CLV strategy, and as a feeder demo showing why lines move the way they do.",
+    "cool_score": 8,
+    "buildable_score": 5,
+    "discussion_score": 7,
+    "discussion_why": "Speaks directly to the betting/decision-theory crowd's favorite question -- 'why did the line move like that' -- with a rigorous multi-agent model instead of vibes, and doubles as real infra for SharpLab, which gives it staying power beyond a one-off chat topic.",
+    "tags": [
+      "betting",
+      "sports",
+      "ai",
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The Fitness Mirage",
+    "paper_id": "2510.20500",
+    "pitch": "Single HTML page: a hidden population of N genotypes each has a secret fitness value; you watch noisy generation-by-generation frequency data roll in (like watching win/loss records accumulate) and try to rank genotypes by eyeballing trajectories. A toggle reveals the paper's actual solvability boundary -- population size N vs selection strength s vs drift -- and shows your guessed ranking's Kendall tau against ground truth. Below the threshold line, no estimator (yours or the optimal one) can recover the true order; above it, it snaps into focus. Reframe as: 'your 12-team fantasy league decided a champion from one season of noisy results -- was that even a knowable question?' Same math underlies trying to infer 'true skill' from a short win streak or a small-sample batting average.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "Directly weaponizes a 'wait, really? sample size X is fundamentally unrankable no matter how clever you are' surprise against the classic sports-bar argument of 'the standings don't lie' -- hits decision-theory/math tags hard and is catnip for a betting/poker crowd obsessed with variance vs skill.",
+    "tags": [
+      "math",
+      "bio",
+      "decision-theory",
+      "sports",
+      "betting",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Fade Phase Transition",
+    "paper_id": "2604.27226v1",
+    "pitch": "Interactive sim of groups-of-3 agents voting majority/minority, where each agent's chance of flipping to contrarian ('devil's advocate') is driven by the local minority:majority ratio instead of a fixed coin flip. A single slider for the contrarian-activation exponent sweeps the system through the paper's exact phase transition -- below critical r, the crowd locks into consensus (the 'public tails the favorite' regime); above it, the system oscillates/fragments into permanent 2-1 churn, i.e. perpetual line movement with no settling point. Overlay it as a toy sportsbook: public bettor swarm + a tunable 'sharp contrarian dial' and watch when fading the public stops working because the market itself has gone chaotic.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 9,
+    "discussion_why": "Maps an exact, provable phase transition onto 'when does fading the public actually work' -- a live debate on every betting Discord -- plus the whimsy of watching three dots argue themselves into chaos is inherently shareable.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "gambling",
+      "physics",
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Hot Hand With Memory",
+    "paper_id": "2510.19843",
+    "pitch": "Replace the memoryless exponential 'recovery rate' in the paper's SIR-with-oscillating-kernel model with a streak model for shooting/poker runs: instead of assuming a cold streak ends with a constant per-shot probability (memoryless), give it an oscillating time-delay kernel so a shooter's 'infectious period' of confidence rings and decays non-monotonically, matching the real bursty, clustered pattern of hot/cold streaks box-score data actually shows. Build it as a small analysis tool/bot feature: feed in a player's game log, fit the kernel, output a 'momentum half-life with ringing' instead of a flat hot-hand score, and backtest whether it predicts next-game performance better than a plain moving average.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 8,
+    "discussion_why": "The hot-hand debate is the single most argued-about topic in sports betting circles ('fallacy or real'); giving it a legit epidemiological memory-kernel treatment instead of hand-wavy vibes is a strong surprise/legitimacy hook, good math+sports+betting overlap.",
+    "tags": [
+      "sports",
+      "betting",
+      "math",
+      "decision-theory",
+      "bio"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Slang Drift Clock",
+    "paper_id": "2510.22220",
+    "pitch": "Tiny HTML toy implementing the paper's cleaner probabilistic Swadesh-style lexicon-replacement model: feed it two wordlists (or two poker/betting slang glossaries -- e.g. 'book' vs 'sportsbook', 'juice' vs 'vig') and it estimates word-death/replacement rates to back out an estimated 'time since split' between the two, with a confidence band instead of a single fake-precise number. Ships preloaded with a joke dataset of regional poker/betting slang so you can ask 'how many years since East Coast and West Coast poker lingo diverged?' and get a real stochastic-process answer, not a guess.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 6,
+    "discussion_why": "Mostly whimsy and linguistics-adjacent rather than core betting math, but the novelty of running real glottochronology on poker slang is a fun, debate-sparking curiosity that plays well in a games-and-whimsy channel even if it doesn't touch odds directly.",
+    "tags": [
+      "whimsy",
+      "bio",
+      "math",
+      "poker",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Braess's Paradox Playground",
+    "paper_id": "2609.32738v1",
+    "pitch": "Single-file HTML/SVG commuter network (4-6 nodes, edges with free-flow + congestion-dependent delay matching the paper's time-varying flow model). Toggle an extra 'shortcut' edge on and watch total travel time spike even though you just added capacity -- the classic paradox, live. A second mode lets you build networks using the paper's actual topological characterization of Braess-proof graphs; try to break one and get a green 'immune' vs red 'vulnerable' badge based on the real theorem, not vibes.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "Braess's paradox is the ultimate 'more capacity made everyone worse off' surprise, and it maps straight onto decision-theory bar arguments the server already has -- adding legs to a parlay, adding a sportsbook/liquidity source, adding bench depth to a roster. Classic high-surprise, high-relatability bait.",
+    "tags": [
+      "math",
+      "econ",
+      "decision-theory",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Hot Hand or Passive Echo",
+    "paper_id": "2603.08409v2",
+    "pitch": "The centipede paper's punchline is that a perfectly coordinated-looking body wave can be a pure passive mechanical echo of leg contacts, with no active muscle driving it -- you literally cannot tell active from passive by eyeballing the wave. Port that exact ambiguity to shooting streaks: a single-file demo generates make/miss sequences from two hidden processes, a genuinely serially-correlated 'hot' shooter and an iid shooter whose random makes just happen to cluster (the passive echo). Visitors watch an animated streak, guess active vs passive, then see the generating process and a live rolling hot-hand statistic reveal how often they got fooled.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 9,
+    "discussion_why": "Piggybacks on the single most-argued stat-debate in sports betting (does the hot hand exist) while anchoring it in an actual bio-mechanics result -- 'science just showed coordinated-looking motion can be fake' is a strong, surprising hook, and it's squarely in the server's sports/betting wheelhouse.",
+    "tags": [
+      "sports",
+      "bio",
+      "decision-theory",
+      "betting",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Sit-Out Line",
+    "paper_id": "2608.18875v1",
+    "pitch": "The paper's algorithm finds every optimal partial matching of points on a line under Wasserstein cost in one sweep -- for every possible 'how many pairs do you want' budget, who pairs with whom, and who's best left unmatched. Repurpose it on posted sportsbook lines: feed in totals/spreads/prop numbers across books (or model vs market numbers) as points on a number line and get back the complete menu of optimal hedge/middle pairings at every bet-count budget, plus explicit call-outs on which lines have no edge and should sit out. Generalizes the sharp's manual 'eyeball the middle' trick into an exact, exhaustive algorithm, pluggable straight into SharpLab's odds pipeline.",
+    "cool_score": 7,
+    "buildable_score": 7,
+    "discussion_score": 8,
+    "discussion_why": "Pure sharp-bettor bait -- 'which lines actually pair for a guaranteed middle and how many should you place' is a real argument sharps already have by hand; the paper gives a provably complete, exact version of that heuristic, which is a nice 'wait, there's real math under this' surprise.",
+    "tags": [
+      "betting",
+      "gambling",
+      "math",
+      "decision-theory",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Recolor Golf",
+    "paper_id": "2609.32688v1",
+    "pitch": "The paper bounds the diameter of the 'recoloring graph' -- how many single-vertex recolors it takes to walk from any valid coloring of a graph to any other, under a max-average-degree constraint. Build a tiny puzzle-golf demo: a small random graph with a start coloring and a target coloring, click vertices to recolor one at a time (must stay proper), and try to beat a 'par' pulled straight from the paper's theoretical upper-bound formula. Leaderboard framing: 'beat the bound.'",
+    "cool_score": 6,
+    "buildable_score": 9,
+    "discussion_score": 6,
+    "discussion_why": "More niche math-puzzle appeal than betting-core -- the speedrun/par-beating framing fits the server's puzzle-golf crowd and games/math tags, but it has less direct betting surprise or relatability than the other three, so it's scored more modestly on discussion.",
+    "tags": [
+      "math",
+      "games",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Pattern Secretary: Stop the Stream",
+    "paper_id": "2608.19050v1",
+    "pitch": "Single-file HTML toy: numbers stream across the screen one at a time (classic secretary-problem style, can't go back). Instead of just 'spot the running max,' you pick a target permutation pattern first -- increasing run, zigzag, a custom shape you draw -- and the page runs the paper's exact DP live underneath to show you the optimal stopping boundary as a ghost line while you play. You click 'STOP' when you think you've embedded your pattern; it reveals whether the optimal-stopping oracle would've stopped earlier/later and tracks your win rate vs the theoretical scaling-law ceiling over many rounds. Basically: 'can you out-think the math on when to fold your hand/offer/date.'",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 8,
+    "discussion_why": "Directly dresses up optimal stopping -- the math underneath 'when do I fold,' 'when do I stop swiping,' 'when do I lock in a bet' -- as a playable game people can brag about beating (or losing to) the optimal algorithm. Surprise factor: most people know the secretary problem for 'biggest number ever' but not that it generalizes to ANY pattern shape with its own scaling law.",
+    "tags": [
+      "decision-theory",
+      "poker",
+      "games",
+      "math",
+      "gambling"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Is Your Neighbor's Biggest Factor a Coin Flip?",
+    "paper_id": "2609.15166v1",
+    "pitch": "Single-file HTML page that turns the Erdos-Turan-style conjecture into a literal betting game: generate consecutive shifted primes p, p+2 live (precomputed table for speed), compute whether p's largest prime factor below y beats p+2's, and let the user 'call heads or tails' before each reveal. A running scoreboard shows your call accuracy converging toward 50% exactly as the still-unproven conjecture predicts -- with a side panel showing the actual (surprisingly stubborn) deviation from 50/50 at small y, which is precisely what the paper is chasing down with hard analytic number theory.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 7,
+    "discussion_why": "Whimsical because it's dressing up a dense number-theory conjecture as literally a coin-flip bar game. Surprise: a 'obviously 50/50' claim that nobody can actually prove is catnip for a gambling-brained crowd that loves exploiting edges in things 'everyone knows' are fair.",
+    "tags": [
+      "math",
+      "gambling",
+      "whimsy",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Contrarian Crowd: an Ising-Market Herding Simulator",
+    "paper_id": "2608.18612v1",
+    "pitch": "Antiferromagnetic Ising = neighbors WANT to disagree (vs. ferromagnetic herding where neighbors want to match). Build a visual simulator/sandbox where nodes are bettors on a bracket or a prop market, edges are 'who argues with whom,' and you can dial the interaction strength toward the paper's proven uniqueness threshold -- below it, sampling/estimating the market's equilibrium distribution is provably fast (their new FPRAS); above it, it's provably hard (multimodal, chaotic). Overlay real betting-market consensus/contrarian splits and let users see which regime a given market is actually in. Longer-term: a real decision-support tool for spotting when a market's 'wisdom of crowds' partition function is actually tractable to estimate vs. fundamentally unstable.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 7,
+    "discussion_why": "Physics-to-markets crossover is a reliable 'wait, really?' hook, and framing contrarian betting crowds as antiferromagnets gives the Discord something concrete to argue about (is this market 'below threshold' right now?). Less immediately bettable than the other two but has real legs as a build.",
+    "tags": [
+      "physics",
+      "econ",
+      "betting",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The 50-Year-Old Algebra Guess That Was Just Proven Wrong",
+    "paper_id": "2609.32651v1",
+    "pitch": "Short explainer video: what's a semifield (multiplication without full division), what did Kaplansky bet on in the 70s about 5-dimensional ones, and how did this paper not just poke a hole but construct an ENTIRE INFINITE FAMILY of counterexamples across prime dimensions -- the mathematical equivalent of someone saying 'I don't just think you're wrong, here's a vending machine that prints counterexamples forever.' Framed as a story about a famous mathematician's confident public guess finally getting receipts, decades later.",
+    "cool_score": 8,
+    "buildable_score": 5,
+    "discussion_score": 6,
+    "discussion_why": "Pure 'the famous guess was wrong' narrative sparks the same energy as a bad beat story -- confident expert, decades of silence, then a definitive gotcha. Less gambling-adjacent directly but strong whimsy and 'wait, a 50-year conjecture just... fell?' surprise.",
+    "tags": [
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Sharp or Trigger-Happy: A Signal-Detection Dashboard for Your Picks",
+    "paper_id": "2610.15415v1",
+    "pitch": "Single-file HTML tool implementing the paper's split of d' (sensitivity, can-you-actually-tell signal) from c (criterion, are-you-just-bet-happy or bet-shy). Paste in a pick history (win/loss + confidence) or drag sliders to simulate a capper, and it plots the ROC curve, computes z(hit rate) - z(false-alarm rate) = d' and -0.5*(z(hit)+z(fa)) = c live, and labels you: 'Sharp, well-calibrated' vs 'Lucky but reckless' vs 'Knows the signal, too scared to fire.' Canvas + vanilla JS, no backend, just inverse-normal CDF math.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 8,
+    "discussion_why": "Directly answers the eternal Discord argument 'is this guy actually sharp or just loud' with real math instead of vibes -- high relatability, clean betting/decision-theory fit, and the reveal that two cappers with identical win rates can have wildly different d'/c is a genuine 'wait, really?' moment.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The 5-Leg Doom Parlay: Monte Carlo Containment-Breach Simulator",
+    "paper_id": "2609.32390v1",
+    "pitch": "Reframe the paper's 5-stage chain (reward hacking -> containment escape -> usable access -> persistence -> detection failure) explicitly as a parlay slip. Single HTML file: 5 sliders for per-leg probability, a button that runs 100,000 client-side Monte Carlo trials, a live histogram of outcomes, and a running tally comparing the naive 'just average the legs' intuition against the correct multiplied probability -- the same error people make parlaying NBA player props. Chart via plain canvas, no libraries needed.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 9,
+    "discussion_why": "Pure gambling math wearing an AI-safety costume -- lets the server argue about 'is a 70%-per-stage AI escape actually scary' the same way they argue about 5-leg parlays, with the delightful whiplash of realizing rogue-AI risk assessment and degenerate parlay math are the literal same formula.",
+    "tags": [
+      "gambling",
+      "betting",
+      "ai",
+      "decision-theory",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Same Average, Different Animal: Distributional Discontinuity for Betting Cutoffs",
+    "paper_id": "2602.19290v1",
+    "pitch": "Build a weekend tool applying the paper's RDD-to-Wasserstein-distance extension to real sports cutoffs -- rest-day thresholds, trade-deadline team records, salary-cap-tax lines, injury-report designations (questionable vs probable). Pull box-score/prop data just above and below each cutoff, and instead of just t-testing the means, plot full outcome distributions and the Wasserstein distance between them. The payoff: cutoffs that look like 'no edge' on average win rate but hide a real shift in variance or shape (e.g. same median points but fatter blowout tails) -- exactly the kind of signal a line-mover would pay for.",
+    "cool_score": 7,
+    "buildable_score": 5,
+    "discussion_score": 8,
+    "discussion_why": "Challenges the sports-betting community's default habit of only checking averages at a cutoff -- showing identical means with different spreads is a sharp, surprising result that maps straight onto real betting decisions (variance plays, same-game parlays near a threshold), strong econ+sports+betting fit.",
+    "tags": [
+      "econ",
+      "sports",
+      "betting",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Herd Market: Watching the Line Converge from a Swarm of Bettors",
+    "paper_id": "2609.19769v1",
+    "pitch": "Single-file canvas particle simulation where each dot is a 'bettor' whose confidence evolves by a McKean-Vlasov-style SDE: drift depends on the current population density of everyone else's confidence, plus individual noise. Run it and watch the particle cloud's density (histogram overlay) tighten and converge over time into a stable peak -- a visual proof-by-demo of the paper's density-level convergence result, framed as 'this is literally why closing lines are efficient: the swarm converges strongly, not just on average.' A toggle lets you inject a 'whale' particle and watch it drag the whole density before it re-converges.",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 6,
+    "discussion_why": "Visually satisfying (swarm-to-line convergence is mesmerizing and shareable) and gives bettors a real mental model for why closing lines are sharp, but the underlying math is abstract enough that the debate payoff is more 'huh, neat' than argument-starter.",
+    "tags": [
+      "math",
+      "physics",
+      "betting",
+      "econ"
+    ]
+  }
+]
