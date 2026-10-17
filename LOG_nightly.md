@@ -1,5 +1,38 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-16 — Sperm Derby (recovered from stall)
+- **Note:** the 2026-10-16 run stalled after the 3-way build-off but before judging/publishing/logging —
+  same recurring pattern as 09-14/09-16/10-03/05/06/08/09. Only 2 of 3 builds finished (`spite-snap`, the
+  ultimatum-game build, never wrote its file); found and finished on 2026-10-17: judge + publish only,
+  no new fetch/ideation/build.
+- **Forum top-3 (from `digest_2026-10-16.json`, already posted by `nightly.sh` with an empty demo_url
+  that night — this session backfilled the file after the fact for the record):**
+  - Prejudice driven spite: A discontinuous phase transition in ultimatum game (arXiv:2510.18889) —
+    intended 3rd build-off entry, never finished
+  - Machine learning predictions from unpredictable chaos (arXiv:2503.14956)
+  - Oscillatory Active Brownian Motion: A Minimal Model for Sperm Dynamics (arXiv:2607.12158) ← BUILT,
+    won build-off
+- **Built (2-way build-off, judged by a subagent that opened both files and drove their real controls —
+  clicked bets, ran races, fast-forwarded heats, toggled sliders):**
+  - B — **The Hidden Shape of Chaos** (arXiv:2503.14956): logistic-map chaos generator, scrolling
+    "looks random" bit strip, live delay-embedding scatter resolving into a parabola, naive-vs-topological
+    accuracy race (naive pinned ~50%, topological climbed to 97%). Runs clean, zero console errors.
+    Scored 34/40 (wow 8 / interactivity 8 / polish 9 / fidelity 9).
+  - C — **Sperm Derby** (arXiv:2607.12158): parimutuel racer derby on real per-tick Euler–Maruyama
+    oscillatory-ABM dynamics, amplitude/frequency/noise sliders, a chip-betting panel with correct pooled
+    payouts, fast-forward mode converging empirical win rates toward a theory estimate from the same
+    physics. Runs clean, zero console errors. Scored 36/40 (wow 9 / interactivity 9 / polish 9 /
+    fidelity 9).
+  - **Judge's pick: C (Sperm Derby)** — equally rigorous physics-to-pixel fidelity to B, but a richer
+    interaction surface (betting, fast-forward, live theory-vs-empirical convergence) and stronger
+    game-like wow factor.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-16-sperm-derby.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-16-nightly.html (also links the runner-up demo)
+  - david-share commit 20f52bf, pushed. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-10-16.json` backfilled with `demo_url`/`demo_arxiv_id` for the record;
+  the live Discord post that night already went out with no demo link (posted before the stall).
+
 ## 2026-10-15 — The Fitness Mirage
 - **Papers:** 176 fresh papers across 22 categories (per_cat=8, offset=day-of-year×3=864), 30 hand-picked
   for diversity + buildability, 6 ideation batches (`ideation_2026-10-15.js`).

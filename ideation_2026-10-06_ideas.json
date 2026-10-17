@@ -1,0 +1,366 @@
+[
+  {
+    "type": "project",
+    "title": "Drift Sentinel: catch pipelines that are correct once",
+    "paper_id": "2610.02363v1",
+    "pitch": "ArrivalBench's core finding is that agent-generated data pipelines pass their initial tests and then silently break as the arrival distribution (timing, schema, volume) drifts \u2014 they're 'correct once, wrong under time.' Build a watchdog for SharpLab/nba-modeling's own ingestion pipelines (odds feeds, box-score scrapers) that doesn't just re-run unit tests but re-validates time-windowed invariants nightly: null-rate drift, schema drift, arrival-latency drift, value-range drift vs. a rolling baseline. Every green CI run gets a second, delayed 'arrival check' a week later. This is literally the SharpLab failure mode David already worries about (a backtest validator that was correct at build time, wrong three weeks into the season) formalized as a benchmark finding and turned into a concrete nightly job.",
+    "cool_score": 6,
+    "buildable_score": 8,
+    "discussion_score": 8,
+    "discussion_why": "Extremely relatable to anyone running a betting/trading pipeline: 'my model worked in backtest, why is it bleeding now' is a universal lament, and decision-theory/betting tags are upweighted this week. Surprise factor is moderate (everyone suspects drift, few formalize it this cleanly as 'correct once').",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Witness Box: a lockbox that opens only if you prove you won",
+    "paper_id": "2609.18275v1",
+    "pitch": "Witness encryption lets you encrypt a message so it can only be decrypted by anyone who produces a valid witness to an NP statement \u2014 no secret key, no trusted third party. Build a single-file HTML toy: a 'bounty box' where the payout message is locked behind a tiny NP puzzle (a 4x4 Sudoku corner, a 3-coloring of a small graph, or 'enter the five cards that make a flush'). Typing in a valid witness client-side unlocks the box instantly; anything else doesn't, with no server ever checking your answer. Frame it explicitly as the crypto primitive behind trustless escrow: 'the pot opens for whoever can prove they had the winning hand' \u2014 no bookmaker holding the money.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 7,
+    "discussion_why": "Whimsical and a little magic-trick feeling (unlocking secrets with math, not permission) \u2014 good shareability. Decision-theory/betting angle (trustless payout escrow, no central bookmaker) is a real discussion starter about P2P betting pools and whether 'provably fair' crypto schemes could replace sportsbooks.",
+    "tags": [
+      "gambling",
+      "decision-theory",
+      "whimsy",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Free Boundary Playground: when the obstacle problem tells you to fold",
+    "paper_id": "2609.12979v1",
+    "pitch": "The bilateral parabolic obstacle problem is the math behind optimal stopping with both a floor and a ceiling (stop-loss and take-profit, or 'cash out now vs. let it ride' with a max payout cap). The paper's result is that the solution map's free boundary moves differentiably as you perturb the obstacles/drift. Build an interactive finite-difference solver in a single HTML/JS file: sliders for upper obstacle (payout cap), lower obstacle (stop-loss floor), and drift/volatility, rendering the live option value surface plus the 'free boundary' curve (the exact moment the optimal strategy is to stop). Add a second overlay showing the *directional derivative* of that boundary as you nudge one parameter \u2014 i.e., exactly how much earlier/later you should cash out if volatility ticks up.",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 8,
+    "discussion_why": "Directly maps onto live in-play cash-out strategy and stop-loss/take-profit debates that run constantly on betting/trading Discords \u2014 seeing the optimal-stop boundary move in real time as you drag a volatility slider is the kind of 'oh that's why' moment that generates argument. Math + decision-theory tags both upweighted.",
+    "tags": [
+      "decision-theory",
+      "math",
+      "betting"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Proof-of-Pick: trustless P2P prop betting via witness encryption",
+    "paper_id": "2609.18275v1",
+    "pitch": "Extend the witness-encryption primitive into an actual product: two bettors lock a wager into a witness-encrypted payout where the 'witness' is a signed, timestamped oracle attestation of the game outcome (e.g., a published final score feed). Whoever can produce the correct witness unlocks the funds \u2014 no sportsbook, no escrow agent, no counterparty risk, and disputes are mathematically impossible once the oracle data is public. Thin layer on top of existing oracle feeds (same ones SharpLab already ingests) plus a generic-group witness-encryption library.",
+    "cool_score": 7,
+    "buildable_score": 5,
+    "discussion_score": 8,
+    "discussion_why": "Trustless P2P betting is a perennial hot debate on gambling/decision-theory forums \u2014 legality, counterparty trust, 'why do we even need a bookmaker' arguments write themselves, and the crypto mechanism is genuinely novel to most of the audience, so good surprise value.",
+    "tags": [
+      "gambling",
+      "betting",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "MACE Parlay Forge: maximally machine-learnable betting baskets",
+    "paper_id": "2306.05568v2",
+    "pitch": "The paper's MACE algorithm doesn't ask 'which stock will rise' \u2014 it alternates a Random Forest forecaster against a constrained Ridge Regression to find the *weighted combination of securities* whose resulting synthetic security is maximally predictable (a multivariate, nonlinear generalization of Lo & MacKinlay's predictability portfolios). Port that exact alternating-optimization loop to SharpLab: instead of stocks, the 'assets' are correlated prop lines / same-game legs / cross-book prices. Output isn't 'bet leg X' but a constructed basket (position sizes across legs) engineered to be the single most ML-forecastable synthetic line available that night \u2014 then hunt for the book that doesn't price that specific linear combination correctly. It directly operationalizes 'the edge isn't in any one leg, it's in the basket' as a solvable optimization rather than a vibe.",
+    "cool_score": 8,
+    "buildable_score": 6,
+    "discussion_score": 9,
+    "discussion_why": "Max SharpLab-fit (betting + decision-theory, both net-positive tags this week): it reframes handicapping as basket-construction, which is exactly the kind of 'wait, that's not how anyone actually builds a parlay' claim that gets arguments going about whether this is real edge-finding or just correlation-laundered overfitting dressed up as a stock-picking paper.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Clutch or Chaos: the Berry-Tabor spacing tester",
+    "paper_id": "2609.03112v1",
+    "pitch": "The paper proves a Berry-Tabor theorem for the repulsive three-particle trigonometric Sutherland model: its energy levels, which you'd expect to show rigid level-repulsion (like typical integrable quantum spectra), instead become genuinely Poisson-random once the coupling constant satisfies a Diophantine condition \u2014 reducing to Marklof's theorem on inhomogeneous quadratic forms. Build a single-file HTML toy: paste in any event sequence (clutch 3-pointers, bad-beat timestamps, your own bankroll swing checkpoints), compute nearest-neighbor spacing statistics, and plot the empirical distribution against the Poisson curve vs. the GUE/rigid-repulsion curve. A slider literally retunes a 'coupling constant' knob from rational to irrational and you watch the histogram unfreeze from clustered/rigid into flat Poisson noise in real time \u2014 the actual mechanism from the proof, made tactile.",
+    "cool_score": 9,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "discussion_why": "Pure single-file canvas demo (no backend) gives it high buildability tonight; the discussion pull is the counterintuitive physics (deterministic repulsive systems can hide true randomness behind a number-theoretic knob) collides nicely with sports-forum gambler's-fallacy debates about whether 'hot streaks' or 'clustered bad beats' are real or just pattern-matching on noise \u2014 math/physics tags carry it, decision-theory ties it back to betting intuition.",
+    "tags": [
+      "math",
+      "physics",
+      "decision-theory",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Network Medic: patch the single point of failure",
+    "paper_id": "2608.03830v1",
+    "pitch": "The paper gives an O*(36^k) FPT algorithm for picking the minimum-cost set of \u2264k candidate links to add so a graph becomes 2-vertex-connected (survives any single node's removal) \u2014 a huge jump down from the prior k^O(k) brute force. Turn the problem itself into a puzzle: generate a small fragile network (an odds-feed topology, a bracket dependency graph, whatever skin fits), show which single node is a killer cut-vertex, let the player click candidate edges (each with a displayed cost) to buy robustness, then reveal the true optimum cost (brute-forceable at this size) and your score vs. it. Simple canvas/SVG graph UI, no backend, scoring is just 'did you find the min-cost fix' \u2014 the FPT algorithm's actual insight (cut-vertex isolation via a Cut&Count-style cancellation trick) becomes a 60-second lightbulb about why 'just add one redundant link' is almost never the right one.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 6,
+    "discussion_why": "Easiest build of the batch (small-graph puzzle, brute-force verifier, zero deps) but the discussion pull is narrower \u2014 math/games crowd will like the puzzle, and there's a decision-theory angle (minimum-cost robustness budgeting under a failure model) that resonates with infra-reliability talk, but it doesn't touch betting/poker directly so it caps lower than the other two.",
+    "tags": [
+      "games",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Prime Sumset Roulette",
+    "paper_id": "2609.20522v1",
+    "pitch": "The paper studies when sumsets A+A built from 'structured' or U^k(Phi)-uniform subsets of the primes become infinite/dense in the sense of covering arithmetic progressions. Build a roulette-wheel visualizer: pick a finite seed set of primes (or let it auto-pick a 'structured' vs. a pseudorandom U^k-uniform-flavored set), animate all pairwise sums landing on a mod-37 roulette wheel, and watch coverage fill in \u2014 structured sets clump on certain residues, uniform-flavored sets spray evenly, visually showing why 'prime-based' number-picking systems for lottery/roulette are superstition dressed as math: the sumset's uniformity, not primality, is what actually determines coverage.",
+    "cool_score": 6,
+    "buildable_score": 8,
+    "discussion_score": 5,
+    "discussion_why": "Fun single-file whimsy piece and an easy build, but the underlying result (sumset density/uniformity conditions) is the hardest of the batch to make feel surprising to a non-number-theorist, and the gambling tie-in (roulette/lottery number superstition) is more cute than debate-sparking \u2014 lowest discussion score of the four.",
+    "tags": [
+      "math",
+      "whimsy",
+      "gambling"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Spec Curve Roulette",
+    "paper_id": "2602.19384v1",
+    "pitch": "Single-file HTML toy built on 'How Robust are Robustness Checks?' \u2014 simulate a fake sports-betting edge dataset (model ROI vs closing line) and expose the robustness-check knobs bettors claim make their backtest 'solid': sample window (last 500/1000/2000 games), vig-removal method (multiplicative/additive/Shin), outlier trim %, CV fold. Every toggle recomputes ROI live and drops a new dot on a specification curve (x=spec combo, y=ROI with CI ribbon) \u2014 the paper's core point made visceral: a 'robustness check' has its own hidden garden of forking paths, so checking robustness is itself p-hackable. Add a 'walk the curve' auto-cherry-pick button that greedily hunts the best-looking spec in 2 seconds flat, so the user watches their own 'proof of edge' get assembled from nothing.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "Directly hits the 'show me your robust backtest' reflex on every betting Discord \u2014 decision-theory + betting fit scores well, and the auto-cherry-pick button is a genuinely surprising/uncomfortable gut-punch that'll spark real argument about whose backtests are fake.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Correlation Lies, Copulas Don't",
+    "paper_id": "2305.06961v2",
+    "pitch": "Built off the copula-based cointegrated-pairs-trading paper: two linked sliders \u2014 one for plain Pearson correlation, one for copula tail-dependence parameter (Gaussian vs Clayton/Gumbel) \u2014 drive a live scatter of two simulated 'legs.' Hold the Pearson correlation fixed and crank tail dependence up: the scatter looks identical in the body but the corners (joint crashes/joint hits) explode. A side panel reframes the same two legs as a same-game parlay and shows the empirical joint-loss probability diverging wildly from what an independence (or linear-correlation-only) model would price \u2014 the exact mechanism the paper exploits for cointegrated crypto pairs, repurposed to show why sportsbooks' parlay odds and your intuition about 'how correlated is correlated enough' are often lying to you.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 8,
+    "discussion_why": "Same-game-parlay correlation is a constant, half-informed argument in betting circles; making the Pearson-vs-tail-dependence gap numerically concrete and interactive is the kind of surprising, screenshot-able result that gets argued over.",
+    "tags": [
+      "betting",
+      "gambling",
+      "math"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Tail-Bound Kelly: Majorization-Based Bankroll Sizer",
+    "paper_id": "2609.01576v2",
+    "pitch": "The paper gives simultaneous pointwise majorization bounds for mixed-tail Gaussian-process-type processes \u2014 a non-asymptotic worst-case envelope on joint tail behavior, not just an asymptotic Gaussian approximation. Build a SharpLab module that takes a day's slate of correlated live bets (same slate, correlated same-game props, shared market moves) and, instead of sizing fractional-Kelly off an assumed Gaussian joint-drawdown distribution, sizes off the paper's majorization bound \u2014 a provable upper envelope on how bad the simultaneous tail can get. Output: a 'true worst-case survival stake' next to the naive Kelly stake, so you can see exactly how much the Gaussian assumption was quietly underpricing your simultaneous drawdown risk on busy nights.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 7,
+    "discussion_why": "Niche quant-math but squarely in SharpLab's wheelhouse (decision-theory + math get the forum upweight); the headline number \u2014 'your Kelly stake was wrong because the Gaussian tail lied' \u2014 is the kind of concrete, falsifiable claim that quant-leaning bettors will want to poke holes in.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "I Hooked My Brain to an LLM and Let It Call My Bluffs",
+    "paper_id": "2503.23341v2",
+    "pitch": "Riffing on the EEG-Based Brain-LLM Interface for Human Preference Aligned Generation paper: strap on a consumer EEG headset (Muse/OpenBCI), stream raw signal into a pipeline that infers a live like/dislike preference vector the way the paper does, and use it to silently bias an LLM's bet/fold recommendation while playing poker hands. The hook: reveal afterward whether the brain's 'subconscious preference' signal tracked the mathematically correct GTO play better than the player's conscious decision did \u2014 turning 'poker tells' and 'gut feel' from folklore into a measurable, graphable EEG signal on camera.",
+    "cool_score": 9,
+    "buildable_score": 5,
+    "discussion_score": 8,
+    "discussion_why": "Poker tag + whimsy + ai is a strong surprise combo \u2014 'is intuition measurable' is exactly the kind of half-serious, half-mystical claim that gets a poker Discord arguing in both directions, even though the hardware/pipeline makes it a weekend build, not a tonight build.",
+    "tags": [
+      "poker",
+      "ai",
+      "bio",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Max-Entropy Range Builder",
+    "paper_id": "2510.27006",
+    "pitch": "The paper's core claim: standard Shannon/Boltzmann maximum entropy is the *wrong* inference tool once your constraints have certain structure (correlated/power-law-ish), and you need a generalized entropy functional (Tsallis/Renyi-style, parameterized by q) to recover the actually-justified distribution. Build a single-file HTML/JS poker toy: user ticks constraints on villain's range (e.g. 'bets flop 80%+ with top pair or better', 'checks turn with draws'), and the tool renders a 13x13 hand-matrix heatmap of the inferred range two ways side-by-side \u2014 classical Shannon maxent vs. generalized q-entropy maxent, with a slider sweeping q from 1 (smooth/diffuse, 'textbook GTO range') out to clumpy/sparse extremes. Makes visible, in real time, exactly when the 'assume max entropy' heuristic poker players lean on is quietly the wrong model.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "Poker range construction is bread-and-butter SharpLab argument material, and the twist \u2014 that the 'neutral default' maxent assumption itself has a hidden parameter that can be badly wrong \u2014 is a genuine surprise hook. Math + decision-theory tags both land on the upweighted list, and it's visual/interactive enough to get screenshotted and argued over.",
+    "tags": [
+      "poker",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Discovery-Budget Grader for Betting Models",
+    "paper_id": "2603.12349",
+    "pitch": "This paper formally verifies a scoring rule for grading an AI research agent that only gets a fixed experimental budget \u2014 rewarding true discoveries made early/cheaply, penalizing budget burned on low-information bets, with proofs of budget-monotonicity. Port the scoring rule into SharpLab's backtester as an alternate grading layer for a season of model picks: instead of raw ROI or hit-rate, score each bet by its budget-sensitive marginal value (stake-weighted confidence relative to remaining bankroll and 'information' already banked that season). Surfaces models that juice ROI mainly by over-betting cheap, already-obvious signals late in a well-funded run versus ones that find real edges early and cheaply \u2014 the same distinction the paper draws between genuine AI-guided discovery and budget-wasting noise.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 9,
+    "discussion_why": "Directly operationalizes the recurring SharpLab argument of 'ROI vs hit-rate vs CLV as the real skill metric' with a formally-grounded third option. Decision-theory, betting, and ai tags all hit this week's upweighted list simultaneously \u2014 high odds this gets litigated hard in the channel.",
+    "tags": [
+      "decision-theory",
+      "betting",
+      "ai"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Contrastive Regularization for Prop Models",
+    "paper_id": "2606.31660",
+    "pitch": "The ML-potential paper's fix for a classic failure mode: smooth-learned energy surfaces spawn spurious extra minima near training configurations, so they add a contrastive loss that explicitly pushes energy up for perturbed negative configurations near each real one. NBA prop/RAPM+Elo models have the same failure \u2014 a model trained on one matchup can assign artificially high confidence to a 'near-duplicate' game state (same two teams, different rest/lineup context) because it looks similar in box-score feature space but isn't. Add a contrastive regularization term to nba-modeling's loss that explicitly penalizes over-confident similarity between embeddings of games that look alike but have known-different outcomes, and check whether held-out calibration (not just ROI) improves.",
+    "cool_score": 7,
+    "buildable_score": 5,
+    "discussion_score": 7,
+    "discussion_why": "Direct technique transfer into an active repo (nba-modeling) is catnip for the quant crowd, and ai + math both get the upweight \u2014 but it's a training-loop change, not a flashy visual, so less of a spark than the poker demo.",
+    "tags": [
+      "ai",
+      "math",
+      "sports"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Ion Brush Tug-of-War",
+    "paper_id": "2607.04897",
+    "pitch": "The polyelectrolyte brush paper studies how charged polymer chains anchored to a surface swell or collapse depending on the size of the monovalent counterions neutralizing them \u2014 bigger ions screen charge differently and change how stretched the brush sits. Turn it into a satisfying physics fidget toy: an HTML canvas of two 'hair-like' brushes anchored at the bottom, with a slider for counterion radius; a cheap spring-particle sim tuned to the paper's qualitative ion-size scaling makes the chains visibly stretch taut or droop/coil as you drag it.",
+    "cool_score": 6,
+    "buildable_score": 8,
+    "discussion_score": 4,
+    "discussion_why": "Pure whimsy/physics with no natural betting, poker, or sports hook, so it won't drive much debate on a SharpLab-flavored channel \u2014 it's a 'look at this cool thing' share, not an argument-starter.",
+    "tags": [
+      "physics",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Frustration Point: an Ising stripe simulator you can push until it meanders",
+    "paper_id": "2608.21261v1",
+    "pitch": "Single-file HTML/canvas Metropolis Monte Carlo on a honeycomb lattice with tunable J2/J1 ratio slider and temperature slider. At J2/J1 = 0 you get clean ferromagnetic domains; crank J2 up toward the frustration regime the paper studies and the straight stripe boundaries start to wander/meander because the ground state becomes massively degenerate (many stripe configurations tie in energy, so the domain walls random-walk instead of settling). Overlay a live energy plot and a 'stripe straightness' metric so the user watches order visibly dissolve into wobble as they drag one slider past the critical ratio. Good hook: 'this is what it looks like when two rules disagree about what you should do' \u2014 directly transferable to the 'two signals disagreeing' feeling bettors get when market consensus and your model conflict.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 5,
+    "discussion_why": "Mostly a physics/math flex (tags upweighted a bit), fun to watch and share, but it's a step removed from a bettable/pokerable claim so it won't generate as much Discord argument as a decision-theory piece \u2014 more 'oh that's neat' than 'you're wrong.'",
+    "tags": [
+      "physics",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Lexicographic Kelly: the bankroll rule that refuses to average",
+    "paper_id": "2610.02359v2",
+    "pitch": "The distillation paper's core trick is lexicographic multi-objective optimization \u2014 satisfy objective 1 (e.g. safety) to its hard bound FIRST, then optimize objective 2 only within whatever slack remains, never trading objective 1 away for gains on objective 2 no matter the weight. Port that exactly to bankroll management: build an interactive HTML toy with two sliders \u2014 'max acceptable risk of ruin' and 'bet aggressiveness' \u2014 and show two bankroll-growth simulations side by side on the same random card sequence: (a) standard weighted-sum optimization (blend EV and variance with a risk-aversion coefficient, \u00e0 la fractional Kelly) vs (b) strict lexicographic optimization (first clamp risk-of-ruin below the threshold, THEN maximize growth rate within that feasible set). Drag the weight slider on the weighted-sum model and watch it quietly breach the risk threshold for a little extra EV \u2014 exactly the reward-hacking failure mode the paper calls out in RLHF. The lexicographic model structurally can't do that. This is a genuinely useful artifact: a visual argument for why 'just weight your objectives' bankroll advice is fragile.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 9,
+    "discussion_why": "Direct hit on decision-theory + betting + gambling (all upweighted/strong-fit tags), and it's a genuinely counterintuitive, debate-ready claim \u2014 'your weighted Kelly blend is secretly unsafe no matter how you tune it' is the kind of thing a betting Discord will argue about for an hour, especially with a slider that visibly proves it.",
+    "tags": [
+      "decision-theory",
+      "betting",
+      "gambling",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Contagion Clock: how fast does a whale's move actually spread?",
+    "paper_id": "2604.23714v1",
+    "pitch": "The paper fits temporal connection-probability kernels to real networks \u2014 i.e. P(an edge becomes active at time t | history) decays/bursts in a specific measurable shape rather than being memoryless (Poisson). Build a single-file network-diffusion demo: a canvas of nodes (bettors) with edges whose activation follows the paper's fitted temporal kernel instead of a flat probability, seed one 'whale' node with a line move, and watch the move ripple through the follower graph with the same bursty, clustered timing real social networks show (several follow near-instantly, then a long bursty tail, not a smooth exponential decay). Toggle between 'naive Poisson contagion' and 'paper's temporal kernel' on the same graph side-by-side \u2014 the shapes of the spread curves look dramatically different even with identical mean activation rate, which is the paper's actual point made visceral.",
+    "cool_score": 7,
+    "buildable_score": 7,
+    "discussion_score": 7,
+    "discussion_why": "Strong SharpLab-fit (sharp money diffusion is a constant topic) plus a genuinely surprising result \u2014 same average connection rate, wildly different spread shape \u2014 which is exactly the kind of 'wait, that changes how I should read line moves' counterintuitive hook that gets argued over.",
+    "tags": [
+      "betting",
+      "sports",
+      "econ",
+      "physics"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "EdgeLang: an ESL tax on your sports/poker research stack",
+    "paper_id": "2609.36214v1",
+    "pitch": "The paper measures a real, quantifiable performance gap: non-native English phrasing degrades end-user outcomes when working with LLM-backed tools, independent of the user's actual task competence. That's a hidden tax on every non-native-English bettor/grinder using ChatGPT/Claude to build models, summarize injury news, or debug a staking spreadsheet \u2014 their edge-finding tool quietly underperforms for them for a reason that has nothing to do with their handicapping skill. Pitch: a lightweight proxy/rewriter layer (browser extension or API middleware) that detects ESL-pattern phrasing in prompts to research LLMs and auto-canonicalizes them before they hit the model, then benchmarks before/after output quality on betting-relevant tasks (prop research synthesis, bankroll math explanations, rules clarifications). Sell it to poker training sites and sports-analytics communities with large international user bases as an accessibility/fairness feature, not just a UX nicety.",
+    "cool_score": 6,
+    "buildable_score": 5,
+    "discussion_score": 6,
+    "discussion_why": "Ai tag is upweighted and the claim is genuinely surprising ('your AI research tool silently penalizes you for writing English imperfectly'), which is debate bait for an international poker/betting server, but it's a step removed from the gambling math itself so it won't dominate conversation the way the Kelly piece would.",
+    "tags": [
+      "ai",
+      "econ",
+      "poker"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Ferromagnet of Parlays",
+    "paper_id": "2609.08980v2",
+    "pitch": "Single-file HTML/canvas Ising lattice where each spin is a bet leg and bond strength is correlation. The Ding-Song-Sun result generalizes Griffiths' second inequality: for even subsets A, B of a ferromagnet, <\u03c3_A \u03c3_B> >= <\u03c3_A><\u03c3_B> always holds, no matter how the couplings are arranged. Let users drag sliders to set correlation between parlay legs (e.g. same-game player props) and watch a live joint-probability readout that never drops below the naive independent product \u2014 directly refuting the 'books inflate parlay odds because legs partially cancel' intuition. A second panel shows simulated bankroll variance exploding as correlation rises, with the inequality's lower bound drawn as a hard floor the simulated outcomes can never cross below. Toggle between 'ferromagnetic' (same-direction correlation, realistic for props) and a broken antiferromagnetic toy case to show where the inequality's guarantee disappears.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "Hits the betting/parlay-correlation nerve directly (SharpLab-core), has a genuine 'wait, that's provably true?' surprise (a 1970s-style correlation inequality showing up in parlay math), and math+decision-theory tags are upweighted this week.",
+    "tags": [
+      "betting",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Audit-Graded Picks Ledger",
+    "paper_id": "2609.18272v1",
+    "pitch": "The paper's independence-graded audit protocol asks 'who audits whom, on what substrate, with what evidence' and assigns a grade based on how independent the auditor is from the auditee and how verifiable the evidence trail is (self-attested < platform-logged < third-party-witnessed < cryptographically-committed). Port that grading scale onto sports betting/poker tipsters and 'cappers': build a scraper + rubric that scores public pick accounts (Twitter cappers, Discord VIP groups, Pick'em leaderboards) on independence of their track record \u2014 did they screenshot their own bet slip (low grade), is it logged by the sportsbook's own API (mid), or is it on an immutable public ledger / exchange fill (high)? Output a trust-graded leaderboard instead of a naive win-rate leaderboard. Natural extension for SharpLab: apply the same grading to its own CLV-tracking pipeline so David's logged bets get an audit grade too.",
+    "cool_score": 7,
+    "buildable_score": 7,
+    "discussion_score": 8,
+    "discussion_why": "Directly SharpLab-shaped (tipster trust is a constant sore spot on betting Discords), sparks real debate ('my record is verified!' vs 'screenshots don't count'), and reframes a dry cs.CR audit paper into something the forum will argue about.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Fractional-Memory Kelly",
+    "paper_id": "2609.12961v1",
+    "pitch": "The paper studies sampled-data optimal control of linear fractional-order systems: the true state evolves with a Caputo fractional derivative (long memory of the whole past trajectory, not just the last state), but the controller can only act at discrete sample times. Build an HTML slider toy where 'bankroll drift' is governed by a fractional-order alpha in (0,1] \u2014 alpha=1 recovers classic memoryless Kelly staking, alpha<1 means today's edge is a weighted echo of every past bet's variance, decaying as a power law instead of exponentially. Users pick alpha and a sampling interval (how often they're allowed to resize stakes) and watch two bankroll curves race: naive discrete Kelly (ignores memory, recomputed on a schedule) vs the fractional-order-optimal controller from the paper, which accounts for memory already baked into the state. The gap between the two curves visualizes exactly the cost of 'thinking the system is Markovian when it isn't' \u2014 a real risk management mistake sharps make after streaks.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 7,
+    "discussion_why": "Kelly criterion debates are a Discord classic, and 'memory in bankroll dynamics' is a legit decision-theory hook (upweighted tag), though it's more niche/technical than the parlay demo so slightly less universally arguable.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "No-Rematch League Builder",
+    "paper_id": "2608.03819v2",
+    "pitch": "b-coloring asks for the largest number of color classes k such that a proper k-coloring exists where every color has a 'b-vertex' adjacent to all k-1 other colors; the paper's b*-coloring variant and its large-girth/parameterized-complexity results tell you when this maximal, self-certifying coloring is even reachable as graphs get sparser. Translate directly into a poker-league or sports-pod scheduler: vertices are players, edges are 'already played each other,' and you want the max number of distinct table/pod groupings such that every pod has at least one 'anchor' player who's played everyone outside their own pod (the b-vertex condition) \u2014 guaranteeing maximal mixing with a built-in fairness witness. Single HTML file: draw a graph of players/matches, hit 'solve' to brute-force small-girth cases live, and watch it visually fail once girth gets too large, matching the paper's complexity cliff.",
+    "cool_score": 6,
+    "buildable_score": 7,
+    "discussion_score": 6,
+    "discussion_why": "Fun whimsical graph-theory-meets-poker-logistics angle with real game-night utility, but lower stakes/surprise than the betting-correlation demos so it reads more as a neat toy than a debate-starter.",
+    "tags": [
+      "poker",
+      "games",
+      "math"
+    ]
+  }
+]

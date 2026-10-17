@@ -1,0 +1,525 @@
+{
+  "summary": "Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5, with a discussion axis",
+  "agentCount": 6,
+  "logs": [
+    "24 ideas generated across 6 batches"
+  ],
+  "result": {
+    "ideas": [
+      {
+        "type": "project",
+        "title": "Anytime-Valid Steam Detector",
+        "paper_id": "2609.33597v1",
+        "pitch": "The paper builds an e-process ('testing by betting') that lets you watch a stream of side-channel traces and legitimately stop the moment you're confident, with error control preserved no matter when you peek -- the exact problem every bettor has backtesting a signal and stopping as soon as it 'looks good'. Port the construction to SharpLab: feed it live line-movement / CLV data and run a sequential wealth process that bets against the null 'this move is noise' -- when the wealth crosses a threshold you have a statistically valid, peek-anytime verdict on whether a steam move or a handicapper's signal is real, instead of waiting for a fixed, arbitrarily-chosen sample size. Could ship as a CLV dashboard add-on that flags 'this edge is now provably real' in real time.",
+        "cool_score": 8,
+        "buildable_score": 7,
+        "discussion_score": 9,
+        "discussion_why": "Hits betting + decision-theory dead center (both get the soft positive bias), and the core claim is a genuine 'wait, really?' -- bettors are trained to fear peeking/p-hacking, and this is rigorous math saying you can peek forever and still be valid. That's an argument-starter in any betting Discord about backtest discipline.",
+        "tags": [
+          "betting",
+          "decision-theory",
+          "math",
+          "sports"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Beacon Hunter: Pit Boss Edition",
+        "paper_id": "2609.35896v1",
+        "pitch": "Single-file HTML puzzle built on the paper's complete characterization of minimal resolving sets for m x n grids: reskin the grid as a casino floor, you drop the minimum number of 'pit cameras' (beacons) so every table's distance-fingerprint to the cameras is unique, and the game tells you the moment you've hit (or beaten/missed) the paper's proven minimum for that grid size. Instant visual gut-check of a landmark-placement theorem.",
+        "cool_score": 7,
+        "buildable_score": 9,
+        "discussion_score": 6,
+        "discussion_why": "Math + games tags get the mild positive bias, whimsy framing (pit boss cameras) is fun and shareable, but it's a step removed from betting mechanics itself -- solid but not a huge debate magnet.",
+        "tags": [
+          "math",
+          "games",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Fair Rotation Certifier",
+        "paper_id": "2608.19952v1",
+        "pitch": "The paper pins down exactly how hard it is to build a recurring 'whose turn is it' schedule that's fair over the long run, not just on any single day. Build a single HTML tool: paste in a group (poker home-game button order, fantasy draft pick order, foosball queue) and a horizon in days, and it either generates a provably long-run-fair rotation or -- per the paper's hardness result -- flags that no such schedule exists for your constraints and shows you the fairness gap. Turns an abstract complexity result into 'is my friend group's rotation actually rigged.'",
+        "cool_score": 6,
+        "buildable_score": 8,
+        "discussion_score": 8,
+        "discussion_why": "Poker (button rotation), games, decision-theory, and econ all land directly and get the soft bias; 'the rotation is rigged' is one of the most relatable recurring arguments in any group that games or gambles together, and the surprise that long-run fairness is provably hard (not just annoying) adds a real 'huh' moment.",
+        "tags": [
+          "poker",
+          "games",
+          "decision-theory",
+          "econ"
+        ]
+      },
+      {
+        "type": "startup",
+        "title": "PersonaOdds: Dueling-Bandit Betting Assistant",
+        "paper_id": "2610.17203v1",
+        "pitch": "The paper frames per-user chatbot personalization as an online dueling-bandit problem: show two candidate personas, watch the click, adapt, because taste is hidden and users arrive sequentially -- no single 'best' global persona exists. Build a Discord betting-advice bot that runs this exact loop: two takes on the same game (e.g. a conservative 'grind the number' analyst vs. an aggressive 'fade the public' analyst), users react to whichever response they engage with, and the bot's persona-selection policy adapts per-user over time instead of serving everyone the same voice.",
+        "cool_score": 7,
+        "buildable_score": 6,
+        "discussion_score": 7,
+        "discussion_why": "AI + decision-theory + betting tags all catch the soft bias; debate potential is strong because 'there is no single best betting personality, everyone's taste differs' cuts against how most people think prediction-market/tout content should work, and a live bot picking sides in Discord invites people to argue about which persona is 'right'.",
+        "tags": [
+          "ai",
+          "decision-theory",
+          "betting",
+          "econ"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Comb Avalanche: Sandpile Tail-Risk Toy",
+        "paper_id": "2609.21359v1",
+        "pitch": "Single-file HTML/canvas sim of the abelian sandpile on a comb lattice (spine + teeth, exactly the paper's shape). Click to drop grains one at a time; toppling cascades animate as spreading pixel fronts, and a live histogram tallies avalanche sizes. The paper proves the stationary state concentrates entirely on the fully 'saturated' configuration and derives the exact avalanche shape — so as you keep dropping grains you literally watch the pile march toward that fixed endpoint while the histogram grows the heavy tail the math predicts. Frame it for the Discord as 'this is what a correlated bad-beat cascade / forced-liquidation avalanche looks like': one grain in, watch how big the blowup gets.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 7,
+        "discussion_why": "Tail-risk/cascading-failure framing maps directly onto bankroll ruin and correlated parlay blowups (relatable + good betting/math fit), the 'drop one grain, watch it cascade' interaction has a surprising, almost hypnotic payoff, and the self-organizing-criticality angle has a whimsical sandbox-toy quality -- strong fit on math/gambling tags which get the soft positive bias.",
+        "tags": [
+          "math",
+          "physics",
+          "gambling",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Jev Odds Head: Instant Probability Bot",
+        "paper_id": "2610.17205v1",
+        "pitch": "Build a Discord bot that takes any multiple-choice prop (next scorer, who folds first, which parlay leg hits) and returns a calibrated probability per option in one forward pass -- the 'Jev' recipe: take an ordinary open instruct model, read logprobs on the option tokens instead of generating free text, no proprietary secret sauce required. Then run it live against (a) a full chain-of-thought LLM answer and (b) the actual market-implied odds, tracking Brier score over a season to see whether the cheap one-forward-pass bookmaker holds its own against both the slow reasoner and the real line, echoing the companion benchmark paper's 19-model shootout.",
+        "cool_score": 7,
+        "buildable_score": 7,
+        "discussion_score": 8,
+        "discussion_why": "Directly pits a cheap 'odds-making machine' against both a big reasoner and the real market -- core decision-theory/betting debate bait, with a genuine 'wait, a tiny probability head keeps pace with GPT-sized reasoning?' surprise; strong fit across ai/betting/decision-theory tags that carry the positive reception bias.",
+        "tags": [
+          "ai",
+          "betting",
+          "decision-theory",
+          "sports"
+        ]
+      },
+      {
+        "type": "startup",
+        "title": "NeverResolve: Real-Time LP Autopricer for Exchanges",
+        "paper_id": "2609.28263v1",
+        "pitch": "Package the paper's resource-adaptive SGD for online linear programming into a pricing microservice for prediction-market makers (Kalshi-style exchanges, in-play sportsbook feeds): every incoming order updates per-contract prices in O(m) time with a provable regret bound, without ever re-solving the whole allocation LP from scratch. Pitch it as a drop-in, budget-constrained, live bankroll/inventory pricing engine for small exchanges and books that can't afford full LP resolves on every tick.",
+        "cool_score": 6,
+        "buildable_score": 5,
+        "discussion_score": 6,
+        "discussion_why": "Niche but squarely decision-theory/econ territory -- real-time bankroll pricing under hard budget constraints is exactly the kind of mechanics quants on the server argue about, though it's more technical/infra than viscerally surprising or whimsical, capping the discussion ceiling.",
+        "tags": [
+          "econ",
+          "betting",
+          "decision-theory",
+          "math"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "Fast Bookmaker vs. Slow Thinker",
+        "paper_id": "2610.11978v1",
+        "pitch": "Race a tiny one-forward-pass 'Jev' decision model against a big reasoning LLM on a live board of sports trivia and prop questions, clock every answer, then score both on Brier/log-loss against the actual closing line. The hook: the benchmark shows this 'System One' probability head holding its own against 19 full LLMs on some task classes and getting crushed on others -- so the video becomes a 'when does thinking actually pay off' breakdown using real betting lines as ground truth.",
+        "cool_score": 7,
+        "buildable_score": 6,
+        "discussion_score": 8,
+        "discussion_why": "Gut-odds-vs-deep-reasoning is a classic poker/betting argument transplanted to AI, has a built-in 'wait, the dumb fast model wins sometimes?' surprise, and using real closing lines as the scorekeeper gives sports/betting diehards a concrete stake to argue over.",
+        "tags": [
+          "ai",
+          "betting",
+          "sports",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Hot Hand or Hidden Coin Flips?",
+        "paper_id": "2609.21476v1",
+        "pitch": "Single-file HTML toy built on the paper's short constructive proof of Bernoulli decomposition: paste any binary streak (makes/misses, wins/losses, red/black) and the tool runs the decomposition algorithm live, peeling the sequence apart into independent fair-coin sub-processes. Visualize it as a 'streak shredder' -- bars showing the original run-length distribution next to the decomposed fair-coin pieces, side by side. The gut-punch moment: even a real, streaky-looking shooting night can be rebuilt from provably independent 50/50 flips, so 'looking streaky' alone proves nothing about momentum. Perfect bait for the eternal hot-hand argument.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 9,
+        "discussion_why": "Hot hand is the most relitigated argument in any sports Discord -- this gives a concrete, playable counter-demo instead of another vibes-based take. The 'wait, any sequence decomposes into fair coins?' surprise plus math/decision-theory tags (small positive bias) and a sports hook push discussion high.",
+        "tags": [
+          "math",
+          "sports",
+          "betting",
+          "decision-theory",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Line Lead-Lag Radar",
+        "paper_id": "2305.06704v3",
+        "pitch": "Port the paper's robust clustering-based lead-lag detector from noisy multi-factor financial series to odds feeds: pull synchronized moneyline/spread time series across several sportsbooks (or correlated prop markets) and cluster them to algorithmically surface which book's line move predicts the others' moves minutes later. Output a live 'who's tipping off whom' leaderboard and flag windows where a laggard book hasn't caught up yet -- a built, testable signal for where the stale number is sitting.",
+        "cool_score": 7,
+        "buildable_score": 6,
+        "discussion_score": 8,
+        "discussion_why": "Directly operationalizes 'sharp book moves first' folklore into a measurable claim, which is catnip for betting-forum debate about which books actually lead. Betting/sports/decision-theory tags all get the small positive bias; the main drag is it needs real synchronized odds data to be convincing rather than just a toy.",
+        "tags": [
+          "betting",
+          "sports",
+          "econ",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Skew-Chasing Kelly",
+        "paper_id": "2305.08530v2",
+        "pitch": "Interactive HTML allocator built on the paper's asymmetric-Laplace-return portfolio formula. Sliders for skewness and tail-fatness; the demo plots classic mean-variance allocation against the new optimal allocation, which in the small-skew limit is literally 'mean-variance plus an explicit lottery-chasing term.' Crank the skew slider toward a parlay-shaped payoff and watch the optimal bet size visibly swell past what Markowitz would ever allow -- a rigorous answer to 'how much of my bankroll should a 50-to-1 shot actually get.'",
+        "cool_score": 8,
+        "buildable_score": 8,
+        "discussion_score": 8,
+        "discussion_why": "Bankroll sizing on long-shot bets is a constant argument in poker/betting circles, and this gives a formula-backed answer instead of gut feel -- directly decision-theory/gambling/math territory, all mildly favored tags, with a genuine 'the math says chase it more than you think' surprise.",
+        "tags": [
+          "betting",
+          "gambling",
+          "decision-theory",
+          "math",
+          "econ"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "Anatomy of a Bubble, On-Chain",
+        "paper_id": "2303.06051v1",
+        "pitch": "Video essay using the paper's fully transparent on-chain NFT trade data to walk through a bubble's entire life cycle -- who buys early (sophisticated), who piles in at the top (herd), and who's left holding the bag -- then cut against the same investor-trait framing applied to sports betting futures markets and meme-stock crazes, where the same sophistication/herding split plays out but is normally invisible. The hook: NFTs accidentally gave researchers X-ray vision into a bubble that every other speculative market hides.",
+        "cool_score": 7,
+        "buildable_score": 5,
+        "discussion_score": 7,
+        "discussion_why": "Gambling psychology sells, and 'we can literally watch who buys the top in real time' is a strong surprise hook, but it's a step removed from core poker/sports betting mechanics so discussion skews toward general finance/econ chat rather than sharp betting debate.",
+        "tags": [
+          "econ",
+          "gambling",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Line Drift: A Betting-Against-the-Null Detector",
+        "paper_id": "2609.27179v1",
+        "pitch": "Single-file HTML toy that makes the paper's core trick -- 'change detection IS betting' -- tangible. You feed a stream of simulated outcomes (toggle: a team's ATS cover rate, a coin stream standing in for 'is the market still fairly priced') and secretly inject a regime shift at a random point. The page runs two conformal test martingales side-by-side -- a naive sign-test bettor and the paper's new optimal betting function -- plotting wealth M_t in real time on a log scale against the Ville's-inequality alarm threshold 1/alpha. Pre-shift, both martingales flatline near 1 (no edge, no false alarm, by construction). Post-shift, the optimal one visibly shoots past threshold first while the suboptimal one dawdles -- literally watching the paper's claim that 'existing methods leave money on the table' play out as a race. Framed as 'did the line quietly go stale after injury news and the book hasn't moved it yet?' A slider controls shift size/timing so you can replay with different drift magnitudes.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 9,
+        "discussion_why": "Pure decision-theory + betting framing (literal wealth process, Ville's inequality = your bankroll can't blow past a bound without you having been right), high surprise ('wait, hypothesis testing IS a bet you place against the null'), and directly maps onto a bettor's actual question of whether a line has gone stale -- decision-theory/betting/math tags all carry the stated soft bonus.",
+        "tags": [
+          "betting",
+          "decision-theory",
+          "math",
+          "gambling"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "No-Horizon Tipster Arena",
+        "paper_id": "2609.27206v1",
+        "pitch": "An interactive aggregator for n fake 'tipster' experts (you set their hit rates and correlation) that runs classic exponential-weights combination two ways: one tuned assuming it knows the season length T in advance, one using the paper's anytime-optimal learning-rate schedule. Both plot cumulative regret against the sqrt(2 log n) fixed-time lower bound as the season runs. The hook is a big red STOP button the user can mash at any random moment -- when you do, the page reveals the regret of both strategies at that exact instant. The horizon-tuned one is great if you stopped near its guessed T and embarrassing anywhere else; the anytime one is quietly near-optimal everywhere, exactly matching the paper's headline result. Ends with a one-line scoreboard: 'optimal regret achieved at every stopping time, no season length required.'",
+        "cool_score": 7,
+        "buildable_score": 8,
+        "discussion_score": 7,
+        "discussion_why": "Directly hits a live sports-betting-community argument -- do tipster leaderboards/CLV trackers need to commit to a season length to be 'fair', or is that a myth? The reveal-by-mashing-STOP mechanic adds a genuine 'wait, it really doesn't matter when I stop?' surprise beat, with decision-theory/math tags benefiting from the stated bonus.",
+        "tags": [
+          "betting",
+          "decision-theory",
+          "math",
+          "ai"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Edge Fragility Score for SharpLab Backtests",
+        "paper_id": "2602.19384v1",
+        "pitch": "Build the paper's 'robustness radius' into SharpLab's model-vetting pipeline: instead of eyeballing '+5% ROI, held up across a few re-runs,' formally compute the minimum perturbation across spec choices (closing vs opening line, which vig-removal method, rolling window length, injury-report cutoff) at which the headline 'profitable' conclusion flips sign. Report it as a single normalized number alongside every backtest -- small radius means the edge evaporates under the slightest reasonable respec, large radius means it's load-bearing. Ships as a CLI/notebook function that takes a grid of robustness-check estimates (already something SharpLab generates informally) and spits out the radius plus a 'fragility plot' showing estimate drift vs perturbation size.",
+        "cool_score": 6,
+        "buildable_score": 6,
+        "discussion_score": 8,
+        "discussion_why": "Sharp bettors argue constantly about whether a backtested 'edge' is real or an artifact of one lucky specification -- turning that vibe into one defensible number is exactly the kind of thing that forces people to either defend or retract a claimed edge. Decision-theory/math/econ tags each carry the mild positive bias.",
+        "tags": [
+          "betting",
+          "econ",
+          "math",
+          "decision-theory"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Quiet Exit: Whale Unwind Simulator",
+        "paper_id": "2303.10043v1",
+        "pitch": "Single-file HTML combining both market-impact papers into one toy. You set a position size, a temporary-impact decay rate, and a permanent-impact slope (the shapes the crypto paper fits from real BNB order-book data), and the page computes the optimal trade-out schedule versus two dumb alternatives ('dump it all now' and flat TWAP), animating price path and realized P&L for each. Overlaid on top: a second panel runs the Bayesian-inference paper's idea literally -- a simulated 'other trader' updates a belief each tick about whether your trades are a meta-order, and once their posterior crosses a threshold they front-run you, visibly denting your optimal curve's advantage. Watching the optimal schedule's edge shrink as the 'market' gets suspicious of you is the demo's whole point -- it's the Bayesian theory of market impact made visible as a cat-and-mouse animation. Framed for crypto/prediction-market whale-watchers: 'how fast can you quietly exit before the market notices you're exiting?'",
+        "cool_score": 8,
+        "buildable_score": 7,
+        "discussion_score": 8,
+        "discussion_why": "Prediction-market and crypto whale-watching is a constant topic of betting-server chatter ('did that huge Polymarket trade mean something or was it just impact'), and seeing the Bayesian-detection cat-and-mouse mechanic animate makes the abstract inference-theoretic result feel like a real stealth game -- surprising, a little whimsical, squarely econ/decision-theory/gambling territory.",
+        "tags": [
+          "betting",
+          "econ",
+          "math",
+          "gambling",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "The Spite Snap",
+        "paper_id": "2510.18889v1",
+        "pitch": "Single-file HTML sim of the ultimatum game: a slider sets the fraction of 'prejudiced' agents in a population of proposers/responders, canvas plots the population's average offer and rejection rate per round as agents update strategies via replicator-style best-response. Below the critical fraction everything looks like a normal fair-split norm (offers ~45-50%); nudge the slider past threshold and the whole population instantly collapses into a low-offer (~20%), high-rejection 'spite' equilibrium in a handful of rounds -- no slow drift, a visible snap. A second panel lets you click to hand-place prejudiced agents in a grid to show the transition is population-wide, not agent-by-agent.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 9,
+        "discussion_why": "Directly a game-theory/decision-theory toy (mild positive tag bias) with an obvious hook for poker/betting crowds: 'how many jerks does it take before the whole table's norms flip from fair to spiteful' -- genuinely surprising discontinuous-not-gradual result, and easy to argue about by dragging the slider live in the channel.",
+        "tags": [
+          "games",
+          "econ",
+          "decision-theory",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Chaos-Topology Edge Finder",
+        "paper_id": "2503.14956v1",
+        "pitch": "Take the paper's 'chaotic learning' trick -- multiscale topological features (persistence-style loop/branch statistics) pulled from a raw chaotic time series instead of raw values -- and run it on line-movement or score-differential time series for NBA/NFL games. Build a pipeline: pull historical in-game score-diff or live-odds tick data, extract topological features per game-window, train a simple classifier/regressor against closing-line value or final margin, and backtest whether the topological features add signal over naive lag features. Framed as literally testing the paper's central claim ('chaotic-looking data still carries extractable structure') on real betting markets rather than their bio/chem benchmarks.",
+        "cool_score": 7,
+        "buildable_score": 5,
+        "discussion_score": 7,
+        "discussion_why": "Squarely betting+sports+math, and the premise is a 'wait, really?' claim -- that stuff everyone treats as pure noise (live line wiggle, score runs) has extractable topological fingerprints. Good debate fuel on whether this is snake oil or a real edge; less viscerally fun than a toy so capped below the demos.",
+        "tags": [
+          "betting",
+          "sports",
+          "ai",
+          "math"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Chaos Game Arcade",
+        "paper_id": "2407.02538v2",
+        "pitch": "Single HTML page implementing the paper's Chaos Game Representation directly: feed in any symbol sequence (a poker hand history string, a sequence of dice rolls, a shuffled deck order, a sports play-by-play string reduced to a 4-letter alphabet) and watch a point walk toward the corners of a square one symbol at a time, leaving a fractal scatter behind. Preloaded toggles let you compare the fractal 'fingerprint' of a fair deck shuffle vs. a rigged one, or a cold-streak vs hot-streak dice sequence, side by side -- same trick the paper used to tell apart species' DNA with zero labels, repurposed to visually 'tell apart' randomness quality.",
+        "cool_score": 8,
+        "buildable_score": 9,
+        "discussion_score": 6,
+        "discussion_why": "Pure whimsy-meets-math: fun and visually striking ('my shuffle makes a different fractal than yours'), ties loosely to games/gambling via randomness-testing, but it's more a toy to admire than something that drives hard debate -- surprise factor carries most of the score.",
+        "tags": [
+          "games",
+          "math",
+          "bio",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Dream or Tilt",
+        "paper_id": "2603.09384v1",
+        "pitch": "Interactive Hopfield-network toy: store a growing number of binary patterns (framed as 'opponent tells' or 'bet-sizing ranges' you're trying to memorize at the table) with synapse weights clamped to a bounded range like the paper. Without a 'dreaming' phase, recall accuracy craters once you cross a visible capacity wall -- patterns bleed into each other, letting users literally watch the network misremember a bluff pattern as a value-bet pattern. Flip on 'dreaming' (replay + prune spurious attractors) and watch the same network hold far more patterns before collapsing, with a live capacity-vs-patterns-stored graph for both modes.",
+        "cool_score": 7,
+        "buildable_score": 7,
+        "discussion_score": 7,
+        "discussion_why": "Poker framing (how many opponent reads can a human/AI actually hold before confusing them) is relatable and a little provocative -- doubles as a dig at 'you don't actually remember that many tells', and the AI/sleep angle is a fun surprise hook even if the sim is simplified.",
+        "tags": [
+          "poker",
+          "ai",
+          "math",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Ambush or Strike: Spatial Rock-Paper-Scissors Live",
+        "paper_id": "2510.17016v1",
+        "pitch": "Single-file HTML/canvas cellular automaton: a lattice of Rock/Paper/Scissors cells plays the classic cyclic-dominance game, but one species gets an 'ambush' trait — it senses local prey density in its neighborhood and only strikes above a threshold, otherwise lies in wait (survives but forgoes the kill). Sliders control the density-sensing radius and strike threshold; watch the phase diagram flip live between one species steamrolling the board and all three coexisting in rotating spiral waves, exactly the bifurcation the paper maps out. Side-by-side panel shows win-rate over time so you can literally see the threshold where 'always strike' loses to 'sometimes wait.'",
+        "cool_score": 8,
+        "buildable_score": 8,
+        "discussion_score": 8,
+        "discussion_why": "Direct poker analogy (slow-play/trap vs. c-bet every time) makes it instantly relatable to the server; the 'wait, a single bluff-like option changes who wins outright' result is genuinely surprising; strong overlap with decision-theory and games tags which get mild positive reception.",
+        "tags": [
+          "games",
+          "decision-theory",
+          "bio",
+          "whimsy"
+        ]
+      },
+      {
+        "type": "demo",
+        "title": "Lost in the Noise: Bayesian Tracking Phase Transition",
+        "paper_id": "2609.00144v1",
+        "pitch": "A dot random-walks around a canvas (the diffusing target) while a ring of 'sensors' send it noisy pings. A live Bayesian filter renders its posterior belief as a heatmap chasing the true position. One slider controls ping noise / sensor density; crank it past the paper's critical threshold and the posterior visibly delocalizes — the filter's best guess detaches from the real target and starts wandering on its own, the exact localization-to-failure phase transition the paper derives by mapping this problem onto KPZ surface growth. Built-in 'tracking error over time' sparkline makes the transition unmissable.",
+        "cool_score": 8,
+        "buildable_score": 7,
+        "discussion_score": 8,
+        "discussion_why": "Maps cleanly onto 'tracking sharp money' or a drifting line in betting markets — there's a hard, provable point past which no amount of Bayesian cleverness recovers signal from noise, which is a great argument-starter ('so there IS a mathematical limit to reading an opponent/market'); physics+math+decision-theory tags all get mild positive bias.",
+        "tags": [
+          "physics",
+          "math",
+          "decision-theory",
+          "gambling"
+        ]
+      },
+      {
+        "type": "youtube",
+        "title": "The Math of the Trap: Why Lying in Wait Beats Striking First",
+        "paper_id": "2510.17016v1",
+        "pitch": "A 6-8 minute explainer that opens with the spatial rock-paper-scissors ambush model (screen-captured from the demo above), walks through why adding a single 'sense-then-decide' option to one species reshapes whole-ecosystem outcomes, then pivots to the poker/sports betting analog: slow-playing a monster hand, sandbagging in a tournament bubble, or a sportsbook 'waiting for the square money' before adjusting a line. Ends on the punchline from the paper: ambush doesn't just help the ambusher, it can rescue species that would otherwise go extinct — i.e. passive strategies can stabilize an entire ecosystem, not just win individual encounters.",
+        "cool_score": 7,
+        "buildable_score": 5,
+        "discussion_score": 8,
+        "discussion_why": "Strongest poker-relevance of the batch — 'when should you NOT bet' is a perennial Discord argument; the ecosystem-stabilization twist ('ambush saves the weak species too') is a genuine surprise hook for a thumbnail/title.",
+        "tags": [
+          "poker",
+          "games",
+          "decision-theory",
+          "bio"
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Culinary Turing Test: Bet on the Fake Recipe",
+        "paper_id": "2604.28021v1",
+        "pitch": "A Discord bot/game that exploits the paper's finding that cuisines obey Zipf-like ingredient-frequency and combination 'grammar' laws. Generate a batch of recipes each round: some real (scraped from a cookbook corpus), some synthetic (sampled from the statistical grammar the paper extracts — same ingredient frequencies, same co-occurrence 'syntax', zero actual cooking logic). Members wager server points on real-vs-fake before a reveal, with a running leaderboard. Hook: synthetic recipes that obey the statistical laws are deceptively convincing even though they're built from pure frequency stats with no semantic understanding of cooking.",
+        "cool_score": 7,
+        "buildable_score": 5,
+        "discussion_score": 6,
+        "discussion_why": "Fun whimsy/games angle and a built-in betting mechanic, but the fit to core betting/poker/sports is more tangential than the other three, which caps the discussion ceiling; AI+games+whimsy tags get a small positive bump.",
+        "tags": [
+          "games",
+          "whimsy",
+          "ai",
+          "econ"
+        ]
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Ideate"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "batch-1",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a61032155de62accd",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1792221981655,
+      "queuedAt": 1792221981630,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord server. Here are 5 fresh papers (id, category, title, summary):\n\n- 2609.33597v1 [cs.CR] The Price of Peeking: Anytime-Valid Leakage Detection on ML-KEM EM Traces\n  Side-channel testers usually peek at live data and stop early, which secretly inflates false-alarm rates on fixed-horizon tests -- this build…",
+      "lastProgressAt": 1792222044280,
+      "tokens": 29888,
+      "toolCalls": 1,
+      "durationMs": 62625,
+      "resultPreview": "{\"ideas\":[{\"type\":\"project\",\"title\":\"Anytime-Valid Steam Detector\",\"paper_id\":\"2609.33597v1\",\"pitch\":\"The paper builds an e-process ('testing by betting') that lets you watch a stream of side-channel traces and legitimately stop the moment you're confident, with error control preserved no matter when you peek -- the exact problem every bettor has backtesting a signal and stopping as soon as it 'lo…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "batch-2",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "acbbf3d548e072e20",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1792221981656,
+      "queuedAt": 1792221981630,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord server. Here are 5 fresh papers (id, category, title, summary):\n\n- 2610.17192v1 [cs.AI] Size Generalization for Diffusion Routing Solvers\n  Diffusion models can learn to spit out near-optimal routes for problems like the Traveling Salesman Problem, but they fall apart on bigger maps than they trained on …",
+      "lastProgressAt": 1792222038148,
+      "tokens": 29968,
+      "toolCalls": 1,
+      "durationMs": 56492,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Comb Avalanche: Sandpile Tail-Risk Toy\",\"paper_id\":\"2609.21359v1\",\"pitch\":\"Single-file HTML/canvas sim of the abelian sandpile on a comb lattice (spine + teeth, exactly the paper's shape). Click to drop grains one at a time; toppling cascades animate as spreading pixel fronts, and a live histogram tallies avalanche sizes. The paper proves the stationary state conc…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "batch-3",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "aabd7048b7b8560bf",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1792221981656,
+      "queuedAt": 1792221981630,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord server. Here are 5 fresh papers (id, category, title, summary):\n\n- 2609.21476v1 [math.PR] A short proof of the Bernoulli decomposition theorem\n  Gives a much shorter, more direct construction proving that any sufficiently \"random\" process can always be cleanly split into independent fair-coin-flip pieces…",
+      "lastProgressAt": 1792222026100,
+      "tokens": 29831,
+      "toolCalls": 1,
+      "durationMs": 44444,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Hot Hand or Hidden Coin Flips?\",\"paper_id\":\"2609.21476v1\",\"pitch\":\"Single-file HTML toy built on the paper's short constructive proof of Bernoulli decomposition: paste any binary streak (makes/misses, wins/losses, red/black) and the tool runs the decomposition algorithm live, peeling the sequence apart into independent fair-coin sub-processes. Visualize it as a 's…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "batch-4",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "afd9095cda30b10bf",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1792221981656,
+      "queuedAt": 1792221981630,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord server. Here are 5 fresh papers (id, category, title, summary):\n\n- 2303.08867v4 [q-fin.TR] A Bayesian theory of market impact\n  When a big trader splits a large order into a sequence of smaller ones (a \"meta-order\") to avoid moving the price too much, other traders don't know this in advance -- this mode…",
+      "lastProgressAt": 1792222052428,
+      "tokens": 29899,
+      "toolCalls": 1,
+      "durationMs": 70772,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Line Drift: A Betting-Against-the-Null Detector\",\"paper_id\":\"2609.27179v1\",\"pitch\":\"Single-file HTML toy that makes the paper's core trick -- 'change detection IS betting' -- tangible. You feed a stream of simulated outcomes (toggle: a team's ATS cover rate, a coin stream standing in for 'is the market still fairly priced') and secretly inject a regime shift at a …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "batch-5",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a797cae9cd8d116a3",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1792221981656,
+      "queuedAt": 1792221981630,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord server. Here are 5 fresh papers (id, category, title, summary):\n\n- 2603.09384v1 [q-bio.NC] Dreaming improves memorization in a Hopfield model with bounded synaptic strength\n  Classical Hopfield associative-memory networks catastrophically forget once you cram in too many patterns, especially once synapse…",
+      "lastProgressAt": 1792222020916,
+      "tokens": 29985,
+      "toolCalls": 1,
+      "durationMs": 39260,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"The Spite Snap\",\"paper_id\":\"2510.18889v1\",\"pitch\":\"Single-file HTML sim of the ultimatum game: a slider sets the fraction of 'prejudiced' agents in a population of proposers/responders, canvas plots the population's average offer and rejection rate per round as agents update strategies via replicator-style best-response. Below the critical fraction everything look…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "batch-6",
+      "phaseIndex": 1,
+      "phaseTitle": "Ideate",
+      "agentId": "a2e0bbf37b20314ab",
+      "model": "claude-sonnet-5",
+      "state": "done",
+      "startedAt": 1792221981657,
+      "queuedAt": 1792221981630,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord server. Here are 5 fresh papers (id, category, title, summary):\n\n- 2510.17016v1 [q-bio.PE] Ambush strategy impacts species predominance and coexistence in rock-paper-scissors models\n  In a spatial rock-paper-scissors ecosystem, let one species \"ambush\" -- sense local density of its prey and choose to str…",
+      "lastProgressAt": 1792222036122,
+      "tokens": 30024,
+      "toolCalls": 1,
+      "durationMs": 54465,
+      "resultPreview": "{\"ideas\":[{\"type\":\"demo\",\"title\":\"Ambush or Strike: Spatial Rock-Paper-Scissors Live\",\"paper_id\":\"2510.17016v1\",\"pitch\":\"Single-file HTML/canvas cellular automaton: a lattice of Rock/Paper/Scissors cells plays the classic cyclic-dominance game, but one species gets an 'ambush' trait — it senses local prey density in its neighborhood and only strikes above a threshold, otherwise lies in wait (survi…"
+    }
+  ],
+  "totalTokens": 179595,
+  "totalToolCalls": 6
+}
