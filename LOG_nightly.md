@@ -1,5 +1,93 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-17 — Line Drift
+- **Papers:** 176 fresh papers across 22 categories (per_cat=8, offset=day-of-year×3=870; two arXiv
+  429-rate-limit stalls on the first categories required two `--resume` retries — `fetch_papers.py`
+  checkpoints after every category so no data was lost), 30 picked for category diversity + buildability
+  via a subagent (`papers_picked_30.json`), 6 ideation batches (`ideation_2026-10-17.js`), 24 ideas.
+- **Process note:** found last night's (10-16) run abandoned mid-build-off — 2 of 3 demos had finished but
+  judging/publishing/logging never happened (same recurring stall pattern). Recovered it first this
+  session: judged the 2 survivors, Sperm Derby won, published + logged (see entry below), before starting
+  tonight's run. Also ran tonight's 3-way build-off as 3 parallel **foreground** Agent calls (not a
+  `Workflow`) per the documented 09-17 fix — a backgrounded `Workflow` build-off has repeatedly died to the
+  runner's 600s idle-wait ceiling (most recently last night); a blocking Agent call isn't subject to it.
+- **Top idea per category (outside the forum top-3):**
+  - *Project* — Anytime-Valid Steam Detector (arXiv:2609.33597): ports a side-channel "testing by betting"
+    e-process into a CLV dashboard add-on — a peek-anytime-valid verdict on whether a steam move is
+    statistically real, no fixed sample size required.
+  - *Startup* — PersonaOdds (arXiv:2610.17203): a Discord betting bot running dueling-bandit persona
+    selection — two rival takes on a game, adapts which one it shows each user based on engagement.
+  - *YouTube* — Fast Bookmaker vs. Slow Thinker (arXiv:2610.11978): races a one-forward-pass "Jev"
+    probability head against a full reasoning LLM on sports trivia/props, scored against real closing
+    lines.
+- **Forum top-3 (all discussion_score 9, all buildable_score 9 — all three built):**
+  - A short proof of the Bernoulli decomposition theorem (arXiv:2609.21476) — **caught a real ideation
+    error**: the actual paper is abstract generic-chaining-theory math (admissible partitions, Rademacher
+    processes), nothing to do with sports streaks. The builder fetched the real abstract, caught the
+    mismatch, and built an honest fallback instead of faking the claim; the digest text was corrected
+    post-build to disclose the gap rather than repeat the ideation agent's mistaken framing.
+  - Change detection with conformal martingales (arXiv:2609.27179) ← BUILT, won build-off
+  - Prejudice driven spite: A discontinuous phase transition in ultimatum game (arXiv:2510.18889) — the
+    same paper last night's build-off tried and failed to finish; built successfully tonight.
+- **Built (3-way build-off, judged via headless Playwright driving real clicks/slider events on all
+  three):**
+  - A — **Streak Shredder** (arXiv:2609.21476, honest fallback): real lag-1 XOR decorrelation + von
+    Neumann bias-removal extractor pulling provably-fair 50/50 bits out of streaky win/loss sequences,
+    with run-length histograms and a live runs-test z-score (raw |z|≈20-28 vs extracted |z|<2, computed
+    live). Runs clean, zero console errors. Scored 33/40 (wow 7 / interactivity 9 / polish 9 / fidelity 8).
+  - B — **Line Drift** (arXiv:2609.27179): two real conformal test martingales (naive single-density vs.
+    the paper's mixture-and-restart optimal construction) racing on a live simulated stream with an
+    injectable regime shift, log-scale wealth chart vs. Ville's-inequality threshold, Monte Carlo panel
+    (optimal detected 4.09× faster in one run, 32 vs 132 steps). Runs clean, zero console errors. Scored
+    36/40 (wow 9 / interactivity 9 / polish 9 / fidelity 9).
+  - C — **The Spite Snap** (arXiv:2510.18889): real replicator-dynamics population sim (200 agents,
+    genuine fitness-proportionate selection per generation, discrete FAIR/SPITE strategies with a
+    conformity + spite-satisfaction payoff term), prejudice-fraction slider live-revealing a genuine
+    discontinuous cliff (~34%→~15% offer across one slider step) in a scrubbed bifurcation diagram. Runs
+    clean, zero console errors. Scored 35/40 (wow 9 / interactivity 9 / polish 8 / fidelity 9).
+  - **Judge's pick: B (Line Drift)** — edged out C by pairing the highest technical polish (hand-rolled
+    log-scale canvas charting with precise alarm markers) with a Monte Carlo panel that quantitatively
+    proves the paper's exact central claim on every run.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-17-line-drift.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-17-nightly.html (also links both runner-up demos)
+  - david-share commit 941fb25, pushed. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-10-17.json` written with `demo_url`/`demo_arxiv_id` pointing at the
+  winner, validated via `validate_digest.py` — `nightly.sh` posts it.
+
+## 2026-10-16 — Sperm Derby (recovered from stall)
+- **Note:** the 2026-10-16 run stalled after the 3-way build-off but before judging/publishing/logging —
+  same recurring pattern as 09-14/09-16/10-03/05/06/08/09. Only 2 of 3 builds finished (`spite-snap`, the
+  ultimatum-game build, never wrote its file); found and finished on 2026-10-17: judge + publish only,
+  no new fetch/ideation/build.
+- **Forum top-3 (from `digest_2026-10-16.json`, already posted by `nightly.sh` with an empty demo_url
+  that night — this session backfilled the file after the fact for the record):**
+  - Prejudice driven spite: A discontinuous phase transition in ultimatum game (arXiv:2510.18889) —
+    intended 3rd build-off entry, never finished
+  - Machine learning predictions from unpredictable chaos (arXiv:2503.14956)
+  - Oscillatory Active Brownian Motion: A Minimal Model for Sperm Dynamics (arXiv:2607.12158) ← BUILT,
+    won build-off
+- **Built (2-way build-off, judged by a subagent that opened both files and drove their real controls —
+  clicked bets, ran races, fast-forwarded heats, toggled sliders):**
+  - B — **The Hidden Shape of Chaos** (arXiv:2503.14956): logistic-map chaos generator, scrolling
+    "looks random" bit strip, live delay-embedding scatter resolving into a parabola, naive-vs-topological
+    accuracy race (naive pinned ~50%, topological climbed to 97%). Runs clean, zero console errors.
+    Scored 34/40 (wow 8 / interactivity 8 / polish 9 / fidelity 9).
+  - C — **Sperm Derby** (arXiv:2607.12158): parimutuel racer derby on real per-tick Euler–Maruyama
+    oscillatory-ABM dynamics, amplitude/frequency/noise sliders, a chip-betting panel with correct pooled
+    payouts, fast-forward mode converging empirical win rates toward a theory estimate from the same
+    physics. Runs clean, zero console errors. Scored 36/40 (wow 9 / interactivity 9 / polish 9 /
+    fidelity 9).
+  - **Judge's pick: C (Sperm Derby)** — equally rigorous physics-to-pixel fidelity to B, but a richer
+    interaction surface (betting, fast-forward, live theory-vs-empirical convergence) and stronger
+    game-like wow factor.
+- **Published (git push only):**
+  - https://share.djiang.xyz/arxiv-scrape/demos/2026-10-16-sperm-derby.html
+  - https://share.djiang.xyz/arxiv-scrape/2026-10-16-nightly.html (also links the runner-up demo)
+  - david-share commit 20f52bf, pushed. LIVE after VPS `git -C /opt/share pull`.
+- **Forum digest:** `digest_2026-10-16.json` backfilled with `demo_url`/`demo_arxiv_id` for the record;
+  the live Discord post that night already went out with no demo link (posted before the stall).
+
 ## 2026-10-15 — The Fitness Mirage
 - **Papers:** 176 fresh papers across 22 categories (per_cat=8, offset=day-of-year×3=864), 30 hand-picked
   for diversity + buildability, 6 ideation batches (`ideation_2026-10-15.js`).
