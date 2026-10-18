@@ -1,5 +1,50 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-18 — Synergy Streak Machine
+- **Papers:** 176 fresh papers across 22 categories (per_cat=8, offset=day-of-year×3=870 — ran clean,
+  no 429 stalls), 30 picked for category diversity (`papers_picked_30.json`), 6 ideation batches
+  (`ideation_2026-10-18.js`), 24 ideas.
+- **Top idea per category (outside the forum top-3):**
+  - *Project* — Dutch Book Live (arXiv:2609.28263): a real-time odds engine built on resource-adaptive
+    SGD for online LP — updates resource prices in O(m) per request without ever re-solving from scratch.
+  - *YouTube* — Why Your Parlay Isn't as Independent as You Think (arXiv:2609.21476): uses a short proof
+    of the Bernoulli decomposition theorem as the hook for explaining parlay correlation.
+  - *Project* — CapperWeights (arXiv:2609.27206): an anytime-optimal tipster leaderboard built on a
+    prediction-with-expert-advice result that gets the optimal regret bound at every stopping time.
+- **Forum top-3 (discussion scores 9/9/8, all three buildable_score 7-9 — all three built, real
+  competition):**
+  - AutoMARS multi-agent supply-chain risk assessment (arXiv:2610.17206)
+  - The Synergistic Route to Stretched Criticality (arXiv:2604.28003) ← BUILT, won build-off
+  - SecProbe adaptive IRT evaluation of coding agents (arXiv:2609.33763)
+- **Built (3-way build-off, 3 parallel foreground Agent calls + 1 judge, judge verified all three live
+  via headless Chromium driving real clicks/slider events):**
+  - A — **BetRiskRoom** (arXiv:2610.17206): a trading-floor-themed bet slip — submit triggers 5 analyst-
+    desk personas (Injury/Weather/Referee-Tendency/Line-Movement/Public-Money-Skew) that stagger in,
+    visibly disagree, then a Chair synthesizes a green/yellow/red verdict. Scores are a seeded-PRNG hash
+    of the input (deterministic per input) with templated rationale — polished animation, but no real
+    multi-agent synthesis mechanism, just flavor text over an RNG. Scored 6/6/8/4 (wow/interactivity/
+    polish/fidelity).
+  - B — **Synergy Streak Machine** (arXiv:2604.28003): a live 40-lane cellular automaton with two
+    individually sub-critical contagion channels ("Shooter Confidence", "Crowd Noise") and a Synergy
+    slider that only multiplies continuation probability when both are active together. Below threshold
+    the streak-length histogram is boring/exponential; above it, a fat tail visibly grows in real time.
+    Judge drove the slider live and watched the longest recorded streak jump from 6 to 130 in three
+    seconds — directly reproduced the paper's claim on the fly. **Won, 9/8/9/9.**
+  - C — **Your Hidden Elo** (arXiv:2609.33763): a 10-question adaptive poker/betting-EV trivia quiz with
+    a real 2PL IRT Bayesian posterior over latent skill, narrowing live on a canvas chart, greedy next-
+    item selection by closest-difficulty-to-current-estimate, ending in a shareable "Poker IQ" score.
+    Genuinely runs the IRT math correctly, strong shareability hook, but never demonstrates SecProbe's
+    actual claimed advantage (adaptive items beating a much longer static quiz). Scored 8/9/8/7.
+  - **Winner: Synergy Streak Machine** — the only build where the interactive control (the slider) IS the
+    paper's actual mechanism rather than theater layered on top of a generic app; judge empirically
+    reproduced the phase transition live rather than just reading the code.
+- **Published:** demo + brief copied into `david-share/arxiv-scrape/`, registered in `manifest.json`,
+  committed + pushed to `xpoes123/david-share` (commit `744d1c6`). Live at
+  https://share.djiang.xyz/arxiv-scrape/demos/2026-10-18-synergy-streak.html (VPS pull is separate, not
+  done by this run).
+- **Digest:** `digest_2026-10-18.json` written and validated via `validate_digest.py` — forum top-3 above,
+  `demo_url`/`demo_arxiv_id` pointing at the build-off winner.
+
 ## 2026-10-17 — Line Drift
 - **Papers:** 176 fresh papers across 22 categories (per_cat=8, offset=day-of-year×3=870; two arXiv
   429-rate-limit stalls on the first categories required two `--resume` retries — `fetch_papers.py`
