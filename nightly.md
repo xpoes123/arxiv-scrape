@@ -19,6 +19,12 @@ Work in `/home/david/code/arxiv-scrape`. Steps:
    type — **project / startup / youtube / demo** — and scores each on (a) how cool/shareable it is and
    (b) how **buildable-tonight** it is (prefer things buildable as a single self-contained HTML file, no
    backend). Reuse the pattern from the earlier ideation runs (see `ideation_run2.md`). ~6 batches is plenty.
+   **Local model first:** run `node ideate_local.mjs <papers.json> ideation_<date>_local.json votes.json`
+   (foreground) on the ≤30 papers you're ideating over (a JSON list of paper objects; it batches by 5, max 6
+   batches). It runs the same prompt/schema on the homelab model and writes `{ideas, failed_batches}`.
+   Use its `ideas` as-is; then run the Sonnet Workflow `ideation_workflow.js` (Workflow `scriptPath`) with
+   `args` = `failed_batches` **only if that list is non-empty** — that is the cloud fallback. Merge both
+   idea lists for the steps below. If the script itself errors, fall back to the Workflow over all batches.
    ALSO score each idea on a **discussion axis** (how much it would spark debate on a betting/poker/
    sports/games Discord): blend (i) debate/relatability, (ii) SharpLab-fit (betting, poker, sports,
    games, gambling, decision-theory), (iii) surprise (counterintuitive "wait, really?"), and

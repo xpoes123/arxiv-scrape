@@ -1,12 +1,14 @@
 export const meta = {
   name: 'arxiv-nightly-ideation',
-  description: 'Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5',
+  description: 'Ideate project/startup/youtube/demo ideas from 30 fresh arXiv papers in batches of 5, with a discussion axis',
   phases: [
     { title: 'Ideate' },
   ],
 }
 
-const BATCHES = [
+// args: optional array of batches (e.g. ideate_local.mjs's failed_batches) — the Sonnet fallback for
+// batches the homelab model couldn't do. Without args, runs the hardcoded example batches below.
+const EXAMPLE_BATCHES = [
   [
     {id:"2607.10931v1",cat:"cs.LG",title:"Fast Whole-Brain, Geometry-Aware Functional Alignment for Cross-Subject Decoding"},
     {id:"2607.11193v2",cat:"cs.AI",title:"RepTran: Search-Based Repair of Transformer Models"},
@@ -51,6 +53,8 @@ const BATCHES = [
   ],
 ]
 
+const BATCHES = Array.isArray(args) && args.length ? args : EXAMPLE_BATCHES
+
 const IDEA_SCHEMA = {
   type: 'object',
   properties: {
@@ -65,8 +69,11 @@ const IDEA_SCHEMA = {
           pitch: { type: 'string' },
           cool_score: { type: 'number' },
           buildable_score: { type: 'number' },
+          discussion_score: { type: 'number' },
+          discussion_why: { type: 'string' },
+          tags: { type: 'array', items: { type: 'string', enum: ['betting','poker','sports','games','gambling','decision-theory','ai','math','bio','physics','econ','whimsy'] } },
         },
-        required: ['type', 'title', 'paper_id', 'pitch', 'cool_score', 'buildable_score'],
+        required: ['type', 'title', 'paper_id', 'pitch', 'cool_score', 'buildable_score', 'discussion_score', 'discussion_why', 'tags'],
       },
     },
   },
@@ -77,7 +84,19 @@ phase('Ideate')
 const results = await pipeline(
   BATCHES,
   (batch, _item, idx) => agent(
-    `You are mining arXiv papers for cool, buildable ideas. Here are 5 fresh paper titles/categories/ids (fetch abstracts from arxiv.org/abs/<id> if you want more detail, but titles alone are often enough to riff on):\n\n${batch.map(p => `- ${p.id} [${p.cat}] ${p.title}`).join('\n')}\n\nFor this batch, surface 2-4 ideas total (not necessarily one per paper) tagged by type: project (something to actually build long-term), startup (a business), youtube (a video concept), or demo (a single-file interactive HTML toy — a playable explainer or visualization that lets someone FEEL the paper's result). Score each on cool_score (1-10, how cool/shareable) and buildable_score (1-10, how buildable literally tonight — demos should skew toward buildable as a single self-contained HTML file with no backend). Be creative and specific — reference the actual math/result, not just the title. Return via the schema.`,
+    `You are mining arXiv papers for cool, buildable ideas for a betting/poker/sports/games Discord server. Here are 5 fresh papers (id, category, title, summary):
+
+${batch.map(p => '- ' + p.id + ' [' + p.cat + '] ' + p.title + '\n  ' + p.summary).join('\n')}
+
+For this batch, surface 2-4 ideas total (not necessarily one per paper) tagged by type: project (build long-term), startup (a business), youtube (a video concept), or demo (a single-file interactive HTML toy -- a playable explainer or visualization that lets someone FEEL the paper's result, no backend). Be creative and specific -- reference the actual math/result, not just the title.
+
+Score each idea on:
+- cool_score (1-10): how cool/shareable
+- buildable_score (1-10): how buildable literally tonight (demos should skew toward buildable as a single self-contained HTML file)
+- discussion_score (1-10): how much this would spark debate on a betting/poker/sports/games Discord -- blend (i) debate/relatability, (ii) fit with betting/poker/sports/games/gambling/decision-theory, (iii) surprise ('wait, really?'), and (iv) whimsy (weird-and-delightful). Explain the blend briefly in discussion_why. Read /home/david/code/arxiv-scrape/votes.json: up-weight ideas whose tags are net-positive in votes.tags, down-weight net-negative ones. Soft bias only, don't force it.
+- tags: pick from betting, poker, sports, games, gambling, decision-theory, ai, math, bio, physics, econ, whimsy (as many as fit).
+
+Return via the schema.`,
     { schema: IDEA_SCHEMA, label: `batch-${idx + 1}`, phase: 'Ideate' }
   )
 )
