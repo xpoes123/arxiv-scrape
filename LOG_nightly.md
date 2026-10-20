@@ -1,5 +1,13 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-20 — Polynomial Heat Flow
+- **Papers:** 128 fetched (16 categories, per_cat=8, offset=879), 30 picked round-robin, 18 ideas via local Ollama (0 failed batches, no Sonnet fallback).
+- **Top idea per category (outside forum top-3):** *Project* — DeltaTTG betting agent (2610.17666); *YouTube* — Geometry of Winning, neural manifolds in poker (2603.10956); *Demo* — Online Fractional Vertex Cover game (2608.24630).
+- **Build-off:** poly-heat-a (2609.24867), switchback-b (2602.23257), lookahead-c (2602.23087). Judge scores 35/31/26.
+- **Winner:** poly-heat-a — only one computing the paper's actual objects (true zeros via ODE + high-precision Aberth). Caveat: no browser available, so all three were checked via node only; derivative panel solves synchronously and may stall at large n.
+- **Live:** https://share.djiang.xyz/arxiv-scrape/demos/2026-10-20-poly-heat.html (needs VPS `git pull`).
+- Note: initial fetch exceeded the 120s tool timeout and auto-backgrounded; completed fine.
+
 ## 2026-10-18 — Synergy Streak Machine
 - **Papers:** 176 fresh papers across 22 categories (per_cat=8, offset=day-of-year×3=870 — ran clean,
   no 429 stalls), 30 picked for category diversity (`papers_picked_30.json`), 6 ideation batches
