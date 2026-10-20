@@ -16,6 +16,7 @@ nightly.sh -> claude -p nightly.md (headless):
 ## Files
 - `nightly.md` — the scout playbook (the prompt the headless run executes)
 - `nightly.sh` — the runner (systemd `ExecStart`); logs to `~/.local/share/arxiv-nightly/`
+- `ideate_local.mjs` — ideation on the homelab Ollama model (`OLLAMA_URL`, set in `nightly.sh`); batches it can't do go to the Sonnet Workflow `ideation_workflow.js` via `args`. Tests: `node --test test_ideate_local.mjs`
 - `fetch_papers.py` — arXiv API fetch: `python3 fetch_papers.py <per_cat> <start> <out.json>`
 - `publish_nightly.py` — copies demo + builds brief + adds manifest entries in david-share
 - `ENABLE.md` — **one-time setup**: the systemd timer + the VPS auto-pull cron

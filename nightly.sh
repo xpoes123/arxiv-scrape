@@ -9,6 +9,10 @@ LOG="$LOGDIR/$(date +%F).log"
 DATE="$(date +%F)"
 DIGEST="digest_${DATE}.json"
 KEYFILE="$HOME/.config/sage/console.key"
+# Homelab Ollama for the ideation step (ideate_local.mjs); Sonnet Workflow is the fallback.
+# Override in the systemd unit (Environment=); set OLLAMA_URL= (empty) to disable.
+export OLLAMA_URL="${OLLAMA_URL-http://100.67.232.59:11434}" OLLAMA_MODEL="${OLLAMA_MODEL:-gemma4:12b}" \
+  OLLAMA_TIMEOUT="${OLLAMA_TIMEOUT:-60}" OLLAMA_NUM_CTX="${OLLAMA_NUM_CTX:-16384}"
 {
   echo "=== arxiv nightly start $(date -u +%FT%TZ) ==="
 
