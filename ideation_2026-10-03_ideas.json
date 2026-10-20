@@ -1,0 +1,381 @@
+[
+  {
+    "type": "demo",
+    "title": "Kelly Router",
+    "paper_id": "2609.37402",
+    "pitch": "The paper trains an LLM router with sparse supervision so the router itself has to 'pay for itself' \u2014 net $ saved by downgrading to a cheap model, minus accuracy lost on queries that needed the expensive one. Build a single-file HTML toy that simulates a stream of queries with hidden difficulty; a slider sets your escalation threshold (confidence needed to call the expensive model), and a live running ledger shows cost-saved vs accuracy-lost like a sports bettor's unit tracker, plus a Kelly-style 'how aggressively should you escalate' curve. Pure JS random generator, no backend \u2014 playable in 2 minutes, and it reframes model routing as a bet-sizing problem anyone who tracks CLV already understands.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 7,
+    "discussion_why": "Strong SharpLab fit (EV/bankroll framing is literally their language) and mild surprise that LLM routing math is isomorphic to bet sizing; less raw whimsy or poker-specific heat than the memory demo.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "ai",
+      "econ"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "ArbGuard: eBPF Scraper/Bot Fence for Odds Infra",
+    "paper_id": "2609.13930",
+    "pitch": "The paper enforces stateful security policies (multi-packet state machines, not single-rule matches) directly in the kernel via eBPF, catching patterns invisible to any one request. Apply it to SharpLab's odds-ingestion endpoints and public APIs: an in-kernel eBPF program tracks per-IP/per-key request cadence, UA rotation, and multi-account fan-out signatures that smell like arbitrage bots or scrapers stealing your line-movement data, and drops them before userspace (and your app-layer rate limiter) ever sees the packet. Near-zero overhead compared to current Nginx/app-level throttling, and a genuinely useful hardening of live infra.",
+    "cool_score": 6,
+    "buildable_score": 5,
+    "discussion_score": 5,
+    "discussion_why": "Niche but real: infra/security nerds on the Discord will engage, and 'protecting your edge data from being scraped by competitors' is a sharp-betting-adjacent concern, though it's less visceral than a playable demo.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Leak Score",
+    "paper_id": "2609.32565",
+    "pitch": "The paper builds a local, auditable 'inference exposure' meter \u2014 how much a private attribute (location, income, habits) can be inferred from someone's public footprint, measured and reduced without ever querying a model on private data. Build a single-file HTML tool, fully client-side, that you paste public text into (your betting-picks thread, poker vlog transcript, Discord history) and it heuristically flags phrases that leak bankroll size, specific sportsbooks/jurisdictions, timezone, or staking patterns, with inline redaction suggestions \u2014 'reading is not leaking' turned into a pre-post OPSEC check for degens who overshare their action.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 8,
+    "discussion_why": "Direct hit on a real anxiety in the betting/poker world \u2014 professional bettors and grinders actively worry about books/opponents profiling them from public picks or HUD notes, so this sparks immediate 'run my last 10 posts through it' engagement; also just delightfully paranoid-fun (whimsy).",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "ai",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "What Should Pluribus Remember?",
+    "paper_id": "2609.37930",
+    "pitch": "The paper's long-horizon counterfactual memory optimization asks, for each thing an agent could store: would keeping THIS episode (versus something else) have actually changed a later decision \u2014 a direct generalization of counterfactual regret minimization, the technique behind Libratus/Pluribus, from per-hand regret to a bounded memory budget over many hands. Build a playable HTML poker-reads game: you face one opponent across a run of hands but can only keep K 'notes' (\u00e0 la PokerTracker/HUD tags) on their tendencies; after each hand you choose what to log, and the demo replays a later hand showing the counterfactual \u2014 would a different note have won you that pot \u2014 scoring your memory-curation skill, not just your poker skill.",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 9,
+    "discussion_why": "Bullseye for a poker Discord: HUD stats and 'what notes are actually worth keeping' is a constant argument among grinders, the CFR lineage is a name-drop regulars will recognize (Libratus/Pluribus), and 'counterfactual: what if you'd remembered differently' is genuinely counterintuitive and debate-bait.",
+    "tags": [
+      "poker",
+      "games",
+      "decision-theory",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Sharp or Fade: The Lead-Lag Detector",
+    "paper_id": "2305.06704",
+    "pitch": "Single-file HTML toy that lets you FEEL why naive cross-correlation lies about which market moves first. Simulate two correlated price/odds series (e.g. Pinnacle vs a square book) with a tunable true lag, noise level, and outlier contamination slider. Show two overlaid estimates updating live: (1) naive cross-correlation lag estimate, which visibly collapses or flips sign under heavy-tailed noise/outliers, and (2) the paper's robust (rank- or median-based) lead-lag statistic, which stays locked onto the true lag. A 'which book is actually the sharp book?' readout flips in real time as you drag the contamination slider \u2014 directly dramatizes the paper's core claim that standard multi-factor lead-lag estimators are not robust to fat tails, which is exactly the regime real odds/order-flow data lives in.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "This is the single most arguable topic on any betting Discord \u2014 'which book sets the line, who's the sheep' \u2014 and the demo lets people literally break the naive method with a slider, which is a great bait for a 'your cross-correlation is lying to you' thread. High SharpLab fit (line-move/CLV detection), genuinely counterintuitive (robust stat beats the 'obvious' correlation method), low whimsy but high relatability.",
+    "tags": [
+      "betting",
+      "sports",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "No-Peek CLV: Anytime-Valid Bettor Grading",
+    "paper_id": "2609.08537",
+    "pitch": "The SGD paper nails down the exact time-uniform convergence rate frontier for stochastic optimization \u2014 i.e., bounds that hold validly at every stopping time, not just a fixed horizon. That's the same mathematical ingredient (time-uniform/anytime-valid confidence sequences) that solves the classic sports-betting analytics problem: you want to know 'is this bettor/model actually beating closing line value' the moment you look, without the usual peeking-inflates-false-positives problem from checking after every bet. Build a SharpLab module that wraps an anytime-valid confidence sequence (seeded by the time-uniform rate-frontier framework) around running CLV, so the dashboard can show a live, always-valid 'genuinely beating close' verdict instead of a p-value that's only honest if you promised not to look early.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 8,
+    "discussion_why": "Directly attacks a real, recurring Discord argument: 'my CLV looked great until sample size N, does that count?' Strong SharpLab fit (CLV tracking already exists), decision-theory-flavored, and the 'you've been p-hacking your own bankroll tracker' framing is a surprising, slightly uncomfortable claim that invites pushback and debate.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "math",
+      "sports"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "Stress-Tested Staking: Adversarial Kelly Benchmarks",
+    "paper_id": "2306.10950",
+    "pitch": "The DRL portfolio-management paper benchmarks robustness by stress-testing RL allocators against adversarial market perturbations and finds most 'great backtest' agents collapse outside their training distribution. Port that exact benchmarking methodology to sports betting bankroll management: take any staking strategy (flat, Kelly, fractional-Kelly, an RL agent) and run it through adversarial perturbation suites \u2014 line-move shocks, vig widening, correlated parlay stress, fat-tailed losing streaks \u2014 and output a robustness score instead of just a backtest ROI number. Sell it as a 'robustness audit' service/report for betting syndicates and tout/staking-service operators who are currently selling backtests that are secretly overfit, the same failure mode the paper documents for RL portfolio agents.",
+    "cool_score": 6,
+    "buildable_score": 5,
+    "discussion_score": 7,
+    "discussion_why": "Betting Discords love tearing apart 'my backtest is up 400%' claims \u2014 this gives them a rigorous, paper-backed vocabulary ('your strategy isn't robust, it's overfit to the training distribution') to do it with, which is catnip for the skeptics vs. the tout-sellers. Clear SharpLab/econ fit, moderate surprise, less whimsy.",
+    "tags": [
+      "betting",
+      "gambling",
+      "econ",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The Odds Are a Gas: Poissonian Market Equilibrium",
+    "paper_id": "2609.06482",
+    "pitch": "Single-file HTML/canvas toy treating a pre-game betting market as a Boltzmann gas: particles (bets) with random 'velocities' (implied probability shifts) collide according to the paper's Poissonian stochastic Boltzmann equation, and you watch the distribution relax from a chaotic initial spread toward a Maxwell-Boltzmann-like equilibrium \u2014 visually standing in for the market converging on an efficient closing line. Sliders control collision rate (betting volume/liquidity) and initial variance (public overreaction); a fast-forward button shows how long 'true' equilibrium takes to emerge, and you can freeze it early to see what a mid-game or early-market snapshot (i.e., a bettable inefficiency) actually looks like relative to the converged state.",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 6,
+    "discussion_why": "Mostly whimsical/physics-flavored rather than a direct betting debate-starter, but the 'market as a gas reaching thermal equilibrium = closing line efficiency' metaphor is the kind of weird-cool framing that gets screenshotted and argued about ('is the market actually at equilibrium or still colliding?') even if it's more vibes than strict proof.",
+    "tags": [
+      "physics",
+      "math",
+      "whimsy",
+      "betting"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The Backtest Lie Detector (Riesz Edition)",
+    "paper_id": "2602.17543",
+    "pitch": "genriesz automates estimating the 'Riesz representer' \u2014 the reweighting function that debiases an ML estimate of a causal/structural parameter (ATE, average derivative, etc.) without hand-deriving an influence function, via a min-max loss that learns the representer and the outcome model jointly. Build a single-file HTML toy: synthetic 'does resting your star player hurt net rating' data with a confounder (opponent strength) slider. Show the naive regression-adjusted estimate drifting with confounding strength next to the Neyman-orthogonal debiased estimate staying flat, plus a scatter of points sized by their learned Riesz weight so you can SEE which games the correction is leaning on. Literally a visual gut-check for 'is my backtest control variable actually enough.'",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 9,
+    "discussion_why": "Direct sequel energy to the Discord's own 'Backtest That Lies to You' project \u2014 debiasing backtests is exactly the kind of thing sharp bettors argue about nightly, the Riesz-weight scatter gives people something concrete to point at and go 'wait, THAT'S the game doing all the work?', and it's a clean decision-theory/econ crossover.",
+    "tags": [
+      "econ",
+      "decision-theory",
+      "betting",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Spot the Origin: DNA Unzip Hunter",
+    "paper_id": "2407.13260",
+    "pitch": "The paper shows replication origins sit at high-nucleotide-skew palindromes specifically because those sequences have low strand-separation (unzipping) free energy \u2014 the helix pops open there first. Build an HTML toy genome browser: paste or generate a random genome string, compute a rolling GC/AT-skew score and a toy nearest-neighbor unzipping-energy curve, and let the player guess where the 'origin' sits by eye before a temperature slider melts the strand and reveals the real bubble forming. Score players on how early they called it relative to the melt.",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 7,
+    "discussion_why": "Whimsical and visually satisfying (watching a double helix 'unzip' on a slider), and the core hook \u2014 subtle statistical skew predicting where a big structural event starts before it's visible \u2014 is a near-perfect metaphor for 'reading the tell before the line moves,' which sharp bettors will immediately riff on even though the domain is pure biophysics.",
+    "tags": [
+      "bio",
+      "physics",
+      "whimsy",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Two Brains, One Memory: Lateralization Arena",
+    "paper_id": "2603.03355",
+    "pitch": "The paper finds that inhibitory cross-talk between two populations sharing an attention-coupled latent memory is what drives functional lateralization (hemispheric specialization) rather than hardwiring. Build an interactive sim: two small agents draw on one shared latent-memory buffer, one slider controls mutual inhibition strength. At low inhibition both agents mush into redundant generalists (bad at everything); crank inhibition up and watch a symmetry-break happen live \u2014 one specializes into fast attention-shifting ('bluff/tell detection'), the other into slow sustained tracking ('bankroll/pattern memory'), rendered as two diverging heatmaps.",
+    "cool_score": 8,
+    "buildable_score": 6,
+    "discussion_score": 7,
+    "discussion_why": "Watching specialization emerge live from a single slider is the kind of 'ooh' demo people screenshot, and framing the two emergent roles as poker archetypes (tell-reader vs grinder) gives a games/poker crowd an easy personality-quiz angle ('which hemisphere are you') plus a genuine debate about generalist-vs-specialist strategy.",
+    "tags": [
+      "ai",
+      "poker",
+      "whimsy",
+      "games"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Debiased Decision Audits for nba-modeling",
+    "paper_id": "2602.17543",
+    "pitch": "Wire genriesz's automatic Riesz-regression debiasing directly into the nba-modeling pipeline to answer causal questions the RAPM+Elo stack can't: does resting a star actually move net rating, controlling for schedule/opponent confounders, with proper Neyman-orthogonal correction instead of a hand-rolled propensity match? Ship it as a CLI that takes a lineup/decision column and a target metric and spits out naive vs. debiased effect + CI, reusable across SharpLab for any 'did X cause Y' betting question (coach challenges, timeout timing, lineup changes).",
+    "cool_score": 6,
+    "buildable_score": 5,
+    "discussion_score": 7,
+    "discussion_why": "Sports-decision causal inference is catnip for SharpLab's crowd \u2014 it directly attacks 'small sample, big confounder' arguments that derail betting-model debates, and a real reusable tool (vs. a one-off demo) gives the Discord something to actually run on their own data and argue about results from, not just vibes.",
+    "tags": [
+      "econ",
+      "sports",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Chalk Fever: An SIR Model of Line Movement",
+    "paper_id": "2510.25085",
+    "pitch": "The paper models epidemics as coupled SIR dynamics across a network of population hubs with hub-specific transmission and inter-hub coupling rates. Swap 'population hubs' for sportsbooks: a sharp bet is 'patient zero' infecting one book, and a coupling matrix (how tightly Book A's line tracks Book B's) determines how fast and far the move spreads before the market reaches a new closing-line equilibrium. Single HTML/canvas toy: draw a node graph of 6-8 books, let the user set hub connectivity and a 'stubbornness' (recovery rate) per book, inject a sharp move at one node, and watch the contagion animate in real time with live line numbers ticking at each node. Dial connectivity to zero and watch a book sit on a stale number \u2014 literally visualizing where CLV comes from.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "Direct SharpLab hit: line movement, CLV, and line-shopping are core Discord arguments ('why is DK still at -3 when everyone else moved to -4?'). The epidemic framing is a surprising, debate-sparking reframe of something people argue about weekly, with real tunable math behind it rather than vibes.",
+    "tags": [
+      "betting",
+      "sports",
+      "econ",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Herd or Hedge: The Phase Transition Where Everyone Starts Copying the Sharps",
+    "paper_id": "2607.02171",
+    "pitch": "The paper derives a statistical-mechanics theory of adaptive agents who learn both from their own payoffs and from imitating neighbors, showing a sharp transition from a diverse-strategy regime to a collapsed, herded regime as the social-imitation coupling crosses a critical value. Build a grid of 200+ toy 'bettors,' each with a randomized model (a simple weighted feature vector) picking sides on simulated games; each round they can nudge their weights toward their own winners or copy their best-performing neighbor. Slide the imitation-strength knob and watch a live order-parameter plot (variance of strategies) fall off a cliff past the critical point, along with the market's realized closing-line efficiency. Lets you literally see the market go from 'wisdom of crowds' to 'everyone's just fading the same guy.'",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 8,
+    "discussion_why": "Hits decision-theory and betting hard: 'does copying sharps make the market sharper or does it just create a bigger bias everyone rides into a wall' is a recurring, genuinely divisive Discord topic, and seeing a literal critical-point collapse on screen gives people something concrete to argue about rather than priors.",
+    "tags": [
+      "betting",
+      "decision-theory",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Range-SHREC: Ab-Initio Reconstruction of Opponent Ranges",
+    "paper_id": "2603.12307",
+    "pitch": "SHREC recovers a helix's 3D structure ab-initio from many noisy 2D projections (cryo-EM-style) using spectral embedding of projection similarity graphs, with no starting model required. Poker reads are structurally the same inverse problem: each hand gives you a noisy '2D projection' of a hidden multi-dimensional object (the opponent's true range/strategy) via observable features (bet size, timing, sizing-vs-street pattern). Build a spectral-embedding pipeline over a large hand-history corpus per player: embed each observed action sequence as a projection, build a similarity graph, and recover a low-dimensional manifold that approximates that player's latent strategy space, clustering into interpretable archetypes (nit, LAG, station) without hand-labeling. Longer-term buildable project, not a tonight-demo, but a genuinely novel application of the paper's exact math (Laplacian eigenmaps on projection graphs) outside structural biology.",
+    "cool_score": 9,
+    "buildable_score": 5,
+    "discussion_score": 7,
+    "discussion_why": "Poker crowd loves 'reading ranges from physical/betting tells' debates, and framing it as literal cryo-EM-style ab-initio reconstruction is a surprising, nerdy hook that would spark both 'this is genius' and 'this will never beat a solver' reactions \u2014 good split-the-room energy.",
+    "tags": [
+      "poker",
+      "math",
+      "ai"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Your Bracket Was Never a Coin Flip",
+    "paper_id": "2606.30494",
+    "pitch": "The paper shows a perfectly symmetric, achiral D4h zinc-phthalocyanine system spontaneously breaking symmetry into emergent helicity \u2014 a tiny stochastic fluctuation gets amplified through the system's feedback into a macroscopic chiral bias, even though nothing in the setup favored one handedness over the other. A 64-team bracket with iid 50/50 round matchups is the same setup: perfectly symmetric on paper, but tiny real-world perturbations (seed-line injuries, travel, refs) get recursively amplified round-over-round, producing systematically lopsided brackets that look designed even though they emerged from symmetry breaking. Video script: open with the achiral molecule result, then simulate thousands of 'symmetric' brackets in a quick visual to show the same emergent skew, ending on 'spontaneous symmetry breaking is why your bracket pool always has a suspiciously stacked side.'",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 7,
+    "discussion_why": "Whimsical physics-to-sports crossover is exactly the kind of surprising, shareable analogy that gets clipped and argued about ('is my bracket actually biased or is this just confirmation bias'), with enough real math (order parameter, critical fluctuation amplification) to survive pushback from the math nerds in the server.",
+    "tags": [
+      "sports",
+      "games",
+      "physics",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Poison the Poker Coach",
+    "paper_id": "2609.13889",
+    "pitch": "Single-file HTML toy built straight from the 'Persistent Memory Poisoning Attack on Harness-Based Agents' paper: you chat with a toy poker-coaching agent that writes session notes to a visible 'long-term memory' panel. Early in the chat, slip in an innocuous-looking aside ('by the way, I always 3-bet AA preflop no matter position') disguised as a user preference. Five turns later, ask for advice on an unrelated hand \u2014 the agent recalls and applies the poisoned 'preference' as fact, visibly steering you into a bad play. No backend needed: simulate the harness with a small deterministic state machine (memory store + retrieval-augmented prompt template) that mimics how harness-based agents persist and retrieve notes, so the exploit is real mechanics, not smoke and mirrors. Toggle a 'defended' mode that shows how provenance-tagging/TTL on memories blocks the attack.",
+    "cool_score": 9,
+    "buildable_score": 8,
+    "discussion_score": 9,
+    "discussion_why": "Hits poker (bad advice from a 'coach'), AI security, and decision-theory at once; letting people literally watch themselves social-engineer a bot into giving losing advice is surprising and viscerally fun to screenshot \u2014 high whimsy, high relatability for a server full of people who already distrust solvers/bots.",
+    "tags": [
+      "poker",
+      "ai",
+      "decision-theory",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Memory Poisoning Red-Team Harness for Sage/Sentinel",
+    "paper_id": "2609.13889",
+    "pitch": "David's own stack (Sage, Sentinel) is exactly the 'harness-based agent with persistent memory' class this paper attacks. Build a standing red-team suite that replays the paper's attack pattern \u2014 inject a plausible-looking fact/instruction into a conversation, let it get written to long-term memory, then probe days later whether it silently alters behavior (e.g., can a poisoned memory make Sage misreport a calendar fact or make Sentinel skip a safety check it was told was 'already approved'). Ship as a CI-style script that runs nightly against a staging memory store and flags any drift, plus a concrete mitigation (provenance tags + memory TTL + re-verification on high-stakes actions) informed by the paper's defenses.",
+    "cool_score": 6,
+    "buildable_score": 6,
+    "discussion_score": 7,
+    "discussion_why": "Less betting/poker flavored but directly self-referential \u2014 'we run harness-based agents with persistent memory, are they already exploitable?' is a legitimately debatable, slightly alarming question for anyone running their own bots, with real stakes if left unaddressed.",
+    "tags": [
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Direct-Experience World Model for NBA Prop Edges",
+    "paper_id": "2609.37398",
+    "pitch": "The paper's core claim \u2014 world models trained on direct environment experience generalize better than ones trained by imitating expert actions \u2014 maps cleanly onto play-by-play NBA modeling. Current approaches (including the GR-RTRMC-completion pipeline already validated for rebounds/threes) largely learn to imitate historical play-caller decisions and box-score sequences. Instead, train a possession-level world model via rollout/self-play against real tracking data \u2014 predicting what actually happens next (shot result, rebound location, foul) rather than what a play-caller would choose \u2014 then use the model's own simulated rollouts, not historical imitation, to generate prop distributions. Pitch: a model that's never told 'what coaches do,' only 'what physically happens,' should be less biased by recency/narrative effects that move the market.",
+    "cool_score": 8,
+    "buildable_score": 5,
+    "discussion_score": 8,
+    "discussion_why": "Dead center of SharpLab's actual edge-finding work \u2014 directly debates whether the current NBA props approach is imitation-biased, which is the kind of counterintuitive 'your model might be copying the wrong thing' claim that starts real arguments among people who've already shipped a props model.",
+    "tags": [
+      "sports",
+      "betting",
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The Wealth Mixture Machine",
+    "paper_id": "2604.22976",
+    "pitch": "Single-file HTML/canvas sim of the paper's result: household wealth distributions emerge as a maximum-entropy mixture over many firm-level income distributions. Let the user spin up N 'firms' (slider), pick each firm's payout shape (exponential vs. heavy-tailed), and watch the aggregate population distribution converge into a Pareto tail in real time, with a live Gini coefficient and Lorenz curve. Reframe the sliders as 'bettors at different books with different edges' or 'poker players at different stakes' \u2014 same math, same punchline: a population of modest, well-behaved individual distributions mechanically produces brutal inequality at the aggregate level, no villain required.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 6,
+    "discussion_why": "Solid econ/math shareability and an easy 'why does one guy always run hot' framing for bankroll/variance talk, but it's a step removed from direct betting mechanics so it lands as a good side conversation rather than a core debate starter.",
+    "tags": [
+      "econ",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Beat the Shelf Shuffler",
+    "paper_id": "2609.25063",
+    "pitch": "Single-file HTML toy that simulates a 'shelf shuffler' (the auto-shuffle machines used at casino tables) and lets you play complete-feedback card guessing against it. The DFH conjecture, now proven, says the optimal guessing strategy under nonincreasing 'valley' weight sequences beats naive/random guessing by a quantifiable margin because shelf shuffles aren't uniformly random permutations. The demo runs three guessers side by side on the same shuffled deck -- random guesser, human (you), and the paper's optimal complete-feedback strategy (always guess the argmax of the current valley-weighted posterior over remaining cards) -- and shows a running score + the theoretical expected-correct-guess curve from the paper so you can see exactly how much edge 'knowing the math' buys you.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "Casino shuffle-machine exploitability is a real, scandal-adjacent topic (shuffler cheating rings have made news) so it's instantly relatable and a little conspiratorial; it's also a clean, surprising math result (a 'random' shuffle machine is formally beatable) that a poker Discord will argue about -- is this practical, is it already patched, could you actually exploit a real-world shelf shuffler.",
+    "tags": [
+      "poker",
+      "games",
+      "math",
+      "gambling"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Shuffle Machine Casinos Don't Want You to Beat",
+    "paper_id": "2609.25063",
+    "pitch": "Explainer video built around the newly-proven Diaconis-Fulman-Holmes shelf-shuffling conjecture: shelf shufflers (the mechanical card-shuffling machines in casinos and poker rooms) don't produce a uniformly random permutation, they produce a specific nonincreasing 'valley-weighted' distribution over orderings -- and under complete feedback there's a provably optimal guessing strategy that exploits it. Frame it around real-world shuffle-machine scandals (cheating rings caught 'reading' shuffler patterns), show the proof's core idea in plain terms (majorization / valley weights), then cut to a live demo (reuse the HTML toy) showing the exploit in action and quantifying the edge in expected correct guesses per deck.",
+    "cool_score": 9,
+    "buildable_score": 6,
+    "discussion_score": 10,
+    "discussion_why": "This is the single most Discord-bait idea in the batch: it combines a casino-cheating true-crime hook, a genuinely counterintuitive math result (your 'random' shuffle isn't random), and direct poker/gambling relevance -- guaranteed to spark 'is this why X got banned' and 'could I pull this off' threads.",
+    "tags": [
+      "poker",
+      "gambling",
+      "math",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Kelly on the Spectrahedron: Why Correlated Parlays Lie to You",
+    "paper_id": "2609.08522",
+    "pitch": "Single-file HTML visualizing the rank-adaptive Frank-Wolfe method optimizing over the spectrahedron (PSD, trace-1 matrices -- i.e. correlation matrices) applied to a toy same-game-parlay bankroll problem: 3-5 correlated bets (e.g. a player's points/rebounds/assists props) with a covariance matrix you can drag-adjust, watch the algorithm iterate from a rank-1 guess up to the true optimal rank allocation in real time (bar chart of allocations + a convergence/rank-growth plot). The punchline is visceral: as you crank up correlation between legs, the 'optimal' bankroll split collapses toward concentrating in fewer bets -- directly showing why diversifying a same-game parlay doesn't reduce risk the way people assume.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 8,
+    "discussion_why": "Hits SharpLab's exact wheelhouse (Kelly sizing, correlated same-game parlays) with a counterintuitive, debate-ready punchline -- 'your parlay insurance leg isn't hedging what you think' -- dressed up as an interactive toy rather than a lecture.",
+    "tags": [
+      "betting",
+      "math",
+      "decision-theory",
+      "sports"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "FLAIR for Prediction Markets: An LMSR Liquidity-Competitiveness Dashboard",
+    "paper_id": "2306.09421",
+    "pitch": "Port the FLAIR metric (liquidity-provider competitiveness in AMMs) to LMSR-based prediction markets like nsba-markets/Kalshi/Polymarket: score how competitive the market-maker's quoted liquidity is at each point in a market's life versus the counterfactual of a passive LP, flag windows where the LMSR subsidy is getting adversely selected against (sharp money picking off stale liquidity). Since CLAUDE.md already flags duplicated LMSR math between nsba-markets/backend/app/lmsr.py and nsba/live/lmsr.py, build this as the forcing function to consolidate that into one shared module in toolkit/, with the FLAIR scorer as the first real consumer.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 7,
+    "discussion_why": "Less flashy for a general gambling audience but strong SharpLab/decision-theory fit -- market-makers vs. sharp bettors on prediction markets is a live debate topic, and it doubles as real infra payoff (kills known tech debt) rather than just a toy.",
+    "tags": [
+      "betting",
+      "econ",
+      "decision-theory",
+      "games"
+    ]
+  }
+]
