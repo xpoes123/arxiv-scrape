@@ -1,5 +1,13 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-21 — Fitness Landscape
+- 176 fetched, 30 ideated (local Ollama, 0 fallback batches), 18 ideas.
+- Top per category: demo — Fitness Landscape Sandbox; project — Fokker-Planck betting engine (2503.14706); youtube — buy-at-bulk facility location (2608.26337); startup — swarm-safe syndicate risk limits (2609.33852).
+- Build-off: habit-trap (26), fitness-landscape (33), evidence-gap/PrivCert (32). All ran headless without errors.
+- **Winner: fitness-landscape** — most wow + clickable feasibility map; explainer honest that it's a toy.
+- Live: https://share.djiang.xyz/arxiv-scrape/demos/2026-10-21-fitness-landscape.html (needs VPS `git pull`)
+- Digest: digest_2026-10-21.json (validated).
+
 ## 2026-10-20 — Polynomial Heat Flow
 - **Papers:** 128 fetched (16 categories, per_cat=8, offset=879), 30 picked round-robin, 18 ideas via local Ollama (0 failed batches, no Sonnet fallback).
 - **Top idea per category (outside forum top-3):** *Project* — DeltaTTG betting agent (2610.17666); *YouTube* — Geometry of Winning, neural manifolds in poker (2603.10956); *Demo* — Online Fractional Vertex Cover game (2608.24630).

@@ -1,0 +1,313 @@
+{
+  "ideas": [
+    {
+      "type": "demo",
+      "title": "The 'Hidden' Odds: Graph-Based Speed Nowcasting Visualization",
+      "paper_id": "2610.22630v1",
+      "pitch": "Create a single-file HTML/Canvas visualization of a graph (representing a city's road network). Show 'Sparse Sensors' (only 15% of nodes) providing real-time data. Use a simplified Graph Convolutional Recurrent Network logic to 'propagate' the speed data to the unmonitored nodes. Users can click a 'sensor' to see how the 'nowcast' updates the entire network's speed in real-time.",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 7,
+      "discussion_why": "Perfect for a 'Decision Theory' and 'Sports' crowd. It visualizes the concept of 'Inferred State'—how we can predict the status of a whole system (like a sports league's momentum or a poker table's meta-game) based on very sparse, high-quality data points.",
+      "tags": [
+        "math",
+        "decision-theory",
+        "ai",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "The 'Fair' Benchmark: A Meta-Evaluation Tool for Betting Bots",
+      "paper_id": "2610.19185v1",
+      "pitch": "Build a framework to evaluate 'Betting Bots' or 'Poker Agents' that doesn't just look at win rate, but evaluates the *reliability* of the evaluation setup itself. Based on the paper's 8 aspects of benchmarking, create a 'Stress Test' suite that varies task formulation, context examples, and noise levels to see which bots are actually robust vs. just 'overfitting' to a specific betting environment.",
+      "cool_score": 7,
+      "buildable_score": 5,
+      "discussion_score": 9,
+      "discussion_why": "This hits the 'Betting' and 'AI' communities hard. It sparks a massive debate on 'How do we actually know if a bot is good?' It moves the conversation from 'Who won?' to 'Was the test fair?' which is a high-level meta-discussion in gambling and game theory.",
+      "tags": [
+        "betting",
+        "ai",
+        "decision-theory",
+        "games"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Math of 'Buying in Bulk': Why Logistics is just a Game of Poker",
+      "paper_id": "2608.26337v1",
+      "pitch": "A video explaining the 'Buy-at-Bulk Facility Location' problem. Use a sports analogy: Imagine a sports franchise trying to build stadiums/training centers. If you build one, it costs X. If you build a 'network' of facilities, the cost per unit drops (subadditive capacity-cost). Contrast this with 'Facility Location' (standard) vs 'Buy-at-Bulk' (networked). It's a visual deep-dive into the math of economies of scale in infrastructure.",
+      "cool_score": 8,
+      "buildable_score": 6,
+      "discussion_score": 8,
+      "discussion_why": "Great for the 'Econ' and 'Math' side of the server. It takes a dry 'Facility Location' problem and makes it about the 'Strategy of Scale'—highly relevant to how sports teams manage resources and how gambling syndicates operate.",
+      "tags": [
+        "math",
+        "econ",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Habit Trap' Simulator",
+      "paper_id": "2305.04748v1",
+      "pitch": "An interactive visualization of the 'multiplicative utility' habit formation model. Users can toggle between 'Linear Habit' (standard) and 'Multiplicative Habit' (the paper's focus) and see how the 'Greedy Algorithm' optimizes consumption over a lifetime. It visualizes the 'trap' where the cost of breaking a habit becomes mathematically insurmountable compared to the utility of new consumption.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a gambling/betting Discord. It explains why people keep betting on losing streaks (habit formation) using actual power utility math. It's the 'why do I keep doing this?' visualized.",
+      "tags": [
+        "gambling",
+        "decision-theory",
+        "econ",
+        "math",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Swarm-Safety Betting Engine (MF-CBF)",
+      "paper_id": "2609.33852v1",
+      "pitch": "A backend system for 'Group Betting' or 'Syndicate Trading' where the goal is to ensure a group of agents (bettors/traders) stays within a 'safe' distribution of risk. Using Higher-Order Mean-Field Control Barrier Functions, the system would calculate 'safety' not just based on individual balances, but on the collective distribution of the swarm, preventing 'flash crashes' or collective ruin.",
+      "cool_score": 9,
+      "buildable_score": 5,
+      "discussion_score": 8,
+      "discussion_why": "Introduces the concept of 'Swarm Risk'—how a group of bettors can be safer (or more dangerous) than the sum of their parts. High 'surprise' factor for sports bettors interested in syndicate dynamics.",
+      "tags": [
+        "betting",
+        "ai",
+        "math",
+        "physics",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "Neumaier Graph 'Social Network' Explorer",
+      "paper_id": "2610.01273v1",
+      "pitch": "A visualizer for the new families of strictly Neumaier graphs. It generates these specific edge-regular graphs and allows users to 'walk' the graph. Because these graphs have regular cliques but aren't strongly regular, they represent a 'weird' middle ground of connectivity—perfect for visualizing complex, non-obvious social structures or game theory 'neighborhoods'.",
+      "cool_score": 7,
+      "buildable_score": 8,
+      "discussion_score": 7,
+      "discussion_why": "Pure math whimsy. It's a 'hidden geometry' of graphs. Good for the 'math' and 'games' nerds in the server who love graph theory and structural symmetry.",
+      "tags": [
+        "math",
+        "games",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Corrupt' Auction Simulator",
+      "paper_id": "2603.00291v1",
+      "pitch": "A single-file interactive simulation where users can toggle between 'Auction' and 'Listing' sale mechanisms. It visualizes how 'Listing' (two-stage) mechanisms are structurally more susceptible to corruption/collusion compared to auctions. Users can 'play' as a corrupt actor to see how much more easily they can manipulate the price in a listing scenario vs. a transparent auction.",
+      "cool_score": 7,
+      "buildable_score": 9,
+      "discussion_score": 8,
+      "discussion_why": "Perfect for a gambling/betting server because it touches on 'market integrity.' It sparks a debate on whether 'fair' markets are actually possible or if certain structures (like listing) inherently invite 'sharks' to rig the game.",
+      "tags": [
+        "econ",
+        "games",
+        "decision-theory",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Stochastic Decision Engine (Fokker-Planck Betting)",
+      "paper_id": "2503.14706v2",
+      "pitch": "Build a betting bot or decision-making tool that models 'Peak Sharpness' in multimodal systems. Instead of a binary 'Yes/No' on a bet, the system models the probability distribution of outcomes using the Chemical Fokker-Planck Equation. It allows a user to visualize the 'dispersion' of their risk—showing how stochasticity (noise) in a system can lead to 'probabilistic differentiation' (sudden shifts in the optimal move).",
+      "cool_score": 9,
+      "buildable_score": 5,
+      "discussion_score": 9,
+      "discussion_why": "High 'wow' factor for the math-heavy crowd. It reframes betting not as 'Win/Loss' but as 'controlling the sharpness of the probability peak.' It’s a sophisticated way to talk about risk management and 'noise' in sports/poker.",
+      "tags": [
+        "math",
+        "bio",
+        "betting",
+        "decision-theory",
+        "physics"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "Why Your Brain is a Better 'Where' Tracker than AI",
+      "paper_id": "2603.11248v1",
+      "pitch": "A video exploring the discrepancy between artificial vision and the macaque IT cortex. The core hook: AI is great at 'What' (object ID) but the macaque brain encodes 'Where' (spatial coordinates) in the ventral stream—a part of the brain we thought was only for identification. Contrast this with how poker players 'map' the table or how sports scouts 'map' a field.",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 7,
+      "discussion_why": "Great for a 'sports/games' server to discuss the 'intuition' of pros. Does a pro poker player have a 'spatial' sense of the game state that AI lacks? It bridges biology and high-level game sense.",
+      "tags": [
+        "ai",
+        "bio",
+        "games",
+        "math"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Fitness Landscape' Evolution Sandbox",
+      "paper_id": "2510.20500v1",
+      "pitch": "A single-file HTML/JS simulation where users can 'observe' a population of digital organisms evolving. Based on the paper's fitness inference, the demo would show a population of genomes (strings of bits) mutating and recombining. Users can toggle 'Selection Pressure' and 'Mutation Rate' and see the population converge toward a fitness peak. It visualizes the 'Genotype Fitness Order'—showing how different genetic paths lead to different survival outcomes.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a 'Games/Decision Theory' crowd. It visualizes the 'meta-game' of evolution. It sparks debate on 'Optimal Strategy' vs. 'Random Mutation'—essentially the same logic as exploring a game's meta or a poker player's range evolution.",
+      "tags": [
+        "games",
+        "math",
+        "bio",
+        "decision-theory",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Dynamic 't-SNE' Betting Market Visualizer",
+      "paper_id": "2406.14842v1",
+      "pitch": "A real-time visualization tool for sports betting markets or poker hand distributions. Using the 'Online t-SNE' concept from the paper, the tool would map 'Market Sentiment' or 'Player Profiles' into a 2D space that updates as new data (bets/hands) arrives. Instead of a static chart, it shows 'clusters' of behavior evolving in real-time. If a sudden influx of bets on an underdog occurs, the 'Market Sentiment' cluster shifts dynamically, showing the 'evolution of knowledge' in the betting pool.",
+      "cool_score": 9,
+      "buildable_score": 6,
+      "discussion_score": 8,
+      "discussion_why": "High 'Surprise' factor. Most betting tools are static odds tables; a dynamic, evolving 'map' of the market's collective consciousness is a high-level 'Decision Theory' tool that would fascinate sports bettors.",
+      "tags": [
+        "betting",
+        "sports",
+        "ai",
+        "math",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Routing Map of the Brain: How Decisions Actually Travel",
+      "paper_id": "2603.19761v2",
+      "pitch": "A high-quality video essay/animation exploring the 'Multimodal branched transport' of the brain. Use the paper's findings to explain how a 'decision' (external stimulation) isn't a single line of code, but a distributed reaction pattern. Compare this to 'Routing' in sports (playbook execution) or 'Information Flow' in a poker game (reading the table). It's a deep dive into the 'Architecture of Reaction'.",
+      "cool_score": 8,
+      "buildable_score": 5,
+      "discussion_score": 7,
+      "discussion_why": "Fits the 'Decision Theory' and 'Bio' tags. It provides a 'Wait, really?' moment by showing that our internal 'routing' for decisions is much more complex than a simple A-to-B path, mirroring the complexity of high-level game theory.",
+      "tags": [
+        "bio",
+        "decision-theory",
+        "math",
+        "physics"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Reasoning State' Failure Visualizer",
+      "paper_id": "2610.22717v1",
+      "pitch": "An interactive 'Chain of Thought' debugger. Users input a complex logic puzzle or a betting scenario (e.g., 'Should I fold here given X, Y, and Z?'). The tool visualizes the LLM's reasoning path as a graph, highlighting 'Reasoning State' nodes. It uses the paper's concept of tracking what a step *contributes* to the final solution to color-code nodes: Green (Progress), Red (Overthinking/Looping), and Yellow (Unsupported Deduction).",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a Discord that loves AI and decision theory. It visualizes the 'internal monologue' of an AI making a bad bet or a bad move, allowing users to debate exactly *where* the logic broke down (e.g., 'The AI overthought the pot odds').",
+      "tags": [
+        "ai",
+        "decision-theory",
+        "games",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Socio-Demographic Betting Odds Engine",
+      "paper_id": "2605.13870v1",
+      "pitch": "A sports betting model that moves beyond simple 'team stats' by incorporating the 'socio-demographic factors' described in the paper. Instead of just modeling player performance, it models the 'social contact' and environmental factors of the athletes (e.g., travel fatigue, local community sentiment, and demographic-stratified recovery patterns). It builds a multi-factor compartment model to predict 'momentum' or 'fatigue' waves in sports leagues.",
+      "cool_score": 7,
+      "buildable_score": 5,
+      "discussion_score": 8,
+      "discussion_why": "It introduces a 'hidden variable' approach to sports betting. It moves the conversation from 'Who is the better player?' to 'What are the underlying social/demographic pressures affecting the team's performance dynamics?'",
+      "tags": [
+        "sports",
+        "betting",
+        "math",
+        "econ"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The Majorana Entanglement Sandbox",
+      "paper_id": "2609.04091v1",
+      "pitch": "A single-file HTML/Canvas visualization of a 1D Majorana chain. Users can toggle 'monitored dynamics' and watch the entanglement entropy scale. The goal is to let users 'feel' the difference between conventional critical scaling ($1/L$) and the unconventional scaling ($1/L^k$) described in the paper. It's a 'physics toy' where you can manipulate the Hamiltonian parameters to see the gap closing.",
+      "cool_score": 9,
+      "buildable_score": 6,
+      "discussion_score": 7,
+      "discussion_why": "High 'wow' factor for the physics/math nerds in the server. It’s a beautiful, abstract visualization of quantum behavior that feels like a 'digital zen garden' for high-level theory.",
+      "tags": [
+        "physics",
+        "math",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Evidence Gap' Simulator (PrivCert)",
+      "paper_id": "2609.38934v1",
+      "pitch": "A visual interactive that demonstrates the 'Evidence Gap' in Differential Privacy. Users can toggle between 'Raw Data' and 'Privately Released Reports.' The tool shows how a report can claim a 'winning strategy' or 'winning trend' that is statistically plausible but actually has zero support in the underlying data, illustrating why 'private' data can still be misleading.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a gambling/betting Discord. It tackles the 'How do we know this data is real?' question. It creates a 'Whimsy' factor by showing how a 'Private' report can lie to you without technically breaking privacy rules. It's a great way to discuss the reliability of 'anonymized' sports betting trends.",
+      "tags": [
+        "ai",
+        "decision-theory",
+        "math",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Spectral Graph Betting Markets",
+      "paper_id": "2610.02272v1",
+      "pitch": "Build a system that models 'Social Influence' or 'Contagion' in betting markets using the spectral radius of nonregular graphs. Using the paper's findings on degree sequences and spectral radius, we can model how a 'hot' betting tip spreads through a network of gamblers. The goal is to identify 'Spectral Extremal' nodes—the most influential spreaders of a specific betting sentiment.",
+      "cool_score": 7,
+      "buildable_score": 5,
+      "discussion_score": 8,
+      "discussion_why": "This hits the 'Sports' and 'Econ' overlap. It allows for a deep dive into 'Who is actually moving the needle?' in a betting community. It's a sophisticated way to analyze 'herd behavior' using graph theory.",
+      "tags": [
+        "sports",
+        "econ",
+        "math",
+        "games"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Geometry of Optimization: Why your AI 'knows' the best move",
+      "paper_id": "2609.33828v1",
+      "pitch": "A visual deep-dive into dOPT. Explain how we can differentiate through conic optimization. Use a poker-bot analogy: how does a bot 'learn' the optimal betting range when the constraints (the rules of the game) are hard boundaries? Visualize the 'Geometric Reduction'—showing how a complex optimization problem is simplified into a shape that a neural network can actually 'feel' and learn from.",
+      "cool_score": 8,
+      "buildable_score": 4,
+      "discussion_score": 7,
+      "discussion_why": "High 'Surprise' factor. Most people think AI just 'guesses' the best move; showing that it's actually navigating a geometrically reduced conic space is a 'mind-blown' moment for the tech-savvy side of a poker/gaming Discord.",
+      "tags": [
+        "ai",
+        "poker",
+        "math",
+        "decision-theory"
+      ],
+      "source": "local"
+    }
+  ],
+  "failed_batches": []
+}
