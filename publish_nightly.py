@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Publish tonight's arxiv-nightly demo + brief into ~/code/david-share (manifest-driven)."""
-import json, shutil, subprocess, os
+import json, shutil, subprocess, os, datetime
 
 SHARE = "/home/david/code/david-share"
 DATE = "2026-07-15"
@@ -78,9 +78,19 @@ html = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 with open(f"{SHARE}/{BRIEF_FILE}", "w") as f:
     f.write(html)
 
-# 3. add manifest entries (idempotent — replace if file already present)
+# 3. prune + add manifest entries (idempotent — replace if file already present)
 mpath = f"{SHARE}/manifest.json"
+apath = f"{SHARE}/manifest_archive.json"
 m = json.load(open(mpath))
+# ponytail: entries older than 60d move to manifest_archive.json instead of index/admin
+# rendering them forever; raise the cutoff or wire archive back into an "older" view if needed.
+cutoff = (datetime.date.today() - datetime.timedelta(days=60)).isoformat()
+stale = [p for p in m["pages"] if p.get("date", "9999") < cutoff]
+if stale:
+    archive = json.load(open(apath)) if os.path.exists(apath) else {"pages": []}
+    archive["pages"] = stale + archive["pages"]
+    json.dump(archive, open(apath, "w"), indent=2)
+m["pages"] = [p for p in m["pages"] if p.get("date", "9999") >= cutoff]
 m["pages"] = [p for p in m["pages"] if p["file"] not in (DEMO_FILE, BRIEF_FILE)]
 m["pages"].insert(0, {"file": BRIEF_FILE, "project": "arxiv-scrape", "date": DATE, "title": BRIEF_TITLE, "tag": "brief", "redirect_from": []})
 m["pages"].insert(0, {"file": DEMO_FILE, "project": "arxiv-scrape", "date": DATE, "title": DEMO_TITLE, "tag": "demo", "redirect_from": []})
