@@ -1,5 +1,12 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-22
+- 176 fetched, 30 ideated (local Ollama, 18 ideas, 0 fallback batches).
+- Top ideas: project — Knapsack Betting Engine (2608.27600); startup — drift monitor for LLM betting agents (2610.00400); youtube — controllability/skill-vs-luck (2609.35355); demo — Fitness inference (2510.20500).
+- Build-off: A Slippage Simulator (28), B Fitness inference (34), C Glycolytic oscillator (27).
+- **Winner: B** — live Wright-Fisher sim + clickable phase diagram + bet-vs-algorithm game; most faithful to the paper's "where inference works/fails" claim. Known: phase diagram takes ~25s to compute.
+- https://share.djiang.xyz/arxiv-scrape/demos/2026-10-22-fitness-inference.html (needs VPS pull)
+
 ## 2026-10-21 — Fitness Landscape
 - 176 fetched, 30 ideated (local Ollama, 0 fallback batches), 18 ideas.
 - Top per category: demo — Fitness Landscape Sandbox; project — Fokker-Planck betting engine (2503.14706); youtube — buy-at-bulk facility location (2608.26337); startup — swarm-safe syndicate risk limits (2609.33852).

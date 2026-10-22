@@ -1,0 +1,309 @@
+{
+  "ideas": [
+    {
+      "type": "demo",
+      "title": "The 'Gossip' Agent Simulator",
+      "paper_id": "2610.20360v1",
+      "pitch": "A single-file HTML/JS simulation where 4-6 'AI Agents' (represented by chat bubbles) are given a shared goal and a 'secret' about one of the agents. The demo visualizes how quickly 'evaluative talk' (gossip) emerges in the chat log compared to a human-controlled control group. It lets users see if AI agents naturally develop social biases or 'drama' when left to communicate.",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a Discord community. It touches on the 'uncanny valley' of AI social behavior. It sparks debate on whether AI can be 'mean' or 'biased' by design or by emergent social dynamics—highly relevant to the 'AI' and 'whimsy' tags.",
+      "tags": [
+        "ai",
+        "whimsy",
+        "games"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "The Knapsack Betting Engine",
+      "paper_id": "2608.27600v1",
+      "pitch": "A sophisticated betting tool that treats a sports 'parlay' or a 'multi-bet' as a d-dimensional Vector Knapsack problem. Instead of just 'winning or losing,' the tool calculates the optimal 'portfolio' of bets given a fixed bankroll (capacity) and varying risk/reward profiles (profit/weight vectors). It uses the paper's bicriteria optimality to help users maximize expected value across multiple overlapping constraints (e.g., time, variance, and liquidity).",
+      "cool_score": 7,
+      "buildable_score": 5,
+      "discussion_score": 10,
+      "discussion_why": "This is pure decision theory and gambling math. It moves the conversation from 'I think this team wins' to 'What is the mathematically optimal distribution of my capital across these 5 dimensions of risk?' It's a high-level tool for the 'sharp' bettors in the server.",
+      "tags": [
+        "betting",
+        "math",
+        "decision-theory",
+        "econ"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "Zero-Data 'Hidden' Object Finder",
+      "paper_id": "2610.24405v1",
+      "pitch": "An interactive 'Where's Waldo' style game where the AI has to 'segment' and find an object in a scene it has never seen before, using only a text prompt (e.g., 'Find the trophy'). The demo visualizes the 'ZeroDSS' approach—showing how the model uses a generative prior to 'hallucinate' the boundaries of the object based purely on the class name, without any training images of that specific scene.",
+      "cool_score": 8,
+      "buildable_score": 6,
+      "discussion_score": 7,
+      "discussion_why": "It's a great visual for how 'reasoning' vs 'pattern matching' works in AI. It's a 'wait, it can do that without seeing a single example?' moment that works well for a tech-savvy gaming/AI crowd.",
+      "tags": [
+        "ai",
+        "games",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The '1324' Permutation Visualizer",
+      "paper_id": "2610.02535v1",
+      "pitch": "Create a visual 'shuffle' simulator that demonstrates the growth of 1324-avoiding permutations. Users can 'shuffle' a deck of cards and see a real-time counter of how many permutations are 'valid' (avoiding the 1324 pattern) vs 'invalid'. It visualizes the 'domino' and 'decorated word' logic by highlighting the specific forbidden subsequences as they appear.",
+      "cool_score": 7,
+      "buildable_score": 9,
+      "discussion_score": 8,
+      "discussion_why": "It introduces a 'forbidden pattern' concept which is highly relevant to card game mechanics and combinatorics. It's a 'wait, really?' moment for people who think all shuffles are equal.",
+      "tags": [
+        "math",
+        "games",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "PAC-GAN Portfolio Risk Engine",
+      "paper_id": "2304.11856v1",
+      "pitch": "Build a tool that uses Predictive Auxiliary Classifier GANs to model 'uncertainty' in asset returns. Unlike standard models that give a single point estimate, this would generate a distribution of possible outcomes (the 'generative' part) to help users visualize the 'tail risk' of a betting slip or a sports portfolio. It moves from 'What will happen?' to 'What is the range of what could happen?'",
+      "cool_score": 8,
+      "buildable_score": 5,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a betting/sports Discord. It addresses the 'Expected Value' vs 'Variance' debate by actually visualizing the uncertainty/risk of a specific bet using a GAN-based approach.",
+      "tags": [
+        "betting",
+        "ai",
+        "econ",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Physics of 'Controllable' Chaos",
+      "paper_id": "2609.35355v1",
+      "pitch": "A video explaining the 'Coron-Guerrero' problem: how much control do you actually have over a system as it diffuses? Use the 'vanishing viscosity' limit as a metaphor for sports betting or poker—how much of the outcome is 'controllable' (skill/strategy) vs 'diffusion' (random noise/luck)? Explain the $2 + 2√2$ limit as the 'point of no return' for influence.",
+      "cool_score": 9,
+      "buildable_score": 4,
+      "discussion_score": 10,
+      "discussion_why": "High whimsy and high debate. It frames the 'Skill vs Luck' debate in sports/poker through the lens of partial differential equations and null-controllability.",
+      "tags": [
+        "physics",
+        "math",
+        "sports",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Slippage' Simulator: Liquidation & Price Impact",
+      "paper_id": "2303.10043v1",
+      "pitch": "A single-file interactive dashboard where users can simulate 'dumping' a large position in a volatile asset (like a fictional crypto). It visualizes the difference between 'Temporary Impact' (the immediate price dip from your order) and 'Permanent Impact' (the lasting shift in market equilibrium). Users can toggle between linear and quadratic impact models to see how much 'slippage' they'd actually lose on a $1M trade.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a betting/crypto Discord. It moves the conversation from 'I'd sell at X price' to 'How much of my profit is eaten by the market's reaction to my own trade? It introduces the math of market depth into the gambling conversation.",
+      "tags": [
+        "betting",
+        "gambling",
+        "math",
+        "econ",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "The Surrogate Index Betting Engine",
+      "paper_id": "2603.00580v1",
+      "pitch": "Build a tool that estimates the 'Long-Term Treatment Effect' of a sports betting strategy or a poker habit. Since we can't see the 'true' long-term outcome of a single bet, we use the 'Weighted Surrogate Index' (WSI) from the paper to find a proxy variable (e.g., 'consistency of win-rate' or 'variance reduction') that correlates with long-term profitability. It's a way to measure the 'health' of a betting system using surrogate data.",
+      "cool_score": 7,
+      "buildable_score": 6,
+      "discussion_score": 8,
+      "discussion_why": "It's a high-level decision theory concept. It allows the community to debate: 'What is the best surrogate metric for a winning poker player?' It's about measuring the unmeasurable (long-term success) through measurable proxies.",
+      "tags": [
+        "betting",
+        "poker",
+        "decision-theory",
+        "econ",
+        "math"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Where' vs 'What' Vision Toy",
+      "paper_id": "2603.11248v1",
+      "pitch": "A visual interactive where a user 'trains' a simple neural network to identify objects (What) vs. their coordinates (Where). The demo highlights the paper's finding that the IT cortex (ventral stream) actually encodes position too. It's a 'spatial awareness' game where the AI tries to guess where a hidden object is based on its internal 'ventral' representations.",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 7,
+      "discussion_why": "A bit of a curveball for a gambling server, but it sparks a 'Human vs AI' debate. It's a 'whimsical' way to show how biological brains and AI models differ in spatial perception—useful for discussing how AI 'sees' the board in games like Chess or Go.",
+      "tags": [
+        "ai",
+        "bio",
+        "games",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Fitness' Betting Simulator",
+      "paper_id": "2510.20500v1",
+      "pitch": "A single-file HTML simulation where users can 'bet' on the evolution of a population. Based on the paper's fitness inference, the demo shows a population of 'agents' evolving via mutation and recombination. Users can see the 'hidden' fitness parameters being inferred in real-time by an algorithm, showing how much data is needed to predict who 'wins' the evolutionary race.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a gambling/sports Discord because it frames 'fitness' as a hidden variable. It sparks debate on 'predictive modeling'—how much data do we actually need to know if a player/team is 'better' before they actually win?",
+      "tags": [
+        "games",
+        "gambling",
+        "math",
+        "bio",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Oscillatory Betting Markets (Glycolytic Logic)",
+      "paper_id": "2603.19577v1",
+      "pitch": "A betting platform or bot that uses the ODE (Ordinary Differential Equation) models of glycolytic oscillations to price 'momentum' in sports or games. Instead of linear odds, the system treats a team's 'energy' or 'momentum' as a biochemical-style oscillation. If a team is in a 'low' phase of the cycle, the odds shift dynamically based on the stability analysis of the ODE model.",
+      "cool_score": 9,
+      "buildable_score": 6,
+      "discussion_score": 10,
+      "discussion_why": "High whimsy and high 'wow' factor. It treats sports momentum like a biological chemical reaction. It would spark massive debate on whether 'momentum' is a real physical state or just a narrative, and how to mathematically model the 'crash' of a winning streak.",
+      "tags": [
+        "sports",
+        "betting",
+        "math",
+        "bio",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Chemistry of Luck: Symmetry Breaking in Games",
+      "paper_id": "2607.17989v1",
+      "pitch": "A video exploring the concept of 'Symmetry Breaking' (NTB vs NF phases) as a metaphor for game theory and poker. Just as liquid crystals spontaneously break symmetry to form distinct phases, a game's 'meta' breaks symmetry when a dominant strategy emerges. Use the C8/C12 carbon ring electronic structures as a visual metaphor for 'stable' vs 'unstable' game states.",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 8,
+      "discussion_why": "It bridges the gap between high-level physics and game theory. It's a 'deep dive' style video that appeals to the 'math/physics' crowd in the Discord while providing a fresh way to talk about 'meta' shifts in poker or esports.",
+      "tags": [
+        "physics",
+        "poker",
+        "games",
+        "math",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'No-Passing' Probability Visualizer",
+      "paper_id": "2609.04814v1",
+      "pitch": "A visual simulation of the SU(N) Hubbard model's 'no-passing' constraint. Users can see how 'flavor' (e.g., different colored particles) is subordinated to 'charge' (the underlying fermion movement). It visualizes how the order of particles is frozen while their positions evolve, creating a unique 'constrained' probability distribution.",
+      "cool_score": 7,
+      "buildable_score": 8,
+      "discussion_score": 8,
+      "discussion_why": "It introduces a weird, counter-intuitive physical constraint (no-passing) that mirrors 'ordered' systems in gambling or queueing theory. It's a 'wait, really?' moment for how particles can move while staying in a fixed sequence.",
+      "tags": [
+        "physics",
+        "math",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "TreeFlex Betting Agent",
+      "paper_id": "2610.20334v1",
+      "pitch": "Build a betting/trading agent that uses the TreeFlex framework to navigate its own 'search tree' of possible outcomes. Instead of a linear ReAct chain that gets cluttered with 'stale' failed bets or discarded paths, the agent dynamically prunes its own reasoning tree to focus on the most promising high-probability outcomes.",
+      "cool_score": 9,
+      "buildable_score": 6,
+      "discussion_score": 10,
+      "discussion_why": "Perfect for a betting/decision-theory Discord. It addresses the 'mental clutter' of tracking multiple betting lines and discarded strategies. It's a high-level AI architecture applied to the 'mental game' of gambling.",
+      "tags": [
+        "ai",
+        "decision-theory",
+        "betting",
+        "games"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "Modality Synergy: The 'Hidden Info' Game",
+      "paper_id": "2610.24395v1",
+      "pitch": "A single-file HTML game where a player must predict an outcome using two different 'modalities' (e.g., a visual graph and a numerical table). The game dynamically balances the 'weight' of these modalities (MSCR method) to show how synergistic information is discovered when one doesn't overpower the other.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 7,
+      "discussion_why": "It's a great way to explain 'information synergy' in sports betting—how combining a 'visual' trend (momentum) with 'hard' stats (efficiency) creates a better model than either alone.",
+      "tags": [
+        "ai",
+        "games",
+        "math",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Ellipsoid Threshold' Visualizer",
+      "paper_id": "2608.27372v1",
+      "pitch": "An interactive 3D visualization where users can 'spawn' random subgaussian vectors. The tool dynamically fits an ellipsoid to these points. As the user increases the number of vectors (N) relative to the dimension (D), the viewer sees the 'sharp phase transition' where the ellipsoid suddenly snaps from being 'loose' to being 'tightly constrained' or failing to fit a positive definite shape.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 7,
+      "discussion_why": "It visualizes a 'sharp threshold'—a concept very relevant to betting and risk. It's a 'wait, really?' moment where a smooth increase in data suddenly leads to a binary state change in the model's ability to represent the space.",
+      "tags": [
+        "math",
+        "physics",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Agentic 'Toxicity' Drift Monitor for Betting Bots",
+      "paper_id": "2610.00400v1",
+      "pitch": "Build a monitoring tool for LLM-based betting agents. Instead of just checking if a single action (e.g., 'Place a $1000 bet') is allowed, the system tracks the 'representation transition' of the agent's internal state over a multi-turn conversation. It detects when a series of 'safe' prompts are slowly drifting the agent toward a high-risk/harmful state (like 'dumping' a portfolio or violating house rules) before the final action is even taken.",
+      "cool_score": 9,
+      "buildable_score": 6,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a Discord focused on AI and betting. It addresses the 'hidden' risks of using LLMs for automated gambling—how a bot can be 'groomed' into making a bad/illegal move through a series of seemingly innocent steps.",
+      "tags": [
+        "ai",
+        "betting",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Geometry of 'Legal' Moves: 123-Avoiding Permutations",
+      "paper_id": "2610.02526v1",
+      "pitch": "A video explaining how constraints in games (like 'no three items in increasing order' or 'you can only move a distance of M') drastically collapse the 'possibility space.' Use the paper's result that these permutations are 'localized within vertical distance m of the reverse diagonal' to show how game designers can secretly limit player freedom while making it feel like an open world.",
+      "cool_score": 7,
+      "buildable_score": 5,
+      "discussion_score": 8,
+      "discussion_why": "Great for game design nerds. It's a 'hidden' math trick: how to make a game feel complex while mathematically forcing the player into a very narrow corridor of 'admissible' states.",
+      "tags": [
+        "games",
+        "math",
+        "decision-theory"
+      ],
+      "source": "local"
+    }
+  ],
+  "failed_batches": []
+}
