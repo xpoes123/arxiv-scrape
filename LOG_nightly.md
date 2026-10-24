@@ -1,5 +1,12 @@
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-24
+- 176 fetched, 30 ideated (local model unreachable -> Sonnet fallback, 6 batches, 21 ideas).
+- Top ideas: project — Momentum Entropy (2510.18589); startup — none surfaced; youtube — Ramsey/hot-hand (2610.03704); demo — Tail-Risk Bankroll Tournament (2610.25697).
+- Build-off: A CVaR bankroll tournament (30), B Hot-hand lineage (27), C No-trade band rebalancer (35).
+- **Winner: C** — most faithful (cost^(1/3) band law, empirical slope fit), auto-playing race. Untested in a real browser (node --check + stubbed runs only).
+- https://share.djiang.xyz/arxiv-scrape/demos/2026-10-24-no-trade-band.html (needs VPS pull)
+
 ## 2026-10-22
 - 176 fetched, 30 ideated (local Ollama, 18 ideas, 0 fallback batches).
 - Top ideas: project — Knapsack Betting Engine (2608.27600); startup — drift monitor for LLM betting agents (2610.00400); youtube — controllability/skill-vs-luck (2609.35355); demo — Fitness inference (2510.20500).
