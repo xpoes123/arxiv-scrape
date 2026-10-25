@@ -1,0 +1,197 @@
+{
+  "ideas": [],
+  "failed_batches": [
+    [
+      {
+        "id": "2610.25359v1",
+        "cat": "cs.LG",
+        "title": "CD-OPD: Contextual Digest for On-Policy Distillation",
+        "summary": "Teacher takeover in on-policy distillation (OPD) can produce incorrect responses even when the student and teacher independently answer the same problem correctly, a failure we quantify using Collaboration Failure Rate (CFR). To address it, we propose Contextual Digest for On-Policy Distillation (CD-OPD). CD-OPD structures the earlier context of teacher guidance through a teacher-generated depende"
+      },
+      {
+        "id": "2610.25689v1",
+        "cat": "cs.AI",
+        "title": "MT-CC: Multi-Group Temperature Scaling for Asymmetric Calibration Behavior in Class-Incremental Learning",
+        "summary": "As deep neural networks are required to continuously adapt to evolving data, class-incremental learning (CIL) has become an active research area. However, most existing works primarily focus on improving accuracy while overlooking confidence calibration, which measures the trustworthiness of the model's predictions. Although temperature scaling (TS) is effective for static calibration, it has rare"
+      },
+      {
+        "id": "2610.21366v1",
+        "cat": "cs.CL",
+        "title": "RenoLayout: Unified Floorplan Renovation and Furniture Layout for Constraint-Aware Residential Design",
+        "summary": "Residential design aims to transform existing homes into functional living spaces while satisfying diverse design preferences and physical constraints. However, existing floorplan generation methods typically assume empty building boundaries as input, whereas renovation requires reasoning over existing floorplans. Furthermore, floorplan renovation and furniture layout are commonly addressed as sep"
+      },
+      {
+        "id": "2610.01250v1",
+        "cat": "cs.CR",
+        "title": "A Resource-Aware Behavior Reconstruction and Hierarchical Semantic Learning Framework for Host Intrusion Detection",
+        "summary": "System calls (syscalls) record key interactions between running programs and the operating system kernel, providing fine-grained and minimally intrusive data for host-based intrusion detection systems (HIDS) deployed in cloud and other modern computing environments. However, existing methods often model syscalls in their original execution order, where sequences from different processes are interl"
+      },
+      {
+        "id": "2608.28313v2",
+        "cat": "cs.DS",
+        "title": "Multi-tier Flexible Graph Connectivity",
+        "summary": "Motivated by non-uniform edge failures in network design, we introduce a multi-tier model of flexible graph connectivity. In k-tier Flexible Graph Connectivity (k-tier FGC), the input is an undirected graph G=(V, E) with non-negative edge costs, along with a classification of the edges into nested tiers T_1 subseteq T_2 subseteq ... subseteq T_k = E and non-negative integral tier requirements q_1 "
+      }
+    ],
+    [
+      {
+        "id": "2610.03611v1",
+        "cat": "math.CO",
+        "title": "Counting Hamiltonian Sturm permutations: generating functions and Gaussian distributions",
+        "summary": "Our combinatorial analysis is motivated by the PDE dynamics \\begin{equation} \\mathbf{u_t} = \\mathbf{u_{xx}} + \\mathbf{g}(\\mathbf{u}),\\qquad 0<\\mathbf{x}<1, \\end{equation} of solutions $\\mathbf{u}=\\mathbf{u}(\\mathbf{t},\\mathbf{x}),\\ \\mathbf{t}\\geq 0$, under Neumann boundary conditions. For dissipative nondegenerate nonlinearities $\\mathbf{g}$, the global attractors $\\mathcal{A}=\\mathcal{A}_\\mathbf{"
+      },
+      {
+        "id": "2609.36192v1",
+        "cat": "math.OC",
+        "title": "Feasibility Correction in Linear Programs",
+        "summary": "We study feasibility correction for linear programs. Suppose an initial point satisfies most of the constraints. Can it be moved into the feasible region without changing the objective value? Our main deterministic result says that this is possible if the constraint matrix satisfies a restricted isometry property (RIP). We apply the correction theorem to obtain lower bounds for random linear progr"
+      },
+      {
+        "id": "2609.30191v1",
+        "cat": "math.PR",
+        "title": "Analytic Combinatorics of $d$-Set Mappings and Their Applications",
+        "summary": "A $d$-set mapping is a function acting on a domain $X$ equipped with a partition into $d$ disjoint subsets. While standard functions represent $1$-set mappings, generalizations to arbitrary $d$-partite structures appear naturally across discrete mathematics. In this paper, we develop an analytic combinatorial framework to quantify the functional graphs of these mappings. By leveraging generating f"
+      },
+      {
+        "id": "2609.25393v1",
+        "cat": "math.NT",
+        "title": "On the generation of multiplicative groups by small primes",
+        "summary": "Motivated by a question of Regev arising from his improved quantum factoring algorithm, we study how many small primes are needed to generate the group $({\\mathbb Z}/q{\\mathbb Z})^\\times$ when each prime may be used with exponent only $0$ or $1$. We prove that, for every fixed $\\varepsilon>0$ and $A>0$, there is an absolute constant $C_*$ and a set of at most $(\\log Q)^{1+\\varepsilon}$ primes, all"
+      },
+      {
+        "id": "2304.05297v2",
+        "cat": "q-fin.PM",
+        "title": "Neural Network Approach to Portfolio Optimization with Leverage Constraints:a Case Study on High Inflation Investment",
+        "summary": "Motivated by the current global high inflation scenario, we aim to discover a dynamic multi-period allocation strategy to optimally outperform a passive benchmark while adhering to a bounded leverage limit. To this end, we formulate an optimal control problem to outperform a benchmark portfolio throughout the investment horizon. Assuming the asset prices follow the jump-diffusion model during high"
+      }
+    ],
+    [
+      {
+        "id": "2303.02038v2",
+        "cat": "q-fin.TR",
+        "title": "The self-exciting nature of the bid-ask spread dynamics",
+        "summary": "The bid-ask spread, which is defined by the difference between the best selling price and the best buying price in a Limit Order Book at a given time, is a crucial factor in the analysis of financial securities. In this study, we propose a \"State-dependent Spread Hawkes model\" (SDSH) that accounts for various spread jump sizes and incorporates the impact of the current spread state on its intensit"
+      },
+      {
+        "id": "2602.23594v1",
+        "cat": "econ.EM",
+        "title": "Who Matters to Whom? Identifying Peer Effects with Propagation Geometry",
+        "summary": "This paper develops a unifying theory of peer effects that treats the peer aggregator (the social norm mapping peers' actions into a scalar exposure) as the central behavioral primitive. We formulate peer influence as a norm game in which payoffs depend on own action and an exposure index, and we provide equilibrium existence and uniqueness for a broad class of aggregators. Using economically inte"
+      },
+      {
+        "id": "2609.35055v1",
+        "cat": "stat.ML",
+        "title": "Universality and Generalization of Causal Transformers Across Context Lengths",
+        "summary": "Long contexts are central to modern transformer systems, but most expressivity results choose a different network for each fixed sequence length. We study whether one masked transformer can approximate causal token-to-token maps uniformly over sequences of arbitrary length sampling a fixed normalized horizon. To relate sampling resolutions, we model tokens by $α$-Hölder sequences or, more generall"
+      },
+      {
+        "id": "2603.09729v1",
+        "cat": "q-bio.NC",
+        "title": "Efficient and robust control with spikes that constrain free energy",
+        "summary": "Animal brains exhibit remarkable efficiency in perception and action, while being robust to both external and internal perturbations. The means by which brains accomplish this remains, for now, poorly understood, hindering our understanding of animal and human cognition, as well as our own implementation of efficient algorithms for control of dynamical systems.A potential candidate for a robust me"
+      },
+      {
+        "id": "2504.13853v2",
+        "cat": "q-bio.BM",
+        "title": "GenShin: Guiding Rational Liposome Design by Ranking Liposomal Protein Corona through a Docking-Pose-Free GNN",
+        "summary": "Rational design of lipid nanoparticles (LNPs) for tissue-specific delivery critically depends on predicting the composition of the protein corona that forms on the lipid surface after intravenous administration. However, conventional characterization of the protein corona relies on costly and time-consuming mass spectrometry experiments, which require physically prepared liposome samples and there"
+      }
+    ],
+    [
+      {
+        "id": "2406.06985v1",
+        "cat": "q-bio.GN",
+        "title": "pVACview: an interactive visualization tool for efficient neoantigen prioritization and selection",
+        "summary": "Neoantigen targeting therapies including personalized vaccines have shown promise in the treatment of cancers. Accurate identification/prioritization of neoantigens is highly relevant to designing clinical trials, predicting treatment response, and understanding mechanisms of resistance. With the advent of massively parallel sequencing technologies, it is now possible to predict neoantigens based "
+      },
+      {
+        "id": "2603.17765v1",
+        "cat": "q-bio.QM",
+        "title": "Grounded Multimodal Retrieval-Augmented Drafting of Radiology Impressions Using Case-Based Similarity Search",
+        "summary": "Automated radiology report generation has gained increasing attention with the rise of deep learning and large language models. However, fully generative approaches often suffer from hallucinations and lack clinical grounding, limiting their reliability in real-world workflows. In this study, we propose a multimodal retrieval-augmented generation (RAG) system for grounded drafting of chest radiogr"
+      },
+      {
+        "id": "2510.17016v1",
+        "cat": "q-bio.PE",
+        "title": "Ambush strategy impacts species predominance and coexistence in rock-paper-scissors models",
+        "summary": "We investigate the adaptive Ambush strategy in cyclic models following the rules of the spatial rock-paper-scissors game. In our model, individuals of one species possess cognitive abilities to perceive environmental cues and assess the local density of the species they dominate in the spatial competition for natural resources. Based on this assessment, they either initiate a direct attack or, if "
+      },
+      {
+        "id": "2607.15417v2",
+        "cat": "physics.chem-ph",
+        "title": "A termolecular reaction theory for gas-phase nucleation based on long-range intermolecular forces",
+        "summary": "The birth of a new phase is usually described thermodynamically, but in the gas phase it begins as chemistry. Here, we show that gas-phase nucleation can be described as a termolecular reaction network controlled primarily by long-range intermolecular forces. In single-component mixtures, dimer formation emerges as a direct termolecular process, whereas in binary mixtures a chaperon mechanism can "
+      },
+      {
+        "id": "2607.17989v1",
+        "cat": "cond-mat.soft",
+        "title": "Mirror vs. inversion symmetry breaking in mesogenic dimers: NTB vs. NF phase",
+        "summary": "The recently discovered twist-bend nematic NTB and ferroelectric nematic NF phases are distinct examples of spontaneous symmetry breaking in liquid crystals. Here, we report the occurrence of both type nematic phases within the same homologous series of dimers consisting of two strongly dipolar mesogenic units linked by a flexible spacer. The NF phase, observed for dimers having spacer with even n"
+      }
+    ],
+    [
+      {
+        "id": "2609.05649v1",
+        "cat": "cond-mat.stat-mech",
+        "title": "Distribution of currents in a system of active particles with biased hops and Ising interactions",
+        "summary": "We consider an ensemble of particles performing a biased random walk on a two-dimensional lattice. Due to the adhesion between particles (nearest-neighbor Ising interactions), the probability of hopping depends on the number of neighbors and the strength of adhesive interaction. The asymmetry in the hopping directions leads to a macroscopic current of particles through the system. We theoretically"
+      },
+      {
+        "id": "2605.02573v1",
+        "cat": "physics.soc-ph",
+        "title": "On Traffic Interactions for Unmanned Aerial Vehicles: Traffic Flow Applied to Three Dimensional Space",
+        "summary": "Unmanned aerial vehicles (UAVs, or drones) are likely to significantly increase the amount of air traffic. If the skies are full of UAVs, they need to interact with each other, for instance by yielding or other evasive maneuvers. The aggregated movements of drones will create traffic patterns. Just like in current road traffic, the interactions will be very frequent, so a centralized computer mana"
+      },
+      {
+        "id": "2610.25356v1",
+        "cat": "cs.LG",
+        "title": "CHSM8: A Chess Transformer that Follows Natural-Language Style Prompts",
+        "summary": "We present CHSM8, a 210M-parameter chess transformer that plays moves conditioned on a free-text description of a playing style, e.g. \"go for the Sicilian Defense\", \"solid, safe, risk-free chess\" or \"You are Magnus Carlsen in his prime\". The model is pretrained without search on 1.07B filtered Lichess games, using a factorized move representation and legal-move masking. It reaches 1837 Elo against"
+      },
+      {
+        "id": "2610.25683v1",
+        "cat": "cs.AI",
+        "title": "When Safety Fails Collectively: Robust Alignment Against Harmful Fine-Tuning via Joint Weight Perturbations",
+        "summary": "Harmful fine-tuning can rapidly erode the safety alignment of large language models, creating substantial risks when aligned models are adapted to downstream tasks. Existing alignment-stage defenses use harmful examples and simulated harmful perturbations during safety alignment to prepare models for later harmful fine-tuning, yet the collective effects of harmful weight perturbations remain under"
+      },
+      {
+        "id": "2610.22428v1",
+        "cat": "cs.CL",
+        "title": "Embeddings Are Overpriced? A Frozen 16 MB Vocabulary for Small and Ternary Language Models",
+        "summary": "In a small language model the vocabulary is the single largest part. In Gemma 3 270M the embedding table holds 168M of 268M parameters, and because quantisation methods leave the embedding in 16-bit, it is also most of the file once the rest of the model is compressed. We ask what that table actually buys. We replace it with one frozen table of 512-bit codes, 16 MB, with no trainable parameters, d"
+      }
+    ],
+    [
+      {
+        "id": "2610.01184v1",
+        "cat": "cs.CR",
+        "title": "ReCast: Contract-Preserving Protection for Fixed-Interface Multimodal Reasoning",
+        "summary": "Remote multimodal models offer strong numerical reasoning capabilities over charts and speech, but sending private inputs risks exposing sensitive content. Text-only sanitization cannot directly satisfy fixed media interfaces, while identity anonymization leaves the underlying task content exposed. We introduce ReCast, an agentic plug-in framework that replaces source-specific content while preser"
+      },
+      {
+        "id": "2608.28094v3",
+        "cat": "cs.DS",
+        "title": "A Tight Analysis of Khatri-Rao Oblivious Subspace Embeddings",
+        "summary": "We study random sketching matrices with Khatri-Rao structure. In particular, we consider the Khatri-Rao product (i.e., column-wise tensor product) $A_1\\odot\\cdots\\odot A_d \\in \\mathbb R^{(n_1 \\cdots n_d) \\times m}$ of random matrices $A_i \\in \\mathbb R^{n_i \\times m}$ whose columns are isotropic, independent and sub-Gaussian (e.g., Gaussian matrices). Khatri-Rao sketching matrices are widely appli"
+      },
+      {
+        "id": "2610.03851v1",
+        "cat": "math.CO",
+        "title": "An Improved Upper Bound for Recovering Pairs",
+        "summary": "We prove that every recovering pair $(\\mathcal{A},\\mathcal{B})$ of nonempty families of subsets of an $n$-element set satisfies $$|\\mathcal{A}||\\mathcal{B}|\\le\\left(\\frac{223949}{100000}\\right)^n=(2.23949)^n.$$ A result of Mond, Souza and Versteegen, combined with the sharp $(9/4)^n$ bound of Fang and Huang for cancellative pairs, gives $(2.2499)^n$ for recovering pairs. We improve this to $(2.239"
+      },
+      {
+        "id": "2609.36165v1",
+        "cat": "math.OC",
+        "title": "Tensor-Train Compressed Separable PINNs: A Curvature-Aware Optimization Framework for Parametric PDEs in High Dimensions",
+        "summary": "In this work, we develop a second-order optimization framework for physics-informed neural networks (PINNs) applied to high-dimensional parametric partial differential equations (PDEs). The framework is built on the Gauss--Newton pullback metric, which provides an operator-informed notion of curvature in parameter space and connects the method to the broader family of natural gradient schemes. We "
+      },
+      {
+        "id": "2609.30135v1",
+        "cat": "math.PR",
+        "title": "Recursive Paintboxes and the Martin Boundary of the Hoffman Rooted-Tree Graph",
+        "summary": "We determine the Doob-Martin boundary of Hoffman's leaf-grafting graph on finite unlabelled non-plane rooted trees. Its full and minimal boundaries coincide and are parametrized by deterministic recursive paintboxes, identified when their finite sampling laws agree. Every central measure is a unique mixture of the corresponding extremal laws, and its limiting boundary point generates the completed"
+      }
+    ]
+  ]
+}

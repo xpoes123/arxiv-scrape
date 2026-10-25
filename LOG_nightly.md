@@ -1,3 +1,10 @@
+# 2026-10-25 — Drone Traffic
+- 30 papers (176 fetched). Local ideator failed (fetch failed, all 6 batches); ideated directly instead of the Sonnet workflow.
+- Top ideas: demo — RPS ambush (2510.17016); project/startup — Hawkes spread line-move clustering (2303.02038); demo — 3D drone traffic (2605.02573); youtube — CHSM8 style-prompted chess (2610.25356).
+- Build-off: a RPS ambush (6/7/7/6), b Hawkes spread (6/8/8/7), c drone traffic (9/8/8/6). **Winner: c** — visible chaos-to-lanes self-organization, strongest visual.
+- Live: https://share.djiang.xyz/arxiv-scrape/demos/2026-10-25-drone-traffic.html (needs VPS pull)
+- Caveat: no demo was opened in a real browser; judged via node --check + headless sim runs.
+
 # arxiv-scrape nightly log (newest first)
 
 ## 2026-10-24
