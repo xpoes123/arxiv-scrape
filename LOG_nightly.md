@@ -7,6 +7,13 @@
 
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-26 — Censored Demand
+- 30 papers (64 fetched; fetch took ~10 min, tool timeout backgrounded it). Local ideator unreachable (`fetch failed`), ideated directly.
+- Top ideas: project — adversarial online classification w/ preview (2608.29503); startup — intervention-aware forecasting (2610.26582); youtube — shuffling beats adversaries (FirstFit); demo — censored inventory (2609.37380).
+- Build-off: a) censored-demand, b) firstfit-shuffle, c) xi-logconcave. All ran.
+- **Winner: a** (censored demand) — deepest interactivity (3 stocking modes, KM learner vs naive, unidentified-profit band, betting-log callout) with solid fidelity; c most faithful but passive, b fun but shallow.
+- Live: https://share.djiang.xyz/arxiv-scrape/demos/2026-10-26-censored-demand.html
+
 ## 2026-10-24
 - 176 fetched, 30 ideated (local model unreachable -> Sonnet fallback, 6 batches, 21 ideas).
 - Top ideas: project — Momentum Entropy (2510.18589); startup — none surfaced; youtube — Ramsey/hot-hand (2610.03704); demo — Tail-Risk Bankroll Tournament (2610.25697).
