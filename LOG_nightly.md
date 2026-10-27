@@ -7,6 +7,12 @@
 
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-27 — Dwell Time Derby
+- 30 papers (of 160 fetched; fetch took ~8 min under arXiv rate limits). Local ideator failed (`fetch failed`, homelab down) → all 6 batches via Sonnet fallback workflow.
+- Top idea per category: demo — Dwell Time Derby (2609.08477); project — correlation-network parlay builder (2304.02362); startup — correlation-safe SGP optimizer (2610.29228); youtube — LLM poker tilt test (2603.13126).
+- Build-off: (a) Dwell Time Derby 8.5, (b) Ambush RPS Arena 7.5, (c) Monopolist Market Maker 8. **Winner: a** — exact analytics vs live Monte Carlo + bet-and-race loop; highest rigor and instant fun. Fixed a sports-mode y-axis rounding bug post-judge.
+- Live: https://share.djiang.xyz/arxiv-scrape/demos/2026-10-27-dwell-time-derby.html (after VPS pull). Runners-up published too.
+
 ## 2026-10-26 — Censored Demand
 - 30 papers (64 fetched; fetch took ~10 min, tool timeout backgrounded it). Local ideator unreachable (`fetch failed`), ideated directly.
 - Top ideas: project — adversarial online classification w/ preview (2608.29503); startup — intervention-aware forecasting (2610.26582); youtube — shuffling beats adversaries (FirstFit); demo — censored inventory (2609.37380).

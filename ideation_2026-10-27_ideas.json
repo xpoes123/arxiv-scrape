@@ -1,0 +1,323 @@
+{
+ "ideas": [
+  {
+   "type": "demo",
+   "title": "Greedy Line Movement: Is Your Odds Graph Navigable?",
+   "paper_id": "2609.02498v1",
+   "pitch": "Single-file HTML toy. Nodes are sportsbooks/markets/props placed in a 2D 'price space'. A greedy bettor hops edge to edge, always moving strictly closer to a target fair price (the navigability condition from the paper). Drag a slider to delete edges: the graph is 'almost navigable' and greedy gets stuck in local dead ends (stale-line traps), while the counter shows how many extra edges you must add to restore guaranteed greedy arrival (the price of almost-navigability). Toggle a 'shop the line' mode to watch greedy search find the best number or strand you at a local minimum.",
+   "cool_score": 7,
+   "buildable_score": 9,
+   "discussion_score": 7,
+   "discussion_why": "Line shopping is relatable to bettors and the 'greedy gets you stuck' surprise is a fun hook; fits betting/decision-theory and has a playful game feel. Neutral vote tags so no bias applied.",
+   "tags": [
+    "betting",
+    "games",
+    "decision-theory",
+    "math",
+    "whimsy"
+   ]
+  },
+  {
+   "type": "demo",
+   "title": "Hear the Shape of a Random Walk (Same Returns, Different Walkers)",
+   "paper_id": "2610.08348v1",
+   "pitch": "Single-file HTML toy. Two different lattice random walkers (different step sets) are simulated side by side as drunk-walk 'dice rollers' / bankroll walks. Their probability of returning to zero (ruin/bankroll-back-to-start) after n steps is identical for every n, as in the paper's constructed pairs, yet their step distributions differ. Players try to tell them apart with a 'detective' mode using only return-time stats, then reveal that they can't, until you use a richer statistic (e.g. joint visits) that the reconstruction theorem says does distinguish them.",
+   "cool_score": 8,
+   "buildable_score": 7,
+   "discussion_score": 7,
+   "discussion_why": "Gambler's-ruin framing ties directly to gambling; 'two different games with identical return odds' is a genuine wait-really surprise and a whimsical puzzle. Neutral vote tags so no bias applied.",
+   "tags": [
+    "gambling",
+    "math",
+    "games",
+    "whimsy",
+    "decision-theory"
+   ]
+  },
+  {
+   "type": "youtube",
+   "title": "Two Casinos You Can't Tell Apart (Until You Look Closer)",
+   "paper_id": "2610.08348v1",
+   "pitch": "Video concept: build two slot machines/random walks with different step rules but the same chance of returning to your starting bankroll at every time step, using the paper's high-dimensional lattice examples. Walk viewers through why the return-probability sequence (the 'spectrum' of the walk) fails to determine the game, show the trivalent-colored-graph reconstruction as the fix, and end with a challenge to the audience to spot which machine is rigged using which statistics. Analogy to 'can you hear the shape of a drum' for bettors auditing a game.",
+   "cool_score": 7,
+   "buildable_score": 6,
+   "discussion_score": 6,
+   "discussion_why": "Gambling-audit angle (can stats expose a rigged game?) sparks debate, with a drum-shape nostalgia hook. Neutral vote tags so no bias applied.",
+   "tags": [
+    "gambling",
+    "math",
+    "whimsy",
+    "games"
+   ]
+  },
+  {
+   "type": "demo",
+   "title": "Safe-Set Parlay Builder: exact vs greedy repair",
+   "paper_id": "2610.29228v1",
+   "pitch": "Single-file HTML toy based on exact safety-constrained decoding. Each leg in a parlay has a score (edge), and some pairs are correlated or conflicting (same-game legs, mutually exclusive outcomes), like drug-drug interactions. You pick a ticket from ~14 legs with a hidden conflict graph. A greedy 'remove one leg at a time' repair runs against an exact max-weight conflict-free subset solver (brute force or DP over 2^14 subsets). The page shows the total edge each one gets and highlights the cases where greedy repair throws away the best ticket. Regenerate random graphs and watch greedy lose.",
+   "cool_score": 6,
+   "buildable_score": 9,
+   "discussion_score": 6,
+   "discussion_why": "Relatable (correlated parlay legs, sportsbook same-game-parlay pricing), fits betting and decision-theory, and has a mild surprise in that the obvious fix is provably suboptimal. Little whimsy. Votes were all zero, so no bias was applied.",
+   "tags": [
+    "betting",
+    "decision-theory",
+    "math",
+    "games"
+   ]
+  },
+  {
+   "type": "project",
+   "title": "Correlation-Safe Same-Game-Parlay Optimizer",
+   "paper_id": "2610.29228v1",
+   "pitch": "Treat a SGP as set-valued decoding: per-leg model scores plus pairwise or higher-order correlation penalties and book-specific restrictions. Solve exactly (ILP or branch-and-bound) for the best leg set under the constraints instead of local post-hoc pruning. Feed it NBA props edges, with the interaction matrix estimated from historical joint outcomes. Output the highest-EV ticket and a gap report against the greedy ticket.",
+   "cool_score": 7,
+   "buildable_score": 6,
+   "discussion_score": 7,
+   "discussion_why": "SGPs are a hot-button topic for bettors, since books price correlation badly. Exact vs greedy gives a concrete claim people can argue about. Fits betting, sports and decision-theory. No vote bias applied.",
+   "tags": [
+    "betting",
+    "sports",
+    "decision-theory",
+    "math"
+   ]
+  },
+  {
+   "type": "youtube",
+   "title": "Why Your Quantized Brain Never Stops Talking",
+   "paper_id": "2610.29378v1",
+   "pitch": "Video concept built on the finding that low-bit LLMs fail to terminate within a token budget. Frame it as a poker player on a shot clock who rounds every number a little, so each decision drifts and hands run long. Cover QAT trained on the model's own self-generated trajectories versus fixed teacher sequences. The visuals are rounding errors compounding along a long reasoning chain.",
+   "cool_score": 5,
+   "buildable_score": 6,
+   "discussion_score": 4,
+   "discussion_why": "The AI angle is modest and only loosely connected to gambling. It has an analogy-driven hook and some whimsy, but it won't spark much betting debate.",
+   "tags": [
+    "ai",
+    "whimsy",
+    "poker"
+   ]
+  },
+  {
+   "type": "demo",
+   "title": "Be the Monopolist Market Maker",
+   "paper_id": "2303.00208v2",
+   "pitch": "Single-file HTML game. You are the sole liquidity provider in a constant-function AMM. A hidden crowd of traders has a belief distribution over the true asset price, and you draw your own bonding curve (the price-vs-reserves schedule). Following the Myersonian framing, the curve's slope is set by the virtual-value-style term: the marginal price you quote should equal the belief-implied virtual price, not the mean. Sliders let you reshape the curve while a live panel shows expected fee profit against your curve and against a plain x*y=k pool. Toggle between a bimodal belief (a 'will the underdog win' binary market) and a unimodal one, and watch the optimal curve develop flat spots, which are no-trade zones. You feel why a profit-maximizing house shades its quotes, the same logic as a sportsbook shading a line.",
+   "cool_score": 8,
+   "buildable_score": 8,
+   "discussion_score": 8,
+   "discussion_why": "Relatability: it works like a sportsbook setting a line. Fit: betting and prediction markets, with the house as the optimizer. Surprise: the best curve has dead zones where the house refuses to quote. Whimsy: you play the casino. Votes are all zero, so no tag bias was applied.",
+   "tags": [
+    "betting",
+    "econ",
+    "math",
+    "games",
+    "decision-theory"
+   ]
+  },
+  {
+   "type": "project",
+   "title": "Order-Book Sim as a Sportsbook Line-Movement Lab",
+   "paper_id": "2303.00080v1",
+   "pitch": "Adapt the hybrid neural + stochastic agent-based limit order book simulator to betting exchange order books (Betfair, Kalshi, Polymarket). Zero-intelligence and informed agents arrive with Hawkes-style clustered flow, and a small neural net learns the order-size and cancellation distributions from real tape. The goal is to reproduce stylized facts such as fat-tailed price jumps, volatility clustering and spread-vs-depth curves for live in-play markets. Then use it to backtest market-making and CLV-capture strategies against a synthetic book that behaves like real ones. It needs a data recorder first, then a sim, then a fit-vs-reality dashboard of the stylized-fact checks.",
+   "cool_score": 7,
+   "buildable_score": 5,
+   "discussion_score": 7,
+   "discussion_why": "Fit: prediction-market microstructure matters directly to a betting server. Debate: can a fake book teach you anything about a real edge? Moderate surprise. Low whimsy. Votes are all zero, so no tag bias was applied.",
+   "tags": [
+    "betting",
+    "sports",
+    "ai",
+    "econ",
+    "math"
+   ]
+  },
+  {
+   "type": "youtube",
+   "title": "We Gave an LLM a Personality Test, Then a Poker Tilt Test",
+   "paper_id": "2603.13126v1",
+   "pitch": "Use psychometric methods from the PsyCogMetrics-style LLM evaluation approach (item response theory, test-retest reliability, construct validity) on LLMs playing heads-up poker and sports-betting bankroll games. Measure risk aversion, loss chasing, gambler's fallacy and sunk-cost bias with classic cognitive tasks (Iowa Gambling Task, Balloon Analogue Risk Task, Kahneman-Tversky prospect-theory lotteries). Then check whether those scores predict how the same model plays after a bad beat. The video compares the models' 'tilt profiles' and asks whether a bot can go on tilt. The payoff is a leaderboard of the most degenerate AI gambler, with confidence intervals.",
+   "cool_score": 8,
+   "buildable_score": 6,
+   "discussion_score": 9,
+   "discussion_why": "Relatability: everyone has views on tilt and on AI. Fit: poker and gambling psychology. Surprise: do models show human biases, or invert them? Whimsy: a degenerate AI gambler leaderboard. Votes are all zero, so no tag bias was applied.",
+   "tags": [
+    "poker",
+    "gambling",
+    "ai",
+    "decision-theory",
+    "whimsy",
+    "games"
+   ]
+  },
+  {
+   "type": "demo",
+   "title": "Dwell Time Derby: bet on how long the random walk stays above the line",
+   "paper_id": "2609.08477v1",
+   "pitch": "Single-file HTML: a Brownian/drifted particle races on screen. Users place fake bets on three boundary functionals the paper treats in one framework: first-passage time to a level, total dwell time above a level, and the absolute max of the path. Overlay the exact analytic distributions (first-passage inverse-Gaussian, arcsine-law dwell time, reflection-principle max) against live Monte Carlo histograms. The dwell-time arcsine law is the punchline: the most likely outcome is almost never 'half the time', it is 'nearly always above' or 'nearly always below'. Same math as a team leading a game: lead-time share is U-shaped, not bell-shaped. Includes a sports mode that simulates a point-differential walk.",
+   "cool_score": 8,
+   "buildable_score": 9,
+   "discussion_score": 8,
+   "discussion_why": "Relatability: 'time leading' and 'did it touch the line' map straight to live betting and prop markets. Surprise: arcsine law means 'wait, a coin-flip game spends most time on one side'. Whimsy from racing particles. Votes are all zero so no tag bias applied.",
+   "tags": [
+    "betting",
+    "sports",
+    "math",
+    "physics",
+    "games",
+    "gambling"
+   ]
+  },
+  {
+   "type": "project",
+   "title": "Live-Bet Boundary Pricer: first-passage, dwell, and extreme-value props from a score-diffusion model",
+   "paper_id": "2609.08477v1",
+   "pitch": "Model in-game score margin as drifted Brownian motion and use the generalized first-passage, dwell-time-above-level and absolute-extremum results to price exotic live props: 'will the lead ever hit +15', 'will Team A lead for more than 70% of the game', 'largest lead of the game over X'. Calibrate drift and volatility from play-by-play (fits the NBA modeling repo), compare model fair prices to books' alt-line and 'biggest lead' markets, and flag mispricings. Backtest dwell-time and max-lead props against historical NBA games.",
+   "cool_score": 7,
+   "buildable_score": 6,
+   "discussion_score": 8,
+   "discussion_why": "Direct fit to betting and sports; debate about whether scores are really diffusions and whether books misprice max-lead and time-leading props. Moderate surprise factor. No vote bias since tallies are zero.",
+   "tags": [
+    "betting",
+    "sports",
+    "math",
+    "physics",
+    "decision-theory"
+   ]
+  },
+  {
+   "type": "demo",
+   "title": "Least-Action Odds: watch a market drift from equilibrium to your target distribution",
+   "paper_id": "2609.08285v1",
+   "pitch": "Interactive probability simplex (triangle for a 3-outcome market: home/draw/away, or fold/call/raise). Drag a start point (Gibbs/prior odds) and a target (sharp closing line) and see the least-action path the distribution takes across the simplex, with Fisher-information-metric geodesics versus the naive straight-line linear interpolation. Slider shows the 'action' cost of each route and animates a line move along each. Lets you feel why probability space is curved and why moving a 2% outcome is costlier than moving a 40% one.",
+   "cool_score": 8,
+   "buildable_score": 7,
+   "discussion_score": 6,
+   "discussion_why": "Fits odds and line movement, a pretty visual with a surprise that straight lines are not shortest in probability space. Abstract, so less heated debate. Votes zero, no bias.",
+   "tags": [
+    "betting",
+    "math",
+    "physics",
+    "decision-theory",
+    "whimsy"
+   ]
+  },
+  {
+   "type": "youtube",
+   "title": "Your Poker Range Has a Geometry: Least Action on the Simplex",
+   "paper_id": "2609.08285v1",
+   "pitch": "Video explainer: a mixed strategy is a point on a probability simplex. Using the least-action framework, show how a player's strategy should move from an equilibrium (GTO, Gibbs-like) mix to an exploitative one at minimal 'information cost', and why small frequency changes on rare actions (e.g. bluff rate 5% to 10%) are 'far' while 40% to 45% is 'near' under the Fisher metric. Animate adjustment paths in a 3-action triangle and tie it to how fast opponents can detect your deviation.",
+   "cool_score": 7,
+   "buildable_score": 5,
+   "discussion_score": 8,
+   "discussion_why": "Poker and decision-theory fit is strong, with real argument potential about how to deviate from GTO. Surprise from information-geometry distances. Votes zero so no tag bias.",
+   "tags": [
+    "poker",
+    "decision-theory",
+    "math",
+    "games",
+    "physics"
+   ]
+  },
+  {
+   "type": "demo",
+   "title": "Ambush or Charge: Rock-Paper-Scissors Arena",
+   "paper_id": "2510.17016v1",
+   "pitch": "Single-file HTML spatial RPS lattice with three species. Toggle per-species strategy: attack immediately when a prey neighbor is adjacent, or ambush (wait until local prey density passes a threshold before striking). Sliders for ambush threshold and wait cost, a live ternary plot of population shares, and a coexistence/extinction meter. Feel how patience flips which species dominates, which is the paper's central result.",
+   "cool_score": 8,
+   "buildable_score": 9,
+   "discussion_score": 8,
+   "discussion_why": "Patience vs aggression is a poker-flavored question (slowplay vs bet). Surprise: waiting can beat attacking in a cyclic matchup. Whimsy: watching a petri-dish metagame evolve. Votes are all neutral, so no bias applied.",
+   "tags": [
+    "games",
+    "math",
+    "bio",
+    "whimsy",
+    "decision-theory"
+   ]
+  },
+  {
+   "type": "youtube",
+   "title": "Why Slowplaying Wins in Rock-Paper-Scissors (Sometimes)",
+   "paper_id": "2510.17016v1",
+   "pitch": "Video connecting the ambush RPS lattice result to poker and fighting-game metagames. Open with the demo and show that a species which senses prey density and delays its attack changes who dominates. Then map it onto GTO mixing: if you wait for a high-density-of-weakness read, you win more per attack but attack less often. Show the cyclic-dominance equilibrium shifting, and end with a Discord poll asking whether the player pool in a game is a spatial RPS.",
+   "cool_score": 7,
+   "buildable_score": 6,
+   "discussion_score": 8,
+   "discussion_why": "Directly mapped onto poker and metagame strategy, with a counterintuitive result. Invites arguments about slowplay and exploitation.",
+   "tags": [
+    "poker",
+    "games",
+    "decision-theory",
+    "math",
+    "whimsy"
+   ]
+  },
+  {
+   "type": "project",
+   "title": "Smartphone-Video Biomechanics for Injury-Risk Props",
+   "paper_id": "2603.24733v1",
+   "pitch": "Use OpenCap Monocular-style single-video pose and musculoskeletal estimation on public game footage to derive proxy load metrics (knee and quad force on cuts, landings, decelerations). Track per-player cumulative load across back-to-backs and flag late-scratch or minutes-restriction risk before the line moves. Backtest against injury reports and player-prop under-performance.",
+   "cool_score": 8,
+   "buildable_score": 4,
+   "discussion_score": 7,
+   "discussion_why": "High fit with sports betting and a potential edge, and the 'did a video model predict the injury before the book did?' question is a good debate. Broadcast footage is a big caveat, so it invites skepticism. Neutral votes, so no bias applied.",
+   "tags": [
+    "sports",
+    "betting",
+    "ai",
+    "bio"
+   ]
+  },
+  {
+   "type": "demo",
+   "title": "Bet Like a Bayesian: SGD as Posterior-Mean Betting",
+   "paper_id": "2610.00446v1",
+   "pitch": "Interactive toy: a bankroll-sizing or line-estimation 'learner' watches noisy game outcomes and updates its belief about a team's true strength. Toggle between plain SGD, preconditioned SGD, and the exact Gaussian posterior-mean update. The paper shows they are the same step. A live bar splits each step's regret into 'intrinsic-time cost' (how long you've been watching) and 'change in comparator information' (the truth moved). Sliders for noise, learning rate and drift show when chasing a hot streak is Bayes-optimal and when it's just overreacting. Single HTML file, canvas plot.",
+   "cool_score": 7,
+   "buildable_score": 8,
+   "discussion_score": 7,
+   "discussion_why": "Relatable (how fast should you update on a hot streak?) and fits betting and decision-theory. The surprise is that SGD is secretly Bayes. Votes are all zero, so no bias applied.",
+   "tags": [
+    "betting",
+    "decision-theory",
+    "math",
+    "ai",
+    "sports"
+   ]
+  },
+  {
+   "type": "project",
+   "title": "Correlation-Network Parlay Builder",
+   "paper_id": "2304.02362v1",
+   "pitch": "Apply the crypto-portfolio paper's idea (skip forecasting, use the correlation network's structure) to betting. Build a graph of prop and bet outcomes from historical residuals (for example player points vs rebounds vs team total). Use the minimum spanning tree and centrality to pick low-correlation bets for a diversified slate and to flag correlated parlay legs that books misprice. Peripheral nodes of the network get the bankroll, central ones get capped. Backtest against SharpLab CLV data.",
+   "cool_score": 7,
+   "buildable_score": 7,
+   "discussion_score": 8,
+   "discussion_why": "Parlay correlation is a hot topic for bettors, and the idea fits betting and sports squarely. The surprise is that you don't need predictions to size a slate better. Votes are neutral.",
+   "tags": [
+    "betting",
+    "sports",
+    "econ",
+    "math",
+    "decision-theory"
+   ]
+  },
+  {
+   "type": "demo",
+   "title": "Exclusion Process Crowd Betting Pit",
+   "paper_id": "2609.37897v1",
+   "pitch": "Particles hop on a torus under exclusion, meaning no two share a site. Treat each particle as a bettor on a grid of betting lines and each site as a limit-order slot. The demo shows the noisy empirical density hugging the smooth parabolic PDE, with fluctuation size shrinking as the number of agents grows. Drag the crowd size to see when a herd of gamblers behaves like a deterministic fluid and when single-bettor noise dominates, with the Gaussian fluctuation band drawn around the mean.",
+   "cool_score": 6,
+   "buildable_score": 8,
+   "discussion_score": 5,
+   "discussion_why": "Whimsical and visual, with a modest tie to market microstructure and crowd behavior. It is a weaker fit for betting and the math is abstract. Votes are neutral.",
+   "tags": [
+    "physics",
+    "math",
+    "whimsy",
+    "games",
+    "econ"
+   ]
+  }
+ ]
+}
