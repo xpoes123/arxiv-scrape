@@ -1,3 +1,10 @@
+# 2026-10-29 — Salt Table
+- 30 papers (176 fetched). Local ideator failed (fetch failed, all 6 batches); Sonnet ideation workflow ran on all 6 (22 ideas).
+- Top ideas: demo — Elasticity of Alpha (2303.14533); project — Rumor Clock temporal 3-spanner line propagation (2609.02851); youtube — brain tilt EEG/poker (2603.15208); demo — Salt Table (2609.09518).
+- Build-off: a Elasticity of Alpha (24/40; default preset badly scaled), b Salt Table (32), c Order Book Casino (32; no neural component). **Winner: b** — strongest visuals, models the paper's pathway continuum.
+- Live: https://share.djiang.xyz/arxiv-scrape/demos/2026-10-29-salt-table.html (needs VPS pull)
+- Caveat: judge saw headless-Firefox first-frame screenshots only; no interactive browser testing.
+
 # 2026-10-25 — Drone Traffic
 - 30 papers (176 fetched). Local ideator failed (fetch failed, all 6 batches); ideated directly instead of the Sonnet workflow.
 - Top ideas: demo — RPS ambush (2510.17016); project/startup — Hawkes spread line-move clustering (2303.02038); demo — 3D drone traffic (2605.02573); youtube — CHSM8 style-prompted chess (2610.25356).

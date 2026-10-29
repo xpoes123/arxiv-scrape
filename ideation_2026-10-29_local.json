@@ -1,0 +1,197 @@
+{
+  "ideas": [],
+  "failed_batches": [
+    [
+      {
+        "id": "2610.31080v1",
+        "cat": "cs.LG",
+        "title": "nnInteractive Agent: General-Purpose AI Agents as 3D Image Annotators",
+        "summary": "Interactive 3D segmentation models such as nnInteractive turn a few spatial prompts (points, scribbles, boxes) into accurate volumetric masks, but a human still does the annotation work: finding each structure, placing prompts, checking the result and correcting it. General-purpose AI agents can now interpret images, call tools and write code. We show that such agents can take over this work witho"
+      },
+      {
+        "id": "2610.31722v1",
+        "cat": "cs.AI",
+        "title": "Autoregressive Multimodal Anomaly Detection with Large Language Models for Microservice Systems",
+        "summary": "Microservice systems have become a dominant architecture for large-scale cloud applications, enabling rapid deployment and elastic scaling. However, ensuring the reliability and availability of microservice systems critically relies on effective anomaly detection, as failures and performance anomalies can quickly propagate across services and severely impact end-to-end system behavior. Existing mu"
+      },
+      {
+        "id": "2610.25549v1",
+        "cat": "cs.CL",
+        "title": "EmotiQ: A Quantum Residual Specialist Framework for Text Emotion Classification",
+        "summary": "Emotion classification from text is challenging because many affective states are distinguished by subtle linguistic signals and semantically overlapping boundaries. We investigate whether compact quantum modules can serve as targeted residual specialists that assist traditional classifiers on difficult emotion decisions. We introduce EmotiQ, a residual specialist framework for text emotion classi"
+      },
+      {
+        "id": "2610.05835v1",
+        "cat": "cs.CR",
+        "title": "Adaptive-Shot Hybrid Quantum Anomaly Detection for Tactile Internet Security: Reliability-Aware Measurement Allocation Under Resource Constraints",
+        "summary": "Tactile Internet (TI) security analytics must balance reliable thresholded decisions with constrained computational and measurement resources. We study this tension for finite-shot hybrid quantum anomaly inference and introduce the Adaptive-Shot Variational Quantum Circuit (AS-VQC) policy. This validation-calibrated policy begins each record at 128 shots and cumulatively escalates through 256, 512"
+      },
+      {
+        "id": "2609.02851v1",
+        "cat": "cs.DS",
+        "title": "Almost Linear 3-Spanners of Temporal Cliques",
+        "summary": "Temporal graphs model dynamic networks by assigning positive integer time labels to the edges, while information propagates along temporal paths, whose edge labels are traversed in nondecreasing order. A temporal $α$-spanner of a temporal graph with $n$ vertices is a temporal subgraph that approximates the minimum-hop temporal distance between every pair of vertices within a factor of $α$. While g"
+      }
+    ],
+    [
+      {
+        "id": "2610.09992v1",
+        "cat": "math.CO",
+        "title": "Asymptotic connectivity, hamiltonicity and toughness",
+        "summary": "We define coarse variants of the notions of connectivity, hamiltonicity, toughness, and spanning trees. Our notions are invariant under quasi-isometries, and they obey the same relationships between them as their classical analogs. We pose several open problems that are coarse versions of classical results and conjectures about hamiltonicity."
+      },
+      {
+        "id": "2610.01666v1",
+        "cat": "math.OC",
+        "title": "Routing in Line Networks with Handling Times",
+        "summary": "Motivated by hyperconnected urban parcel networks for same-day and time-sensitive delivery, we study the fixed-line routing problem that arises when evaluating a candidate set of recurring inter-hub vehicle services. Vehicles follow predefined cyclic sequences of service points, or lines, and parcels may transfer between lines. Such transfers expand path choice but require loading and unloading op"
+      },
+      {
+        "id": "2609.40182v1",
+        "cat": "math.PR",
+        "title": "A mixing time method for estimating the sample complexity of quantum state discrimination",
+        "summary": "We develop a mixing time method for estimating the sample complexity of quantum state discrimination. We start with considering the minimum-error discrimination of geometrically uniform pure state ensembles, and prove that its sample complexity has a tight estimate given by a quantum homogeneous mixing time [George et al., 2026] and a quantum version of the generalized Dobrushin coefficient [Wolfe"
+      },
+      {
+        "id": "2609.31104v2",
+        "cat": "math.NT",
+        "title": "On the Moments of Least $s$-Gaps of Partitions and a Conjecture of Baruah and Talukdar",
+        "summary": "Andrews and Newman \\cite{AN19, AN20} defined the minimal excludant or mex of a partition. The mex of a partition is the smallest positive integer which is absent from the partition. Baruah, Bhoria, Eyyunni and Maji \\cite{BBEM} studied the sum of mex split according to parity, together with its $\\ell$-th moments. Ballantine and Merca \\cite{BM20} generalized mex to the least $s$-gap, which is the sm"
+      },
+      {
+        "id": "2303.14533v3",
+        "cat": "q-fin.PM",
+        "title": "The Elasticity of Quantitative Investment",
+        "summary": "What is the demand elasticity of statistical arbitrageurs that invest according to the advice of modern cross-sectional asset pricing models? Thirteen models from the literature exhibit strikingly inelastic demand, in contrast to classical models that rely on statistical arbitrageurs to create elastic market demand for assets. This inelasticity arises from the difficulty of trading against price c"
+      }
+    ],
+    [
+      {
+        "id": "2303.00080v1",
+        "cat": "q-fin.TR",
+        "title": "Neural Stochastic Agent-Based Limit Order Book Simulation: A Hybrid Methodology",
+        "summary": "Modern financial exchanges use an electronic limit order book (LOB) to store bid and ask orders for a specific financial asset. As the most fine-grained information depicting the demand and supply of an asset, LOB data is essential in understanding market dynamics. Therefore, realistic LOB simulations offer a valuable methodology for explaining empirical properties of markets. Mainstream simulatio"
+      },
+      {
+        "id": "2603.03008v1",
+        "cat": "econ.EM",
+        "title": "Focused Weighted-Average Least Squares Estimator",
+        "summary": "We propose a focused weighted-average least squares (FWALS) estimator that addresses the computational burden of focused model averaging. By semi-orthogonalizing auxiliary regressors, the weighting problem is reduced from $2^{k_2}$ sub-models to at most $k_2$ regressor-wise weights, yielding a tractable sub-optimal procedure. Under local-to-zero conditions, we derive the limiting distribution of F"
+      },
+      {
+        "id": "2610.00405v1",
+        "cat": "stat.ML",
+        "title": "RACE: Residual-Aware Test-Time Adaptation for Neighbor-Rich Time-Series Foundation Model Forecasting",
+        "summary": "Time-series foundation models (TSFMs) perform strongly across forecasting tasks, but their per-series inference is ill-suited to neighbor-rich forecasting, where each query has access to related but nonidentical historical series. Continuous glucose monitoring (CGM) and Web/cloud workloads exemplify this setting: CGM trajectories share physiological patterns but vary across individuals, devices, a"
+      },
+      {
+        "id": "2603.15208v1",
+        "cat": "q-bio.NC",
+        "title": "BCMI-Driven Motion Control Detection: EEG-Based Machine Learning and Interaction Entropy for High-Order Brain Networks",
+        "summary": "This study investigates the cognitive motor control detection and the underlying neuroregulatory mechanisms during music-assisted simulated driving. Using a dynamic higher-order network model constructed with EEG-based cross-information entropy, we quantify the dynamic coordination within brain networks activated during both music listening and driving. This approach, which contrasts with previous"
+      },
+      {
+        "id": "2503.21788v3",
+        "cat": "q-bio.BM",
+        "title": "PharMolixFM: All-Atom Foundation Models for Molecular Modeling and Generation",
+        "summary": "Structural biology relies on accurate three-dimensional biomolecular structures to advance our understanding of biological functions, disease mechanisms, and therapeutics. While recent advances in deep learning have enabled the development of all-atom foundation models for molecular modeling and generation, existing approaches face challenges in generalization due to the multi-modal nature of atom"
+      }
+    ],
+    [
+      {
+        "id": "2406.06393v2",
+        "cat": "q-bio.GN",
+        "title": "STimage-1K4M: A histopathology image-gene expression dataset for spatial transcriptomics",
+        "summary": "Recent advances in multi-modal algorithms have driven and been driven by the increasing availability of large image-text datasets, leading to significant strides in various fields, including computational pathology. However, in most existing medical image-text datasets, the text typically provides high-level summaries that may not sufficiently describe sub-tile regions within a large pathology ima"
+      },
+      {
+        "id": "2603.25755v1",
+        "cat": "q-bio.QM",
+        "title": "KANEL: Kolmogorov-Arnold Network Ensemble Learning Enables Early Hit Enrichment in High-Throughput Virtual Screening",
+        "summary": "Machine learning models of chemical bioactivity are increasingly used for prioritizing a small number of compounds in virtual screening libraries for experimental follow-up. In these applications, assessing model accuracy by early hit enrichment such as Positive Predicted Value (PPV) calculated for top N hits (PPV@N) is more appropriate and actionable than traditional global metrics such as AUC. W"
+      },
+      {
+        "id": "2510.14787v2",
+        "cat": "q-bio.PE",
+        "title": "A Human-Vector Susceptible-Infected-Susceptible Model for Analyzing and Controlling the Spread of Vector-Borne Diseases",
+        "summary": "We propose an epidemic model for the spread of vector-borne diseases. The model, which is built extending the classical susceptible-infected-susceptible model, accounts for two populations -- humans and vectors -- and for cross-contagion between the two species, whereby humans become infected upon interaction with carrier vectors, and vectors become carriers after interaction with infected humans."
+      },
+      {
+        "id": "2607.17667v1",
+        "cat": "physics.chem-ph",
+        "title": "Vibrational Circular Dichroism enhancement in conformationally flexible transition metal complexes",
+        "summary": "We extend our previously developed approach for calculating enhanced vibrational circular dichroism (VCD) spectra of transition-metal complexes to systems for which conformational flexibility is key to reproduce and elucidate experimental spectra. Treating both the Gibbs free energies and electronic excitation energies as fitting parameters, we show for Co(II)bis[N-(1-arylethyl)- salicylaldiminato"
+      },
+      {
+        "id": "2607.21813v1",
+        "cat": "cond-mat.soft",
+        "title": "The two momenta of an elastic rod: a Hamiltonian picture on framed Lie groups",
+        "summary": "The equilibrium equations of elastic rods can be obtained by balancing forces and moments, or by rendering a potential energy stationary. For complex filaments the energy route asks less of one's mechanical intuition. However, in the classical Hamiltonian picture, the components of the generalized momenta are postulated a priori and their physical meaning changes at the whim of the coordinate char"
+      }
+    ],
+    [
+      {
+        "id": "2609.09518v1",
+        "cat": "cond-mat.stat-mech",
+        "title": "The Role of Concentration in Determining NaCl Nucleation Mechanism: A Story of Pathways Coexistence",
+        "summary": "Deciphering the microscopic details of crystal nucleation remains a key open problem in chemical physics. For aqueous sodium chloride (NaCl), the extent to which nucleation involves amorphous ion aggregation, and the supersaturation regime in which two-step-like behavior emerges, remains actively debated. In this work, we examine NaCl nucleation at 12, 13, and 14 mol/kg ($S = 3.2, 3.5, 3.8$) using"
+      },
+      {
+        "id": "2605.05008v1",
+        "cat": "physics.soc-ph",
+        "title": "Scalable inference of spatial regions and temporal signatures from time series",
+        "summary": "Regionalization aims to partition a spatial domain into contiguous regions that share similar characteristics, enabling more effective spatial analysis, policy making, and resource management. Existing approaches for spatial regionalization typically rely on static spatial snapshots rather than evolving time series. Meanwhile, most time series clustering methods ignore spatial structure or enforce"
+      },
+      {
+        "id": "2610.31075v1",
+        "cat": "cs.LG",
+        "title": "When Forgotten Facts Return: Relearning-Aware Unlearning of Knowledge Graph Embeddings via Tangent Kernels",
+        "summary": "Approximate unlearning answers a deletion request on a knowledge-graph embedding by editing entity embeddings instead of retraining from scratch. These embeddings keep being updated as new facts arrive. Under this ordinary continued training, forgotten facts recover more than in the exact-unlearning baseline, a model retrained without them and given the same continued training. We trace this relea"
+      },
+      {
+        "id": "2610.31721v1",
+        "cat": "cs.AI",
+        "title": "End-to-End Differentiable Diffusion Conditioning for Physics-Informed Optimization",
+        "summary": "Optimizing high-dimensional physical systems under expensive evaluations and complex constraints is a central challenge in science and engineering. In offline model-based optimization (MBO), methods must improve designs using only a fixed dataset and no test-time access to the true objective. However, existing methods typically suffer from conservatism, unconstrained surrogate exploitation, or fun"
+      },
+      {
+        "id": "2610.25540v1",
+        "cat": "cs.CL",
+        "title": "Auditing Tool Traces in Agentic LLMs: Source Localization and Counterfactual Dependence Testing",
+        "summary": "Agentic LLMs increasingly support scientific prediction by grounding decisions in external evidence. In biology, they promise accurate, interpretable predictions for important problems by integrating complex experimental and computational evidence. However, serialized tool results can contain hidden label shortcuts, such as dataset identifiers or template artifacts, that create apparent success wi"
+      }
+    ],
+    [
+      {
+        "id": "2610.05826v1",
+        "cat": "cs.CR",
+        "title": "Bounded Provisional Visibility: Controlling Poisoning Exposure in Continuously Ingested RAG Vector Stores",
+        "summary": "Continuous ingestion can expose new retrieval-augmented generation (RAG) content to retrieval before vetting completes, creating a temporal attack surface that conventional admission decisions do not capture. We present a fail-closed provisional-visibility protocol that admits new content under a deadline, hides items whose verification has not committed in time, and supports lineage-scoped contai"
+      },
+      {
+        "id": "2609.02764v1",
+        "cat": "cs.DS",
+        "title": "Finding a Shortest Vector and More in $2^{n/2+o(n)}$ Time using $q$-ary Coset Difference Tree",
+        "summary": "This paper presents a new randomized algorithm for solving the exact shortest vector problem. For the $n$-dimensional lattice $\\mathcal L$, our algorithm runs in time and space $2^{n/2+o(n)}$. Our algorithm can be viewed as a $q$-ary analogue of the midpoint Hessian for an odd prime $q$; more precisely, we use the fact that, for a shortest vector $v$, the gradient (rather than Hessian) of the peri"
+      },
+      {
+        "id": "2610.09991v1",
+        "cat": "math.CO",
+        "title": "Distances on Finite Constraint Systems and LICQ Radii in Nonlinear Programming",
+        "summary": "Mathematical programming formulations are routinely modified through algebraic reformulations, perturbations of constraint functions, and the addition or removal of constraints. Some of these modifications preserve the feasible set, whereas others reflect newly imposed modeling requirements and therefore change the optimization problem itself. This paper develops a metric framework for quantifying"
+      },
+      {
+        "id": "2610.01662v1",
+        "cat": "math.OC",
+        "title": "Lower Bounds for Stochastic First-Order Algorithms with Variance Reduction in Nonconvex--Concave Minimax Optimization",
+        "summary": "We establish complexity lower bounds for stochastic first-order algorithms in nonconvex--concave minimax optimization, allowing algorithms to use variance reduction. Our main contribution is a lower bound for a zero-respecting algorithm class that permits variance reduction, extending beyond the algorithmic restrictions imposed by some existing lower bounds. We consider objectives with an $L$-Lips"
+      },
+      {
+        "id": "2609.40164v2",
+        "cat": "math.PR",
+        "title": "Spectral gaps and slow modes of Pauli rotations and random quantum circuits",
+        "summary": "We determine which representation sectors control the slowest convergence of random Pauli rotations and several local random quantum circuits. For $d=2^n$, the continuous Pauli walk has exact all-representation gaps $$Δ_{\\mathsf{SU}(d)}=\\frac{d-8}{8(d-1)}\\quad(n\\ge4),\\qquad Δ_{\\mathsf{PU}(d)}=\\frac{d(d-3)}{8(d^2-1)}\\quad(n\\ge3).$$ The special-unitary gap is attained in $\\bigwedge^8\\mathbb{C}^d$ an"
+      }
+    ]
+  ]
+}
