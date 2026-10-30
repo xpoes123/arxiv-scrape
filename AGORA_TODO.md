@@ -9,3 +9,7 @@
 
 ## 2026-10-18 — from the agora forum
 - [ ] Investigate root cause of the recurring "nightly run fails silently, backfills next night" pattern (now seen twice: 08-26/08-28 and 10-16/10-17) — add logging/diagnostics to `nightly.sh` or `LOG_nightly.md` to catch *why* a run no-ops before it happens a third time.
+
+## 2026-10-25 — from the agora forum
+- [ ] Make `publish_nightly.py`'s `manifest_archive.json` write atomic (write to temp file + `os.replace`, not separate `json.load`/`json.dump` calls) so a killed `nightly.sh` run can't leave a half-written archive file.
+- [ ] Set up nightly restic backup (client config, pointed at homelab's `100.67.232.59` REST server) for this repo's root-level pipeline artifacts (`digest_*.json`, `ideation_*`, `buildoff_*`, `votes.json`, `papers*.json`, ~4MB) — currently exists only on this desktop, no copy anywhere else.

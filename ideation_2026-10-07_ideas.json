@@ -1,0 +1,390 @@
+[
+ {
+  "type": "demo",
+  "title": "Soft Top-k: The Slip Builder That Shows Its Doubt",
+  "paper_id": "2610.04162v1",
+  "pitch": "Single-file HTML toy that builds a 'bet slip' by picking k=5 best legs out of 30 candidate props. A slider morphs the selection from hard argmax top-k (the usual greedy cutoff) to the paper's hybrid-gradient soft top-k, which keeps a smooth probability mass over near-miss candidates instead of a brutal cliff at rank 5. Bars for legs 4-7 visibly 'wobble' between included/excluded as you nudge the temperature, making the point that the 6th-best prop is often statistically indistinguishable from the 5th \u2014 the exact edge case where real DFS/parlay builders get the ranking wrong and nobody notices.",
+  "cool_score": 7,
+  "buildable_score": 9,
+  "discussion_score": 7,
+  "discussion_why": "Directly hits how people actually build parlays/lineups (pick k of m) and exposes that the cutoff is arbitrary near the boundary \u2014 a 'wait, my 5th leg and 6th leg are basically a coin flip' moment that's catnip for an argument about whether anyone's slip construction is principled.",
+  "tags": [
+   "betting",
+   "decision-theory",
+   "math",
+   "games",
+   "ai"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "The Diffusion That Lies to Your Bankroll",
+  "paper_id": "2608.05022v1",
+  "pitch": "Canvas demo running two particle clouds side-by-side modeling the same underdamped Langevin diffusion (think: a bankroll random-walking under Kelly-sized bets with mean-reverting edge). One cloud uses naive discretized Euler-Maruyama steps (what most backtest sims quietly do); the other uses the paper's exact rejection-sampling-on-path-space trick via Girsanov density ratios, so it has zero discretization bias. Overlay the two tail histograms after a few thousand steps \u2014 the discretized one visibly underestimates how fat the ruin tail actually is. Toggle step size and watch the 'lying' version's tail error shrink as steps shrink, quantifying exactly how much your bankroll sim has been sandbagging drawdown risk.",
+  "cool_score": 8,
+  "buildable_score": 7,
+  "discussion_score": 8,
+  "discussion_why": "Bankroll/Kelly risk is a core betting-Discord obsession, and 'your Monte Carlo backtest has a silent bias that hides your worst drawdowns' is a legit wait-really surprise with real stakes \u2014 good bait for the quant-minded regulars to argue about step size vs. 'just use exact sampling'.",
+  "tags": [
+   "betting",
+   "gambling",
+   "math",
+   "decision-theory",
+   "physics"
+  ]
+ },
+ {
+  "type": "project",
+  "title": "Certo-Ref: A Cacheable Poker/Bet Rules Referee",
+  "paper_id": "2609.37832v1",
+  "pitch": "Build a small, non-generative scorer (\u00e0 la Certo's Qwen3-4B setup) that takes game state + a rulebook (bankroll limits, table-stakes rules, a GTO preflop chart, a sportsbook's own T&Cs) plus a candidate action and returns a calibrated P(action is legal/sound) instead of generating a chat response. Because it's a scorer not a generator, it's cacheable and cheap enough to run on every hand/bet in real time \u2014 a standing 'ref' that flags 'this 3-bet size violates your range chart' or 'this parlay leg breaks your stated max-exposure rule' before you click submit, without burning a full LLM call per decision.",
+  "cool_score": 7,
+  "buildable_score": 6,
+  "discussion_score": 7,
+  "discussion_why": "Poker players love arguing GTO-chart violations and bettors love arguing bankroll-rule discipline \u2014 a referee that catches both automatically turns 'I think that was a bad call' into a verifiable probability, which is exactly the kind of tool-vs-feel debate this crowd eats up.",
+  "tags": [
+   "poker",
+   "betting",
+   "ai",
+   "decision-theory",
+   "games"
+  ]
+ },
+ {
+  "type": "youtube",
+  "title": "Why Cosine Similarity Lies About Your Favorite Rivalry",
+  "paper_id": "2610.06919v1",
+  "pitch": "Short explainer using Anchor Divergence's core claim \u2014 that semantic 'closeness' isn't fixed, it bends depending on what you anchor it to \u2014 applied to sports/team embeddings. Show the same two teams (e.g. a historic rivalry pair) looking 'close' when anchored on fan sentiment/narrative text but 'far' when anchored on pure box-score stats, and tie it to betting markets: lines often price in the narrative-anchored geometry (rivalry hype) while sharp models price the stat-anchored geometry \u2014 the gap between the two IS the edge. Ends on the hook: 'cosine similarity isn't measuring one thing, it's measuring whatever you anchored it to.'",
+  "cool_score": 6,
+  "buildable_score": 5,
+  "discussion_score": 6,
+  "discussion_why": "More abstract and the video takes real effort to land, but the specific claim \u2014 that market mispricing might literally be two different valid embedding geometries disagreeing \u2014 is a surprising, debatable frame for why 'obvious' sharp vs. square splits happen, with a fun whimsical hook about a math fact nobody expects to have betting implications.",
+  "tags": [
+   "sports",
+   "betting",
+   "ai",
+   "math",
+   "whimsy"
+  ]
+ },
+ {
+  "type": "youtube",
+  "title": "I Reverse-Engineered a Poker Bot's Brain From Its Bet Sizes Alone",
+  "paper_id": "2609.14053v1",
+  "pitch": "Explainer video built around the paper's core shock: in receding-horizon LQR control, you only ever observe the FIRST step of each replanned trajectory (the agent keeps re-solving a whole horizon every turn but only shows you one move) \u2014 yet under their identifiability conditions you can still recover the hidden objective/cost weights. Frame it as 'reading tells': an opponent re-plans their whole strategy every hand but you only see the bet they place. Build a toy poker/sports-bettor agent with a hidden risk-aversion weight, show its replanned bet sizes, then run the inverse-LQR recovery live on screen and nail the hidden weight \u2014 a genuine 'wait, that's all the info you needed?' reveal. Second act: show the degenerate case where it's NOT identifiable (discounting too heavy, horizon too short) so viewers see exactly where the trick breaks, which maps straight onto 'when can you actually read a bettor vs when are you kidding yourself.'",
+  "cool_score": 9,
+  "buildable_score": 7,
+  "discussion_score": 9,
+  "discussion_why": "Directly hijacks poker-tell folklore with real math \u2014 surprising ('you can ID intent from one visible step per horizon?'), high relatability to anyone who's tried to read a reg's bet sizing or a bettor's stake pattern, and it ends in a debate-starter: a precise boundary for when reads are mathematically justified vs pure vibes.",
+  "tags": [
+   "poker",
+   "decision-theory",
+   "ai",
+   "math",
+   "betting"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Anchor Wars: Why the Public Never Actually Moves the Line",
+  "paper_id": "2609.11039v2",
+  "pitch": "Single-file HTML canvas sim of the anchored binary opinion dynamics model: N agents (dots), each with a fixed personal anchor and a current opinion, bump into each other pairwise and nudge opinions via a tunable (possibly nonlinear) update rule with random noise. Sliders for anchor strength, interaction rate, and nonlinearity let you watch the population either converge to consensus, split into two polarized camps, or get pinned near the anchor distribution forever \u2014 live, with a running histogram. Skin it as 'public betting opinion vs the anchor of the opening line': crank anchor strength up and watch the crowd never actually reach true consensus no matter how long they argue, which is the uniform-in-time mean-field result made visceral.",
+  "cool_score": 8,
+  "buildable_score": 9,
+  "discussion_score": 7,
+  "discussion_why": "Hits the gambling-forum eternal argument (does public money ever really 'correct' the line, or is it anchored noise) with a toy you can personally break by cranking sliders \u2014 surprising that strong anchors provably prevent consensus even with infinite interactions, plus satisfying whimsical particle-sim visuals.",
+  "tags": [
+   "gambling",
+   "betting",
+   "decision-theory",
+   "math",
+   "whimsy"
+  ]
+ },
+ {
+  "type": "project",
+  "title": "Tell Decoder: Inferring a Bettor's Hidden Risk Objective From Their Stake History",
+  "paper_id": "2609.14053v1",
+  "pitch": "Longer-build version of the LQR idea: take the paper's identifiability/generalization characterization for inverse receding-horizon LQR and build a real tool against SharpLab's bet-log data \u2014 feed in a sharp bettor's or a specific book's sequence of stake sizes across a season (treating each bet as the 'first step' of an implicitly re-planned bankroll-management horizon) and recover their implied risk-aversion / Kelly-fraction weights, plus a confidence flag for when the recovery is actually identifiable versus underdetermined. Useful as a genuine CLV/bankroll-style tool, not just a toy.",
+  "cool_score": 7,
+  "buildable_score": 6,
+  "discussion_score": 8,
+  "discussion_why": "Turns an abstract control-theory identifiability result into a concrete 'can we actually profile sharps from public bet-size data' tool \u2014 directly fuels betting/decision-theory debate about how much a stake pattern really leaks, and ties cleanly into existing SharpLab infra.",
+  "tags": [
+   "betting",
+   "decision-theory",
+   "ai",
+   "math",
+   "econ"
+  ]
+ },
+ {
+  "type": "startup",
+  "title": "RegimeEdge: A Regime-Switch VAE That Front-Runs Live Odds Moves",
+  "paper_id": "2306.02848v1",
+  "pitch": "HireVAE is a hierarchical, online-adaptive factor model for markets that explicitly tracks regime switches via a VAE rather than assuming one static factor structure. Port the same architecture from equities to in-play sports/esports odds streams: treat 'momentum shift', 'garbage time', 'injury scramble' as latent regimes the hierarchical VAE detects online, re-weighting its factor exposures faster than sportsbooks re-price. Pitch as a live-trading signal layer that plugs into SharpLab's existing odds ingestion, selling regime-change alerts a few seconds ahead of the line move.",
+  "cool_score": 8,
+  "buildable_score": 5,
+  "discussion_score": 8,
+  "discussion_why": "Classic 'can a quant model actually beat Vegas in real time' argument-starter, with a concrete mechanism (online regime detection) people can poke holes in \u2014 strong fit for a betting/gambling Discord that already debates live-line edges, and surprising that a quant-finance factor model transfers so directly to sports.",
+  "tags": [
+   "betting",
+   "sports",
+   "gambling",
+   "ai",
+   "econ"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Block Builder Arena",
+  "paper_id": "2304.11010v1",
+  "pitch": "Single-file HTML sim of a constant-product AMM pool (x*y=k) seeded with a queue of pending user swaps. The paper's core claim is that the maximal extractable value (MEV) in a block is an *invariant* of the pool state and trade set \u2014 it doesn't matter how you reorder/sandwich the trades, the total arbitrage pie is fixed, only who captures it varies. Demo lets you drag-reorder the trade queue (front-run, back-run, sandwich) before it executes, and a live readout shows your captured MEV vs. the theoretical invariant ceiling, proving you can redistribute the pie but never grow it. Framed as 'this is literally what steam-chasers and line-shoppers do to square bettors, except on-chain it's mechanically guaranteed.'",
+  "cool_score": 7,
+  "buildable_score": 8,
+  "discussion_score": 8,
+  "discussion_why": "Directly maps to sportsbook arbitrage/CLV hunting and 'who gets there first' decision theory \u2014 bettors instantly recognize the sandwich-attack pattern from steam chasing and line shopping. The invariance result is a genuine 'wait, really?' surprise (the pie size is fixed no matter the attack strategy), which is good debate bait.",
+  "tags": [
+   "econ",
+   "gambling",
+   "betting",
+   "decision-theory",
+   "math"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Fake Tiers Detector",
+  "paper_id": "2609.05683v1",
+  "pitch": "Interactive HTML toy built on the paper's nonparametric test for whether high-dimensional cluster separation is real signal or sampling noise (designed for scRNA-seq, but the math is generic). User gets a scatterplot of synthetic 'player stat' blobs (could be NBA archetypes, poker player types, QB tiers \u2014 toggle the theme), draws a k-means split into tiers, and the demo runs a lightweight permutation-based version of the paper's test to spit out a p-value: is this tier boundary statistically real, or would random noise with the same within-group variance produce an equally 'clean-looking' split? Slider to crank up noise until legit-looking tiers get busted as numerology.",
+  "cool_score": 8,
+  "buildable_score": 7,
+  "discussion_score": 9,
+  "discussion_why": "This is a direct hit on sports-talk and poker culture's favorite pastime: inventing tier lists and player archetypes ('elite,' 'bust,' 'LAG vs TAG'). Letting people watch their own hand-drawn tiers get statistically rejected is maximally relatable and surprising, and it's a built-in decision-theory lesson about overfitting narratives to noise.",
+  "tags": [
+   "math",
+   "sports",
+   "poker",
+   "games",
+   "decision-theory",
+   "ai"
+  ]
+ },
+ {
+  "type": "project",
+  "title": "Beyond the Mean: Threshold Effects in Sports & Betting Lines",
+  "paper_id": "2602.19290v1",
+  "pitch": "Longer-build project applying the paper's Distributional Discontinuity Design \u2014 which estimates how an entire outcome *distribution* (not just its mean) shifts at a regression-discontinuity cutoff \u2014 to sports/betting thresholds where everyone currently only looks at averages. Candidates: (1) draft-slot cutoffs (end of round 1 vs start of round 2 \u2014 does the *spread* of career outcomes jump, not just the average?), (2) key-number betting lines (spread of 3 vs 3.5 in NFL \u2014 does the win-distribution shape change discontinuously, consistent with the 'key number' folklore?), (3) award-voting cutoffs (All-Star snub line). Ships as a small Python pipeline pulling public draft/line data + a DDD estimator, with plots showing full counterfactual distributions on each side of the cutoff.",
+  "cool_score": 7,
+  "buildable_score": 5,
+  "discussion_score": 7,
+  "discussion_why": "Sports/betting Discords already argue endlessly about 'key numbers' and draft-slot value using only averages \u2014 showing the whole distribution shifts (e.g., variance or skew jumps at a cutoff, not just the mean) would either validate or demolish folklore people have strong priors about, which is prime argument fuel.",
+  "tags": [
+   "econ",
+   "sports",
+   "betting",
+   "math",
+   "decision-theory"
+  ]
+ },
+ {
+  "type": "youtube",
+  "title": "The Poker Tell Your AI Will Never Learn",
+  "paper_id": "2603.03414v3",
+  "pitch": "Video essay using the paper's 'cognitive dark matter' framing \u2014 AI's jagged intelligence comes from training signals that are invisible in text (embodied, affective, sensorimotor brain functions) \u2014 as the lens for why even superhuman solver-trained poker bots (GTO engines, LLM-based coaches) can nail bet-sizing math but completely whiff on live reads: pupil dilation, breathing changes, the half-second hesitation before a bluff. Structure: solver math is 'visible matter,' physical tells are the 'dark matter' no text corpus captures, with side-by-side clips of a GTO chart vs. a human read catching a bluff pure-chart play would miss.",
+  "cool_score": 8,
+  "buildable_score": 6,
+  "discussion_score": 8,
+  "discussion_why": "Hits the eternal poker-forum argument of 'solvers vs. reads/feel,' reframed with a sharp new piece of AI-research vocabulary ('cognitive dark matter') that's genuinely surprising to hear applied to card games, plus a whimsical bio/AI crossover angle.",
+  "tags": [
+   "ai",
+   "poker",
+   "bio",
+   "whimsy",
+   "decision-theory"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Hot Hand or Molecular Clock? (Streak Significance Tester)",
+  "paper_id": "2407.11201v3",
+  "pitch": "SMDP flags SARS-CoV-2 lineages as 'anomalous' by comparing their observed mutation count against the expected count under a constant molecular clock rate (basically an overdispersion/Poisson test on mutations-per-unit-time) \u2014 most lineages drift at a boringly constant rate, and the rare ones that don't are the story. Port that exact test to sports/poker: single HTML page, user inputs a player/team's recent run (e.g. 9-for-9 from three, or 12 showdowns won in a row) plus their known long-run base rate, and the toy computes the same style of null-model test SMDP uses for the virus \u2014 is this streak inside the expected variance 'molecular clock,' or a genuine rate-change event? Slider for sample size shows how fast the same streak flips from 'noise' to 'statistically real' as n grows. Visualizes the hot-hand debate with an actual p-value instead of vibes.",
+  "cool_score": 7,
+  "buildable_score": 9,
+  "discussion_score": 8,
+  "discussion_why": "Directly hits the oldest fight in sports betting and poker \u2014 is the hot hand real \u2014 by handing people a rigorous test instead of opinion; surprising because it reframes a virology stat test as a streak detector, which triggers the 'wait, this is literally what my parlay app should be doing' reaction.",
+  "tags": [
+   "sports",
+   "betting",
+   "poker",
+   "math",
+   "decision-theory",
+   "bio"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Gambler's Ruin, the CTMC Way",
+  "paper_id": "2510.25777v1",
+  "pitch": "The rabies paper's whole point is that deterministic ODE models say the disease persists forever once R0>1, but the stochastic CTMC version shows a real, computable chance of extinction purely from small-population randomness \u2014 the dog reservoir can just randomly die out even with a 'winning' reproduction number. That's gambler's ruin with teeth: build a single-file HTML sim with two panels side by side \u2014 a deterministic bankroll curve (smooth exponential growth from a positive-EV edge) and a Gillespie-style stochastic CTMC simulation of the same edge at small bankroll/bet-count, run live with a 'roll again' button. Users watch the deterministic line calmly climb while 30% of stochastic runs go bust at zero, same inputs. Slider for population/bankroll size shows extinction probability collapsing as N grows \u2014 exactly the paper's reservoir-size result.",
+  "cool_score": 8,
+  "buildable_score": 7,
+  "discussion_score": 9,
+  "discussion_why": "This is the single most contested idea in the gambling-math genre \u2014 'I have positive EV so I can't lose long-run' \u2014 and the demo makes the counterexample visceral and quantified rather than a textbook footnote; strong surprise factor ('wait, +EV can still go broke with real probability?') plus direct decision-theory/bankroll-management relevance.",
+  "tags": [
+   "gambling",
+   "betting",
+   "decision-theory",
+   "math",
+   "bio"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Margin Call Membrane",
+  "paper_id": "2607.04997v2",
+  "pitch": "The dielectric membrane paper shows a nasty positive feedback: stretch + electric field makes a spot thin faster, thinning raises local field, field thins it faster still \u2014 a runaway 'pull-in' instability past a critical voltage, non-uniform across the membrane. That's a leverage spiral: a losing position forces more margin, shrinking equity, which raises your effective leverage, which accelerates the next loss. Single-canvas HTML toy: a stretchy 2D membrane rendered as a deformable mesh, slider for 'voltage' (leverage), click to poke a weak spot. Below critical voltage it thins slowly and stabilizes; past the critical threshold the weak spot runs away and the membrane visibly ruptures in real time \u2014 same bifurcation the paper plots, just skinned as a margin-call simulator.",
+  "cool_score": 8,
+  "buildable_score": 6,
+  "discussion_score": 6,
+  "discussion_why": "More whimsical than directly bettor-actionable \u2014 it's a metaphor demo \u2014 but the visual 'runaway rupture past a threshold' is the kind of satisfying physics toy that gets shared for the 'oh that's exactly what a margin call feels like' reaction; decent surprise, lower direct gambling utility than the other two.",
+  "tags": [
+   "physics",
+   "econ",
+   "gambling",
+   "whimsy"
+  ]
+ },
+ {
+  "type": "startup",
+  "title": "DriftAlert \u2014 Statistical Clock-Check for Your Picks",
+  "paper_id": "2407.11201v3",
+  "pitch": "Productize the SMDP streak-significance idea from above: a lightweight service/Discord bot that ingests your tracked players, lines, or poker opponents' stats, maintains a rolling 'expected constant rate' baseline per entity, and pings you only when a new run clears the same kind of overdispersion threshold SMDP uses to flag anomalous viral lineages \u2014 i.e., filters out the 99% of 'hot streaks' that are just noise and surfaces the rare ones worth actually re-pricing. Pitch to a betting Discord as the anti-tilt tool: it suppresses hype on normal variance and only screams when something's statistically real.",
+  "cool_score": 6,
+  "buildable_score": 6,
+  "discussion_score": 7,
+  "discussion_why": "Turns the hot-hand debate into an actual product people would argue about using on their own picks ('your bot says my guy isn't really heating up') \u2014 less flashy than the demos but directly monetizable inside a betting community, and the underlying claim (most streaks are noise) is reliably controversial.",
+  "tags": [
+   "betting",
+   "sports",
+   "poker",
+   "ai",
+   "decision-theory"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Printing Press Phase Diagram",
+  "paper_id": "2604.24035v1",
+  "pitch": "Single-file HTML toy modeling the paper's core claim: newly issued base money sits in different 'phases' (idle reserves vs. circulating cash), and only crossing a phase boundary triggers inflation \u2014 not the raw money-supply growth rate itself. Two sliders: money-growth rate and a hidden 'phase' knob (how much new money gets parked vs. spent). Plot shows price level staying flat while M balloons (quantity-theory heretic's dream), then suddenly kinking upward once the phase variable crosses a threshold \u2014 with hysteresis, so pulling the growth rate back down doesn't immediately undo it. Built as a toy, it's basically a playable version of 'why QE didn't cause 2010s inflation but COVID stimulus did.'",
+  "cool_score": 8,
+  "buildable_score": 9,
+  "discussion_score": 9,
+  "discussion_why": "Hits every debate button for an econ-curious gambling crowd: MMT vs. monetarist flame wars, Fed-watching, CPI prediction markets, and the 'wait, you can print money for free sometimes?' surprise factor. Extremely arguable, extremely shareable.",
+  "tags": [
+   "econ",
+   "betting",
+   "decision-theory",
+   "whimsy"
+  ]
+ },
+ {
+  "type": "project",
+  "title": "Confidence-Gated Prop Bet Agent",
+  "paper_id": "2610.04156v1",
+  "pitch": "Port the paper's trick \u2014 deriving trust in an LLM agent from features of its own reasoning trajectory (step count, backtracking/self-correction frequency, hedging language, variance across repeated rollouts) rather than a bolt-on confidence head \u2014 into a sports-prop betting agent. The agent reasons step-by-step about a prop (e.g. 'will Player X clear 24.5 points'), and instead of always firing a bet, the trajectory-confidence score gates whether it bets at all and scales the Kelly stake by that score. Backtest against closing lines: does trajectory confidence actually correlate with hit rate, or is the model just as overconfident rambling as it is confident reasoning well?",
+  "cool_score": 7,
+  "buildable_score": 6,
+  "discussion_score": 8,
+  "discussion_why": "Directly betting+AI+decision-theory: 'can an LLM actually know when it's wrong, and should that gate your bet size' is a live, contentious question for anyone using AI picks. Good blend of relatable (everyone's tried an AI betting bot) and surprising (confidence from *how* it reasoned, not *what* it said).",
+  "tags": [
+   "betting",
+   "ai",
+   "decision-theory",
+   "sports",
+   "gambling"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Universal Bluff Entropy",
+  "paper_id": "2608.22939v1",
+  "pitch": "The paper shows 'magic' (nonstabilizerness, the resource for quantum universality) equilibrates to a universal value under thermalization \u2014 regardless of the initial state, scrambling washes out memory of where you started. Build an HTML toy spin-chain simulator with a magic-meter dial: start from wildly different initial configurations, hit play, watch them all converge to the same equilibrium magic value over time. Frame it as a poker/GTO metaphor sitting right next to the physics \u2014 'no matter what quirky tells or biases you start with, enough forced randomization scrambles you to the same unreadable baseline' \u2014 letting people literally watch convergence happen instead of reading an abstract about Renyi entropies.",
+  "cool_score": 7,
+  "buildable_score": 8,
+  "discussion_score": 6,
+  "discussion_why": "More whimsy/surprise than hard betting relevance \u2014 'wait, physics proves randomization erases your tells' is a fun tangent for a poker-adjacent crowd, but it's a stretch of a metaphor so debate depth is lower than the econ or betting-agent ideas.",
+  "tags": [
+   "physics",
+   "math",
+   "poker",
+   "whimsy",
+   "ai"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Muirhead Roulette",
+  "paper_id": "2609.22465v1",
+  "pitch": "Single-file HTML toy built around the paper's core object: for three numbers (dice, win-probabilities, bet sizes \u2014 user's choice) and exponent partitions \u03bb\u227b\u03b3\u227b\u03bc, it live-computes the symmetric monomial orbit sums J_\u03bb, J_\u03b3, J_\u03bc and plots J_\u03bb+J_\u03bc-2J_\u03b3 as you drag sliders on the three variables and pick partitions from a dropdown. Frame it as 'does splitting your action across two lopsided bets ever beat one balanced bet?' \u2014 sometimes the inequality holds (balance wins, like Muirhead's classic result), sometimes the paper shows it flips for certain partition triples, and the demo lets you find the flip live by dragging. A color bar flashes green/red for sign, plus a 'find a counterexample' challenge mode.",
+  "cool_score": 7,
+  "buildable_score": 8,
+  "discussion_score": 7,
+  "discussion_why": "Hooks into a real bankroll debate (spread bets vs. concentrate) with genuine math underneath; the 'wait, it actually flips sign for some partitions' moment is a solid surprise, and hunting counterexamples as a mini-game adds whimsy without needing any gambling framing to be forced.",
+  "tags": [
+   "math",
+   "decision-theory",
+   "gambling",
+   "whimsy"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Parlay Guarantee",
+  "paper_id": "2608.05331v1",
+  "pitch": "Interactive CSP builder: user sets arity k (2-6) and generates a random boolean CSP instance styled as a slate of k-leg prop/parlay conditions (e.g. 'at least 2 of these 3 legs must hit for this combo to count'). The demo runs (a) brute-force optimal assignment, (b) the paper's simple randomized/greedy algorithm that provably satisfies a k/2^k fraction of constraints, and (c) a 'degenerate human guess' baseline, showing all three bars side by side in real time as k grows and the guarantee shrinks exponentially. A toggle lets you watch the guaranteed floor crater as k goes from 2 to 6 \u2014 visceral demonstration of why 10-leg parlays are mathematically brutal even before correlation.",
+  "cool_score": 7,
+  "buildable_score": 8,
+  "discussion_score": 8,
+  "discussion_why": "Directly lands in parlay-independence arguments that run constantly in betting discords; the exponential guarantee collapse (half, quarter, eighth...) as legs stack is a clean 'wait, really' moment, and it's pure decision-theory/betting overlap with zero translation needed.",
+  "tags": [
+   "betting",
+   "gambling",
+   "decision-theory",
+   "games",
+   "math"
+  ]
+ },
+ {
+  "type": "demo",
+  "title": "Cohen-Lenstra Casino",
+  "paper_id": "2609.10899v1",
+  "pitch": "Single-file toy: pick a 'house die' (uniform, loaded, even-only, whatever weird distribution you want) for filling entries of random matrices mod a small prime p, then repeatedly multiply k of them together and compute the cokernel's group structure (Smith normal form, rendered as a partition/Young diagram). Run thousands of trials and watch the empirical distribution of cokernel types converge to the same universal Cohen-Lenstra-style limit no matter which weird die you picked for the entries \u2014 a live histogram race between 'fair die casino' and 'rigged die casino' that end up in the same place. Pitch line: 'the house always wins the same way, no matter how it cheats on the inputs.'",
+  "cool_score": 8,
+  "buildable_score": 7,
+  "discussion_score": 6,
+  "discussion_why": "The universality punchline ('rig the dice however you want, the downstream distribution doesn't care') is genuinely surprising and has a built-in casino hook that plays well with the server's whimsy, though the group-theory machinery under the hood is abstract enough to dampen pure debate value.",
+  "tags": [
+   "math",
+   "gambling",
+   "whimsy",
+   "decision-theory"
+  ]
+ },
+ {
+  "type": "youtube",
+  "title": "Why Your Poker Solver Can't Converge Any Faster Than This",
+  "paper_id": "2609.14235v1",
+  "pitch": "Short explainer video: GTO solvers train by running gradient-descent-ascent on a minimax game (exploiter vs. strategy) \u2014 exactly the nonconvex-concave minimax structure this paper nails down the optimal deterministic first-order oracle complexity for. Visualize a toy one-card bluffing game as a 2D nonconvex-concave landscape, animate naive GDA oscillating/zigzagging toward equilibrium, then show the paper's optimal-rate scheme converging in the provably minimal number of gradient queries \u2014 ending on 'this is the actual speed limit, not an engineering problem you can brute-force away.' Good hook for poker-tech-curious viewers who've wondered why solver training takes so long.",
+  "cool_score": 6,
+  "buildable_score": 5,
+  "discussion_score": 6,
+  "discussion_why": "Speaks directly to poker players' obsession with solver speed and 'how close to GTO is good enough,' and the lower-bound result ('there's a provable floor, no algorithm beats it') is a nice surprise, but the oracle-complexity framing is niche enough to need real production effort before it lands with a general audience.",
+  "tags": [
+   "ai",
+   "poker",
+   "math",
+   "decision-theory"
+  ]
+ }
+]

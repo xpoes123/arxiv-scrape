@@ -1,0 +1,197 @@
+{
+  "ideas": [],
+  "failed_batches": [
+    [
+      {
+        "id": "2510.18589v2",
+        "cat": "q-bio.PE",
+        "title": "Inheritance Entropy: A Model-Independent Method to Probe the Hereditary Structure of Cell Lineage Trees",
+        "summary": "Human bone marrow stromal cells (BMSC) include skeletal stem cells with ground-breaking therapeutic potential. However, BMSC colonies have very heterogeneous in vivo behaviour, due to their different potency; this unpredictability is the greatest hurdle to the development of skeletal regeneration therapies. Colony-level heterogeneity urges a fundamental question: how is it possible that one colony"
+      },
+      {
+        "id": "2607.18457v2",
+        "cat": "cond-mat.soft",
+        "title": "Variational formulation for the dynamics of soft matter including inertia",
+        "summary": "The motion of liquids and soft matter is over-damped and `slow' when viscosity dominates. In this (low Reynolds-number) limit and when the system is isothermal, the equations of motion may be generated via Onsager's variational principle, which neglects inertia. This variational approach is immensely powerful, being used to obtain equations of motion for colloidal fluids, droplets on surfaces and "
+      },
+      {
+        "id": "2603.18497v1",
+        "cat": "q-bio.QM",
+        "title": "Recovering Sparse Neural Connectivity from Partial Measurements: A Covariance-Based Approach with Granger-Causality Refinement",
+        "summary": "Inferring the connectivity of neural circuits from incomplete observations is a fundamental challenge in neuroscience. We present a covariance-based method for estimating the weight matrix of a recurrent neural network from sparse, partial measurements across multiple recording sessions. By accumulating pairwise covariance estimates across sessions where different subsets of neurons are observed, "
+      },
+      {
+        "id": "2609.31779v1",
+        "cat": "math.PR",
+        "title": "Typical Bohnenblust--Hille Ratios",
+        "summary": "The polynomial Bohnenblust--Hille inequality controls the coefficient $\\ell_{2m/(m+1)}$-norm of an $m$-homogeneous polynomial by its supremum norm, with a constant independent of the dimension. We study the associated Bohnenblust--Hille ratio from a probabilistic point of view, by placing normalized surface measure on the Euclidean coefficient sphere. Our results reveal a sharp contrast between th"
+      },
+      {
+        "id": "2503.14442v1",
+        "cat": "q-bio.BM",
+        "title": "Inducing Causal Structure for Interpretable Neural Networks Applied to Glucose Prediction for T1DM Patients",
+        "summary": "Causal abstraction techniques such as Interchange Intervention Training (IIT) have been proposed to infuse neural network with expert knowledge encoded in causal models, but their application to real-world problems remains limited. This article explores the application of IIT in predicting blood glucose levels in Type 1 Diabetes Mellitus (T1DM) patients. The study utilizes an acyclic version of th"
+      }
+    ],
+    [
+      {
+        "id": "2608.28512v2",
+        "cat": "cs.DS",
+        "title": "Quadratic Probing Insertions Are $ε^{-(1+o(1))}$ Time",
+        "summary": "First proposed in 1968, quadratic probing has stood for more than half a century as one of the simplest and most widely used hash-table designs in computer science. It is conjectured that, at load factor $1 - ε$, the hash table achieves $O(ε^{-1})$ expected insertion time. But even proving a bound of the form $f(ε^{-1})$ for any function $f$ has remained open. In this paper, we prove that the expe"
+      },
+      {
+        "id": "2610.01300v1",
+        "cat": "cs.CR",
+        "title": "A Systematization of Knowledge on DeFi Vaults: Architectures, Curation Mechanisms, and Strategy Design",
+        "summary": "Decentralized finance (DeFi) vaults are smart-contract-based asset management systems that pool deposits, execute programmable strategies, and mint tokenized shares representing claims on underlying assets and strategy performance. As vault designs have evolved from early yield aggregators to modular, actively managed systems, a new control layer, curation, has emerged to select strategies, config"
+      },
+      {
+        "id": "2603.10956v1",
+        "cat": "q-bio.NC",
+        "title": "Linear Readout of Neural Manifolds with Continuous Variables",
+        "summary": "Brains and artificial neural networks compute with continuous variables such as object position or stimulus orientation. However, the complex variability in neural responses makes it difficult to link internal representational structure to task performance. We develop a statistical-mechanical theory of regression capacity that relates linear decoding efficiency of continuous variables to geometric"
+      },
+      {
+        "id": "2605.03185v1",
+        "cat": "physics.soc-ph",
+        "title": "AI and the Research-Education Environment of Physics",
+        "summary": "In the current era of AI transforming the research-education environment of physics, variety of issues and concerns arise. The KITP program \"Generative AI for High and Low Energy Physics'' offered a discussion session on this, and here presented is a summary of the opinions provided in the discussion. The material is formulated such that it can serve as a starting point for further discussions in "
+      },
+      {
+        "id": "2609.35354v1",
+        "cat": "stat.ML",
+        "title": "Isotonic surrogate modeling for computer experiments with many input variables",
+        "summary": "Virtual simulators are widely used for studying complex physical phenomena, from particle collisions to rocket propulsion. Such \"computer experiments\" can be highly time-intensive, and a Bayesian surrogate model can be used for efficient emulation with reliable uncertainty quantification. To train accurate surrogates with a limited sample size $n$, recent work has explored the incorporation of mon"
+      }
+    ],
+    [
+      {
+        "id": "2609.05878v2",
+        "cat": "cond-mat.stat-mech",
+        "title": "Foundations of Many-Body Theory of Quantum Unified Statistics: Green functions and Linear Response Theory",
+        "summary": "We develop a comprehensive many-body theory for systems of particles obeying quantum unified statistics, or quons. After exploring the properties of the Fock space of this system, we formulate a systematic S-matrix expansion and a generalized Wick's theorem. A consistent Green-function formalism is constructed at both zero and finite temperatures, accompanied by a generalized Wick's theorem approp"
+      },
+      {
+        "id": "2406.09522v1",
+        "cat": "q-bio.GN",
+        "title": "AOC: Analysis of Orthologous Collections -- an application for the characterization of natural selection in protein-coding sequences",
+        "summary": "Motivation Modern molecular sequence analysis increasingly relies on automated and robust software tools for interpretation, annotation, and biological insight. The Analysis of Orthologous Collections (AOC) application automates the identification of genomic sites and species/lineages influenced by natural selection in coding sequence analysis. AOC quantifies different types of selection: negative"
+      },
+      {
+        "id": "2609.25501v1",
+        "cat": "math.NT",
+        "title": "Continuous Optimization for p-adic Models",
+        "summary": "We present the first method for native, continuous gradient descent for machine learning models with $p$-adic parameters. Existing native optimizers are discrete, mostly combinatorial searches, as the $p$-adic numbers $\\mathbb{Q}_p$ are totally disconnected, with standard losses that are flat away from their minima. To enable continuous optimization, we propose working with $\\mathbb{Q}_p$ via its "
+      },
+      {
+        "id": "2303.07393v4",
+        "cat": "q-fin.TR",
+        "title": "Many learning agents interacting with an agent-based market model",
+        "summary": "We consider the dynamics and the interactions of multiple reinforcement learning optimal execution trading agents interacting with a reactive Agent-Based Model (ABM) of a financial market in event time. The model represents a market ecology with 3-trophic levels represented by: optimal execution learning agents, minimally intelligent liquidity takers, and fast electronic liquidity providers. The o"
+      },
+      {
+        "id": "2602.24215v2",
+        "cat": "econ.EM",
+        "title": "Empirical Challenges with Peers-of-Peers Instruments in the Linear-In-Means Model",
+        "summary": "In the linear-in-means model, endogeneity arises naturally due to the reflection problem. A common solution is to use Instrumental Variables (IVs) based on higher-order network links, such as using friends-of-friends' characteristics. In this paper, we show that such instruments are unlikely to work well in many applied settings due to a specific sparse/dense-network mechanism: in extremely sparse"
+      }
+    ],
+    [
+      {
+        "id": "2610.25697v1",
+        "cat": "cs.AI",
+        "title": "CVaR-RMD: CVaR Selection Pressure for Robust Metaheuristic Discovery",
+        "summary": "Large language models have recently been used to discover heuristics through iterative program search, offering a promising approach to automated algorithm design. However, candidates selected by average performance may degrade across instance families, random seeds, and problem scales because mean-based objectives can obscure rare but severe failures. We propose CVaR-RMD, a risk-sensitive evoluti"
+      },
+      {
+        "id": "2609.36212v1",
+        "cat": "math.OC",
+        "title": "Inverse Optimal Feedback Stabilization of 3D Nonholonomic Vehicles in Spherical Coordinates",
+        "summary": "Inverse optimal control provides optimality and robustness guarantees without solving the Hamilton--Jacobi--Bellman (HJB) equation, but its application to 3D nonholonomic vehicles has been precluded by the absence of strict control Lyapunov functions (CLFs). Recently, such strict CLFs were constructed for the 3D nonholonomic vehicle in spherical coordinates, which circumvent Brockett's obstruction"
+      },
+      {
+        "id": "2610.25370v1",
+        "cat": "cs.LG",
+        "title": "Multi-site Learning for Forecasting Day-Ahead Wind-Power Production for Onshore Wind Farms in Great Britain with Deep Neural Networks",
+        "summary": "Accurate day-ahead wind-power production forecasting is increasingly important for energy system operations, market activity and balancing Great Britain's grid as wind generation grows. In this study, we train multi-site deep neural networks (DNNs) using pooled historical production and reanalysis weather data from 88 onshore wind Balancing Mechanism Units (BMUs). Forecasts are produced at 09:00 U"
+      },
+      {
+        "id": "2304.07672v2",
+        "cat": "q-fin.PM",
+        "title": "Optimal Investment and Consumption Strategies with General Cost Structure under CRRA Utility",
+        "summary": "Transaction costs play a critical role in portfolio allocation and consumption decisions. We study a finite-horizon consumption--investment problem with CRRA utility under a general class of transaction cost functions. Based on dynamic programming and a singular perturbation expansion for a small cost-to-wealth ratio, we derive leading-order asymptotic formulas for the no-trade region, the four tr"
+      },
+      {
+        "id": "2610.21383v1",
+        "cat": "cs.CL",
+        "title": "Calibration Language Shapes Block-Influence Pruning in Multilingual Language Models",
+        "summary": "Block Influence (BI) ranks Transformer blocks for depth pruning from their input-output cosine change, but the ranking depends on the calibration distribution. We study whether English calibration transfers to Indian languages in Qwen2.5-1.5B-Instruct, Llama-3.2-1B, and Gemma-2-2B. English, Hindi, Marathi, and Tamil use disjoint Wikipedia articles for calibration and evaluation; every selector rec"
+      }
+    ],
+    [
+      {
+        "id": "2610.03704v1",
+        "cat": "math.CO",
+        "title": "Non-isomorphic graphs have distinct vertex-Ramsey classes",
+        "summary": "For a graph $H$, its $k$-colour vertex Ramsey class is the set of all graphs $G$ such that any colouring of the vertices of $G$ in $k$ colours results in a monochromatic (induced) copy of $H$. We prove that for any $k$, Ramsey classes of any non-isomorphic graphs are distinct."
+      },
+      {
+        "id": "2607.15695v2",
+        "cat": "physics.chem-ph",
+        "title": "$GW$ reduced density matrix from iterated linearized Dyson equation",
+        "summary": "Iterating the Dyson equation with the static part of the self-energy leads to a concise and possibly improved expression of the one-body reduced density matrix from any self-energy approximation. Here we apply the procedure to Hedin's $GW$ approximation. The non-iterated $GW$ based density matrix was already known to yield accurate density matrices for molecular systems. We show that the Dyson-equ"
+      },
+      {
+        "id": "2510.17554v1",
+        "cat": "q-bio.PE",
+        "title": "Mendelian randomization in a multi-ancestry world: reflections and practical advice",
+        "summary": "Many Mendelian randomization (MR) papers have been conducted only in people of European ancestry, limiting transportability of results to the global population. Expanding MR to diverse ancestry groups is essential to ensure equitable biomedical insights, yet presents analytical and conceptual challenges. This review examines the practical challenges of MR analyses beyond the European only context,"
+      },
+      {
+        "id": "2607.18208v1",
+        "cat": "cond-mat.soft",
+        "title": "Plastic smoothing of rough surfaces",
+        "summary": "When two metal blocks are squeezed together the stresses in the asperity contact regions are usually so large that the asperities deform plastically, at least at short length scales. Many tribology properties of contacts, such as the contact stiffness and the electric and thermal contact resistance, and the fluid flow at interfaces, depend on the surface topography and are hence modified by the pl"
+      },
+      {
+        "id": "2603.18249v1",
+        "cat": "q-bio.QM",
+        "title": "RAFT-UP: Robust Alignment for Spatial Transcriptomics with Explicit Control of Spatial Distortion",
+        "summary": "Spatial transcriptomics (ST) profiles gene expression across a tissue section while preserving the spatial coordinates. Because current ST technologies typically profile two-dimensional tissue slices, integrating and aligning slices from different regions of the same three-dimensional tissue or from samples under different conditions enables analyses that reveal 3D organization and condition-assoc"
+      }
+    ],
+    [
+      {
+        "id": "2609.30239v1",
+        "cat": "math.PR",
+        "title": "Multiple Stopping Options on a Geometric Random Walk",
+        "summary": "This article develops a finite-horizon multiple-stopping framework and applies it to three American-style contracts on a geometric random walk in a Cox--Ross--Rubinstein market: an American put, a Russian option, and a floating-strike geometric-average Asian put. The general problem is represented by recursively defined Snell envelopes, with unused exercise rights encoded by a cemetery time; this "
+      },
+      {
+        "id": "2503.13789v1",
+        "cat": "q-bio.BM",
+        "title": "Carbonic anhydrase II simulated with a universal neural network potential",
+        "summary": "The carbonic anhydrase II enzyme (CA II) is one of the most significant enzymes in nature, reversibly converting CO$_2$ to bicarbonate at a remarkable rate. The precise mechanism it uses to achieve this rapid turnover remains unclear due to our inability to directly observe or simulate the full process dynamically. Here, we use a recently developed universal neural network potential (Orb) to simul"
+      },
+      {
+        "id": "2608.28462v1",
+        "cat": "cs.DS",
+        "title": "Tight Bounds for Memory Allocation With and Without Request Fragmentation",
+        "summary": "The classical memory-allocation problem captures the task of placing objects of different sizes in memory, while minimizing the so-called memory high-water mark. It has been known since the early 1970s that the optimal competitive ratio for any deterministic online allocator is $Θ(\\log M)$, where $M$ is the volume high-water mark of the underlying request sequence. This paper begins with a simple "
+      },
+      {
+        "id": "2610.01294v1",
+        "cat": "cs.CR",
+        "title": "GNSS Spoofing in Mobile Devices: A Survey on Impact and Countermeasures",
+        "summary": "Smartphones rely on Global Navigation Satellite System (GNSS)-based positioning for many of the functions they execute everyday. The GNSS receivers embedded in smartphones are susceptible to anthropogenic radio frequency interference attacks in the forms of jamming and spoofing due to the low-power and open-architecture signals they receive from the satellite constellations. While jamming is a pra"
+      },
+      {
+        "id": "2603.10489v1",
+        "cat": "q-bio.NC",
+        "title": "JEDI: Jointly Embedded Inference of Neural Dynamics",
+        "summary": "Animal brains flexibly and efficiently achieve many behavioral tasks with a single neural network. A core goal in modern neuroscience is to map the mechanisms of the brain's flexibility onto the dynamics underlying neural populations. However, identifying task-specific dynamical rules from limited, noisy, and high-dimensional experimental neural recordings remains a major challenge, as experimenta"
+      }
+    ]
+  ]
+}

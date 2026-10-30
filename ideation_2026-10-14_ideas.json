@@ -1,0 +1,375 @@
+[
+  {
+    "type": "demo",
+    "title": "The Calibration Illusion",
+    "paper_id": "2610.13654v1",
+    "pitch": "Single-file HTML toy recreating TabReliBench's core gotcha: a model's reliability diagram looks perfectly calibrated in aggregate while subgroup calibration is garbage. Simulate a sportsbook win-probability model split into bins the user controls via sliders (favorites vs dogs, home vs road, rest-advantage vs none). The overall calibration curve snaps to the 45-degree line no matter what, but a second panel shows subgroup curves fanning out wildly -- visualizing the paper's finding that 'rankings change a lot depending which axis you measure.' Punchline: this is why your backtest looked calibrated and still lost money on away dogs all season. Pure canvas/SVG + vanilla JS, no backend, buildable tonight.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "Weaponizes a failure every sports/props bettor has lived -- model looks calibrated, bleeds money on a subset -- high relatability plus a 'wait, really?' surprise that aggregate calibration can mask total garbage, squarely in decision-theory/betting territory.",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "math",
+      "sports"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Laser Race: Beat AlphaEvolve's Omega",
+    "paper_id": "2608.16884v1",
+    "pitch": "A single-file HTML 'golf' game where you manually tune block-partition parameters of a toy laser-method construction (tensor power slider, block-size choices, a few discrete combinatorial picks) and watch your implied matrix-multiplication exponent omega update live against a target line at the best known bound (~2.371339, as pushed by AlphaEvolve). A score bar shows your gap to the AI-found optimum; a reveal panel explains that an LLM-driven program search plus modern solvers beat decades of human hand-tuning on this exact combinatorial optimization. Hook: you're playing the same golf course AlphaEvolve played, and you will lose, visibly, in real time.",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 6,
+    "discussion_why": "Less directly gambling-flavored but strong 'wait, really?' surprise (an LLM beat 50 years of math optimization on a famous open problem) and a playable human-vs-AI competitive frame that fits the games tag well; appeals more to the math/ai crowd than bettors.",
+    "tags": [
+      "math",
+      "ai",
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Stopped Clock Judge: The AI That's Just Flipping Coins",
+    "paper_id": "2610.07177v1",
+    "pitch": "Video built around CLM-as-a-Judge's finding that a cheap contrastive decision model scores statistically indistinguishable from a coin flip on RM-Bench/JudgeBench, and answers every single HaluEval item with one constant label -- yet looks fine on easy benchmarks. Frame it as a sports-betting-tout expose: run a live segment where a 'stopped clock' bot (always picks the favorite, or always says 'true') is scored against real LLM judges and real sports pundits on a mix of easy and hard prop questions. On easy slates the stopped clock looks like a genius; on hard ones it collapses to 50/50 -- exactly like a tout who only ever picks favorites. Close with: how do you tell a real edge from a broken clock that happens to be right twice a day? Cheap to storyboard, high shareability for a betting Discord that already distrusts touts.",
+    "cool_score": 7,
+    "buildable_score": 5,
+    "discussion_score": 8,
+    "discussion_why": "Directly skewers the betting-tout archetype everyone in a sports/betting Discord has opinions about, strong 'wait, this AI judge is literally a coin flip?' surprise, and a built-in debate starter: how do you detect a broken-clock model before it costs you money.",
+    "tags": [
+      "betting",
+      "gambling",
+      "sports",
+      "ai",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Sinkhorn Speedrun: Watch Arbitrage-Free Odds Converge",
+    "paper_id": "2609.18850v1",
+    "pitch": "Single-file HTML toy: two discrete price distributions (think implied win-probability histograms for a team at settlement vs. at an earlier checkpoint) sit on a canvas as draggable bar charts. Hit go and watch the Sinkhorn iterative-rescaling algorithm solve the martingale-constrained optimal-transport coupling live -- a heatmap matrix relaxing into place, paired with a log-scale error chart that the paper's exponential-convergence theorem predicts should be a straight line. A slider for the entropic regularization epsilon shows how fast/wiggly convergence is, and a 'break it' toggle removes the compact-support/convexity assumption so you can watch convergence stall. Framed as: this is the math that lets a sportsbook or options desk calibrate prices across time without creating free-money arbitrage -- directly relevant to why multi-leg parlay and futures pricing has to respect a martingale property.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "discussion_why": "Hits gambling/betting squarely (no-arbitrage pricing across time is exactly what futures/parlay markets must satisfy) with a genuine 'wait, exponential not just eventual?' surprise once the log-line snaps straight. Less whimsy, but strong decision-theory/math pull.",
+    "tags": [
+      "betting",
+      "gambling",
+      "math",
+      "decision-theory",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Beat the Bound: The Square-Root Near-Miss Challenge",
+    "paper_id": "2609.14161v2",
+    "pitch": "Single HTML page: pick K>=8 square roots of distinct integers (default sqrt(2,3,5,7,11,13,17,19)), then drag integer-coefficient sliders bounded by a max |c_i|<=H. The page instantly computes |sum c_i*sqrt(n_i)| and plots it on a log scale against the paper's explicit proven lower bound as a function of H -- a red floor line labeled 'provably impossible to get closer than this.' Users race to minimize the combination (local high-score table stored in localStorage) while the floor line mathematically guarantees they can never cross it, no matter how clever. A share-a-screenshot button turns each attempt into a 'how close I got to provably-impossible-zero' flex for the Discord.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 7,
+    "discussion_why": "Pure whimsy/math nerd-bait with a built-in competitive hook ('prove me wrong' challenges always get people grinding), plus a genuine surprise beat: a rigorous, explicit, provably-unbeatable number. Lower direct betting/poker tie-in than the others, but decision-theory/games framing (optimize against a hard bound) carries it.",
+    "tags": [
+      "math",
+      "whimsy",
+      "games",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Bracket Balance Auditor",
+    "paper_id": "2609.30927v1",
+    "pitch": "Build a tool that takes any graph of matchups -- a poker league's head-to-head history, a fantasy draft pool, a tournament seeding bracket -- and applies the paper's explicit tight bound on how many edges can sit inside the union of any l of k balanced parts. Input a real partition (e.g. how your Discord split players into tables or divisions) and the tool flags whether the observed clustering of rivalries/rematches inside any subset of groups exceeds what's mathematically achievable under a truly balanced split, i.e. whether a bracket or table draw is 'suspiciously' imbalanced relative to the theoretical ceiling. Ships as a small web app: paste an edge list, pick k and l, get a verdict plus a visualization of the worst-case-vs-actual edge count.",
+    "cool_score": 6,
+    "buildable_score": 6,
+    "discussion_score": 6,
+    "discussion_why": "Directly useful for seeding/table-balance arguments that already happen in poker nights and bracket pools ('the draw was rigged') and gives a hard mathematical referee for those debates -- solid games/sports fit, moderate surprise, but needs real implementation work so it's a slower burn than the demos.",
+    "tags": [
+      "games",
+      "sports",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "startup",
+    "title": "PropSentiment: Granger-Causality Scanner for Niche Prop Markets",
+    "paper_id": "2305.16632v1",
+    "pitch": "The paper finds investor sentiment (SENT, ARMS-style proxies) has weak memory but a real, testable Granger-causal relationship to returns on thin, frontier emerging markets -- exactly the regime that niche sports prop markets (WNBA, G-League, college, micro-markets at small books) resemble: low liquidity, slow information diffusion, retail-sentiment-driven line moves. Build a pipeline that scrapes social sentiment (Reddit/X volume + tone) around under-covered prop lines, runs the same Granger-style tests from the paper, and surfaces which markets show statistically significant sentiment-leads-line-movement structure before the number corrects -- a watchlist feed for bettors who want an edge in the long tail rather than the efficient major markets.",
+    "cool_score": 6,
+    "buildable_score": 5,
+    "discussion_score": 8,
+    "discussion_why": "Dead-center betting/econ/decision-theory territory with an inherently arguable premise ('can sentiment really beat a niche market?') that invites exactly the kind of skeptical back-and-forth a betting Discord loves, plus the paper's own 'weak memory but real effect' finding is a built-in hedge for debate.",
+    "tags": [
+      "betting",
+      "econ",
+      "decision-theory",
+      "ai"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Steam or Sink",
+    "paper_id": "2304.02180v2",
+    "pitch": "Single-file HTML toy based on the AMM/CEX optimal-execution paper: you've got a parent order to fill and must split your trading rate between a constant-function AMM pool (price moves along the bonding curve, visible slippage) and a lit CEX order book (visible depth, but a 'sharp detector' bot watching for footprint). A canvas chart shows both venue prices drifting as you drag two rate sliders each tick; a hidden detector score creeps up the more your flow looks non-random (mirrors how sportsbooks flag syndicate/steam money). Win condition: fill the order with minimal slippage AND stay under the detector threshold -- directly dramatizes the paper's 'hide order flow across venues' problem without needing its deep-learning solver (a square-root-law + inventory heuristic stands in).",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 8,
+    "discussion_why": "Hitting on 'hiding your action from the book' is exactly what sharp bettors obsess over (line shopping, beard betting, structuring action to avoid limits) -- high relatability + decision-theory/gambling fit. The 'wait, crypto AMMs and sportsbooks have the same detection-evasion math' angle is a genuine surprise hook for a betting Discord.",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "econ",
+      "games"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Posterior-Mean Props: Full-Bayes Shrinkage for Early-Season Player Rates",
+    "paper_id": "2602.20115v2",
+    "pitch": "Extends the existing nba-props edge-modeling terminal: the paper shows a fully Bayesian posterior-mean rule (vs. the classic NPMLE/empirical-Bayes estimator) can match the same sharp compound-decision risk bounds in a Gaussian setting. Build a shrinkage layer for small-sample player stats (e.g. 5-game 3PT% or rebound rate) that pools across the whole league's distribution instead of regressing each player toward a crude league average -- implement both the classic NPMLE and a Bayesian-nonparametric posterior-mean version side by side, backtest which produces tighter CLV on early-season player props where sample size is the whole problem.",
+    "cool_score": 6,
+    "buildable_score": 7,
+    "discussion_score": 7,
+    "discussion_why": "Directly extends David's known nba-props edge work (memory: validated rebounds/threes under edges via GR-RTRMC), so it's concretely useful, not just theoretical -- strong buildable fit. Discussion-wise it's a genuine 'wait, you can shrink player stats without hand-picking a prior and get provably matching guarantees' surprise for a stats-literate betting crowd, though less whimsical/gambling-flavored than a pure demo.",
+    "tags": [
+      "betting",
+      "sports",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Centipede Tilt",
+    "paper_id": "2603.08409v2",
+    "pitch": "Single-file HTML/canvas toy riffing on the centipede locomotion model's core question: is the undulating body wave actively muscle-driven, or just passively resisted by leg-ground contact? Render a simple N-segment centipede; two sliders control 'stepping rate' and 'lateral stiffness' exactly like the paper's parameter sweep, and a toggle switches the body between 'active' (muscle-driven wave) and 'passive' (just along for the ride) mode so you can watch the same stepping rate produce wildly different gaits. Framed for the Discord as a tilt metaphor: are YOUR stake-size swings after a bad beat actively willed, or just passive momentum carrying you along -- drag the stiffness slider until the centipede (or your bankroll) falls over.",
+    "cool_score": 8,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "discussion_why": "Pure whimsy payoff (bio/physics nerd-snipe, a wiggly centipede toy nobody expects on a betting server) plus a genuinely debatable framing -- 'is tilt active or passive' is the kind of half-joking, half-real argument that gets legs in a poker/sports chat. Lower direct betting-math fit than the other two, carried by surprise and delight.",
+    "tags": [
+      "bio",
+      "physics",
+      "whimsy",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "The Empirical Bayes Showdown: Can a Full Bayesian Beat 60 Years of Math?",
+    "paper_id": "2602.20115v2",
+    "pitch": "A 10-minute explainer walking through the compound-decision problem using a betting-native example: you're simultaneously estimating 'true skill' for hundreds of bettors or players at once from noisy small samples (think: grading 300 Discord cappers off 20 picks each). Visualize the classic NPMLE empirical-Bayes rule (Robbins' problem lineage) against the paper's fully Bayesian posterior-mean rule, animate both converging to the same sharp minimax risk bound as sample size grows, and end on the punchline: the 'more principled' full-Bayes approach doesn't need the two-step plug-in NPMLE at all and still provably ties it.",
+    "cool_score": 6,
+    "buildable_score": 6,
+    "discussion_score": 6,
+    "discussion_why": "Niche statistical-theory content, but reframed around 'grading cappers off small samples' it's directly relevant to an argument every betting Discord has (is that guy actually good or just on a heater) -- moderate surprise ('wait, two totally different-looking estimators are provably the same?'), solid math/decision-theory fit, less inherently shareable than the demos.",
+    "tags": [
+      "math",
+      "decision-theory",
+      "betting",
+      "econ"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Extinction Roulette: Your Bankroll's Hidden R0",
+    "paper_id": "2510.25777v1",
+    "pitch": "The rabies paper's punchline: a branching-process/CTMC model has an explicit stochastic extinction threshold the deterministic ODE mean-field model can't see -- the mean trajectory can climb while most individual realizations go extinct. Port that exact math to a betting syndicate: model bankroll units as a birth-death CTMC where 'birth' = wins, 'death' = losses, tuned by edge/bet size (the R0 analog). Single HTML+canvas page: user sets edge and bet size, it draws the smooth deterministic mean curve climbing confidently, then fires 200 real stochastic sample paths underneath plus a live 'fraction already busted' counter that keeps climbing even with positive EV. The gap between the clean mean line and the messy, often-zero paths is the paper's thesis, felt in real time.",
+    "cool_score": 8,
+    "buildable_score": 9,
+    "discussion_score": 9,
+    "discussion_why": "Weaponizes the classic bankroll-ruin debate ('but the EV is positive!') with a genuine 'wait, really?' result borrowed from epidemiology -- high relatability and dead-center fit for betting/decision-theory, plus whimsy in repurposing a disease-extinction model for degenerate parlay math.",
+    "tags": [
+      "betting",
+      "gambling",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "One-Pass Hand Mutagenesis Scanner",
+    "paper_id": "2407.07265v1",
+    "pitch": "The protein paper's core trick: instead of masking each residue one at a time across N forward passes, pseudo-perplexity scores every position's mutation in a single pass. Rebuild that batch-vs-iterative insight as a poker toy: take a 5-card hand and in one simulated 'pass' compute the equity delta of swapping every card to every other rank/suit, rendering a 5x51 heatmap -- which single-card mutation helps your hand's 'fitness' most, and which wreck it. Side-by-side timer showing the naive iterative approach (51 separate re-evaluations) crawling versus the one-pass scan finishing instantly makes the speedup itself the show.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "discussion_why": "Poker crowd loves hand-equity tooling and the 'score everything at once' trick is a genuine surprise lifted straight from a bio paper -- solid poker/math fit, moderate debate fuel (people will argue about the equity heuristic used), light AI angle.",
+    "tags": [
+      "poker",
+      "ai",
+      "math",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Self-Healing Swarm: Bloch-Memory Boids",
+    "paper_id": "2607.11960v1",
+    "pitch": "The paper gives flocking agents a bounded 'Bloch-type' internal memory vector (borrowed from qubit/spin dynamics) coupled to a slow regulatory state, letting the swarm recover coordination after a disruption instead of just reacting moment-to-moment. Build a canvas boids sim with two populations side by side: classic reactive boids vs. boids carrying a decaying, magnitude-bounded memory vector. Inject the same disruption into both (a predator dash scattering everyone) -- the memory-less swarm stays chaotic, the Bloch-memory swarm visibly 're-coheres' into formation within seconds. A slider exposes memory decay rate so you can watch the self-healing speed change live.",
+    "cool_score": 9,
+    "buildable_score": 8,
+    "discussion_score": 6,
+    "discussion_why": "Visually striking and whimsical (qubit math driving pigeon-like flocking), with a loose but real analog to 'team chemistry/momentum after a disruption' debates sports fans already have -- strong whimsy and games fit, softer direct betting tie.",
+    "tags": [
+      "physics",
+      "ai",
+      "games",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "Reading Through the Lid: What Poker Tells Could Learn From Raman Spectroscopy",
+    "paper_id": "2603.16957v1",
+    "pitch": "The Raman paper identifies bacteria -- down to distinguishing near-identical E. coli strains -- straight through an unopened, inverted agar plate lid, no sample prep, mid-incubation. A faceless explainer video builds the hook 'scientists can ID what's inside a sealed container without opening it' and runs it into poker: why can't we 'spectroscopically' read a hand through the felt? Walk through real non-invasive sensing (thermal, RF, vibration-based tell detection used in anti-cheat tech for live poker) and land on why true 'x-ray the hole cards' tech stays science fiction -- using the Raman result as the credible, genuinely surprising anchor that makes the comparison land instead of feeling like clickbait.",
+    "cool_score": 8,
+    "buildable_score": 6,
+    "discussion_score": 6,
+    "discussion_why": "Strong 'wait, really?' hook (ID through a sealed, unopened lid) and a fun whimsical bridge to poker tells/cheating-detection, but the betting/poker tie is more narrative than mechanical so debate fuel is moderate rather than core.",
+    "tags": [
+      "bio",
+      "poker",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Fade The Public: The Contrarian Phase Transition",
+    "paper_id": "2604.27226v1",
+    "pitch": "Single-file HTML toy that reifies the paper's exact group-of-3 update equation for ratio-dependent contrarian activation. Instead of a fixed probability of flipping, each discussion group's contrarians activate as a function of the local majority/minority ratio r = n_maj/n_min. Sliders control the public's starting lean and the 'contrarian sensitivity' to r; a live bifurcation plot shows the vote-share fixed points split as sensitivity crosses the paper's derived critical threshold -- i.e. the exact moment 'fading the public' stops being noise and becomes a self-reinforcing reversal. Canvas renders the iterated map frame-by-frame so you can watch a 70/30 public lean either settle into a stable consensus or flip the other way depending on one slider.",
+    "cool_score": 7,
+    "buildable_score": 9,
+    "discussion_score": 8,
+    "discussion_why": "Directly maps a 'do contrarians overreact or correctly call the top' debate every bettor has had about fading the public/line movement onto a real phase-transition math result -- surprising that there's an exact closed form, strong betting/decision-theory fit, and the bifurcation flip is a fun 'wait, really?' moment to argue about on Discord.",
+    "tags": [
+      "betting",
+      "sports",
+      "decision-theory",
+      "math",
+      "games"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The Squeeze Illusion: Why Sharpening Your Model's Confidence Lies to You",
+    "paper_id": "2610.13653v1",
+    "pitch": "A toy HTML demo built around the paper's core finding: MCMC/SMC samplers that claim to draw from a 'power distribution' p^alpha (the standard trick for sharpening a model's output confidence 'for free') actually fail to converge to that target. Render a simple bimodal toy distribution over two betting outcomes, let the user crank a temperature/alpha slider meant to sharpen it, and run a simplified resampling scheme live in-browser. Overlay the true p^alpha curve against what the sampler actually converges to -- the gap visibly grows as alpha increases, showing the 'free sharpening' is an illusion. Framed for anyone who temperature-scales a predictive model's win probabilities to size bets more aggressively: you're not getting more signal, you're getting a silently biased number.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 7,
+    "discussion_why": "Hits quant bettors/poker solvers directly in a sore spot -- everyone who temperature-scales a model's confidence for bet sizing will recognize the move, and the 'the sharpening you thought was free is actually broken' result is a genuine surprise worth arguing about, though it's a notch nerdier/less visceral than a straight betting-market analogy.",
+    "tags": [
+      "ai",
+      "decision-theory",
+      "math",
+      "betting"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Explainable Steam: Local Diagnostics for Line-Movement Anomalies",
+    "paper_id": "2610.13437v1",
+    "pitch": "Port the HL-LHC paper's trick -- local diagnostics that recover why a flagged event is anomalous in a learned embedding space, not just that it is -- onto sports betting line/odds data. Build a small embedding model over line-movement feature vectors (odds velocity, book divergence, bet-ticket vs money %), flag anomalies ('steam') the way the physicists flag rare collision events, then attach the paper's local-diagnostic layer so each flagged steam move comes with a feature-attribution readout: 'this move is anomalous mainly because of book divergence, not bet-count skew.' Natural extension of SharpLab's existing CLV tracking -- turns a black-box anomaly flag into a receipt a bettor can actually act on.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 7,
+    "discussion_why": "Sharp-money detection with an actual 'show your work' layer is catnip for the betting crowd -- it answers the perennial 'is this really steam or just noise' argument with attributable evidence instead of vibes, strong fit even if it reads more like infrastructure than spectacle.",
+    "tags": [
+      "betting",
+      "sports",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Platonic Poker: Does Hand Strength Live in a Shared Abstract Space?",
+    "paper_id": "2610.07168v1",
+    "pitch": "The paper's theory says multilingual LLMs converge on near-identical inner representations because the underlying data shares a hidden hierarchical grammar -- abstract levels shared across languages, surface levels language-specific. Test the poker analogue: train (or probe an existing) hand-strength encoder across different poker variants (hold'em, PLO, short-deck) which share abstract strategic structure (equity, nut potential, range pressure) but differ wildly in surface rules (4 hole cards vs 2, different deck). Project aims to show a 'platonic hand-strength axis' emerging independent of variant -- i.e. two hands from different games that are 'the same abstract hand' cluster together in embedding space even though their raw card representations look nothing alike.",
+    "cool_score": 8,
+    "buildable_score": 4,
+    "discussion_score": 6,
+    "discussion_why": "A genuinely fun 'is there a universal poker intuition underneath all these different games' question that poker players will have opinions on, though it's a longer research build than a Discord-night spark and the payoff needs real training/eval work to land.",
+    "tags": [
+      "poker",
+      "games",
+      "ai",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "The Gambler's Exit Clock",
+    "paper_id": "2609.25257v2",
+    "pitch": "Single-file HTML toy built around the paper's core object: a 'first-exit-time functional' \u2014 will a stochastic process leave a safe region before time T? The paper's contribution is showing that cheap/crude numerical approximations of this functional systematically mis-estimate exit risk, which is dangerous when it's feeding a safety-critical controller. Reframe the 'safe region' as your bankroll staying above zero, and T as a session length or a betting day. User sets edge, variance, and bankroll, then drags a slider between 'crude discretization' and the paper's higher-order approximation, watching the computed bust-probability-before-T visibly shift \u2014 same process, same inputs, different answer depending on how carefully you integrate the exit time. The hook: this is literally gambler's ruin, but with a rigorous lesson about why naive Monte Carlo risk tools quietly lie to you about how close you are to blowing up.",
+    "cool_score": 7,
+    "buildable_score": 8,
+    "discussion_score": 8,
+    "discussion_why": "Bankroll ruin is core gambling canon, so everyone has priors to argue with; the 'your risk calculator is wrong and here's the math for why' angle is a genuine surprise hook, and it fits decision-theory/gambling tags cleanly without forcing it.",
+    "tags": [
+      "gambling",
+      "betting",
+      "decision-theory",
+      "math"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Dictator or Decoy?",
+    "paper_id": "2609.31797v1",
+    "pitch": "The Courtade-Kumar stability result says: if a Boolean (yes/no) function's 'information' is close to the maximum possible, the function itself must be probabilistically close to a dictator function \u2014 one where a single input variable decides the whole output, full stop. Build a toy where the user assembles a 'betting signal' as a Boolean function of 4-6 binary inputs (line moved, star player out, home dog, back-to-back, revenge game, public is heavy on one side) via a small interactive truth table or sliders. The demo computes the function's information content live, plots it against the extremal dictator value, and \u2014 when it's close \u2014 reveals the sharp stability bound on how close your fancy multi-factor function actually is to just being 'if X then bet, else don't,' with X highlighted. Built-in gut-punch mode: load a few real stereotypical handicapper rules and watch most of them collapse onto one dominant variable.",
+    "cool_score": 8,
+    "buildable_score": 7,
+    "discussion_score": 9,
+    "discussion_why": "Directly weaponizable against anyone's '10-factor model' in a betting Discord \u2014 it's relatable (everyone has a pet multi-stat system), surprising (a real theorem says complexity often collapses to one variable), and the word 'dictator function' is just inherently funny to drop into a sports chat.",
+    "tags": [
+      "betting",
+      "sports",
+      "decision-theory",
+      "math",
+      "whimsy"
+    ]
+  },
+  {
+    "type": "demo",
+    "title": "Hit-and-Run GTO Race",
+    "paper_id": "2608.16878v1",
+    "pitch": "The paper proves a sharp spectral-gap (mixing-speed) bound for the Hit-and-Run walk sampling a convex body, tied to the body's Poincare constant, and does the same for its axis-aligned cousin Coordinate Hit-and-Run. Render a mixed-strategy simplex (e.g. a 3-action bluff/check/raise frequency triangle, or a river bet-sizing range) as the convex body, then animate both samplers taking random steps inside it simultaneously, side by side, with a live histogram showing how fast each one forgets its starting corner and converges to uniform coverage. Let the user stretch the simplex into a narrow sliver (an elongated range that's heavily skewed toward one action) and watch Coordinate Hit-and-Run visibly choke while full Hit-and-Run barely slows down \u2014 a direct, visual demonstration of the paper's degree/shape-dependent mixing gap.",
+    "cool_score": 8,
+    "buildable_score": 6,
+    "discussion_score": 7,
+    "discussion_why": "Strong poker/GTO crowd appeal and a genuine 'wait, one sampler just breaks on skewed ranges' surprise, but it's more niche to solver-heads than to a general betting audience, so slightly lower broad discussion pull.",
+    "tags": [
+      "poker",
+      "games",
+      "math",
+      "decision-theory"
+    ]
+  },
+  {
+    "type": "youtube",
+    "title": "I Let GPT-5.6 Prove the Theorem, Then Bet on Whether It Mixes",
+    "paper_id": "2609.18835v1",
+    "pitch": "The paper proves a degree-free spectral independence bound for Holant measures \u2014 the statistical-physics framework covering monomer-dimer models (think domino tilings) and b-matchings \u2014 guaranteeing Glauber dynamics mixes fast even on high-degree graphs. The authors note the key proof ideas came from GPT-5.6. Video concept: open with a physical domino-tiling puzzle on a grid, explain monomer-dimer coverings as a 'matching game,' then run a live Glauber-dynamics sampler on screen that randomly flips tile pairs toward a uniform random tiling \u2014 and let viewers bet (via poll/chat) on whether it converges within N steps on a nasty high-degree graph before revealing the theorem that guarantees it will. The real hook is the meta-bit: cut to the actual proof sketch and discuss, soberly, what it means that an AI supplied the core argument \u2014 a mini debate on trusting AI-generated math, dressed as a parlor game about tiling puzzles.",
+    "cool_score": 7,
+    "buildable_score": 6,
+    "discussion_score": 8,
+    "discussion_why": "Combines a genuinely weird-and-delightful game (domino tiling as gambling fodder) with the 'AI proved real math' surprise that reliably triggers debate about AI capability/trust \u2014 good whimsy plus an AI-skeptic-vs-booster flashpoint for the server.",
+    "tags": [
+      "ai",
+      "math",
+      "games",
+      "whimsy"
+    ]
+  }
+]
