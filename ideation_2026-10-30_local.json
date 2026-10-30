@@ -1,0 +1,197 @@
+{
+  "ideas": [],
+  "failed_batches": [
+    [
+      {
+        "id": "2610.33625v1",
+        "cat": "cs.LG",
+        "title": "RAQ-MLA: Role-Aware Quantization for Multi-Head Latent Attention Caches",
+        "summary": "Multi-Head Latent Attention (MLA) has been adopted by recent frontier large language models. Instead of per-head keys and values, MLA caches a compressed KV latent that is up-projected into keys and values at decode time, together with a narrow positional key that carries position information into the attention score. Existing KV-cache quantization methods are designed around the keys and values o"
+      },
+      {
+        "id": "2610.33594v1",
+        "cat": "cs.LG",
+        "title": "Counterfactual Model Testing Under Distribution Shift",
+        "summary": "Deployed machine learning (ML) models can degrade as the distribution of their input data shifts. Such shifts can result from changes in the population or from data integrity issues in the pipeline that materializes model features, two sources that operate through different mechanisms. Because labels are often absent or delayed, it is common practice to track shifts in the data instead, but a dete"
+      },
+      {
+        "id": "2610.33811v1",
+        "cat": "cs.AI",
+        "title": "Rectified Language Flow",
+        "summary": "Continuous-state flow and diffusion models offer a promising approach to fast, parallel language generation, but matching the generation quality of autoregressive models remains challenging. We present Rectified Language Flow (ReLF), a language model that generates text by transporting noise to token embeddings using rectified flow. ReLF combines several complementary design choices: fixed token e"
+      },
+      {
+        "id": "2610.27367v2",
+        "cat": "cs.CL",
+        "title": "Explore More, Validate Less: Efficient Reflective Prompt Optimization",
+        "summary": "Reflective prompt optimization improves instructions using task feedback, but coupling candidate generation with full-validation-based selection can make search costly and sequential. We propose a two-stage framework that decouples reflective candidate-pool construction from validation allocation. During construction, sampled parents first answer training questions, and groups of their saved respo"
+      },
+      {
+        "id": "2610.08178v1",
+        "cat": "cs.CR",
+        "title": "On the Intrinsic Limited Robustness of Latent-Based Watermarking",
+        "summary": "Existing latent-based watermarking methods for diffusion models have overestimated their robustness to image distortions, including geometric transformations such as rotation, scaling, and translation (RST). Moreover, this paradigm of watermarking approaches may suffer from inherent limitations arising from the domain in which the watermark is embedded. In this paper, we provide the first theoreti"
+      }
+    ],
+    [
+      {
+        "id": "2610.08066v1",
+        "cat": "cs.CR",
+        "title": "Systematically Optimized CNN-Transformer with Focal Loss for Imbalanced Intrusion Detection on NSL-KDD",
+        "summary": "Intrusion Detection Systems (IDS) struggle with imbalanced datasets like NSL-KDD, especially in detecting rare R2L and U2R attacks. This work describes a systematically optimized and explainable framework using a CNN-Transformer architecture to improve performance on highly imbalanced data. We decided to use XGBoost for feature selection and Focal Loss as the main mechanism for minority class lear"
+      },
+      {
+        "id": "2609.06850v1",
+        "cat": "cs.DS",
+        "title": "Don't Be Afraid to Die: Black Hole Search in Dynamic Graphs with Fewer Agents",
+        "summary": "We consider a team of synchronous mobile agents operating in a port-labeled network. There is one node in the network, called a black hole, that permanently destroys any agent that visits the node. The team of agents must safely locate the black hole, i.e., at least one agent must survive, terminate its algorithm at a node adjacent to the black hole, and output the port number that leads to the bl"
+      },
+      {
+        "id": "2610.13677v1",
+        "cat": "math.CO",
+        "title": "Spread-out Furstenberg sets I: the sticky case",
+        "summary": "We introduce spread-out measures, a notion of local non-concentration near pencils for measures on Grassmannians. We establish an optimal $δ$-discretized dual Furstenberg estimate for ``sticky spread-out'' shadings. A simple-to-state corollary is the following. Assume that $ν$ is an Ahlfors $s$-regular measure on $\\mathbb{G}(2,1)$ with $s > 0$. Let $E \\subset \\mathbb{R}^{2}$ be a Borel set with eq"
+      },
+      {
+        "id": "2610.04380v2",
+        "cat": "math.OC",
+        "title": "Asymptotic analysis of an optimal control problem for a phase field tumor growth model with hyperbolic relaxation of the chemical potential",
+        "summary": "In this paper, we study the optimal control of a phase field tumor growth model of Cahn--Hilliard type with possibly singular potential in which the often assumed parabolic relaxation of the chemical potential is replaced by a hyperbolic one. We investigate the asymptotic behavior of the control problem as the relaxation parameter $\\,α\\,$ approaches zero. It is shown that the corresponding state a"
+      },
+      {
+        "id": "2610.04264v1",
+        "cat": "math.OC",
+        "title": "Adaptive Bregman Alternating Projections for Feasible Gromov-Wasserstein Learning",
+        "summary": "The Gromov-Wasserstein (GW) problem compares structured distributions without requiring a shared feature space or known correspondences, but its nonconvex objective and coupled marginal constraints make computation challenging. Bregman alternating projected gradient (BAPG) uses inexpensive alternating row and column updates, yet its fixed-penalty relaxation leaves a persistent feasibility gap. We "
+      }
+    ],
+    [
+      {
+        "id": "2610.04106v1",
+        "cat": "math.PR",
+        "title": "Pointwise Convergence of Random Ergodic Averages at the \\(L^1\\) Endpoint",
+        "summary": "In his highly influential paper, \\emph{On the maximal ergodic theorem for certain subsets of the integers}, Bourgain introduced the study of pointwise convergence of ergodic averages along randomly generated subsets of the integers, developing a robust \\(L^p\\)-theory for \\(p>1\\). More recently, this theory was partially complemented at the \\(L^1\\) endpoint by work of LaVictoire, who treated averag"
+      },
+      {
+        "id": "2609.33733v1",
+        "cat": "math.NT",
+        "title": "A quasipolynomial inverse theorem for the $\\mathsf{U}^k(\\mathbb{F}_p^n)$ norm in the high characteristic",
+        "summary": "We prove an inverse theorem for the Gowers uniformity norm $\\mathsf{U}^k(\\mathbb{F}_p^n)$ with quasipolynomial bounds in the case when $p \\geq k$. The inverse theorem follows from a quasipolynomial structure theorem for Freiman multihomomorphisms, which are a natural generalization of Freiman homomorphisms to maps of several variables. The proof of the structure theorem for Freiman multihomomorphi"
+      },
+      {
+        "id": "2303.14533v3",
+        "cat": "q-fin.PM",
+        "title": "The Elasticity of Quantitative Investment",
+        "summary": "What is the demand elasticity of statistical arbitrageurs that invest according to the advice of modern cross-sectional asset pricing models? Thirteen models from the literature exhibit strikingly inelastic demand, in contrast to classical models that rely on statistical arbitrageurs to create elastic market demand for assets. This inelasticity arises from the difficulty of trading against price c"
+      },
+      {
+        "id": "2303.08521v3",
+        "cat": "q-fin.PM",
+        "title": "Optimal investment in ambiguous financial markets with learning",
+        "summary": "We consider the classical multi-asset Merton investment problem under drift uncertainty, i.e. the asset price dynamics are given by geometric Brownian motions with constant but unknown drift coefficients. The investor assumes a prior drift distribution and is able to learn by observing the asset prize realizations during the investment horizon. While the solution of an expected utility maximizing "
+      },
+      {
+        "id": "2302.09382v2",
+        "cat": "q-fin.TR",
+        "title": "Co-trading networks for modeling dynamic interdependency structures and estimating high-dimensional covariances in US equity markets",
+        "summary": "The time proximity of trades across stocks reveals interesting topological structures of the equity market in the United States. In this article, we investigate how such concurrent cross-stock trading behaviors, which we denote as co-trading, shape the market structures and affect stock price co-movements. By leveraging a co-trading-based pairwise similarity measure, we propose a novel method to c"
+      }
+    ],
+    [
+      {
+        "id": "2603.04080v3",
+        "cat": "econ.EM",
+        "title": "Doubly Robust Estimation of Treatment Effects in Staggered Difference-in-Differences with Time-Varying Covariates",
+        "summary": "With staggered adoption, difference-in-differences (DiD) analyses define the average treatment effect on the treated (ATT) at the group-period level and aggregate it into groupwise, periodwise, dynamic, and overall effects. We study a period-by-period version of conditional parallel trends, with covariates unaffected by treatment while allowing covariates to shift the trends in untreated potential"
+      },
+      {
+        "id": "2610.01413v1",
+        "cat": "stat.ML",
+        "title": "Optimal Transport Meets Reinforcement Learning: A Survey",
+        "summary": "Reinforcement learning (RL) algorithms frequently compare probability distributions, such as state visitation distributions induced by policies and experts, action distributions from learned policies and offline datasets, or transition distributions from learned models and environments. However, commonly used divergences may become ineffective when these distributions overlap weakly, which is freq"
+      },
+      {
+        "id": "2610.01005v1",
+        "cat": "stat.ML",
+        "title": "Tolerance-Based Fairness Auditing: Violation Certification and Sensitivity Screening",
+        "summary": "As artificial intelligence is increasingly deployed, algorithmic unfairness has raised growing concerns and intensified demands for transparent fairness auditing. In practice, the tolerable degree of algorithmic unfairness depends on the specific legal, ethical, or application context. Given a prespecified tolerance threshold, an important statistical question is how to determine whether a group d"
+      },
+      {
+        "id": "2603.14597v1",
+        "cat": "q-bio.NC",
+        "title": "D-MEM: Dopamine-Gated Agentic Memory via Reward Prediction Error Routing",
+        "summary": "Autonomous LLM agents require structured long-term memory, yet current \"append-and-evolve\" systems like A-MEM face O(N^2) write-latency and excessive token costs. We introduce D-MEM (Dopamine-Gated Agentic Memory), a biologically inspired architecture that decouples short-term interaction from cognitive restructuring via a Fast/Slow routing system based on Reward Prediction Error (RPE). A lightwei"
+      },
+      {
+        "id": "2503.08764v1",
+        "cat": "q-bio.BM",
+        "title": "Towards Interpretable Protein Structure Prediction with Sparse Autoencoders",
+        "summary": "Protein language models have revolutionized structure prediction, but their nonlinear nature obscures how sequence representations inform structure prediction. While sparse autoencoders (SAEs) offer a path to interpretability here by learning linear representations in high-dimensional space, their application has been limited to smaller protein language models unable to perform structure predictio"
+      }
+    ],
+    [
+      {
+        "id": "2406.01627v2",
+        "cat": "q-bio.GN",
+        "title": "GenBench: A Benchmarking Suite for Systematic Evaluation of Genomic Foundation Models",
+        "summary": "The Genomic Foundation Model (GFM) paradigm is expected to facilitate the extraction of generalizable representations from massive genomic data, thereby enabling their application across a spectrum of downstream applications. Despite advancements, a lack of evaluation framework makes it difficult to ensure equitable assessment due to experimental settings, model intricacy, benchmark datasets, and "
+      },
+      {
+        "id": "2405.11735v1",
+        "cat": "q-bio.GN",
+        "title": "Accurate and efficient protein embedding using multi-teacher distillation learning",
+        "summary": "Motivation: Protein embedding, which represents proteins as numerical vectors, is a crucial step in various learning-based protein annotation/classification problems, including gene ontology prediction, protein-protein interaction prediction, and protein structure prediction. However, existing protein embedding methods are often computationally expensive due to their large number of parameters, wh"
+      },
+      {
+        "id": "2603.25713v1",
+        "cat": "q-bio.QM",
+        "title": "Compiling molecular ultrastructure into neural dynamics",
+        "summary": "High-resolution brain imaging can now capture not just synapse locations but their molecular composition, with the cost of such mapping falling exponentially. Yet such ultrastructural data has so far told us little about local neuronal physiology - specifically, the parameters (e.g., synaptic efficacies, local conductances) that govern neural dynamics. We propose to translate molecularly annotated"
+      },
+      {
+        "id": "2510.14481v4",
+        "cat": "q-bio.PE",
+        "title": "Viral population dynamics at the cellular level, considering the replication cycle",
+        "summary": "Viruses are microscopic infectious agents that require a host cell for replication. Viral replication occurs in several stages, and the completion time for each stage varies due to differences in the cellular environment. Thus, the time to complete each stage in viral replication is a random variable. However, no analytic expression exists for the viral population at the cellular level when the co"
+      },
+      {
+        "id": "2607.20585v1",
+        "cat": "physics.chem-ph",
+        "title": "Machine-Learned Compact Subspace Generation for Quantum Selected Configuration Interaction within Density Matrix Embedding Framework",
+        "summary": "Sample-based Quantum Diagonalization (SQD), an extension of Quantum Selected Configuration Interaction (QSCI), has emerged as a promising hybrid quantum-classical paradigm for computing molecular ground state energies. By leveraging quantum sampling instead of variational optimization, QSCI avoids barren plateaus and enables direct reconstruction of correlated electronic wavefunctions. However, ex"
+      }
+    ],
+    [
+      {
+        "id": "2607.19680v1",
+        "cat": "physics.chem-ph",
+        "title": "Nuclear Quantum Effects as a Denoising Problem",
+        "summary": "Nuclear quantum effects are rigorously captured by imaginary-time path integrals, which map the quantum Boltzmann distribution onto a ring polymer of classical replicas. Yet the nuclear masses, the coupling to the environment, and the boundary conditions of the path remain hard-wired in the simulation or the trained model, even though this quantum context enters the path measure only through a qua"
+      },
+      {
+        "id": "2607.23164v1",
+        "cat": "cond-mat.soft",
+        "title": "Active flows drive anchoring of nematics at rigid walls",
+        "summary": "Although confinement strongly influences flows in active materials, it remains unclear how active particles align at rigid boundaries when no thermodynamic anchoring is imposed. We address this question using continuum simulations of active nematics, together with analytical arguments based on a reduced near-wall description. In the flow-tumbling regime, extensile systems align parallel to the bou"
+      },
+      {
+        "id": "2609.12063v1",
+        "cat": "cond-mat.stat-mech",
+        "title": "Breakdown of Multipole Expansion in Emergent Electromagnetism",
+        "summary": "We find a striking departure from simple electrostatics in a family of two-dimensional lattice models whose effective description takes the form of an emergent electromagnetism: a high-order multipolar charge configuration can induce an electric field characteristic of a \\textit{lower-}order multipole. Studying the archetypical hardcore dimer and U(1) spin-1/2 link models, we trace this to a break"
+      },
+      {
+        "id": "2605.06208v1",
+        "cat": "physics.soc-ph",
+        "title": "Two-mode geometry controls multiscale organization in bipartite systems",
+        "summary": "Many complex systems are organized around complementary roles and naturally described as bipartite networks. Unveiling their multiscale structure presents a fundamental challenge because coarse-graining procedures must preserve role separation, whereas standard approaches collapse it via one-mode projections. Here we introduce a Laplacian-based renormalization framework that operates directly on t"
+      },
+      {
+        "id": "2605.05141v1",
+        "cat": "physics.soc-ph",
+        "title": "Local and global optimization in Parallel Minority Games",
+        "summary": "The Parallel Minority Game (PMG) refers to a set of Minority Games (MG), played in parallel, where each agent only has two choices to pick from, but each choice can host agents of many kind i.e., their other alternative can be from any other choices. While the pay-off function remains the same as that in the MG -- agents picking the less crowded of their two choices win positive pay-off -- the opt"
+      }
+    ]
+  ]
+}

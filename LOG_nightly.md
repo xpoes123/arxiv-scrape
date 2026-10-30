@@ -14,6 +14,12 @@
 
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-30 — Merton Ambiguity
+- 30 papers (of 176 fetched). Local ideation down (fetch failed) — ideated directly from abstracts.
+- Top ideas: project: elasticity of quant investment; startup: D-MEM agent memory; youtube: Parallel Minority Games; demo: Merton/Kelly ambiguity.
+- Build-off: Parallel Minority (a), Merton ambiguity (b), Black Hole Search (c). **Winner: b** — clearest wow (γ=1 worst/best flip), cleanest polish; all ran in headless Playwright. c had weakest fidelity (heuristic strategy).
+- Live: https://share.djiang.xyz/arxiv-scrape/demos/2026-10-30-merton-ambiguity.html
+
 ## 2026-10-27 — Dwell Time Derby
 - 30 papers (of 160 fetched; fetch took ~8 min under arXiv rate limits). Local ideator failed (`fetch failed`, homelab down) → all 6 batches via Sonnet fallback workflow.
 - Top idea per category: demo — Dwell Time Derby (2609.08477); project — correlation-network parlay builder (2304.02362); startup — correlation-safe SGP optimizer (2610.29228); youtube — LLM poker tilt test (2603.13126).
