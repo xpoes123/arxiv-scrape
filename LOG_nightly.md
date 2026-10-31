@@ -14,6 +14,13 @@
 
 # arxiv-scrape nightly log (newest first)
 
+## 2026-10-31 — Black Hole Sweepers
+- 30 papers (from 176 fetched). Local ideation failed (homelab unreachable, `fetch failed`) → Sonnet fallback ran all 6 batches, 22 ideas.
+- Top per category: demo — Black Hole Sweepers (2609.06850); youtube — Is Your Betting Model Remembering, or Just Watching the Clock? (2610.33816); project — Multifractal Clustering Detector for Event Timing Props (2605.05788); startup/project — Spatial HAC Line Shop (2603.03997).
+- Build-off: Momentum Mixer (2302.10175), Tail Risk Bankroll (2303.12209), Black Hole Sweepers (2609.06850).
+- **Won: Black Hole Sweepers** — only one you play (sacrifice-for-clue mechanic, auto-solver, reveal); judge scores wow 9 / interact 9 / polish 8 / fidelity 6. Tail Risk was most paper-faithful. None browser-tested (node --check + stubbed-DOM runs only).
+- Live: https://share.djiang.xyz/arxiv-scrape/demos/2026-10-31-black-hole-sweepers.html (needs VPS pull)
+
 ## 2026-10-30 — Merton Ambiguity
 - 30 papers (of 176 fetched). Local ideation down (fetch failed) — ideated directly from abstracts.
 - Top ideas: project: elasticity of quant investment; startup: D-MEM agent memory; youtube: Parallel Minority Games; demo: Merton/Kelly ambiguity.
