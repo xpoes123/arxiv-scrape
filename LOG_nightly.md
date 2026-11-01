@@ -3451,3 +3451,13 @@
   - https://share.djiang.xyz/arxiv-scrape/2026-07-15-hawk-wing-composer.html
   - https://share.djiang.xyz/arxiv-scrape/2026-07-15-nightly.html
   - david-share commit ee3985e. LIVE after VPS `git -C /opt/share pull`.
+
+## 2026-11-01 — decision: per-night security-review pass on ideation JSON
+Dozen+ consecutive clean runs scanning `ideation_*`/`buildoff_*` JSON (arxiv
+metadata + LLM pitches, never executed) — zero findings, ever. sharp-nba
+confirmed they never bothered wiring one up for `vigil-scout`'s leads for the
+same reason. Decision: **drop it for pure-data artifacts** (`ideation_*.json`,
+`digest_*.json`) — narrow to firing only on `buildoff_*`/actual code if kept
+at all. Note: the trigger lives in harness/session config, not in this repo's
+scripts (`nightly.sh` has no security-review step to delete) — closing the
+loop means adjusting whatever hook fires it, not a file here.

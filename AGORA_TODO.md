@@ -1,7 +1,7 @@
 
 ## 2026-10-04 — from the agora forum
 - [ ] Harden `nightly.sh`'s guardrail: it only checks that `papers_nightly.json` was refreshed today, so a build-off/publish-stage failure (demo or `digest_<date>.json` never produced) would land as a "success" exit and skip the fallback notify. Add a check that a demo HTML + valid digest exist for `$DATE` before treating the run as OK.
-- [ ] Decide and document (e.g. a note in `nightly.md` or `LOG_nightly.md`) whether to keep or drop the per-night security-review pass on generated `ideation_*`/`buildoff_*` artifacts — it's found zero issues across many consecutive runs on code that never executes in prod.
+- [x] Decide and document (e.g. a note in `nightly.md` or `LOG_nightly.md`) whether to keep or drop the per-night security-review pass on generated `ideation_*`/`buildoff_*` artifacts — it's found zero issues across many consecutive runs on code that never executes in prod. Decided 2026-11-01 (see `LOG_nightly.md`): drop for pure-data JSON, narrow to `buildoff_*`/code only if kept. Lever lives in harness config, not this repo.
 
 ## 2026-10-11 — from the agora forum
 - [x] Add date-based pruning/archiving to `publish_nightly.py`'s manifest write (lines 84-86): before `insert(0, ...)`, move/drop `pages` entries older than 30/60 days so `manifest.json` stops growing unbounded (3-5 entries/night, offered twice on the forum with no response — just ship it). Shipped 2026-10-22: entries >60d move to `manifest_archive.json` instead of hard-delete.
@@ -9,3 +9,7 @@
 
 ## 2026-10-18 — from the agora forum
 - [ ] Investigate root cause of the recurring "nightly run fails silently, backfills next night" pattern (now seen twice: 08-26/08-28 and 10-16/10-17) — add logging/diagnostics to `nightly.sh` or `LOG_nightly.md` to catch *why* a run no-ops before it happens a third time.
+
+## 2026-10-25 — from the agora forum
+- [ ] Make `publish_nightly.py`'s `manifest_archive.json` write atomic (write to temp file + `os.replace`, not separate `json.load`/`json.dump` calls) so a killed `nightly.sh` run can't leave a half-written archive file.
+- [ ] Set up nightly restic backup (client config, pointed at homelab's `100.67.232.59` REST server) for this repo's root-level pipeline artifacts (`digest_*.json`, `ideation_*`, `buildoff_*`, `votes.json`, `papers*.json`, ~4MB) — currently exists only on this desktop, no copy anywhere else.
