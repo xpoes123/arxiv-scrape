@@ -1,0 +1,312 @@
+{
+  "ideas": [
+    {
+      "type": "demo",
+      "title": "The 'Drifting' Odds Engine (Counterfactual Shift Visualizer)",
+      "paper_id": "2610.33594v1",
+      "pitch": "A single-file interactive dashboard that visualizes how a betting model's 'confidence' decays when the underlying data distribution shifts (e.g., a sudden change in player style or a 'black swan' event). Users can toggle between 'Population Shift' (gradual change) and 'Data Integrity Shift' (sudden noise) to see how the model's predictions diverge from reality.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a betting/sports Discord. It visualizes the 'why' behind why a 'sure thing' suddenly fails—distinguishing between a player getting worse (population shift) vs. a corrupted stat feed (integrity shift). It's high-utility for sharp bettors.",
+      "tags": [
+        "betting",
+        "sports",
+        "ai",
+        "decision-theory",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "RealControl Agent for Poker Strategy Steering",
+      "paper_id": "2610.27295v1",
+      "pitch": "Use the RealControlBench philosophy to build a 'Steerable Poker Agent.' Instead of just training a bot to win, build a system where you can dial in specific behavioral attributes (e.g., 'Aggression,' 'Bluff Frequency,' or 'Tightness') using interpretability-informed fine-grained control. The goal is to see if an agent can maintain 'optimal' play while being forced into specific 'personality' constraints.",
+      "cool_score": 9,
+      "buildable_score": 5,
+      "discussion_score": 10,
+      "discussion_why": "This hits the 'poker' and 'ai' tags perfectly. It sparks a massive debate: Can an agent be 'forced' to be a maniac without losing its ability to calculate EV? It bridges the gap between game theory and LLM steering.",
+      "tags": [
+        "poker",
+        "ai",
+        "games",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Math of Impossible Shortcuts: Matrix Multiplication Lower Bounds",
+      "paper_id": "2609.06725v2",
+      "pitch": "A 'math-core' style video explaining the proof that $3\times3$ matrix multiplication over $\\mathbb{F}_2$ has a bilinear complexity of at least 21. Use the concept of 'lower bounds' as a metaphor for 'unbeatable strategies' in games—proving that no matter how clever your shortcut is, there is a fundamental mathematical floor to how much you can optimize a system.",
+      "cool_score": 7,
+      "buildable_score": 8,
+      "discussion_score": 8,
+      "discussion_why": "Appeals to the 'math' and 'games' crowd. It's a 'wait, really?' moment—proving a hard limit on computation. It's the ultimate 'hard truth' for people who love optimizing everything.",
+      "tags": [
+        "math",
+        "games",
+        "ai"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Foliated' Betting Market",
+      "paper_id": "2610.03957v1",
+      "pitch": "A visualization of 'Foliated Optimal Transport' applied to a multi-layered betting market. Imagine a market where you can only move 'value' (money/probability) within specific 'leaves' (e.g., only between different types of sports, but not between a sport and a different asset class). The demo shows how mass is constrained to these leaves and how the 'transverse projection' determines if a balanced market is even possible.",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 9,
+      "discussion_why": "It introduces a high-level geometric concept (foliations) to a very practical problem: market segmentation. It sparks debate on 'liquidity silos'—why it's easier to move money between two similar bets than two different types of bets.",
+      "tags": [
+        "betting",
+        "math",
+        "econ",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Ambiguity-Aware Portfolio Optimizer",
+      "paper_id": "2303.08521v3",
+      "pitch": "Build a tool for 'Ambiguous Market' investing. Unlike standard Kelly Criterion tools that assume a known probability distribution, this tool incorporates 'drift uncertainty.' It allows a user to input a prior belief about an asset's growth and then simulates how the optimal investment fraction should shift as the user 'learns' from real-time price realizations.",
+      "cool_score": 7,
+      "buildable_score": 6,
+      "discussion_score": 10,
+      "discussion_why": "This is the holy grail of betting/investing: how to bet when you don't know the true odds. It moves the conversation from 'What are the odds?' to 'How much do I trust my own estimation of the odds?'",
+      "tags": [
+        "betting",
+        "econ",
+        "decision-theory",
+        "math"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "Spectral Graph Coloring for Game Theory",
+      "paper_id": "2610.13551v1",
+      "pitch": "An interactive visualization of the 'approximate measurable chromatic number' in non-regular graphs. In a game context, this represents the minimum number of 'teams' or 'roles' needed to ensure no two connected nodes (conflicts) share a role. The demo shows how the spectral lower bound (based on the graph's eigenvalues) predicts the difficulty of organizing a complex, non-uniform tournament structure.",
+      "cool_score": 7,
+      "buildable_score": 8,
+      "discussion_score": 8,
+      "discussion_why": "It connects abstract spectral theory to the practical problem of tournament design and conflict resolution in games. It's a 'wait, really?' moment for how eigenvalues can bound social/game structures.",
+      "tags": [
+        "games",
+        "math",
+        "ai"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Fair' Liquidity Provider Simulator",
+      "paper_id": "2302.04345v1",
+      "pitch": "A real-time interactive dashboard where users can adjust 'Trading Fees' and 'Market Volatility' to see the 'Hedging Gap.' Based on the paper's derivation of the upper bound for not-arbitrage fee income, the demo shows exactly when a liquidity provider (LP) is being 'robbed' by market risk because the fees aren't high enough to cover the cost of hedging their position.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a betting/gambling Discord. It visualizes the 'hidden' math of why some exchanges or bookmakers can offer better odds than others—it's a direct look at the economics of risk-taking and the 'fairness' of fee structures.",
+      "tags": [
+        "betting",
+        "econ",
+        "math",
+        "gambling",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "FWALS Sports Betting Engine",
+      "paper_id": "2603.03008v1",
+      "pitch": "Build a sports betting model that uses the Focused Weighted-Average Least Squares (FWALS) estimator. Instead of trying to build one 'perfect' model for a game (which is computationally heavy and prone to overfitting), use FWALS to weight a suite of sub-models (e.g., one for player stats, one for weather, one for historical trends) by semi-orthogonalizing the regressors. This allows for a more stable, tractable way to aggregate 'expert' signals into a single betting line.",
+      "cool_score": 7,
+      "buildable_score": 6,
+      "discussion_score": 8,
+      "discussion_why": "Sports bettors love 'model averaging.' This provides a mathematically rigorous way to do it without the $2^{k_2}$ complexity explosion, making it a high-level 'pro' tool for the server's sharp bettors.",
+      "tags": [
+        "sports",
+        "econ",
+        "math",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Fairness Audit: Is your AI 'Rigged'?",
+      "paper_id": "2610.01005v1",
+      "pitch": "A video exploring the 'Tolerance-Based Fairness Auditing' paper. Explain how different contexts (legal vs. ethical) change what we consider 'fair' in an algorithm. Use a poker bot or a sports betting algorithm as the example: if a bot is 2% less accurate for one demographic, is that 'tolerable'? It explores the tension between 'perfect' fairness and 'usable' AI.",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 9,
+      "discussion_why": "High 'surprise' factor. It moves the conversation from 'AI is biased' to 'How much bias are we willing to tolerate for a better user experience?'—a classic decision-theory trade-off.",
+      "tags": [
+        "ai",
+        "decision-theory",
+        "math"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Preferential Coalescent' Tree Visualizer",
+      "paper_id": "2510.13270v1",
+      "pitch": "An interactive visualization of phylogenetic trees where users can toggle between 'Classical' and 'Preferential Coalescent' models. It visualizes how 'imbalance' (the degree of branching) reflects evolutionary dynamics. In a gaming context, this is a perfect metaphor for 'Power Laws' in tournament brackets or skill-based matchmaking.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 7,
+      "discussion_why": "It bridges the gap between biology and game theory. It sparks a 'Power Law' debate: Does a tournament structure naturally favor 'super-nodes' (dominant players) regardless of individual skill? It's a visual way to explain why some games feel 'unfair' or 'top-heavy'.",
+      "tags": [
+        "games",
+        "math",
+        "bio",
+        "decision-theory",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Multi-Teacher Distillation for Betting Odds",
+      "paper_id": "2405.11735v1",
+      "pitch": "Adapt the 'multi-teacher distillation' method from protein embedding to sports betting. Instead of one model predicting an outcome, you train a 'student' model to distill the latent representations of multiple 'teacher' models (e.g., one model focused on player stats, one on weather, one on historical trends). This creates a highly efficient, compressed embedding of 'game state' that can be used for real-time odds calculation.",
+      "cool_score": 9,
+      "buildable_score": 6,
+      "discussion_score": 9,
+      "discussion_why": "High 'AI' and 'Betting' overlap. It moves the conversation from 'Who will win?' to 'How do we compress the infinite variables of a game into a single vector?' It's a sophisticated take on ensemble modeling that the community will find technically impressive.",
+      "tags": [
+        "betting",
+        "ai",
+        "math",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "Rigidity Percolation: The 'Yielding' Sandbox",
+      "paper_id": "2607.22901v1",
+      "pitch": "A 2D physics sandbox where users can manipulate 'bimodal colloids' (particles of two different sizes/rigidity). The goal is to visualize the 'mirror' transition between a fluid and a solid. Users can 'stress' the system until it 'yields' (breaks). It's a tactile way to feel the physics of structural failure.",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 8,
+      "discussion_why": "It's a 'physics' and 'games' crossover. It allows for a discussion on 'Systemic Collapse'—at what point does a game's economy or a sports league's balance 'yield' and turn from a stable structure into a chaotic fluid? Very whimsical and visually satisfying.",
+      "tags": [
+        "physics",
+        "games",
+        "math",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The Parallel Minority Game (PMG) Visualizer",
+      "paper_id": "2605.05141v1",
+      "pitch": "A real-time interactive simulation of the Parallel Minority Game. Users can adjust the 'agent population' and 'choice distribution' to see how the system reaches a Nash Equilibrium. It visualizes the 'crowding' effect where agents try to pick the less-populated option, creating a dynamic, oscillating flow of agents between choices.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a betting/games Discord. It's a literal model of 'crowd behavior' and 'market sentiment.' It sparks debate on whether 'smart' agents can ever perfectly coordinate or if they are doomed to oscillate. It feels like a game theory laboratory.",
+      "tags": [
+        "games",
+        "econ",
+        "math",
+        "decision-theory",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Atlas-Based Poker Hand Manifold",
+      "paper_id": "2610.33577v1",
+      "pitch": "Use the 'Variational Atlas Autoencoder' concept to map the 'manifold' of poker hand strengths. Instead of a linear ranking, create a multi-chart latent space where different 'regions' of the manifold represent different game states (e.g., 'High Variance/Draw' vs 'Nutted/Value'). This could be used to build a tool that identifies 'distorted' regions where standard EV calculations fail due to non-linear state transitions.",
+      "cool_score": 9,
+      "buildable_score": 5,
+      "discussion_score": 8,
+      "discussion_why": "High 'surprise' factor. It moves poker theory from 'linear EV' to 'manifold geometry.' It allows for a deep technical discussion on how different 'charts' (game contexts) require different decision-making logic.",
+      "tags": [
+        "poker",
+        "ai",
+        "math",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Geometry of Luck: Quantum Symmetry Breaking",
+      "paper_id": "2609.11926v3",
+      "pitch": "A high-production visual essay/animation explaining how 'Symmetry Breaking' in quantum systems can be quantified using Geometric Tensors. Use the metaphor of a 'fair' coin flip (symmetry) breaking into a specific state (asymmetry) to explain how quantum resources are converted. Connect it to the concept of 'Information Entropy' in gambling.",
+      "cool_score": 9,
+      "buildable_score": 4,
+      "discussion_score": 7,
+      "discussion_why": "The 'physics' and 'quantum' tags are high-signal for 'cool' factor. It appeals to the 'math/physics' crowd in the Discord who love deep, abstract concepts applied to the fundamental nature of randomness.",
+      "tags": [
+        "physics",
+        "math",
+        "gambling",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Meyerson Sketch' Facility Placement Game",
+      "paper_id": "2609.06669v1",
+      "pitch": "A visual interactive toy where users 'place' facilities to serve incoming points. It visualizes the Meyerson Sketch's logic: opening a facility with a probability proportional to the distance to the nearest existing one. Users can toggle 'Adaptivity' to see how the cost of making real-time decisions scales compared to static plans.",
+      "cool_score": 7,
+      "buildable_score": 9,
+      "discussion_score": 8,
+      "discussion_why": "Perfect for a 'Decision Theory' and 'Games' crowd. It visualizes the trade-off between 'greedy' local decisions and global efficiency. It's a great way to explain why 'optimal' strategies in dynamic environments (like sports betting lines or live game state) are often about managing the cost of adaptivity.",
+      "tags": [
+        "games",
+        "decision-theory",
+        "math",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Safety-Utility Balancing Bot for Betting Advice",
+      "paper_id": "2610.08061v1",
+      "pitch": "Build a Discord bot that uses the ASCENT framework to provide betting advice. The 'Utility' is the profit/win-rate of a bet, while 'Safety' is the risk of ruin or variance. Instead of just maximizing profit, the bot uses the paper's joint safety-utility co-enhancement to find the 'sweet spot' where a user maximizes expected value without crossing a specific risk-of-ruin threshold.",
+      "cool_score": 8,
+      "buildable_score": 6,
+      "discussion_score": 9,
+      "discussion_why": "High 'Betting' and 'AI' relevance. It moves the conversation from 'What's the best bet?' to 'What is the optimal balance of profit vs. safety?' It uses a cutting-edge LLM fine-tuning concept to solve a classic gambling problem: bankroll management.",
+      "tags": [
+        "betting",
+        "ai",
+        "decision-theory",
+        "gambling"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Geometry of Luck: Universal Permutations",
+      "paper_id": "2610.13530v1",
+      "pitch": "A visual/mathematical deep dive into 'Universal Permutations.' Explain the concept that a sufficiently large random sequence contains *every* possible pattern of a smaller size. Use the $32n^2$ result to show how 'chaos' eventually contains all possible 'orders.' Connect this to the 'Law of Truly Large Numbers' in sports and gambling—how every 'impossible' underdog streak is mathematically inevitable in a large enough sample.",
+      "cool_score": 9,
+      "buildable_score": 4,
+      "discussion_score": 8,
+      "discussion_why": "Great for the 'Math' and 'Sports' crowd. It provides a 'Wait, really?' moment regarding the inevitability of outliers. It's a high-level conceptual piece that appeals to the 'Gambler's Fallacy' vs. 'True Probability' debate.",
+      "tags": [
+        "math",
+        "sports",
+        "gambling",
+        "whimsy"
+      ],
+      "source": "local"
+    }
+  ],
+  "failed_batches": []
+}

@@ -1,3 +1,10 @@
+## 2026-11-01 — Minority Crowd
+- 30 papers (176 fetched). Local ideation: 18 ideas, 0 fallback batches.
+- Top ideas: demo — Parallel Minority Game; project — steerable poker agent (2610.27295); youtube — universal permutations (2610.13530); startup — ambiguity-aware Kelly sizing (2303.08521).
+- Build-off: A Minority Crowd (2605.05141), B Meyerson Adversary (2609.06669), C Hedging Gap CFM (2302.04345).
+- **Winner: A** — most striking, most controls, no CDN dependency; shows "know less, win more" (toy re-creation, not exact paper model). Judge ran all three in headless Chromium, no errors.
+- Live: https://share.djiang.xyz/arxiv-scrape/demos/2026-11-01-minority-crowd.html
+
 # 2026-10-29 — Salt Table
 - 30 papers (176 fetched). Local ideator failed (fetch failed, all 6 batches); Sonnet ideation workflow ran on all 6 (22 ideas).
 - Top ideas: demo — Elasticity of Alpha (2303.14533); project — Rumor Clock temporal 3-spanner line propagation (2609.02851); youtube — brain tilt EEG/poker (2603.15208); demo — Salt Table (2609.09518).
