@@ -1,0 +1,197 @@
+{
+  "ideas": [],
+  "failed_batches": [
+    [
+      {
+        "id": "2610.33610v1",
+        "cat": "cs.LG",
+        "title": "On the Error Analysis of Triangular Transport Maps for Conditional Generation via MMD-based Objectives",
+        "summary": "Conditional generative models parameterized by triangular transport maps are widely used for conditional sampling, yet theoretical guarantees on the quality of the conditional measures they produce remain scarce. We address this question for minimum divergence estimators of triangular maps. We use MMD-based objectives as a tractable setting in which the gap between joint and conditional errors can"
+      },
+      {
+        "id": "2610.33816v1",
+        "cat": "cs.AI",
+        "title": "Memory or a Clock? Auditing a Memory Advantage in XLand-MiniGrid with Seeds, Maps and Evaluation Noise Apart",
+        "summary": "On a partially observable XLand-MiniGrid task, an LSTM agent beats a memory-free MLP by 25 percentage points. The gap looks like a clear case of memory. We ask two questions about it. First, how much of a measured gap is noise? Separating training seed, map and evaluation randomness in 60 runs, each re-evaluated three times, we find that about ten paired seeds detect a 10-point gap in final succes"
+      },
+      {
+        "id": "2610.27361v1",
+        "cat": "cs.CL",
+        "title": "On the LLM Verification for Argument Graph Generation",
+        "summary": "Multi-agent LLM systems can formalize natural-language argumentation end-to-end, turning plain text into structured graphs by classifying components, connecting them with relations, and enriching the resulting graphs into formal models. Quality assurance for those graphs is almost always another LLMs: a reviewer, judge, or critic agent. On the other side, in adjacent neuro-symbolic fields, such ge"
+      },
+      {
+        "id": "2610.08098v2",
+        "cat": "cs.CR",
+        "title": "Surviving the Router: Optimizing Skill Injections for Retrieval and Execution",
+        "summary": "AI agents increasingly rely on modular third-party \"skills\" that are dynamically selected by skill routers to execute complex tasks. While recent studies highlight the threat of prompt injections embedded in these skills, existing evaluations often assume settings where the malicious skill is already selected for execution. We show that this assumption can substantially overestimate attack success"
+      },
+      {
+        "id": "2609.06905v1",
+        "cat": "cs.DS",
+        "title": "Accelerated High-Accuracy Sampling from a Warm Start via the Proximal Bouncy Particle Sampler",
+        "summary": "We study the problem of sampling from $μ(\\mathrm{d}x)\\propto e^{-V(x)}\\,\\mathrm{d}x$ on $\\mathbb{R}^d$, where $V$ is $α$-strongly convex and $β$-smooth, and write $κ:=β/α$. We design and analyze the Proximal Bouncy Particle Sampler (Proximal BPS), a new sampler that combines ideas from the proximal sampler and the bouncy particle sampler. From a warm start initialization with $ O(1) $ Rényi diverg"
+      }
+    ],
+    [
+      {
+        "id": "2610.13658v1",
+        "cat": "math.CO",
+        "title": "Regularization of a Divergent Arithmetic Product via the Asymptotic Monoid: The Case of $(-1)^{ω(n)}$",
+        "summary": "We apply the generalized monoid of words and logarithmic-prefix functionals of \\cite{C1} to the regularization of the divergent product \\[ P_ω=\\prod_{n=1}^{\\infty} n^{(-1)^{ω(n)}}, \\] where \\(ω(n)\\) is the number of distinct prime divisors of \\(n\\). The associated Dirichlet series \\(D_ω(s)=\\sum_{n\\ge1}(-1)^{ω(n)}n^{-s}\\) has a natural boundary at \\(\\Re(s)=0\\), as established by Meretov (1987) and "
+      },
+      {
+        "id": "2610.04285v1",
+        "cat": "math.OC",
+        "title": "Amortized Score-Hamiltonian Policy Iteration: A Grid-Free Scheme for Relaxed Stochastic Control Problems",
+        "summary": "We develop an amortized, grid-free implementation of continuous Langevin dynamics based policy-value iteration for entropy-regularized, infinite-horizon relaxed stochastic control problems. The improvement rate of the exact iteration is a discounted aggregate of relative Fisher information between the policy and the Gibbs law of its Hamiltonian. The associated score residual is the velocity with w"
+      },
+      {
+        "id": "2610.04124v2",
+        "cat": "math.PR",
+        "title": "An upper bound on the proper hat guessing number of graphs",
+        "summary": "We study the proper hat guessing game on graphs, introduced by Adriaensen et al. in Hat guessing with proper colorings. In this game, the players are seated on the vertices of a graph $G$ and assigned hats from a set of $k$ colors such that the resulting assignment forms a proper coloring. The visibility of each vertex is limited to the hat colors of their neighborhood. Then they must simultaneous"
+      },
+      {
+        "id": "2609.33703v1",
+        "cat": "math.NT",
+        "title": "Cyclotomic factors and irreducibility of the denominators of $q$-deformed rational numbers",
+        "summary": "For $d\\ge2$ the $q$-deformed modular group specialized at a primitive $d$-th root of unity is the triangle group of type $(2,3,d)$. Using this we determine the fractions $r/s$ for which the $d$-th cyclotomic polynomial divides the denominator $S_{r/s}(q)$ of the $q$-deformed rational number $[r/s]_q$. They form the orbit of $\\infty$ under the normal closure of the translation $z\\mapsto z+d$ in $\\m"
+      },
+      {
+        "id": "2303.12209v2",
+        "cat": "q-fin.PM",
+        "title": "Portfolio Optimization with Relative Tail Risk",
+        "summary": "This paper proposes analytic forms of portfolio CoVaR and CoCVaR on the normal tempered stable market model. Since CoCVaR captures the relative risk of the portfolio with respect to a benchmark return, we apply it to the relative portfolio optimization. Moreover, we derive analytic forms for the marginal contribution to CoVaR and the marginal contribution to CoCVaR. We discuss the Monte-Carlo simu"
+      }
+    ],
+    [
+      {
+        "id": "2302.10175v1",
+        "cat": "q-fin.TR",
+        "title": "Spatio-Temporal Momentum: Jointly Learning Time-Series and Cross-Sectional Strategies",
+        "summary": "We introduce Spatio-Temporal Momentum strategies, a class of models that unify both time-series and cross-sectional momentum strategies by trading assets based on their cross-sectional momentum features over time. While both time-series and cross-sectional momentum strategies are designed to systematically capture momentum risk premia, these strategies are regarded as distinct implementations and "
+      },
+      {
+        "id": "2603.03997v1",
+        "cat": "econ.EM",
+        "title": "Bandwidth Selection for Spatial HAC Standard Errors",
+        "summary": "Spatial autocorrelation in regression models can lead to downward biased standard errors and thus incorrect inference. The most common correction in applied economics is the spatial heteroskedasticity and autocorrelation consistent (HAC) standard error estimator introduced by Conley (1999). A critical input is the kernel bandwidth: the distance within which residuals are allowed to be correlated. "
+      },
+      {
+        "id": "2610.01193v1",
+        "cat": "stat.ML",
+        "title": "Counterfactual Generation via Flow Matching: Coupling-Sensitive End-to-End Rates",
+        "summary": "Counterfactual generation seeks to sample outcomes under a hypothetical intervention or decision using observational data collected under the factual assignment mechanism. We develop a flow-matching approach that combines a sample-split, doubly robust training objective with a learned coupling between observed source outcomes and target outcomes drawn from a fitted conditional outcome model. To en"
+      },
+      {
+        "id": "2603.15208v1",
+        "cat": "q-bio.NC",
+        "title": "BCMI-Driven Motion Control Detection: EEG-Based Machine Learning and Interaction Entropy for High-Order Brain Networks",
+        "summary": "This study investigates the cognitive motor control detection and the underlying neuroregulatory mechanisms during music-assisted simulated driving. Using a dynamic higher-order network model constructed with EEG-based cross-information entropy, we quantify the dynamic coordination within brain networks activated during both music listening and driving. This approach, which contrasts with previous"
+      },
+      {
+        "id": "2503.08674v2",
+        "cat": "q-bio.BM",
+        "title": "Understanding and Mitigating Distribution Shifts For Machine Learning Force Fields",
+        "summary": "Machine Learning Force Fields (MLFFs) are a promising alternative to expensive ab initio quantum mechanical molecular simulations. Given the diversity of chemical spaces that are of interest and the cost of generating new data, it is important to understand how MLFFs generalize beyond their training distributions. In order to characterize and better understand distribution shifts in MLFFs, we cond"
+      }
+    ],
+    [
+      {
+        "id": "2405.18749v3",
+        "cat": "q-bio.GN",
+        "title": "A SARS-CoV-2 Interaction Dataset and VHH Sequence Corpus for Antibody Language Models",
+        "summary": "Antibodies are crucial proteins produced by the immune system to eliminate harmful foreign substances and have become pivotal therapeutic agents for treating human diseases. To accelerate the discovery of antibody therapeutics, there is growing interest in constructing language models using antibody sequences. However, the applicability of pre-trained language models for antibody discovery has not"
+      },
+      {
+        "id": "2603.25880v1",
+        "cat": "q-bio.QM",
+        "title": "Spectral Coherence Index: A Model-Free Metric for Protein Structural Ensemble Quality Assessment",
+        "summary": "Protein structural ensembles from NMR spectroscopy capture biologically important conformational heterogeneity, but it remains difficult to determine whether observed variation reflects coordinated motion or noise-like artifacts. We evaluate the Spectral Coherence Index (SCI), a model-free, rotation-invariant summary derived from the participation-ratio effective rank of the inter-model pairwise d"
+      },
+      {
+        "id": "2510.14311v1",
+        "cat": "q-bio.PE",
+        "title": "Propagation speed of traveling waves for diffusive Lotka-Volterra system with strong competition",
+        "summary": "We study the propagation speed of bistable traveling waves in the classical two-component diffusive Lotka-Volterra system under strong competition. From an ecological perspective, the sign of the propagation speed determines the long-term outcome of competition between two species and thus plays a central role in predicting the success or failure of invasion of an alien species into habitats occup"
+      },
+      {
+        "id": "2607.19977v1",
+        "cat": "physics.chem-ph",
+        "title": "Rem3Di: Learning smooth, chiral 3D molecular descriptors from atomistic foundation models",
+        "summary": "Foundation machine-learned interatomic potentials (MLIPs) are trained on large quantum-mechanical datasets and generalise across broad regions of chemical and configurational space. Beyond their usual role in accelerating sampling-based simulations, their internal representations encode chemically rich local atomic environments. Here, we introduce Rem3Di, a representation-learning framework that r"
+      },
+      {
+        "id": "2607.23221v1",
+        "cat": "cond-mat.soft",
+        "title": "Chiral Dynamics of an Intruder across Dilute and Hydrodynamic Regimes",
+        "summary": "We introduce and simulate an analytically tractable model for an intruder of arbitrary shape in a nonequilibrium bath, with chirality originating from the bath, the intruder, or their coupling. In the dilute regime, a Langevin description derived from a Boltzmann-Lorentz equation shows how intruder geometry governs ratchet effects and odd response. In the dense regime, the dynamics of the intruder"
+      }
+    ],
+    [
+      {
+        "id": "2609.12050v2",
+        "cat": "cond-mat.stat-mech",
+        "title": "Staying positive: bounds for non-Gaussian noise in Schwinger-Keldysh effective field theory",
+        "summary": "Modern effective field theories of dissipative hydrodynamics, built on the Schwinger-Keldysh (SK) formalism, include thermal noise that is not Gaussian. The resultant higher-order noise vertices are constrained by symmetries, but otherwise treated as free parameters. We show explicitly that symmetry constraints alone do not guarantee these vertices yield a genuine probability distribution. Requiri"
+      },
+      {
+        "id": "2605.05788v1",
+        "cat": "physics.soc-ph",
+        "title": "The multi-fractal nature of pedestrian arrival times",
+        "summary": "Pedestrian arrival times exhibit complex temporal organization across multiple scales, shaped by working hours, transportation schedules, and collective behaviors - features often neglected in conventional pedestrian arrival models. Using a dataset comprising over 23 million pedestrian movements at a Dutch railway station, we show that arrival processes cannot be fully characterized by inter-arriv"
+      },
+      {
+        "id": "2610.33609v1",
+        "cat": "cs.LG",
+        "title": "Satellite-derived bathymetry of Arabian Gulf ports under leakage-free validation: a multi-site benchmark of empirical, machine-learning and deep-learning models against 285,000 multibeam soundings, with an outlook for UAE waters",
+        "summary": "Satellite-derived bathymetry (SDB) is often proposed as a low-cost complement to multibeam surveys of ports, but its accuracy is seldom measured on an area the model has never seen. We test SDB in the turbid, shallow and tidal waters of the Abu Dhabi coast against 285,619 multibeam soundings from twelve surveys at six port areas, reduced to Lowest Astronomical Tide. The Stumpf ratio, the Lyzenga t"
+      },
+      {
+        "id": "2610.33811v1",
+        "cat": "cs.AI",
+        "title": "Rectified Language Flow",
+        "summary": "Continuous-state flow and diffusion models offer a promising approach to fast, parallel language generation, but matching the generation quality of autoregressive models remains challenging. We present Rectified Language Flow (ReLF), a language model that generates text by transporting noise to token embeddings using rectified flow. ReLF combines several complementary design choices: fixed token e"
+      },
+      {
+        "id": "2610.27304v1",
+        "cat": "cs.CL",
+        "title": "Global Security Blind Spots: Translation as a Safety Bypass in Low-Resource Languages",
+        "summary": "Large language models are deployed globally, yet safety alignment and evaluation remain concentrated in English: harmful requests refused in English can elicit unsafe completions when translated into low-resource languages. We evaluate ten widely deployed LLMs across 79 languages (English plus 78 low-resource) under a translation-bypass threat model, using a metric conditioned on English safety, w"
+      }
+    ],
+    [
+      {
+        "id": "2610.08097v1",
+        "cat": "cs.CR",
+        "title": "When Tools Lie: Reliability of Mathematical Agents Under Corrupted Tool Feedback",
+        "summary": "Mathematical problem solving often requires deterministic computational steps that agents delegate to tools and implicitly trust. Yet tools can fail silently, returning plausible but incorrect results. How well can agents detect and correct corrupted tool call outputs? We study this through a controlled corruption framework where a hidden interceptor replaces tool call results with plausible incor"
+      },
+      {
+        "id": "2609.06850v1",
+        "cat": "cs.DS",
+        "title": "Don't Be Afraid to Die: Black Hole Search in Dynamic Graphs with Fewer Agents",
+        "summary": "We consider a team of synchronous mobile agents operating in a port-labeled network. There is one node in the network, called a black hole, that permanently destroys any agent that visits the node. The team of agents must safely locate the black hole, i.e., at least one agent must survive, terminate its algorithm at a node adjacent to the black hole, and output the port number that leads to the bl"
+      },
+      {
+        "id": "2610.13580v1",
+        "cat": "math.CO",
+        "title": "Exact and extremal values of chromatic villainy",
+        "summary": "Chromatic villainy measures the largest number of vertices that must change color to repair a rearrangement of an optimal coloring while preserving every color multiplicity. Weak villainy allows different multiplicities in the repair. On the odd cycle $C_{2r+1}$, we determine the largest repair distance from arbitrary color assignments with a prescribed color-count vector (profile) $\\mathbf m$ to "
+      },
+      {
+        "id": "2610.04279v1",
+        "cat": "math.OC",
+        "title": "Computing Equilibria in Integer Programming Games with Shared Constraints",
+        "summary": "We develop a cutting-plane algorithm for computing pure Nash equilibria in finite integer games with shared constraints, where a deviation may be feasible against one opponent profile and infeasible against another. Conditional equilibrium inequalities capture this dependence through an explicit activation term. We give affine encodings of costs and activation conditions and prove that the resulti"
+      },
+      {
+        "id": "2610.04106v1",
+        "cat": "math.PR",
+        "title": "Pointwise Convergence of Random Ergodic Averages at the \\(L^1\\) Endpoint",
+        "summary": "In his highly influential paper, \\emph{On the maximal ergodic theorem for certain subsets of the integers}, Bourgain introduced the study of pointwise convergence of ergodic averages along randomly generated subsets of the integers, developing a robust \\(L^p\\)-theory for \\(p>1\\). More recently, this theory was partially complemented at the \\(L^1\\) endpoint by work of LaVictoire, who treated averag"
+      }
+    ]
+  ]
+}

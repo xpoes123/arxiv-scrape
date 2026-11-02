@@ -1,0 +1,90 @@
+2610.09091v1 [cs.LG] FedRSPO+: A Heterogeneity-aware Algorithm for Decision-focused Federated Learning
+  Decision-focused learning (DFL) trains predictive models for downstream optimization, but existing methods largely assume centralized data. In cross-silo settings, federated learning offers a natural 
+
+2610.07817v1 [cs.AI] One Step at a Time: Trading LLM Autonomy for Process Predictability
+  Organizations automating operational processes need more than a correct outcome: they need to predict how a process will run, know which one actually ran, and inspect it step by step. When an agent is
+
+2610.02173v1 [cs.CL] Every Ablation Is a Dose: Counterweights and the Semblance of Self-Repair
+  Ablate a component of a language model, and other components often appear to adjust and compensate. This phenomenon, termed self-repair, has been observed repeatedly, but its mechanism remains unclear
+
+2608.09546v1 [cs.DS] Ultrametric Violation Distance: Polynomial Kernel and FPT Algorithm
+  In the Ultrametric Violation Distance problem, we are given a set of distances between $n$ points, and the goal is to modify the minimum number of distances so that the resulting set forms a valid ult
+
+2609.26045v1 [math.CO] On the limiting distribution of the number of improper edges for random trees
+  Improper edges were introduced by Shor to refine Cayley's formula for rooted labeled trees. Zeng established a connection between Shor's refinement and the Ramanujan polynomials. Let $\mathscr{T}_n$ d
+
+2609.18871v1 [math.OC] Optimizing Lyapunov Certificates via Stability-Preserving Quadratization for Polynomial Systems
+  Region-of-attraction (ROA) certificates for polynomial systems become expensive as state dimension and degree grow: direct sum-of-squares (SOS) formulations require combinatorially growing monomial ba
+
+2609.14957v1 [math.PR] Majority dynamics on sparse random graphs
+  Consider a simple undirected graph $G$ on $N$ vertices, with each vertex holding an opinion from one of two options. Starting from the initial opinions on day 1, we run majority dynamics: on each subs
+
+2609.08724v2 [math.NT] On the cardinality of the exception set in Littlewood's discrete conjecture
+  Let $p$ be a prime, $d\ge 2$, $H\in [1,p)$, and $\ln\ln p = o(\ln H)$. We prove that $$ \min_{1\le n \le H} n \left\|\frac{a_1 n}{p}\right\|\ldots \left\|\frac{a_d n}{p}\right\| \approx \frac{1}{(\ln 
+
+2305.14604v2 [q-fin.PM] Automated Market Making and Arbitrage Profits in the Presence of Fees
+  We consider the impact of trading fees on the profits of arbitrageurs trading against an automated market maker (AMM) or, equivalently, on the adverse selection incurred by liquidity providers (LPs) d
+
+2304.07108v3 [q-fin.TR] Mean-field equilibrium price formation with exponential utility
+  In this paper, using the mean-field game theory, we study a problem of equilibrium price formation among many investors with exponential utility in the presence of liabilities unspanned by the securit
+
+2602.19645v1 [econ.EM] Pre-averaging estimators of the ex-post covariance matrix in noisy diffusion models with non-synchronous data
+  We show how pre-averaging can be applied to the problem of measuring the ex-post covariance of financial asset returns under microstructure noise and non-synchronous trading. A pre-averaged realised c
+
+2609.14922v1 [stat.ML] Steady-State Convergence of Stochastic Approximation
+  For constant-stepsize stochastic approximation (SA), the iterates converge in distribution to a stationary law that depends on the stepsize $α.$ Steady-state convergence (SSC) concerns the limit of th
+
+2603.06557v1 [q-bio.NC] Causal Interpretation of Neural Network Computations with Contribution Decomposition
+  Understanding how neural networks transform inputs into outputs is crucial for interpreting and manipulating their behavior. Most existing approaches analyze internal representations by identifying hi
+
+2503.20977v1 [q-bio.BM] Can geometric combinatorics improve RNA branching predictions?
+  Prior results for tRNA and 5S rRNA demonstrated that secondary structure prediction accuracy can be significantly improved by modifying the parameters in the multibranch loop entropic penalty function
+
+2407.05995v1 [q-bio.GN] Analysis of genetic diversity among some Iraqi durum wheat cultivars revealed by different molecular markers
+  Durum wheat has been cultivated since the beginning of crop domestication, occupying now the tenth ranking among the global most significant cultivated crops. Despite the fact that, the extent of the 
+
+2603.12341v1 [q-bio.QM] Self-Reported Side Effects of Semaglutide and Tirzepatide in Online Communities
+  Social media can reveal patient experiences with glucagon-like peptide-1 receptor agonists (GLP-1 RAs) that extend beyond clinical trial data. We analyzed 410,198 Reddit posts (May 2019-June 2025) men
+
+2510.22220v1 [q-bio.PE] Evolution of the lexicon: a probabilistic point of view
+  The Swadesh approach for determining the temporal separation between two languages relies on the stochastic process of words replacement (when a complete new word emerges to represent a given concept)
+
+2607.05127v3 [physics.chem-ph] Physically-Relevant Information Learning in High-Dimensional Time-Derivatives Spaces
+  Understanding the physics of many-body complex dynamical systems may be a non-trivial task. High-dimensional analysis approaches are often deemed necessary to prevent losing important information. Typ
+
+2607.07325v1 [cond-mat.soft] Taming nonlinear energy diffusion: The case of time-crystal energy condensates
+  We study a bulk-driven nonlinear variant of the Kipnis-Marchioro-Presutti model of stochastic energy diffusion in which local collisions are biased to induce a net energy flow, resembling the effect o
+
+2608.25916v1 [cond-mat.stat-mech] Current fluctuations in a gas of active Ornstein-Uhlenbeck particles
+  We investigate the statistics of the time-integrated current in an infinite one-dimensional gas of independent active Ornstein--Uhlenbeck particles, as a model system for studying an active generalisa
+
+2604.26119v1 [physics.soc-ph] Two-Dimensional Structural Characterization of Music Genre Communities in Playlist Co-occurrence Networks
+  Music genre classification shapes how listeners discover music, how platforms design recommendations, and how sociologists study cultural taste. Yet existing genre labels are inconsistent in granulari
+
+2610.09090v1 [cs.LG] Tucker Bottleneck Attention for Multi-Dimensional Sequence Modeling
+  The quadratic cost of self-attention limits scalability to long sequences from multidimensional data. We introduce Tucker bottleneck attention (TuBA), which exploits low-rank tensor structure for effi
+
+2610.07816v1 [cs.AI] Do I Need the Cloud? Uncertainty-Aware Step-Level Handoff for Small Language Model Agents
+  Small language models (SLMs) are attractive as local agent controllers because they reduce remote inference, latency, and deployment footprint, yet structured tool errors can cause an agent step to fa
+
+2610.02163v1 [cs.CL] AutoCompact: Learning When to Compact Context in Long-Horizon Coding Agents
+  Coding agents solve repository-level software engineering tasks through long trajectories of code inspection, search, editing, and testing. As a task progresses, earlier exploration becomes stale, so 
+
+2608.09513v2 [cs.DS] Faster Algorithms for Multimarginal Optimal Transport
+  We study constructive discrete multimarginal optimal transport (MOT) among $m$ distributions on $n$ points, where the cost tensor $C$ has $N=n^m$ entries. For additive accuracy $\varepsilon$, let $κ=\
+
+2609.26044v1 [math.CO] Extremal spectral radius of nonregular graphs with a fixed odd maximum degree
+  For integers $n\ge3$ and $2\leΔ\le n-1$, let $λ_1(n,Δ)$ be the maximum adjacency spectral radius among all connected nonregular graphs of order $n$ and maximum degree $Δ$. Liu conjectured that for eac
+
+2609.18859v1 [math.OC] Learning to Solve Two-Stage Stochastic Unit Commitment Problems with Quality Guarantees
+  Two-stage stochastic Mixed-Integer Linear Programs are a canonical modeling tool to optimize power system operations under uncertainty, yet their extensive-form counterparts scale linearly with the nu
+
+2609.14945v2 [math.PR] Long-range expanders: construction and cutoff
+  Long-range expansion is a combinatorial graph property introduced to construct metric spaces with strong quantitative obstructions to low-distortion embeddings. Such extremal constructions are motivat
+
+2609.08706v1 [math.NT] On a problem of Erdős and Nathanson related to minimal asymptotic bases of order $h$
+  Let $h\geq 3$ be an integer and $0<α<1/h$. In this paper, we prove that there exists a minimal asymptotic basis of order $h$ with asymptotic density $α$. This solves an open problem posed by Erdős and
+
+2305.12826v1 [q-fin.PM] A Simulation Package in VBA to Support Finance Students for Constructing Optimal Portfolios
+  This paper introduces a software component created in Visual Basic for Applications (VBA) that can be applied for creating an optimal portfolio using two different methods. The first method is the sem
+
