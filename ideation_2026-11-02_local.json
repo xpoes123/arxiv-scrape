@@ -1,0 +1,319 @@
+{
+  "ideas": [
+    {
+      "type": "demo",
+      "title": "The 'System-1' Poker Hand Evaluator",
+      "paper_id": "2610.34816v1",
+      "pitch": "Create a single-file HTML/JS toy that visualizes the trade-off between 'System-1' (fast, direct prediction) and 'System-2' (slow, deliberative reranking) in poker decision making. The user inputs a hand and a board, and the UI shows a 'System-1' model instantly predicting the win probability vs. a 'System-2' model that 'thinks' (simulated latency) to provide a more precise reranking of potential outcomes.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfectly hits the 'System-1 vs System-2' cognitive science trope which is huge in poker/trading. It allows users to 'feel' the latency vs. accuracy trade-off in real-time.",
+      "tags": [
+        "poker",
+        "games",
+        "ai",
+        "decision-theory",
+        "math"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Streaming Recurrent Memory for Live Sports Betting",
+      "paper_id": "2610.34833v1",
+      "pitch": "Build a live-betting odds engine that uses the 'Streaming Recurrent Memory' architecture. Unlike standard models that process 'snapshots' of a game (e.g., score at 10 mins), this system processes a continuous high-bandwidth stream of sensorimotor-style data (player velocity, ball trajectory, fatigue metrics) to adapt the 'fair price' of a bet instantly as the data arrives, rather than waiting for a discrete event to trigger a recalculation.",
+      "cool_score": 9,
+      "buildable_score": 5,
+      "discussion_score": 10,
+      "discussion_why": "This is a massive 'holy grail' for sports betting: moving from reactive odds to proactive, continuous-flow odds. It sparks huge debate on 'fairness' and 'latency' in live markets.",
+      "tags": [
+        "sports",
+        "betting",
+        "ai",
+        "math",
+        "econ"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "Precedence-Aware Budgeting: The 'Optimal Treatment' Simulator",
+      "paper_id": "2610.34812v1",
+      "pitch": "A visual interactive tool where users are given a fixed 'budget' (e.g., a bankroll or a team's training hours) to allocate across different 'treatments' (e.g., different levels of coaching or different betting stakes). The twist is the 'precedence constraint': you can't apply Level 3 without first applying Level 1 and 2. The tool visualizes how this constraint creates non-linear 'bottlenecks' in maximizing total benefit.",
+      "cool_score": 7,
+      "buildable_score": 8,
+      "discussion_score": 8,
+      "discussion_why": "Highly relevant to 'bankroll management' and 'resource allocation' in games. It's a sophisticated way to talk about why 'going all-in' or 'over-investing' in one area fails because of the underlying hierarchy of requirements.",
+      "tags": [
+        "decision-theory",
+        "math",
+        "econ",
+        "games",
+        "betting"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Data Value' Paradox: Why your 'Best' bets are actually redundant",
+      "paper_id": "2610.34801v1",
+      "pitch": "A visual interactive tool that demonstrates the paper's core finding: a data point's value isn't fixed, it depends on what you already know. In a betting context, if you have 10 'high-value' pieces of info that all point to the same conclusion, the marginal value of the 10th piece is near zero. The demo would let users 'collect' data points and see their 'Shapley value' drop as the set of already-selected points grows.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a betting/poker Discord. It challenges the 'more info is always better' intuition. It explains why 'redundant' information (even if high quality) doesn't move the needle on odds. It's a 'Wait, really?' moment for anyone who thinks they can just stack more data to find an edge.",
+      "tags": [
+        "betting",
+        "decision-theory",
+        "ai",
+        "math",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Ad Hoc Teamwork Agent for Poker/Multi-player Games",
+      "paper_id": "2610.34799v1",
+      "pitch": "Use the 'Centralized Critics for N-Agent Ad Hoc Teamwork' framework to build a multi-agent system where agents must cooperate without a fixed team structure. In a poker or game context, this could be used to model 'implicit' collusion or team-based strategies where agents must learn to coordinate based on shared 'privileged' information (like the deck state or hidden game rules) while executing actions independently.",
+      "cool_score": 9,
+      "buildable_score": 4,
+      "discussion_score": 8,
+      "discussion_why": "High interest in MARL (Multi-Agent Reinforcement Learning) for poker. The 'ad hoc' part is the hook—how do agents coordinate when they aren't 'officially' on a team? It touches on game theory and the limits of decentralized execution.",
+      "tags": [
+        "poker",
+        "games",
+        "ai",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The 'World Model' of Sports: Predicting the 'Action-Conditioned' Future",
+      "paper_id": "2610.34797v1",
+      "pitch": "A video explaining how 'TimeWorld' moves beyond simple trend extrapolation to 'Action-Conditioned' forecasting. Contrast a standard sports model (which just looks at past scores) with a 'World Model' that simulates how a specific coaching decision (an 'action') fundamentally reshapes the future dynamics of a game. Use the paper's concept of 'reshaping future dynamics' to explain why sports betting is a 'World Model' problem, not a 'Time Series' problem.",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 8,
+      "discussion_why": "Strong 'sports' and 'ai' overlap. It provides a sophisticated theoretical framework for why 'momentum' or 'coaching changes' are so hard to model with standard regression but easier with World Models.",
+      "tags": [
+        "sports",
+        "ai",
+        "math",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Policy Collapse' Visualizer",
+      "paper_id": "2610.34949v1",
+      "pitch": "A single-file interactive visualization showing how 'Entropy Regularization' in long-trace reasoning (GRPO) actually works. Users can toggle the 'Entropy' slider to see how the model's probability mass shifts from high-confidence 'correct' tokens toward the 'vast low-probability tail' of the vocabulary, visually demonstrating why long chains of thought can lead to 'policy collapse' (the model becoming nonsensical or repetitive).",
+      "cool_score": 7,
+      "buildable_score": 9,
+      "discussion_score": 8,
+      "discussion_why": "Perfect for the 'AI' and 'Math' crowd. It visualizes a counter-intuitive technical failure: why adding 'randomness' (entropy) to a reasoning chain can actually break the logic rather than save it. It's a great 'Wait, really?' moment for anyone interested in how LLMs actually 'think'.",
+      "tags": [
+        "ai",
+        "math",
+        "decision-theory",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Sovereign Betting Oracle Factory",
+      "paper_id": "2610.34956v1",
+      "pitch": "Use the 'Decision Model Factory' framework to build a suite of 'Sovereign Decision Models' specifically tuned for different betting markets (e.g., one for NBA point spreads, one for Horse Racing, one for Poker hand equity). Instead of one general LLM, you create specialized, calibrated, and verified 'mini-models' that are 'sovereign' (highly controlled and predictable) for specific niche decision-making tasks.",
+      "cool_score": 8,
+      "buildable_score": 6,
+      "discussion_score": 9,
+      "discussion_why": "High appeal for the 'betting' and 'econ' tags. It moves the conversation from 'Can AI predict sports?' to 'How do we build a factory of specialized, verified decision engines?' It touches on the importance of calibration and verification in high-stakes gambling.",
+      "tags": [
+        "betting",
+        "ai",
+        "econ",
+        "decision-theory"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The Critic vs. The Proposer: Why AI is a Bad Poker Player",
+      "paper_id": "2610.34965v1",
+      "pitch": "A video exploring the paper's finding that an agent can be a great 'Critic' (identifying why a move was bad) but a poor 'Proposer' (suggesting the winning move). Use a Poker simulation to show an AI that can perfectly explain why a 'bluff' failed, but consistently fails to suggest the correct bluffing frequency, highlighting the gap between evaluation and generation.",
+      "cool_score": 9,
+      "buildable_score": 5,
+      "discussion_score": 10,
+      "discussion_why": "Extremely high 'poker' and 'ai' synergy. It creates a relatable narrative: 'The AI knows it's losing, but it doesn't know how to win.' This sparks deep debate on the difference between 'Evaluation' and 'Policy' in game theory.",
+      "tags": [
+        "poker",
+        "ai",
+        "games",
+        "decision-theory",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Privacy Loop' Simulator",
+      "paper_id": "2610.28315v2",
+      "pitch": "A single-file interactive simulation where a user interacts with an AI agent that has 'persistent memory.' The user starts with a secret (e.g., 'I am a high-stakes gambler'). As the agent recalls this fact, the user's subsequent inputs become more influenced by that fact, creating a 'self-reinforcing privacy loop' where the user inadvertently reveals more and more until the entire profile is exposed. It visualizes the 'leakage' of personal attributes over a multi-session dialogue.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a gambling/poker community because it mirrors 'table image' and 'metagame'—how your past actions (memory) dictate your current behavior, and how opponents (the agent) use that to map your profile. It's a high-concept 'social engineering' toy.",
+      "tags": [
+        "ai",
+        "poker",
+        "decision-theory",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Emoji Sentiment Arbitrage & Sentiment Stability",
+      "paper_id": "2610.28337v1",
+      "pitch": "Build a sentiment analysis tool for sports betting/trading that moves beyond a single 'positive/negative' score. Using the 'stability delta' metric from the paper, the tool would identify emojis that are 'topically stable' (e.g., a specific emoji used consistently in high-stakes betting contexts vs. casual contexts). This could be used to detect 'sentiment clusters' in sports fan sentiment to predict market volatility or 'hype' shifts before they hit the odds.",
+      "cool_score": 7,
+      "buildable_score": 6,
+      "discussion_score": 8,
+      "discussion_why": "It challenges the 'dumb' way we look at social media sentiment. It's a 'math-heavy' way to look at sports hype, which fits the 'econ' and 'sports' tags perfectly. It's about finding the signal in the noise of fan emoji-spam.",
+      "tags": [
+        "sports",
+        "ai",
+        "econ",
+        "math"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Unmonitorable' CoT Visualizer",
+      "paper_id": "2610.28303v1",
+      "pitch": "An interactive visualization of 'Reward Misspecification.' The user can toggle a 'Reward' slider (e.g., 'Win at all costs' vs. 'Be honest'). As the reward becomes more extreme/complex, the 'Chain-of-Thought' (CoT) path of the AI becomes increasingly 'unmonitorable'—the logic becomes convoluted and opaque to the human observer. It visualizes the trade-off between achieving a goal and the ability to audit the logic used to get there.",
+      "cool_score": 8,
+      "buildable_score": 8,
+      "discussion_score": 9,
+      "discussion_why": "This is a direct hit on 'Decision Theory' and 'AI.' In poker, this is the 'hidden logic' of a pro player—if the reward is just 'win,' their internal logic might become so complex/deceptive that it's impossible to monitor. It's a great 'wait, really?' moment for the AI/math crowd.",
+      "tags": [
+        "ai",
+        "decision-theory",
+        "math",
+        "games"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Taste' Gap: Brand Recommendation Simulator",
+      "paper_id": "2610.28272v1",
+      "pitch": "A single-file interactive visualization where users can toggle between 'Naming' and 'Recommending' modes for various categories (shoes, cars, snacks). It visualizes the 'Taste Gap'—showing how models default to market leaders (Nike) when asked to name something, but pivot to 'niche' favorites (Brooks) when asked to recommend. It demonstrates the discrepancy between popularity and perceived quality.",
+      "cool_score": 8,
+      "buildable_score": 9,
+      "discussion_score": 9,
+      "discussion_why": "Perfect for a betting/games Discord because it touches on 'Market Sentiment' vs. 'True Value'. It sparks a debate on whether 'popular' is synonymous with 'best' and how LLMs (and humans) suffer from popularity bias in decision-making.",
+      "tags": [
+        "ai",
+        "econ",
+        "decision-theory",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "Adaptive Betting Strategy: The 'Refine vs. Resample' Engine",
+      "paper_id": "2610.28294v1",
+      "pitch": "A betting/trading bot framework that applies the 'Adaptive Replay Refinement' logic to sports betting or poker. Instead of just placing a bet, the agent allocates 'compute' (simulated iterations) to either refining a current betting strategy (adjusting odds/weights) or 'resampling' (abandoning the current strategy to find a completely new one). It solves the 'Sunk Cost' fallacy by using a formal mechanism to decide when a strategy is no longer worth refining.",
+      "cool_score": 9,
+      "buildable_score": 6,
+      "discussion_score": 10,
+      "discussion_why": "High relevance to gambling and poker. It addresses the 'Sunk Cost' fallacy and 'Exploration vs. Exploitation' directly. It's a high-level decision theory concept that can be mapped to 'When do I stop trying to win this hand/game and move on?'",
+      "tags": [
+        "betting",
+        "poker",
+        "decision-theory",
+        "ai",
+        "math"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "The AI Fingerprint: Can You Spot a Bot in 40 Words?",
+      "paper_id": "2610.28281v1",
+      "pitch": "A video exploring the 'Forty Questions' paper. Show how a model's 'personality' is actually a statistical fingerprint. Perform a live 'Identify the Model' challenge where the audience tries to guess which LLM is answering based on its specific quirks (e.g., its favorite poet or sound). Connect this to 'Tells' in poker—how small, consistent habits reveal the underlying 'engine' of a player.",
+      "cool_score": 8,
+      "buildable_score": 7,
+      "discussion_score": 8,
+      "discussion_why": "Connects AI behavior to the concept of 'Tells' in poker and games. It's a 'Wait, really?' moment—that a model's identity is hidden in plain sight in its one-word answers.",
+      "tags": [
+        "ai",
+        "poker",
+        "games",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "demo",
+      "title": "The 'Hallucination' Betting Engine",
+      "paper_id": "2610.09553v1",
+      "pitch": "A single-file interactive dashboard that visualizes the 'MARS' framework logic. Users can input a 'claim' (e.g., 'The underdog will win because of X') and the tool simulates a rule-based scoring system that breaks down the claim into verifiable evidence points. It visualizes the 'confidence score' vs. 'evidence weight' to show how LLMs can be forced to be honest by scoring their claims rather than just giving a final verdict.",
+      "cool_score": 7,
+      "buildable_score": 9,
+      "discussion_score": 8,
+      "discussion_why": "Perfect for a betting/decision-theory crowd. It moves the conversation from 'Does the AI think X will happen?' to 'How much evidence does the AI actually have for X?' It highlights the difference between a 'gut feeling' (LLM output) and a 'weighted score' (MARS logic).",
+      "tags": [
+        "ai",
+        "betting",
+        "decision-theory",
+        "math",
+        "whimsy"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "project",
+      "title": "The 'Anti-Cheat' Agent Framework",
+      "paper_id": "2610.09469v1",
+      "pitch": "Build a 'Secure-CUA' (Computer-Use Agent) wrapper for gaming/betting bots. The paper discusses how untrusted content can trick agents via visual cues. This project would be a middleware that 'sanitizes' the visual input of an automated agent (like a poker bot or a sports scraper) to ensure it isn't being manipulated by 'adversarial' UI elements or misleading visual data from a website.",
+      "cool_score": 8,
+      "buildable_score": 5,
+      "discussion_score": 9,
+      "discussion_why": "High 'surprise' factor. In poker and sports betting, 'information integrity' is everything. Discussing how an AI agent could be 'tricked' by a visual UI element (like a fake odds display or a manipulated game state) is a high-level tech-security/game-theory crossover.",
+      "tags": [
+        "games",
+        "poker",
+        "ai",
+        "decision-theory",
+        "econ"
+      ],
+      "source": "local"
+    },
+    {
+      "type": "youtube",
+      "title": "Can an AI 'Learn' to Defend a Server? (RL vs. LLM)",
+      "paper_id": "2610.09337v1",
+      "pitch": "A video exploring the 'Ask the Expert' paper. Contrast traditional Reinforcement Learning (which is slow and struggles with huge action spaces) with LLM-guided RL. Use a 'Cyber Defense' analogy but map it to a 'Game Theory' scenario: How does an agent learn to defend a position when the 'action space' is nearly infinite? Show the transition from 'brute force learning' to 'semantic reasoning'.",
+      "cool_score": 8,
+      "buildable_score": 4,
+      "discussion_score": 7,
+      "discussion_why": "Great for the 'AI' and 'Math' tags. It touches on the fundamental problem of 'Sample Efficiency'—how much data do you need to learn a winning strategy? This is a core concept in both poker and high-frequency trading.",
+      "tags": [
+        "ai",
+        "math",
+        "games",
+        "decision-theory"
+      ],
+      "source": "local"
+    }
+  ],
+  "failed_batches": []
+}

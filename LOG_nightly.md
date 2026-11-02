@@ -1,3 +1,10 @@
+## 2026-11-02 — Revise or Restart
+- 30 papers (128 fetched; fetch was slow, ~5 min). Local ideation: 18 ideas, 0 fallbacks. Local model over-tagged poker/betting; picked by actual paper content.
+- Top ideas: demo — data-value/coverage (2610.34801); project — streaming memory live betting (2610.34833); youtube — critic vs proposer (2610.34965); startup — none stood out.
+- Competed: coverage-a (32), revise-b (34), critic-c (27). Judge: all ran clean in headless Chromium.
+- **Winner: revise-b** — most interactive (play fold-or-refine vs ARR, live charts), closest to paper claim.
+- Live: https://share.djiang.xyz/arxiv-scrape/demos/2026-11-02-revise-or-restart.html
+
 ## 2026-11-01 — Minority Crowd
 - 30 papers (176 fetched). Local ideation: 18 ideas, 0 fallback batches.
 - Top ideas: demo — Parallel Minority Game; project — steerable poker agent (2610.27295); youtube — universal permutations (2610.13530); startup — ambiguity-aware Kelly sizing (2303.08521).
